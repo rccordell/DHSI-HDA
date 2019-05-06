@@ -1,0 +1,347 @@
+---
+title: "GrammaR"
+author: "Ryan Cordell"
+date: "1/17/2017"
+output: html_document
+---
+
+# Start a New R Project
+
+The first thing we'll do (likely before you even read these words) is start a new R project for this class. You can either select an existing directory—perhaps the one where you've saved the exercise files—or create a new one. You'll be saving all of your work for the semester here. 
+
+# Markdown
+
+This is an [R Markdown document](http://rmarkdown.rstudio.com/), which adapts the syntax of Markdown: a lightweight standard for writing in plain text while encoding the *structure* of your document for later representation in a format like Word, PDF, or HTML. If you have ever marked up a text using HTML or XML (or TEI!!!) tags, Markdown works quite similarly, but uses simple typographical symbols to encode text rather than longer HTML tags.
+
+R Markdown blends the markdown conventions you are learning today with a few customizations that let you embed snippets of code, as well as any outputs (e.g. graphs, maps) produced by that code into Markdown documents. This lets you weave together prose and code, so your readers can see the technical aspects of your work while reading about their interpretive significance. We will talk about this more in the near future (and you'll see some examples of R Markdown), but I want you to understand that we are learning Markdown both for its flexibility in representing the typical kinds of texts literature students write *and* for writing about code. If you view this document on the course website or on Github, you can see how the markdown syntax translates for presentation on the web. If you use Github, it will automatically translate Markdown files for viewing (as it does for our class exercises); if you use Wordpress, you can enable Markdown for composing posts and pages by installing the Jetpack plugin.
+
+I'm asking you to compose in R Markdown this semester, but we won't spend too much time learning Markdown itself. It's really quite simple to learn—particularly given that most of you have used more complicated tagging schemes in other contexts—and these resources will help:
+
++ The [Markdown Wikipedia page](https://en.wikipedia.org/wiki/Markdown) includes a very handy chart of the syntax.
++ John Gruber developed Markdown and his [introduction to the syntax](https://daringfireball.net/projects/markdown/syntax) is worth browsing.
++ This [interactive Markdown tutorial](http://www.markdowntutorial.com/) will teach you the syntax in a few minutes.
+
+# R Markdown
+
+As an RMD file, however, this is more than a flat text document: it's a program that you can run in R. R Markdown allows you to embed executable code into your writing. If you click the 'run' arrow in the gray box below, the code will run. You should see the results in your console window. Try that now.
+
+```{r}
+2+2
+5^32
+```
+
+As in most programming languages, you can do math in R, though we won't do much of this in our class. 
+
+In addition to using the run buttons above, you can also run R code *one line* at a time by putting your cursor on the line and hitting `command-return` (on a Mac), `control-return`(in Windows), or `control-return` (in Linux). If I don't use the R Markdown syntax to make an executable code block (by surrounding the code with three backticks and including the {r} designator) then you'll have to run the code using `command-return`. When you work with regular R documents—without the markdown—this will be the primary way you run code. Try running this code by placing your cursor on the line and hitting `command-return`/`control-return`/??:
+
+plot(1:100,(1:100)^2)
+
+One reason many folks love R is the ease with which you can create plots and other data visualizations using it. We'll learn more about those as this class progresses.
+
+# R Basics
+
+First, let's learn some of the basics of R.  As we go along, I will provide you with code that illustrates particular ideas I want you to understand now. There will be complexities we will not explore today, so don't worry if not every line makes perfect sense right now. Make sure you understand the principles discussed in the prose here and in our workshop and save the rest for questions or later class periods. 
+
+## Installing Packages
+
+The first think we're going to do is install an *R package*: a collection of functions, data, and documentation that extends the capabilities of base R. You can do a lot in base R, but packages make many tasks much easier, and knowing how to install them is essential. [Tidyverse](http://tidyverse.org/) isn't actually one package, but a collection of packages that share a common philosophy and work well together. The tidyverse packages are the basis for the [*R for Data Science*](http://r4ds.had.co.nz/) book we will use often in this class and, more importantly, are quite useful for working with dataframes, R's standard for tabular data like CSVs and TSVs, which are essential for most humanistic data analysis. 
+
+To install an R package, you can either click Tools --> Install Packages or run code like this:
+
+```{r}
+
+install.packages("tidyverse")
+
+```
+
+It may take a few minutes for all the tidyverse packages to install, but you should only need to install a given package once on a particular machine. In order to actually use packages in a given script, you must load them using the `library()` function. You will usually load all of the packages you wish to use in a given script at the beginning, so that the functions, objects, and help files of that package will be available to you as you work.
+
+```{r}
+
+library(tidyverse)
+
+```
+
+In the box below, write six lines of code to install and then load the packages `dplyr`, `tidytext`, and `wordcloud`. You can copy, paste, and modify from above.
+
+```{r}
+
+library(dplyr)
+library(tidytext)
+library(wordcloud)
+
+```
+
+## Sample Data
+
+In [http://ryancordell.org/research/qijtb-the-raven/](http://ryancordell.org/research/qijtb-the-raven/) I describe the OCR of the *Lewisburg Chronicle, and the West Branch Farmer* as it appears in the Library of Congress' [Chronicling America](http://chroniclingamerica.loc.gov/lccn/sn85055199/1849-11-28/ed-1/) archive. Let's use that newspaper to illustrate a few of the principles on which the Viral Texts Project is based and to extend our understanding of the basics of R. 
+
+Ok, this little bit of code below is going to go onto the web and read the text from page 1 of the *Lewisburg Chronicle* (28 November 1849)—on which Edgar Allan Poe's poem "The Raven" appears—into a dataframe of one row and one column. 
+
+## Loading and Exploring Data
+
+```{r}
+
+raven <- data_frame(text=read_file("http://chroniclingamerica.loc.gov/lccn/sn85055199/1849-11-28/ed-1/seq-1/ocr.txt"))
+
+```
+
+We'll talk more about dataframes and other R data formats in the coming weeks. We will also load many different kinds of source data through a variety of methods. For now, however, I want to use this very simple dataframe to outline some of R's basic grammar and the R Studio's functionality.
+
+First, what is that word `raven` in the code above? It's a variable, which means that it stores data for use in later processing. The `<-` assigns the data to its right (which could be loaded from outside R, as here, or which could be the results of a process within R) to the variable on its left. You can use `=` to do the same, which is why this code will do exactly what the code above did:
+
+```{r}
+
+raven = data_frame(text=read_file("http://chroniclingamerica.loc.gov/lccn/sn85055199/1849-11-28/ed-1/seq-1/ocr.txt"))
+
+```
+
+I prefer `<-` to `=` because the latter is used for some other purposes in R, and thus I find `<-` less confusing, but you should determine which you prefer. You don't have to be consistent, even, but it helps make your code more readable if you are.
+
+If you look in your "Global Environment" panel in R Studio, you should now see `raven` listed under "Data." That panel will list all of the variables and other data currently in memory that can be invoked in your scripts. You can click the little grid next to `raven` in order to load the data frame in a new window, or you could run this code to do the same:
+
+```{r}
+
+View(raven)
+
+```
+
+You might not want to include a function like `View()` in your actual code; you might just want to quickly look at your data without saving that act of looking in your actual script. If you want to run code but not save it, you can type it directly in your console and just hit return. Try running `View(raven)` directly in the console now. 
+
+A few important but perhaps not obvious points about variables:
+
+1. Their names are arbitrary. I could have called this variable `raven` or `Lewisburg` or `sn85055199` or `hotDog` (save using a few characters reserved for special uses in R; more on that anon). Folks have very different philosophies about naming variables, and the best practice often depends on the uses to which a particular bit of code might be put. If I were writing a general script for detecting text reuse in newspaper pages, the highly specific `raven` might not be the best choice. I might instead opt for `newspaper_pages` or something that makes the general meaning of that variable within the script plain.
+
+2. Variables can be reassigned. You may have noticed that we loaded data twice, though with only slightly different settings, into the variable `raven`. Often you will transform your data and replace a variable with the transformed version, but you want to be careful when doing so. A variable holds the data you've assigned it until it is reassigned or until you quit R (that's not precisely right, but it's good enough for now). 
+
+3. We assign data to variables so that we can easily invoke that data for various kinds of analyses and transformations. We'll see some of those in the following. 
+
+## Very, Very Basic Text Analysis 
+
+First let's once again reload the data in a slightly different format: 
+
+```{r}
+
+raven <- tibble(text=read_file("http://chroniclingamerica.loc.gov/lccn/sn85055199/1849-11-28/ed-1/seq-1/ocr.txt")) # a tibble is special kind of dataframe we'll learn more about in week 3
+
+```
+
+Do you see the words following the hash mark in that code? Within an R codeblock, the `#` designates a comment. This is text that won't be processed when you run the code. Typically programmers use comments to explain what bits of code are doing for others reusing or adapting that code. In a regular R script (not RMD), the comments are often the only place you'll find explanatory prose, so keep an eye out for them.
+
+Ok, so let's do a little basic text analysis. As we go through these in class, I'll try to use these code blocks to explain more basics about how R operates. 
+
+With the computer we can very easily start counting, for instance counting various "tokens" in the text, such as individual words...
+
+```{r}
+
+raven %>% 
+  unnest_tokens(word,text) %>%
+  count(word,sort=T)
+
+```
+
+Which we can visualize in wordclouds, such as those you may have seen on a website like Wordle. 
+
+```{r}
+
+raven %>% 
+  unnest_tokens(word,text) %>%
+  count(word,sort=T) %>% 
+  with(wordcloud(word,n,max.words = 100))
+
+```
+
+That isn't very satisfying, is it? This word cloud includes nothing but commons words such as articles and conjunctions.
+
+In this—and indeed most—texts, the most common words are much, much more common than the least common words. For many text analysis purposes, we'll want to filter out what are called "stop words": essentially, words so common as to be uninteresting for analysis (or so variously resonant as to be difficult to frame for analysis). There are ready made stop list words for most languages, and researchers can customize their stop lists based on the features of their corpora. Fortunately tidytext (one of those packages we installed earlier) includes a nice stop list we can use. So let's load it up!
+
+Again, someone has done the work for you already. There's data included in our tidytext package called "stop_words," and some example code [online](https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html) about how to use it. Here, I'll just do it for you.
+
+```{r}
+
+data("stop_words") # <- Load the stop words data
+
+raven %>% 
+  unnest_tokens(word,text) %>%
+  count(word,sort=T) %>% 
+  anti_join(stop_words) %>% #<- This is the only change to our little program from before.
+  with(wordcloud(word,n))
+
+```
+
+In addition to words, R makes it very easy to count (and compare, &c.) other units of language, such as bigrams, trigrams, and so forth. Units of n-length words are called "Ngrams." When building an index of ngrams, each possible sequence of n words is recorded, as if a lens with a n-words-long aperture is sliding along the text, taking a snapshot at each position. Below we're counting units of 5 words from our newspaper text data.
+
+```{r}
+
+raven %>%
+  unnest_tokens(word,text,token="ngrams",n=5) %>%
+  count(word,sort=T)
+
+```
+
+That bit of code counts and sorts the ngrams on the page, so that we can see how many appear multiple times. This could be really useful for identifying ideas, themes, settings, and so forth, if we had a larger corpus across which to search. Note that we're not changing anything about the `raven` variable here and we are not storing the derived data about ngrams, though we could if we wanted to. The `%>%` you see above—and which you may recognize from my attempt at visual code humor on the schedule of our course website—is called a pipe, and it allows us to pass through a series of instructions in sequence (as if they were connected by pipes). Here, then, we first load the variable `raven` and *then* unnest its 5 grams and *then* count and sort those five grams.
+
+We can even plot this kind of data to see visually, as in the code below which plots which trigrams are most frequent in the data:
+
+```{r}
+
+raven %>%
+  unnest_tokens(word,text,token="ngrams",n=3) %>%
+  group_by(word) %>% 
+  filter(n()>3) %>%
+  ggplot() + 
+  geom_bar(fill="red") + 
+  aes(x=word) + 
+  coord_flip()
+
+```
+
+Rather than tallying them up, however, let's just figure out what all the five grams on this page are. We're going to create a new variable so we can investigate more closely.
+
+```{r}
+
+ravenGrams <- as_data_frame(raven %>%
+  unnest_tokens(word,text,token="ngrams",n=5) %>%
+  count(word,sort=T))
+
+View(ravenGrams)
+
+```
+
+You can see that when building an index of ngrams, each possible sequence of five words is recorded, as if a lens with a five words long aperture is sliding along the text, taking a snapshot at each position. 
+
+This is a slighly more complex dataset than `raven`, so let's try a few other functions directly in the console. These are basic functions for getting basic information about a variable. Type each of these with the correct variable in the parenthese and think about what these are telling you:`names()`, `str()`, `dim()`, `class()`, `head()`, `tail()`
+
+## Comparisons
+
+We've seen some (relatively) interesting things that can be done with a single page, but what we really want to do is compare across pages. We can't compare across hundreds of thousands of pages as we do for the [Viral Texts Project](http://viraltexts.org), but we can compare two pages. So let's load in the data for two distinct pages, the first the same *Lewisburg Chronicle* page from above, and the second from the *Vermont Phoenix* from February 28, 1845. 
+
+```{r}
+
+newspaperPages <- data_frame(
+  text = c(text=read_file("http://chroniclingamerica.loc.gov/lccn/sn85055199/1849-11-28/ed-1/seq-1/ocr.txt"),text=read_file("http://chroniclingamerica.loc.gov/lccn/sn98060050/1845-02-28/ed-1/seq-1/ocr.txt")),
+  title = c("LewisburgChronicle","VermontPhoenix"))
+
+```
+
+Let's look at all the five-grams on both the pages we've loaded now. You should see a dataframe (a spreadsheet, essentially) with two columns: the first with the newspaper names and the second with the five-grams for each listed. The five-grams are grouped and counted, so you can see how many times each is used in each paper. We only have two pages in our dataset, so *most* of them will only appear once, but there is some duplication even across so little text.
+
+Then run: 
+
+``` {r}
+
+newspaperPages %>% 
+  unnest_tokens(word,text,token = "ngrams", n = 5) %>% # <- New
+  group_by(title, word) %>% 
+  summarize(count = n()) %>%
+  arrange(desc(count)) %>%
+  View()
+
+```
+
+We could also visualize this, plotting the five grams based on their occurence on one or both pages.
+
+```{r}
+
+newspaperPages %>%
+  unnest_tokens(word,text,token = "ngrams", n=5) %>%
+  group_by(title,word) %>% 
+  summarize(count=n()) %>% 
+  spread(title,count,fill=0) %>% 
+  # filter(LewisburgChronicle + VermontPhoenix > 2) %>% 
+  ggplot() +
+  aes(x=LewisburgChronicle,y=VermontPhoenix,label=word) + 
+  geom_point(alpha=.3) + 
+  geom_text(check_overlap = TRUE) +
+#  scale_x_log10() +
+#  scale_y_log10() +
+  geom_abline(color = "red")
+
+```
+
+
+We can also manipulate the way the dataframe itself looks. By "spreading" the data into two columns, we can more easily see which ngrams appear on both pages.
+
+``` {r}
+
+newspaperPages %>%
+  unnest_tokens(word,text,token = "ngrams", n=5) %>%
+  group_by(title,word) %>% 
+  summarize(count=n()) %>% 
+  spread(title,count,fill=0) %>%
+  # filter(LewisburgChronicle >= 1 & VermontPhoenix >= 1) %>%
+  View()
+
+```
+
+
+Now let's just look at the five grams that appear on both pages. To do that, you just need to "uncomment" line 271 by deleting the hashtag at the front of the line. Then rerun the code.
+
+Thus far we've mostly been using commands to look at the data in various ways, but we haven't been saving those views. If we wanted to, however, we could put some of our results—such as a dataframe of matching five grams between pages—into a new variable, which we could them perform new operations on. Like so:
+
+``` {r}
+
+sharedFiveGrams <- newspaperPages %>%
+  unnest_tokens(word,text,token = "ngrams", n=5) %>%
+  group_by(title,word) %>% 
+  summarize(count=n()) %>% 
+  spread(title,count,fill=0) %>%
+  filter(LewisburgChronicle >= 1 & VermontPhoenix >= 1) %>%
+  rename(fivegram = word)
+sharedFiveGrams$sharedSum = sharedFiveGrams$LewisburgChronicle + sharedFiveGrams$VermontPhoenix
+sharedFiveGrams <- arrange(sharedFiveGrams, desc(sharedSum))
+
+```
+
+That didn't make anything happen immediately in this source window, but if you look at your "environment" pane you'll see a new variable called sharedFiveGrams. You can click the little table icon next to it to look at this data, which should resemble what we saw before. The only difference is that this dataframe is now saved in our computing environment, and we could now perform additional operations using that data specifically. Let's make a bar chart, just because.
+
+``` {r}
+
+sharedFiveGrams %>%
+  filter(sharedSum > 2) %>%
+  ggplot() +
+  geom_bar(stat="identity") +
+  aes(x=fivegram,y=sharedSum) +
+  labs(title = "Shared Five Grams Between Newspaper Issues", y = "Total Number Shared", x = "Five Grams Shared")
+
+```
+
+## Bonus: RegEx in R
+
+As I noted in class last week, one benefit to learning RegEx is that it can be used in programming languages either to clean data and make replacements (our focus last week) *or* to select the data you want from a larger set. Working in R, for instance, that difficult problem #3 (delete everything *not* in quotation marks from William Wells Brown's narrative) becomes the much easier problem of "extract everything within quotation marks into a new dataframe."
+
+```{r}
+
+install.packages("stringr")
+library(stringr)
+
+brown <- tibble(text=read_file("https://raw.githubusercontent.com/jonathandfitzgerald/s17hda/master/data/NarrativeWilliamWellsBrown.txt"))
+
+brown$text <- gsub("\r\n", " ", brown$text) %>%
+  gsub("([.!?])([A-Za-z])", "\1 \2", brown$text)
+
+quotes <- "(\"[A-Za-z].*?\")"
+
+brown_quotes <- str_extract_all(brown$text, quotes) 
+
+View(brown_quotes)
+  
+```
+
+When imported as dataframes, R also understands columns, so we can use RegEx only on a particular column without worrying about affecting the others:
+
+```{r}
+
+crewlist <- read.csv("https://raw.githubusercontent.com/jonathandfitzgerald/s17hda/master/data/crewlists.csv", header=TRUE, sep=",")
+
+crewlist$ApproximateDeparture <- gsub("[0-9]{1,2}\\/[0-9]{1,2}\\/([0-9]{4})", "\\1", crewlist$ApproximateDeparture)
+
+```
+
+# Exercises
+
+This week let's keep it (relatively) simple: 
+
+1. Create a new RMD file and work through Taylor Arnold and Lauren Tilton's ["Basic Text Processing in R"](http://programminghistorian.github.io/ph-submissions/lessons/basic-text-processing-in-r) exercise. Copy the code as necessary and run it. As best as possible, make sure you understand what each of the steps is doing to the data it uses. Keep in mind that you should understand the *transformation* well, though you might be less clear about the precise means by which that transformation was effected.
+2. Choose your own text and perform the same analyses that Arnold and Tilton demonstrate using State of the Union addresses. You might not be able to reproduce the group analyses at the end; that's ok for now.
+3. Strech goal: Work through the chapter on ["Data Manipulation"](http://lincolnmullen.com/projects/dh-r2/data.html) in DHMR.

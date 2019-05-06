@@ -1,0 +1,426 @@
+---
+title: "Classification"
+author: "Jonathan Fitzgerald"
+date: "03/30/2017"
+output: html_document
+---
+
+I'm excited for the opportunity to walk you through a couple of classification techniques today as this has been the bulk of my work in R over the past couple of years. We are going to look at a couple methods today, though you should note (and the readings for today made clear) that there are dozens of methods, with new ones popping up all the time. But, for today, we will look at a historical example, an authorship attribution exercise similar to the famous work of Mostellar and Wallace with The Federalist Papers, and then we'll dig back into Viral Texts data and use the classification method that I've been working with, which takes, as its starting point, topic models.
+
+So, let's jump in!
+
+# A Historical Experiment 
+
+We are going to get The Federalist Paper database from Ben Schmidt's bookworm database, which stores word counts and metadata for easy access. In order to do so, you'll need to install the following packages, which allow us to interface with Ben's data:
+
+```{r}
+install.packages("RCurl")
+install.packages("RJSONIO")
+```
+
+You'll also need to run the following huge chunk of code, which is basically a function that Ben wrote for pulling data from `bookworm`. You could save this in your `functions.R` file, but it's not likely you'll use it again, so maybe just run it here:
+
+```{r}
+
+#' Runs a Bookworm query on a local instance
+#'
+#'@query A bookworm API call, in the form of an R list (will be coerced to JSON)
+#'@host the url of the bookworm being queried
+#'@method Should just be the default
+#'
+#'
+
+library(RJSONIO)
+
+bookworm = function(
+  host="benschmidt.org",
+  database="SOTUgeo2",
+  method="return_tsv",
+  counttype=list("WordCount"),
+  groups = list("year"),
+  search_limits = list(),
+  query=list()
+) {
+  for (term in c("method","database","groups","search_limits","counttype")) {
+    if(is.null(query[[term]])) {
+      query[[term]] = get(term)
+    }
+    
+  }
+  if (length(query[['search_limits']]) == 0) {query[['search_limits']]=emptyNamedList}
+  if (length(query)==0) {
+    query[['database']] = database
+  }
+  
+  require(RCurl)  
+  json = toJSON(query)
+  json = URLencode(json)
+  destination = paste(host,"/cgi-bin/dbbindings.py?query=",json,sep="")
+  
+  if (method!="return_tsv") {
+    data = scan(textConnection(getURL(destination)),what='raw',quote=NULL)
+    data = data[data!="===RESULT==="]
+    data = paste(data,collapse=" ")
+    if (try(assign("data",fromJSON(data[1])),silent=T)==FALSE) {
+      warning(destination)
+    }
+  }
+  if (method=="return_tsv") {
+    message(destination)
+    data = read.table(
+      text = getURL(destination),
+      header=T,
+      sep="\t",
+      stringsAsFactors=FALSE,
+      blank.lines.skip=T,
+      encoding="UTF-8",
+      flush=T,
+      quote='',
+      fill=T,
+      comment.char='')
+    if(ncol(data)==1 & method=="return_tsv") {
+      data = data[grep("^[<>]",data[,1],invert=T),]
+      message(destination)
+      return(paste(as.character(data),collapse="\n"))
+    }
+    data[,ncol(data)] = as.numeric(as.character(data[,ncol(data)]))
+  }
+  return(data)
+}
+
+
+bookwormTDMatrix = function(cutoff=2,...) {
+  data = bookworm(...,counttype="WordsPerMillion") %>% group_by(unigram)
+  
+  if (cutoff>1) {
+    data = data %>% group_by(unigram) %>% filter(n()>cutoff) %>% ungroup
+  }  
+  
+  names(data) = paste0("meta_",names(data))
+  
+  data %>% spread(meta_unigram,meta_WordsPerMillion,fill=0) %>% as.tbl
+  
+  
+  
+}
+
+```
+
+Okay, all that done, let's read in The Federalist Papers:
+
+```{r}
+
+fedWords = bookworm(database="federalist",groups=list("author","title","unigram"),counttype = "WordCount") %>% as.tbl()
+
+```
+
+If you view the dataframe you just created, you'll see a column for author, title, unigram, and word count. The author and the title should be obvious, the unigram is just a word (there's one row for every unique word in the particular paper), and the word count is the number of times that word appears in each paper. Now, we want to calculate the probability that an author would use a particular word. This is a well regarded way of doing authorship attribution, by knowing how likely it is that an author will use a particular word, we can guess the probability that particular work was written by a particular author.
+
+```{r}
+
+authorProbs = fedWords %>% 
+  group_by(author) %>% 
+  mutate(authorWords = sum(WordCount)) %>% 
+  group_by(author,unigram) %>% 
+  summarize(probability=sum(WordCount)/authorWords[1])
+
+```
+
+Can anybody parse what is going in the above block of code?
+
+That new dataframe gives us the chance of each author using any individual word. We just need to merge that in, and we can gather the overall probability for any author using the *set of* words that he or she does. We'll create a new dataframe called `probs` and rename the "author" column to "authorCandidate". Then we'll join that dataframe with the original `fedwords` dataframe. Now, if you look at `chances` for every word there is both an author and an author candidate, with an associated probability that the author candidate would use the particular word. 
+
+
+``` {r}
+probs = authorProbs %>% select(authorCandidate = author,unigram,probability)
+
+chances = fedWords %>% inner_join(probs)
+
+```
+
+Next comes the actual classification magic. *WARNING* There is math involved here. Math that, even after a few years of banging my head against it, I don't entirely understand. But we'll try to walk through it a bit.
+
+```{r}
+
+classification = chances %>% 
+  group_by(title,authorCandidate) %>% 
+  summarize(logProbability = sum(log(probability)*WordCount)/sum(WordCount),realAuthor = author[1]) %>% 
+  arrange(logProbability) %>% 
+  group_by(title) %>% 
+  slice(1)
+
+```
+
+As I noted above, this is a naive Bayes classifier. Naive Bayes is a family of classifiers that use as their starting point Bayes' theorem, which basically says that we can determine the probability of something based on prior knowledge of conditions related to that thing. In this case, we can guess the probability that a document was written by an author if we know some things about the authors and the documents. It is said to be _naive_ because it ignores any correlation between features. That is, in the above example, each document and author's probability is determined independent of the others. 
+
+So what did we just do? First, we converted the probability we had previously calculated into the logarithm of that probability and then we multiplied it by word count. Then we divided that by the word count. We created a new column called `realAuthor`, which is just the first row of the author column for each document. Finally, we arranged the dataframe by the newly created logProbability column, grouped the frame together by the document title, and sliced so as to keep only the highest probability. The end result is that for each document we can see the "real author" and the author that the classifier guessed with its accompanying probability. 
+
+How'd it do? Here's a quick calculation of the percentage of wrong guesses, determined by removing the "Disputed" authors, and looking at the number of times the `authorCandidate` is not the same as the `realAuthor`, divided by the total number of rows (and multiplied by 100 to give a percent).
+
+```{r}
+
+classification %>% 
+   filter(realAuthor != "DISPUTED") %>%
+   filter(authorCandidate != realAuthor) %>% 
+   nrow() / classification %>% nrow() * 100
+
+```
+
+It was wrong 20% of the time, which means it was right 80% of the time. Not bad.
+
+# Viral Texts Classification Work
+
+Naive Bayes is well suited to exercises like authorship attribution, but the thing about classification methods is that they are not one size fits all. The method that I currently employ was originally conceived of by Ben Schmidt (surprise, surprise!) in response to conversations we had shortly after I was hired by the Viral Texts Project. That is to say, Ben was thinking of the particular challenges and opportunities related to working with nineteenth century newspaper texts when he came up with this idea. Incidentally, his first introduction of the technique on his blog used the method to classify television episodes, and you can read that poster [here](http://bookworm.benschmidt.org/posts/2015-09-14-Classifying_genre.html).
+
+We need to some topic modelling first here, so read in the following CSV, and then I copied the relevant lines from `TopicModeling.Rmd` file for easy access. Quick note, if you ever get the following error with `mallet`: `Error in .jcall("RJavaTools", "Ljava/lang/Object;", "invokeMethod", cl,  :  java.lang.NoSuchMethodException: No suitable method for the given parameters`, or something like it, the most likely culprit is that your columns aren't character columns, so quick fix for that.
+
+```{r}
+
+vtGenres <- read_csv("data/vtGenres.csv") %>% select(cluster,text,genre)
+vtGenres$text = vtGenres$text %>% as.character()
+vtGenres$cluster = vtGenres$cluster %>% as.character()
+
+
+```
+
+And the topic modelling...
+
+```{r}
+
+stopwords <- as.list(stop_words$word) %>% unlist()
+write(stopwords, "./data/stopwords.txt")
+
+mallet.instances <- mallet.import(id.array = vtGenres$cluster, 
+                                  text.array = vtGenres$text, 
+                                  stoplist.file = "./data/stopwords.txt")
+
+n.topics <- 15
+
+topic.model <- MalletLDA(num.topics=n.topics)
+topic.model$loadDocuments(mallet.instances)
+
+#Look at the word frequencies sorted in order.
+vocabulary <- topic.model$getVocabulary()
+word.freqs <- mallet.word.freqs(topic.model)
+head(word.freqs)
+
+#Some preferences. Inside baseball: see Wallach and Mimno for what's going on.
+topic.model$setAlphaOptimization(20, 50)
+topic.model$train(300)
+#Increase the fit without changing the topic distribution; optional
+topic.model$maximize(10)
+
+#Gets a list of the documents and topics
+doc.topics <- mallet.doc.topics(topic.model, smoothed=T, normalized=T)
+#Changes the orientation of that matrix to be horizontal:
+topic.docs <- t(doc.topics)
+
+#Gets a list of the top words.
+topic.words <- mallet.topic.words(topic.model, smoothed=T, normalized=T)
+
+
+#Assign some labels to the topics
+topics.labels <- rep("", n.topics)
+for (topic in 1:n.topics) {
+  topics.labels[topic] <- paste(
+    mallet.top.words(topic.model, topic.words[topic,], num.top.words=5)$words, collapse=" "
+  )}
+topics.labels
+#to look at the labels, type "topics.labels"
+
+rownames(doc.topics) = vtGenres$cluster
+colnames(doc.topics) = topics.labels
+
+#Create a dataframe
+topicsDF = doc.topics %>% 
+  as.data.frame() %>% 
+  mutate(cluster = vtGenres$cluster, primary_genre = vtGenres$genre) %>% 
+  filter(primary_genre!="unknown")
+
+```
+
+Okay, so we end up with a dataframe that shows each topic as a column, with the probability as rows, and two additional columns for cluster and genre. Note that we removed any clusters with a genre of "unknown"; more on this later. In order to begin the classification process, we need to convert this to a matrix, and drop the cluster and genre columns. And then, we perform the log function on the probabilities.
+
+```{r}
+
+#Convert to a matrix
+modeling_matrix = topicsDF %>% select(-primary_genre, -cluster) %>% as.matrix()
+modeling_matrix = log(modeling_matrix)
+dim(modeling_matrix)
+
+```
+
+Similar to the way the naive Bayes classifier needed prior information about the data in order to make its guesses, we need to provide the classifier with some model in order for it to perform. So, below we create a training set by sampling randomly from our data. The last bit below `prob = c(.75,.25)` is telling it to sample 75% of the data.
+
+
+```{r}
+#Create a training set
+training = sample(c(TRUE,FALSE),nrow(modeling_matrix),replace=T,prob = c(.80,.20))
+
+#Convert training set into dataframe
+training_frame = data.frame(modeling_matrix[training,])
+
+```
+
+Here's where we actually build the model. As above, this is the math part that gets a little tricky, but what we really need to know is that we're using logistic regression. This is a classification method that is, by its nature, binary. That is, for our data, it is looking at each text and determining if it belongs to a particular genre or not. You can think of it like drawing a line in the sand (or, more accurately, on a graph) where everything on one side is in, and everything on the other side is out. As we will see, however, we will get a range of values between 0 and 1 for our probabilities. This is useful for genre classification because it means that a text can be classified as, for example, .98 prose and .55 advertisement. That is to say, they are not mutually exclusive as each genre as treated independently.
+
+```{r}
+
+#Build a model using GLM
+build_model = function(genre,model_function=glm,...) {
+  # genre is a string indicating one of the primary_genre fields;
+  # model function is something like "glm" or "svm";
+  # are further arguments passed to that function.
+  training_frame$match=as.numeric(topicsDF$primary_genre == genre)[training]
+  # we model against a matrix: the columns are the topics, which we get by dropping out the other four elements
+  match_ratio = sum(as.numeric(training_frame$match))/length(training_frame$match)
+  model = model_function(match ~ ., training_frame,...,weights = ifelse(match,1/match_ratio,1/(1-match_ratio)))
+}
+
+```
+
+You could put the above functions in a separate function file and load it instead of running it every time, but either way...
+
+In some cases, as in Ben's example in his blog post, you may have more genres present than you care to work with. For our purposes, these hand-tagged clusters have been limited to one of four genre choices--poetry, prose, news, and advertisements.
+
+```{r}
+
+#Visualize top ten (filter_to_top) genres 
+filter_to_top = 4
+topicsDF %>% 
+  filter(training) %>% 
+  group_by(primary_genre) %>% 
+  summarize(cluster=n()) %>% 
+  mutate(rank=rank(-cluster)) %>% 
+  arrange(rank) %>% 
+  ggplot() + 
+  geom_bar(aes(y=cluster,x=reorder(primary_genre,cluster),fill=primary_genre),stat="identity") + 
+  coord_flip() + 
+  labs(title="Most common genres, by number of clusters in training set")
+
+#Create a value of the top genres. 
+top_genres = topicsDF %>% group_by(primary_genre) %>% summarize(cluster=n()) %>% mutate(rank=rank(-cluster)) %>% arrange(rank) %>% slice(1:filter_to_top) %>% select(primary_genre) %>% unlist
+
+```
+
+Also, because this corpus was pre-prepared, I selected nearly equal numbers of each genre. So the above is a pretty boring visualization.
+
+Here is where we run the function we defined above. Note that the `glm`, which tells the function to use linear regression (or generalized linear model) and the `family` declaration. These can be changed, and I've done some experimenting to see how it alters the results. Try, for example, to change `family` to `binomial`.
+
+```{r}
+
+#Create models 
+models = lapply(top_genres,build_model,glm,family=quasibinomial,maxit = 100)
+
+```
+
+And now, here's where we predict on out-of-model data. Basically we're running the model on data that was not part of the training set, see: `!training`.
+
+```{r}
+
+predictions = lapply(models,predict,newdata = data.frame(modeling_matrix[!training,]),type="response")
+
+# Convert to dataframe with scores for each genre  
+predictions_frame = do.call(cbind,predictions) %>% as.data.frame()
+names(predictions_frame) = top_genres
+
+# Add cluster number and primary genre
+predictions_frame = cbind(topicsDF %>% select(cluster,primary_genre) %>% filter(!training),predictions_frame)
+
+# Tidy data frame
+tidied = predictions_frame %>% gather("classified_genre","probability",-primary_genre,-cluster)
+
+# Create a data frame with top probability for each cluster
+best_guesses = tidied %>% group_by(cluster) %>% 
+  arrange(-probability) %>% slice(1)  # (Only take the top probability for each cluster)
+
+```
+
+How did we do? You can look at the `best_guesses` frame to see some results, but it's difficult to get a sense of the overall picture. So, let's create a matrix that shows the various possible outcomes and how many instances of each. Then, we can visualize the results, and, at the end, print out some results.
+
+```{r}
+
+confusion = best_guesses %>% group_by(primary_genre,classified_genre) %>% summarize(`count`=n())
+ggplot(confusion) + geom_bar(stat="identity") + aes(x=primary_genre,y=count,fill=classified_genre) + coord_flip() + 
+  theme(plot.title = element_text(family = "Helvetica", color="#666666", face="bold", size=22, hjust=0)) +
+  theme(axis.title = element_text(family = "Helvetica", color="#666666", face="bold", size=18)) + 
+  theme(legend.title = element_text(family = "Helvetica", color="#666666", face="bold", size=18)) +
+  theme(axis.text = element_text(family = "Helvetica", color="#333333", face="bold", size=16))
+
+confusion %>% 
+  group_by(primary_genre) %>% 
+  summarize(percent_right = 100 * sum(count[primary_genre==classified_genre])/sum(count)) %>% 
+  arrange(-percent_right)
+
+confusion %>% 
+  group_by(1) %>% 
+  summarize(percent_right = 100 * sum(count[primary_genre==classified_genre])/sum(count)) %>% 
+  arrange(-percent_right)
+
+```
+
+What percentages did you reach? You probably noticed the prose genre is kind of rough; that has been a persistent problem since, at this point, it's kind of a catchall. I've done a bunch of work to improve this performance. One such effort, which I wanted to highlight here, is to show not just the probability that a particular cluster belongs to one genre, but the possibilities for each genre. First, install and load the `reshape` package, but note that if things start acting up in your version of R Studio, unload the `reshape` package; the easiest way is to uncheck the box under "Packages".
+
+```{r}
+
+install.packages("reshape")
+library(reshape)
+
+#Rank classified genres in order of probability 
+genreRank = tidied %>% group_by(cluster) %>% arrange(-probability) %>% mutate(genreOrder = paste("genre_",row_number(-probability),sep=""))
+genreRank$probability=paste(round(genreRank$probability*100,digits=2)) %>% as.numeric()
+genreRank = genreRank %>% cast(cluster~classified_genre, value="probability") 
+genreRank = genreRank %>% left_join(vtGenres) 
+genreRank = genreRank[,c("cluster","text","prose","advertisement","news","poetry")]
+
+```
+
+We can also see how each topic is scored in terms of genre...
+
+```{r}
+
+
+#How is the classifier performing on topics?
+
+top_predictors = lapply(1:length(top_genres),function(n,return_length=50) {
+  comedy_model = models[n][[1]]
+  using = (rank((comedy_model$coefficients))<=(return_length/2)) | (rank(-comedy_model$coefficients)<=(return_length/2))
+  coefficients = data.frame(genre = top_genres[n],topic=names(comedy_model$coefficients[using]) %>% gsub("modeling_matrix","",.),strength = comedy_model$coefficients[using],row.names = NULL)
+  coefficients
+}) %>% rbind_all
+
+ggplot(top_predictors %>% filter(topic!="(Intercept)")) + geom_point(aes(x=strength,y=topic,color=strength>0)) + facet_wrap(~genre,scales="fixed",ncol=2)
+ggplot(top_predictors %>% filter(topic!="(Intercept)", strength>0)) + geom_bar(stat="identity") + aes(x=topic,y=strength,fill=genre) + coord_flip() + 
+  theme(plot.title = element_text(family = "Helvetica", color="#666666", face="bold", size=22, hjust=0)) +
+  theme(axis.title = element_text(family = "Helvetica", color="#666666", face="bold", size=18)) + 
+  theme(legend.title = element_text(family = "Helvetica", color="#666666", face="bold", size=18)) +
+  theme(axis.text = element_text(family = "Helvetica", color="#333333", face="bold", size=16))
+
+
+```
+
+Now, this is a lot, but there's more. I have shown you here how to classify genres for texts that you already know the genre of, but the real trick is then applying this model to the unknown. I suspect we won't have time to walk through this all, but I don't want to leave you hanging, so I'm going to paste a blob of code below and say, please don't hesitate to meet with me to walk through this part of the process!
+
+```{r}
+
+#Create a dataframe for all topics for clusters with unknown genres
+topics_unknown = doc.topics %>% 
+  as.data.frame() %>% 
+  mutate(cluster = vtGenres$cluster, primary_genre = vtGenres$genre) %>% 
+  filter(primary_genre =="unknown")
+
+#Create a matrix for all topics for clusters with unknown genres
+unclassified_data = doc.topics %>% as.data.frame() %>% mutate(cluster = vtGenres$cluster, primary_genre = vtGenres$genre) %>% filter(primary_genre=="unknown") %>% select(-primary_genre,-cluster) %>% log
+
+# Here's where we predict on "unknown" data.
+out_of_domain_predictions = lapply(models,predict,newdata = data.frame(unclassified_data),type="response")
+out_of_domain_predictions_frame = do.call(cbind,out_of_domain_predictions) %>% as.data.frame()
+names(out_of_domain_predictions_frame) = top_genres
+out_of_domain_predictions_frame = cbind(topics_unknown %>% select(cluster,primary_genre),out_of_domain_predictions_frame)
+out_of_domain_predictions_tidied = out_of_domain_predictions_frame %>% gather("classified_genre","probability",-primary_genre,-cluster)
+out_of_domain_predictions_best_guesses = out_of_domain_predictions_tidied %>% group_by(cluster) %>% 
+  arrange(-probability) %>% slice(1) %>% # (Only take the top probability for each episode)
+  mutate(actual_genre=primary_genre)
+genreClass = out_of_domain_predictions_best_guesses %>% left_join(vtGenres) 
+
+```

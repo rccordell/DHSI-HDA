@@ -1,0 +1,293 @@
+---
+title: "Mapping"
+author: "Ryan Cordell"
+date: "3/15/2017"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(ggmap)
+library(sp)
+library(rgdal)
+library(broom)
+```
+
+When considering the broader world of data analysis in the humanities, R is not the only (or always the best) option. For many purposes a Geographic Information System (GIS) might be better; the Programming Historian offers [a number of GIS tutorials](http://programminghistorian.org/lessons/) if you want to explore on your own.
+
+Today we will primarily explore `ggmap`, which, as its name suggests, builds on `ggplot2` to enable mapping as another method of data visualization. I've been having some problems with the offical release of `ggmap`, which is what would install if you ran `install.packages("ggmap")`, so instead you'll need to first install `devtools` which will enable you to run `devtools::install_github("dkahle/ggmap")`, which installs the latest update of the `ggmap` package from github. Knowing about `devtools` is useful in any case, as you may need to install development versions of packages in the future, or install packages not yet added to the CRAN directory.
+
+## Importing Raster Maps 
+
+`ggmap` allows us to download maps from a number of sources, including OpenStreetMaps, Google Maps, and others. For documentation of all the package's functions, see [the ggmap manual](https://cran.r-project.org/web/packages/ggmap/ggmap.pdf). To illustrate, below we will download the Stamen Map
+
+```{r}
+us <- c(left = -125, bottom = 24.75, right = -67, top = 49)
+map <- get_stamenmap(us, zoom = 5, maptype = "toner-lite")
+ggmap(map)
+```
+
+This function imports a raster map. Note that we first created a variable outlining a bounding box for the map to download: in this case one that delineates the contiguous 48 United States. Those values are latitudes and longitudes, and they could also be defined within the `get` function like so:
+
+```{r}
+map <- get_stamenmap(c(left = -125, bottom = 24.75, right = -67, top = 49), zoom = 5, maptype = "watercolor")
+ggmap(map)
+```
+
+As with our visualizations, our maps will comprise layers of data; these downloaded maps often serve as the bottom layer. `ggmap` is not particularly good at layering basemaps over each other or working with georectified maps (though the latter is possible); if these tasks are central to your analysis you might be better off working in a GIS.
+
+Before moving on, here's one example of pulling a map from Google Maps' API:
+
+```{r}
+get_googlemap("boston massachusetts", zoom = 12, maptype = "satellite") %>% ggmap()
+```
+
+# Importing Shapefiles
+
+*Note: I've adapted the following section from Lincoln Mullen's [chapters on "Geospatial Data" and "Mapping"](http://lincolnmullen.com/projects/dh-r2/) in DHMR.* 
+
+In addition to importing raster basemaps, we can with a little bit of processing import shapefiles, the dominant file type used in the commercial GIS, ArcGIS, and the most common spatial data format around. For instructions about how to convert and simplify shapefiles for use in R, see Mullen's lesson [on processing geospatial data](http://lincolnmullen.com/projects/dh-r2/geospatial-data.html). Depending on what you need to map, you may be able to find pertinent shapefiles from organizations like [Natural Earth](http://www.naturalearthdata.com/) or [National Historical Geographic Information Systems (NHGIS)](https://www.nhgis.org/). We'll use data from them both in the next few code blocks. 
+
+```{r}
+earth <- readOGR("data/ne_50m_land/", "ne_50m_land") 
+plot(earth, col = "gray") + 
+  title("The World According to EPSG 4326")
+```
+
+We can use the `spTransform` function in `rgdal` to set a new project system for a map. Following [Lincoln's lead](http://lincolnmullen.com/projects/dh-r2/mapping.html), let's transform the map above to the [Winkel triple projection](http://en.wikipedia.org/wiki/Winkel_tripel_projection). 
+
+```{r}
+winkel <- spTransform(earth, CRS("+proj=wintri"))
+plot(winkel, col = "gray") + 
+  title("The world according to Oswald Winkel")
+```
+
+Or the [Gall-Peters projection](https://www.youtube.com/watch?v=vVX-PrBRtTY):
+
+```{r}
+gallpeters <- spTransform(earth, CRS("+proj=cea"))
+plot(gallpeters, col = "gray")
+title("The world according to Gall-Peters")
+```
+
+Below we'll work with historial shapefiles of the United States at different decades, drawn from NHGIS and pre-processed by Mullen for DHMR. Once you import the shapefile with the `readOGR` function, look at its class. 
+
+```{r}
+
+map1850_sp <- readOGR("data/nhgis-shp/", "state_1850")
+
+```
+
+In addition to raster images, like the maps we imported above, there are three types of vector spatial data: points, lines, and polygons. This shapefile is made up of polygons. In fact, let's really browse the makeup of this file so we can better understand where we might go from here. After running the last line below, what do you think fields like `GISJOIN` and `GISJOIN2` might enable?
+
+```{r}
+class(map1850_sp)
+str(map1850_sp, max.level = 2)
+map1850_sp@bbox
+map1850_sp@proj4string
+head(map1850_sp@data)
+```
+
+```{r}
+plot(map1850_sp)
+```
+
+```{r}
+map1830_sp <- readOGR("data/nhgis-shp/", "state_1830")
+map1870_sp <- readOGR("data/nhgis-shp/", "state_1870")
+
+par(mfcol=c(1,3))
+plot(map1830_sp, main="US in 1830")
+plot(map1850_sp, main="US in 1850")
+plot(map1870_sp, main="US in 1870")
+par(mfcol=c(1,1))
+```
+
+## Spatial data
+
+Now let's read in the following CSV from the Center for Spatial and Textual Analysis (CESTA) at Stanford, which lists American cities and their populations in each of the US censuses, from 1790 to 2010. 
+
+```{r}
+cities <- read_csv("./data/CESTACityData.csv")[,2:34]
+```
+
+This is a dataset that obviously lends itself to mapping, but it's missing two key variables (which, in this case, I've removed to make a point). In order to map data, we need latitude and longitude. This dataset originally came with both, but many, many historical and literary datasets will not. Often we have fields such as address, or city and state, which we will need to *geocode* in order to derive latitudes and longitudes. 
+
+Fortunately `ggmap` gives us simple tools for geocoding using either the Data Science Toolkit or Google Maps' API. The latter, however, limits requests to 2500 per day from a given IP address unless you happen to have a paid pro account. There are more than 2500 lines in the `cities` dataframe, which means we could not geocode it all using Google today and the Data Science Toolkit has been acting up lately. In addition, it takes awhile to process even a few addresses. 
+
+To keep thing manageable for today and see how this works, let's filter our dataframe down to just those cities with census records going back to 1830.
+
+```{r}
+cities_short <- cities %>%
+  filter(Y1830 > 0)
+  
+cities_short <- cities_short %>%
+  mutate_geocode(CityST)
+
+```
+
+And now, because we want the full records, let's import the full dataset with lats and longs:
+
+```{r}
+cities <- read_csv("./data/CESTACityData-full.csv")[,c(2:32,37:38)]
+```
+
+With those latitudes and longitudes, we can begin to think about geography as plottable data, which we could invoke with our good friend `ggplot`:
+
+```{r}
+ggplot(cities %>% filter(Y1830 > 0), aes(x = LON, y = LAT)) +
+  geom_point() +
+  geom_text(aes(label = City), vjust = -1) +
+  coord_map()
+```
+
+I'm guessing, though, that we'd prefer to see this on a map rather than a grid. To do that, we'll need to convert the shapefile object we imported earlier into a dataframe that `ggplot` can understand, which we can do using the `tidy` function (note: you may need to install and load both `broom`, `maptools`, and `gpclib`, though these were already installed for me, and you may need to run the function `gpclibPermit()` in the console before you can run the code below sans error.)
+
+```{r}
+map1830_df <- tidy(map1830_sp, region = "GISJOIN")
+head(map1830_df)
+```
+
+```{r}
+map_1830 <- ggplot() + 
+  geom_map(data = map1830_df,
+           map = map1830_df,
+           aes(x = long, y = lat, group = group, map_id = id),
+           fill = "white",
+           color = "black",
+           size = 0.2) +
+  coord_map() +
+  theme_minimal()
+
+map_1830
+
+map_1830 +
+  geom_point(data = cities %>% filter(Y1830 > 0) %>% arrange(desc(Y1830)) %>% slice(1:10), 
+             aes(x = LON, y = LAT), 
+             color = "red", size = 3) +
+  geom_text(data = cities %>% filter(Y1830 > 0) %>% arrange(desc(Y1830)) %>% slice(1:10), 
+            aes(x = LON, y = LAT, label = City), 
+            vjust = -1)
+
+```
+
+Experiment with changing the arguments below, particularly aesthetic elements like the `color` and `shape`. 
+
+```{r}
+
+map_1830 +
+  geom_density2d(data = cities %>% select(1:3,8,30:31) %>% filter(Y1830 > 0),
+             aes(x = LON, y = LAT)) +
+  theme(legend.position = "right") +
+  ggtitle("Most populous cities in the US in the 1830 census")
+
+```
+
+Above I've filtered the points to just the most populous cities, because otherwise the points will overlap each other and make the map unreadable. Instead of plotting every point, we might instead want to map the density of our data, which we could do using `geom_hex()` or `geom_density2d()`:
+
+```{r}
+
+map1870_df <- tidy(map1870_sp, region = "GISJOIN")
+map_1870 <- ggplot() + 
+  geom_map(data = map1870_df,
+           map = map1870_df,
+           aes(x = long, y = lat, group = group, map_id = id),
+           fill = "white",
+           color = "black",
+           size = 0.2) +
+  coord_map() +
+  theme_minimal()
+
+map_1870 +
+  geom_density2d(data = cities %>% select(1:3,12,30:31) %>% filter(Y1870 > 0),
+             aes(x = LON, y = LAT)) +
+  ggtitle("Most populous cities in the US in the 1870 census")
+
+```
+
+```{r}
+map_1870 +
+  coord_map("mercator") +
+  geom_density2d(data = cities %>% select(1:3,12,30:31) %>% filter(Y1870 > 0),
+             aes(x = LON, y = LAT)) +
+  ggtitle("Most populous cities in the US in the 1870 census")
+
+map_1870 +
+  coord_map("stereographic") +
+  geom_density2d(data = cities %>% select(1:3,12,30:31) %>% filter(Y1870 > 0),
+             aes(x = LON, y = LAT)) +
+  ggtitle("Most populous cities in the US in the 1870 census")
+
+map_1870 +
+  coord_map("azequalarea") +
+  geom_density2d(data = cities %>% select(1:3,12,30:31) %>% filter(Y1870 > 0),
+             aes(x = LON, y = LAT)) +
+  ggtitle("Most populous cities in the US in the 1870 census")
+
+```
+
+Quickly before we move on, you can also layer plots and raster maps, like those we downloaded at the beginning of this lesson. 
+
+```{r}
+ggmap(get_stamenmap(c(left = -125, bottom = 24.75, right = -67, top = 49), zoom = 5, maptype = "toner-lite")) +
+  geom_point(data = cities %>% filter(Y1830 > 0) %>% arrange(desc(Y1830)) %>% slice(1:10), aes(x = LON, y = LAT), color = "red", size = 3) +
+  geom_text(data = cities %>% filter(Y1830 > 0) %>% arrange(desc(Y1830)) %>% slice(1:10), aes(x = LON, y = LAT, label = City), vjust = -1)
+```  
+
+
+## Choropleths
+
+The last kind of map we will work on today is the choropleth, which uses shading to to convey meaning, often about amounts or proportions. To start, let's import a shapefile of the US counties in 1850.
+
+```{r}
+counties1850_sp <- readOGR("data/nhgis_us_county_1850", "US_county_1850_simplified")
+counties1850_df <- tidy(counties1850_sp, region = "GISJOIN")
+
+```
+
+Now let's load a CSV, also from NHGIS, listing the number of births by free or enslaved status from the same year. Look at the structure of both `counties1850_df` and `births1850`—how might we bring these two dataframes together?
+
+```{r}
+births1850 <- read_csv("data/nhgis0003_ds10_1850_county.csv") %>%
+  rename(whiteAndFreeColored = ADR001, slave = ADR002)
+```
+
+```{r}
+joined1850 <- counties1850_df %>%
+  left_join(births1850, by = c("id" = "GISJOIN"))
+```
+
+
+```{r}
+ggplot(data = joined1850,
+       aes(x = long, y = lat, group = group, fill = slave, map_id = id)) +
+  geom_map(map = joined1850) + 
+  ggtitle("Number of enslaved children born as reported to the 1850 census") + 
+  coord_map() +
+  theme_minimal() +
+  theme(legend.position = "bottom") 
+```
+
+The plot below uses the package `viridis` to use a scale that's friendly to colorblind users. Thanks to Thanasis for pointing me toward it. 
+
+```{r}
+ggplot(data = joined1850,
+       aes(x = long, y = lat, group = group, fill = slave, map_id = id)) +
+  geom_map(map = joined1850) + 
+  ggtitle("Number of enslaved children born as reported to the 1850 census") + 
+  coord_map() +
+  scale_fill_viridis() + theme_bw()
+```
+
+
+# Exercises
+
+1. If at all possible, find a shapefile in some way pertinent to your data (or, in a pinch, that you just think might be interesting). Do whatever preprocessing you must and then import it into R. Plot it. 
+
+2. Load `booktitles-sub.tsv` into R. Preprocess the data as necessary and then geocode it. Map the top 15 cities by number of publications.   
+
+3. Considering the 1850 census data, is there a correlation between data points that might be geographically meaningful? Can you map that correlation?
+
+4. One mapping option we did not explore is the `heatmap`. Can you figure out a good dataset/datapoint for visualizing as a heatmap and then create that map?
+
+5. Reach goal. Several R packages enable you to extract placenames from texts using a technique called "named entity extraction." Lincoln Mullen [describes this process](https://rpubs.com/lmullen/nlp-chapter), though Abby Mullen also [describes some of the challenges](http://abbymullen.org/named-entity-extraction-productive-failure/). Can you extract placenames from the Wright American fiction corpus we've used in class? Remember you can load that data with `source("readWright.R")`. 

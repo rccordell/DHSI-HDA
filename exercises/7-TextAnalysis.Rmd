@@ -1,0 +1,381 @@
+---
+title: "Text Analysis"
+author: "Jonathan Fitzgerald"
+date: "2/23/2017"
+output: html_document
+---
+
+Load `tidyverse` before we get started, and make sure your working directory is set correctly (`getwd()` and `setwd()`).
+
+```{r}
+library(tidyverse)
+```
+
+#Exploring Texts
+
+Over the past couple of weeks we've been working with dataframes that contain mostly numerical data and other bits of short textual information. Now we're going to start digging into longer texts, a common subject for humanistic data analysis. We'll begin working with a single text, and then learn how to read in a set of texts. The texts we'll be using are derived from the [Wright American Fiction project](http://webapp1.dlib.indiana.edu/TEIgeneral/projectinfo.do?brand=wright) out of Indiana University. I (Fitz) used this data for a recent classification project for Viral Texts in which we compared vignettes, a popular genre in nineteenth century newspapers, with short fiction and news items to attempt to quantifiably locate the vignette in the space between fiction and news. We're not doing any classification here, but it is an interesting data set to work with.
+
+Let's begin by downloading the folder that contains the texts from Github to your local machine. In the `data` folder on Github you'll find a new subfolder titled `wright-txt`. The easiest way to download an entire folder from Github is to use the "Clone or download" button from the main page of the repository and choose "Download ZIP." Once you've downloaded the folder, unzip it (if your OS didn't do that for you already), and navigate to the `wright-txt` folder. Copy it into your data folder, and then you can trash the rest of the downloaded folder since it will probably be a duplicate of what you already have.
+
+## Reading in a Single Text
+
+To read in a text, we're going to use the `scan` function as follows:
+
+```{r}
+
+text = scan("data/wright-txt/VAC5884.txt",sep="\n",what="raw")
+
+```
+
+Here, we're creating a new variable called `text` by scanning in the data from the file `VAC5884.txt`. Additional arguments we've included are to separate the text by new line (`\n`) and we're telling that the data type is `raw`, which means, essentially, unformatted text. You can take a look at what was imported by highlighting the word `text` above and hitting `command+enter`. You'll notice each paragraph is a new line, and there are also some blank lines, as indidcated by empty quotation marks.
+
+You'll notice, too, that this is not a dataframe (so it doesn't appear in the "Data" section of your Global Environment), rather it is a character string.
+
+## Tokenization
+
+Having the full text is nice, but in order to perform some analysis on this text, it will be helpful to break the text up into words. Breaking a piece of text into words is called "tokenizing." There are many ways to do it, but the simplest is to simply to remove anything that isn't a letter. Using regular expression syntax, the R function `strsplit` lets us split a string into pieces. We'll use the regular expression `[^A-Za-z]` to say "split on anything that isn't a letter between A and Z." 
+
+```{r}
+
+words = text %>% 
+  strsplit("[^A-Za-z]")
+
+```
+
+## Converting from List to Character
+
+If you view the "text" (select `words` and `command+enter`), you'll notice that now each paragraph is broken off in a strange way. The above function created a list in which the paragraph (or line) is still the top level and nested below is another list of all the words in that paragraph. If we use the `unlist` function, we convert this from a list back to a character string that includes all the words in the order they appear in the original text.
+
+```{r}
+
+words = text %>% 
+  strsplit("[^A-Za-z]") %>% 
+  unlist 
+
+```
+
+## Converting from Character to Dataframe
+
+Let's take this one step further and coerce the character string into a format we're more used to working with, a dataframe:
+
+```{r}
+
+wrightWords = data.frame(word=words,stringsAsFactors = "false")
+
+```
+
+Now we've created a dataframe called `wrightWords`. The `stringsAsFactors` argument tells it that we don't want to convert the strings to factors and instead want to leave them as characters. You'll recall that we could also do this by creating a tibble.
+
+```{r}
+
+wrightWords = tibble(word=words)
+
+```
+
+## Removing Blank Observations
+
+If you look at that tibble, you'll notice that each word appears in its own row or observation, but there are also a lot blank observations. This is because of all the spaces in the original document. Let's use a filter to get rid of all of those:
+
+```{r}
+
+wrightWords = wrightWords %>% filter(word != "")
+
+```
+
+Here, we're overwriting the dataframe with a new dataframe that we've filtered to include only words that are not equal to (`!=`) nothing. This is a good time to explain the syntax you see here for not equal to. In R, as well as in a lot of other programming languages, to indicate that something is equal you use two equal signs (`==`). Not equal, as we've seen, is `!=`. You can also use greater than (`>`), less than (`<`), greater than or equal to (`>=`), or less than or equal to (`<=`).
+
+## Word Counts
+
+Okay, now that we have this in a dataframe with all the words and no blank spaces, let's start doing some analysis. One of the most basic forms of analysis is counting words. In order to do this we're going to need to pipe together a few functions.
+
+First, we'll create a new dataframe called `wordcounts`. Then because we want to count the total number of each word, we'll use `group_by(word)`. Here, `word` is the name of the column, or variable, and just as it says, this arranges variables into groups. Next, we use the `summarize()` function, which summarizes multiple values into a single value, and the single value we want is going to be called `count`. `n()` is a variable that means the number of obserations in a group. Finally, we're using the `arrange()` function to arrange the dataframe by the `count` column in descending order (as indicated by the `-`). Try it out:
+
+```{r}
+
+wordcounts = wrightWords %>% group_by(word) %>% summarize(count=n()) %>% arrange(-count)
+
+```
+
+Because we've arranged the words by their counts, the words are no longer in the order they appear in the original text.
+
+## Visualizing Word Counts
+
+If you look at that dataframe `head(wordcounts)`, you shouldn't be terribly surprised to find that the most common words are "the", "of", "and", "to, "in", "a", and so on. There are ways to filter out these most common words, which we'll explore later in the semester, but for now we'll let them stand. 
+
+Now that we have these word counts, let's try something fun. Using the `ggplot2` package (included in `tidyverse`) we can plot the most common words. Run the following commands:
+
+```{r}
+
+wordcounts = wordcounts %>% mutate(rank = rank(-count))  %>% filter(count>2,word!="")
+
+ggplot(wordcounts) + 
+  aes(x=rank,y=count,label=word) + 
+  geom_text() + 
+  scale_x_continuous(trans="log") + 
+  scale_y_continuous(trans="log")
+
+```
+
+By way of preprocessing, you'll notice we've added a column called `rank` using the `mutate()` function and used the `rank()` function to assign a rank based on the count in descending order. 
+
+Can someone explain what's going on in with the `ggplot` function?
+
+When you plot the count over rank you should see an interesting pattern. The logarithm of rank decreases linearily with the logarithm of count. This is "Zipf's law:" the phenomenon means that the most common word is twice as common as the second most common word, three times as common as the third most common word, four times as common as the fourth most common word, and so forth. It is named after the linguist George Zipf, who first found the phenomenon while laboriously counting occurrences of individual words in Joyce's *Ulysses* in 1935. Not super relevant, but too interesting to not share.
+
+# Building Concordances
+
+Our last experiment with the words from this singular text will be to create a concordance. Of course, this process used to be the effort of entire scholarly careers, but we can do this by adding another column to the tibble which is not just the first word, but the second. `dplyr` includes a `lag` and `lead` function that let you combine the next element. You specify by how many positions you want a vector to "lag" or "lead" another one. Try it with this example below:
+
+``` {r}
+numbers = c(1,2,3,4,5)
+lag(numbers,1)
+lead(numbers,1)
+```
+
+What's happening here?
+
+By using `lead` on a character vector, we can neatly align one series of text with the words that follow. Below we use `mutate()` again to add another new column, which we call `word2` and indicate that the value of that column should be the value of `word` led by 1.
+
+```{r}
+
+wrightWords %>% mutate(word2 = lead(word,1)) %>% head
+
+```
+
+If we add multiple lead columns we can construct our concordance:
+
+```{r}
+
+wrightWords = wrightWords %>% mutate(word2 = lead(word,1),word3=lead(word,2),word4=lead(word,3))
+
+```
+
+You can get context around a certain word as follows:
+
+```{r}
+
+wrightWords %>% filter(word3=="sea")
+
+```
+
+Apparently, the word "sea" appears twice in the text in phrases such as "the wide sea of" and "the unrelenting sea must".
+
+## Reading in Multiple Texts
+
+Working with a single text is fun, but the real magic happens when you have a set of texts to work with. We begin by creating a list of all the text files we want to read in:
+
+```{r}
+
+WRIGHT = list.files("data/wright-txt",full.names = TRUE)
+
+```
+
+Using the `list.files()` function, we point to the folder where our files are stored and create a list of all the filenames there. 
+
+## Building a Function
+
+Next, we're going to build our own function. This gets a little complicated, but what you really need to know is that a function is used to perform several operations at once. We have used lots of pre-made functions thus far, but R allows you to write your own. We could even save this function in a separate `.R` file and call it from lots of different scripts. This is one way to store operations you use frequently so you don't have to rewrite the code for them each time you need them. We will delve into writing functions more later, but for now, run the following and I'll explain the various parts below:
+
+```{r}
+
+readWRIGHTtext = function(file) {
+  message(file)
+  text = paste(scan(file, sep="\n",what="raw",strip.white = TRUE))
+  WRIGHT = tibble(filename=file,text=text) %>% group_by(filename) %>% summarise(text = paste(text, collapse = " "))
+  return(WRIGHT)
+}
+
+```
+
+The first thing to note here is that after you run the above code it will look like nothing has happened. But, what _has_ happened is that function has been stored by R for later use. You can see it if you scroll to the bottom of your "Environment" window (to the right for most of you). 
+
+This particular function takes as its starting point the individual file. Then it creates a variable called `text` in which it scans the contents of the file (just like we did above). Then, it creates a kind of temporary tibble, in this case called `WRIGHT`, wherein there are two columns "filename", which will be the name of the file and "text." 
+
+## Running the Function
+
+In order to run the function, we do the following (and don't forget to enjoy the satisfactory feeling of watching the filenames scroll by in the console!): 
+
+```{r}
+
+allWRIGHTtext = tibble(filename=WRIGHT) %>% 
+  group_by(filename) %>% 
+  do(readWRIGHTtext(.$filename)) 
+
+```
+
+Here we are creating a new tibble that uses the temporary tibble created by the function `WRIGHT` as its starting point, then it pulls together (`group_by(filename)`) all the texts by file name and runs the function (`do()`). The output will be a new dataframe called `allWRIGHTtext` with two columns, "filename" and "text". 
+
+If you look at that tibble, you'll notice that some of the cells in the "text" column appear empty. I'm not exactly sure what's going on there, except to say that the viewer is imperfect. To be sure that there is actual textual data in that cell we can take a quick peak:
+
+```{r}
+
+allWRIGHTtext$text[3]
+
+```
+
+Here, we're viewing the contents of the "text" column in the third row.
+
+Now is as good a time as any to talk about code reuse. The above function was originally created by Ben Schmidt when I took his HDA course. I've since adapted and used it over and over again in the years since. Maybe this is obvious to you by now, but when writing code there's never a need to reinvent the wheel. 
+
+## Modifying the Function to Tokenize.
+
+Speaking of not reinventing the wheel, you'll notice that the above function outputs the full text of each file, but as above, we probably want to tokenize this to work with words. We can build this feature right into the function with a few small tweaks. Also worth noting, a couple people in the class reminded me, just this afternoon, that we now have the `tokenizers` package, which makes tokenizing much easier and more efficient than the regex-based method I was using above, so there's that...
+
+```{r}
+library(tokenizers)
+
+readWRIGHTwords = function(file) {
+  message(file)
+  text = paste(scan(file, sep="\n",what="raw",strip.white = TRUE),collapse = "/n")
+  words = text %>% tokenize_words() %>% unlist()
+  WRIGHT = tibble(word=words,filename=gsub("data/wright-txt/","",file)) %>% filter(word != "")
+  return(WRIGHT)
+}
+
+
+
+```
+
+We've created a new function called `readWRIGHTwords` (as opposed to `readWRIGHTtext` as above). You'll notice that in the "functions" section of your environment, this has been added. What have we changed? (note the `gsub()` and `filter()` functions.)
+
+Let's run that new function:
+
+```{r}
+
+allWRIGHTwords = tibble(filename=WRIGHT) %>% 
+  group_by(filename) %>% 
+  do(readWRIGHTwords(.$filename))
+
+```
+
+This is a much larger tibble because there is now a row for every word, but each word is still associated with its source file.
+
+#Word Counts
+
+Let's check Zipf's Law on this much larger set of data. First, we'll create a new tibble called `allWordCounts` to get the counts for `allWRIGHTwords`, just as we did above. Then, we'll rank the words. Finally, we'll visualize this using the same `log` transform.
+
+```{r}
+
+allWordCounts = allWRIGHTwords %>% group_by(word) %>% summarize(count=n()) %>% arrange(-count)
+
+allWordCounts = allWordCounts %>% mutate(rank = rank(-count))  %>% filter(count>2,word!="")
+
+ggplot(allWordCounts) + 
+  aes(x=rank,y=count,label=word) + 
+  geom_text() + 
+  scale_x_continuous(trans="log") + 
+  scale_y_continuous(trans="log")
+
+```
+
+Zipf's Law stands!
+
+# Unique Words
+
+Now that we have a dataframe with all the words for all the files, it might be kind of interesting to see what words are unique to certain texts.
+
+```{r}
+
+unique = allWRIGHTwords %>% 
+  mutate(word=tolower(word)) %>%
+  distinct(word) %>% 
+  group_by(word) %>% 
+  filter(n()==1) %>% 
+  arrange(word)
+
+```
+
+Here we are piping together a few functions: first, because we want to see the unique words regardless of their case (we want "The" and "the" to be the same word) we use `mutate()` to replace the column "word" with another column "word" in which all words are lowercase. That is what the function `tolower()` does for us. Then, we use another handy function `distinct()` to find unique (or distinct) rows. Finally, we group those distinct words together and filter to select just one. This last step is necessary because a word that is distinct to a text might appear more than once in that text, thus giving us an inaccurate count. 
+
+# Concordance
+
+Above, we created a concordance for the single text. Can you create a concordance for the entire set? BONUS: You'll probably notice that your new dataframe's columns seem a bit out of order, can you arrange them so that they are: filename, word, word2, word3?
+
+```{r}
+
+
+```
+
+
+## Let's take a random walk
+
+Okay, that's really all we need to do this week, but just for fun, let's try out a trick that Ben Schmidt showed in his HDA class. We're going to create a "Random Walk Generator". 
+
+First, we need to calculate the probability that one word will follow another. To do this, run the code below (this may take a moment):
+
+```{r}
+
+transitions = allWRIGHTwords %>% 
+  group_by(word) %>% 
+  mutate(word1Count=n()) %>% 
+  group_by(word,word2) %>% 
+  summarize(chance = n()/word1Count[1])
+
+```
+
+We are creating a new tibble in which we create a new column `word1Count` which is a count of the number of times a word appears in our data. If you were to run the code only as far as this, you'd see, for example that the word "CITATION" appears 100 times, once at the top of each text. From there, however we group by both the first word and the second word and calculate the chance that the second word will follow the first.
+
+From there we create a function to randomly select a next word based on the probability that it will follow the previous word. 
+
+```{r}
+
+findNextWord = function(current) {
+  subset = transitions %>% filter(word==current)
+  nextWord = sample(subset$word2,1,prob = subset$chance)
+}
+
+```
+
+Finally, when we run the function, we'll see the console begin printing out words that should, if this is working right, make some logical sense (the logic breaks down after a while).  Try it out:
+
+```{r}
+
+word = "I"
+while(TRUE) {
+  message(word)
+  word = findNextWord(word)
+}
+
+```
+
+The function will run for as long as their is a probable next word, which is forever, so you can click the "Stop" icon in your consule to stop the function.
+
+Note that we seed the function with the word "I" to start. You could choose any word you like.
+
+In our data, which includes fiction written by different authors (although all nineteenth century writers), this can feel a bit more random, but if you were working with a corpus from a single author, the randomly generated text actually _sounds_ a bit like the author, albeit if the author wrote nonsense. I tried this out with a corpus of Dickens' texts with the shortlived notion that I'd create a twitterbot called Automatic Dickens. I created two tweet-length pieces that read:
+
+>I am much the better he said that he had considered how I must tell you I do carry it
+
+and 
+
+>I suppose he has the main point were as empty and then and likewise to place myself during the cessation
+
+Fun stuff.
+
+# Exercises
+
+1. In the `allWRIGHTtext` dataframe, you'll notice that each text contains metadata about the text before the actual text begins. Using `gsub()` and regular expressions, can you remove the metadata?
+
+``` {r}
+
+```
+
+2. Choose a list of words you're interested in from the Wright data, and then reduce the frame down so that it only includes phrases that have your word in the middle position.
+
+``` {r}
+
+```
+
+3. For this exercise, you should assemble your own corpus of *no fewer than **five** distinct texts* and read them into R as a tibble. What is the most common word in your corpus? What is the most common trigram? Just to make this even more challenging/meaningful, exclude most common words, or "stop words." The `tidytext` package has a built in data frame featuring 1,149 stop words. Do `?stop_words` to learn more.
+
+4. (reach goal) Over the past couple of weeks, we've been working with vignettes from the Viral Texts data (the `VT-vignettes.csv` file in the data folder). These texts are not available as individual files, like the Wright data, but rather as a column in a dataframe. Yet, we can still perform some of the same kinds of transformations. For this exercise, try the following:
+
+- Tokenize the vignettes (hint, you can adapt the function we used above to work with a dataframe rather than a folder of files, but you may need to select just one text from each cluster)
+
+- Determine which cluster has the most words
+
+- Find unique words in each cluster
+
+- Create a concordance of the vignettes
+
+- Create a random vignette! Using the method we utilized to create a random walk generator from the Wright texts, create a random vignette from the Viral Texts data. Then, once you get the random walk generator up and running, stop it when you feel like you have something worth sharing and copy and paste the output below (warning: there will be bad OCR; feel free to pull together various text strings)...

@@ -1,0 +1,175 @@
+---
+title: "Vector Space Models"
+author: "Thanasis Kinias and Ryan Cordell"
+date: "2017-03-22"
+output: pdf_document
+---
+
+Before we begin, let’s get our packages installed and loaded.  We’ll be using Ben Schmidt’s `wordVectors` package installed, so install that from Github if you haven’t already.  Much of this lesson is adapted from Prof. Schmidt’s “[Introduction](https://github.com/bmschmidt/wordVectors/blob/master/vignettes/introduction.Rmd)” and “[Exploration](https://github.com/bmschmidt/wordVectors/blob/master/vignettes/exploration.Rmd)” vignettes from the `wordVectors` package.
+
+We’ll also be using `tidyverse`, which everyone should have installed, as well as
+`tsne` for plotting and `magrittr` for some fancier piping options.
+
+```{r}
+if (!require(wordVectors)) {
+  if (!(require(devtools))) {
+    install.packages('devtools')
+  }
+  devtools::install_github('bmschmidt/wordVectors')
+}
+
+if (!require(magrittr)) {
+  install.packages('magrittr')
+}
+
+if (!require(tsne)) {
+  install.packages('tsne')
+}
+
+library(magrittr)
+library(tidyverse)
+library(wordVectors)
+```
+
+(Note:  If you already have `wordVectors` installed, this won’t reinstall it.  This _might_ be problematic if you have an old version installed; if you get errors with any of the functions below, try forcing a reinstallation by uncommenting the following and running it:
+
+```{r}
+#devtools::install_github('bmschmidt/wordVectors')
+```
+
+We also ‘source’ (i.e., run the code in) the `readWright.R` file to get our functions for working with the Wright corpus; you may need to edit the `source()` command to point it at your copy of `readWright.R`.
+
+```{r}
+source('readWright.R')
+```
+
+We now have a data frame, `allWRIGHTtext`, containing our corpus’s texts.  Before we use the corpus, though, we’ll need to do some cleaning.  First let’s get rid of the metadata contaminating our `text` fields; this should be familiar from exercise 1 in the `TextAnalysis.Rmd` notebook.
+
+```{r}
+allWRIGHTtext$text <- gsub(
+  '^.*FULL TEXT---- ', 
+  '', 
+  allWRIGHTtext$text
+  )
+```
+
+Now we have a data frame that has all our texts in the `text` column.  We need to transform that field into a single text file containing all the Wright corpus texts. Before we write out that file, we’ll also simplify the text by case-folding (i.e., making all the characters the same case, upper or lower) and stripping out punctuation and everything else that isn’t letters or spaces.
+
+```{r}
+allWRIGHTtext$text %>% 
+  paste(collapse=' ') ->
+  wright_text
+wright_text %<>% tolower() %>% gsub('[^A-Za-z ]', '', .)
+wright_text %>% write_lines('data/wright.txt')
+```
+
+A few notes are warranted here:  there are _many_ ways to prepare your corpus. The standard Unix command-line utilities are great for this kind of work, as are some of the more sophisticated text editors. You can also use the `prep_word2vec()` function in the `wordVectors` package, which is probably the easiest, though it obscures the steps involved to some extent.  
+
+(There’s a school of thought which holds that ‘best practice’ is to use a script of some kind for your cleaning, even if you’re more comfortable in GUIs, because that maintains reproducibility and documents what you’ve done.  YMMV.)
+
+Now we’ll train a model on the Wright corpus, or if the model already exists we’ll load it from disk.  (If you want to retrain the model from scratch, you’ll need to delete your `wright_vectors.bin` file.)
+
+We’re using a value of 3 for the `threads` parameter; this allows the system to use up to three CPU threads, which is appropriate for a two-core hyperthreaded CPU.  If you know how many threads your CPU can handle, you can increase the value to cut down on processing time – or decrease it if you want to do the training in the background, minimizing the impact on other work.  If this doesn’t mean anything to you, don’t worry about it.
+
+The other parameters here are `vectors`, which determines how many dimensions the resulting vector space has; `window`, which sets the window size that _word2vec_ uses in training the model (i.e., what qualifies as ‘near’ in determining words that are used together); and `iter`, which specifies how many iterations or passes to make in training the model. (The `negative_samples` parameter should be left at 0 unless we really need to sacrifice accuracy for speed.)
+
+This will take a short time to run, probably a couple of minutes.
+
+```{r}
+THREADS <- 6
+if (!file.exists('data/wright_vectors.bin')) {
+  wright_model <- train_word2vec(
+    'data/wright.txt',
+    output_file='data/wright_vectors.bin',
+    vectors=100,
+    threads=THREADS,
+    window=12, iter=10, negative_samples=0
+    )
+  } else {
+  wright_model <- read.vectors('data/wright_vectors.bin')
+  }
+```
+
+OK, we have a vector space model.
+
+Now what?
+
+Let’s start by taking a look at a plot of a two-dimensional reduction of the vector space.  This _massively_ oversimplifies the model – in our case, we’re projecting a 100-dimensional vector space onto two dimensions.  However, since we can’t actually visualize high-dimensional spaces this is the best we can do.  (Note that this will take a few seconds to run.)
+
+We won’t all get the same results here, since the process used is nondeterministic.  The clusters that appear should be similar, but they won’t be in the same place.
+
+```{r}
+wright_model %>% plot(perplexity=100)
+```
+
+One of the simple things we can do with a vector space model is look at what shows up near a word we’re interested in.  Let’s start with a simple word, _woman._
+
+```{r}
+wright_model %>% closest_to('bark', 20) %>%
+  View()
+```
+
+This dumps a two-column data frame to the console. A question that often arises is, what exactly is the value that appears in the `similarity to "woman"` column?  We can see that it seems to be a value on a zero-to-one scale.  In fact, this measure of similarity is what’s called _cosine similarity,_ and it’s simply the cosine of the angle between the two vectors; this is convenient because if the vectors are identical, the cosine of the (zero-degree) angle is one.  The `wordVectors` package has built-in functions for `cosineSimilarity()` and `cosineDist()`.  The cosine distance returned by `cosineDist()` is just one minus the cosine similarity.
+
+Try using these functions on a pair of words from the list we got above.
+
+```{r}
+cosineSimilarity(wright_model[['woman']], wright_model[['girl']])
+cosineDist(wright_model[['woman']], wright_model[['girl']])
+```
+
+Unless something has gone seriously awry, this should correspond to the results we got from `closest_to()` above.
+
+Let’s look at another word’s ‘neighborhood’:
+
+```{r}
+wright_model %>% closest_to('man', 20) %>%
+  View()
+```
+
+What do we see?
+
+Let’s look at a gendered thing going on here that will not shock anyone.
+
+```{r}
+cosineDist(wright_model[['woman']], wright_model[['girl']])
+cosineDist(wright_model[['man']], wright_model[['boy']])
+```
+
+We can also use `closest_to()` to look at more complex things.  For example, we can ask for what’s closest to both _dog_ and _cat_ – maybe general animal words?
+
+```{r}
+wright_model %>% closest_to(~'indian'+'man',20) %>%
+  View()
+```
+
+Well, sort of.
+
+Experiment with a few combinations yourself in the block below. Can you find any interesting pairs?
+
+```{r}
+
+```
+
+We can also look at what’s closest to one word and not another.  Let’s see if we can work with _man_ and _woman_ to uncover associations with maleness and femaleness.
+
+```{r}
+wright_model %>% closest_to(~'he'-'she',40) %>%
+  View()
+wright_model %>% closest_to(~'girl'-'boy',40) %>%
+  View()
+```
+
+A more sophisticated thing we can do is to look at analogies – sort of like the old SAT fire:ice::hot:_X_ questions.  
+
+```{r}
+wright_model %>% closest_to(~'woman'-'man'+'boy',20) %>%
+  View()
+```
+
+What’s going on here? Can you write your own below?
+
+```{r}
+wright_model %>% closest_to(~'america' - 'england' + 'england', 20) %>%
+  View()
+```

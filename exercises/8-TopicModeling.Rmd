@@ -1,0 +1,251 @@
+---
+title: "TopicModeling"
+author: "Ryan Cordell and Jonathan Fitzgerald"
+date: "03/02/2017"
+output: html_document
+---
+
+Last week we talked about modeling, and today we'll take on one method for modeling texts that has been extremely popular in recent digital humanities research: topic modeling or, if you want to impress someone, latent dirichlet allocation. Topic modeling is a technique that tends to work best on really *long* stretches of many *distinct* texts. In other words, we definitely need a corpus, and we can use the Wright American fiction collection from last week. 
+
+
+# Modeling Topics with Mallet
+
+Now we're going to use the `mallet` library to do some topic modelling. First, let's load the libraries we've been using: the same, now plus `mallet` and a new, strange one. Anyone know what `source("readWright.R")` is doing here?
+
+```{r eval=FALSE}
+
+source("readWright.R")
+
+```
+
+Now we've got the Wright data just like last week. You might notice that we've got a more human readable title for these texts this time. If you look in the `readWright.R` file you'll see these two lines, which may by this point be self explanatory, though I'll confess that Fitz figured out the positive lookbehind at the front and positive lookahead at the end that bent my brain a little bit. There's [a breakdown here](https://regex101.com/r/q5pKwl/1).
+
+```
+WRIGHTregex <- regexpr("(?<=----\\s)([A-Z].*)(?=\\s\\.\\sDigital)", WRIGHT$text, perl = TRUE)
+allWRIGHTtext$title <- regmatches(allWRIGHTtext$text, WRIGHTregex)
+```
+
+# Don't Forget Ngrams!!
+
+Last week Fitz gave you a great introduction to text analysis in R, which starts with tokenizing. Before we delve into topic modeling, I wanted to briefly remind you that words are not the only possible tokens
+
+```{r}
+
+allWRIGHTtext %>%
+  unnest_tokens(ngram,text,token = "ngrams", n = 5) %>% 
+  group_by(title, ngram) %>% 
+  summarize(count = n()) %>%
+  arrange(desc(count)) %>%
+  View()
+
+```
+
+Maybe it would be more interesting, however, to look at shared language. What does the code below do?
+
+```{r}
+
+WRIGHTgrams <- allWRIGHTtext %>%
+  unnest_tokens(ngram,text,token = "ngrams", n = 4) %>% 
+  group_by(title, ngram) %>% 
+  summarize(count = n()) %>%
+  ungroup() %>%
+  group_by(ngram) %>%
+  filter(n() > 1) %>%
+  arrange(desc(ngram))
+  
+```
+
+Ok, with that reminder in place let's move on to our main event today...
+
+# Topic Models
+
+The code below will prepare and build the model. This will likely be the most opaque code we've run in our class. We will discuss some of the details today, while for others you may need to refer directly to Blei, Wallach and Mimno's papers about the topic modeling algorithm. The primary bits of this code that you will want to change as you move forward are few: likely only the input data (in this case `allWRIGHTtext`) and `num.topics`, which determines...you guessed it...how many topics Mallet will sort the words in the corpus into.
+
+```{r}
+
+stopwords <- as.list(stop_words$word) %>% unlist()
+write(stopwords, "./data/stopwords.txt")
+
+mallet.instances <- mallet.import(id.array = allWRIGHTtext$title, 
+                                  text.array = allWRIGHTtext$text, 
+                                  stoplist.file = "./data/stopwords.txt")
+
+n.topics <- 25
+
+topic.model <- MalletLDA(num.topics=n.topics, alpha.sum = 1, beta = 0.1)
+topic.model$loadDocuments(mallet.instances)
+topic.model$setAlphaOptimization(20, 50)
+topic.model$train(500)
+topic.model$maximize(10)
+```
+
+Now you can look at the most common words at greater length.
+
+```{r}
+# What are the top words in topics 2, 3, and 4?
+topic.words <- mallet.topic.words(topic.model)
+
+mallet.top.words(topic.model, word.weights = topic.words[2,], num.top.words = 10)
+mallet.top.words(topic.model, word.weights = topic.words[3,], num.top.words = 10)
+mallet.top.words(topic.model, word.weights = topic.words[4,], num.top.words = 10)
+```
+
+And we can use the top words in the topic to make a human readable "label" for each one. Remember, though, that the label does not comprise the topic; it's just a subset.
+
+```{r}
+topic_labels <- rep("", n.topics)
+for (topic in 1:n.topics) {
+  topic_labels[topic] <- paste(
+    mallet.top.words(topic.model, topic.words[topic,], num.top.words=5)$words, collapse=" "
+)}
+
+```
+
+When we model our topics, Mallet finds a number of other useful stats about our corpus. What are the lines below doing?
+```{r}
+vocabulary <- topic.model$getVocabulary()
+word_freqs <- mallet.word.freqs(topic.model)
+```
+
+Try typing `length(vocabulary)` into the console. What does that tell you?
+
+There is a temptation when working with topic models, to take the labels we generated above--the first 5 words of the topic, in that case--as the entire topic. But this obscures the fact that each topic has many more words, and that words appear (with varying weights) in many different topics. 
+
+First, let's take a look at how many words appear in each topic. 
+
+```{r}
+
+wordFrame = topic.words %>% as_data_frame()
+colnames(wordFrame) = vocabulary
+rownames(wordFrame) = topic_labels
+wordFrame <- wordFrame %>% rownames_to_column("tmodel")
+gatherWords = wordFrame %>% gather(word, count, -tmodel) %>% filter(count!=0)
+
+count(gatherWords, tmodel) %>% arrange(-n) %>% View()
+
+```
+
+What did we do there? First, we have to turn the `topic.words` matrix into a dataframe and then rename the columns and rows with the actual words and topic labels, respectively. The next couple lines converts the rownames into a column, and then we gather the frame so that we have our topics, words, and counts (removing any rows with a zero count). Finally, we count the number of rows for each topic, and that gives us the number of words per topic.
+
+Then, let's try to get a sense of what words are shared across topics. One question for you: why put "whiskey" into a variable of its own? Couldn't you just write `filter(word == "whiskey")` in the longer code block? 
+
+```{r}
+
+count(gatherWords, word) %>% arrange(-n) %>% View()
+
+word2search <- "wine"
+
+gatherWords %>% filter(word == word2search) %>% 
+  ggplot() +
+  geom_bar(stat = "identity", aes(x=reorder(tmodel, count),y=count, fill=tmodel)) +
+  coord_flip() +
+  labs(x="Topic",y="Count") +
+  ggtitle(paste("Weight of the word", word2search, "in topics")) +
+  theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=22, hjust=0.5)) 
+
+```
+
+You can change the variable `word2search` to anything you want. Have fun.
+
+We can also correlate topics with texts:
+
+```{r}
+
+#Gets a list of the documents and topics
+doc.topics <- mallet.doc.topics(topic.model, smoothed=T, normalized=T)
+rownames(doc.topics) = allWRIGHTtext$title
+colnames(doc.topics) = topic_labels
+
+topicDF <- doc.topics %>%
+  as_data_frame() %>%
+  mutate(title = rownames(doc.topics)) %>%
+  gather(topic, proportion, -title)
+asView(topicDF)
+
+# we could also arrange our table by title
+topicDF %>% 
+  arrange(title) %>%
+  View()
+
+```
+
+Now, there's something important to note before we go much farther. If you reran all of the topic modeling code above *without changing anything*, the topics derived would be similar, but *not identical* and *not listed in the same order*. This is because Mallet starts building the model using a random seed, meaning that it will not come to precisely the same conclusions in two subsequent analyses, even if all the parameters remain exactly the same. Let's talk a bit about the epistemelogical assumptions and consequences of that reality before we move on.
+
+# Visualizing Topic Models
+
+Heat maps are a common way to show how topics correlate with texts:
+```{r}
+
+ggplot(topicDF) + geom_tile(aes(x=title,y=topic,fill=proportion))
+
+```
+
+We could also do this as a scatterplot, but it's not very useful. Why not? In a bit we'll make this more useful...
+```{r}
+
+ggplot(topicDF) + 
+  geom_point(aes(x=topic,y=proportion,text = paste("title:", title))) + 
+  coord_flip()
+
+```
+
+We can also look at particular texts to see their most relevant topics:
+```{r}
+
+ggplot(topicDF %>% filter(title == "Appell, Theron B.. The Knight of Castile" & proportion > 0.01)) +
+  geom_point(aes(x=topic,y=proportion)) + 
+  coord_flip()
+
+```
+
+Or perhaps we may want to look at particular topics to see their most relevant texts (what's going on with the `topic2search` variable?):
+```{r}
+
+topic2search = as.character(topicDF[240,2])
+
+ggplot(topicDF %>%
+         filter(topic == topic2search) %>% 
+         mutate(title = substr(title, 1,20)) %>%
+         filter(proportion >= 0.1)) +
+  geom_point(aes(x=title,y=proportion)) +
+  labs(x="Story",y=paste("Frequency of Topic \"",topic2search, "\"", collapse = "")) + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+```
+
+
+From [*The Historian's Macroscope*](http://www.themacroscope.org/?page_id=822), another way to visualize topics, which clusters them based on the similarity of words in each topic. You'll probably have to expand your plots window to really see this one:
+
+```{r}
+
+plot(hclust(dist(topic.words)), labels=topic_labels)
+
+```
+
+Finally, some visualization candy from Fitz. You'll need to install the `plotly` package. The resulting plot might look familiar, but hover your mouse over it to see why it's something far more interesting than we produced above.
+
+```{r}
+
+p = topicDF %>%
+  group_by(topic) %>%
+  mutate(id = 1:n()) %>% 
+  ggplot() + 
+  geom_tile(aes(x=id,y=topic,fill=proportion,text = paste("title:", title)))
+
+library(plotly)
+ggplotly(p)
+
+```
+
+```{r}
+
+t = ggplot(topicDF) + 
+  geom_point(aes(x=topic,y=proportion,text = paste("title:", title))) + 
+  coord_flip()
+
+ggplotly(t)
+
+```
+## Exercises
+
+This week the exercise is simple: you need to produce and graph topic models based on a corpus of your choosing. If your corpus is mostly metadata, this may require finding some more text heavy data for this week's exercises. 

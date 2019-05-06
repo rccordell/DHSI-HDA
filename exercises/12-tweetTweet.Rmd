@@ -1,0 +1,261 @@
+---
+title: "Ludic Data Analysis (or, Building a Funny Twitterbot)"
+author: "Ryan Cordell"
+date: "4/4/2017"
+output: html_document
+---
+
+## Acknowledgements
+
+This version of my twitterbot assignment was adapted from [an original written in Python](https://www.dropbox.com/s/r1py3zazde2turk/Trendingmore.py?dl=0), which itself adapted code written by Mark Sample. That orginal bot tweeted (I've since stopped it) at [Quoth the Ravbot](https://twitter.com/Quoth__the). The current version owes much to advice and code borrowed from two colleagues at Northeastern University: Jonathan Fitzgerald and Benjamin Schmidt.
+
+## Why Write Literary Bots?
+
+At this point we all know about bots on Twitter. In fact, Twitter [stopped tallying the number of bots in its service a few years ago](https://www.buzzfeed.com/williamalden/twitter-has-stopped-updating-its-public-tally-of-bots), but estimates suggest a large proportion of twitter accounts are automated. Many of these are designed to push particular viewpoints or harrass particular users, though recently folks have started building bots [to push back against online abuse](https://www.washingtonpost.com/news/monkey-cage/wp/2016/11/17/this-researcher-programmed-bots-to-fight-racism-on-twitter-it-worked/).
+
+In [the midst of all these wilds](http://lithub.com/encountering-literary-bots-in-the-wilds-of-twitter/), why do I teach students to build literary bots in Technologies of Text? Well: on the one hand, it's a lot of fun, *and* it can help us understand more about coding in R, working with APIs (application programming interfaces), and the hidden workings of web services like Twitter. More than that, however, building bots offers a way of seeing literary objects anew and engaging creatively, [provocatively, or even combatively](https://medium.com/@samplereality/a-protest-bot-is-a-bot-so-specific-you-cant-mistake-it-for-bullshit-90fe10b7fbaa) with digital objects and online culture. Breaking down a poem for "mad libs" word substitution, for instance, forces us to think about the building blocks of poems and see their style slant.
+
+## Preparing to work
+
+```{r}
+library(twitteR)
+library(birdnik)
+library(dplyr)
+```
+
+In order to complete this lesson, you’ll need to create a few accounts from which we’ll either be drawing or to which we’ll be adding content:
+
++ Sign up for [a Wordnik account](https://www.wordnik.com/signup) and then [sign up for a Wordnik API Key](http://developer.wordnik.com/). Wordnik is an open-source dictionary from which we will be drawing words to fill in our mad libs.
++ In order to post to Twitter, you will need to create a new Twitter account for your bot. Think about what kind of bot you want to make and then sign up. Be sure to add a mobile number to the account, as we’ll need that for one the steps later on.
++ While signed into your new account, visit [Twitter’s developer site](https://dev.twitter.com/). In the small bottom menu click “Manage Your Apps” and then “Create New App.” Fill out the required fields and then click “Create Your Twitter Application.” In your new app, navigate to “Permissions,” select “Read and Write,” and save settings. We’ll be getting some essential information from the “Keys and Access Tokens” menu shortly.
+
+
+## Mad-Lib Poetry Bot using Wordnik
+
+First we will learn to write at least one kind of twitterbot: a "mad libs" style bot that takes a predefined text—in our case, a snippet of nineteenth-century poetry—and substitutes random words based on their parts of speech. As above, the results are sometimes nonsense, sometimes unexpectedly apt, and sometimes amusingly absurd.
+
+The examples below all use this stanza from Edgar Allan Poe's "The Raven," which works well for this kind of word-substitution experiment, but you could try with your own poem once you understand the basic principles of the word substitution.
+
+“Be that word our sign of parting, bird or fiend!” I shrieked, upstarting—
+“Get thee back into the tempest and the Night’s Plutonian shore!
+     Leave no black plume as a token of that lie thy soul hath spoken!
+     Leave my loneliness unbroken!—quit the bust above my door!
+ Take thy beak from out my heart, and take thy form from off my door!”
+             Quoth the Raven “Nevermore.”
+
+We begin with a function, also adapted slightly from [one written by Benjamin Schmidt](https://gist.github.com/bmschmidt/2c270ab7b373b6b4383a603afe828a48), that will help us call words of specific types from the Wordnik online dictionary. You will enter your own Wordnik key in the `my_wordnik_key` line below:
+
+```{r}
+my_wordnik_key <- "YOUR_API_KEY_GOES_HERE"
+
+#the line below will set the "default" part of speech for your calls to Wordnik, but you will be able to override this setting in later code.
+wordnik_pos <- "adjective"
+
+
+random_word <- function(key=my_wordnik_key,
+                        pos=wordnik_pos, min_count=100, n=1,
+                        min_length = 5, max_length = 10){
+
+  param <- paste0("words.json/randomWords?hasDictionaryDef=true",
+                  "&minCorpusCount=",min_count,
+                  "&minLength=",min_length,
+                  "&maxLength=",max_length,
+                  "&limit=",n,
+                  "&includePartOfSpeech=",pos)
+
+  raw <- birdnik:::query(key = key,params = param)
+  do.call(rbind,lapply(raw,as.data.frame))
+}
+```
+
+This function can be invoked via the following code; you can change the part of speech and the number of words to pull as you wish. By default the function creates a dataframe with Wordnik's word ids in the first variable column and the words themselves as the second.
+
+```{r}
+random_word(pos="verb",n=5, min_count=1000)
+random_word(pos="interjection",n=10, min_count=100)
+```
+
+Those dataframes aren't quite what we will want for making substitutions in our mad-lib poem, so I've written an additional function that calls Ben's function with some specific parameters (only 1 word), grabs only the second column from the dataframe generated in `random_word`, and converts that data to a character string. To grab a random word of a given part of speech, you will invoke the function `poem_word()` and put the part of speech you're looking for in quotes inside the parentheses. There are a number of options for the part of speech, but you'll primarily use `verb`, `noun`, `pronoun`, `adjective`, `adverb`, `interjection`, and `preposition`. For other possibilities, consult [the documentation for the Wordnik API](http://developer.wordnik.com/docs.html#!/words/getRandomWord_get_4).
+
+```{r}
+
+poem_word <- function(x) {
+  random_word(pos=x,n=1,min_count=1000)[,2] %>%
+    as.character()
+}
+
+poem_word("interjection")
+```
+
+
+Now we will use the `poem_word()` function to call words into specific places in our poem and *concatenate*, or combine, them with the parts of the poem we are leaving as originally written. Take a look at how this concatenation is structured below. When concatenating character strings, R combines precisely the strings it is given, meaning you must explicitly add spaces to the strings (within the quotation marks) where you want them to appear in the final output. To see the output of this code, run the line `cat(poem)`; the mad-lib poem will appear in your console.
+
+```{r}
+poem <- paste(c(poem_word("verb"), " thy ", poem_word("noun"),
+                " from ", poem_word("preposition")," my ", poem_word("noun"),
+                ", and ", poem_word("verb"), " thy ", poem_word("noun"),
+                " from ", poem_word("preposition"), " my ", poem_word("noun"),
+                "! \nQuoth the Ravbot, '", poem_word("interjection"), "!'"),
+              collapse = "")
+
+cat(poem)
+
+```
+
+### Tweet, tweet
+
+Now let's introduce Twitter into the mix by using its API to grab a random trending hashtag and insert it into our poem. You will need the consumer key, consumer secret, access token, and access secret from the Twitter application you set up in order to use this code.
+
+The code below first establishes your Twitter credentials. **Important note**: you will have to verify in the console whether you want to cache these credentials between sessions; R will not run any more code until you type either '1' or '2' into the console. Then the code below sents a particular geographic location for identifying trending topics from Twitter. That location is established with the `woeid` variable. `2367105` is the WOEID for Boston, but you could [lookup another location](http://woeid.rosselliot.co.nz/) and use that code if you prefer. The code then pulls down trends from that location and filters out any trending topics that do not include hashtags, so that our poem will end with a hashtag, as all internet poems should.
+
+```{r}
+setup_twitter_oauth("YOUR_CONSUMER_KEY_GOES_HERE", 
+                    "YOUR_CONSUMER_SECRET_GOES_HERE", 
+                    'YOUR_ACCESS_TOKEN_GOES_HERE', 
+                    'YOUR_ACCESS_SECRET_GOES_HERE')
+
+woeid <- "2367105"
+
+trend <- getTrends(woeid)[,1] %>%
+  as_data_frame() %>%
+  rename(trend = value) %>%
+  filter(grepl("^#", trend))
+```
+
+The code below words almost identically to our first mad-lib poem, but instead of inserting a random interjection from Wordnik at the end, it instead samples one of the trending topics pulled from Twitter above and inserts that as the final word in the poem.
+
+```{r}
+poem <- paste(c(poem_word("verb"), " thy ", poem_word("noun"),
+                " from ", poem_word("preposition")," my ", poem_word("noun"),
+                ", and ", poem_word("verb"), " thy ", poem_word("noun"),
+                " from ", poem_word("preposition"), " my ", poem_word("noun"),
+                '!" \nQuoth the Ravbot, "Never ', trend %>% sample_n(1), "!'"),
+              collapse = "")
+
+cat(poem)
+```
+
+Then, so long as the resulting poem is less than 140 characters, we can post it to Twitter. The code below will check if the string `poem` is less than 140 characters and post if it is. If not, it will print a message asking you to rerun the poem generator. We could write this in a slightly more complicated way so the script would automatically rerun the poem generator until it created a poem short enough to tweet.
+
+```{r}
+if(nchar(poem) < 140) {
+  tweet(poem)
+  } else {
+    print("The poem is too long. Please rerun the generator and try again!")
+  }
+```
+
+We could do all of this with a longer segment of a poem, of course—or the whole thing!—though the resulting poem would be far too long to tweet! But Twitter isn't the only platform out there for such things.
+
+```{r}
+poem <- paste(c('"Be that ', poem_word("noun"), ' our sign of parting, ',
+                poem_word("noun"), ' or fiend!" I ', poem_word("verb"),
+                ' upstarting— \n "Get thee back into the ', poem_word("noun"),
+                ' and the Night\'s ', poem_word("proper-noun"),
+                'ian shore! \nLeave no black ', poem_word("noun"),
+                ' as a token of that ', poem_word("noun"), ' thy soul hath ',
+                poem_word("verb"), '! \nLeave my loneliness ',
+                poem_word("adjective"), '—quit the ', poem_word("noun"), ' ',
+                poem_word("preposition"), ' my door! \n', poem_word("verb"),
+                ' thy beak from out my ', poem_word("noun"),
+                ', and take thy ', poem_word("noun"), ' from ',
+                poem_word("preposition"), ' my ', poem_word("noun"),
+                '!" \nQuoth the Ravbot, "Never ', trend %>% sample_n(1), "!'"),
+              collapse = "")
+
+cat(poem)
+```
+
+# Going Farther
+
+Mad Libs style bots like the one above are only one possibility for using computational tools to remix cultural objects. I used similar methods to these to create [IshmaFML](https://twitter.com/IshmaFML) (sound it out) and [AhaBlessed](https://twitter.com/AhaBlessed), which mash up lines from *Moby Dick* with sections of tweets using the hashtags #fml and #blessed, respectively, to occasionally hilarious or even evocative results. Creative writers are doing even more interesting and innovative things using computational tools, which can be ludic and evocative, as well as statistical and analytical. For just one example, you might look to the work of a poet like [Nick Monfort](http://nickm.com/poems/) or some of the works in the [Electronic Literature Collection](http://collection.eliterature.org/3/).
+
+
+```{r}
+
+# create a character vector of natural breaks for mashing up text
+conjunctions <- c("and",",","but",". . . .",". . .","till","or")
+breaks <- str_c(conjunctions, collapse = "|")
+
+# pull tweets from a random trending hashtag
+tweets <- searchTwitter(sample(getTrends(woeid)[,1],1), resultType = "popular", n=10) %>%
+  twListToDF(.) %>%
+  select(text, created, favoriteCount, retweetCount) %>%
+  filter(str_detect(text, breaks)) %>%
+  mutate(hashtag = str_extract_all(text, "#\\S+")) %>%
+  mutate(lead = str_extract(text, "[A-Za-z '\"@]+( and | till |, | . . . . | or | but )")) %>%
+  mutate(trail = str_extract(text, "( and | till |, | . . . . | or | but ).+")) %>%
+  na.omit()
+
+```
+
+Moby Dick/MAGA mashup?
+
+```{r}
+
+moby <- userTimeline('MobyDickatSea', n=25) %>%
+  twListToDF(.) %>%
+  select(text, created, favoriteCount, retweetCount) %>%
+  filter(str_detect(text, breaks)) %>%
+  mutate(lead = str_extract(text, "[A-Za-z ']+( and | till |, | . . . . | or | but )")) %>%
+  mutate(trail = str_extract(text, "( and | till |, | . . . . | or | but ).+")) %>%
+  na.omit()
+
+# set a search term
+searchTerm <- "#MAGA"
+# pull tweets from the search term specified in the searchTerm variable
+tweets <- searchTwitter(searchTerm, resultType = "popular", since = as.character((Sys.Date() - 10)), n=25) %>%
+  twListToDF(.) %>%
+  select(text, created, favoriteCount, retweetCount) %>%
+  filter(str_detect(text, breaks)) %>%
+  mutate(hashtag = str_extract_all(text, "#\\S+")) %>%
+  mutate(lead = str_extract(text, "[A-Za-z '\"@]+( and | till |, | . . . . | or | but )")) %>%
+  mutate(trail = str_extract(text, "( and | till |, | . . . . | or | but ).+")) %>%
+  na.omit()
+
+```
+
+
+Trump/Whitman Mashup?
+```{r}
+
+#import tweets from leaves of grass bot and filter them to only those including a word from the `breaks` vector
+leaves <- userTimeline('TweetsOfGrass', n=100) %>%
+  twListToDF(.) %>%
+  select(text, created, favoriteCount, retweetCount) %>%
+  filter(str_detect(text, breaks)) %>%
+  mutate(lead = str_extract(text, "[A-Za-z ']+( and | till |, | . . . . | or | but )")) %>%
+  mutate(trail = str_extract(text, "( and | till |, | . . . . | or | but ).+")) %>%
+  na.omit()
+
+trump <- userTimeline('realDonaldTrump', n=100) %>%
+  twListToDF(.) %>%
+  select(text, created, favoriteCount, retweetCount) %>%
+  filter(str_detect(text, breaks)) %>%
+  mutate(lead = str_extract(text, "[A-Za-z ']+( and | till |, | . . . . | or | but )")) %>%
+  mutate(trail = str_extract(text, "( and | till |, | . . . . | or | but ).+")) %>%
+  na.omit()
+
+leavesTrump <- paste(c(leaves %>%
+                         sample_n(1) %>%
+                         select(lead),
+                       trump %>%
+                         sample_n(1) %>%
+                         select(trail) %>%
+                         str_match("( and |and | till |till |, |. . . . | or |or | but |but )(.+)") %>%
+                         as_data_frame() %>%
+                         select(3)),
+                     collapse = "")
+
+trumpLeaves <- paste(c(trump %>%
+                         sample_n(1) %>%
+                         select(lead),
+                       leaves %>%
+                         sample_n(1) %>%
+                         select(trail) %>%
+                         str_match("( and |and | till |till |, |. . . . | or |or | but |but )(.+)") %>%
+                         as_data_frame() %>%
+                         select(3)),
+                     collapse = "")
+
+```

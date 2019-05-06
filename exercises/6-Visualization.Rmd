@@ -1,0 +1,400 @@
+---
+title: "Visualization"
+author: "Ryan Cordell and Jonathan Fitzgerald"
+date: "2/16/2017"
+output: html_document
+---
+
+Load 'em up:
+
+```{r}
+library(tidyverse)
+library(tibble)
+```
+
+One of the primary reasons data analysts gravitate toward R is its capacity for creating visualizations. In today's lesson we cannot possibly cover all these possibilities—and we will leave one huge category of visualization, the map, for next week—but we will survey some of the most prevelant types of data visualization in humanistic scholarship. 
+
+Graphs, charts, and other forms of data viz have become increasingly common in literary-historical research in the past decade, though humanists have not necessary developed sufficiently sophisticated frameworks for understanding their creation or their epistemological status. As we work through these practical exercises, then, we should discuss also what visualizations reveal and conceal about the data they represent, and consider the evidentiary functions they might serve. 
+
+Okay, let's load some data. I figured out why our tibbles weren't loading correctly last week. Along with the new dataframe protocol, there's a new function for reading in tabular data, `read_csv` (with an underscore):
+
+```{r}
+census <- read_csv(file = "./data/1840-census-data.csv") %>%
+  rename(county = QualifyingAreaName) %>%
+  separate(county, into = c("county", "state"), sep = "\\, ")
+```
+
+Most of what we didn't get to last week—Fitz's exercises on text analysis—we are putting off for a few weeks. There's one important bit I didn't get to share, however, which is how to export the results of your transformations. As with importing data, there are many possibilities, but to export a CSV, you use the function `write.csv`, which is followed by at least two arguments: the data you wish to export and the destination of the file. I would recommend creating an `output` folder in your working directory for such files, so they don't get confused with your source data. To export that network data from last week, for instance, we could run the following (assuming that dataframe is still in your global enviornments). 
+
+```{r}
+
+write.csv(vtEdges, file="./output/vtEdges.csv")
+
+```
+
+Okay, on to visualization! 
+
+## The philosophy of `ggplot`
+
+Today we will work mostly with `ggplot2`—included in the `tidyverse`—which implements a "grammar of graphics"—hence "gg"—in the R environment. `ggplot2` uses a philosophy of chaining that should be familiar from your work with dplyr. While the order of the chain in `dplyr` is paramount, `ggplot` is a little more flexible. You have to create a plot using the `ggplot()` function: but then you can add elements to it in an order that's not always strictly proscribed. But in creating a plot, you'll certainly have to do each of the following (though sometimes just implicitly):
+
+1. Select a data source
+2. Choose a geometry, or plot type
+3. Set an aesthetic mapping (more on this below)
+4. Set your scales
+5. Set your facets
+6. Other things
+
+We can't possibly survey every type of visualization you can create in R or all the nuances of refining those visualizations. Today we will introduce a few possibilities, and you should expect to see plenty of examples of such charts and visualizations—including variations and nuances on them—as we move forward this semester.
+
+## Histograms
+
+Perhaps the most basic—though extrememly useful!—type of chart is the histogram, which shows the frequency of a single variable at different intervals. Those intervals could be temporal or based on another continuous scale in your data (e.g. age, height, length). Histograms resemble bar charts, which we will discuss next, but the histogram represents "continuous data" while the bar chart represents distinct categories. This should be more clear through example.  
+
+To start, I'll show you a feature of our Viral Texts data that histograms helped me understand better than I did before plotting it. We'll load the same clusters we started to use last week. Note that we're using `read_csv` to import directly into a tibble. To see one difference, check the class of the `text` column after importing the Viral Texts data below.
+
+```{r}
+
+vtClusters <- read_csv(file="./data/VT-vignettes.csv") %>% 
+  mutate(title = gsub('(.*)\\.*\\(.*','\\1',title)) %>%
+  mutate(date = as.Date(date, "%Y-%m-%d"))
+
+```
+
+In the code below, we invoke `ggplot` and then add a histogram `layer` to it. We identify `date` as the continuous variable for the x axis of the plot.
+
+```{r}
+
+ggplot(vtClusters %>% filter(cluster == 321785)) + geom_histogram(aes(x=date))
+
+```
+
+The primary element we control when creating histograms is the size of the bins the data should be sorted into: these "bins" can be thought of as the intervals of the chart, and the bins you choose can have a dramatic effect both on what the charts look like *and* what they say about your data. For any given histogram, you should not be content with the default bin size but instead experiment with different possibilities. When your x axis is dates, the bins refer to numbers of days, meaning this revision of our histogram uses bins of 1 year:
+
+```{r}
+
+ggplot(vtClusters %>% filter(cluster == 321785)) + geom_histogram(aes(x=date), binwidth=365)
+
+```
+
+That looks quite a lot like our original plot, but what happens if you change the binwidth to one month? Three years? Experiment a bit below.
+
+```{r}
+
+ggplot(vtClusters %>% filter(cluster == 321785)) + geom_histogram(aes(x=date), bins=50)
+
+```
+
+Note that some elements in the grammar of `ggplot` can be placed at different spots in the code, as below where we define the x axis as an argument in the `ggplot` function rather than in the `geom_histogram` function. This can be important to consider as you build more complicated visualizations, as the precise order can change the outcome. Think of these as layers you're adding to the larger chart, and consider what layers need to be applied at the base and which are applied overtop. 
+
+```{r}
+
+ggplot(vtClusters %>% filter(cluster == 321785), aes(date)) + geom_histogram(binwidth=365)
+
+```
+
+### Histograms for Exploratory Analysis
+
+For me beginning to plot clusters as histograms clued me to the cycles of attention that particular "viral" stories enjoyed during their lives in nineteenth-century newspapers. I had seen this or that text being reprinted, disappearing for awhile, and then being reprinted again, but I had not considered that such waxing and waning might be a more widespread pattern: a feature of newspaper reprinting that could be modeled more generally. 
+
+Test out the few other clusters in our sample data. Do their histograms bear out such a cicular model of nineteenth-century reprinting or not? Is 365 the best bin width for visualizing all of the clusters in this dataset? Why or why not? Hint: the function `unique` can identify all the distinct values in a particular column.
+
+```{r}
+
+ggplot(vtClusters %>% filter(cluster == 321785)) + geom_histogram(aes(x=date), binwidth=365)
+
+```
+
+Thus far we've been using `filter` from dplyr to look at one cluster at a time, but we could also create a histogram that layers multiple clusters over each other. The code below doesn't quite work for that purpose. Any theories as to why not?
+
+```{r}
+
+ggplot(vtClusters, aes(date, fill = cluster)) + geom_histogram(binwidth=365)
+
+```
+
+
+Perhaps that's too many to really compare meaningfully. Does it work better with two? Which two? Again, how does adjusting the bins change things?
+
+```{r}
+
+ggplot(vtClusters %>% filter(cluster == 321785 | cluster == 355594), aes(date, fill = as.character(cluster))) + geom_histogram(binwidth=365)
+
+```
+
+There's another modification we can use with various ggplots that might make comparisons easier. `facet.grid` allows you to dynamically separate plots by a particular variable and set them side by side:
+
+```{r}
+
+ggplot(vtClusters %>% filter(cluster == 321785 | cluster == 355594), aes(date, fill = as.character(cluster))) + geom_histogram(binwidth=365) + facet_grid(. ~ cluster)
+
+```
+
+or top to bottom:
+
+```{r}
+
+ggplot(vtClusters %>% filter(cluster == 321785 | cluster == 355594), aes(date, fill = as.character(cluster))) + geom_histogram(binwidth=365) + facet_grid(cluster ~ .)
+
+```
+
+## Barplots
+
+As we've seen, a histogram looks like a barplot, so what's the difference? Well, at first, not much at all. If we use the code from above but replace `geom_histogram` with `geom_bar`, we'll get a chart that looks the same:
+
+```{r}
+
+ggplot(vtClusters %>% filter(cluster == 321785)) + geom_bar(aes(x=date), binwidth=365)
+
+```
+
+After you run the above code, you'll notice a warning message: "`geom_bar()` no longer has a `binwidth` parameter. Please use `geom_histogram()` instead." In an effort to better differentiate bar plots from histograms, the makers of `ggplot2` removed the `binwidth` parameter, though, as you see, it still works.
+
+Where bar plots are different, then, is that they can display non-continuous data, whereas histograms only show any value over a continuous range (such as time). When graphing non-continuous data (sometimes called "discrete" data), the bars can represent actual values of observations. Look, for example, at the result of the code below. It's quite difficult to read, but rather than grouping observations into bins, as the histogram does, what you're seeing is one bar for every instance of the cluster in time.
+
+```{r}
+
+ggplot(vtClusters %>% filter(cluster == 321785)) + geom_bar(aes(x=date))
+
+```
+
+If we simply want a count of all observations, we can make the x-axis contain all the information by setting it to an empty string and filling the bars based on a variable (in this case, the cluster id). The bars will appear stacked on top of each other.
+
+```{r}
+
+ggplot(vtClusters) + geom_bar(aes(x="",fill=as.character(cluster)))
+
+```
+
+Try changing the `fill` to some other variable:
+
+```{r}
+
+
+
+```
+
+I find thes kinds of bar plots particularly unhelpful, however, because you have to compare the size of the chunks to each other. It's a bit more readable if we set the parameter `position="dodge"`. 
+
+```{r}
+
+ggplot(vtClusters) + geom_bar(aes(x="",fill=as.character(cluster)), position = "dodge")
+
+```
+
+Or, if we set the y-axis to a polar coordinate, as below:
+
+```{r}
+
+ggplot(vtClusters) + geom_bar(aes(x="",fill=as.character(cluster))) + coord_polar("y")
+
+```
+
+Oh no! You just created a pie chart! The most reviled of all visualizations! Here, `ggplot2` is describing them  as "a stacked bar chart plotted in a polar coordinate system." 
+
+Where bar plots are most useful over histograms, then, is in the fact you can set the y-axis to display information beyond just a count or other kinds of continuous data. Below, we use the "size" variable to tell us how many witnesses of each cluster appear. Of course this will be the same as the count, but imagine a scenario in which we only had one representative witness of each cluster and we wanted to see the size of the clusters. In order to make this imagined scenario a reality, we need to do bit of transformation on the dataframe. Can you tell what we're doing here before we ge to the plot?
+
+```{r}
+
+vtClusters %>% group_by(cluster) %>% slice(1) %>% ggplot() + geom_bar(stat = "identity", aes(x=as.character(cluster), y=size, fill=as.character(cluster)))
+
+```
+
+This also brings to the fore a concrete instance of what we were describing below when we noted that the order of things is less important. That is, we can prepare our data before piping it into `ggplot()`. Note, as well, that in order to get ggplot to display data in the y-axis, as opposed to a count, we need to specify `stat = "identity"` as opposed to the default (and thus not specified), `stat = "count"`.
+
+The visualization we just created is a bit hard to read since the clusters get jammed together on the x-axis, so we can use another transformation called `coord_flip()` Try it out:
+
+```{r}
+
+vtClusters %>% group_by(cluster) %>% slice(1) %>% ggplot() + geom_bar(stat = "identity", aes(x=as.character(cluster), y=size, fill=as.character(cluster))) + coord_flip()
+
+```
+
+That's better.
+
+The Viral Text corpus we've provided doesn't include a lot of numerical data (which is, after all, what bar plots are good for) so let's go back to the census data for one more example of what we can do with the y-axis as a variable. Here is the number of newspapers per state:
+
+```{r}
+
+census %>% group_by(state) %>% ggplot() + geom_bar(stat = "identity", aes(x=state, y=Newspapers, fill=state))
+
+```
+
+That's a lot of states; Let's flip it:
+
+```{r}
+
+census %>% group_by(state) %>% ggplot() + geom_bar(stat = "identity", aes(x=state, y=Newspapers, fill=state)) + coord_flip()
+
+```
+
+That's better, but let's filter it down to just New England states:
+
+```{r}
+
+ne <- c("Maine", "New Hampshire", "Vermont", "Massachusetts", "Connecticut")
+
+census %>% group_by(state) %>% filter(state %in% ne) %>% ggplot() + geom_bar(stat = "identity", aes(x=state, y=Newspapers, fill=state)) + coord_flip()
+
+```
+
+We're using a bit of a tricky filtering method here. Can anybody figure out what's going on?
+
+## Scatterplot
+
+Histograms and barcharts can be useful for exploring single-variables in your data, scatterplots are a standard visualization for exploring correlations between variables. For instance, we can see whether the number of newspapers per county counted in the 1840 census correlated to the number of literate people in those counties:
+
+```{r}
+
+ggplot(census) +
+  geom_point(mapping = aes(x = Newspapers, y = LiterateWhiteAge20andOver))
+
+```
+
+`ggplot` also lets use overlay different kinds of plots. Can you tell what's happening below? Specifically, do you have any idea what `position = "jitter"` might be doing?
+
+```{r}
+ggplot(census) + 
+  geom_point(mapping = aes(x = Newspapers, y = LiterateWhiteAge20andOver), position = "jitter") +
+  geom_smooth(mapping = aes(x = Newspapers, y = LiterateWhiteAge20andOver))
+```
+
+Remember that we can facet our graphs by particular variables:
+
+```{r}
+ggplot(census %>% filter(state %in% ne)) + 
+  geom_point(mapping = aes(x = Newspapers, y = PrintingOffices, size = TotalPopulation), position = "jitter") +
+  facet_grid(. ~ state)
+```
+
+Experiment a bit: can you find two variables in the census data with a potentially interesting (positive or negative) correlation?
+
+```{r}
+
+
+```
+
+## Aesthetics
+
+By now you've seen that ggplot does an _okay_ job of trying to provide meaningful (and visually attractive) non-data elements to your plots, but if we dig in a bit we actually can gain quite a bit of control over the display. Let's look at a few of these options:
+
+We've already used some of the aesthetics available in ggplot when we set the `fill` argument, for example, or utilized `coord_flip()`. But what about if you want to give your chart a title? Let's work with the New England newspapers visualization we created earlier:
+
+```{r}
+
+census %>% 
+  group_by(state) %>% 
+  filter(state %in% ne) %>% 
+  ggplot() + 
+  geom_bar(stat = "identity", aes(x=state, y=Newspapers, fill=state)) + 
+  coord_flip() +  
+  ggtitle("Number of Newspapers in the New England States, 1840")
+
+```
+
+Pretty, right? But notice that "state" on the x-axis is lower-case. This is because it's just taking as its title the name of the variable. Let's fix that using the `labs` argument:
+
+```{r}
+
+census %>% 
+  group_by(state) %>% 
+  filter(state %in% ne) %>% 
+  ggplot() + 
+  geom_bar(stat = "identity", aes(x=state, y=Newspapers, fill=state)) + 
+  coord_flip() +  
+  ggtitle("Number of Newspapers in the New England States, 1840") +
+  labs(x="State",y="Number of Newspapers",fill="State") 
+
+```
+
+You'll notice above that while I was setting the `labs` argument, I went ahead and changed the label of the y-axis and the fill key as well.
+
+We can take this one step further by using ggplot's `theme()` argument. 
+
+```{r}
+
+census %>% 
+  group_by(state) %>% 
+  filter(state %in% ne) %>% 
+  ggplot() + 
+  geom_bar(stat = "identity", aes(x=state, y=Newspapers, fill=state)) + 
+  coord_flip() +  
+  ggtitle("Number of Newspapers in the New England States, 1840") +
+  labs(x="State",y="Number of Newspapers",fill="State") + 
+  theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=22, hjust=.5)) +
+  theme(axis.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) + 
+  theme(legend.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) 
+
+```
+
+Here we set the font, font size and weight, and text alignment. If you dig into the `theme()` arguments (the easiest way to do this is to type `theme(` and then hit `tab` to scroll through the available options), you'll see that you can customize almost anything about your chart. Just for fun:
+
+```{r}
+
+census %>% 
+  group_by(state) %>% 
+  filter(state %in% ne) %>% 
+  ggplot() + 
+  geom_bar(stat = "identity", aes(x=state, y=Newspapers, fill=state)) + 
+  coord_flip() +  
+  ggtitle("Number of Newspapers in the New England States, 1840") +
+  labs(x="State",y="Number of Newspapers",fill="State",caption="Here is a visualization showing the number of newspapers per New England state from census data taken in the year 1840.") + 
+  theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=22, hjust=0.5)) +
+  theme(axis.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=16)) + 
+  theme(legend.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=16)) +
+  theme(legend.background = element_rect(color = "#efefef")) +
+  theme(plot.caption = element_text(family = "Trebuchet MS", color="#666666", size=10, hjust = 0.5, margin = margin(15, 0, 15, 0))) +
+  theme(axis.text = element_text(family = "Trebuchet MS", color="#aaaaaa", face="bold", size=10)) +
+  theme(panel.background = element_rect(fill = "white")) +
+  theme(panel.grid.major = element_line(color = "#efefef")) +
+  theme(axis.ticks = element_line(color = "#efefef"))
+
+```
+
+That's lovely. For a full list of all the `theme()` options, look [here](http://docs.ggplot2.org/0.9.2.1/theme.html).
+
+
+# Exercises
+
+1. Read in the `crewlists.csv` file we used a few weeks back. What would be a good variable to create a histogram from? What about a bargraph? One of each for different variables. Experiment with the settings of each until you have visualizations you'd be happy to share in class next week (and be ready to talk about what you think each illustrates). 
+
+```{r}
+
+
+```
+
+2. Using the Viral Texts data, create a barplot showing the number of texts by the corpus they originate from (Bonus points for making the graph look pretty!). Which corpus contributes the most texts? The fewest?
+
+```{r}
+
+
+
+```
+
+3. Create a barplot visualizing the length of the longest text in each cluster. If possible, arrange the bars in descending order.
+
+```{r}
+
+
+```
+
+4. Similar to above, visualize the length of the 10 longest texts in each cluster. Each cluster should appear in its own graph (hint: use `facet_grid()` or `facet_wrap()`).
+
+```{r}
+
+
+
+```
+
+5. Reach goal: Just as important as being able to create visualizations is the ability to read and evaluate them. To that end, check out the following visualization. It's not good. Your job is to tell us why, and then, to make it better.
+
+```{r}
+
+census %>% 
+  group_by(state) %>%
+  mutate(free_count = sum(FreePersons)) %>%
+  ggplot() +
+  geom_bar(stat = "identity", aes(x=state, y=free_count)) + coord_flip() +
+  labs(x="State",y="Number of Free Persons per State",fill="State")
+
+```
