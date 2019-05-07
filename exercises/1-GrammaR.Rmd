@@ -1,0 +1,308 @@
+---
+title: "Lesson 1 - The Grammar of R"
+author: "Ryan Cordell"
+date: "5/7/2019"
+output: html_document
+---
+
+# Acknowledgements
+
+This version of my twitterbot assignment was adapted from [an original written in Python](https://www.dropbox.com/s/r1py3zazde2turk/Trendingmore.py?dl=0), which itself adapted code written by Mark Sample. That orginal bot tweeted (I've since stopped it) at [Quoth the Ravbot](https://twitter.com/Quoth__the). The current version owes much to advice and code borrowed from two colleagues at Northeastern University: Jonathan Fitzgerald and Benjamin Schmidt. 
+
+# The (Very) Basics of Working in RStudio
+
+## R Markdown
+
+This is an [R Markdown document](http://rmarkdown.rstudio.com/) (RMD), hence the `.rmd` file extension. R Markdown blends the markdown conventions you are learning in this class with a few customizations that let you embed snippets of code, as well as any outputs (e.g. graphs, maps) produced by that code into Markdown documents. This lets you weave together prose and code, so your readers can see the technical aspects of your work while reading about their interpretive significance. If you [view this document on Github]() you can see how RMD translates for presentation on the web. 
+
+## Running Code
+
+As an RMD file, however, this is more than a flat text document: it's a program that you can run in RStudio. R Markdown allows you to embed executable code into your writing. If you click the 'run' arrow in the gray box below, the code will run. You should see the results in your console window. Try that now.
+
+```{r}
+2+2
+5*32
+10^10
+```
+
+As in most programming languages, you can do math in R: Charles Babbage would marvel at how easy it is!
+
+You create your own code blocks by typing the characters on the first and last line of the block above (using three backticks and including the {r} designator); the code you want to execute goes on the lines in between. Try creating a code block below with the line `print("Hello World!")` in it (do not type the backticks at the beginning and end of that phrase; they are the Markdown convention for separating out bits of code from regular text).
+
+In addition to using the run buttons above, you can also run R code within a code block *one line* at a time by putting your cursor on the line and hitting `command-return` (on a Mac), `control-return`(in Windows or Linux). You can also execute a line of code not enclosed in an executable code block by highlighting the entire line or lines of code and pressing `command-return` or `control-return`. When you work with regular R documents—without the markdown—this is the primary way you run code. Try running the line of code just below by highlighting the entire line and hitting `command-return`/`control-return`:
+
+plot(1:100,(1:100)^2)
+
+One reason many folks love R is the ease with which you can create plots and other data visualizations using it. We'll learn more about those as this class progresses. Note that you can also run code by pasting or typing it directly into the console window. This runs the code but does not save it as part of your RMD or R file.
+
+## Packages and Libraries
+
+One of the greatest attractions of R is the robust community writing *R packages*: collections of functions, data, and documentation that extend the capabilities of base R. Think of them like plugins, extensions, or DLC, like you may have installed for other kinds of software, such as your internet browser. For these labs I've installed all the packages we will need in this RStudio Server application. If you prefer to run RStudio on your own machine, you would install a package by running code that looks like this: `install.packages("tidyverse")`. 
+
+In order to actually *use* packages that have been installed, you must load them using the `library()` function (note the textual metaphor—each package is a "library" of code R can refer to). You would usually load all of the packages you wish to use in a given script at the beginning, so that the functions, objects, and help files of that package will be available to you as you work. While you don't have to install a package every time you want to use it, you will need to invoke its library at least once during each R work session. 
+
+This assignment requires a number of R packages for data analysis and manipulation, as well as for importing data from external sources such as Project Gutenberg, Wordnik, and Twitter. The code below will load the necessary packages if you have them installed in RStudio. If not, you will need to first install them using the code `install.packages("packageTitleHere")`
+
+```{r}
+library(tidyverse)
+library(tidytext)
+library(birdnik)
+library(rtweet)
+```
+
+## Variables 
+
+Ada Lovelace hoped Charles Babbage's Analytical Engine "might act upon other things besides *number*," including language or music (Gleick 116), and in this class we'll be doing just that, using R to learn more about texts (and to create new ones). 
+
+```{r}
+
+raven <- "raven"
+raven
+
+```
+
+Before we go any farther, what is that word `raven` in the code above? It's a variable, which means that it stores data for use in later processing. While Babbage and Lovelace imagined storing variables on physical cards that could be then used as input for the next stage of computation, in R variables are stored in your computer's working memory and designated by the labels we assign them. The `<-` assigns the data to its right to the variable on its left; metaphorically, this command says "take the results of the operation on the right and store it in the container on the left." Data could be loaded from outside R, as we are doing here, or it could be the results of a process within R, such as the transformation of another variable. 
+
+A note: we used `<-` to assign this variable, but you can use `=` to do the same, which is why the code below will do exactly what the code above did:
+
+```{r}
+
+raven = "raven"
+
+raven
+
+```
+
+A variable hold many kinds of data in R. It can be a string of characters such as the word above or a long string, such as the stanza below. 
+
+```{r}
+
+raven <- "Be that word our sign of parting, bird or fiend! I shrieked, upstarting—Get thee back into the tempest and the Night's Plutonian shore! Leave no black plume as a token of that lie thy soul hath spoken! Leave my loneliness unbroken!—quit the bust above my door! Take thy beak from out my heart, and take thy form from off my door! Quoth the Raven 'Nevermore.'"
+
+```
+
+If you type `raven` (without the backticks) in the console, you can see what is held in this variable. Run the code below and then investigate the variable again: what has changed?
+
+```{r}
+
+raven <- list("Be","that","word","our","sign","of","parting",",","bird","or","fiend")
+
+```
+
+Now that variable holds a list of words, which could be selected by place number like so:
+
+```{r}
+
+raven[3]
+
+```
+
+Change the number in the brackets above to select different words from the list we created. This is kind of silly list of individual words, but we will see in a bit how this simple data type might help us do something creative. During a R session, you can store many variables simultaneously use functions that select, modify, combine, or otherwise act on them. We will begin experimenting with those actions as we build a poetry bot below.
+
+# Building a Bot
+
+## Why Write Literary Bots?
+
+At this point we all know about bots on Twitter. In fact, Twitter [stopped tallying the number of bots in its service a few years ago](https://www.buzzfeed.com/williamalden/twitter-has-stopped-updating-its-public-tally-of-bots), but estimates suggest a large proportion of twitter accounts are automated. Many of these are designed to push particular viewpoints or harrass particular users, though recently folks have started building bots [to push back against online abuse](https://www.washingtonpost.com/news/monkey-cage/wp/2016/11/17/this-researcher-programmed-bots-to-fight-racism-on-twitter-it-worked/). I think Samuel Woolley, danah boyd, and Meredity Broussard's ["How to Think About Bots"](https://motherboard.vice.com/en_us/article/qkzpdm/how-to-think-about-bots) provides a nice overview of the potential and pitfalls of online bot culture.
+
+In [the midst of all these wilds](http://lithub.com/encountering-literary-bots-in-the-wilds-of-twitter/), why do I teach students to build *literary* bots in my classes? Well: on the one hand, it's a lot of fun, *and* it can help us understand more about the basics of programming languages, working with APIs (application programming interfaces), and the hidden workings of web services like Twitter. More than that, however, building bots offers a way of seeing literary objects anew and engaging creatively, [provocatively, or even combatively](https://medium.com/@samplereality/a-protest-bot-is-a-bot-so-specific-you-cant-mistake-it-for-bullshit-90fe10b7fbaa) with digital objects and online culture. Breaking down a poem for "mad libs" word substitution, for instance, forces us to think about the building blocks of poems.
+
+## Toward a Mad-Lib Poetry Bot
+
+Today, we will learn to write at least one kind of twitterbot: a "mad libs" style bot that takes a predefined text—in our case, a snippet of nineteenth-century poetry—and substitutes random words based on their parts of speech. As above, the results are sometimes nonsense, sometimes unexpectedly apt, and sometimes amusingly absurd. 
+
+The examples below all use this stanza from Edgar Allan Poe's "The Raven," which works well for this kind of word-substitution experiment, but you could try with your own poem once you understand the basic principles of the word substitution.
+
+“Be that word our sign of parting, bird or fiend!” I shrieked, upstarting— 
+“Get thee back into the tempest and the Night’s Plutonian shore! 
+     Leave no black plume as a token of that lie thy soul hath spoken! 
+     Leave my loneliness unbroken!—quit the bust above my door! 
+ Take thy beak from out my heart, and take thy form from off my door!” 
+             Quoth the Raven “Nevermore.”
+             
+## Create Substitution Lists
+
+One way to create mad-libs style poems is to create lists of words to draw from randomly. This same method could be used to create other kinds of combinatory poems as well, including those that combine set phrases or lines. One advantage of this method is that you could control the substitution possibilities to only include words with the correct syllable count, or words that rhyme, or so forth.
+
+```{r}
+nouns <- list("cow","anvil","flower","tuba","parsley")
+past_verbs <- list("extrapolated","devoured","hypothesized","exploded","cha-cha slid")
+interjections <- list("gadzooks!","zounds!","hogwash!","aaarrrggghhh!","achoo")
+```
+             
+Once we create those lists, we can use code like that below to substitute random words from the lists into the appropriate spots in a line of poetry. Run the first line to understand how the `paste` function works and the second to substitute three words from the lists above into a line of "The Raven." The results will print in your console. What happens if you run the same line of code multiple times?
+             
+```{r}
+
+paste(c("Quoth the Raven, ", sample(interjections,1)), collapse = "")
+
+paste(c(sample(past_verbs,1), " the ", sample(nouns,1), ", ", sample(interjections,1)), collapse = "")
+
+```
+             
+
+Okay, now it's your turn! Write a few lines of code to create lists of words for substitution. Remember your variable names can be anything, but the items in your lists must be surrounded by quotation marks (because they're character strings) and separated by commas *outside the quotation marks*! Once you've created a few lists from which to substitute, completed the `paste` to create a mad-lib line of poetry.
+
+```{r}
+
+paste(c(), collapse ="")
+
+```
+
+
+## Application Programming Interfaces
+
+Next we will perform our substitutions in a different way, by drawing from the Wordnik online dictionary. In order to complete this section, you’ll need to create a few accounts from which we’ll either be drawing or to which we’ll be adding content. Hopefully you already did this after my email before spring break:
+
++ Sign up for [a Wordnik account](https://www.wordnik.com/signup) and then [sign up for a Wordnik API Key](http://developer.wordnik.com/). Wordnik is an open-source dictionary from which we will be drawing words to fill in our mad libs.
+
+In addition to creating poems out of our own compiled wordlists, we can experiment with APIs (application programming interfaces) to draw on the web's resources and remix material. In the next section, we will use a script adapted slightly from [one written by Benjamin Schmidt](https://gist.github.com/bmschmidt/2c270ab7b373b6b4383a603afe828a48), that will help us call words of specific types from the Wordnik online dictionary. You will enter your own Wordnik key in the `my_wordnik_key` line below:
+
+```{r}
+my_wordnik_key <- "YOUR API KEY HERE"
+
+#the line below will set the "default" part of speech for your calls to Wordnik, but you will be able to override this setting in later code.
+wordnik_pos = "adjective"
+
+random_word <- function(key=my_wordnik_key,
+                        pos=wordnik_pos, min_count=100, n=1,
+                        min_length = 5, max_length = 10){
+  
+  param <- paste0("words.json/randomWords?hasDictionaryDef=true",
+                  "&minCorpusCount=",min_count,
+                  "&minLength=",min_length,
+                  "&maxLength=",max_length,
+                  "&limit=",n,
+                  "&includePartOfSpeech=",pos)
+
+  raw = birdnik:::query(key = key,params = param)
+  do.call(rbind,lapply(raw,as.data.frame))
+  
+}
+```
+
+This function can be invoked via the following code; you can change the part of speech and the number of words to pull as you wish. By default the function creates a dataframe with Wordnik's word ids in the first variable column and the words themselves as the second. 
+
+```{r}
+random_word(pos="verb",n=5, min_count=1000)
+random_word(pos="interjection",n=10, min_count=100)
+```
+
+Those dataframes aren't quite what we will want for making substitutions in our mad-lib poem, so I've written an additional function that calls Ben's function with some specific parameters (only 1 word), grabs only the second column from the dataframe generated in `random_word`, and converts that data to a character string. To grab a random word of a given part of speech, you simply need to invoke the function `poem_word()` and put the part of speech you're looking for in quotes inside the parentheses. There are a number of options for the part of speech, but you'll primarily use `verb`, `noun`, `pronoun`, `adjective`, `adverb`, `interjection`, and `preposition`. For other possibilities, consult [the documentation for the Wordnik API](http://developer.wordnik.com/docs.html#!/words/getRandomWord_get_4). 
+
+```{r}
+
+poem_word <- function(x) {
+  random_word(pos=x,n=1,min_count=1000)[,2] %>%
+    as.character()
+}
+
+poem_word("interjection")
+```
+
+
+Now we will use the `poem_word()` function to call words into specific places in our poem and *concatenate*, or combine, them with the parts of the poem we are leaving as originally written. Take a look at how this concatenation is structured below. When concatenating character strings, R combines precisely the strings it is given, meaning you must explicitly add spaces to the strings (within the quotation marks) where you want them to appear in the final output—just as, we might argue, you had to explicitly add spaces to your texts when you were setting them using moveable type. 
+
+When you run this code it saves the results to a new variable called `poem`. To see the output of this code, run the line `cat(poem)`; the mad-lib poem will appear in your console.
+
+```{r}
+poem <- paste(c(poem_word("verb"), " thy ", poem_word("noun"), " from ", poem_word("preposition")," my ", poem_word("noun"), ", and ", poem_word("verb"), " thy ", poem_word("noun"), " from ", poem_word("preposition"), " my ", poem_word("noun"), "! \nQuoth the Ravbot, '", poem_word("interjection"), "!'"), collapse = "")
+
+cat(poem)
+
+```
+
+
+Wordnik has put stricter limitations on their API this past year, meaning you might not be able to run the code above over and over again. A less resource-intensive method might be to use `random_word` to create tables of words of the types you need—each request for a given part of speech would only require one API call, rather than one per substitution in the code above. You would then substitute from those (locally saved) lists to generate new poems. That code might look like this:
+
+```{r}
+
+verbs <- random_word(pos="verb",n=100,min_count=1000)
+nouns <- random_word(pos="noun",n=100,min_count=1000)
+prepositions <- random_word(pos="preposition",n=100,min_count=1000)
+interjections <- random_word(pos="interjection",n=100,min_count=1000)
+adjectives <- random_word(pos="adjective",n=100,min_count=1000)
+
+list_word <- function(x) {
+  sample_n(x, 1)[,2] %>%
+    as.character()
+}
+
+poem <- paste(c(list_word(verbs), " thy ", list_word(nouns), " from ", list_word(prepositions)," my ", list_word(nouns), ", and ", list_word(verbs), " thy ", list_word(nouns), " from ", list_word(prepositions), " my ", list_word(nouns), "! \nQuoth the Ravbot, '", list_word(interjections), "!'"), collapse = "")
+
+cat(poem)
+
+```
+
+## Tweet, tweet
+
+Now let's introduce Twitter into the mix by using its API to grab a random trending hashtag and insert it into our poem. You will need the consumer key, consumer secret, access token, and access secret from the Twitter application you set up in order to use this code. 
+
+The code below establishes your Twitter credentials and then identifies trending topics based on a geographic location, which is established with the `woeid` variable. `2367105` is the WOEID for Boston, but you could [lookup another location](http://woeid.rosselliot.co.nz/) and use that code if you prefer. The code also filters out any trending topics that do not include hashtags, so that our poem will end with a hashtag, as all internet poems should. How would you view the hashtags pulled from Twitter's API?
+
+```{r}
+
+token <- create_token(
+  app = "madlib_poetrybot",
+  consumer_key = "tNh5iiXV6QNtvG3JskFNi6imL",
+  consumer_secret = "Ez6uQirax9EOo55uvjCOfqw3p1cgQuc81IwEdh7Wo1qzEbCa5t",
+  access_token = "1100069980681498626-m7pxkLwg1yyYwXSdyU4UYYmWfx4CQA",
+  access_secret = "ffS4HrRH5AwXoeziOyZWIuOka8ROCWPXKl2RATybGphdh")
+
+trends <- get_trends("boston") %>%
+  filter(grepl("^#", trend))
+  
+```
+
+The code below works almost identically to our first mad-lib poem, but instead of inserting a random interjection from Wordnik at the end, it instead samples one of the trending topics pulled from Twitter above and inserts that as the final word in the poem.
+
+```{r}
+poem <- paste(c(list_word(verbs), " thy ", list_word(nouns), " from ", list_word(prepositions)," my ", list_word(nouns), ", and ", list_word(verbs), " thy ", list_word(nouns), " from ", list_word(prepositions), " my ", list_word(nouns), '!" \nQuoth the Ravbot, "Never ', sample(trends$trend, size=1), "!'"), collapse = "")
+
+cat(poem)
+```
+
+Then, so long as the resulting poem is less than or equal to 280 characters, we can post it to Twitter. The code below will check if the string `poem` is less than or equal 280 characters and post if it is. If not, it will print a message asking you to rerun the poem generator. We could write this in a slightly more complicated way so the script would automatically rerun the poem generator until it created a poem short enough to tweet.
+
+```{r}
+if(nchar(poem) <= 280) {
+  post_tweet(status = poem)
+  } else {
+    print("The poem is too long for Twitter's 280-character limit. Please rerun the generator and try again!")
+  }
+```
+
+We could do all of this with a longer segment of a poem, of course—or the whole thing!—though the resulting poem would be far too long to tweet! But Twitter isn't the only platform out there for such things. Note that the poem below blends two functions for calling its words.
+
+```{r}
+poem <- paste(c('"Be that ', list_word(nouns), ' our sign of parting, ', list_word(nouns), ' or fiend!" I ', list_word(verbs), ' upstarting— \n "Get thee back into the ', list_word(nouns), ' and the Night\'s ', poem_word("proper-noun"), 'ian shore! \nLeave no black ', list_word(nouns), ' as a token of that ', list_word(nouns), ' thy soul hath ', list_word(verbs), '! \nLeave my loneliness ', list_word(adjectives), '—quit the ', list_word(nouns), ' ', list_word(prepositions), ' my door! \n', list_word(verbs), ' thy beak from out my ', list_word(nouns), ', and take thy ', list_word(nouns), ' from ', list_word(prepositions), ' my ', list_word(nouns), '!" \nQuoth the Ravbot, "Never ', sample(trends$trend, size=1), "!'"), collapse = "")
+
+cat(poem)
+```
+
+Mad Libs style bots like this one are only one possibility for using computational tools to remix cultural objects. I used similar methods to these to create [IshmaFML](https://twitter.com/IshmaFML) (sound it out) and [AhaBlessed](https://twitter.com/AhaBlessed), which mash up lines from *Moby Dick* with sections of tweets using the hashtags #fml and #blessed, respectively, to occasionally hilarious or even evocative results. Creative writers are doing even more interesting and innovative things using computational tools, which can be ludic and evocative, as well as statistical and analytical. For just one example, you might look to the work of a poet like [Nick Monfort](http://nickm.com/poems/) or some of the works in the [Electronic Literature Collection](http://collection.eliterature.org/3/). 
+
+Okay, below let's try writing code that creates a mashup using a poem of your choice. You can make lists, pull from Wordnik, or some combination of the two in order to create your new poems:
+
+```{r}
+
+
+
+
+
+
+```
+
+
+# Ending the session
+
+Now, as we end our work, let's be sure to close our sessions on RStudio Server:
+
+```{r}
+q()
+```
+
+# Posting to Your Twitter Account
+
++ If you want to post to Twitter, you will need to create a new Twitter account for your bot. Think about what kind of bot you want to make and then sign up. Be sure to add a mobile number to the account, as we’ll need that for one the steps later on.
++ While signed into your new account, visit [Twitter’s developer site](https://dev.twitter.com/). In the small bottom menu click “Manage Your Apps” and then “Create New App.” In part to stem the proliferation of spam bots, this process has become a bit more involved than it used to be, and the first time you attempt to create an app you will have to write for approval (by a human being!) to Twitter. This will likely take a little while and so would have to happen after class, if you want to make your bot live in the world. Once you've done this, you will substitute your own Twitter keys for those in the script above, which will then enable you to post to your bot's account rather than our class bot. 
