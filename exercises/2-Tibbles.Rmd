@@ -1,0 +1,313 @@
+---
+title: "Tables and Tibbles"
+output: html_notebook
+editor_options: 
+  chunk_output_type: console
+---
+
+Most of what we will do today uses functions from the packages `tidyr` and `dplyr`, which are both included in `tidyverse`. We haven't put every single line of code today into executable codeblocks. If there's no run button, remember how to run lines of code manually (or you can construct your own codeblock if your prefer).
+
+```{r}
+library(tidyverse)
+library(tidytext)
+library(plotly)
+```
+
+# Navigating Files in R
+
+If you've only browsed files through a GUI you might not realize this, but your computer's directories can be invoked through paths that look much like URLs in a web browser. To illustrate this, we're going to browse around in your Terminals for a few minutes before we jump back into R.
+
+At any given time, R refers to a particular "working directory" on your hard drive. Any paths you construct to import or export data will take this working directory as their root. So if my working directory is `"Dropbox/Teaching/HDA/DHSI-hda/"` then invoking `"/data/US-Newspapers.csv"` would begin from the working directory and look for a subdirectory called `data` and then a file named `US-Newspapers.csv` within that working directory. Many, many times problems importing or working with data can be tracked down to R looking in the wrong working directory. To check your working directory, you can run:
+
+```{r}
+getwd()
+```
+
+If the working directory returned is not the one you expect or want, you can set it in two ways: through the menus for `Session --> Set Working` Directory or through the command below, typed into the console. The path to the directory you want should go inside the quotation marks. Remember that you can use your tab key to help you autocomplete fields in R; that can be very useful for getting to precisely the right folder on your hard drive.
+
+```{r}
+setwd("")
+```
+
+When you construct a file path in R, your working directory can be invoked with `.` and your computer's home directory can be invoked with `~`. You can also tell R Studio to look backwards in the directory structure with `..` We'll experiment with this briefly over in the console. Keep in mind too that you can browse your files in in the `Files` pane of RStudio: it's over there next to `Environment`.
+
+# Getting Help with Functions
+
+Here's another useful thing to know. If you want to know what a particular function does, you can access help documentation using `?` or `help()`. So if you wanted to know what the `spread` function (from the package `tidyr`) does, you could run:
+
+?spread
+
+*or* 
+
+help(spread)
+
+# Getting Tabular Data into R
+
+## Creating a Dataframe
+
+A dataframe is a data type that can combine different types of data (strings, numeric, even lists) in a single structure. Dataframes are in many ways like tables you may be familiar with from programs like Excel. It has columns (called variables) and rows (called observations). We can create a very small data frame using the `data_frame` function, like below (note that the function `data.frame` can also do this, but I prefer `data_frame` for reasons I discuss below). 
+
+```{r}
+
+newspapers <- data_frame("title" = c("Sedalia Daily Bazoo","Boons Lick Times","Jefferson Jimplecute"), "founded" = c(1869, 1840, 1848), frequency = c("daily","weekly","weekly"))
+
+```
+
+## Tibbles
+
+Okay, so why are we using `data_frame` rather than `data.frame`? This is because recently, lots of folks have moved away from base R's dataframes and to "tibbles", which are essentially a new protocol for creating dataframes developed by Hadley Wickham, of Tidyverse fame. You can read more about tibbles using the command `vignette("tibble")` in the console. In most ways they act just like dataframes, and indeed they are a subspecies of dataframe, but they correct a few annoyances of the "out of the box" dataframe. One big one: when importing data into a tibble the data types and column names will not be converted to factors as they can be in earlier methods of creating dataframes. 
+
+To convert data into a tibble, you can use the functions `as_data_frame` (with underscores, not periods) or `as_tibble`. You can either convert an existing dataframe or do this upon importing new data by using functions like `read_csv`. In this class we are working almost entirely in the Tidyverse and we'll work almost entirely with tibbles, but these worksheets will usually refer to the broader category, dataframes.
+
+## Browsing Dataframes
+
+You can visually browse the contents of the dataframe using the fuction `View(newspapers)` or you can click the table icon in your `Environment` pane.
+
+When we work with dataframes, we can operate on individual columns using the `$` operator. If we type `newspapers$title` in the console, for instance, it would print all the values from that one column. We usually won't use this to print, however, but to select particular columns to operate on in other ways. Columns can also be selected by their numeric value, so that `newspapers[,1]` also prints the first column in this dataframe. What happens if you put a number before, rather than after, the comma in the brackets?
+
+```{r}
+
+newspapers$title
+newspapers[,1]
+
+```
+
+## Importing Tabular Data
+
+Depending on the structure of the data you wish to read into R, you will typically use `read.table`, `read.csv`, or `scan`. You can sometimes read data in from the web directly, as we did last week, but most often you will have data stored on your computer that you wish to bring into the R environment. Often, if there is something even slightly askew about your input data, `read.table` will fail. This may be frustrating, but this failure is  a general feature of data analysis: programs that don't receive *exactly* the input the expect will simply fail to work, usually "throwing" an error message of some sort. You may have to spend some time troubleshooting your data itself to figure out why it won't import into R.
+
+If you have a file previously saved in the csv (comma-separated-value) format, it may be fast to read it it using the `read_csv` function. (This is simply `read.table` with a certain set of constraints.)
+
+In the example below, you'll need to modify the path in the quotation marks to navigate the folder in your file system to where you have stored the data files for this class. We will be loading the data from the 1840 US census, download from the [National Historical Geographic Information System](https://www.nhgis.org/).
+
+```{r}
+
+census <- read_csv(file = "./data/1840-census-data.csv")
+
+```
+
+Note: we could write out the file path in other ways, depending on precisely how you've organized things. If the line above doesn't work, we will work together to figure out how you need to structure your file path.
+
+# Exploring Dataframes
+
+In addition to using the `$` operator and bracket for subsetting dataframes, let's not forget some of the basic ways of browsing data we discussed yesterday. Can you write code below that print the first lines of the `census` dataframe? The last? Can you print the first or last lines of specific columns in `census`?
+
+```{r}
+
+
+
+```
+
+There are a few other fuctions worth knowing right off the bat. Run the code below: what does `summary` do?
+
+```{r}
+summary(census$Newspapers)
+summary(census$FreeColoredPopulation)
+```
+
+## Subsetting columns
+
+This is a very wide dataframe of census data. In fact, it's a bit too wide for R studio, which will only display 100 columns in the table viewer; this table has 113 columns; the data is still there, it just isn't visible in the viewer. For any given analysis task, we probably don't need all of the columns in such a wide dataframe. Fortunately R and the `tidyverse` packages give us lots of ways to pare down the data we're working with. 
+
+Remember that last week we talked about changing variables. That's one way to pare down a dataset: essentially we invoke the dataframe, select only a few columns of it using the `select` function in `dplyr`, and replace the whole variable with just those selected columns. That would look like this:
+
+```{r}
+
+census <- select(census, QualifyingAreaName, Newspapers, Newspapers_Daily, Newspapers_Weekly, Newspapers_SemiTriWeekly, Periodicals, PrintingOffices, Binderies, NumberofPersonsEmployedinPrintingBinding)
+
+```
+
+Now we have only 9 variables in our dataframe, which is focused on the data recorded about newspapers and printing in the census. In this case we overwrote the whole census variable with this smaller dataframe, but we could have created a new variable focused on printing (say `censusPrinting`) and retained the larger `census` variable as well. 
+
+If you know the data you're importing well, you can also select particular columns on import. I further truncated the columns below so you can see a difference:
+
+```{r}
+
+census <- read_csv(file="./data/1840-census-data.csv")[ , c("QualifyingAreaName", "Newspapers", "Newspapers_Daily", "Newspapers_Weekly", "Newspapers_SemiTriWeekly", "Periodicals", "PrintingOffices")]
+
+```
+
+We can also rename columns with, you guessed it, the `rename` function. That first column in `census` has an awkward name, so let's just change it:
+
+```{r}
+
+census <- rename(census, county = QualifyingAreaName)
+
+```
+
+There are also ways to subset by rows that meet particular conditions, as in:
+
+```{r}
+
+printCenters <- filter(census, PrintingOffices >= 5)
+
+```
+
+We can also add new columns with `mutate`. These new columns can include an entirely new bit of data we wish to add (this can be tricky; we can talk more about what this might mean in person) or can be derived from operations made on other columns, as in:
+
+```{r}
+
+census <- mutate(census, serials = Newspapers + Periodicals)
+head(census$serials)
+
+```
+
+Can you see what happened there?
+
+Finally (in this section), we can rearrange the dataframe. Keep in mind that `arrange` reorders the actual dataframe permanently, or as permanently as is possible in a variable. In later sessions we'll learn how to order things on the fly for particular operations without actually changing the structure of the dataframe itself. To sort by the number of serials in each county, we could write:
+
+```{r}
+
+census <- arrange(census, serials, Newspapers, Periodicals)
+
+```
+
+You only need to specify one column for `arrange` to work, but if you specify more it will use them in sequence, much as you use the letters in words in sequence when sorting into alphabetical order (e.g. first sort by `serials`, then by `Newspapers`, then by `Periodicals`). You'll note that by default `arrange` sorts in ascending order. If we wanted to instead order this dataframe to bring the most active print economies to the top, we would add `desc` to our code:  
+
+```{r}
+
+census <- arrange(census, desc(serials, Newspapers, Periodicals))
+
+```
+
+Okay: in the code block below, import the census data again (use a new variable name) and then select only 3-4 columns of interest. Then filter the dataframe by a value in one of those columns. 
+
+```{r}
+
+
+
+```
+
+# Manipulating Dataframes
+
+Above we made some relatively minor changes to a dataframe, but in the next section we'll do a bit more. As we talk about different methods for manipulating the data in dataframes, the [Data Wrangling Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) will prove very helpful. We recommend you bookmark it, at least, and perhaps print it into a breviary you carry with you at all times for your R devotions. 
+
+## Separate
+
+Let's start with `separate`, which will allow us to do something kind of like RegEx, but simpler, for colums we want to break apart that use a very consistent separator. The newly-renamed `county` column, for instance, actually includes both the county and the state, and since they are consistently divided by a comma and space, we can use the fuction below to separate them into two columns:
+
+```{r}
+
+census <- separate(census, county, into = c("county", "state"), sep = "\\, ")
+
+```
+
+That threw a few errors, though `tidyr` made the separation anyway. If you wanted to investigate one of those problematic observations, you could type in the console `census[1259,]` (or sustitute any of the other rows for 1259). This is another way of selecting particular rows. In this case we're not entering anything after the comma because we want to see all the columns, but you could instead type `census[1259,1:2]` to see row 1259, columns 1-2.
+
+## Gather
+
+For these next functions we're going to reimport our census data but select a different set of columns: those describing the racial/ethnic/gender/age identification of the populations in each county. The current format of this data is "wide," meaning there are many columns of variables. For certain kinds of analyses, these column names are themselves variables, representing the identities of citizens, at least insofar as the census taker appraised them. We might want to `gather` our data into a "long" format, which means there will be many more rows but fewer columns, which will prove useful for certain kinds of analyses. Let's run the code below and talk through it together. If you want to see what each line is doing, run them using ctl-enter rather than the run button.
+
+```{r}
+
+census <- read.csv(file = "./data/1840-census-data.csv")
+census <- select(census, 1,6:81)
+census <- rename(census, county = QualifyingAreaName)
+census_long <- gather(census, "identification", "count", 2:77)
+census_long <- separate(census_long, county, into = c("county", "state"), sep = "\\, ")
+census_long <- na.omit(census_long)
+
+```
+
+## Group_by
+
+Why would we do this? Well, for one we could now use the `group_by()` function on our `identification` column to group all observations of the same identification, and then perform operations on those groups. 
+
+```{r}
+
+census_long <- group_by(census_long, identification)
+census_ids <- summarize(census_long, total_ids = sum(count))
+
+```
+
+That's possibly interesting, but maybe we want to group by identification and then by state, so we can see how these categories break down by state. Fortunately we now have a state column, so we can do this:
+
+```{r}
+
+census_long <- group_by(census_long, state, identification)
+census_ids <- summarize(census_long, total_ids = sum(count))
+
+```
+
+## Spread
+
+Spread, as you might imagine, does just the opposite of gather. It takes long data and makes it wide. So we can run the following to reshape our `census_long` dataframe into something very like the wide dataframe with which we began.
+
+```{r}
+
+census_wide <- spread(census_long, identification, count)
+View(census_wide)
+
+```
+
+# The Pipe Operator
+
+Thus far we have invoked each function in a new line of code. We wanted to start there so that we could be thoughtful about each transformation of our data. As we look forward, however, we wanted to introduce the pipe operator: `%>%`. The pipe allows us to chain together a series of transformations. Let's illustrate this by revising the code from this workbook. Before, we wrote each transformation into a separate line like this:
+
+```{r}
+
+census <- read_csv(file = "./data/1840-census-data.csv")
+census <- select(census, 1,6:81)
+census <- rename(census, county = QualifyingAreaName)
+census_long <- gather(census, "identification", "count", 2:77)
+census_long <- separate(census_long, county, into = c("county", "state"), sep = "\\, ")
+census_long <- na.omit(census_long)
+
+```
+
+Using pipes, we can chain together these operations like so, to create two variables:
+
+```{r}
+
+census <- read.csv(file = "./data/1840-census-data.csv") %>%
+  select(1,6:81) %>%
+  rename(county = QualifyingAreaName)
+
+census_long <- census %>%
+  gather("identification", "count", 2:77) %>%
+  separate(county, into = c("county", "state"), sep = "\\, ") %>%
+  na.omit(census_long)
+
+```
+
+Or like so, to create only one `census_long` variable (note that you'll have to clear your `Global Environment` before running this code to see it actually work.)
+
+```{r}
+
+census_long <- read.csv(file = "./data/1840-census-data.csv") %>%
+  select(1,6:81) %>%
+  rename(county = QualifyingAreaName) %>%
+  gather("identification", "count", 2:77) %>%
+  separate(county, into = c("county", "state"), sep = "\\, ") %>%
+  na.omit(census_long)
+
+```
+
+What did each of these do? We'll talk about that together.
+
+Note that there are some distinct structural differences when using pipes. For one, the variable being transformed is usually invoked at the beginning of the chain, and thus does not appear as an argument in the separate parts of the chain. Compare these piped operations with the line-by-line operations above again. Where do you see `census` or `census_long` invoked in lines 17-22 when they are not in lines 41-46? 
+
+We can also use pipes to make (and view) temporary transformations in our data that won't be saved as variables. This is a very useful way of seeing what a series of operations will do before "really" running them.
+
+```{r}
+
+census_long %>% 
+  spread(identification, count) %>%
+  View()
+
+```
+
+
+# Exercises
+
+Feel free to complete these exercises in code blocks within this worksheet, or you can create a new RMD or R file.
+
+1. Create a new column that shows the ratio of `FreeColoredPopulation` to `SlavePopulation` in each county. You may need to repeat some of the import steps above, and you can use a new variable if you wish. 
+
+2. Create a "long" dataframe with columns for "publication_type" (e.g. "Newspaper") and "count". 
+
+3. Determine the state (not the county!) with the highest population of literate whites over 20 years old, then determine the state with the highest ratio of literate whites to general population.
+
+4. Read in `booktitles-sub.tsv`. You won't be able to use `read_csv` for this tsv file. See if you can figure out how to import a TSV using [Stack Overflow](http://stackoverflow.com/) or [RSeek](http://rseek.org/). Within this dataset, which year saw the most publications? What author was most prolific?
+
+5. Reach goal: What is the oldest children's book in `booktitles-sub.tsv`?
