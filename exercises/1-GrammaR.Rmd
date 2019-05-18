@@ -15,7 +15,11 @@ This version of Ryan's twitterbot assignment was adapted from [an original writt
 
 ## R Markdown
 
+<<<<<<< HEAD
+This is an [R Markdown document](http://rmarkdown.rstudio.com/) (RMD), hence the `.rmd` file extension. R Markdown blends the markdown conventions you are learning in this class with a few customizations that let you embed snippets of code, as well as any outputs (e.g. graphs, maps) produced by that code into Markdown documents. This lets you weave together prose and code, so your readers can see the technical aspects of your work while reading about their interpretive significance. If you [view this document on Github](https://github.com/rccordell/DHSI-HDA/blob/master/exercises/1-GrammaR.Rmd) you can see how RMD translates for presentation on the web. 
+=======
 This is an [R Markdown document](http://rmarkdown.rstudio.com/) (RMD), hence the `.rmd` file extension. R Markdown blends the conventions of Markdown, a simplified markup language with a few customizations: RMD documents let you write MD documents that embed snippets of code, as well as any outputs (e.g. graphs, maps) produced by that code. This lets you weave together prose and code, so your readers can see the technical aspects of your work while reading about their interpretive significance. If you [view this document on Github]() you can see how RMD translates for presentation on the web. 
+>>>>>>> ca76e7822d73bb02be4cf4ee576441686938459d
 
 ## Running Code
 
