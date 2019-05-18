@@ -109,7 +109,7 @@ Change the number in the brackets above to select different words from the list 
 
 At this point we all know about bots on Twitter. In fact, Twitter [stopped tallying the number of bots in its service a few years ago](https://www.buzzfeed.com/williamalden/twitter-has-stopped-updating-its-public-tally-of-bots), but estimates suggest a large proportion of twitter accounts are automated. Many of these are designed to push particular viewpoints or harrass particular users, though recently folks have started building bots [to push back against online abuse](https://www.washingtonpost.com/news/monkey-cage/wp/2016/11/17/this-researcher-programmed-bots-to-fight-racism-on-twitter-it-worked/). I think Samuel Woolley, danah boyd, and Meredity Broussard's ["How to Think About Bots"](https://motherboard.vice.com/en_us/article/qkzpdm/how-to-think-about-bots) provides a nice overview of the potential and pitfalls of online bot culture.
 
-In [the midst of all these wilds](http://lithub.com/encountering-literary-bots-in-the-wilds-of-twitter/), why do I teach students to build *literary* bots in my classes? Well: on the one hand, it's a lot of fun, *and* it can help us understand more about the basics of programming languages, working with APIs (application programming interfaces), and the hidden workings of web services like Twitter. More than that, however, building bots offers a way of seeing literary objects anew and engaging creatively, [provocatively, or even combatively](https://medium.com/@samplereality/a-protest-bot-is-a-bot-so-specific-you-cant-mistake-it-for-bullshit-90fe10b7fbaa) with digital objects and online culture. Breaking down a poem for "mad libs" word substitution, for instance, forces us to think about the building blocks of poems.
+In [the midst of all these wilds](http://lithub.com/encountering-literary-bots-in-the-wilds-of-twitter/), why teach students to build *literary* bots? Well: on the one hand, it's a lot of fun, *and* it can help us understand more about the basics of programming languages, working with APIs (application programming interfaces), and the hidden workings of web services like Twitter. More than that, however, building bots offers a way of seeing literary objects anew and engaging creatively, [provocatively, or even combatively](https://medium.com/@samplereality/a-protest-bot-is-a-bot-so-specific-you-cant-mistake-it-for-bullshit-90fe10b7fbaa) with digital objects and online culture. Breaking down a poem for "mad libs" word substitution, for instance, forces us to think about the building blocks of poems.
 
 ## Toward a Mad-Lib Poetry Bot
 
@@ -156,7 +156,7 @@ paste(c(), collapse ="")
 
 ## Application Programming Interfaces
 
-Next we will perform our substitutions in a different way, by drawing from the Wordnik online dictionary. In order to complete this section, you’ll need to create a few accounts from which we’ll either be drawing or to which we’ll be adding content. Hopefully you already did this after my email before spring break:
+Next we will perform our substitutions in a different way, by drawing from the Wordnik online dictionary. In order to complete this section, you’ll need to create a few accounts from which we’ll either be drawing or to which we’ll be adding content. Hopefully you already did this after our email, since the accounts take some time to be approved:
 
 + Sign up for [a Wordnik account](https://www.wordnik.com/signup) and then [sign up for a Wordnik API Key](http://developer.wordnik.com/). Wordnik is an open-source dictionary from which we will be drawing words to fill in our mad libs.
 
@@ -217,7 +217,7 @@ cat(poem)
 ```
 
 
-Wordnik has put stricter limitations on their API this past year, meaning you might not be able to run the code above over and over again. A less resource-intensive method might be to use `random_word` to create tables of words of the types you need—each request for a given part of speech would only require one API call, rather than one per substitution in the code above. You would then substitute from those (locally saved) lists to generate new poems. That code might look like this:
+Wordnik has put stricter limitations on their API this past year, meaning you might not be able to run the code above over and over again. So, you might have to find a workaround, which will be a common problem when doing this sort of work. A less resource-intensive alternative might be to use `random_word` to create tables of words of the types you need—each request for a given part of speech would only require one API call, rather than one per substitution in the code above. You would then substitute from those (locally saved) lists to generate new poems. That code might look like this:
 
 ```{r}
 
@@ -240,7 +240,7 @@ cat(poem)
 
 ## Tweet, tweet
 
-Now let's introduce Twitter into the mix by using its API to grab a random trending hashtag and insert it into our poem. You will need the consumer key, consumer secret, access token, and access secret from the Twitter application you set up in order to use this code. 
+Now let's introduce Twitter into the mix by using its API to grab a random trending hashtag and insert it into our poem. Using the Twitter API to interact with the service requires a consumer key, consumer secret, access token, and access secret from an application you create within Twitter. Twitter has made the application process for its API more involved, so we thought it would be more streamlined to use a single account for this course. If you want to use your own account in the future, the process should be much the same.
 
 The code below establishes your Twitter credentials and then identifies trending topics based on a geographic location, which is established with the `woeid` variable. `2367105` is the WOEID for Boston, but you could [lookup another location](http://woeid.rosselliot.co.nz/) and use that code if you prefer. The code also filters out any trending topics that do not include hashtags, so that our poem will end with a hashtag, as all internet poems should. How would you view the hashtags pulled from Twitter's API?
 
@@ -266,7 +266,7 @@ poem <- paste(c(list_word(verbs), " thy ", list_word(nouns), " from ", list_word
 cat(poem)
 ```
 
-Then, so long as the resulting poem is less than or equal to 280 characters, we can post it to Twitter. The code below will check if the string `poem` is less than or equal 280 characters and post if it is. If not, it will print a message asking you to rerun the poem generator. We could write this in a slightly more complicated way so the script would automatically rerun the poem generator until it created a poem short enough to tweet.
+Then, so long as the resulting poem is less than or equal to 280 characters, we can post it to Twitter. The code below will check if the string `poem` is less than or equal 280 characters and post if it is. If not, it will print a message asking you to rerun the poem generator. In other words, the computer checks the properties of the elements stored in a variable, and it does something with it according to conditional logic. If we wanted to, we could wrap the poem-writing code we already wrote with this kind of conditional. Then, the script would automatically rerun the poem generator until it created a poem short enough to tweet, which might be convenient! But let's keep things simple and the steps separated. The end result is largely the same, even if the amount of attention required by the user is different.
 
 ```{r}
 if(nchar(poem) <= 280) {
@@ -276,7 +276,7 @@ if(nchar(poem) <= 280) {
   }
 ```
 
-We could do all of this with a longer segment of a poem, of course—or the whole thing!—though the resulting poem would be far too long to tweet! But Twitter isn't the only platform out there for such things. Note that the poem below blends two functions for calling its words.
+We could do all of this with a longer segment of a poem, of course — or the whole thing! — although the resulting poem would be far too long to tweet! But Twitter isn't the only platform out there for such things. Note that the poem below blends two functions for calling its words.
 
 ```{r}
 poem <- paste(c('"Be that ', list_word(nouns), ' our sign of parting, ', list_word(nouns), ' or fiend!" I ', list_word(verbs), ' upstarting— \n "Get thee back into the ', list_word(nouns), ' and the Night\'s ', poem_word("proper-noun"), 'ian shore! \nLeave no black ', list_word(nouns), ' as a token of that ', list_word(nouns), ' thy soul hath ', list_word(verbs), '! \nLeave my loneliness ', list_word(adjectives), '—quit the ', list_word(nouns), ' ', list_word(prepositions), ' my door! \n', list_word(verbs), ' thy beak from out my ', list_word(nouns), ', and take thy ', list_word(nouns), ' from ', list_word(prepositions), ' my ', list_word(nouns), '!" \nQuoth the Ravbot, "Never ', sample(trends$trend, size=1), "!'"), collapse = "")
@@ -284,7 +284,7 @@ poem <- paste(c('"Be that ', list_word(nouns), ' our sign of parting, ', list_wo
 cat(poem)
 ```
 
-Mad Libs style bots like this one are only one possibility for using computational tools to remix cultural objects. I used similar methods to these to create [IshmaFML](https://twitter.com/IshmaFML) (sound it out) and [AhaBlessed](https://twitter.com/AhaBlessed), which mash up lines from *Moby Dick* with sections of tweets using the hashtags #fml and #blessed, respectively, to occasionally hilarious or even evocative results. Creative writers are doing even more interesting and innovative things using computational tools, which can be ludic and evocative, as well as statistical and analytical. For just one example, you might look to the work of a poet like [Nick Monfort](http://nickm.com/poems/) or some of the works in the [Electronic Literature Collection](http://collection.eliterature.org/3/). 
+Mad Libs -style bots like this one are only one possibility for using computational tools to remix cultural objects. I used similar methods to these to create [IshmaFML](https://twitter.com/IshmaFML) (sound it out) and [AhaBlessed](https://twitter.com/AhaBlessed), which mash up lines from *Moby Dick* with sections of tweets using the hashtags #fml and #blessed, respectively, to occasionally hilarious or even evocative results. Creative writers are doing even more interesting and innovative things using computational tools, which can be ludic and evocative, as well as statistical and analytical. For just one example, you might look to the work of a poet like [Nick Monfort](http://nickm.com/poems/) or some of the works in the [Electronic Literature Collection](http://collection.eliterature.org/3/). 
 
 Okay, below let's try writing code that creates a mashup using a poem of your choice. You can make lists, pull from Wordnik, or some combination of the two in order to create your new poems:
 
@@ -298,15 +298,7 @@ Okay, below let's try writing code that creates a mashup using a poem of your ch
 ```
 
 
-# Ending the session
-
-Now, as we end our work, let's be sure to close our sessions on RStudio Server:
-
-```{r}
-q()
-```
-
-# Posting to Your Twitter Account
+# Making your own Twitter Bot
 
 + If you want to post to Twitter, you will need to create a new Twitter account for your bot. Think about what kind of bot you want to make and then sign up. Be sure to add a mobile number to the account, as we’ll need that for one the steps later on.
-+ While signed into your new account, visit [Twitter’s developer site](https://dev.twitter.com/). In the small bottom menu click “Manage Your Apps” and then “Create New App.” In part to stem the proliferation of spam bots, this process has become a bit more involved than it used to be, and the first time you attempt to create an app you will have to write for approval (by a human being!) to Twitter. This will likely take a little while and so would have to happen after class, if you want to make your bot live in the world. Once you've done this, you will substitute your own Twitter keys for those in the script above, which will then enable you to post to your bot's account rather than our class bot. 
++ While signed into your new account, visit [Twitter’s developer site](https://dev.twitter.com/). In the small bottom menu click “Manage Your Apps” and then “Create New App.” In part to stem the proliferation of spam bots, this process has become a bit more involved than it used to be, and the first time you attempt to create an app you will have to write for approval (by a human being!) to Twitter. This will likely take a little while and so would have to happen after this course, if you want to make your bot live in the world. Once you've done this, you will substitute your own Twitter keys for those in the script above, which will then enable you to post to your bot's account rather than our class bot. 
