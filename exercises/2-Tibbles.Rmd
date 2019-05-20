@@ -143,6 +143,8 @@ printCenters <- filter(census, PrintingOffices >= 5)
 
 ```
 
+## Creating New Columns
+
 We can also add new columns with `mutate`. These new columns can include an entirely new bit of data we wish to add (this can be tricky; we can talk more about what this might mean in person) or can be derived from operations made on other columns, as in:
 
 ```{r}
@@ -153,6 +155,8 @@ head(census$serials)
 ```
 
 Can you see what happened there?
+
+## Reordering Data Frames
 
 Finally (in this section), we can rearrange the dataframe. Keep in mind that `arrange` reorders the actual dataframe permanently, or as permanently as is possible in a variable. In later sessions we'll learn how to order things on the fly for particular operations without actually changing the structure of the dataframe itself. To sort by the number of serials in each county, we could write:
 
@@ -178,124 +182,6 @@ Okay: in the code block below, import the census data again (use a new variable 
 
 ```
 
-# Manipulating Dataframes
-
-Above we made some relatively minor changes to a dataframe, but in the next section we'll do a bit more. As we talk about different methods for manipulating the data in dataframes, the [Data Wrangling Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) will prove very helpful. We recommend you bookmark it, at least, and perhaps print it into a breviary you carry with you at all times for your R devotions. 
-
-## Separate
-
-Let's start with `separate`, which will allow us to do something kind of like RegEx, but simpler, for colums we want to break apart that use a very consistent separator. The newly-renamed `county` column, for instance, actually includes both the county and the state, and since they are consistently divided by a comma and space, we can use the fuction below to separate them into two columns:
-
-```{r}
-
-census <- separate(census, county, into = c("county", "state"), sep = "\\, ")
-
-```
-
-That threw a few errors, though `tidyr` made the separation anyway. If you wanted to investigate one of those problematic observations, you could type in the console `census[1259,]` (or sustitute any of the other rows for 1259). This is another way of selecting particular rows. In this case we're not entering anything after the comma because we want to see all the columns, but you could instead type `census[1259,1:2]` to see row 1259, columns 1-2.
-
-## Gather
-
-For these next functions we're going to reimport our census data but select a different set of columns: those describing the racial/ethnic/gender/age identification of the populations in each county. The current format of this data is "wide," meaning there are many columns of variables. For certain kinds of analyses, these column names are themselves variables, representing the identities of citizens, at least insofar as the census taker appraised them. We might want to `gather` our data into a "long" format, which means there will be many more rows but fewer columns, which will prove useful for certain kinds of analyses. Let's run the code below and talk through it together. If you want to see what each line is doing, run them using ctl-enter rather than the run button.
-
-```{r}
-
-census <- read.csv(file = "./data/1840-census-data.csv")
-census <- select(census, 1,6:81)
-census <- rename(census, county = QualifyingAreaName)
-census_long <- gather(census, "identification", "count", 2:77)
-census_long <- separate(census_long, county, into = c("county", "state"), sep = "\\, ")
-census_long <- na.omit(census_long)
-
-```
-
-## Group_by
-
-Why would we do this? Well, for one we could now use the `group_by()` function on our `identification` column to group all observations of the same identification, and then perform operations on those groups. 
-
-```{r}
-
-census_long <- group_by(census_long, identification)
-census_ids <- summarize(census_long, total_ids = sum(count))
-
-```
-
-That's possibly interesting, but maybe we want to group by identification and then by state, so we can see how these categories break down by state. Fortunately we now have a state column, so we can do this:
-
-```{r}
-
-census_long <- group_by(census_long, state, identification)
-census_ids <- summarize(census_long, total_ids = sum(count))
-
-```
-
-## Spread
-
-Spread, as you might imagine, does just the opposite of gather. It takes long data and makes it wide. So we can run the following to reshape our `census_long` dataframe into something very like the wide dataframe with which we began.
-
-```{r}
-
-census_wide <- spread(census_long, identification, count)
-View(census_wide)
-
-```
-
-# The Pipe Operator
-
-Thus far we have invoked each function in a new line of code. We wanted to start there so that we could be thoughtful about each transformation of our data. As we look forward, however, we wanted to introduce the pipe operator: `%>%`. The pipe allows us to chain together a series of transformations. Let's illustrate this by revising the code from this workbook. Before, we wrote each transformation into a separate line like this:
-
-```{r}
-
-census <- read_csv(file = "./data/1840-census-data.csv")
-census <- select(census, 1,6:81)
-census <- rename(census, county = QualifyingAreaName)
-census_long <- gather(census, "identification", "count", 2:77)
-census_long <- separate(census_long, county, into = c("county", "state"), sep = "\\, ")
-census_long <- na.omit(census_long)
-
-```
-
-Using pipes, we can chain together these operations like so, to create two variables:
-
-```{r}
-
-census <- read.csv(file = "./data/1840-census-data.csv") %>%
-  select(1,6:81) %>%
-  rename(county = QualifyingAreaName)
-
-census_long <- census %>%
-  gather("identification", "count", 2:77) %>%
-  separate(county, into = c("county", "state"), sep = "\\, ") %>%
-  na.omit(census_long)
-
-```
-
-Or like so, to create only one `census_long` variable (note that you'll have to clear your `Global Environment` before running this code to see it actually work.)
-
-```{r}
-
-census_long <- read.csv(file = "./data/1840-census-data.csv") %>%
-  select(1,6:81) %>%
-  rename(county = QualifyingAreaName) %>%
-  gather("identification", "count", 2:77) %>%
-  separate(county, into = c("county", "state"), sep = "\\, ") %>%
-  na.omit(census_long)
-
-```
-
-What did each of these do? We'll talk about that together.
-
-Note that there are some distinct structural differences when using pipes. For one, the variable being transformed is usually invoked at the beginning of the chain, and thus does not appear as an argument in the separate parts of the chain. Compare these piped operations with the line-by-line operations above again. Where do you see `census` or `census_long` invoked in lines 17-22 when they are not in lines 41-46? 
-
-We can also use pipes to make (and view) temporary transformations in our data that won't be saved as variables. This is a very useful way of seeing what a series of operations will do before "really" running them.
-
-```{r}
-
-census_long %>% 
-  spread(identification, count) %>%
-  View()
-
-```
 
 
 # Exercises
