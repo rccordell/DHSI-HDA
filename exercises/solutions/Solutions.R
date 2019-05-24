@@ -26,3 +26,9 @@ literate <- arrange(literate, desc(totalLit))
 
 # 4 
 
+# Solutions for Worksheet 3 Questions
+
+# What might we do if we wanted to see all of the rows that caused errors during the `separate` command? 
+
+View(filter(census, is.na(census$state)))
+census %>% filter(is.na(.$state)) %>% View()
