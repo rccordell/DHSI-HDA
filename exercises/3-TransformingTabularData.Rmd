@@ -5,10 +5,9 @@ date: "5/19/2019"
 output: html_document
 ---
 
-
 # Manipulating Dataframes
 
-Above we made some relatively minor changes to a dataframe, but in the next section we'll do a bit more. As we talk about different methods for manipulating the data in dataframes, the [Data Wrangling Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) will prove very helpful. We recommend you bookmark it, at least, and perhaps print it into a breviary you carry with you at all times for your R devotions. 
+In the last lesson we made some relatively minor changes to a dataframe, but in this section we'll do a bit more. As we talk about different methods for manipulating the data in dataframes, the [Data Wrangling Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) will prove very helpful. We recommend you bookmark it, at least, and perhaps print it into a breviary you carry with you at all times for your R devotions. 
 
 ## Separate
 
@@ -16,11 +15,15 @@ Let's start with `separate`, which will allow us to do something kind of like Re
 
 ```{r}
 
+census <- read.csv(file = "./data/1840-census-data.csv")
+census <- rename(census, county = QualifyingAreaName)
 census <- separate(census, county, into = c("county", "state"), sep = "\\, ")
 
 ```
 
-That threw a few errors, though `tidyr` made the separation anyway. If you wanted to investigate one of those problematic observations, you could type in the console `census[1259,]` (or sustitute any of the other rows for 1259). This is another way of selecting particular rows. In this case we're not entering anything after the comma because we want to see all the columns, but you could instead type `census[1259,1:2]` to see row 1259, columns 1-2.
+That threw a few errors, though `tidyr` made the separation anyway. If you wanted to investigate one of those problematic observations, you could select one of the rows from the error message. Try typing this in the console: `census[1263,]` (or sustitute any of the other rows for 1259). This is another way of selecting particular rows. In this case we're not entering anything after the comma because we want to see all the columns, but you could instead type `census[1263,1:2]` to see row 1263, columns 1-2. 
+
+What might we do if we wanted to see all of the rows that caused errors during the `separate` command?
 
 ## Gather
 
@@ -33,13 +36,33 @@ census <- select(census, 1,6:81)
 census <- rename(census, county = QualifyingAreaName)
 census_long <- gather(census, "identification", "count", 2:77)
 census_long <- separate(census_long, county, into = c("county", "state"), sep = "\\, ")
+
+
+```
+
+As before, there were a number of errors when we ran this code. Can you explore those rows as we did above? Why are these rows throwing errors? 
+
+If we wanted to, we could remove any rows with NAs, but we should be thoughtful about when and why we choose to do this.
+
+```{r}
+
 census_long <- na.omit(census_long)
+
+```
+
+Can you reorder or subset this "long" data frame using techniques we've already explored to learn more about what's here?
+
+```{r}
+
+
+
+
 
 ```
 
 ## Group_by
 
-Why would we do this? Well, for one we could now use the `group_by()` function on our `identification` column to group all observations of the same identification, and then perform operations on those groups. 
+Why might we reformat wide data into long? Well, for one we could now use the `group_by()` function on our `identification` column to group all observations of the same identification, and then perform operations on those groups. 
 
 ```{r}
 
@@ -113,7 +136,9 @@ census_long <- read.csv(file = "./data/1840-census-data.csv") %>%
 
 What did each of these do? We'll talk about that together.
 
-Note that there are some distinct structural differences when using pipes. For one, the variable being transformed is usually invoked at the beginning of the chain, and thus does not appear as an argument in the separate parts of the chain. Compare these piped operations with the line-by-line operations above again. Where do you see `census` or `census_long` invoked in lines 17-22 when they are not in lines 41-46? 
+Note that there are some distinct structural differences when using pipes. For one, the variable being transformed is usually invoked at the beginning of the chain, and thus does not appear as an argument in the separate parts of the chain. Compare these piped operations with the line-by-line operations above again. Where do you see `census` or `census_long` invoked in the earlier lines when they are not in the piped lines here? 
+
+## Exploring with Pipes
 
 We can also use pipes to make (and view) temporary transformations in our data that won't be saved as variables. This is a very useful way of seeing what a series of operations will do before "really" running them.
 
