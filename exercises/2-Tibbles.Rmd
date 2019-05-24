@@ -13,9 +13,9 @@ library(tidytext)
 library(plotly)
 ```
 
-# Navigating Files in R
+# Navigating File Structures in R
 
-If you've only browsed files through a GUI you might not realize this, but your computer's directories can be invoked through paths that look much like URLs in a web browser. To illustrate this, we're going to browse around in your Terminals for a few minutes before we jump back into R.
+If you've only ever browsed files through a GUI you might not realize this, but your computer's directories can be invoked through paths that look much like the URLs in a web browser. To illustrate this, we're going to browse around in your Terminals for a few minutes before we jump back into R.
 
 At any given time, R refers to a particular "working directory" on your hard drive. Any paths you construct to import or export data will take this working directory as their root. So if my working directory is `"Dropbox/Teaching/HDA/DHSI-hda/"` then invoking `"/data/US-Newspapers.csv"` would begin from the working directory and look for a subdirectory called `data` and then a file named `US-Newspapers.csv` within that working directory. Many, many times problems importing or working with data can be tracked down to R looking in the wrong working directory. To check your working directory, you can run:
 
@@ -23,13 +23,13 @@ At any given time, R refers to a particular "working directory" on your hard dri
 getwd()
 ```
 
-If the working directory returned is not the one you expect or want, you can set it in two ways: through the menus for `Session --> Set Working` Directory or through the command below, typed into the console. The path to the directory you want should go inside the quotation marks. Remember that you can use your tab key to help you autocomplete fields in R; that can be very useful for getting to precisely the right folder on your hard drive.
+If the working directory returned is not the one you expect or want, you can set it in two ways: through the menus for `Session --> Set Working` Directory, or by typing the command below into the console. The path to the directory you want should go inside the quotation marks. Remember that you can use your tab key to help you autocomplete fields in R; that can be very useful for getting to precisely the right folder on your hard drive.
 
 ```{r}
 setwd("")
 ```
 
-When you construct a file path in R, your working directory can be invoked with `.` and your computer's home directory can be invoked with `~`. You can also tell R Studio to look backwards in the directory structure with `..` We'll experiment with this briefly over in the console. Keep in mind too that you can browse your files in in the `Files` pane of RStudio: it's over there next to `Environment`.
+When you construct a file path in R, your current working directory can be invoked with `.` and your computer user's home directory can be invoked with `~`. You can also tell R Studio to look backwards in the directory structure with `..` We'll experiment with this briefly over in the console. Keep in mind too that you can browse your files in in the `Files` pane of RStudio: it's over there next to `Environment`.
 
 # Getting Help with Functions
 
@@ -45,7 +45,7 @@ help(spread)
 
 ## Creating a Dataframe
 
-A dataframe is a data type that can combine different types of data (strings, numeric, even lists) in a single structure. Dataframes are in many ways like tables you may be familiar with from programs like Excel. It has columns (called variables) and rows (called observations). We can create a very small data frame using the `data_frame` function, like below (note that the function `data.frame` can also do this, but I prefer `data_frame` for reasons I discuss below). 
+A dataframe is a data type that can combine different types of data (strings, numeric, even lists) in a single structure. Dataframes are in many ways like the tables you may be familiar with from spreadsheet programs like Excel. It has columns (called variables) and rows (called observations). We can create a very small data frame using the `data_frame` function, like below (note that the function `data.frame` can also do this, but I prefer `data_frame` for reasons I discuss below). 
 
 ```{r}
 
