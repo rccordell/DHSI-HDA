@@ -63,9 +63,9 @@ message
 
 ```
 
-Before we go any farther, what is `message` in the code above? It's a variable, which means that it stores data, the word "raven", for use in later processing. While Babbage and Lovelace imagined storing variables on physical cards that could be then used as input for the next stage of computation, in R variables are stored in your computer's working memory and designated by the labels we assign them. The `<-` assigns the data to its right to the variable on its left; metaphorically, this command says "take the results of the operation on the right and store it in the container on the left." Data could be loaded from outside R, as we are doing here, or it could be the results of a process within R, such as the transformation of another variable. 
+Before we go any farther, what is `message` in the code above? It's a variable, which means that it stores data, the word "raven", for use in later processing. While Charles Babbage and Ada Lovelace imagined storing variables on physical cards that could be then used as input for the next stage of computation, in R variables are stored in your computer's working memory and designated by the labels we assign them. The `<-` assigns the data to its right to the variable on its left; metaphorically, this command says "take the results of the operation on the right and store it in the container on the left." Data could be loaded from outside R, as we are doing here, or it could be the results of a process within R, such as the transformation of another variable. 
 
-A note: we used `<-` to assign this variable, but you can use `=` to do the same, which is why the code below will do exactly what the code above did:
+A note: we used `<-` to assign this variable, but you can use `=` to do the same:
 
 ```{r}
 

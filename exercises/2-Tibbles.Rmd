@@ -10,7 +10,6 @@ Most of what we will do today uses functions from the packages `tidyr` and `dply
 ```{r}
 library(tidyverse)
 library(tidytext)
-library(plotly)
 ```
 
 # Navigating File Structures in R
@@ -61,7 +60,7 @@ To convert data into a tibble, you can use the functions `as_data_frame` (with u
 
 ## Browsing Dataframes
 
-You can visually browse the contents of the dataframe using the fuction `View(newspapers)` or you can click the table icon in your `Environment` pane.
+You can visually browse the contents of the dataframe using the fuction `View(newspapers)` or you can click the table icon in your `Environment` pane. 
 
 When we work with dataframes, we can operate on individual columns using the `$` operator. If we type `newspapers$title` in the console, for instance, it would print all the values from that one column. We usually won't use this to print, however, but to select particular columns to operate on in other ways. Columns can also be selected by their numeric value, so that `newspapers[,1]` also prints the first column in this dataframe. What happens if you put a number before, rather than after, the comma in the brackets?
 
@@ -98,6 +97,8 @@ In addition to using the `$` operator and bracket for subsetting dataframes, let
 
 ```
 
+This is also a very wide dataframe, and it might be hard to get a sense of the columns from the "spreadsheet" view. Try using the `names` function in the console, which will allow you to easily browse the column titles of a dataframe.
+
 There are a few other fuctions worth knowing right off the bat. Run the code below: what does `summary` do?
 
 ```{r}
@@ -105,7 +106,7 @@ summary(census$Newspapers)
 summary(census$FreeColoredPopulation)
 ```
 
-## Subsetting columns
+## Subsetting Columns
 
 This is a very wide dataframe of census data. In fact, it's a bit too wide for R studio, which will only display 100 columns in the table viewer; this table has 113 columns; the data is still there, it just isn't visible in the viewer. For any given analysis task, we probably don't need all of the columns in such a wide dataframe. Fortunately R and the `tidyverse` packages give us lots of ways to pare down the data we're working with. 
 
@@ -139,13 +140,13 @@ There are also ways to subset by rows that meet particular conditions, as in:
 
 ```{r}
 
-printCenters <- filter(census, PrintingOffices >= 5)
+View(filter(census, PrintingOffices >= 5))
 
 ```
 
 ## Creating New Columns
 
-We can also add new columns with `mutate`. These new columns can include an entirely new bit of data we wish to add (this can be tricky; we can talk more about what this might mean in person) or can be derived from operations made on other columns, as in:
+We can also add new columns with `mutate`. These new columns can include an entirely new bit of data we wish to add (this can be tricky; we can talk more about what this might mean in the next workbook) or can be derived from operations made on other columns, as in:
 
 ```{r}
 

@@ -5,6 +5,12 @@ date: "5/19/2019"
 output: html_document
 ---
 
+```{r}
+library(tidyverse)
+library(tidytext)
+library(stringr)
+```
+
 # Manipulating Dataframes
 
 In the last lesson we made some relatively minor changes to a dataframe, but in this section we'll do a bit more. As we talk about different methods for manipulating the data in dataframes, the [Data Wrangling Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) will prove very helpful. We recommend you bookmark it, at least, and perhaps print it into a breviary you carry with you at all times for your R devotions. 
@@ -25,6 +31,20 @@ That threw a few errors, though `tidyr` made the separation anyway. If you wante
 
 What might we do if we wanted to see all of the rows that caused errors during the `separate` command?
 
+```{r}
+
+
+
+```
+
+The opposite of `separate` is `unite`. Can you combine the `county` and `state` columns again? And then re-separate them?
+
+```{r}
+
+
+
+```
+
 ## Gather
 
 For these next functions we're going to reimport our census data but select a different set of columns: those describing the racial/ethnic/gender/age identification of the populations in each county. The current format of this data is "wide," meaning there are many columns of variables. For certain kinds of analyses, these column names are themselves variables, representing the identities of citizens, at least insofar as the census taker appraised them. We might want to `gather` our data into a "long" format, which means there will be many more rows but fewer columns, which will prove useful for certain kinds of analyses. Let's run the code below and talk through it together. If you want to see what each line is doing, run them using ctl-enter rather than the run button.
@@ -34,8 +54,8 @@ For these next functions we're going to reimport our census data but select a di
 census <- read.csv(file = "./data/1840-census-data.csv")
 census <- select(census, 1,6:81)
 census <- rename(census, county = QualifyingAreaName)
-census_long <- gather(census, "identification", "count", 2:77)
-census_long <- separate(census_long, county, into = c("county", "state"), sep = "\\, ")
+census <- separate(census, county, into = c("county", "state"), sep = "\\, ")
+census_long <- gather(census, "identification", "count", 3:78)
 
 
 ```
@@ -76,20 +96,72 @@ That's possibly interesting, but maybe we want to group by identification and th
 ```{r}
 
 census_long <- group_by(census_long, state, identification)
-census_ids <- summarize(census_long, total_ids = sum(count))
+census_ids <- summarize(census_long, population = sum(count))
+
+```
+
+Can you think of another application for `gather` using the original census data? Experiment in the box below:
+
+```{r}
+
+
+
+
 
 ```
 
 ## Spread
 
-Spread, as you might imagine, does just the opposite of gather. It takes long data and makes it wide. So we can run the following to reshape our `census_long` dataframe into something very like the wide dataframe with which we began.
+Spread, as you might imagine, does just the opposite of gather. It takes long data and makes it wide. If you look at the newly-created `census_ids` dataframe, you might note that, when grouped by state, it might make more sense to organize this data so that the census categories are our rows (observations) and the states our variables (columns). There are fewer states in this data than categories, after all. Run the code below and look at the results. Can you see what has happened and why?
 
 ```{r}
 
-census_wide <- spread(census_long, identification, count)
+census_wide <- spread(census_ids, state, population)
 View(census_wide)
 
 ```
+
+
+## Filter
+
+Perhaps the single most useful function in the tidyverse is `filter`, which allows you to subset observations (rows) by one or more conditions. See the examples below; can you suss out what they're doing?
+
+```{r}
+
+View(filter(census, Female >= 20000))
+View(filter(census, SlavePopulation > WhitePopulation))
+View(filter(census, state == "Massachusetts"))
+View(filter(census, str_detect(county, "Mac")))
+
+
+```
+
+
+A useful operator to combined with `filter` is %in%, which can be used like this to filter by any value found in a list or vector, such as the New England States outlined here:
+
+```{r}
+
+View(filter(census, state %in% c("Massachusetts","Vermont","New Hampshire","Connecticut","Rhode Island","Maine")))
+
+```
+
+However, `%in%` could also be used to filter the rows in one dataframe by the values in a different variable. Look at the code below. Can you tell what's going on?
+
+```{r}
+
+NewEngland <- c("Massachusetts","Vermont","New Hampshire","Connecticut","Rhode Island","Maine")
+View(filter(census, state %in% NewEngland))
+View(filter(census, !(state %in% NewEngland)))
+
+```
+
+Can you think of some other useful filters you might apply?
+
+```{r}
+
+
+```
+
 
 # The Pipe Operator
 
@@ -112,16 +184,16 @@ Using pipes, we can chain together these operations like so, to create two varia
 
 census <- read.csv(file = "./data/1840-census-data.csv") %>%
   select(1,6:81) %>%
-  rename(county = QualifyingAreaName)
+  rename(county = QualifyingAreaName) %>%
+  separate(county, into = c("county", "state"), sep = "\\, ")
 
 census_long <- census %>%
-  gather("identification", "count", 2:77) %>%
-  separate(county, into = c("county", "state"), sep = "\\, ") %>%
+  gather("identification", "count", 3:78) %>%
   na.omit(census_long)
 
 ```
 
-Or like so, to create only one `census_long` variable (note that you'll have to clear your `Global Environment` before running this code to see it actually work.)
+Or like so, to create only one `census_long` variable (note that you'll have to clear `census_long` from your environment before running this code to see it actually work. Try `rm(census_long)` in the console.)
 
 ```{r}
 
@@ -149,3 +221,118 @@ census_long %>%
   View()
 
 ```
+
+## Pipe Development
+
+Okay, now that you have a sense of how pipes work, can you rewrite any more of the code we have already discussed to use pipes instead? Or, can you write code using pipes to explore a different aspect of the census data than we already have?
+
+```{r}
+
+
+
+
+```
+
+
+# More Paths to Explore
+
+There are a number of other fuctions useful for exploring and subsetting data. We will just list them below and then we can discuss each one together. 
+
+```{r}
+
+census %>%
+  distinct(state) %>%
+  View()
+
+census %>%
+  top_n(5, Slave_Female) %>%
+  View()
+
+census %>%
+  group_by(state) %>%
+  top_n(2, Slave_Female) %>%
+  View()
+
+census %>%
+  slice(1:10) %>%
+  View()
+
+census %>%
+  group_by(state) %>%
+  slice(1:10) %>%
+  View()
+ 
+```
+
+What is the difference between `slice` and `top_n`? Can you tell from the way the data is transformed? How does `group_by` change the transformations these fuctions enact?
+
+# Joining Data
+
+For our last exercises in this workbook we will introduce a new dataset, which we will work with more tomorrow. For now I will briefly summarize: this is the Library of Congress' [U.S. Newspapers Directory](https://chroniclingamerica.loc.gov/search/titles/), which catalogs every known newspaper founded in the United States between 1690 and roughly 2014. We import and make a few initial transformations of that data below, but we will discuss that process a bit more fully tomorrow. For now, import the data and take a look at the resulting dataframe.  
+
+```{r}
+
+papers <- read_csv("./data/US-Newspapers.csv") %>%
+  select(title, state, city, start, end, frequency, language) %>%
+  filter(start != 9999) %>% 
+  mutate(end = replace(end, end == 9999, 2014)) %>%
+  mutate(startDecade = paste(substring(start, 1,3))) %>%
+  mutate(startDecade = as.numeric(paste(startDecade, 0, sep=""))) %>%
+  mutate(endDecade = paste(substring(end, 1,3))) %>%
+  mutate(endDecade = as.numeric(paste(endDecade, 0, sep=""))) %>%
+  unique()
+
+```
+
+Looking at our `papers` data and our `census` data, what variables do they share? In other words, what data fields do you see in both datasets, which we might use to bring these data together? Once we identify that, what transformations might we need to enact in order to create a combined dataframe? 
+
+We explore one possibility below, by simplifying both dataframes to the state level, since `papers` displays individual cities, without any corresponding county data, while `census` displays county data, but nothing for individual cities. In order to do this, we will use the `summarize` (or `summarise`—R understands either convention) fuction, which we can discuss together. Note that we use different arguments with `summarize` in the two transformations: can you tell why?
+
+```{r}
+
+papers <- papers %>% 
+  group_by(state) %>% 
+  summarize(papers = n())
+
+census_sum <- census %>% 
+  select(-county) %>% 
+  group_by(state) %>% 
+  summarize_all(funs(sum))
+
+```
+
+Now that both dataframes include a `state` column, we can join them together. As a side question, what would we need to do if the column names did not match: e.g. if it was `State` in one dataframe and `state` in the other?
+
+There are many kinds of joins available in R, each one differing in the order it considers the tables to be joined, how it treats rows without a match, and how much data from each table it retains. Refer to page two of the [data wrangling cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) for a full list of these, but we will experiment with a few below. Run each one of these and look at the resulting `census_sum` dataframe. Why are the results so distinct? Can you discern what rules each join is following to achieve its results?
+
+```{r}
+
+census_sum %>%
+  left_join(papers, by = "state") %>%
+  View()
+
+census_sum %>% 
+  right_join(papers, by = "state") %>%
+  View()
+
+census_sum %>%
+  anti_join(papers, by = "state") %>%
+  View()
+
+papers %>%
+  anti_join(census_sum, by = "state") %>%
+  View()
+
+```
+
+# Exercises
+
+1. Choose some code from an earlier note book that was written line by line and rewrite it using pipes.
+
+2. Perform the necessary transformations and joins so that newspapers are an observation (row) in the `census_wide` dataframe.
+
+3. TBA
+
+4. TBA
+
+5. TBA
