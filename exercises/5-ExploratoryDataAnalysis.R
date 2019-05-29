@@ -1,52 +1,57 @@
----
-title: "Exploratory Data Analysis"
-author: "Ryan Cordell"
-date: "5/25/2019"
-output: html_document
----
-
-```{r}
 library(tidyverse)
 library(tidytext)
+library(stringr)
 library(plotly)
-```
 
+# This file looks and works a bit differently, because it is a regular `.r` file rather than an `.rmd` workbook. We've done this deliberately so we can talk about the kinds of R files you will more often encounter "in the wild." Because these files are not optimized for weaving together prose and code, there will be less explanatory text throughout this file, and we will have to discuss more in detail together. In brief, however, our goal in this lesson is to bridge between the kind of tabular data analysis we have been doing thus far toward text analysis and data visualization. We will overview a number of concepts in this lesson and then delve into each topic in more detail in tomorrow's workbooks.
 
-
-# read a CSV of US Newspapers from 17th to 21st century
+# Let's import our CSV of US Newspaper titles
 
 papers <- read_csv("./data/US-Newspapers.csv") %>%
   select(title, state, city, start, end, frequency, language) %>%
   filter(start != 9999) %>% 
   mutate(end = replace(end, end == 9999, 2014)) %>%
-  mutate(startDecade = paste(substring(start, 1,3))) %>%
-  mutate(startDecade = as.numeric(paste(startDecade, 0, sep=""))) %>%
-  mutate(endDecade = paste(substring(end, 1,3))) %>%
-  mutate(endDecade = as.numeric(paste(endDecade, 0, sep=""))) %>%
+  mutate(frequencyReg = str_replace_all(frequency, "(^[A-Z][a-z]*)([.,-; ]{1,})(.*)", "\\1")) %>%
   unique()
 
-papers$frequency <- gsub("([A-Z][a-z]*)(\\s\\(.*\\))","\\1",papers$frequency)
-
-
-# explore features of papers over time
+# how many weekly newspapers were founded over time?
 
 ggplot(papers %>% filter(frequency == "Weekly")) + geom_histogram(aes(x=start), bins=50)
 
-ggplot(papers %>% filter(frequency %in% c("Weekly","Daily","Biweekly","Semi"))) + 
+# can we compare the growth of various frequencies over time?
+
+ggplot(papers %>% filter(frequency %in% c("Weekly","Daily","Biweekly","Semiweekly"))) + 
   geom_histogram(aes(x=start), bins=50) + 
   facet_wrap(~ frequency, ncol=2) 
 
+# what other aspects of this data might you visualize in a histogram?
+
+# for some analyses and visualizations, years might be too granular a measure. Can you use techniques we've already discussed to create two new columns: `startDecade` and `endDecade`?
+
+# in the code below, we will use `filter` and `ggplot` to explore some trends in our `papers` dataframe. This is similar to what we did in workbook 3, but we are incorporating basic visualizations in order to more easily spot trends in aggregate. 
+
 papers %>% 
-  group_by(startDecade,frequency) %>%
-  summarise(newPapers = n()) %>%
   filter(startDecade >= 1950 & startDecade <= 1980 ) %>%
-  View()
+  ggplot(aes(x=start)) +
+  geom_histogram(bins=20)
 
-ggplot(papers %>% filter(language == "ger")) + geom_histogram(aes(x=start), bins=50)
+papers %>% 
+  filter(language == "ger") %>% 
+  ggplot() + 
+  geom_histogram(aes(x=start), bins=50)
 
-ggplot(papers %>% filter(language %in% language)) + 
+# you might not be interested in the languages we have written a filter for below. How would you figure out what the other languages in the dataset are? Can you edit the code to filter for your chosen languages?
+
+languages <- c("ger","fre","spa","chi")
+
+papers %>% 
+  filter(language %in% languages) %>%
+  ggplot() +
   geom_histogram(aes(x=start), bins=50) + 
   facet_wrap(~ language, ncol=2) 
+
+
+# In the following sections, we will begin introducing basic text analysis and discussing how such techniques might illuminate even a dataset like our `papers`, which do not include long text segements. Tomorrow we will work with lengthier texts. 
 
 # top words in newspaper titles, sorted by frequency
 papers %>% 
@@ -82,38 +87,29 @@ titleWords <- papers %>%
   mutate(decadeCount = length(startDecade)) %>%
   arrange(startDecade,desc(count))
 
-# plot top words since 1800
-ggplot(titleWords %>%
-         filter(startDecade >= 1800)) +
-  aes(x=percentage,y=startDecade,label=word) + 
+# plot top words since 1800; why is this not useful?
+
+titleWords %>% 
+  filter(startDecade >= 1800) %>%
+  ggplot(aes(x=percentage,y=startDecade,label=word)) + 
   geom_point(alpha=.3) + 
   geom_text(check_overlap = TRUE)
 
-# by raw count
-# plot <- ggplot(titleWords %>% 
-#                 filter(startDecade >= 1830 & startDecade <= 1890) %>%
-#                 top_n(5), 
-#               aes(x=startDecade, y=count, color = word)) +
-#  geom_line() +
-#  geom_point()
-
-# ggplotly(plot)
-
-# create percentage column and plot by percentage
+# create percentage column
 newPapers <- papers %>% 
   group_by(startDecade) %>%
   summarise(newPapers = n())
 
-titleWords <- titleWords %>%
-  left_join(newPapers, by = "startDecade") %>%
-  mutate(percentage = count/newPapers) %>%
-  arrange(startDecade, desc(percentage))
+# Can you write code that will use `newPapers` above to create a new column in `titleWords` that records the percentage of titles in which each word appears by decade?
 
-plot <- ggplot(titleWords %>%
-                 filter(startDecade >= 1800 & startDecade <= 1950) %>%
-                 top_n(3) %>% 
-                 filter(percentage >= .02)) +
-  aes(x=startDecade, y=percentage, color = word) +
+
+# Now let's introduce some more sophsticated plots to explore these title words
+
+plot <- titleWords %>%
+  filter(startDecade >= 1800 & startDecade <= 1950) %>%
+  top_n(3) %>% 
+  filter(percentage >= .02) %>%
+  ggplot(aes(x=startDecade, y=percentage, color = word)) +
   geom_line() +
   geom_point(size = .3) +
   ggtitle("Most Used Words in New Newspaper Titles by Decade, 1800-1950") +
@@ -130,52 +126,14 @@ plot <- ggplot(titleWords %>%
 
 ggplotly(plot)
 
-# Or plot by Year and percentage
 
-stopWords <- as_data_frame(c("the", "an", "and", "der", "die", "das", "und", "of","in","aus","dem","or")) %>%
-  rename(word = value)
-
-titleWords <- papers %>% 
-  unnest_tokens(word, title) %>%
-  anti_join(stopWords) %>%
-  group_by(start, word, startDecade, end) %>% 
-  summarize(count = n()) %>%
-  ungroup() %>%
-  group_by(start) %>%
-  arrange(start,desc(count)) 
-
-newPapers <- papers %>% 
-  group_by(start) %>%
-  summarise(newPapers = n())
-
-titleWords <- titleWords %>%
-  left_join(newPapers, by = "start") %>%
-  mutate(percentage = count/newPapers) %>%
-  arrange(start, desc(percentage))
-
-plot <- ggplot(titleWords %>%
-                 filter(start >= 1800 & start <= 1950) %>%
-                 arrange(start,desc(percentage)) %>%
-                 top_n(3)) + 
-  aes(x=start, y=percentage, color = word) +
-  geom_line() +
-  geom_point(size = .3) +
-  ggtitle("Most Used Words in New Newspaper Titles by Year, 1800-1950") +
-  labs(x="Years",y="Percentage of Titles",fill="Word",caption="The top words used in the titles of new newspapers during the nineteenth century by decade") + 
-  theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=18, hjust=0.5)) +
-  theme(axis.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) + 
-  theme(legend.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) +
-  theme(legend.background = element_rect(color = "#efefef")) +
-  theme(plot.caption = element_text(family = "Trebuchet MS", color="#666666", size=10, hjust = 0.5, margin = margin(15, 0, 15, 0))) +
-  theme(axis.text = element_text(family = "Trebuchet MS", color="#aaaaaa", face="bold", size=10)) +
-  theme(panel.background = element_rect(fill = "white")) +
-  theme(panel.grid.major = element_line(color = "#efefef")) +
-  theme(axis.ticks = element_line(color = "#efefef"))
-
-ggplotly(plot)
+# In the space below, can you replicate what we did above by decade, but by year instead?
 
 
-# Create table of extant C19 titles by Year
+
+
+# The code below will take a little while to run, because it is using the start and end dates for each paper to calculate something more complex: in what years was each paper extant? Because this is pretty data intensive, we are only calculating these values for the nineteenth-century newspapers in the dataset. 
+
 extantPapers <- papers %>% 
   filter(start >= 1800 & start <= 1900) %>%
   rowwise() %>%
@@ -188,10 +146,8 @@ extantPapersByYear <- extantPapers %>%
   group_by(year) %>%
   summarise(extantPapers = n())
 
-plot <- ggplot(extantPapersByYear %>%
-                 filter(year <= 2014)) + 
-  aes(x=year, y=extantPapers) +
-  # scale_y_continuous(trans='log2') +
+plot <- extantPapersByYear %>%
+  ggplot(aes(x=year, y=extantPapers)) +
   geom_line() +
   geom_point(size = .3) +
   ggtitle("Number of Extant Newspapers by Year in US History") +
@@ -208,13 +164,13 @@ plot <- ggplot(extantPapersByYear %>%
 
 ggplotly(plot)
 
-ggplot(extantPapers %>% 
-         filter(year > 1850 & 
-                  year <= 1870 &
-                  frequency %in% c("Weekly","Daily"))) + 
+# Once you run the code below, work to modify it meaningfully. Can you adjust the code above creating `extantPapers` and the plot below to find moments in which more daily papers were extant than weekly (or at least when the comparison is closer)?
+
+extantPapers %>% 
+  filter(year > 1850 & year <= 1870 & frequency %in% c("Weekly","Daily")) %>%
+  ggplot() + 
   geom_histogram(aes(x=year), bins=20) + 
   facet_wrap(~ frequency, ncol=2) 
-
 
 # Explore words in paper titles over time
 
@@ -229,11 +185,11 @@ extantTitleWords <- extantTitleWords %>%
   left_join(extantPapersByYear, by = "year") %>%
   mutate(percentage = count/extantPapers)
 
-plot <- ggplot(extantTitleWords %>%
-                 filter(year >= 1800 & year <= 1950) %>%
-                 arrange(year,desc(percentage)) %>%
-                 top_n(10)) +
-  aes(x=year, y=percentage, color = word) +
+plot <- extantTitleWords %>%
+  filter(year >= 1800 & year <= 1950) %>%
+  arrange(year,desc(percentage)) %>%
+  top_n(10) %>%
+  ggplot(aes(x=year, y=percentage, color = word)) +
   geom_line() +
   geom_point(size = .3) +
   ggtitle("Most Used Words in Extant Newspaper Titles by Year, 1800-1950") +
@@ -251,9 +207,7 @@ plot <- ggplot(extantTitleWords %>%
 ggplotly(plot)
 
 
-# Top 10 words by Date
-
-decadeToSearch <- 1850
+# Plotting the top 10 newspaper title words by decade
 
 titleWords %>% 
   filter(startDecade >= 1840 & startDecade < 1900) %>%
@@ -264,6 +218,10 @@ titleWords %>%
   coord_flip() +
   facet_wrap(~ startDecade, ncol=2) 
 
+# or focus on particular decades 
+
+decadeToSearch <- 1850
+
 extantTitleWords %>% 
   filter(year >= decadeToSearch & year < decadeToSearch + 9) %>%
   top_n(5) %>%
@@ -271,14 +229,13 @@ extantTitleWords %>%
   geom_col(aes(x=word, y=percentage, fill=word)) + 
   coord_flip()
 
-
 # compare particular words
 
 compareWords <- list("telegraph","post")
 
-plot <- ggplot(extantTitleWords %>%
-                 filter(word %in% compareWords & year >= 1840 & year < 1900)) +
-  aes(x=year, y=count, color = word) +
+plot <- extantTitleWords %>% 
+  filter(word %in% compareWords & year >= 1840 & year < 1900) %>%
+  ggplot(aes(x=year, y=count, color = word)) +
   geom_line() +
   geom_point(size = .3) +
   ggtitle("Most Used Words in Extant Newspaper Titles by Year, 1800-1950") +
@@ -294,3 +251,7 @@ plot <- ggplot(extantTitleWords %>%
   theme(axis.ticks = element_line(color = "#efefef"))
 
 ggplotly(plot)
+
+# Exercises
+
+TBA!

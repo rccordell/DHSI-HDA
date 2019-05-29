@@ -41,3 +41,75 @@ census %>% filter(is.na(.$state)) %>% View()
 3. `([^"]*)` gets rid of everything before the quotation marks; `[ -]("[A-Za-z].*?")[ -]` finds everything within quotation marks. Once you get rid of the line breaks, `[^\"]*(?:\"([^\"]*)\")? ` does the trick.
 4. `\b\w*([a-zA-z])\1{2,}\w*\b` or `\b\[A-Za-z]*([a-zA-z])\1{2,}\[A-Za-z]*\b` finds all the words with three or more repeated letters. 
 5. `([A-Za-z]+)?([^Cc])(e)(i)(\S*)` finds the words with something ei; replace with `\1\2\4\3\5`
+
+# Solutions for Worksheet 5
+
+The question about creating new columns
+
+```{r}
+papers <- papers %>%
+  mutate(startDecade = paste(substring(start, 1,3))) %>%
+  mutate(startDecade = as.numeric(paste(startDecade, 0, sep=""))) %>%
+  mutate(endDecade = paste(substring(end, 1,3))) %>%
+  mutate(endDecade = as.numeric(paste(endDecade, 0, sep=""))) %>%
+  unique()
+```
+
+Creating a percentage column in `titleWords`
+
+```{r}
+
+titleWords <- titleWords %>%
+  left_join(newPapers, by = "startDecade") %>%
+  mutate(percentage = count/newPapers) %>%
+  arrange(startDecade, desc(percentage))
+
+```
+
+Plotting top title words by year
+
+```{r}
+
+stopWords <- as_data_frame(c("the", "an", "and", "der", "die", "das", "und", "of","in","aus","dem","or")) %>%
+  rename(word = value)
+
+titleWords <- papers %>% 
+  unnest_tokens(word, title) %>%
+  anti_join(stopWords) %>%
+  group_by(start, word, startDecade, end) %>% 
+  summarize(count = n()) %>%
+  ungroup() %>%
+  group_by(start) %>%
+  arrange(start,desc(count)) 
+
+newPapers <- papers %>% 
+  group_by(start) %>%
+  summarise(newPapers = n())
+
+titleWords <- titleWords %>%
+  left_join(newPapers, by = "start") %>%
+  mutate(percentage = count/newPapers) %>%
+  arrange(start, desc(percentage))
+
+plot <- titleWords %>% 
+  filter(start >= 1800 & start <= 1950) %>%
+  arrange(start,desc(percentage)) %>%
+  top_n(3) %>%
+  ggplot(aes(x=start, y=percentage, color = word)) +
+  geom_line() +
+  geom_point(size = .3) +
+  ggtitle("Most Used Words in New Newspaper Titles by Year, 1800-1950") +
+  labs(x="Years",y="Percentage of Titles",fill="Word",caption="The top words used in the titles of new newspapers during the nineteenth century by decade") + 
+  theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=18, hjust=0.5)) +
+  theme(axis.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) + 
+  theme(legend.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) +
+  theme(legend.background = element_rect(color = "#efefef")) +
+  theme(plot.caption = element_text(family = "Trebuchet MS", color="#666666", size=10, hjust = 0.5, margin = margin(15, 0, 15, 0))) +
+  theme(axis.text = element_text(family = "Trebuchet MS", color="#aaaaaa", face="bold", size=10)) +
+  theme(panel.background = element_rect(fill = "white")) +
+  theme(panel.grid.major = element_line(color = "#efefef")) +
+  theme(axis.ticks = element_line(color = "#efefef"))
+
+ggplotly(plot)
+
+```
