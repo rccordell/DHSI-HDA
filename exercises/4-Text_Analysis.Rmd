@@ -1,0 +1,245 @@
+---
+title: "Transformation and Analysis of Textual Data"
+author: "Gregory Palermo"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+So far this week, we've mostly worked with data that's mostly already in a tabular format. This data lends itself well to manipulation and analysis in the `tidyverse`. If we've dealt with text it's been stored in single strings that are easily made a variable in a tibble. It's been fairly straightforward how this data should be structured: each text-based variable probably has a single string that's associated with an observation in the tibble. <add specifics based on Ryan's>
+
+But what happens when the data we have and want to work is in some other form? Humanistic scholarship often deals, for example, with bodies of text: Documents. Transcripts of speeches or proceedings. Books. This text might be stored in a plaintext, or `.txt` file, or a set of them, a corpus. Or, we might be working with text from the web or a project-curated dataset that is "marked up" with tags, which tell us information about its structure or features of potential interest. Or the text we want might be pdf files that have user-selectable text (or maybe that text isn't user-selectable, which is a whole other set of challenges that we won't be able to cover today).
+
+What are some types of textual data we've seen or are working with? How do we get those data it into forms that we know how to deal with?
+
+# Bringing textual data into R
+
+## A Single Text File 
+The first corpus we will look at are the transcripts of US Presidential Inaugural Addresses, compiled by C-Span. Work on this was inspired by Taylor Arnold and Lauren Tilton's [Programming Historian tutorial](https://programminghistorian.org/en/lessons/basic-text-processing-in-r#analyzing-every-state-of-the-union-address-from-1790-to-2016) on "Basic Text Processing in R", in which they analyze State of the Union addresses. (The last time this course ran, Trump hadn't made a State of the Union. Maybe now that's worth revisiting...) I've adapted some of the following code from there.
+
+If you look in the `inaugural` folder, there are a bunch of consistently-named text files, and each has only the content of an address with no other identifying information. Each line in the text file is a paragraph of the transcript.
+
+A single `.txt` file can be read into R, and stored in a variable, with the `readLines` function. This function puts out a character vector (a one-dimensional "array" in which each element is a string of text), with elements for each line in the file. Since we'd probably rather have the whole speech as a unit instead, we can use the `paste` function to "collapse" it at every line break. Take a look at the resulting string. What information about line breaks in the original is retained, and how?
+
+```{r}
+
+trump <- paste(readLines("./data/inaugural/2017-Trump.txt"),collapse = "\n")
+
+trump
+
+```
+
+## Importing a Corpus of Text Files
+
+Using the base-R `dir` function, we can tell R to give us a list of filenames in a directory that meet certain criteria. Can you read the regular expression here that tells R the pattern? What kind of files is it bringing in? Why might we specify, instead of just bringing in all the files in the directory?
+
+```{r}
+base_url <- "./data/inaugural/"
+filenames <- dir(base_url,pattern = "(\\d{4})-([A-Za-z]+).txt")
+```
+
+We need this list of file paths in order to tell R where each file is, in order to read it in. Below, the `paste0` lets us "concatenate" (combine) the base URL (the directory where the files live) with the filename for a text file. Here, let's do the first one in the list.
+
+```{r}
+
+paste0(base_url,filenames[1])
+
+```
+
+Then we have a single file path. Of course, we have multiple files: each has the same base_url, but a different filename. If we want to generate a list of filepaths given multiple filenames, we can wrap what we've done in a `sprintf` function. This will add the base URL we've defined to the beginning of every filename on our list, and store it as a new variable.
+
+```{r}
+filepaths <- sprintf(paste0(base_url,"%s"),filenames)
+
+```
+
+If we create an empty character vector with the `c` function, we can then loop through the filepaths and tell R to read in each file.
+
+```{r}
+inaugural_text <- c()
+for (filepath in filepaths){
+  inaugural_text <- c(inaugural_text, paste((readLines(filepath)), collapse = "\n"))
+  }
+```
+
+Looking at the structure of `text` with the `str` function, what do we have?
+
+```{r}
+str(inaugural_text)
+```
+
+### Associating Text with Metadata
+
+But, uh-oh, we don't know which address is which! In this case, the only identifying informaiton we have about what each file is its name, and the file contains no such information. That identifying metdata is stored instead in an accompanying `.csv` file. Other datasets, however, might have this metadata in a header in each file. (Since this is not really a course in data preparation, we won't cover how to isolate just the text — this is a task, however, that a computer can help us do efficiently.)
+
+The benefit to the separate `.csv` file approach is that we can add to this file later if there are other variables we might find useful to associate with each address, as our interests evolve. The challenge is associating each element in the character vector we've created with its associated metadata.
+
+Calling the `tidyverse` packages, we can load the information in this .csv file in a tibble. What might we put into the `paste0` function below to avoid typing out the whole filepath referencing `metadata.csv`? (Scroll down a bit and see where I defined a variable called `metadata` if you want the answer.)
+
+```{r}
+library(tidyverse)
+
+# metadata <- read_csv(paste0(,))
+
+```
+
+In order to associate each speech with its president and year, the Programming Historian Tutorial exploits a symmetry in the data: that the filenames are chronological, and R reads in the files in the same order as the list of files in the metadata. It thus holds off on adding identifying information about each address until it plots its analysis, rejoining data and metadata later in the process.
+
+However, I'd rather not take that for granted. It might be useful to keep track of what comes from where as we move forward (you'll see why soon).
+
+This is the perfect place to incorporate our newfound knowledge of tabular data! What if we wanted a tibble in which each observation was one of the speeches, and we had a variable identifying the filename? If we rewrite the code above that  brings in the corpus's text files as a function, we can then apply it to transform the list of filenames into a list of character vectors, in the same order, that each has the content of a speech. Then, we can overwite this with a tibble that contains the filename and a character vector containing the text of each speech as variables. Finally, passing the tibble we created through the `unnest()` function lets us have these be strings instead of vectors with a single element.
+
+```{r}
+
+read_address_text = function(filename) {
+  address = paste(readLines(paste0(base_url,filename)),collapse="\n")
+  return(address)
+}
+
+addresses <- filenames %>%
+  lapply(read_address_text)
+
+addresses <- tibble(
+  filename = filenames,
+  text = addresses
+) %>% unnest()
+
+```
+
+The power here is that this filename can serve as a **unique identifier** for the speech. Now, we can use that to link each speech observation to an observation in our metadata tibble, using a join function. R will automatically find the variable that they share (`filename`).
+
+```{r}
+
+metadata <- read_csv(paste0(base_url,"metadata.csv"))
+
+addresses <- inner_join(addresses,metadata)
+
+```
+
+
+# Parsing and Tokenizing Text
+
+Now that we've gotten our texts into a data structure, let's zoom in and look at that same single transcript of Trump's speech as structured data. Rather than loading in the text file, let's find the text it in our `addresses` tibble with the `filter` and `select` functions.
+
+```{r}
+addresses %>% 
+  filter(president == "Trump") %>%
+  select(text) %>%
+  paste()
+```
+
+When you scan this continuous string of text with your eyes, how do you know where a new sentence occurs? How about a paragraph? Going a level in the other direction, how do you know when you're in a new word? How can we tell a computer?
+
+While a parser means something specific in formal computer science speak, we digital humanists talk about **parsing** digitized text the same way we do, for example, if we're speaking colloquially about parsing any object: to parse something is to break it down into parts to understand it. When we **parse,** using a computer, we navigate through a string of characters in order to identify parts of the string and assign names to those parts. Parsing is a form of expressing structure that was formerly implicit, or otherwise represented differently. Like any imposition of structure, it is also a form of boundary work: we have to decide what counts, what doesn't, and what is used to draw the boundaries between them.
+
+One particular type of text parsing is **tokenizing**, in which a text is split into lingusitic units, or "tokens": these can be words, sentences, paragraphs, you name it. Analyzing text at different scales yields different features, which may prompt or be useful for answering different research questions.
+
+While we could use base-R to split text into different units by searching for white space or line breaks, there is no need to reinvent the wheel. Lincoln Mullen has put together a fantastic R package called `tokenizers` with a library of functions that will common ways we commonly parse the components of text.
+
+## Tokenizing by Word
+
+Let's start at the word-level.
+
+```{r}
+library(tokenizers)
+
+addresses %>%
+  group_by(filename) %>%
+  mutate(words = tokenize_words(text)) %>%
+  select(filename,words)
+```
+
+Here, we've created a variable with a list of words associated with each speech. But all we've really done is delimit the words. What happens, isntead, if we unnest that variable?
+
+```{r}
+addresses %>%
+  group_by(filename) %>%
+  mutate(words = tokenize_words(text)) %>%
+  select(filename,words)%>%
+  unnest(words)
+```
+
+Wow! We now have an observation for each word, which is also associated with the speech it's in. Note that if we break the speeches down by word, quite a few observations are no longer unique. What information can we potentially lose, should we otherwise sort these? (Let's discuss.)
+
+```{r}
+addresses %>%
+  group_by(filename) %>%
+  mutate(words = tokenize_words(text)) %>%
+  select(filename,words)%>%
+  unnest(words) %>%
+  arrange(desc(words))
+```
+
+The most basic thing we might look at, here are word frequencies. In that case, the object in question is each *word*, so that's what we should group by. For convenience, I'm going to define a new variable.
+
+```{r}
+address_words <- addresses %>%
+  group_by(filename) %>%
+  mutate(words = tokenize_words(text)) %>%
+  select(filename,words)%>%
+  unnest(words)
+
+address_words %>%
+  group_by(words)%>%
+  summarize(n())
+  
+```
+
+What are the most frequent words here? We may want to subtract out "stop words" if function words aren't important to us. (In what cases might they be?) First, we'll need to import a list of them. Luckily, the tidyverse has one built in.
+
+```{r}
+library(tidytext)
+stopwordlist <- stop_words %>%
+  filter(lexicon == "SMART") %>%
+  select(word)
+
+address_words %>%
+  anti_join(stopwordlist, by = c("words" = "word")) %>% #because the variable is "word" in `tidytext`
+  group_by(words)%>%
+  summarize(count=n()) %>%
+  arrange(-count)%>%
+  top_n(10)
+```
+
+
+What if, instead of in the corpus, we wanted to see the most frequent five words in each address?
+
+```{r}
+address_words %>%
+  anti_join(stopwordlist, by = c("words" = "word")) %>% #because the variable is "word" in `tidytext`
+  group_by(filename,words)%>%
+  summarize(count=n()) %>%
+  arrange(filename,-count) %>%
+  top_n(5) %>% View()
+```
+
+
+## Tokenizing by Sentence
+
+We can do the same for sentences (warning — this one takes a bit more time...):
+```{r}
+addresses %>% group_by(filename) %>%
+  mutate(sentences = tokenize_sentences(text)) %>%
+  select(filename,sentences)%>%
+  unnest(sentences)
+```
+
+## N-grams
+
+
+
+# Exploratory Analysis and Visualization
+
+We will learn some more sophisticated visualization methods, using a `tidyverse` package called `ggplot2`, in our next lesson, but the built-in package `qplot` will serve our simple needs for now.
+
+# XML data with R
+
+There are at least two major situations I can think of that one can expect to be working with mark up. One is if you are working with the _TEI_. The _TEI_, or _Text-Encoding Initiative_, is an XML-language that is currently the de-facto standard for using markup to model texts in digital form. The other situation is if you are scraping content from the web — your browser builds and displays the content of the web pages you visit using html files, and html is a text-based markup language. Parsing
+
+I am far from an expert in XPath, and this is not a course in the language, but good resources exist for this if you are working with XML-based corpora.
+
+# Exercises
+
+1. Plot the top 5 most frequent words in an inauguration address in fifty-year periods.
+
+2. Which addresses are the most frequent words in the inaguration address corpus from?
