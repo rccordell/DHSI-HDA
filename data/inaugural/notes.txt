@@ -1,0 +1,12 @@
+mkdir fixed
+for i in *.txt; do iconv -f us-ascii -t utf-8 $i > fixed/$i; done
+doesn’t work because ascii IS utf-8…
+turns out that it was an iso file that was screwing it up
+
+SO
+
+iconv -f iso-8859-1 -t utf-8 2005-Bush.txt > 2005-Bush-fixed.txt
+
+regex I used to make CSV from filenames: pasted filenames into text editor
+(\d{4})-([A-Za-z]+).txt
+\1,\2
