@@ -6,7 +6,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-So far this week, we've mostly worked with data that's mostly already in a tabular format. This data lends itself well to manipulation and analysis in the `tidyverse`. If we've dealt with text it's been stored in single strings that are easily made a variable in a tibble. It's been fairly straightforward how this data should be structured: each text-based variable probably has a single string that's associated with an observation in the tibble. <add specifics based on Ryan's>
+So far this week, we've mostly worked with data that's mostly already in a tabular format. This data lends itself well to manipulation and analysis in the `tidyverse`. If we've dealt with text it's been stored in single strings that are easily made a variable in a tibble. It's been fairly straightforward how this data should be structured: each text-based variable probably has a single string that's associated with an observation in the tibble. For example, <add specifics based on Ryan's>
 
 But what happens when the data we have and want to work is in some other form? Humanistic scholarship often deals, for example, with bodies of text: Documents. Transcripts of speeches or proceedings. Books. This text might be stored in a plaintext, or `.txt` file, or a set of them, a corpus. Or, we might be working with text from the web or a project-curated dataset that is "marked up" with tags, which tell us information about its structure or features of potential interest. Or the text we want might be pdf files that have user-selectable text (or maybe that text isn't user-selectable, which is a whole other set of challenges that we won't be able to cover today).
 
