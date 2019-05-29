@@ -85,12 +85,11 @@ library(tidyverse)
 
 In order to associate each speech with its president and year, the Programming Historian Tutorial exploits a symmetry in the data: that the filenames are chronological, and R reads in the files in the same order as the list of files in the metadata. It thus holds off on adding identifying information about each address until it plots its analysis, rejoining data and metadata later in the process.
 
-However, I'd rather not take that for granted. It might be useful to keep track of what comes from where as we move forward (you'll see why soon).
+However, I'd rather not take that for granted. It might be useful to keep track of what comes from where as we move forward (you'll see why soon). This is the perfect place to incorporate our newfound knowledge of tabular data! What if we create a tibble in which each observation was one of the speeches, and we had a variable identifying the filename?
 
-This is the perfect place to incorporate our newfound knowledge of tabular data! What if we wanted a tibble in which each observation was one of the speeches, and we had a variable identifying the filename? If we rewrite the code above that  brings in the corpus's text files as a function, we can then apply it to transform the list of filenames into a list of character vectors, in the same order, that each has the content of a speech. Then, we can overwite this with a tibble that contains the filename and a character vector containing the text of each speech as variables. Finally, passing the tibble we created through the `unnest()` function lets us have these be strings instead of vectors with a single element.
+If we rewrite the code above that brings in the corpus's text files as a function, we can then apply it to transform the list of filenames into a list of character vectors. Each of these vectors has the content of the associated speech. 
 
 ```{r}
-
 read_address_text = function(filename) {
   address = paste(readLines(paste0(base_url,filename)),collapse="\n")
   return(address)
@@ -98,24 +97,27 @@ read_address_text = function(filename) {
 
 addresses <- filenames %>%
   lapply(read_address_text)
+```
 
+Then, since the filenames and the list of character vectors containing the speeches are in the same order, we can match them up in a tibble! This tibble will contain, as its variables, the filename and a list of the speech text character vectors. Since each of these vectors only has a single element, it's probably not convenient to have to ask the computer for the single element of that vector all the time. So, finally, we can passing the tibble we created through the `unnest()` function to create an observation for each element in the character vector associated with each speech; since there's only one element in each of these character vectors, each speech will have a single observation.
+
+```{r}
 addresses <- tibble(
   filename = filenames,
-  text = addresses
-) %>% unnest()
+  text = addresses) %>%
+  unnest()
 
 ```
 
 The power here is that this filename can serve as a **unique identifier** for the speech. Now, we can use that to link each speech observation to an observation in our metadata tibble, using a join function. R will automatically find the variable that they share (`filename`).
 
 ```{r}
-
-metadata <- read_csv(paste0(base_url,"metadata.csv"))
+metadata <- read_csv(paste0(base_url,"metadata.csv")) %>%
+  mutate(year = as.integer(year))
 
 addresses <- inner_join(addresses,metadata)
 
 ```
-
 
 # Parsing and Tokenizing Text
 
@@ -202,7 +204,7 @@ address_words %>%
 ```
 
 
-What if, instead of in the corpus, we wanted to see the most frequent five words in each address?
+What if, instead of in the whole corpus, we wanted to get a bit more granular, seeing the most frequent five words in each address?
 
 ```{r}
 address_words %>%
@@ -210,13 +212,14 @@ address_words %>%
   group_by(filename,words)%>%
   summarize(count=n()) %>%
   arrange(filename,-count) %>%
-  top_n(5) %>% View()
+  top_n(5)
 ```
 
 
 ## Tokenizing by Sentence
 
-We can do the same for sentences (warning — this one takes a bit more time...):
+We can do the same for sentences.
+
 ```{r}
 addresses %>% group_by(filename) %>%
   mutate(sentences = tokenize_sentences(text)) %>%
@@ -224,9 +227,56 @@ addresses %>% group_by(filename) %>%
   unnest(sentences)
 ```
 
+It might be interesting to facet what we've done so far by political affiliation. Maybe presidents from some parties use certain words more or less than others in their addresses to the people.
+
+```{r}
+presidential_affiliations <- read_csv(paste0(base_url,"affiliations.csv")) %>%
+  rename(president = "PRESIDENT", term="TERM", party="POLITICAL PARTY")
+```
+
+
+Since our dataset only includes last names, we have to disambiguate between the Roosevelts to join these. We could do this by adding first names to our inaugural metadata, but instead, let's try matching them up by the years of each presidential administration. First, we'll need to use regular expressions to split the term (a date range) into start and end dates. (I brought in a new `dplyr` function called `case_when`. Can you infer how it works?)
+
+We'll also need a package called `fuzzyjoin` in order to join using a range of years instead of just a single year, like we did in Workbook 3. (The syntax of this package's functions are a little funky.)
+
+```{r}
+
+
+presidential_affiliations <- presidential_affiliations %>%
+  mutate(start = as.integer(str_replace_all(term,"(\\d{4})(-)?(\\d{4})?","\\1"))) %>%
+  mutate(end = as.integer(str_replace_all(term,"(\\d{4})(-)?(\\d{4})?", "\\3"))) %>%
+  mutate(end = case_when(is.na(end) ~ start,
+                              TRUE ~ end
+  )
+           )
+
+administrations <- presidential_affiliations %>%
+  select(party,start,end)
+
+library(fuzzyjoin)
+
+addresses <- fuzzy_left_join(
+  addresses,
+  administrations,
+  by = c(
+    "year" = "start",
+    "year" = "end"
+  ),
+  match_fun = list(`>=`, `<`)
+) %>%
+  select(filename,text,year,president,party)
+
+```
+
+## Sentiment Analysis
+
+Sujhet
+
 ## N-grams
 
+stylistic analysis (stock phrases between different presidents); 30-year increments
 
+### comparative across different texts
 
 # Exploratory Analysis and Visualization
 
