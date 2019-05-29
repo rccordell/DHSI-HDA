@@ -1,0 +1,281 @@
+---
+title: "Data Cleaning"
+author: "Ryan Cordell"
+date: "5/27/2019"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(stringr)
+```
+
+When we attempted to merge historical newspaper and census data in the last exercise, we encountered one of the biggest challenges for analyzing data—and particularly humanistic data, which can often be quite messy in ways that can make analyzing categories or comparing datasets difficult, even when those datasets ostensibly describe the same things in the world. Recall what happened when we tried to join our newspapers to our census records by state. There were many states that just didn't match, sometimes because of an error in data entry—a state name spelled incorrectly will be seen by R as a distinct value—or because of the messiness of history—some state or territory names have changed over time and might be recorded differently in different datasets. 
+
+Depending on what we want to learn about a dataset like these, we might decide to edit these values in order to create more consistent categories: a practice typically described as "data cleaning." In the following exercise we will demonstrate some practical ways to clean tabular data. However, throughout this lesson we will throughout keep in mind (and in our active discussion) Katie Rawson and Trevor Muñoz's argument ["Against Cleaning,"](http://curatingmenus.org/articles/against-cleaning/) seeking to cultivate a mindset that makes choices thoughtfully, rather than reflexively, about how to "normalize" humanities data and when to resist that impulse.
+
+# Getting Started
+
+To begin, let's reload the Library of Congress' [U.S. Newspapers Directory](https://chroniclingamerica.loc.gov/search/titles/), which catalogs every known newspaper founded in the United States between 1690 and roughly 2014. This time, let's talk through the full import process, including the initial transformations to the data happening on import. In fact, let's first import the data with no transformations, look at it, and compare it to the same data imported with initial transformations:
+
+```{r}
+
+papers <- read_csv("./data/US-Newspapers.csv")
+
+```
+
+When you load `papers` from the CSV without any transformations, what do you notice about it? Try sorting by some of the specific variables. Does anything stand out that might make this data challenging to quantify? To visualize? How might you approach those challenges?
+
+Ok, now we can import with the transformations *we* might make from the start. If you want to make different choices, however, feel free to modify this code (though if you do, know that some of your results may vary as we move through the rest of the workbook).
+
+```{r}
+
+papers <- read_csv("./data/US-Newspapers.csv") %>%
+  select(title, state, city, start, end, frequency, language) %>%
+  filter(start != 9999) %>% 
+  mutate(end = str_replace_all(end, "9999", "2014"))
+
+```
+
+If you look at `str_replace_all`, you will begin to see what we will work on in this workbook. This is a simple find and replace, much as you might have done in other applications and contexts, but we will build toward more complex substitutions.
+
+Let's explore this data a bit in order to understand what kinds of regularization we might want in order to help our analyses. In the next few workbooks, we will begin to introduce visualizations as methods of exploratory data analysis. We won't fully explain the code behind these visualizations yet, but we will have a workbook devoted to visualization tomorrow in which we will break down the logic of `ggplot`, the library we will use for graphs in this course. 
+
+If you run the code below, you can see immediately one challenge of this data for analysis or visualization. When you run the code, you may have to wait a few minutes for the graph to render. If it's not immediately clear what's wrong with that graph, run the second block of code to see the data itself.
+
+```{r}
+
+papers %>% 
+  ggplot(aes(x = frequency)) +
+  geom_bar()
+
+papers %>% 
+  group_by(frequency) %>% 
+  summarize(count = n()) %>%
+  View()
+
+```
+
+If you simply wanted to see each of the values in the `frequency` column, without worrying about how many of each appear, you could also use `unique(papers$frequency)`. Try that in the console if you're curious. 
+
+The way that frequency was recorded in this data was quite variable, and these many categories represent both differences among those collecting the data across time and geography—some of these seem like different names for the same issue schedule—as well as earnest attempts to record the individual quirks of historical newspaper publication schedules. While we would certainly want to retain these many nuances in the data itself, we might in fact want to gather some of these near categories together for the purposes of large-scale analysis. If we wanted to compare relative frequencies of distribution over time, for instance, it might in fact be more important that a given paper was issued, roughly, on a daily basis, even if it was actually issued "daily, except Sun." We could simply discard the values that depart from the dominant categories—they are, overall, much smaller categories—as in these examples:
+
+```{r}
+
+papers %>% 
+  filter(frequency %in% c("Weekly","Daily","Biweekly","Semiweekly","Monthly","Semimonthly")) %>%
+  ggplot(aes(x = frequency)) +
+  geom_bar()
+
+papers %>%
+  filter(frequency %in% c("Weekly","Daily","Biweekly","Semiweekly","Monthly","Semimonthly")) %>%
+  ggplot(aes(x=start)) +
+  geom_histogram(bins=50) + 
+  facet_wrap(~ frequency, ncol=2) 
+
+```
+
+But while each of the individual categories we have filtered out might represent only a few publications, in aggregate we are significantly reshaping our data by ignoring them. We might need a different approach that helps us include those subcategories in our analyses, and for that purpose we will turn to regular expressions. 
+
+# Regular Expressions
+
+## Useful resources
+
+Regular expressions can be pretty baffling, even for folks who've used them for years. Even your instructors don't use RegEx everyday. We don't have its intricacies memorized. Typically we use RegEx when faced with a problem that requires us to standardize some aspect of a dataset. When we encounter those problems, however, we typically need to refer to a RegEx guide to remind ourselves precisely what symbols translate to what textual patterns. Which is to say: you don't need to memorize RegEx syntax in order to find Regex useful. What's most essential is that you are able to identify what kinds of problems RegEx might help you work through. There are a number of useful tutorials and resources online for Regex, including these:
+
+1. Doug Knox's ["Understanding Regular Expressions"](http://programminghistorian.org/lessons/understanding-regular-expressions) tutorial at the Programming Historian provides a nice introduction into the basics of RegEx for cleaning historical data.
+2. Several years ago a graduate student, Jonathan Fitzgerald, pointed me (Ryan) to [Regular Expressions 101](https://regex101.com/), which allows you to test expressions and breaks down precisely what they're doing in the Explanation and Match Information panels. Fitz said he likes that "it makes transparent what the RegEx is doing" and I agree. We will use this resource today.
+3. This [Regular Expressions Quick Start](http://www.regular-expressions.info/quickstart.html) gives a useful overview of the core RegEx you'll need for today's work, and the larger resource delves into details for the future.
+4. Once you understand the basics of RegEx matching, this [cheat sheet](http://web.mit.edu/hackl/www/lab/turkshop/slides/regex-cheatsheet.pdf) may help you recall precisely the characters you need for particular patterns. 
+5. And this cheat sheet focuses specifically on [Basic Regular Expressions in R](https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf), including the quirks of R's RegEx implementation that we will discuss below. 
+
+There are a number of programs that allow you to make use of RegEx, often through a more powerful version of the "Find and Replace" feature you may have used before. We will talk about a few of these in class today, and then briefly explore how RegEx can be used within a programming language such as R. When preparing this class, we actually debated whether a full lesson on RegEx was necessary, given that it's something of a diversion from learning R proper, but ultimately we decided that data cleaning is such a frequent component of data analysis that we should delve into it. 
+
+## RegEx Basics
+
+In brief, regular expressions (RegEx) provide a way to abstractly describe the structure of texts. You can use these abstractions to  Using RegEx, you can specify patterns that will allow you to quickly make changes across a dataset, rather than correcting data line by line. 
+
+Let's say I have a spreadsheet full of email addresses from different domains, providers, etc. (e.g. r.cordell@northeastern.edu, r.cordell@neu.edu, rccordell@gmail.com). We can read each of these and recognize them as email addresses, but we might also look across them to think about what formal textual pattern constitutes an email address: 
+
+1. a series of upper- and/or lower-case letters, digits, or symbols (from a set of allowed symbols);
+2. an `@` symbol
+3. a series of upper- and/or lower-case letters, digits, of symbols
+4. a period
+5. a series of three letters
+
+In fact this only describes US-based email addresses, as those from other countries can have longer suffixes (e.g. `.co.uk`), but this gives you a sense of how you might outline the abstract structure of text strings that human readers would recognize as email address. In RegEx you might search the following to find email addresses: 
+
+`([A-Za-z0-9._%+-]+)@([A-Za-z0-9-]+)\.([A-Za-z]{2,4})`
+
+To understand what this is doing, let's use [Regular Expressions 101](https://regex101.com/). Type an email address or two into the "Test String" box and then copy and paste that RegEx above into the regular expression box. Did it work, or not? We will walk through how this matching happens and troubleshoot any that don't work together. We'll also experiment with other RegEx that would have accomplished the same task.
+
+
+
+## Cleaning Data
+
+In the next section, we will be thinking about how to approach cleaning a dataset using RegEx. We will focus on the `frequency` field in our `papers` dataframe. To start, however, let's just paste the values below into the "Text String" box at [Regular Expressions 101](https://regex101.com/). 
+
+```
+
+Daily
+Biweekly.
+Daily (Monday-Friday)
+Weekly (published every Saturday)
+Weekly (semiweekly Oct. to June)
+Daily (except Sun.?)
+Daily (exc. Sun.)
+Daily, (except Sun. and Mon.)
+Daily (during annual Mercer County fair)
+Weekly, Oct. 6, 1922-Mar. 27, 1964
+Semiweekly (Wednesdays & Saturdays)
+Daily (except Christmas, New Year's Day, Memorial Day, Labor Day, and July 4th)
+Daily except combined weekend issue
+Daily, every evening.
+Monthly (Semimonthly in October)
+Semimonthly during the academic year (except academic holidays)
+
+```
+
+There are actually 1,915 distinct `frequency` values in this dataset (across only 154,472 observations), and it's probably impossible to standardize them all with a single regular expression. Our goal, however, is to figure out what RegEx would convert many of these idiosyncratic frequencies into a standard pattern: a simple designation of `Daily`, `Weekly`, `Semiweekly`, `Monthly`, `Semimonthly`, or so on. For this exercise, we will seek to eliminate all of the additional information following commas or contained in parentheses, though we hope to talk about why we are making these decisions, and what alternatives we might propose. As we work, we'll want to consider:
+
+1. What consistent textual patterns can we describe abstractly in each line, and perhaps between lines?
+2. What steps would we need to follow—and in what order—to simplify these values as we wish?
+3. Are there any aspects of the text we cannot describe through RegEx and might require more direct intervention?
+
+As we work, you might be well served pasting RegEx that does what you want it to do into this document along with explanatory notes. If you surround it with `grave marks` (\`) R and/or Markdown will recognize it as code. 
+
+Once we've experimented a bit on the RegEx 101 site, we will return to this workbook to talk about how RegEx is implemented in R. 
+
+===============================
+
+# A Brief RegEx Glossary
+
+The following guide to basic RegEx operators was (very lightly) adapted from Prof. Schmidt's RegEx exercise in a 2015 course at Northeastern University titled Humanities Data Analysis.
+
+## Basic Operators:
+
+### `*`, `?` and `+`
+
++ `*` matches the preceding character **any number of times,* including no times at all.
++ `+` matches the preceding expression **at least one time.**
++ `?` matches the preceding expression exactly **zero or one times.**
+
+### `[]`
+
+You can use brackets to indicate a **range** of characters. Suppose you are searching through the Schmidt family records, but learn that 18th century families often spelled the name "Schmitt." The regular expression `Schmi[td]t` would match either spelling. 
+
+### `()`
+
+Parenthesis let you group a set of characters together. That is useful with replacements, described below: but it also lets you apply the operators above to **groups** of words.
+
+Suppose you have a document full of references to John Quincy Adams, but that it sometimes calls him "John Q. Adams" and sometimes "John Quincy Adams." If you want to standardize, you want to make the whole "uincy" field optional. You can do this by searching for the following regex:
+
+`John Q(uincy)?.? Adams`
+
+Note that you need the period too, or else it won't match for `John Q. Adams`.
+
+### `.`
+
+One last special character is the period, which matches *any single character*. The previous regex, for John Q. Adams, 
+
+The most capacious regex of all is `.*` which tells the parser to match "any character any number of times." There are situations where this can be useful, particularly inside another regex.
+
+### `^`
+
+If typed after an opening square bracket, the caret negates the character class inside the brackets. Thus `f[^i]at` would match `feat` but not `fiat`.
+
+### `{}`
+
+For most cases, `*`, `+`, or `?` will work to capture an expression. But if you want to specify a particular number of times, you can use angle brackets. So to find Santa Claus, you could type `(Ho){3}`. (Just to clarify: that is totally Ben Schmidt's joke, not Ryan Cordell's).
+
+## Replacements
+
+The syntax for replacing a regex will change from language to language, but the easiest substitution is to replace a regex by a string. I'll use here perl syntax, which gives the name of the operation (`s/` for substitute, `m/` for "match") separated by forward slashes. More recent languages or text editors may have a different syntax, but the important thing is that any substituting regex has two primary parts; the field to be matched, and its substitution.
+
+## Escaping special characters
+
+Sometimes, of course, you'll actually want to search for a bracket, parenthesis, or other special character that appear in the text of your data.
+
+To describe a literal bracket in a regex, you use the so-called "escape character": the
+backslash, `\`. "Escaping" a character means putting a backslash in front of it, so that it takes a special meaning. To represent a literal period, for example, you'd have to specify the regex `\.`. The backslash is hardly ever used in normal writing, so it makes a safe choice for this: but you can always "escape" even the backslash itself, by prefacing it with another backslash: `\\`
+
+## Group matches
+
+In addition to escaping those special characters, regexes also allow you to create *other* special characters.
+
+The most powerful ones, and the ones best worth knowing, take their meaning from the context of the regular expression. 
+
+When you use parentheses in a regex, it doesn't only create a group for matching: it also sets aside that group for future reference. Those can be accessed by escaping a digit from one to ten.
+
+That means that you can replace a string contextually.
+
+If you wanted to replace every occurrence of "ba" in a text with "ab," say, you could simply run the following substitution:
+
+`s/ba/ab/`
+
+But what if you actually want to swap any two letters?
+
+`s/(b)(a)/\2\1/` does the same thing, but more generally. You could put anything into the parentheses.
+
+Say you wanted to reformat a list of names from Firstname Lastname format to `Lastname, Firstname`. 
+
+The regex `s/(.*) (.*)/\2, \1/` matches any characters, followed by a space, followed by any characters, and replaces them with the second group and the first group.
+
+## Creating other special characters.
+
+Other important special characters come from prefacing letters.
+
+* `\n`: a "newline"
+* `\t`: a **tab**
+
+In addition, other special characters will match a whole **range** of letters.
+Usually, there would be a way to write these as a regular expression on their own:
+but it can be very helpful to have a more succinct version. Some of the most useful are:
+
+* `\w`: Any **word** character. (The same as `[A-Za-z]`).
+* `\W`: Any **non-word** character. (The same as [^A-Z-a-z])
+* `\d`: Any **numeric** (digit) character.
+* `\D`: Any **non-numeric** (digit) character.
+
+(If you are working in non-English languages, there are unicode extensions that work off the special character `\p` (or `\P` to designate the inverse of a selection). `\p{L}` matches
+any unicode letter, for example. See [the unicode web site](http://www.unicode.org/reports/tr18/) for more on this.)
+
+
+# Regular Expressions in R
+
+Regular expressions can be deployed in many ways in various R packages, but most commonly are used in the `grep` family of functions in base R and in the `tidytext` package. We will discuss them both below, but in general I (Ryan) prefer the implementation in `tidytext`, particularly in the ways it integrates with other functions in the `tidyverse`.
+
+In the code below, we will attempt to implement the Regular Expression we developed on RegEx101 to update the publication frequencies in our `papers` dataframe. We will walk through the first substitution together:
+
+```{r}
+
+papers <- papers %>%
+  mutate(frequencyReg = gsub("(^[A-Z][a-z]*)([.,-; ]{1,})(.*)", "\\1", frequency))
+
+papers <- papers %>%
+  mutate(frequencyReg = str_replace_all(frequency, "(^[A-Z][a-z]*)([.,-; ]{1,})(.*)", "\\1"))
+
+```
+
+Okay, that helped quite a lot! Notice that we did not replace the data in the `frequency` column, but instead used `mutate` to create a new column with the regularlized values. We made that choice to retain the particulars of the source data, but you could choose to simply overwright the `frequency` column if you preferred. 
+
+Despite that work, there are still many values in `frequencyReg` that were not captured by this RegEx pattern, and so were not transformed. Can you print a list of the current values in that column and then write a RegEx that updates another pattern in the column? You might also consider the values in the `state` column. Are there any inconsistencies there RegEx might help us address?
+
+```{r}
+
+
+
+
+```
+
+
+
+# Exercises
+
+These exercises will all make use of data in the course Github, some of which we haven't used yet. You will have to recall how to load the data first, and then make the changes requested using the methods outlined above.
+
+1. Import `crewlists.csv` as a dataframe named `crewlists`. Convert the full date in the `ApproximateDeparture` column to just the year in a new `DepartureYear` column. 
+2. In `crewlists`, use RegEx to create two columns for crew members' first names and last names from the column `FullName` into two columns. Once you do this with RegEx (using either `grep` or `str_replace_all`), reimport `crewlists.csv` using a pipe to `separate` the column on import. 
+3. Delete all text *not* enclosed in quotation marks in *The Narrative of William W. Brown, a Fugitive Slave*.
+4. Using the file `words.txt`, determine what words in the dictionary contain the same letter three times in a row. 
+5. A stretch goal: write a regex that changes the spelling of all words in a document (you can choose—a novel from Project Gutenberg, perhaps, or even the dictionary in `words.txt`) so that they conform to the rule "I before e, except after c."

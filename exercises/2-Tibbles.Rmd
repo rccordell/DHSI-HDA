@@ -9,7 +9,6 @@ Most of what we will do today uses functions from the packages `tidyr` and `dply
 
 ```{r}
 library(tidyverse)
-library(tidytext)
 ```
 
 # Navigating File Structures in R
