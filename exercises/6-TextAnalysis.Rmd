@@ -50,7 +50,6 @@ Then we have a single file path. Of course, we have multiple files: each has the
 
 ```{r}
 filepaths <- sprintf(paste0(base_url,"%s"),filenames)
-
 ```
 
 If we create an empty character vector with the `c` function, we can then loop through the filepaths and tell R to read in each file.

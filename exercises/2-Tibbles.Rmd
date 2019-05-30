@@ -39,11 +39,72 @@ Here's another useful thing to know. If you want to know what a particular funct
 
 help(spread)
 
-# Getting Tabular Data into R
+Not only will this documentation help you understand what a particular function does, it will also tell you what package it belongs to, so you can load that package if necessary. Look next to the function name in the help document (it should be in the top left corner of the Help window). The value in curly brackets (e.g. `{base}`, `{tidyr}`, `{stringr}`) identifies which package a given function belongs to or whether it is part of base R. 
+
+# Data in R
+
+In R we most typically work with four data types: vectors, lists, matrices, and dataframes. We can delve into these a bit further in discussion, but here are brief descriptions of each:
+
+### Vector
+
+The vector, or more specifically the atomic vector, is the core data type in R and, in fact, is what other R datatypes comprise. A vector can hold a single type of data from R's 6 data types:
+
++ character
++ numeric (real or decimal)
++ integer
++ logical
++ complex
+
+So you can create a character vector with the code `x <- c("humanities","data","analysis")` or a numeric vector with the code `x <- c(1,25,87)`. If you type `class(x)` or `typeof(x)` in the console after you create this variable, you will see its data type printed.
+
+Note that the function `c()`, which we used above to combine elements into a single vector, can also be used to add data to an existing vector: `x <- c(x, "2019")`. Why are we able to add `2019` to our `x` vector whether it is comprised of character strings or numbers, since vectors require a single data type?
+
+### Matrices
+
+A matrix in R is really a special type of vector that has two dimensions, or rows and columns. Like a vector, a matrix can only include data of a single type. We won't spend much time with matrices in this class, but if we get to topic modeling we will encounter them. 
+
+### Lists
+
+A list is another special type of vector that can include a mixture of data types. Look at the code below. The `list` function creates a list, while the function `as.list` could be used to coerce data in another type into a list. If we create a list using the initial code below, we can then use `summary()` to see the different data types for each element. You can also use double brackets to query a specific item from a list, as we demonstrate below. 
+
+```{r}
+
+x <- list("humanities","data","analysis",2019)
+
+class(x)
+class(x[[1]])
+class(x[[4]])
+
+```
+
+By default, R imported "2019" as a numeric value, but if we wanted it instead to be treated as a character string, we could use `as.character()` to coerce R into treating it as such. And if we then decided to simplify our list into a vector (because it includes only one data type), we could use `unlist()` to do so (note that this will fail if "2019" is still a numeric value.
+
+```{r}
+
+x <- list("humanities","data","analysis",as.character(2019))
+summary(x)
+
+x <- unlist(x)
+
+```
+
+Lists can even include lists as items in the lists (it's an inception-friendly data type). Create the list below and then use `class()` to investigate its items:
+
+```{r}
+
+x <- list("humanities","data","analysis",list(2015,2017,2019))
+
+```
+
+## Dataframes
+
+We will spend most of our week with the last major data type in R, the dataframe. Technically, dataframes are lists in which each item is a vector, and all the vectors are the same length. This means that across a given row, a dataframe can contain many data types (it's a list) but each column in the dataframe can only contain one data type (it's a vector). If that's confusing, don't worry: in pratice, we find that dataframes are the easiest datatype for newcomers to R to understand, given how much they resemble familiar metaphors for working with data, such as the spreadsheet.
+
+# Working with Dataframes
 
 ## Creating a Dataframe
 
-A dataframe is a data type that can combine different types of data (strings, numeric, even lists) in a single structure. Dataframes are in many ways like the tables you may be familiar with from spreadsheet programs like Excel. It has columns (called variables) and rows (called observations). We can create a very small data frame using the `data_frame` function, like below (note that the function `data.frame` can also do this, but I prefer `data_frame` for reasons I discuss below). 
+Dataframes are in many ways like the tables you may be familiar with from spreadsheet programs like Excel. It has columns (called variables) and rows (called observations). We can create a very small data frame using the `data_frame` function, like below (note that the function `data.frame` can also do this, but I prefer `data_frame` for reasons I discuss below). 
 
 ```{r}
 
