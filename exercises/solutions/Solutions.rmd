@@ -47,22 +47,47 @@ census %>% filter(is.na(.$state)) %>% View()
 The question about creating new columns
 
 ```{r}
-papers <- papers %>%
-  mutate(startDecade = paste(substring(start, 1,3))) %>%
+papers <- papers %>% 
+  mutate(startDecade = str_sub(start, 1, 3)) %>%
   mutate(startDecade = as.numeric(paste(startDecade, 0, sep=""))) %>%
-  mutate(endDecade = paste(substring(end, 1,3))) %>%
+  mutate(endDecade = str_sub(end, 1,3)) %>%
   mutate(endDecade = as.numeric(paste(endDecade, 0, sep=""))) %>%
   unique()
 ```
 
-Creating a percentage column in `titleWords`
+Creating a percentage column in `topWords`/`titleWords`
 
 ```{r}
+
+newPapers <- papers %>% 
+  group_by(startDecade) %>%
+  summarise(newPapers = n())
 
 titleWords <- titleWords %>%
   left_join(newPapers, by = "startDecade") %>%
   mutate(percentage = count/newPapers) %>%
   arrange(startDecade, desc(percentage))
+
+
+topWords <- function(x, decade1, decade2, nwords) {
+  y <- x %>% 
+    filter(startDecade >= decade1 & startDecade <= decade2) %>%
+    group_by(startDecade) %>%
+    summarise(newPapers = n())
+  stopWords <- as_data_frame(c("the", "an", "and", "der", "die", 
+                               "das", "und", "of", "in","aus","dem","or")) %>%
+    rename(word = value)
+  x %>%
+    filter(startDecade >= decade1 & startDecade <= decade2) %>%
+    unnest_tokens(word, title) %>%
+    anti_join(stopWords) %>%
+    group_by(startDecade, word) %>% 
+    summarize(count = n()) %>%
+    left_join(y, by = "startDecade") %>%
+    mutate(percentage = count/newPapers) %>%
+    arrange(startDecade, desc(percentage), desc(count)) %>%
+    top_n(nwords)
+}
 
 ```
 
@@ -70,36 +95,37 @@ Plotting top title words by year
 
 ```{r}
 
-stopWords <- as_data_frame(c("the", "an", "and", "der", "die", "das", "und", "of","in","aus","dem","or")) %>%
-  rename(word = value)
+topWords <- function(x, year1, year2, nwords) {
+  y <- x %>% 
+    filter(start >= year1 & start <= year2) %>%
+    group_by(start) %>%
+    summarise(newPapers = n())
+  stopWords <- as_data_frame(c("the", "an", "and", "der", "die", 
+                               "das", "und", "of", "in","aus","dem","or")) %>%
+    rename(word = value)
+  x %>%
+    filter(start >= year1 & start <= year2) %>%
+    unnest_tokens(word, title) %>%
+    anti_join(stopWords) %>%
+    group_by(start, word, startDecade, end) %>% 
+    summarize(count = n()) %>%
+    ungroup() %>%
+    group_by(start) %>% 
+    left_join(y, by = "start") %>%
+    mutate(percentage = count/newPapers) %>%
+    arrange(start, desc(percentage), desc(count)) %>%
+    top_n(nwords)
+}
 
-titleWords <- papers %>% 
-  unnest_tokens(word, title) %>%
-  anti_join(stopWords) %>%
-  group_by(start, word, startDecade, end) %>% 
-  summarize(count = n()) %>%
-  ungroup() %>%
-  group_by(start) %>%
-  arrange(start,desc(count)) 
+titleWords <- topWords(papers,1800,1950,3)
 
-newPapers <- papers %>% 
-  group_by(start) %>%
-  summarise(newPapers = n())
-
-titleWords <- titleWords %>%
-  left_join(newPapers, by = "start") %>%
-  mutate(percentage = count/newPapers) %>%
-  arrange(start, desc(percentage))
-
-plot <- titleWords %>% 
-  filter(start >= 1800 & start <= 1950) %>%
-  arrange(start,desc(percentage)) %>%
-  top_n(3) %>%
+plot <- titleWords %>%
+  top_n(3) %>% 
   ggplot(aes(x=start, y=percentage, color = word)) +
   geom_line() +
   geom_point(size = .3) +
-  ggtitle("Most Used Words in New Newspaper Titles by Year, 1800-1950") +
-  labs(x="Years",y="Percentage of Titles",fill="Word",caption="The top words used in the titles of new newspapers during the nineteenth century by decade") + 
+  ggtitle(paste("Most Used Words in New Newspaper Titles by Decade, ", min(titleWords$start), "-", max(titleWords$start))) +
+  labs(x="Decades",y="Percentage of Titles",fill="Word",caption="The top words used in the titles of new newspapers during the nineteenth century by decade") + 
   theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=18, hjust=0.5)) +
   theme(axis.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) + 
   theme(legend.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) +

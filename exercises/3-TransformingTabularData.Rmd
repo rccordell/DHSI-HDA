@@ -270,7 +270,7 @@ For our last exercises in this workbook we will introduce a new dataset, which w
 
 ```{r}
 
-papers2 <- read_csv("./data/US-Newspapers.csv") %>%
+papers <- read_csv("./data/US-Newspapers.csv") %>%
   select(title, state, city, start, end, frequency, language) %>%
   filter(start < 1840 & end > 1840) %>% 
   unique()
@@ -317,6 +317,17 @@ papers %>%
   View()
 
 ```
+
+# Exporting Data
+
+After transforming data in these ways, you might want to export the results of your work for use in another program (or to import for further analysis in R later on). Depending on precisely what format you need, there are different functions for export. We will focus on `write.csv`
+
+```{r}
+
+write.csv(census_wide, file = "./output/census_wide.csv")
+
+```
+
 
 # Exercises
 
