@@ -1,0 +1,76 @@
+---
+title: "Topic Models"
+author: "Ryan Cordell"
+date: "5/30/2019"
+output: html_document
+---
+
+```{r}
+
+library(tidyverse)
+library(tidytext)
+library(tokenizers)
+library(topicmodels)
+
+```
+
+Okay, to get started today, we are going to load some different text data: works of fiction drawn from the [Wright American Fiction project](http://webapp1.dlib.indiana.edu/TEIgeneral/projectinfo.do?brand=wright) out of Indiana University. The methods we are discussing could be applied to texts of many kinds, however, including historical datasets like the presidential addresses we discussed yesterday. We are going to load these texts using a script created by former HDA RA [Jonathan Fitzgerald](http://jonathandfitzgerald.com/), which will also give you a chance to see code written by a different writer from either of your instructors. Before running the line below, open the file `readWright.R` and look at the code: do you understand each thing that happening? If not, let's discuss together. 
+
+```{r}
+
+source("readWright.R")
+
+```
+
+Note that the existing code does not remove the citation information at the beginning of the text fields. Can you write code using RegEx that will do so?
+
+```{r}
+
+
+```
+
+
+```{r}
+
+wrightChunks <- chunk_text(allWRIGHTtext$text, chunk_size = 100, doc_id = allWRIGHTtext$title) %>%
+  as_data_frame() %>%
+  gather(doc_id, text)
+
+words <- wrightChunks %>%
+  unnest_tokens(word, text)
+
+wordCounts <- words %>%
+  anti_join(stop_words) %>%
+  group_by(doc_id) %>%
+  count(word, sort = TRUE) %>%
+  ungroup()
+
+booksDTM <- wordCounts %>%
+  cast_dtm(doc_id, word, n)
+
+booksLDA <- LDA(booksDTM, k = 10, method="Gibbs", control=list(alpha=0.5))
+
+bookTopics <- tidy(booksLDA, matrix = "beta")
+
+topTerms <- bookTopics %>%
+  group_by(topic) %>%
+  top_n(10, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
+
+topTerms %>%
+  mutate(term = reorder(term, beta)) %>%
+  ggplot(aes(term, beta, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  coord_flip()
+
+
+booksLDAgamma <- tidy(booksLDA, matrix = "gamma")
+
+
+
+
+```
+
+

@@ -19,7 +19,7 @@ Let's start with `separate`, which will allow us to do something kind of like re
 
 ```{r}
 
-census <- read.csv(file = "./data/1840-census-data.csv")
+census <- read_csv(file = "./data/1840-census-data.csv")
 census <- rename(census, county = QualifyingAreaName)
 census <- separate(census, county, into = c("county", "state"), sep = "\\, ")
 
@@ -49,7 +49,7 @@ For these next functions we're going to reimport our census data but select a di
 
 ```{r}
 
-census <- read.csv(file = "./data/1840-census-data.csv")
+census <- read_csv(file = "./data/1840-census-data.csv")
 census <- select(census, 1,6:81)
 census <- rename(census, county = QualifyingAreaName)
 census <- separate(census, county, into = c("county", "state"), sep = "\\, ")
@@ -180,7 +180,7 @@ Using pipes, we can chain together these operations like so, to create two varia
 
 ```{r}
 
-census <- read.csv(file = "./data/1840-census-data.csv") %>%
+census <- read_csv(file = "./data/1840-census-data.csv") %>%
   select(1,6:81) %>%
   rename(county = QualifyingAreaName) %>%
   separate(county, into = c("county", "state"), sep = "\\, ")
@@ -195,7 +195,7 @@ Or like so, to create only one `census_long` variable (note that you'll have to 
 
 ```{r}
 
-census_long <- read.csv(file = "./data/1840-census-data.csv") %>%
+census_long <- read_csv(file = "./data/1840-census-data.csv") %>%
   select(1,6:81) %>%
   rename(county = QualifyingAreaName) %>%
   gather("identification", "count", 2:77) %>%
