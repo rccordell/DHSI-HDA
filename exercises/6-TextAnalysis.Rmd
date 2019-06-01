@@ -137,7 +137,9 @@ One particular type of text parsing is **tokenizing**, in which a text is split 
 
 While we could use base-R to split text into different units by searching for white space or line breaks, there is no need to reinvent the wheel. Lincoln Mullen has put together a fantastic R package called `tokenizers` with a library of functions that will common ways we commonly parse the components of text.
 
-## Tokenizing by Word
+## Scales
+
+### Tokenizing By Word
 
 Let's start at the word-level.
 
@@ -150,7 +152,7 @@ addresses %>%
   select(filename,words)
 ```
 
-Here, we've created a variable with a list of words associated with each speech. But all we've really done is delimit the words. What happens, isntead, if we unnest that variable?
+Here, we've created a variable with a list of words associated with each speech. But all we've really done is delimit the words. What happens, instead, if we unnest that variable?
 
 ```{r}
 addresses %>%
@@ -171,18 +173,22 @@ addresses %>%
   arrange(desc(words))
 ```
 
-The most basic thing we might look at, here are word frequencies. In that case, the object in question is each *word*, so that's what we should group by. For convenience, I'm going to define a new variable.
+
+#### Word Counts and Frequencies
+
+The most basic thing we might look at, here are word frequencies across the whole corpus. In that case, the object in question is each *word*, so that's what we should group by. For convenience, I'm going to define a new variable.
 
 ```{r}
 address_words <- addresses %>%
   group_by(filename) %>%
-  mutate(words = tokenize_words(text)) %>%
-  select(filename,words)%>%
-  unnest(words)
+  mutate(word = tokenize_words(text)) %>%
+  select(filename,word) %>%
+  unnest(word)
 
 address_words %>%
-  group_by(words)%>%
-  summarize(n())
+  group_by(word)%>%
+  summarize(count = n()) %>%
+  arrange(-count)
   
 ```
 
@@ -195,52 +201,115 @@ stopwordlist <- stop_words %>%
   select(word)
 
 address_words %>%
-  anti_join(stopwordlist, by = c("words" = "word")) %>% #because the variable is "word" in `tidytext`
-  group_by(words)%>%
+  anti_join(stopwordlist)
+  group_by(word)%>%
   summarize(count=n()) %>%
   arrange(-count)%>%
   top_n(10)
 ```
 
-
-What if, instead of in the whole corpus, we wanted to get a bit more granular, seeing the most frequent five words in each address?
+What if, instead of in the whole corpus, we wanted to get a bit more granular, considering each address? What are the most frequent five words in each?
 
 ```{r}
 address_words %>%
-  anti_join(stopwordlist, by = c("words" = "word")) %>% #because the variable is "word" in `tidytext`
-  group_by(filename,words)%>%
+  anti_join(stopwordlist) %>%
+  group_by(filename,word)%>%
   summarize(count=n()) %>%
   arrange(filename,-count) %>%
   top_n(5)
 ```
 
-
-## Tokenizing by Sentence
-
-We can do the same for sentences.
+Or maybe, at this level, we want to compare how long the speeches are. One way we could quantify length is word count. R can help us to do this very quickly.
 
 ```{r}
-addresses %>% group_by(filename) %>%
+address_words %>%
+  group_by(filename) %>%
+  summarize(count = n()) %>%
+  arrange(-count)
+```
+
+#### Word Lengths
+
+While this is great in getting a sense of how long  How do we model how long a word is?
+
+```{r}
+address_word_length <- address_words %>%
+  mutate(length = str_length(word))
+
+address_word_length %>%
+  group_by(filename) %>%
+  summarize(mean_length = mean(length))
+```
+
+Great! But not so fast: sometimes, a calculation we've done at a distance may not be doing what we think it is. What could we do to check these results? (One option might be to filter by a single speech and calculate some values for that, cross-checking with the above results...)
+
+```{r}
+
+```
+
+It's also kind of hard to compare values in a table. Let's plot it! Here, we might bring in the original tibble so we can incorporate other metadata so we can include the president's names in our plot. (I'm including `year` here in our `group_by` so that it will still appear in our summary, and we can order our plot chronologically.) Try to focus on the join here, rather than the grammar of the `ggplot` function — we'll be going over that in another lesson.
+
+```{r}
+left_join(address_word_length,addresses) %>%
+  group_by(president,year) %>%
+  summarize(mean_length = mean(length)) %>%
+  ggplot(.,
+         aes(x=year, y=mean_length)) +
+  geom_point() +
+  geom_smooth() +
+  geom_text(aes(label=president,
+                hjust=0,
+                vjust=0))
+  
+```
+
+What trends do we see? What stands out? What might we want to look into in more detail?
+
+### Tokenizing by Sentence
+
+We can, alternatively, tokenize by sentence to compare the sentence lengths in inaugural addresses. It's pretty easy to do this by adapting the structure of the code above, changing some variables. But we run into some friction: note that there's a couple more steps involved in figuring out the lengths of sentences, since we can't use `str_length` anymore. What might we do instead?
+
+```{r}
+address_sentences <- addresses %>% group_by(filename) %>%
   mutate(sentences = tokenize_sentences(text)) %>%
   select(filename,sentences)%>%
   unnest(sentences)
+
+address_sentence_length <- address_sentences %>%
+  group_by(filename,sentences) %>%
+  mutate(word = tokenize_words(sentences)) %>% 
+  unnest() %>%
+  summarize(length = n()) %>%
+  arrange(-length)
+  
+left_join(address_sentence_length,addresses) %>%
+  group_by(president,year) %>%
+  summarize(mean_length = mean(length)) %>%
+  ggplot(.,
+         aes(x=year, y=mean_length)) +
+  geom_point() +
+  geom_smooth() +
+  geom_text(aes(label=president,
+                hjust=0,
+                vjust=0))
 ```
 
-It might be interesting to facet what we've done so far by political affiliation. Maybe presidents from some parties use certain words more or less than others in their addresses to the people.
+Wow, there are some *long* sentences in early addresses! How do these trends correspond with word length?
+
+## Adding in New Metadata to Facet
+
+It might be interesting to facet what we've done so far by political affiliation. Maybe presidents from some parties use certain words more or less than others in their addresses to the people, or are more likely to use longer sentences.
 
 ```{r}
 presidential_affiliations <- read_csv(paste0(base_url,"affiliations.csv")) %>%
   rename(president = "PRESIDENT", term="TERM", party="POLITICAL PARTY")
 ```
 
-
 Since our dataset only includes last names, we have to disambiguate between the Roosevelts to join these. We could do this by adding first names to our inaugural metadata, but instead, let's try matching them up by the years of each presidential administration. First, we'll need to use regular expressions to split the term (a date range) into start and end dates. (I brought in a new `dplyr` function called `case_when`. Can you infer how it works?)
 
 We'll also need a package called `fuzzyjoin` in order to join using a range of years instead of just a single year, like we did in Workbook 3. (The syntax of this package's functions are a little funky.)
 
 ```{r}
-
-
 presidential_affiliations <- presidential_affiliations %>%
   mutate(start = as.integer(str_replace_all(term,"(\\d{4})(-)?(\\d{4})?","\\1"))) %>%
   mutate(end = as.integer(str_replace_all(term,"(\\d{4})(-)?(\\d{4})?", "\\3"))) %>%
@@ -265,30 +334,129 @@ addresses <- fuzzy_left_join(
 ) %>%
   select(filename,text,year,president,party)
 
+addresses
 ```
 
-## Sentiment Analysis
+Now that our `addresses` tibble includes party information, we could repeat all of the above with this new information. In the interest of time, let's move on to a different kind of analysis.
 
-Sujhet
+## Using a Lexicon: Sentiment Analysis
+
+So far, our simple counts have quantified properties of these speeches' language without much regard to their content. While these formal aspects indeed carry meaning, distant analyses don't need to assume that all text contributes equally to meaning. One way that we can combat this problem is to assign, or code, meanings to certain words over others. We saw some of this processes when we removed stop words: there, we decided that function words were less important to our analysis than other words with more lexical meaning. 
+
+Here, we're going to model this lexical meaning of words using *sentiment analysis*, which makes use of lexicons that assign a sentiment to each word in an amassed list of words. Ryan has had this to say about the method:
+
+"Sentiment analysis is a method for tracing the emotional valences of texts. It does this, at base, by assigning an emotional valence to each word in a given text from a menu of possibilities. There are different SA algorithms that construe these possibilities differently, and there's a robust debate in computer science and related fields about which of these best represent the realities of language that SA models. Like any field, there are competing theories and methods, from which we will experiment with a few. But you should not construe the analyses we will conduct below as the only possibilities within the sentiment analysis field. Remember that humans design, debate, and modify algorithms: they are expressions of human intentions and desire for understanding, not impersonal structures descended from on high."
+
+So how do we do it? Once again, `tidytext` has assembled helpful data for performing different types of text analysis. Here, let's call the NRC Word-Emotion Association Lexicon. (Note that using a lexicon like this starts by tokenizing at th word level. What assumptions does this make, and what information do we potentially "lose"?)
+
+What possible sentiments are there?
+
+```{r}
+sentiments <- get_sentiments("nrc") # %>% filter(sentiment == "anger")
+
+sentiments %>%
+  group_by(sentiment) %>%
+  summarize()
+```
+
+Joining a `sentiments` tibble we define to our `address_words` tibble will let us see the sentiments of these words.
+
+We can use a left join to retain observations for inaugural address words that aren't in the lexicon. What words in our corpus are missing? Note, for example, that we already lose plurals. How to remedy that, or any other, is beyond our scope, but important questions to ask might be: (1) How many words does my corpus have that are not being represented, and how do I go about parsing my text for them? (2) To what degree does including those words or not affect the result of my analysis, given my particular corpus? We can 
+
+```{r}
+address_words %>%
+  left_join(sentiments)
+
+address_words %>%
+  left_join(sentiments) %>%
+  filter(is.na(sentiment))
+```
+
+Once we've done this preliminary assessment, we can start asking informed questions. What presidents have given speeches with the most angry words?
+
+```{r}
+address_words %>% 
+  inner_join(addresses) %>%
+  inner_join(sentiments) %>%
+  filter(is.na(sentiment) == FALSE) %>%
+  filter(sentiment == "anger") %>%
+  group_by(president,sentiment) %>%
+  summarize(count = n()) %>%
+  arrange(-count)
+```
+
+Since these are inagural addresses, do we have a lot of anticipatory words? Using the above, write some code that will find the words that match that sentiment.
+
+```{r}
+
+```
+
+Note, already, that there's overlap here. Can we think of the reason that absolute counts of words with certain sentiments might not be the best way to characterize sentiment with respect to the rest of the corpus? What might we do instead to regularize these frequencies?
+
+```{r}
+
+```
+
+A potentially more interesting thing we might do is to plot the sentiment over each address. Let's load a differnet lexicon that codes words in a binary positive/negative model. Finally, we'll plot the 9 most recent addresses.
+
+```{r}
+## not working yet!!!!!! 
+
+sentiments2 <- get_sentiments("bing")
+
+test <- address_words %>%
+  left_join(addresses) %>%
+  inner_join(sentiments2) %>%
+  count(filename, president, index = as.numeric(rownames(.)) %/% 80, sentiment) %>% #this is throwing an error (what's the floor divide 80 for?)
+  spread(sentiment, n, fill = 0) %>%
+  mutate(sentiment = positive - negative)
+
+recent_addresses <- addresses %>%
+  arrange(-year) %>%
+  slice(1:9)
+
+ggplot(test %>% filter(filename %in% recent_addresses$filename), 
+       aes(index, sentiment, fill = filename)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  facet_wrap(~filename, ncol = 3, scales = "free_x")
+```
 
 ## N-grams
 
+Another way me might start to take into account the content of our text while modeling it is to . This may help us account for the assumptions involved in tokenizing at the word level, is to incorporate some more context for each word into our analysis. 
+
 stylistic analysis (stock phrases between different presidents); 30-year increments
 
-### comparative across different texts
+### Comparing N-grams across different texts
 
-# Exploratory Analysis and Visualization
-
-We will learn some more sophisticated visualization methods, using a `tidyverse` package called `ggplot2`, in our next lesson, but the built-in package `qplot` will serve our simple needs for now.
-
-# XML data with R
+# Parsing XML data with R
 
 There are at least two major situations I can think of that one can expect to be working with mark up. One is if you are working with the _TEI_. The _TEI_, or _Text-Encoding Initiative_, is an XML-language that is currently the de-facto standard for using markup to model texts in digital form. The other situation is if you are scraping content from the web — your browser builds and displays the content of the web pages you visit using html files, and html is a text-based markup language. Parsing
 
+```{r}
+library(xml2)
+
+
+
+parsed <- dhq_file %>% read_xml()
+
+```
+
 I am far from an expert in XPath, and this is not a course in the language, but good resources exist for this if you are working with XML-based corpora.
+
+```{r}
+
+```
+
 
 # Exercises
 
-1. Plot the top 5 most frequent words in an inauguration address in fifty-year periods.
+1. Together, we calculated the word counts of each individual inagural address. Can you express these counts as a ratio with the total word count of the corpus? How about the median word count across addresses? 
 
-2. Which addresses are the most frequent words in the inaguration address corpus from?
+2. Together, we identified the most frequent words in the inaguration address corpus. Maybe some addresses make more use of these frequent words than others. Perhaps some addresses use radically different lexicon, or maybe the corpus makes consistent use of these words. Are there some addresses that have a higher proportion of the frequently-used words than others?
+
+3. Together, we plotted the sentiment over each inaugural address, but maybe we want to see a bigger picture. What would be the most reasonable way, you think, of assigning a sentiment at the document level, based on what we know from our word-level analysis? It might be useful, for example, to characterize each address by a key sentiment. How do we do that most responsibly, given our knowledge of absolute and relative frequencies? Give it a try. Once you do, attempt to determine how sentiment of inaugural addresses have changed or not over the course of their delivery.
+
+4. 
+
+5. This one is for the folks working with XML data. So far, we've only went over loading in and parsing a single TEI file. Adapting the code that brings in our plaintext corpus from this notebook, can you bring your whole corpus into the R `tidyverse`? Your first step could be to get a tibble with two variables: the filenames/IDs and the parsed documents. From there, see if you can isolate a feature that's important to you across the corpus — whether it's the titles of the documents, creator and revision metadata, bodies of their texts, or something else.
