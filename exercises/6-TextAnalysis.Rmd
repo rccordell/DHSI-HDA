@@ -413,7 +413,7 @@ test <- address_words %>%
   ungroup() %>%
   inner_join(addresses) %>%
   inner_join(sentiments2) %>%
-  count(filename, president, index = as.numeric(rownames(.)) %/% 80, sentiment) %>% #this is throwing an error (what's the floor divide 80 for?)
+  count(filename, president, index = as.numeric(rownames(.)) %/% 10, sentiment) %>% #this is throwing an error (what's the floor divide 80 for?)
   spread(sentiment, n, fill = 0) %>%
   mutate(sentiment = positive - negative)
 
