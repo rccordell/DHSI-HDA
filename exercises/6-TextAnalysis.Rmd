@@ -294,7 +294,7 @@ left_join(address_sentence_length,addresses) %>%
                 vjust=0))
 ```
 
-Wow, there are some *long* sentences in early addresses! How do these trends correspond with word length?
+Wow, there are some *long* sentences in early addresses! How do these trends compare with word length?
 
 ## Adding in New Metadata to Facet
 
@@ -431,21 +431,26 @@ stylistic analysis (stock phrases between different presidents); 30-year increme
 
 # Parsing XML data with R
 
-There are at least two major situations I can think of that one can expect to be working with mark up. One is if you are working with the _TEI_. The _TEI_, or _Text-Encoding Initiative_, is an XML-language that is currently the de-facto standard for using markup to model texts in digital form. The other situation is if you are scraping content from the web — your browser builds and displays the content of the web pages you visit using html files, and html is a text-based markup language. Parsing
+There are at least two major situations I can think of that one can expect to be working with mark up. One is if you are working with the _TEI_. The _TEI_, or _Text-Encoding Initiative_, is an XML-language that is currently the de-facto standard for using markup to model texts in digital form. The other situation is if you are scraping content from the web — your browser builds and displays the content of the web pages you visit using html files, and html is a text-based markup language. Parsing these is possible with the `xml2` package, also written primarily by Hadley Wickham of `tidyverse` fame. There is another XML package, but it's a...headache. There may be a use for it, but I find `xml2` to be most sensible for DH work, and also closest in syntax/functionality to the amazing (beautiful?) Beautiful Soup python package.
 
 ```{r}
 library(xml2)
 
+url <- "./data/wwp/britain/aikin.epistles.xml"
+xmlns <- c(wwp = "http://www.wwp.northeastern.edu/ns/textbase", xi="http://www.w3.org/2001/XInclude")
 
-
-parsed <- dhq_file %>% read_xml()
+parsed <- read_xml(url)
 
 ```
 
-I am far from an expert in XPath, and this is not a course in the language, but good resources exist for this if you are working with XML-based corpora.
+Caveats: I am far from an expert with XML documents, so there also might be a much more elegant way to match up the namespaces here. This is also not a course in XPath, so you will have to determine how to navigate the XML tree on your own. Good resources exist for this if you are working with XML-based corpora, particualrly the [Women Writers Project Tutorials](https://www.wwp.northeastern.edu/outreach/resources/tutorial_all.html).
 
 ```{r}
+xmlMetadata <- xml_find_all(parsed,"//wwp:TEI//wwp:teiHeader//wwp:fileDesc", ns=xmlns)
 
+xmlText <-xml_find_all(parsed,"//wwp:TEI//wwp:text//wwp:p", ns = xmlns) %>%
+  xml_text() %>%
+  tibble()
 ```
 
 

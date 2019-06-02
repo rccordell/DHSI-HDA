@@ -1,0 +1,2913 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/wwp-store.rng"    type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../schema/wwp-store.isosch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- $Id: prince.narrativelife.xml 31962 2017-06-23 22:20:54Z syd $ -->
+<TEI xmlns="http://www.wwp.northeastern.edu/ns/textbase" xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en">
+  <teiHeader xml:id="TR00532.hdr">
+    <fileDesc>
+      <titleStmt>
+        <title type="main">A Narrative of the Life and Travels of Mrs. Nancy Prince, 1850</title>
+        <author>
+          <persName ref="p:nprince.xcb" type="person-female">Prince, Nancy (Gardener)</persName>
+        </author>
+        <sponsor>Brown University</sponsor>
+        <sponsor>Northeastern University</sponsor>
+        <funder>U.S. National Endowment for the Humanities</funder>
+      </titleStmt>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPedition)"/>    
+      <publicationStmt>
+        <publisher>Northeastern University Women Writers Project</publisher>
+        <address>
+          <addrLine>SL 213</addrLine>
+          <addrLine>Northeastern University</addrLine>
+          <addrLine>360 Huntington Avenue</addrLine>
+          <addrLine>Boston, MA  02115-5005</addrLine>
+          <addrLine>USA</addrLine>
+          <addrLine>url:mailto:wwp@neu.edu</addrLine>
+          <addrLine>url:http://www.wwp.northeastern.edu/</addrLine>
+        </address>
+        <idno type="WWP">TR00532</idno>
+        <idno type="URL">http://www.wwp.northeastern.edu/texts/prince.narrativelife.html</idno>
+        <xi:include href="../common-boilerplate.xml" xpointer="element(WWPavailability)"/>
+        <date when="2001-04-23"/>
+      </publicationStmt>
+      <notesStmt>
+        <note type="textual">
+          <p>This text uses numbers rather than letters for its signatures. By convention, we enclose the number of the leaf in parentheses to avoid ambiguity; e.g. 1(1)r, 1(1)v, etc.</p>
+        </note>
+      </notesStmt>
+      <sourceDesc n="OT00532">
+        <biblStruct>
+          <monogr>
+            <author>
+              <persName ref="p:nprince.xcb" type="titlePage">Mrs. Nancy Prince</persName>
+              <persName ref="p:nprince.xcb" type="regularized">Prince, Nancy</persName>
+            </author>
+            <title>A narrative of the life and travels, of Mrs. Nancy Prince</title>
+            <edition>First edition</edition>
+            <idno type="rpb">Hay Star CT275.P8 A3</idno>
+            <imprint>
+              <pubPlace>Boston</pubPlace>
+              <publisher>
+                <persName ref="p:nprince.xcb" type="titlePage">Published by the author</persName>
+                <persName ref="p:nprince.xcb" type="regularized">Prince, Nancy</persName>
+              </publisher>
+              <date when="1850"/>
+            </imprint>
+            <extent>
+              <measure unit="page" quantity="88"/>
+            </extent>
+            <extent>
+              <dimensions>
+                <format>duodecimo</format>
+              </dimensions>
+            </extent>
+          </monogr>
+        </biblStruct>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPprojectDescription)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPsamplingDeclaration)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPeditorialDeclaration)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPcharacterDeclaration)"/>
+      <tagsDecl>
+        <rendition xml:id="r.it" selector="mcr">slant(italic)</rendition>
+        <rendition xml:id="r.break" selector="mw">break(yes)</rendition>
+        <rendition xml:id="r.head" selector="head">break(yes)align(center)case(allcaps)</rendition>
+        <rendition xml:id="r.para" selector="p">first-indent(1)</rendition>
+      </tagsDecl>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPclassificationDeclaration)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPlistPrefixDefinitions)"/>
+    </encodingDesc>
+    <profileDesc>
+      <textClass>
+        <catRef type="main" target="#G.non-fiction"/>
+        <catRef type="other" target="#G.non-fiction.other"/>
+        <catRef type="other" target="#G.verse.lyric"/>
+      </textClass>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPcalendarDescription)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPlangUsage)"/>
+    </profileDesc>
+    <revisionDesc>
+      <change n="RCS-1.34" when="2010-12-08" who="p:npeterson.gwx">added <att>type</att> to docRole.</change>
+      <change n="RCS:1.30" when="2009-12-16" who="p:mcarriger.ark">text and quote</change>
+      <change n="RCS:1.29" when="2009-02-06" who="p:mcarriger.ark">placename in persname</change>
+      <change n="RCS:1.18" when="2000-11-22" who="p:pcaton.xzc">Altered the encoding of the two quoted poems on 2(3)v and 7(1)r. Validated against DTD 1.2.6</change>
+      <change n="RCS:1.16" when="2000-11-21" who="p:pcaton.xzc">Fixed case of tags to correct a problem; added availability
+date. Validated against DTD 1.2.6 and supravalidated.</change>
+      <change n="RCS:1.15" when="2000-11-17" who="p:jflanders.lfw">supraSGML validated, fixed collation, added textual note.</change>
+      <change n="RCS:1.15" when="2000-11-17" who="p:jflanders.lfw">entered correx from second proofing checking round</change>
+      <change n="RCS:1.14" when="2000-11-13" who="p:zmizuho.zgk">entered correx from second proofing</change>
+      <change n="RCS:1.13" when="2000-07-17" who="p:ldodds.rnd">Checking round. Entered three missed corrections.</change>
+      <change n="RCS:1.12" when="2000-07-10" who="p:sclark.ovu">entered corrections, supravalidated, and printed</change>
+      <change n="RCS:1.11" when="2000-07-07" who="p:sclark.ovu">entered corrections</change>
+      <change n="RCS:1.10" when="2000-07-06" who="p:sclark.ovu">entered corrections</change>
+      <change n="RCS:1.9" when="2000-06-08" who="p:sclark.ovu">fixed sigs and asterisks, supravalidated and printed file</change>
+      <change n="RCS:1.7" when="2000-06-07" who="p:sclark.ovu">fixed signatures and supravalidated file, asterisks need to be regularized</change>
+      <change n="RCS:1.6" when="2000-06-06" who="p:sclark.ovu">finished capture, but milestone signatures need to be fixed</change>
+      <change n="RCS:1.5" when="2000-06-05" who="p:sclark.ovu">continued capture to page 70</change>
+      <change n="RCS:1.4" when="2000-06-01" who="p:sclark.ovu">continued capture to page 50</change>
+      <change n="RCS:1.3" when="2000-06-01" who="p:sclark.ovu">continued capture to page 39</change>
+      <change n="RCS:1.2" when="2000-05-31" who="p:sclark.ovu">continued capture to page 27</change>
+      <change when="2000-05-30" who="p:sclark.ovu">Began capture using emacs with psgml on Unix with
+	  version 1.2.6 of wwp-store DTD.</change>
+    </revisionDesc>
+  </teiHeader>
+  <text xml:id="TR00532">
+    <hyperDiv>
+<notes>
+<note xml:id="n001" rend="place(foot)pre(*)" target="#a001">
+        <p>'Tis a comfortable thought that the promises of
+<lb/>God are all given for the express purpose that we
+<lb/>may have great and strong consolations, who make
+<lb/>our duty and our privilege to be found pleading them
+<lb/>at the throne of grace;</p>
+        <lg type="poem" subtype="indeterminate">
+          <l rend="indent(2)">O then be earnest, take no nay,</l>
+          <l rend="indent(3)">He'll answer every good desire;</l>
+          <l rend="indent(1)">Give him your hearts, though cold as clay,</l>
+          <l rend="indent(2)">They'll melt like wax before the fire</l>
+        </lg>
+      </note>
+</notes></hyperDiv>
+    <front>
+      <pb n="01"/>
+      <milestone unit="sig" n="π(1)r"/>
+      <titleBlock rend="align(center)">
+        <titlePart rend="case(allcaps)">A
+<lb/>Narrative
+<lb/>of the
+<lb/>Life and Travels,
+<lb/>of
+<lb/><docRole type="author"><persName ref="p:nprince.xcb">Mrs. Nancy Prince</persName></docRole>.</titlePart>
+        <docImprint rend="case(allcaps)pre(#rule)"><pubPlace>Boston</pubPlace>:
+<lb/>Published by <docRole type="printer">the Author</docRole>.
+<lb/><docDate when="1850">1850.</docDate></docImprint>
+        <pb n="02"/>
+        <milestone unit="sig" n="π(1)v"/>
+        <respLine>Entered according to act of <orgName>Congress</orgName>, in the year <date when="1850">1850</date>,
+<lb/>By <docRole type="author"><persName ref="p:nprince.xcb">Nancy Prince</persName></docRole>,
+<lb/>In the Clerk's office of the <orgName>District court of <placeName>Massachusetts</placeName></orgName>.</respLine>
+      </titleBlock>
+    </front>
+    <pb n="03"/>
+    <milestone unit="sig" n="π(2)r"/>
+    <pb n="04"/>
+    <milestone unit="sig" n="π(2)v"/>
+    <pb n="05"/>
+    <milestone unit="sig" n="1(1)r"/>
+    <body type="nonfictionProse">
+     
+    
+        <head rend="post(#rule)">Narrative.</head>
+        <p>As my unprofitable life has been spared, and
+<lb/>I have been, by the providence of God, wonder­
+<lb/>fully preserved, it is with gratitude to my Heavenly
+<lb/>Father, and duty to myself, that I attempt to give
+<lb/>to the public a short narrative of my life and 
+<lb/>travels.</p>
+        <p>I was born in <placeName>Newburyport</placeName>, in <date when="1799">1799</date>. My
+<lb/>mother was the daughter of <persName>Tobias Wornton</persName>, who 
+<lb/>was stolen from <placeName>Africa</placeName>, when a lad, and was a
+<lb/>slave of <persName>Capt. Winthrop Sargent</persName>; and, although
+<lb/>a slave, he fought for liberty, and was in the
+<lb/><name>Revolutionary army</name> at the battle of <placeName>Bunker Hill</placeName>.
+<lb/>My grandmother was an <name>Indian</name>. My father,
+<lb/><persName>Thomas Gardener</persName>, was born on <placeName>Nantucket</placeName>; his
+<lb/>parents were of African descent, and when he died
+<lb/>of bleeding at the lungs, leaving my mother a
+<lb/>widow the second time, with an infant in her
+<lb/>arms. She then returned to <placeName>Gloucester</placeName>, her
+<lb/>native place. My mother soon married again
+<lb/>her third husband, by whom she had six chil­
+<mw type="sig" rend="align(center)">1</mw>
+
+<pb n="06"/>
+<milestone unit="sig" n="1(1)v"/>
+<mw type="pageNum">6</mw>
+<lb/>dren. My step-father was stolen from <placeName>Africa</placeName>,
+<lb/>and while the vessel was at anchor in one of the 
+<lb/>Eastern ports, he succeeded in making his escape
+<lb/>from his captors by swimming ashore. After a
+<lb/>lapse of two years he came to <placeName>Gloucester</placeName>, and
+<lb/>followed the sea, and was twelve years with
+<lb/><persName>Capt. Elias Davis</persName>, in the employ of <persName>Capt. Fitz
+<lb/>W. Sargent</persName>. During the war he was taken by a
+<lb/>British Privateer, and pressed into their service.
+<lb/>He was sick with dropsy a long while, and
+<lb/>died in <date when="1813">1813</date>. My mother was again left a
+<lb/>widow, with an infant six weeks old. When she
+<lb/>heard of her husband's death, she replied, <said rend="pre(“)post(”)">I
+<lb/>thought it; what shall I do with these children?</said>
+<lb/>Her grief, poverty, and responsibilities, were too
+<lb/>much for her; she never was the mother that she
+<lb/>had been before. I was at this time in <persName>Capt.
+<lb/>Sargent's</persName> family. I shall never forget the feel­
+<lb/>ings I experienced on hearing of the decease of
+<lb/>my father-in-law; he was never very kind to the
+<lb/>first set of children. But by industry, a humble
+<lb/>home was provided for my mother and younger
+<lb/>children. Death had twice visited our family
+<lb/>within three months, my father having buried my
+<lb/>grandfather before he sailed. I thought I would
+<lb/>go home a little while, and try to comfort my
+<lb/>mother. The three oldest children were put into
+<lb/>families. My brother and myself went out of
+
+<pb n="07"/>
+<milestone unit="sig" n="1(2)r"/>
+<mw type="pageNum" rend="align(right)">7</mw>
+<lb/>town, in one family, where we staid until the war
+<lb/>was over. We often went home with our wages,
+<lb/>and all the comforts we could get; but we could
+<lb/>not approach our mother as we wished. God in
+<lb/>mercy took one little brother of seven years, who
+<lb/>had pined in consumption; thus our family was
+<lb/>scattered. I determined to get more for my
+<lb/>labor, and I left <placeName>Essex</placeName> and went to <placeName>Salem</placeName>, in
+<lb/><date when="1814">1814</date>, to service in a family. I had always en­
+<lb/>joyed the happy privilege of religious instruction.
+<lb/>My dear grandfather was a member of a Congre­
+<lb/>gational Church, and a good man; he always
+<lb/>attended church in the morning, and took us with
+<lb/>him; and in the afternoon he took care of the
+<lb/>smaller children, while my mother attended with
+<lb/>her little group. He thought it wrong for us to
+<lb/>go to a school where the teacher was not devoted
+<lb/>to God, for I early knew the difference between
+<lb/>right and wrong. They had family prayers
+<lb/>morning and evening. I often looked at them,
+<lb/>and thought to myself, <said rend="pre(“)post(”)">Is this your religion?</said>
+<lb/>I did not wonder that the girl who had lived there
+<lb/>previous to myself, went home to die. There
+<lb/>were seven in the family; two of them being
+<lb/>sick, one with a fever and the other in a con­
+<lb/>sumption, of course the work must have been
+<lb/>very severe, especially the washing. <name>Sabbath</name>
+<lb/>evening I had to prepare for the wash. I was
+
+<pb n="08"/>
+<milestone unit="sig" n="1(2)v"/>
+<mw type="pageNum">8</mw>
+<lb/>then but fourteen years of age, and a stranger.
+<lb/>I was called up at two o'clock in the morning,
+<lb/>and what embittered my heavy task, I was not
+<lb/>spoken kindly to, but was blamed for being slow,
+<lb/>and for not performing my work well. Hard
+<lb/>labor and unkindness were too much for me, and
+<lb/>in three months my health and strength were
+<lb/>gone. I went home to <placeName>Gloucester</placeName> in their chaise.
+<lb/>I found my mother in poor health, but through the
+<lb/>mercy of God, and the attention and skill of <persName>Dr.
+<lb/>Dale</persName>, and the kindness of friends, I was restored,
+<lb/>so that in a few months I was able again to go to
+<lb/>work, although my side afflicted me, which I
+<lb/>attributed to over-working myself.</p>
+        <p>In <date when="1815">1815</date> I returned to <placeName>Salem</placeName>, accompanied by
+<lb/>my eldest sister, and obtained good places. She
+<lb/>afterwards returned to <placeName>Boston</placeName> as a nursery girl,
+<lb/>where she lived a few months, and was deluded
+<lb/>away on <date when="1815-02-07"><name>February</name> 7th of 1815</date>. A friend came
+<lb/>to <placeName>Salem</placeName> and informed me of it. Her death
+<lb/>would not have been so painful to me. We
+<lb/>loved each other very much, and more particu­
+<lb/>larly as our step-father was not very kind to us;
+<lb/>we used to say as soon as we were large enough
+<lb/>we would go away, as we did. It was very cold,
+<lb/>but notwithstanding, I was so distressed about my
+<lb/>sister, that I started on foot the next morning
+<lb/>after I heard of it. At <name>Lynn Hotel</name> we refreshed
+
+<pb n="09"/>
+<milestone unit="sig" n="1(3)r"/>
+<mw type="pageNum" rend="align(right)">9</mw>
+<lb/>ourselves, and all seemed much interested about
+<lb/>me. Two women took me aside, and inquired 
+<lb/>how it was I was with that woman. I told my
+<lb/>reason. My companion had a little son of hers
+<lb/>in her arms. By the time we were seven miles
+<lb/>from <placeName>Salem</placeName>, cold and fatigued, I could walk no
+<lb/>farther, and we hired a horse and sleigh, and a 
+<lb/>man to drive us to <placeName>Boston</placeName>, where we arrived at
+<lb/>seven in the evening. I put up with a friend of
+<lb/>mine, who lived in <placeName>Bedford street</placeName>, who received
+<lb/>me very kindly. My feet, hands, and ears, were
+<lb/>all frost-bitten. I needed all the hospitality that
+<lb/>was extended to me. I was young and inexperi­
+<lb/>enced, but my object was hallowed. God chooses
+<lb/>in his wisdom the weak things of the earth; without
+<lb/>his aid how could I ever have rescued my lost
+<lb/>sister! <persName>Mr. Brown</persName>, when he learned my errand,
+<lb/>kindly offered to assist me. He found where my 
+<lb/>sister resided, and taking with him a large cane,
+<lb/>he accompanied me to the house. My sister I
+<lb/>found seated, with a number of others, round a
+<lb/>fire, the mother of the harlots at the head. My
+<lb/>sister did not see me until I clasped her round the
+<lb/>neck. The old woman flew at me, and bid me
+<lb/>take my hands off of her. <persName>Mr. Brown</persName> defended
+<lb/>me with his cane from her attacks. There were
+<lb/>many men as well as girls there, and all was
+<lb/>confusion. When my sister came to herself, she
+<mw type="sig" rend="align(center)">1*</mw>
+
+<pb n="10"/>
+<milestone unit="sig" n="1(3)v"/>
+<mw type="pageNum">10</mw>
+<lb/>looked upon me. I said, <said rend="pre(“)post(”)"><persName>Sylvia</persName>, my dear
+<lb/>sister, what are you here for? Will you go with
+<lb/>me?</said> The enraged old woman cried out, <said rend="pre(“)post(”)">No,
+<lb/>she cannot go.</said> <persName>Sylvia</persName> replied, <said rend="pre(“)post(”)">I will go.</said>
+<lb/>Then followed a scene. The old woman seized
+<lb/>her to drag her down into the kitchen; I held on
+<lb/>to her, while <persName>Mr. Brown</persName>, at my side, so used
+<lb/>his great cane, and so threatened her, that she
+<lb/>was obliged to let her go; and, after collecting
+<lb/>her things, she left the house with <persName>Mr. Brown</persName> and
+<lb/>myself</p>
+        <p>The next day we started for <placeName>Salem</placeName>, and went
+<lb/>to the stage-office; we expected <persName>Mr. Low</persName>, the
+<lb/>driver of the <placeName>Gloucester</placeName> stage, who knew us as
+<lb/>his towns-people, would let us take passage with
+<lb/>him without any difficulty; but he refused, unless
+<lb/>we would ride upon the top. It was very cold,
+<lb/>and we had never rode in that way; his inhu­
+<lb/>manity grieves me even now. I had sent my 
+<lb/>mother my wages the week before, and what
+<lb/>money I had, I had taken in advance of my em­
+<lb/>ployers. We were greatly embarrassed, when
+<lb/>a colored man, unknown to us, penetrated our
+<lb/>difficulties, and asked us if we had two dollars;
+<lb/>we told him we had; he very kindly took us to
+<lb/>another stage-office, and we bargained for a horse
+<lb/>and sleigh to take us to <placeName>Salem</placeName>, where we arrived
+<lb/>safely in about two hours and a half; and we gave
+
+<pb n="11"/>
+<milestone unit="sig" n="1(4)r"/>
+<mw type="pageNum" rend="align(right)">11</mw>
+<lb/>up our conveyance to the same owners, with ten
+<lb/>thousand thanks to our colored friend, and to our
+<lb/>Heavenly Father; for had we attempted to walk,
+<lb/>we must have frozen by the way. The lady I
+<lb/>lived with (<persName>Mrs. John Deland</persName>,) received us very
+<lb/>kindly, and permitted my sister to remain with
+<lb/>me awhile; then she returned to <placeName>Gloucester</placeName>, to
+<lb/>the family who brought her up, and I thought we
+<lb/>had gained a great victory.</p>
+        <p>My brother <persName>George</persName> and myself were very
+<lb/>desirous of making our mother comfortable; he
+<lb/>went to sea for that purpose. The next <date when="--04"><name>April</name></date> I
+<lb/>came to <placeName>Boston</placeName>, to get a higher price for my
+<lb/>labor, for we had agreed to maintain our mother,
+<lb/>and we hoped she would take our little brother,
+<lb/>who was supported by the town, and take care
+<lb/>of him. <persName>George</persName> came home, and sailed again in
+<lb/>the same vessel, leaving her a drawbill of half
+<lb/>of his wages. My sister returned to <placeName>Boston</placeName> to
+<lb/>find me, and wished to procure a place to work
+<lb/>out. She tried me much. I thought it a needy
+<lb/>time, for I had not yielded my heart to the will
+<lb/>of God, though I had many impressions, and
+<lb/>formed many resolutions; but the situation that I
+<lb/>had been placed in, having left my mother's
+<lb/>home at the age of eight, had not permitted me
+<lb/>to do as I wished, though the kind counsels of my
+<lb/>dear grandfather and pious teachers followed me
+
+<pb n="12"/>
+<milestone unit="sig" n="1(4)v"/>
+<mw type="pageNum">12</mw>
+<lb/>wherever I went. Care after care oppressed
+<lb/>me; my mother wandered about like a <name>Jew</name>; the
+<lb/>young children who were in families were dis­
+<lb/>satisfied; all hope but in God was lost. I then
+<lb/>resolved in my mind to seek an interest in my
+<lb/>Saviour, and put my trust in him. For that
+<lb/>purpose I changed my place for one more retired,
+<lb/>got my sister with me, and then God blessed my
+<lb/>soul; being justified by faith, I found peace with
+<lb/>God, even the forgiveness of sins, through <persName>Jesus
+<lb/>Christ</persName>. After living sixteen years and five months
+<lb/>without any hope, myself and seven others were
+<lb/>baptized, in obedience to the great command.</p>
+        <p>My brother <persName>George</persName> returned home, and we
+<lb/>again provided a home for mother and the little
+<lb/>ones; he went to sea, and affairs now seemed to
+<lb/>promise comfort and respectability. But mother
+<lb/>chose to marry again; this was like death to us
+<lb/>all. <persName>George</persName> returned home, but was so disap­
+<lb/>pointed, that he shipped again to come no more.
+<lb/>Although a boy of sixteen years, he was as steady
+<lb/>and capable as most men at twenty. My cares
+<lb/>were consequently increased, having no one to
+<lb/>share them with me. My next brother, who 
+<lb/>lived in <placeName>S. Essex</placeName>, came to <placeName>Salem</placeName> to his mother,
+<lb/>but was driven away by her husband, and came 
+<lb/>to me. I carried him to <placeName>Gloucester</placeName>, and left him
+<lb/>in the hands of the town; but he stayed but
+
+<pb n="13"/>
+<milestone unit="sig" n="1(5)r"/>
+<mw type="pageNum" rend="align(right)">13</mw>
+<lb/>three weeks, and returned to me again. I then
+<lb/>boarded him for one dollar a week, until I could
+<lb/>procure suitable employment.</p>
+        <p>When winter came, poor mother's health was
+<lb/>declining; little <persName>Samuel</persName> could do but little; my
+<lb/>father-in-law was very cross, for he expected to 
+<lb/>be supported by my brother <persName>George</persName>. I could
+<lb/>not see my mother suffer; I therefore left my 
+<lb/>place and went to <placeName>Salem</placeName>, to watch over her and
+<lb/><persName>Samuel</persName>, and lived with the <persName>Rev. Dr. Boles's</persName>
+<lb/>family. In the spring I returned to <placeName>Boston</placeName>, and
+<lb/>took my brother with me. Soon after, my sister
+<lb/><persName>Lucy</persName> left her place and went to her mother, but
+<lb/>was not permitted to stay. My mother wrote to
+<lb/>me, requesting me to take care of her. I then
+<lb/>determined in my mind to bring her to <placeName>Boston</placeName>,
+<lb/>and, if possible, procure a place for her; and on
+<lb/>her arrival, I obtained board for her and <persName>Samuel</persName>
+<lb/>at a friend's, for one dollar a week. My brother
+<lb/><persName>John</persName>, that I had boarded, at last got a place
+<lb/>where he had wages; soon the Lord opened a
+<lb/>way for little <persName>Samuel</persName>. <persName>Dr. Phelps</persName> took him to
+<lb/>bring up, so that I was left with one only to sus­
+<lb/>tain. Soon my hopes were blasted. <persName>John</persName> left
+<lb/>his place, and was several months on my hands
+<lb/>again; finally, he made up his mind to go to sea.
+<lb/>I was so thankful that he had concluded to do
+<lb/>something, that I took two month's wages in
+
+<pb n="14"/>
+<milestone unit="sig" n="1(5)v"/>
+<mw type="pageNum">14</mw>
+	  <lb/>advance to fit him out for <placeName>Liverpool</placeName>. In five
+<lb/>months he returned, without a single thing but
+<lb/>what he stood in; his wages were small, not
+<lb/>enough to render him comfortable; had not a
+<lb/>friend given him a home, he would have been
+<lb/>again dependent on my exertions. Another
+<lb/>friend took <persName>Lucy</persName>, with whom she staid eleven
+<lb/>months; she continued in different families for
+<lb/>some time, till she was about twelve. I left her
+<lb/>at the <persName>Rev. Mr. Mann's</persName> family, at <placeName>Westminster</placeName>,
+<lb/>for a certain time, thinking it would be best for
+<lb/>her, and <persName>John</persName> I left to fight his own battles. My
+<lb/>sister <persName>Sylvia</persName> was one of my greatest trials.
+<lb/>Knowing she was in <placeName>Boston</placeName>, my mother, in one
+<lb/>of her spells of insanity, got away from her
+<lb/>home, and travelled here after her. She came
+<lb/>where I lived. My employers were very kind to
+<lb/>her. After tarrying a few days with me, I hired
+<lb/>a horse and chaise, and took them both back to
+<lb/><placeName>Salem</placeName>; and returned back to my place in <date when="1822">1822</date>,
+<lb/>with a determination to do something for myself.
+<lb/>I left my place after three months, and went to
+<lb/>learn a trade; and, after seven years of anxiety
+<lb/>and toil, I made up my mind to leave this
+<lb/>country.</p>
+        <p><date when="1823-09-01"><name>September</name> 1st, 1823</date>, <persName>Mr. Prince</persName> arrived from
+	  <lb/><placeName>Russia</placeName>; <date when="1824-02-15"><name>February</name> 15th</date>, I was married; 
+<date when="1824-04-14"><name>April</name><lb/>14th</date>, embarked in brig <name>Romulus</name>, arrived at
+
+<pb n="15"/>
+<milestone unit="sig" n="1(6)r"/>
+<mw type="pageNum" rend="align(right)">15</mw>
+	  <lb/><placeName>Elsinore</placeName> <date when="1824-05-24"><name>May</name> 24th</date>, left the same day for 
+<placeName>Copen­
+<lb/>hagen</placeName>, where we remained twelve days. We
+<lb/>visited the King's Palace, and several other
+<lb/>extensive and beautiful buildings. We attended
+<lb/>a number of entertainments among the <name>Danes</name>
+<lb/>and <name>English</name>, which were religiously observed;
+<lb/>their manners and customs are similar; they are
+<lb/>very attentive to strangers; the <name>Sabbath</name> is strictly
+<lb/>observed; the principal religion is the <name>Lutheran</name>
+<lb/>and <name>Calvinistic</name>, but all persuasions are tolerated.
+<lb/>The languages of that people are <name>Dutch</name>, <name>French</name>,
+<lb/><name>English</name>, &amp;c. The <name>Danes</name> are very modest and
+<lb/>kind, but, like all other nations, they well know
+<lb/>how to take the advantage. I left there the
+<lb/><date when="1824-06-07">7th of <name>June</name></date>, and arrived at <placeName>Cronstadt</placeName> on the
+<lb/><date when="1824-06-19">19th</date>; left there the <date when="1824-06-21">21st</date> for <placeName>St. Petersburg</placeName>,
+and
+<lb/>in a few hours were happy to find ourselves at
+<lb/>our place of destination, through the blessing
+<lb/>of God, in good health, and soon made welcome
+<lb/>from all quarters. We took lodgings with a
+<lb/><persName>Mrs. Robinson</persName>, a native of our country, who was
+<lb/><persName>Patience Mott</persName>, of <placeName>Providence</placeName>, who left there in
+<lb/>the year <date when="1813">1813</date>, in the family of <persName>Alexander Ga­
+<lb/>briel</persName>, the man who was taken for <persName>Mr. Prince</persName>.
+<lb/>There I spent six weeks very pleasantly, visiting
+<lb/>and receiving friends, after the manner of the
+<lb/>country. We then commenced housekeeping.
+<lb/>While there I attended two of their parties;
+
+<pb n="16"/>
+<milestone unit="sig" n="1(6)v"/>
+<mw type="pageNum">16</mw>
+<lb/>there were various amusements in which I did
+<lb/>not participate, which caused them much disap­
+<lb/>pointment. I told them my religion did not allow
+<lb/>of dancing or dice playing, which formed part
+<lb/>of the amusements. As they were very strict in
+<lb/>their religion, they indulged me in the same
+<lb/>privilege. By the help of God I was ever
+<lb/>enabled to maintain my stand.</p>
+        <p><persName>Mr. Prince</persName> was born in <placeName>Marlborough</placeName>, and lived
+<lb/>in families in this city. In <date when="1810">1810</date> he went to
+<lb/><placeName>Gloucester</placeName>, and sailed with <persName>Captain Theodore
+<lb/>Stanwood</persName> for <placeName>Russia</placeName>; he returned with him, and
+<lb/>remained in his family, and at this time visited
+<lb/>my mother's family. He again sailed with him,
+<lb/>in <date when="1812">1812</date>, for the last time. <persName>Captain Stanwood</persName>
+<lb/>took with him his son <persName>Theodore</persName>, for the purpose
+<lb/>of attending school in the city of <placeName>St. Petersburg</placeName>.
+<lb/><persName>Mr. Prince</persName> went to serve <persName>Princess Purtossozof</persName>,
+<lb/>one of the noble ladies of Court. It is well
+<lb/>known that the color of one's skin does not
+<lb/>prohibit from any place or station that he or she
+<lb/>may be capable of occupying.</p>
+        <p>The Palace, where the Emperor resides, is
+<lb/>called the Court, the seat of government. This
+<lb/>magnificent building is adorned with all the orna­
+<lb/>ments that possibly can be explained; there are
+<lb/>hundreds of people that inhabit it, besides the
+<lb/>soldiers that guard. There are several of these
+
+<pb n="17"/>
+<milestone unit="sig" n="2(1)r"/>
+<mw type="pageNum" rend="align(right)">17</mw>
+<lb/>splendid edifices in the city and vicinity. The one
+<lb/>that I was presented in, was in a village, three
+<lb/>miles from the city. After leaving the carriage,
+<lb/>we entered the first ward; the usual salutation by
+<lb/>guards was performed. As we passed through
+<lb/>the beautiful hall, a door was opened by two
+<lb/>colored men, in official dress, and there stood the
+<lb/><persName>Emperor Alexander</persName> on his throne, in royal
+<lb/>apparel. The throne is circular, elevated two
+<lb/>steps from the floor, and covered with scarlet
+<lb/>velvet tasseled with gold. As I entered, the
+<lb/>Emperor stepped forward with great politeness
+<lb/>and condescension, and welcomed and asked me 
+<lb/>several questions; he then accompanied us to
+<lb/>the <persName>Empress Elizabeth</persName>; she stood in her dignity,
+<lb/>and received me in the same manner. They
+<lb/>presented me with a gold watch, and fifty dollars
+<lb/>in gold.</p>
+        <p>The number of colored men that filled this
+<lb/>station was twenty; when one dies, the number
+<lb/>is immediately made up. <persName>Mr. Prince</persName> filled the
+<lb/>place of one that had died. They serve in turns,
+<lb/>four at a time, except on some great occasions,
+<lb/>when all are employed. Provision is made for
+<lb/>the families within or without the Palace. Those
+<lb/>without go to Court at 8 o'clock in the morning;
+<lb/>after breakfasting, they take their station in the
+<lb/>halls, for the purpose of opening the doors, at
+<mw type="sig" rend="align(center)">2</mw>
+
+<pb n="18"/>
+<milestone unit="sig" n="2(1)v"/>
+<mw type="pageNum">18</mw>
+<lb/>signal given, when the Emperor and Empress
+<lb/>pass.</p>
+        <p><date when="1824-08-01">First of <name>August</name></date> we visited the burying-ground,
+<lb/>where the people meet, as they say, to pay
+<lb/>respect to their dead. It is a great holiday; they
+<lb/>drink and feast on the grave stones, or as near
+<lb/>the grave as they can come; some groan and
+<lb/>pray, and some have music and dancing. At a
+<lb/>funeral no one attends except the invited; after
+<lb/>the friends arrive, a dish of rice boiled hard, with
+<lb/>raisins, is handed round; all are to take a spoon­
+<lb/>ful, with the same spoon, and out of the same
+<lb/>dish; in the meanwhile the priest, with his clerk,
+<lb/>performs the ceremony, perfuming the room with
+<lb/>incense. The lid is not put on to the coffin, the
+<lb/>corpse being laid out in his or her best dress.
+<lb/>The torch-men (who are dressed in black gar­
+<lb/>ments, made to slope down to their feet, with
+<lb/>broad brimmed hats that cover their shoulders,)
+<lb/>form a procession, with lighted torches in their
+<lb/>hands, bowing their heads as they pass along very
+<lb/>gravely; then comes one more, with the lid on 
+<lb/>his head; then the hearse with the corpse, drawn
+<lb/>by four horses, covered with black gowns down 
+<lb/>to their feet; they all move along with great
+<lb/>solemnity. Before entering the grave-yard, the
+<lb/>procession goes to an adjoining church, where
+<lb/>there are many ladies, placed on benches, side
+
+<pb n="19"/>
+<milestone unit="sig" n="2(2)r"/>
+<mw type="pageNum" rend="align(right)">19</mw>
+<lb/>by side, according to their ages; the ladies
+<lb/>dressed as if they were going to a ball-room, dis­
+<lb/>playing a most dreadful appearance. Each one
+<lb/>has her hands crossed, and holding in one of
+	  <lb/>them a pass to give to <persName>Peter</persName>, that they may enter
+	  <lb/>into Heaven. At this place they light their 
+<lb/>candles, and receive their rice in the manner 
+<lb/>before mentioned. The top is then put on to the
+<lb/>coffin, and the procession forms and repairs to
+<lb/>the grave; the priest sanctifies the grave, then
+<lb/>casts in dust, and the coffin is consigned to its
+<lb/>narrow-house; then commence the yells; they
+<lb/>drink, eat cake, black bread, and finish their 
+<lb/>rice, when the party return back to dinner, where
+<lb/>every thing has been prepared during their ab­
+	  <lb/>sence. This is the Greek mode of burying their
+<lb/>dead. On the birth of a child, the babe is not
+<lb/>dressed until it is baptized; it is immersed all over
+<lb/>in water; a stand, with an oval basin, is brought
+<lb/>for the purpose by the clerk. The mother is pre­
+<lb/>sented with gifts, which are placed under her
+<lb/>pillow. Should the babe die before this rite is
+<lb/>performed, it is not placed with the others; but
+<lb/>should it die having been baptized, although not
+<lb/>more than two hours old, it is dressed and placed
+<lb/>on the bench at church with the rest. In this
+<lb/>manner the common people bury their dead.</p>
+        <p>When any of the Imperial family dies, they
+
+<pb n="20"/>
+<milestone unit="sig" n="2(2)v"/>
+<mw type="pageNum">20</mw>
+<lb/>are laid in state forty days, and every thing
+<lb/>accordingly. There is a building built expressly
+<lb/>for the Imperial families, where their remains are
+<lb/>deposited. In the front part of it, the criminals 
+<lb/>that have rebelled against the Imperial family are
+<lb/>placed in cells, thus combining the prison and the
+<lb/>tomb; and in sailing by, these miserable crea­
+<lb/>tures are exposed to the careless gaze of unfeeling
+<lb/>observers.</p>
+        <p><placeName>St. Petersburg</placeName> was inundated <date when="1824-10-09"><name>October</name> 9th, 1824</date>.
+<lb/>The water rose sixteen feet in most parts of the
+<lb/>city; many of the inhabitants were drowned.
+<lb/>An Island between the city and <placeName>Cronstradt</placeName>, con­
+<lb/>taining five hundred inhabitants, was inundated,
+<lb/>and all were drowned, and great damage was
+<lb/>done at <placeName>Crons<choice><sic>rt</sic><corr>tr</corr></choice>adt</placeName>. The morning of this day was
+<lb/>fair; there was a high wind. <persName>Mr. Prince</persName> went
+<lb/>early to the Palace, as it was his turn to serve;
+<lb/>our children boarders were gone to school; our
+<lb/>servant had gone of an errand. I heard a cry,
+<lb/>and to my astonishment, when I looked out to see
+<lb/>what was the matter, the waters covered the
+<lb/>earth. I had not then learned the language, but
+<lb/>I beckoned to the people to come in; the waters
+<lb/>continued to rise until 10 o'clock, A. M. The 
+<lb/>waters were then within two inches of my win­
+<lb/>dow, when they ebbed and went out as fast as
+<lb/>they had come in, leaving to our view a dreadful
+
+<pb n="21"/>
+<milestone unit="sig" n="2(3)r"/>
+<mw type="pageNum" rend="align(right)">21</mw>
+<lb/>sight. The people who came into my house for
+<lb/>their safety retired, and I was left alone. At
+<lb/>four o'clock in the afternoon, there was darkness
+<lb/>that might be felt, such as I had never experi­
+<lb/>enced before. My situation was the more painful
+<lb/>being alone, and not being able to speak. I
+<lb/>waited until ten in the evening; I then took a
+<lb/>lantern, and started to go to a neighbor's, whose
+<lb/>children went to the same school with my board­
+<lb/>ers. I made my way through a long yard, over
+<lb/>the bodies of men and beasts, and when opposite
+<lb/>their gate I sunk; I made one grasp, and the
+<lb/>earth gave away; I grasped again, and fortu­
+<lb/>nately got hold of the leg of a horse, that had
+<lb/>been drowned. I drew myself up covered with
+<lb/>mire, and made my way a little further, when I
+<lb/>was knocked down by striking against a boat,
+<lb/>that had been washed up and left by the retiring
+<lb/>waters; and as I had lost my lantern, I was
+<lb/>obliged to grope my way as I could, and feeling
+<lb/>along the walk, I at last found the door that I
+<lb/>aimed at. My family were safe, and they accom­
+<lb/>panied me home. At 12 o'clock, <persName>Mr. Prince</persName>
+<lb/>came home, as no one was permitted to leave the
+<lb/>Palace till his Majesty had viewed the city. In
+<lb/>the morning the children and the girl returned,
+<lb/>and I went to view the pit into which I had sunk.
+<lb/>It was large enough to hold a dozen like myself,
+<mw type="sig" rend="align(center)">2*</mw>
+
+<pb n="22"/>
+<milestone unit="sig" n="2(3)v"/>
+<mw type="pageNum">22</mw>
+<lb/>when the earth had caved in. Had not that horse
+<lb/>been there, I should never again seen the light
+<lb/>of day, and no one would have known my fate.
+<lb/>Thus, through the providence of God, I escaped
+<lb/>from the flood and the pit.</p>
+        <quote rend="indent(2)pre(“)post(”)">
+          <lg type="poem" subtype="indeterminate">
+            <lg type="indeterminate">
+              <l>My helper, God, I bless thy name;</l>
+              <l>The same thy power, thy grace the same;</l>
+              <l>I midst ten thousand dangers stand,</l>
+              <l>Supported by thy guardian hand.</l>
+            </lg>
+          </lg>
+        </quote>
+        <p>Should I attempt to give an account of all the
+<lb/>holidays, it would fill volumes. The next to
+<lb/>notice is <name>Christmas</name> and <name>New Year</name>. The <date when="--01-01">first
+<lb/>day of <name>January</name></date> a grand masquerade is given by
+<lb/>his Majesty, at the winter Palace; forty thousand
+<lb/>tickets are distributed; every thing is done in
+<lb/>order; every gentleman wears a mask and
+<lb/>cloak, and carries a lady with him. They are
+<lb/>formed in a procession, and enter at the west
+<lb/>gate; as they pass through, all the golden vessels
+<lb/>and ornaments are displayed; these were back
+<lb/>of a counter, which extends two hundred feet;
+<lb/>there the company receive a cup of hot chocolate,
+<lb/>and a paper of comfits, and a bun; a great many
+<lb/>are in attendance, as a vast many persons are
+<lb/>permitted to pass in and view the Palace, and go
+<lb/>out at the east gate.</p>
+        <p>The <date when="--01-06">6th of <name>January</name></date> is a still greater day, for
+<lb/>then the water is christened; a church is built on
+
+<pb n="23"/>
+<milestone unit="sig" n="2(4)r"/>
+<mw type="pageNum" rend="align(right)">23</mw>
+<lb/>the ice, ornamented with gold and evergreens,
+<lb/>and a row of spruce trees, extending from the
+<lb/>door of the Palace to the church. At this time
+<lb/>all the nobles, of different nations, make their
+<lb/>appearance in their native costume. The Pa­
+<lb/>triarch, Archbishops, and other dignitaries of the
+<lb/>Court, have a service; then they pass through
+<lb/>and christen the water, and make it holy; then
+<lb/>there is a great rush of the people for this holy
+<lb/>water. On the plane an ice hill is built, eighty
+<lb/>feet high, where the Emperor and his Court
+<lb/>exercise themselves.</p>
+        <p><date when="--02-10"><name>February</name> 10th</date> is another holiday. Buildings
+<lb/>are constructed on the plane for the occasion.
+<lb/>All kinds of amusements may be found here, and
+<lb/>all kinds of animals seen; much time and money
+<lb/>are spent. The buildings are built in rotation.
+<lb/>All the children of the different seminaries and
+<lb/>institutions of education, are driven round in
+<lb/>gilded carriages to witness the performances.
+<lb/>After this is the great Fast, previous to the
+<lb/>crucifixion of our Saviour. Then Christ is rep­
+<lb/>resented as riding into <placeName>Jerusalem</placeName>; branches of
+<lb/>trees are placed in the ice, and strewed through
+<lb/>the streets, and every performance is carried
+<lb/>out. The Saviour is made of white marble; he
+<lb/>is crucified and buried, and on the third day he
+<lb/>rises, according to the Scriptures; then the
+
+<pb n="24"/>
+<milestone unit="sig" n="2(4)v"/>
+<mw type="pageNum">24</mw>
+<lb/>cannons are fired. At the close of this forty
+<lb/>day's Fast, they have a great Feast and Fair; all
+<lb/>business is suspended, and the festivity and frolic
+<lb/>continue for one week.</p>
+        <p>The <date when="--05-01">first of <name>May</name></date> is another great holiday.
+<lb/>The merchants' daughters are arranged on each
+<lb/>side of a long mall, in the beautiful gardens, and
+<lb/>arrayed in their best clothes, under the care of an
+<lb/>old woman known in their families; the gentle­
+<lb/>men walk round and observe them, and if they
+<lb/>see one they fancy, they speak to the old woman;
+<lb/>she takes him to the parents and introduces him;
+<lb/>if the parties agree, they prepare for the be­
+<lb/>trothal. It is their custom to marry one of their
+<lb/>own station. All these holidays are accounted
+<lb/>sacred. The first year I noted them all, as I was
+<lb/>accustomed to attend them.</p>
+        <p><date when="1825-05"><name>May</name>, 1825</date>, I spent some time visiting the
+<lb/>different towns in the vicinity of <placeName>St. Petersburg</placeName>.
+<lb/>In the fall of the same year, the Emperor retired
+<lb/>to a warmer climate for the health of the <persName>Empress
+	    <lb/>Elizabeth</persName>. <date when="1826-01"><name>January</name>, 1826</date>, the corpse of <persName>Alex­
+<lb/>ander</persName> was brought in state, and was met three
+<lb/>miles from the city by the nobles of the Court;
+<lb/>and they formed a procession, and the body was
+<lb/>brought in state into the building where the
+	  <lb/>Imperial family were deposited. <date when="1826-03"><name>March</name>, of the
+	    <lb/>same year</date>, the corpse of <persName>Elizabeth</persName> was brought
+
+<pb n="25"/>
+<milestone unit="sig" n="2(5)r"/>
+<mw type="pageNum" rend="align(right)">25</mw>
+	    <lb/>in the same manner. <persName>Constantine</persName> was then king
+	    <lb/>of <placeName>Poland</placeName>, he was next heir to the throne, and was
+<lb/>unanimously voted by the people, but refused,
+<lb/>and resigned the crown in favor of his brother
+<lb/><persName>Nicholas</persName>. The day appointed the people were
+<lb/>ordered to assemble as usual, at the ringing of the
+<lb/>bells; they rejected <persName>Nicholas</persName>, a sign was given
+<lb/>by the leaders that was well understood, and the
+<lb/>people, great and small rushed to the square and
+	    <lb/>cried with one voice for <persName>Constantine</persName>. The Em­
+<lb/>peror with his prime minister, and city governor,
+<lb/>rode into the midst of them entreating them to
+<lb/>retire, without avail, they were obliged to order
+<lb/>the cannons fired upon the mob; it was not known
+<lb/>when they discharged them that the Emperor
+<lb/>and his ministers were in the crowd. He was
+<lb/>wonderfully preserved while both his friends and
+<lb/>their horses were killed. There was a general 
+<lb/>seizing of all classes, who were taken into
+<lb/>custody. The scene cannot be described; the
+<lb/>bodies of the killed and mangled were cast into
+<lb/>the river, and the snow and ice were stained 
+<lb/>with the blood of human victims as they were
+<lb/>obliged to drive the cannon to and fro in the
+<lb/>midst of the crowd. The bones of these wounded
+<lb/>who might have been cured were crushed. The
+<lb/>cannon are very large, drawn by eight horses
+<lb/>trained for the purpose. The scene was awful;
+
+<pb n="26"/>
+<milestone unit="sig" n="2(5)v"/>
+<mw type="pageNum">26</mw>
+<lb/>all business was stopped. This deep plot origi­
+	    <lb/>nated, <date when="1814">1814</date>, in <placeName>Germany</placeName>, 
+with the Russian nobil­
+	    <lb/>ity and German, under the pretence of the <name>Free
+<lb/>Mason's</name> lodge. When they returned home they
+<lb/>increased their numbers and presented their chart
+<lb/>to the Emperor for permission which was grant­
+<lb/>ed. In the year <date when="1822">1822</date>, the Emperor being suspi­
+<lb/>cious that all was not right took their chart from
+<lb/>them. They carried it on in small parties, rap­
+<lb/>idly increasing, believing they would soon be
+<lb/>able to destroy all the Imperial branches, and
+<lb/>have a republican government. Had not this
+<lb/>taken place undoubtedly they would have at last
+<lb/>succeeded. So deep was the foundation of this
+<lb/>plot laid, both males and females were engaged
+<lb/>in it. The prison-houses were filled, and thirty
+<lb/>of the leading men were put into solitary confine­
+<lb/>ment, and twenty-six of the number died, four
+<lb/>were burned. A stage was erected and faggots
+<lb/>were placed underneath, each prisoner was se­
+<lb/>cured by iron chains, presenting a most appalling
+<lb/>sight to an eye-witness. A priest was in attend­
+<lb/>ance to cheer their last dying moments, then fire
+<lb/>was set to the faggots and these brave men were
+<lb/>consumed. Others received the knout, and even
+<lb/>the princesses and ladies of rank were imprisoned
+<lb/>and flogged in their own habitations. Those that
+<lb/>survived their punishment were banished to <placeName>Sibe­
+
+<pb n="27"/>
+<milestone unit="sig" n="2(6)r"/>
+<mw type="pageNum" rend="align(right)">27</mw>
+<lb/>ria</placeName>. The mode of banishment is very imposing
+<lb/>and very heart-rending, severing them from all
+<lb/>dear relatives and friends, for they are never per­
+<lb/>mitted to take their children. When they arrive
+<lb/>at the gate of the city, their first sight is a guard
+<lb/>of soldiers, then wagons with provisions, then the
+<lb/>noblemen in their banished apparel guarded, then
+<lb/>each side conveyances for the females, then la­
+<lb/>dies in order guarded by soldiers.</p>
+        <p>Preparations were now being made for the
+<lb/>coronation of the new Emperor and Empress.
+	  <lb/>This took place <date when="1826-09"><name>September</name>, 1826</date>, in <placeName>Moscow</placeName>,
+<lb/>555 miles south-east from <placeName>St. Petersburg</placeName>. All
+<lb/>persons engaged in the court were sent before­
+<lb/>hand, in order to prepare for the coming event.
+<lb/>After his majesty's laws were read as usual on
+<lb/>such occasions, those who wished to remain in
+<lb/>his service did so, and those who did not were
+<lb/>discharged.</p>
+        <p>After the coronation the Emperor and his court
+	  <lb/>returned to <placeName>St. Petersburg</placeName>. <date when="1827-06"><name>June</name>, 1827</date>, war was
+	    <lb/>declared between <placeName>Russia</placeName> and <placeName>Turkey</placeName>. They had
+<lb/>several battles with varied success. The <name>Rus­
+	      <lb/>sians</name> surrounded and laid siege to <placeName>Constantinople</placeName>.
+	    <lb/>The Sultan of <placeName>Turkey</placeName> sued for peace, and a
+<lb/>treaty was at last signed and peace was pro­
+	    <lb/>claimed in <date when="1829">1829</date>. In <date when="1829-03"><name>March</name>, of the same year</date>,
+	      <lb/>war was declared with <placeName>Poland</placeName>. <date when="1831">1831</date>, the chol­
+
+<pb n="28"/>
+<milestone unit="sig" n="2(6)v"/>
+<mw type="pageNum">28</mw>
+<lb/>era, that malignant disease, made its appearance
+	      <lb/>in <placeName>Austria</placeName>, from thence to little <placeName>Russia</placeName>, making
+<lb/>great ravages, thousands of people falling a prey.
+<lb/>It then began to rage in <placeName>St. Petersburg</placeName>, carrying
+<lb/>off 9255. This disease first appeared in <placeName>Mada­
+<lb/>gascar</placeName>, <date when="1814">1814</date>, there most of the inhabitants died.
+<lb/>It is called the plague that God sent among the
+	      <lb/>people of <placeName>Israel</placeName> and other nations for centuries
+<lb/>back. Much might be said of this dreadful dis­
+<lb/>ease and others that are but little known in this
+<lb/>country. God often visits nations, families, and
+<lb/>persons, with judgments as well as mercies.</p>
+        <p>The present Emperor and Empress are cour­
+<lb/>teous and affable. The Empress would often 
+<lb/>send for the ladies of the court at 8 o'clock in the
+<lb/>evening to sup with her, when they arrive at
+<lb/>court they form a procession and she takes the
+<lb/>lead. On entering the hall, the band strikes up;
+<lb/>there are two long tables on each side, and in the
+<lb/>midst circular tables for the Imperial family. The
+<lb/>tables are spread apparently with every variety
+<lb/>of eatable and deserts, but every thing is artificial,
+<lb/>presenting a novel appearance. When the com­
+<lb/>pany are seated, the Emperor and Empress walk
+<lb/>around the tables and shake hands with each in­
+<lb/>dividual as they pass. The prisoners of war who
+<lb/>are nobles, are seated by themselves with their
+<lb/>faces veiled. There is a tender or waiter to each
+
+<pb n="29"/>
+<milestone unit="sig" n="3(1)r"/>
+<mw type="pageNum" rend="align(right)">29</mw>
+<lb/>person, with two plates, one with soup and the
+<lb/>other with something else. After a variety of
+<lb/>courses, in one hour they are dismissed by the
+<lb/>band. They then retire to another part of the
+<lb/>palace to attend a ball or theatrical amusements.
+<lb/>At the Empress's command they are dismissed.
+<lb/>She carries power and dignity in her counte­
+<lb/>nance well adapted to her station. And after
+<lb/>her late amusements at night she would be out at
+<lb/>an early hour in the morning visiting the abodes
+<lb/>of the distressed, dressed in as common apparel
+<lb/>as any one here, either walking or riding in a
+<lb/>common sleigh. At her return she would call
+<lb/>for her children, take them in her arms and talk
+<lb/>to them. <quote rend="pre(“)post(”)">She riseth while it is yet night and
+<lb/>giveth meat to her household and a portion to her
+<lb/>maidens, she stretcheth out her hands to the
+<lb/>poor, yea, she reacheth out her hands to the
+<lb/>needy; she is not afraid of the snow for all her
+<lb/>household are clothed in scarlet.</quote> Then she
+<lb/>would go to the cabinet of his Majesty; there
+<lb/>she would write and advise with him.</p>
+        <p>The Russian ladies follow the fashions of 
+	  <lb/>the French and English. The religion is af­
+	  <lb/>ter the Greek church. There are no seats
+<lb/>in their churches; they stand, bow, and kneel,
+<lb/>during the service. The principal church is on
+<lb/>the Main street. There are the statues of the
+<mw type="sig" rend="align(center)">3</mw>
+
+<pb n="30"/>
+<milestone unit="sig" n="3(1)v"/>
+<mw type="pageNum">30</mw>
+<lb/>great commanders that have conquered in battle.
+<lb/>They are clad in brass, with flags in their hands,
+<lb/>and all their ancient implements of war are de­
+<lb/>posited there. The altar is surrounded by statues
+<lb/>of the <persName>Virgin Mary</persName> and the twelve apostles.
+	  <lb/>When <placeName>Russia</placeName> is at war and her armies are about
+<lb/>to engage in battle, it is here that the Emperor
+<lb/>and his family and court, come to pray for vic­
+<lb/>tory over the enemy. The day they engaged in
+	  <lb/>battle against the <name>Poles</name>, the Empress Dowager
+<lb/>took her death; she was embalmed and laid in 
+<lb/>state six weeks in the hall of the winter palace.
+<lb/>I went a number of times to see her, and the peo­
+<lb/>ple pay her homage, and kiss the hands of that
+<lb/>lump of clay. All religion is tolerated, but the
+	  <lb/>native <name>Russians</name> are subject to the Greek Church.
+<lb/>There are a number of institution in <placeName>St. Peters­
+<lb/>burg</placeName> where children of all classes have the privi­
+<lb/>lege of instruction. The sailors' and soldiers' boys
+<lb/>enter the corps at the age of seven, and are edu­
+<lb/>cated for that purpose. The girls remain in the
+<lb/>barracks with their parents, or go to some insti­
+<lb/>tutions where they are instructed in all the branch­
+<lb/>es of female education. There are other estab­
+<lb/>lishments, where the higher classes send their
+<lb/>children.</p>
+        <p>There is another spacious building called <name>the
+<lb/>Market</name>, <measure>half a mile square</measure>, where all kinds of ar­
+
+<pb n="31"/>
+<milestone unit="sig" n="3(2)r"/>
+<mw type="pageNum" rend="align(right)">31</mw>
+<lb/>ticles may be bought. Between <name>the Market</name> and
+<lb/>the church there is a block of buildings where
+<lb/>silver articles of all kinds are to be purchased.
+<lb/>These stores present a very superb appearance
+<lb/>and are visited by every foreigner that comes
+<lb/>into the place. Besides these buildings, <placeName>Main
+<lb/>Street</placeName> is lined with elegant buildings with pro­
+<lb/>jecting windows, to the extent of twelve miles.
+<lb/>Nearly at the termination of the street there is a
+<lb/>spacious building of stone which encloses the
+<lb/><name>Taberisey Garden</name>, so called from its having every
+<lb/>kind of tree, shrub, flower and fruit, of the known
+<lb/>world, which flourish alike in winter as in sum­
+<lb/>mer. There is an extensive <name>Frozen Market</name>
+<lb/>which forms a square as large as <placeName>Boston Com­
+<lb/>mon</placeName>. This space of ground is covered with
+<lb/>counters, on which may be purchased every varie­
+<lb/>ty of eatable, such as frozen fish, fowl, and meats
+<lb/>of every description, besides every other article
+<lb/>of commerce which will bear the extreme cold of
+<lb/>a <placeName>St. Petersburg</placeName> winter. The city was founded
+<lb/>by <persName>Peter the Great</persName>, and built upon a bog which
+<lb/>was occupied by a few fishermen's huts, and be­
+	  <lb/>longed to the <name>Finns</name>. It is situated at the extrem­
+<lb/>ity of the <placeName>Gulf of Finland</placeName>, and is built partly on
+<lb/>the main land and partly on several small islands.
+<lb/>The foundation of the city is extremely marshy,
+<lb/>which subjects it to frequent inundations. For
+
+<pb n="31"/>
+<milestone unit="sig" n="3(2)v"/>
+<mw type="pageNum">32</mw>
+<lb/>this reason there are canals which are cut through
+<lb/>the streets, very beautifully laid out, faced with
+<lb/>granite, railed with iron chains nubbed with brass,
+<lb/>with bridges to cross from one street to the other.
+<lb/>The city houses are built of stone and brick, and
+	  <lb/>twice the thickness of American houses. They
+<lb/>are heated by Peaches, of similar construction to
+<lb/>our furnaces; the outside of which is faced with
+	  <lb/>China tiles, presenting a very beautiful appearance.
+<lb/>The village houses are built of logs corked with
+<lb/>oakum, where the peasants reside. This class of
+<lb/>people till the land, most of them are slaves and
+<lb/>are very degraded. The rich own the poor, but
+<lb/>they are not suffered to separate families or sell
+<lb/>them off the soil. All are subject to the Empe­
+<lb/>ror, and no nobleman can leave without his per­
+<lb/>mission. The mode of travelling is principally
+<lb/>by stages which are built something like our om­
+<lb/>nibusses, with settees upon the top railed and
+<lb/>guarded by soldiers, for the purpose of protecting
+<lb/>the travellers from the attacks of wild beasts.
+<lb/>The common language is a mixture of <name>Sclavo­
+	    <lb/>nian</name> and <name>Polish</name>. The nobility make use of the
+	  <lb/>modern <name>Greek</name>, <name>French</name>, and <name>English</name>. I learned
+<lb/>the languages in six months, so as to be able to 
+<lb/>attend to my bu<choice><sic>i</sic><corr/></choice>siness, and also made some pro­
+	  <lb/>ficiency in the <name>French</name>. My time was taken up
+<lb/>in domestic affairs; I took two children to board
+
+<pb n="33"/>
+<milestone unit="sig" n="3(3)r"/>
+<mw type="pageNum" rend="align(right)">33</mw>
+<lb/>the third week after commencing housekeeping,
+<lb/>and increased their numbers. The baby linen
+<lb/>making and children's garments were in great de­
+<lb/>mand. I started a business in these articles and
+<lb/>took a journeywoman and apprentices. The 
+<lb/>present Empress is a very active one, and in­
+<lb/>quired of me respecting my business and gave
+<lb/>me much encouragement by purchasing of me
+<lb/>garments for herself and children, handsomely
+	  <lb/>wrought in French and English styles, and many
+<lb/>of the nobility also followed her example. It
+<lb/>was to me a great blessing that we had the means
+<lb/>of Grace afforded us. The <persName>Rev. Richard Kenell</persName>,
+	  <lb/>was the Protestant pastor. We had service twice
+<lb/>every <name>Sabbath</name> and evening prayer meetings, also
+<lb/>a female society, so that I was occupied at all
+<lb/>times.</p>
+        <p>At the time of the inundation, the Bibles and
+<lb/>other books belonging to the society were injured.
+<lb/>But <persName>Mr. Kenell</persName> took the liberty to purchase at
+<lb/>full price and sell at an advance. In order that
+<lb/>the poor might have them, we all agreed to
+<lb/>labor for that purpose; I often visited the matron
+<lb/>of the Empress' children, and encouraged by her
+<lb/>I took some to the Palace, and by this means dis­
+<lb/>posed of many at head quarters. Other friends
+<lb/>without the court continued to labor until hun­
+<lb/>dreds and thousands were disposed of. The old
+<mw type="sig" rend="align(center)">3*</mw>
+
+<pb n="34"/>
+<milestone unit="sig" n="3(3)v"/>
+<mw type="pageNum">34</mw>
+<lb/>Bishop finding his religion was in danger sent a
+<lb/>petition to the Emperor that all who were found
+<lb/>distributing Bibles and Tracts should be punished
+<lb/>severely. Many were taken and imprisoned,
+<lb/>two devoted young men were banished; thus the
+<lb/>righteous were punished, while evil practices
+<lb/>were not forbidden, for there the sin of licentious­
+<lb/>ness is very common.</p>
+        <p>I have mentioned that the climate did not agree
+<lb/>with me; in winter my lungs were much affected;
+<lb/>it was the advice of the best physicians that I had
+	  <lb/>better not remain in <placeName>Russia</placeName> during another cold
+<lb/>season. However painful it was to me to return
+<lb/>without my husband, yet life seemed desirable,
+<lb/>and he flattered me and himself that he should
+<lb/>soon follow. It is difficult for any one in the
+<lb/>Emperor's employment to leave when they please.
+<lb/><persName>Mr. Prince</persName> thought it best for me to return to my
+<lb/>native country while he remained two years
+<lb/>longer to accumulate a little property and then
+<lb/>return――but death took him away. I left <placeName>St. Pe­
+	    <lb/>tersburg</placeName>, <date when="1833-08-14"><name>August</name> 14th, 1833</date>, having been absent
+<lb/>about nine years and six months. On the <date when="1833-08-17">17th</date>
+	  <lb/>I sailed from <placeName>Cronstradt</placeName> for <placeName>New York</placeName>. Arrived
+	  <lb/>at <placeName>Elsinore</placeName> the <date when="1833-08-25">25th</date>. <date when="1833-08-29"><name>Tuesday</name> 29</date>,
+left. <date when="1833-09-02"><name>Sep­
+	      <lb/>tember</name> the 2nd.</date>, laid to in a gale. <date when="1833-09-18"><name>September</name><lb/>18th</date>, made <placeName>Plymouth, Old England</placeName>. <date when="1833-09-19">19th</date> sailed.
+<lb/>Arrived in <placeName>New York</placeName> <date when="1833-10-10">Oct. 10th</date>, left there 
+<date when="1833-10-18"><name>Tues­
+
+<pb n="35"/>
+<milestone unit="sig" n="3(4)r"/>
+<mw type="pageNum" rend="align(right)">35</mw>
+	    <lb/>day</name> 18th</date>, arrived in <placeName>Boston</placeName> the <date when="1833-10-23">23d</date>. <name>Sabbath</name>
+<lb/><date when="1833-11-09">Nov. the 9th</date>, I had the privilege of attending ser­
+<lb/>vice in the old place of worship. On this day I
+<lb/>also had the pleasure of meeting with an old
+<lb/>friend of my grandfather, nearly one hundred
+<lb/>years of age. I found things much changed;
+	  <lb/>my mother and sister <persName>Silvia</persName> died in <date when="1827">1827</date>, (that
+<lb/>I was aware of.) The <persName>Rev. T. Paul</persName> was dead
+<lb/>and many of my old friends were gone to their
+<lb/>long home. The old church and society was in
+<lb/>much confusion; I attempted to worship with
+<lb/>them but it was in vain. The voyage was of
+<lb/>great benefit to me. By the advice of friends I 
+<lb/>applied to a <persName>Mrs. Mott</persName>, a female phisician in the
+<lb/>city, that helped me much. I am indebted to
+<lb/>God for his great goodness in guiding my youth­
+<lb/>ful steps; my mind was directed to my fellow
+<lb/>brethren whose circumstances were similar to my
+<lb/>own. I found many a poor little orphan desti­
+<lb/>tute and afflicted, and on account of color shut
+<lb/>out from all the asylums for poor children. At
+<lb/>this my heart was moved, and proposed to my
+<lb/>friends the necessity of a home for such, where
+<lb/>they might be sheltered from the contaminating
+<lb/>evils that beset their path. For this purpose I
+<lb/>called a meeting of the people and laid before
+<lb/>them my plan: as I had had the privilege of as­
+<lb/>sisting in forming an Asylum for such a purpose
+
+<pb n="36"/>
+<milestone unit="sig" n="3(4)v"/>
+<mw type="pageNum">36</mw>
+<lb/>in <placeName>St. Petersburg</placeName>, I thought it would be well to
+<lb/>establish one on the same principles, not knowing
+<lb/>that any person had had a thought of any thing
+<lb/>of the kind. We commenced with eight children.
+<lb/>I gave three months of my time.  A board was
+<lb/>formed of seven females, with a committee of
+<lb/>twelve gentlemen of standing, to superintend. At
+<lb/>the end of three months the committee was dis­
+<lb/>pensed with, and for want of funds our society
+<lb/>soon fell through.</p>
+        <p>I passed my time in different occupations and
+<lb/>making arrangements for the return of my hus­
+<lb/>band, but death took him from me. I made my
+<lb/>home at the <persName>Rev. J. W. Holman's</persName>, a <name>Free Will
+	    <lb/>Baptist</name>, until I sailed for <placeName>Jamaica</placeName>. There had
+<lb/>been an <name>Anti-Slavery Society</name> established by <persName>W.
+<lb/>L. Garrison</persName>, <persName>Knapp</persName>, and other philanthropists of
+<lb/>the day. Their design was the amelioration of
+<lb/>the nominally free colored people of these States,
+<lb/>and the emancipation of the slaves in other States.
+<lb/>These meetings I attended with much pleasure
+<lb/>until a contention broke out among themselves;
+<lb/>there has been a great change in some things,
+<lb/>but much remains to be done; possibly I may
+<lb/>not see so clearly as some, for the weight of
+<lb/>prejudice has again oppressed me, and were it
+<lb/>not for the promises of God ones heart would
+<lb/>fail, for <emph rend="slant(italic)">He</emph> made man in his own image, in the
+
+<pb n="37"/>
+<milestone unit="sig" n="3(5)r"/>
+<mw type="pageNum" rend="align(right)">37</mw>
+<lb/>image of God, created he him, male and female,
+<lb/>that they should have dominion over the fish of
+<lb/>the sea, the fowl of the air, and the beast of the
+<lb/>field, &amp;c. This power did God give man, that thus
+<lb/>far should he go and no farther; but man has
+<lb/>disobeyed his maker and become vain in his im­
+<lb/>agination and their foolish hearts are darkened.
+<lb/>We gather from this, that God has in all ages of
+<lb/>the world punished every nation and people for
+<lb/>their sins. The sins of my beloved country are
+<lb/>not hid from his notice; his all seeing eye sees
+<lb/>and knows the secrets of all hearts; the angels
+<lb/>that kept not their first estate but left their own
+<lb/>habitations, he hath reserved in everlasting chains
+<lb/>unto the great day.</p>
+        <p>My mind, after the emancipation in the <placeName>West
+	    <lb/>Indies</placeName>, was bent upon going to <placeName>Jamaica</placeName>. A field
+<lb/>of usefulness seemed spread out before me.
+<lb/>While I was thinking about it, the <persName>Rev. Mr. In­
+<lb/>graham</persName>, who had spent seven years there, ar­
+<lb/>rived in the city. He lectured in the city at the
+<lb/><name>Marlboro' Chapel</name>, on the results arising from
+<lb/>the emancipation at the <placeName>British Islands</placeName>. He
+<lb/>knew much about them, he had a station at a
+	  <lb/>mountain near <placeName>Kingston</placeName>, and was very desirous
+<lb/>to have persons go there to labor. He wished
+<lb/>some one to go with him to his station. He
+<lb/>called on me with the <persName>Rev. Mr. Colyer</persName>, to per­
+
+<pb n="38"/>
+<milestone unit="sig" n="3(5)v"/>
+<mw type="pageNum">38</mw>
+<lb/>suade me to go. I told him it was my intention
+<lb/>to go if I could make myself useful, but that I
+<lb/>was sensible that I was very limited in education.
+<lb/>He told me that the moral condition of the peo­
+<lb/>ple was very bad, and needed labor aside from
+<lb/>any thing else.</p>
+        <p>I left <placeName>America</placeName>, <date when="1840-11-16"><name>November</name> 16th, 1840</date>, in the
+<lb/>ship <name>Scion</name>, <persName>Captain Mansfield</persName>, bound for <placeName>Jamaica</placeName>,
+<lb/>freighted with ice and machinery for the silk fac­
+<lb/>tory. There were on board a number of handi­
+<lb/>crafts-men and other passengers. We sailed on
+	  <lb/><name>Monday</name> afternoon, from 
+<placeName>Charlestown, Massachu­
+<lb/>setts</placeName>. It rained continually until <name>Saturday</name>. 
+<date when="1840-11-23"><name>Sun­
+<lb/>day</name> the 23rd</date>, was a fine day. <persName>Mr. De Grass</persName>, a 
+<lb/>young colored clergyman, was invited to perform
+<lb/>divine service which he did with much propriety;
+<lb/>he spoke of the dangers we had escaped and the
+<lb/>importance of being prepared to meet our God,
+<lb/>(he died of fever about three weeks after arriv­
+	    <lb/>ing at <placeName>Jamaica</placeName>,) some who were able to attend
+<lb/>came on deck and listened to him with respect,
+<lb/>while others seemed to look on in derision; these
+<lb/>spent the afternoon and evening in card-playing.
+<lb/>About twelve at night a storm commenced; on
+	  <lb/><name>Monday</name> were in great peril; the storm continued
+	  <lb/>until <date when="1840-11-27"><name>Friday</name> the 27th</date>. On that day a sail was
+<lb/>seen at some distance making towards us, the
+<lb/>captain judging her to be a piratical vessel or­
+
+<pb n="39"/>
+<milestone unit="sig" n="3(6)r"/>
+<mw type="pageNum" rend="align(right)">39</mw>
+<lb/>dered the women and children below, and the
+<lb/>men to prepare for action. The pirates were
+<lb/>not inclined to hazard an engagement; when
+<lb/>they saw the deck filled with armed men they
+<lb/>left us. Thus were we preserved from the storm
+<lb/>and from the enemy. <date when="1840-11-29"><name>Sabbath</name>, 29th</date>, divine ser­
+<lb/>vice, our attention was directed to the goodness
+<lb/>of God, in sparing us.</p>
+        <p><name>Monday</name>, and we mortals are still alive. 
+<name>Tues­
+<lb/>day</name>, thus far the Lord has led us on. <name>Wednes­
+<lb/>day</name>, thus far his power prolongs our days.
+	  <lb/><date when="1840-12-03"><name>Thursday</name>, <name>December</name> 3rd</date>, to-day made <placeName>Turks
+	    <lb/>Island</placeName>. <name>Friday</name>, 
+this day had a view of <placeName>Hayti</placeName>,
+<lb/>its lofty mountains presented a sublime prospect.
+	  <lb/><name>Saturday</name>, we had a glance at <placeName>Cuba</placeName>. <date when="1840-12-06"><name>Sunday</name>, 
+<lb/><name>December</name> 6th</date>, at six o'clock in the evening,
+<lb/>dropped anchor at <placeName>St. Anne Harbor, Jamaica</placeName>.
+<lb/>We blessed the Lord for his goodness in sparing
+<lb/>us to see the place of our destination; and here
+	  <lb/>I will mention my object in visiting <placeName>Jamaica</placeName>. I 
+<lb/>hoped that I might aid, in some small degree, to
+<lb/>raise up and encourage the emancipated inhabi­
+<lb/>tants, and teach the young children to read and
+<lb/>work, to fear God, and put their trust in the
+<lb/>Saviour. <persName>Mr. Whitmarsh</persName> and his friend came on
+	  <lb/>board and welcomed us. On <name>Tuesday</name> we went
+<lb/>on shore to see the place and the people; my in­
+	  <lb/>tention had been to go directly to <placeName>Kingston</placeName>, but
+
+<pb n="40"/>
+<milestone unit="sig" n="3(6)v"/>
+<mw type="pageNum">40</mw>
+<lb/>the people urged me to stay with them and I
+<lb/>thought it my duty to comply, and wrote to <persName>Mr.
+<lb/>Ingraham</persName> to that effect. I went first to see the
+<lb/>minister, <persName>Mr. Abbot</persName>, I thought as he was out, I
+<lb/>had better wait his return. The people promised
+<lb/>to pay me for my services, or send me to <placeName>King­
+<lb/>ston</placeName>. When <persName>Mr. Abbot</persName> returned he made me 
+<lb/>an offer, which I readily accepted. As I lodged
+<lb/>in the house of one of the class-leaders I attended
+<lb/>her class a few times, and when I learned the
+<lb/>method, I stopped. She then commenced her 
+<lb/>authority and gave me to understand if I did not
+<lb/>comply I should not have any pay from that so­
+<lb/>ciety. I spoke to her of the necessity of being
+<lb/>born of the spirit of God before we become mem­
+	  <lb/>bers of the church of Christ, and told her I was
+<lb/>sorry to see the people blinded in such a way.</p>
+        <p>She was very angry with me and soon accom­
+<lb/>plished her end by complaining of me to the min­
+<lb/>ister; and I soon found I was to be dismissed
+<lb/>unless I would yield obedience to this class-lead­
+<lb/>er. I told the minister that I did not come there
+<lb/>to be guided by a poor foolish woman. He then
+<lb/>told me that I had spoken something about the
+<lb/>necessity of moral conduct in church members.
+<lb/>I told him I had, and in my opinion, I was sorry
+<lb/>to see it so much neglected. He replied, that he
+<lb/>hoped I would not express myself so except to
+
+<pb n="41"/>
+<milestone unit="sig" n="4(1)r"/>
+<mw type="pageNum" rend="align(right)">41</mw>
+<lb/>him; they have the gospel, he continued, and
+<lb/>let them into the church. I do not approve of
+<lb/>women societies; they destroy the world's con­
+	  <lb/>vention; the American women have too many of
+<lb/>them. I talked with him an hour. He paid me
+<lb/>for the time I had been there. I continued with
+<lb/>the same opinion that something must be done
+<lb/>for the elevation of the children, and it is for that
+<lb/>I labor. I am sorry to say the meeting house is
+<lb/>more like a play house than a place of worship.
+<lb/>The pulpit stands about the middle of the build­
+<lb/>ing, behind are about six hundred children that
+<lb/>belong to the society; there they are placed for
+<lb/><name>Sabbath</name> School, and there they remain until ser­
+<lb/>vice is over, playing most of the time. The
+<lb/>house is crowded with the aged and the young,
+<lb/>the greater part of them barefooted. Some have
+<lb/>on bonnets, but most of the women wear straw
+<lb/>hats such as our countrymen wear.</p>
+        <p>I gave several Bibles away, not knowing that
+<lb/>I was hurting the minister's sale, the people buy
+<lb/>them of him at a great advance. I gave up my
+	  <lb/>school at <placeName>St. Ann</placeName>, the <date when="1841-03-18">18th of <name>March</name></date>. I took the
+<lb/>fever and was obliged to remain until the <date when="1841-04-07">7th of
+	    <lb/><name>April</name></date>. The people of <placeName>St. Ann</placeName> fulfilled their
+<lb/>promise which they made to induce me to stop
+	  <lb/>with them. On the <date when="1841-04-11">11th of <name>April</name></date> I arrived at
+	  <lb/><placeName>Kingston</placeName>, and was conducted to the <orgName>Mico Institu­
+<mw type="sig" rend="align(center)">4</mw>
+
+<pb n="42"/>
+<milestone unit="sig" n="4(1)v"/>
+<mw type="pageNum">42</mw>
+<lb/>tion</orgName>, where <persName>Mr. Ingraham</persName> directed me to find
+<lb/>him; he had lost his pulpit and his school, but
+<lb/><persName>Mr. Venning</persName>, the teacher, kindly received me.
+<lb/>I remained there longer than I expected; the
+<lb/>next morning he kindly sent one of the young
+<lb/>men with me to the packet for my baggage. I
+<lb/>then called on the American Consul, he told me
+<lb/>he was very glad to see me for such a purpose
+	    <lb/>as I had in view in visiting <placeName>Jamaica</placeName>, but he said
+	    <lb/>it was a folly for the <name>Americans</name> to come to the
+<lb/>Island to better their condition; he said they
+<lb/>came to him every day praying him to send
+<lb/>them home.</p>
+        <p>He likewise mentioned to me the great mor­
+<lb/>tality among the emigrants. The same day I
+<lb/>saw the <persName>Rev. Mr. J. S. Beadslee</persName>, one of our mis­
+<lb/>sionaries, who wished me to accompany him
+<lb/>forty miles into the interior of the country.</p>
+        <p>On <date when="1841-05-18"><name>May</name> the 18th</date>, I attended the <name>Baptist Mis­
+<lb/>sionary</name> meeting, in <name>Queen Street Chapel</name>; the
+<lb/>house was crowded. Several ministers spoke of
+	  <lb/>the importance of sending the gospel to <placeName>Africa</placeName>;
+<lb/>they complimented the congregation on their lib­
+<lb/>erality the last year, having given <measure>one hundred
+<lb/>pounds sterling</measure>; they hoped this year they would
+<lb/>give <measure>five hundred pounds</measure>, as there were five
+<lb/>thousand members at the present time. There
+<lb/>was but one colored minister on the platform. It
+
+<pb n="43"/>
+<milestone unit="sig" n="4(2)r"/>
+<mw type="pageNum" rend="align(right)">43</mw>
+<lb/>is generally the policy of these missionaries to
+<lb/>have the sanction of colored ministers, to all their
+<lb/>assessments and taxes. The colored people give
+<lb/>more readily, and are less suspicious of imposi­
+<lb/>tion, if one from themselves recommends the
+<lb/>measure; this the missionaries understand very
+<lb/>well, and know how to take advantage of it.
+	  <lb/>On the <date when="1841-06-22">22d</date> and <date when="1841-06-23">23rd of <name>June</name></date>, the colored 
+<name>Bap­
+<lb/>tists</name> held their missionary meeting, the number
+<lb/>of ministers colored and mulattoes was 18, the
+<lb/>colored magistrates were present. The resolu­
+<lb/>tions that were offered were unanimously accept­
+<lb/>ed, and every thing was done in love and har­
+<lb/>mony. After taking up a contribution they con­
+<lb/>cluded with song and prayer, and returned home
+<lb/>saying jocosely, <said rend="pre(“)post(”)">they would turn macroon hunt­
+<lb/>ers.</said></p>
+        <p>Mack is the name of a small coin in circula­
+<lb/>tion at <placeName>Jamaica</placeName>. I called, on my return, at the
+<lb/>market and counted the different stalls. For
+<lb/>vegetables and poultry 196, all numbered and
+<lb/>under cover; beside 70 on the ground; these
+<lb/>are all attended by colored women. The market
+<lb/>is conveniently arranged, as they can close the
+<lb/>gates and leave all safe. There are nineteen
+<lb/>stalls for fresh fish, eighteen for pork, thirty for
+<lb/>beef, eighteen for turtle. These are all regular
+<lb/>built markets, and are kept by colored men and
+
+<pb n="44"/>
+<milestone unit="sig" n="4(2)v"/>
+<mw type="pageNum">44</mw>
+<lb/>women. These are all in one place. Others
+<lb/>also may be found, as with us, all over the city.
+<lb/>Thus it may be hoped they are not the stupid set
+<lb/>of beings they have been called; here <emph rend="slant(italic)">surely we
+<lb/>see industry</emph>; they are enterprising and quick in
+<lb/>their perceptions, determined to possess them­
+<lb/>selves, and to possess property besides, and quite
+<lb/>able to take care of themselves. They wished
+<lb/>to know why I was so inquisitive about them, I
+	  <lb/>told them we had heard in <placeName>America</placeName> that you are
+<lb/>lazy, and that emancipation has been of no bene­
+<lb/>fit to you; I wish to inform myself of the truth
+<lb/>respecting you, and give a true account on my
+<lb/>return. Am I right? More than two hundred
+<lb/>people were around me listening to what I said.</p>
+        <p>They thanked me heartily, I gave them some
+<lb/>tracts, and told them if it so pleased God I would
+<lb/>come back to them and bring them some more
+<lb/>books, and try what could be done with some of
+<lb/>the poor children to make them better. I then
+<lb/>left them and went to the <name>East Market</name>, where
+	  <lb/>there are many of all nations. The <name>Jews</name> and
+	  <lb/><name>Spanish</name> looked at me very black. The colored
+<lb/>people gathered around me, I gave them little
+<lb/>books and tracts, and told them I hoped to see
+<lb/>them again.</p>
+        <p>There are in this street upwards of a thousand
+<lb/>young women and children, living in sin of every
+
+<pb n="45"/>
+<milestone unit="sig" n="4(3)r"/>
+<mw type="pageNum" rend="align(right)">45</mw>
+<lb/>kind. From thence I went to the jail, where
+<lb/>there were seventeen men, but no women. There
+<lb/>were in the <name>House of Correction</name> three hundred
+<lb/>culprits; they are taken from there, to work on
+<lb/>plantations. I went to the Admiral's house,
+<lb/>where the emigrants find a shelter until they can
+<lb/>find employment, then they work and pay for
+<lb/>their passage. Many leave their homes and come
+	  <lb/>to <placeName>Jamaica</placeName> under the impression that they are to
+<lb/>have their passage free, and on reaching the
+<lb/>Island are to be found, until they can provide for
+<lb/>themselves.</p>
+        <p>How the mistake orignated, I am not able to
+<lb/>say, but on arriving here, strangers poor and un­
+<lb/>acclimated, find the debt for passage money hard
+<lb/>and unexpected. It is remarkable that whether
+	  <lb/>fresh from <placeName>Africa</placeName>, or from other Islands from the
+	  <lb/><placeName>South</placeName> or from <placeName>New England</placeName>, they all feel de­
+<lb/>ceived on this point. I called on many <name>Ameri­
+<lb/>cans</name> and found them poor and discontented,――
+<lb/>rueing the day they left their country, where,
+<lb/>notwithstanding many obstacles, their parents
+<lb/>lived and died, which they helped to conquer
+<lb/>with their toil and blood; now shall their chil­
+<lb/>dren stray abroad and starve in foreign lands.</p>
+        <p>There is in <placeName>Jamaica</placeName> an institution, established
+<lb/>in <date when="1836">1836</date>, called the <orgName>Mico Institution</orgName>. It is named
+<lb/>after its founder, <persName>Madame Mico</persName>, who left a large
+<mw type="sig" rend="align(center)">4*</mw>
+
+<pb n="46"/>
+<milestone unit="sig" n="4(3)v"/>
+<mw type="pageNum">46</mw>
+<lb/>sum of money to purchase, (or rather to ransom,
+	  <lb/>the one being a Christian act, the other a sin
+<lb/>against the Holy Ghost, who expressly forbids
+<lb/>such traffic.) <persName>Madame Mico</persName> left this money to
+	  <lb/>ransom the <name>English</name> who were in bondage to the
+	  <lb/><name>Algerines</name>; if there was any left, it was to be de­
+<lb/>voted to the instruction of the colored people in
+<lb/>the <placeName>British Isles</placeName>.</p>
+        <p>Beside the <orgName>Mico</orgName> establishment, there are in
+	  <lb/><placeName>Jamaica</placeName> twenty-seven church missionary schools,
+<lb/>where children are taught gratis. Whole num­
+<lb/>ber taught, 952. <orgName>London Missionary Society</orgName>
+<lb/>Schools, sixteen; the number taught not ascer­
+<lb/>tained. National Schools, thirty-eight. There 
+<lb/>are also the Wesleyan, Presbyterian and Mora­
+<lb/>vian Schools; it is supposed there are private
+<lb/>schools, where three or four thousand are edu­
+	  <lb/>cated in the city of <placeName>Kingston</placeName>, and twice the num­
+<lb/>ber in the street without the means of instruction.
+<lb/>All the children and adults taught in the above
+<lb/>named schools, are taxed <measure>£1</measure> a year, except the
+<lb/><name>English Church School</name>, this is the most liberal.
+	  <lb/>The <persName>Rev. Mr. Horton</persName>, a Baptist minister in <placeName>Kings­
+<lb/><choice><sic>s</sic><corr/></choice>ton</placeName>, told me he had sent ninety children away
+	    <lb/>from the Baptist school because they did not
+<lb/>bring their money. It is sufficient to say they
+<lb/>had it not to bring!</p>
+        <p>Most of the people of <placeName>Jamaica</placeName> are emancipated
+
+<pb n="47"/>
+<milestone unit="sig" n="4(4)r"/>
+<mw type="pageNum" rend="align(right)">47</mw>
+<lb/>slaves, many of them are old, worn out and de­
+<lb/>graded. Those who are able to work, have yet
+<lb/>many obstacles to contend with, and very little to
+<lb/>encourage them; every advantage is taken of 
+<lb/>their ignorance; the same spirit of cruelty is op­
+<lb/>posed to them as held them for centuries in bond­
+<lb/>age; even religious teaching is bartered for their
+<lb/>hard earnings, while they are allowed but <measure>thirty-
+<lb/>three cents</measure> a day, and are told if they will not
+<lb/>work for that they shall not work at all; an ex­
+<lb/>traordinary price is asked of them for every thing
+<lb/>they may wish to purchase, even their Bibles are
+<lb/>sold to them at a large advance on the first pur­
+<lb/>chase. Where are their apologists, if they are 
+	  <lb/>found wanting in the strict morals that <name>Christians</name>
+<lb/>ought to practice? Who kindly says, forgive 
+<lb/>them when they err? <quote rend="pre(“)post(”)">Forgive them, this is the
+<lb/>bitter fruit of slavery.</quote> Who has integrity suffi­
+<lb/>cient to hold the balance when these poor people
+<lb/>are to be weighed? Yet their present state is
+<lb/>blissful, compared with slavery.</p>
+        <p>Many of the farmers bring their produce <measure>twen­
+<lb/>ty or thirty miles</measure>. Some have horses or ponys,
+<lb/>but most of them bring their burdens on their
+<lb/>head. As if returned from <placeName>St. Andrews's Moun­
+<lb/>tain</placeName>, where I had been sent for by a <persName>Mr. Rose</persName>, I
+<lb/>was overtaken by a respectable looking man on
+<lb/>horseback; we rode about <measure>ten miles</measure> in company.
+
+<pb n="48"/>
+<milestone unit="sig" n="4(4)v"/>
+<mw type="pageNum">48</mw>
+<lb/>The story he told me of the wrongs he and his
+<lb/>wife had endured while in slavery, are too horri­
+<lb/>ble to narrate. My heart sickens when I think
+<lb/>of it. He asked me many questions, such as
+<lb/>where I came from? why I came to that Isle?
+<lb/>where had I lived, &amp;c? I told him I was sent
+<lb/>for by one of the missionaries to help him in his
+<lb/>school. Indeed, said he, our color need the in­
+<lb/>struction. I asked him why the colored people
+<lb/>did not hire for themselves. We would be very
+<lb/>glad to, he replied, but our money is taken from
+<lb/>us so fast we cannot. Sometimes they say we
+<lb/>must all bring <measure>£1</measure>; to raise this, we have to sell
+<lb/>at a loss or to borrow, so that we have nothing
+<lb/>left for ourselves; the <name>Macroon</name> hunters take all
+<lb/>――this is a nickname they give the missionaries
+<lb/>and the class-leaders――a cutting sarcasm this!</p>
+        <p>Arrived at a tavern, about <measure>a mile</measure> from <placeName>Kings­
+<lb/>ton</placeName>, I bade the man adieu, and stopped for my
+<lb/>guide. The inn-keeper kindly invited me in;
+<lb/>he asked me several questions, and I asked him
+<lb/>as many. How do the people get along, said I,
+<lb/>since the emancipation? The negroes, he re­
+<lb/>plied, will have the Island in spite of the d――.
+<lb/>Do not you see how they live, and how much 
+<lb/>they can bear? We cannot do so. This man
+	  <lb/>was an <name>Englishman</name>, with a large family of mu­
+<lb/>latto children. I returned with my mind fully
+
+<pb n="49"/>
+<milestone unit="sig" n="4(5)r"/>
+<mw type="pageNum" rend="align(right)">49</mw>
+<lb/>made up what to do. Spent three weeks at the
+<lb/><orgName>Mico</orgName> establishment, and three with my colored
+	    <lb/>friends from <placeName>America</placeName>. We thought something
+<lb/>ought to be done for the poor girls that were des­
+<lb/>titute; they consulted with their friends, called a
+<lb/>meeting and formed a society of forty; each
+<lb/>agreed to pay <measure>three dollars</measure> a year and collect,
+<lb/>and provide a house, while I came back to <placeName>Amer­
+<lb/>ica</placeName> to raise the money for all needful articles for
+<lb/>the school. Here I met <persName>Mr. Ingraham</persName> for the 
+<lb/>first time; he had come from the mountains,
+<lb/>and his health had rapidly declined; wishing to
+<lb/>get his family home before the Lord took him
+	  <lb/>away, he embarked for <placeName>Baltimore</placeName>, in the <name>Orb</name>,
+	    <lb/>and I sailed for <placeName>Philadelphia</placeName>, <date when="1841-07-20"><name>July</name> 20th, 1841</date>,
+	    <lb/>twenty-one days from <placeName>Jamaica</placeName>, in good health. I 
+<lb/>found there, <persName>Fitz W. Sargent's</persName> family, from <placeName>Glou­
+<lb/>cester</placeName>, who I lived with when a little girl; they
+<lb/>received me very kindly, and gave donations of
+<lb/>books and money for that object.</p>
+        <p>I met the <orgName>Anti Slavery Society</orgName> at <persName>Mrs. Lucre­
+<lb/>tia Motts</persName>, who took great interest in the cause. I
+<lb/>visited among the friends, and spent my time
+	  <lb/>very pleasantly. <date when="1841-08-05"><name>August</name> 5th</date>, I started for <placeName>New
+<lb/>York</placeName>; arrived safely, and staid with an old
+<lb/>friend; ascertained that <persName>Mr. Ingraham's</persName> family
+	  <lb/>were at <placeName>Newark</placeName>, at <persName>Theodore Wells</persName>. He died
+<lb/>four days after his arrival. I was invited to <persName>Mrs.
+
+<pb n="50"/>
+<milestone unit="sig" n="4(5)v"/>
+<mw type="pageNum">50</mw>
+<lb/>Ingraham's</persName> (his cousin's widow) to spend a week.
+<lb/>There I met with much encouragement to labor
+<lb/>in the cause. Missionaries were coming and go­
+<lb/>ing, and all seemed to be interested in my object.
+	  <lb/><name>Saturday</name> evening I went to the bath room, where
+<lb/>I left my neck ribbon: returning after it, I had
+<lb/>the misfortune to fall through an open trap door,
+<lb/>down <measure>fifteen feet</measure>, on hard coal. I had no light
+<lb/>with me. I dislocated my left shoulder, and was
+<lb/>generally very much bruised; my screams
+<lb/>brought the girl to my assistance, and by the
+<lb/>help of God she brought me out of the cellar; it
+<lb/>was some time before a surgeon could be pro­
+<lb/>cured; at last <persName>Dr. Jossleyn</persName> came to my relief,
+<lb/>he set my shoulder. I was obliged to remain at 
+<lb/><persName>Mrs. Ingraham's</persName> three weeks; as soon as I was
+	  <lb/>able I left there for <placeName>Boston</placeName>. I intended to have
+<lb/>gone by the western boat, but by mistake got on
+<lb/>board <persName>Captain Comstock's</persName>, and was exposed on
+<lb/>deck all night in a damp east wind, and when I
+<lb/>arrived at the landing I could not assist myself;
+<lb/>a sailor who saw and pitied my situation, kindly
+<lb/>took care of me and my baggage, and on my ar­
+	  <lb/>rival in <placeName>Boston</placeName> procured a carriage for me. If
+<lb/>it had not been for his kindness I know not how
+<lb/>I should have got along.</p>
+        <p>As soon as I was able I commenced my task
+<lb/>of collecting funds for my <name>Free Labor School</name> in
+
+<pb n="51"/>
+<milestone unit="sig" n="4(6)r"/>
+<mw type="pageNum" rend="align(right)">51</mw>
+	  <lb/><placeName>Jamaica</placeName>. I collected in <placeName>Boston</placeName> and vicinity, in
+	  <lb/><placeName>New York</placeName> and <placeName>Philadelphia</placeName>, but not sufficient to
+<lb/>make up the required sum, and I was obliged to
+<lb/>take <measure>fifty dollars</measure> from my own purse, thinking
+	  <lb/>that when I returned to <placeName>Jamaica</placeName> they would re­
+<lb/>fund the money to me. <date when="--04-15"><name>April</name> 15th</date>, embarked
+<lb/>on board the <name>Brig Norma</name>, of <placeName>New York</placeName>, for <placeName>Ja­
+	    <lb/>maica</placeName>. I arrived at <placeName>Kingston</placeName> <date when="--05-06"><name>May</name> 6th</date>, and
+<lb/>found every thing different from what it was
+<lb/>when I left; the people were in a state of agita­
+<lb/>tion, several were hanged, and the insurrection
+<lb/>was so great that it was found necessary to in­
+<lb/>crease the army to quell it. Several had been
+<lb/>hanged. On the very day I arrived a man was
+<lb/>hanged for shooting a man as he passed through
+<lb/>the street. Such was the state of things that it
+<lb/>was not safe to be there.</p>
+        <p>A few young people met to celebrate their
+<lb/>freedom on an open plain, where they hold their
+<lb/>market; their former masters and mistresses en­
+<lb/>vious of their happiness, conspired against them
+<lb/>and thought to put them down by violence. This
+<lb/>only served to increase their numbers; but the
+<lb/>oppressors were powerful and succeeded in ac­
+<lb/>complishing their revenge, although many of
+<lb/>them were relations. There was a rule among
+<lb/>the slave holders, to take care of the children
+<lb/>they have by their slaves; they select them out
+
+<pb n="52"/>
+<milestone unit="sig" n="4(6)v"/>
+<mw type="pageNum">52</mw>
+<lb/>and place them in asylums. Those who lived
+<lb/>with their white fathers were allowed great power
+<lb/>over their slave mothers and her slave children;
+<lb/>my heart was often grieved to see their conduct
+<lb/>to their poor old grand parents. Those over
+<lb/>twenty-one were freed in <date when="1834">1834</date>, all under twenty-
+<lb/>one, were to serve their masters till twenty-one.
+<lb/>It is well known that at that time, the children
+<lb/>alike with others, received <measure>twenty-five dollars</measure> a
+<lb/>head for their relatives. Were I to tell all my
+<lb/>eyes have seen among that people it would not
+<lb/>be credited. It is well known that those that
+<lb/>were freed, knowing their children were still in
+<lb/>bondage, were not satisfied. In the year <date when="1838">1838</date>,
+<lb/>general freedom throughout the <placeName>British Islands</placeName>
+<lb/>gave the death blow to the power of the master,
+<lb/>and mothers received with joy their emancipated
+<lb/>children; they no longer looked the picture of de­
+<lb/>spair, fearing to see their mulatto son or daughter,
+<lb/>beating or abusing their younger brothers and
+<lb/>sisters of a darker skin. On this occasion there
+<lb/>was an outrage committed by those who were in
+<lb/>power. What little the poor colored people had
+<lb/>gathered during their four years of freedom, was
+<lb/>destroyed by violence; their fences were broken
+<lb/>down, and their horses and hogs taken from them.
+<lb/>Most of the mulattoes and masters are educated,
+<lb/>many of them are very poor, some are very rich;
+
+<pb n="53"/>
+<milestone unit="sig" n="5(1)r"/>
+<mw type="pageNum" rend="align(right)">53</mw>
+<lb/>the property is left to the oldest daughter, she
+<lb/>divides it with her brothers and sisters; since
+<lb/>slavery ended many of them have married; those
+<lb/>who are poor, and mean to live in sin, make for
+<lb/><placeName>New Orleans</placeName> and other slave States; many of
+<lb/>the planters left the Island when slavery was abol­
+	  <lb/>ished. In <date when="1841-06"><name>June</name>, 1841</date>, a number of people ar­
+	    <lb/>rived from <placeName>Sierra Leone</placeName> at <placeName>Jamaica</placeName>; these were
+	    <lb/><name>Maroons</name> who were banished from the Island.
+<lb/>They were some of the original natives who inhab­
+<lb/>ited the mountains, and were determined to de­
+	    <lb/>stroy the whites. These <name>Maroons</name> would secrete
+<lb/>themselves in trees, and arrest the whites as they
+<lb/>passed along, they would pretend to guide them,
+<lb/>when they would beat and abuse them as the
+	    <lb/>whites did their slaves; the <name>English</name> finding
+<lb/>themselves defeated in all their plans to subdue
+<lb/>them, proposed to take them by craft. They
+	    <lb/>made a feast in a large tavern in <placeName>Kin<choice><sic/><corr>g</corr></choice>ston</placeName>, 
+and in­
+<lb/>vited them to come; after they had eaten, they
+<lb/>were invited on board three ships of war, that
+	    <lb/>were all ready to set sail for <placeName>Sierra Leone</placeName>; they
+<lb/>were many of them infants in their mother's arms,
+	    <lb/>they were well taken care of by the <name>English</name> and
+<lb/>instructed; they were removed about the year
+<lb/><date when="1796">1796</date>――they are bright and intelligent, I saw and
+<lb/>conversed with them; when they heard of the
+<lb/>abolition of slavery, they sent a petition to <persName>Queen
+<mw type="sig" rend="align(center)">5</mw>
+
+<pb n="54"/>
+<milestone unit="sig" n="5(1)v"/>
+<mw type="pageNum">54</mw>
+	      <lb/>Victoria</persName> that they might return to <placeName>Jamaica</placeName>, which
+<lb/>was granted. Several of them were very old
+<lb/>when they returned; they were men and women
+<lb/>when they left the Island, they had not forgot the
+<lb/>injuries they had received from the hands of man,
+<lb/>nor the mercies of God to them, nor his judg­
+<lb/>ments to their enemies. Their numbers were
+<lb/>few but their power was great; they say the
+<lb/>Island, of right, belongs to them. Had their been
+<lb/>a vessel in readiness I should have come back
+<lb/>immediately, it seemed useless to attemp to es­
+<lb/>tablish a Manual Labor School, as the govern­
+<lb/>ment was so unsettled that I could not be pro­
+<lb/>tected. Some of my former friends were gone
+	    <lb/>as teachers to <placeName>Africa</placeName>, and some to other parts of
+	    <lb/>the Island. I called on the American Consul to 
+<lb/>consult with him, he said that although such a
+<lb/>school was much wanted, yet every thing seemed
+<lb/>so unsettled that I had no courage to proceed. I
+<lb/>told him there was so much excitement that I
+<lb/>wished to leave the Island as soon as he could
+<lb/>find me a passage, it seemed useless to spend my
+<lb/>time there. As soon as it was known that I in­
+<lb/>tended to return, a movement was made to induce
+<lb/>me to remain. I was persuaded to try the ex­
+<lb/>periment for three months, not thinking their mo­
+	    <lb/>tive was bad. Before I left the <placeName>United States</placeName>, I
+<lb/>got all that was needed, within <measure>fifty dollars</measure>. The
+
+<pb n="55"/>
+<milestone unit="sig" n="5(2)r"/>
+<mw type="pageNum" rend="align(right)">55</mw>
+<lb/><measure>fifty dollars</measure> I supplied from my own purse, ex­
+<lb/>pecting they would pay me. It cost me <measure>ten dol­
+<lb/>lars</measure> for freight, and <measure>twenty-five</measure> for passage
+<lb/>money; these people that I had hoped to serve,
+<lb/>were much taken up with the things I had brought,
+<lb/>they thought that I had money and I was contin­
+<lb/>ually surrounded; the thought of color was no
+<lb/>where exhibited, much notice was taken of me.
+<lb/>I was invited to breakfast in one place, and to
+<lb/>dine in another, &amp;c. A society was organized,
+<lb/>made up of men and women of authority. A
+<lb/>constitution was drafted by my consent, by those
+<lb/>who were appointed to meet at my rooms. Be­
+<lb/>tween the time of adjournment they altered it
+<lb/>to suit themselves. At the time appointed we
+<lb/>came together with a spirit apparently becoming
+	    <lb/>any body of <name>Christians</name>; most of them were mem­
+	    <lb/>bers of Christian churches; the meeting was
+<lb/>opened with reading the Scriptures and prayer.
+<lb/>Then said the leader, <said>since our dear sister has
+<lb/>left her native land and her friends to come to
+<lb/>us, we welcome her with our hearts and hands.
+<lb/>She will dwell among us, and we will take care
+<lb/>of her――Brethren think of it!</said> after which he sat
+<lb/>down, and the constitution was called for. The
+<lb/>Preamble held out all the flattery that a fool
+<lb/>could desire; after which they commenced the
+<lb/>articles, supposing that they could do as they
+
+<pb n="56"/>
+<milestone unit="sig" n="5(2)v"/>
+<mw type="pageNum">56</mw>
+<lb/>thought best. The fourth article unveiled their
+<lb/>design. <quote>As we have designed to take care of
+<lb/>our sister, <mcr>we the undersigned will take charge of
+<lb/>all she has brought</mcr></quote>; the vote was called, every
+<lb/>person rose in a moment except myself: every
+<lb/>eye was upon me; one asked me why I did not
+<lb/>vote, I made no answer――they put the vote again
+<lb/>and again, I remained seated; <said>well</said> said the Pres­
+<lb/>ident, <said>we can do nothing without her vote</said>; they
+<lb/>remained some time silent, and then broke up the
+<lb/>meeting. The next day the Deacon called to
+<lb/>see what the state of my mind was, and some of
+<lb/>the women proposed that we should have another
+<lb/>meeting. I told them no, I should do no more
+<lb/>for them. As soon as they found they could not
+<lb/>get the things in the way they intended, they
+<lb/>started to plunder me; but I detected their de­
+<lb/>sign, and was on my guard, I disposed of the ar­
+<lb/>ticles, and made ready to leave when an oppor­
+<lb/>tunity presented. A more skilful plan than this
+	  <lb/><persName>Satan</persName> never designed, but the power of God was
+<lb/>above it. It is not surprising that this people are
+<lb/>full of deceit and lies, this is the fruits of slavery,
+<lb/>it makes master and slaves knaves. It is the
+<lb/>rule where slavery exists to swell the churches
+<lb/>with numbers, and hold out such doctrines, as
+<lb/><mcr>obedience to tyrants</mcr>, is a duty to God. I went
+	      <lb/>with a Baptist woman to the house of a minister
+
+<pb n="57"/>
+<milestone unit="sig" n="5(3)r"/>
+<mw type="pageNum" rend="align(right)">57</mw>
+<lb/>of the <name>Church of England</name>, to have her grand­
+<lb/>child christened before it died; she told me if
+<lb/>she did not have it christened, it would rise up in
+<lb/>judgment against her. This poor deluded crea­
+<lb/>ture was a class leader in the <name>Baptist Church</name>,
+<lb/>and such is the condition of most of the people:
+<lb/>they seemed blinded to every thing but money.
+<lb/>They are great for trade, and are united in their
+<lb/>determination for procuring property, of which 
+<lb/>they have amassed a vast amount. Notwith­
+<lb/>standing I had made over various articles to one
+	      <lb/>of the American Missionaries, a <persName>Mr. J. S. Beads­
+		<lb/>lee</persName>, of <placeName>Clarendon Mountains</placeName>, I also gave to others
+<lb/>where they were needed, which receipts and
+<lb/>letters I have in my possession. Notwithstanding
+<lb/>all this, they made another attempt to rob me,
+<lb/>and as a passage could not be obtained for me to
+<lb/>return home, I was obliged to go to the <orgName>Mico</orgName> es­
+<lb/>tablishment again for safety, such was the out­
+<lb/>rage. Houses were broken open and robbed
+<lb/>every night. I came very near being shot: there
+<lb/>was a certain place where we placed ourselves
+<lb/>the first of the evening. A friend came to bring
+<lb/>us some refreshments, I had just left the window
+<lb/>when a gun was fired through it, by one that
+<lb/>often sat with us; this was common in the time of
+<lb/>slavery. Previous to vessels arriving, passages
+<lb/>were engaged. I disposed of my articles and
+<mw type="sig" rend="align(center)">5*</mw>
+
+<pb n="58"/>
+<milestone unit="sig" n="5(3)v"/>
+<mw type="pageNum">58</mw>
+<lb/>furniture at a very small profit. On the <date when="1842-08-01">1st of
+		<lb/><name>August</name></date>,<choice><sic/><corr> </corr></choice><persName>Capt. A. Miner</persName> arrived, and advertised for
+	      <lb/>passengers. The American Consul procured me
+	      <lb/>a passage, and on the <date when="1842-08-18">18th of <name>August</name></date> myself and 
+		<lb/>nine other passengers embarked for <placeName>New York</placeName>.</p>
+        <p>I might have diversified my book with more
+	  <lb/>extended descriptions of <placeName>Jamaica</placeName>, with its tropi­
+<lb/>cal climate and productions, and contrasted it
+	  <lb/>with Northern <placeName>Russia</placeName>. I hope my readers will
+<lb/>not think that I was unmoved by all the wonders
+<lb/>and beauties of nature, that were presented to
+<lb/>me in various climes. Before giving an account
+	  <lb/>of the voyage from <placeName>Jamaica</placeName>, it may prove inter­
+<lb/>esting to some readers, to have a brief description
+<lb/>of the country. With her liberty secured to her,
+<lb/>may she now rise in prosperity, morality and reli­
+<lb/>gion, and become a happy people whose God is
+<lb/>the Lord.</p>
+        <p>
+          <quote>
+            <floatingText xml:id="TR00532-01">
+              <body>
+                <div type="section">
+                  <head><placeName>West Indies</placeName>.</head>
+                  <p>A denomination under which is comprehended
+<lb/>a large chain of islands, extending in a curve
+	  <lb/>from the <placeName>Florida</placeName> shore on the northern peninsula
+	  <lb/>of <placeName>America</placeName>, to the <placeName>Gulf of Venezuela</placeName> on the
+	    <lb/>southern. These islands belong to five European
+	    <lb/>powers, viz: <placeName>Great Britain</placeName>, <placeName>Spain</placeName>, <placeName>France</placeName>, 
+	    <placeName>Hol­
+	      <lb/>land</placeName>, and <placeName>Denmark</placeName>. An inhabitant of <placeName>New
+<lb/>England</placeName> can form no idea of the climate and
+<lb/>the productions of these islands. Many of the
+
+<pb n="59"/>
+<milestone unit="sig" n="5(4)r"/>
+<mw type="pageNum" rend="align(right)">59</mw>
+<lb/>particulars that are here mentioned, are peculiar
+<lb/>to them all.</p>
+                  <p>The climate in the <placeName>West India Islands</placeName> is
+<lb/>nearly the same, allowing for those accidental
+<lb/>differences which the several situations and quali­
+<lb/>ties of the lands themselves produce; as they lie
+<lb/>within the <placeName>tropic of Cancer</placeName>, and the sun is often
+<lb/>almost at the meridian over their heads, they are
+<lb/>continually subjected to a heat that would be
+<lb/>intolerable but for the trade winds, which are so
+<lb/>refreshing as to enable the inhabitants to attend
+<lb/>to their various occupations, even under a noon­
+<lb/>day sun; as the night advances, a breeze begins
+<lb/>to be perceived, which blows smartly from the
+<lb/>land, as it were from the centre towards the sea,
+<lb/>to all points of the compass at once. The rains
+<lb/>make the only distinction of seasons on these
+<lb/>islands. The trees are green the year round;
+<lb/>they have no cold or frost; our heaviest rains are
+<lb/>but dews comparatively; with them floods of
+<lb/>water are poured from the clouds. About <name>May</name>,
+<lb/>the periodical rains from the South may be
+<lb/>expected. Then the tropical summer, in all its
+<lb/>splendor, makes its appearance. The nights are
+<lb/>calm and serene, the moon shines more brightly
+<lb/>than in <placeName>New England</placeName>, as do the planets and the
+	    <lb/>beautiful galaxy. From the middle of <name>August</name> to
+	    <lb/>the end of <name>September</name> the heat is most oppressive,
+
+<pb n="60"/>
+<milestone unit="sig" n="5(4)v"/>
+<mw type="pageNum">60</mw>
+<lb/>the sea breeze is interrupted, and calms warn the
+<lb/>inhabitants of the periodical rains, which fall in
+	    <lb/>torrents about the <date when="--10-01">first of <name>October</name></date>.</p>
+                  <p>The most considerable and valuable of the
+<lb/><placeName>British West India Islands</placeName>, lies between the 75th
+<lb/>and the 79th degrees of west longitude from
+	    <lb/><placeName>London</placeName>, and between 17 and 18 north latitude;
+<lb/>it is of an oval figure, <measure>150 miles</measure> long from east
+<lb/>to west, <measure>sixty miles</measure> broad in the middle,
+<lb/>containing <measure>4,080,000 acres</measure>. An elevated ridge,
+<lb/>called the <placeName>Blue Mountains</placeName>, runs lengthwise
+<lb/>from east to west, whence numerous rivers
+<lb/>take their rise on both sides. The year is divi­
+<lb/>ded into two seasons, wet and dry. The months
+	    <lb/>of <name>July</name>, <name>August</name>, and <name>September</name>, are called the
+<lb/>hurricane months. The best houses are gene­
+<lb/>rally built low, on account of the hurricanes and
+<lb/>earthquakes. However pleasant the sun may
+<lb/>rise, in a moment the scene may be changed; a
+<lb/>violent storm will suddenly arise, attended with
+<lb/>thunder and lightning; the rain falls in torrents,
+<lb/>and the seas and rivers rise with terrible destruc­
+	    <lb/>tion. I witnessed this awful scene in <name>June</name> last,
+	    <lb/>at <placeName>Kingston</placeName>, the capital of <placeName>Jamaica</placeName>; the founda­
+<lb/>tions of many houses were destroyed; the waters,
+<lb/>as they rushed from the mountains, brought with
+<lb/>them the produce of the earth, large branches
+<lb/>of trees, together with their fruit; many persons
+
+<pb n="61"/>
+<milestone unit="sig" n="5(5)r"/>
+<mw type="pageNum" rend="align(right)">61</mw>
+<lb/>were drowned, endeavoring to reach their homes;
+<lb/>those who succeeded, were often obliged to travel
+<lb/>many miles out of their usual way. Many young
+<lb/>children, without a parent's care, were at this
+<lb/>time destroyed. A poor old woman, speaking
+<lb/>of these calamities to the me, thus expressed
+<lb/>herself: <said rend="pre(“)post(”)">Not so bad now as in the time of
+<lb/>slavery; then God spoke very loud to <mcr>Bucker</mcr>,
+<lb/>(the white people,) to let us go. Thank God,
+<lb/>ever since that they give us up, we go pray, and
+<lb/>we have it not so bad like as before.</said> I would
+<lb/>recommend this poor woman's remark to the fair
+	    <lb/>sons and daughters of <placeName>America</placeName>, the land of the
+<lb/>pilgrims, <quote rend="pre(“)post(”)">Then God spoke very loud.</quote> May
+<lb/>these words be engraved on the post of every
+	    <lb/>door in this land of <placeName>New England</placeName>. God speaks
+<lb/>very loud, and while his judgments are on the
+<lb/>earth, may the inhabitants learn righteousness!</p>
+                  <p>The mountains that intersect this island, seem
+<lb/>composed of rocks, thrown up by frequent earth­
+<lb/>quakes or volcanoes. These rocks, though hav­
+<lb/>ing little soil, are adorned with a great variety 
+<lb/>of beautiful trees, growing from the fissures,
+<lb/>which are nourished by frequent rains, and
+<lb/>flourish in perpetual spring. From these moun­
+<lb/>tains flow a vast number of small rivers of pure
+<lb/>water, which sometimes fall in cataracts, from
+<lb/>stupendous heights; these, with the brilliant ver­
+
+<pb n="62"/>
+<milestone unit="sig" n="5(5)v"/>
+<mw type="pageNum">62</mw>
+<lb/>dure of the trees, form a most delightful land­
+<lb/>scape. Ridges of smaller mountains are on each
+<lb/>side of this great chain; on these, coffee grows
+<lb/>in great abundance; the valleys or plains between
+<lb/>these ridges, are level beyond what is usually
+<lb/>found in similar situations. The highest land in
+<lb/>the island is <placeName>Blue Mountain Peak</placeName>, <measure>7150 feet</measure> above
+<lb/>the sea. The most extensive plain is <measure>thirty miles</measure>
+<lb/>long and <measure>five</measure> broad. <placeName>Black river</placeName>, in the Parish
+<lb/>of <placeName>St. Elizabeth</placeName>, is the only one navigable; flat­
+<lb/>boats bring down produce from plantations about
+<lb/><measure>thirty miles</measure> up the river. Along the coast, and
+<lb/>on the plains, the weather is very hot; but in the
+<lb/>mountains the air is pure and wholesome; the
+<lb/>longest days in summer are about thirteen hours,
+<lb/>and the shortest in winter about eleven. In the
+<lb/>plains are found several salt fountains, and in the
+<lb/>mountains, not far from <placeName>Spanish Town</placeName>, is a hot
+<lb/>bath of great medicinal virtues; this gives relief
+<lb/>in the complaint called the dry bowels malady,
+<lb/>which, excepting the bilious and yellow fevers, is
+	    <lb/>one of the most terrible distempers of <placeName>Jamaica</placeName>.
+<lb/>The general produce of this island is sugar, rum,
+<lb/>molasses, ginger, cotton, indigo, pimento, cocoa,
+<lb/>coffees, several kinds of woods, and medicinal
+<lb/>drugs. Fruits are in great plenty, as oranges,
+<lb/>lemons, shaddoks, citrons, pomegranates, pine­
+<lb/>apples, melons, pompions, guavas, and many
+
+<pb n="63"/>
+<milestone unit="sig" n="5(6)r"/>
+<mw type="pageNum" rend="align(right)">63</mw>
+<lb/>others. Here are trees whose wood, when dry,
+<lb/>is incorruptible; here is found the wild cinnamon
+<lb/>tree, the mahogany, the cabbage, the palm,
+<lb/>yielding an oil much esteemed for food and
+<lb/>medicine. Here, too, is the soap tree, whose
+<lb/>berries are useful in washing. The plantain is
+	    <lb/>produced in <placeName>Jamaica</placeName> in abundance, and is one
+<lb/>of the most agreeable and nutritious vegetables
+<lb/>in the world: it grows about <measure>four feet</measure> in height,
+<lb/>and the fruit grows in clusters, which is filled
+<lb/>with a luscious sweet pulp. The Banana is very
+<lb/>similar to the plantain, but not so sweet. The
+<lb/>whole island is divided into three counties, <placeName>Mid­
+	      <lb/>dlesex</placeName>, <placeName>Surry</placeName>, and <placeName>Cornwall</placeName>, and these into six
+<lb/>towns, twenty parishes, and twenty-seven villages.</p>
+                  <p>This island was originally part of the <name>Spanish
+	    <lb/>Empire</name> in <placeName>America</placeName>, but it was taken by the
+	    <lb/><name>English</name> in <date when="1656">1656</date>. 
+<persName>Cromwell</persName> had fitted out a
+	    <lb/>squadron under <persName>Penn</persName> and <persName>Venables</persName>, to reduce
+	    <lb/>the Spanish Island of <placeName>Hispaniola</placeName>; but there this
+<lb/>squadron was unsuccessful, and the commanders,
+<lb/>of their own accord, to atone for this misfortune,
+	    <lb/>made a descent on <placeName>Jamaica</placeName>, and having arrived
+<lb/>at <placeName>St. Jago</placeName>, soon compelled the whole island to
+<lb/>surrender.</p>
+                  <p>Ever since, it has been subject to the <name>English</name>,
+	    <lb/>and the government, next to that of <placeName>Ireland</placeName>, is 
+<lb/>the richest in the disposal of the crown. <placeName>Port
+
+<pb n="64"/>
+<milestone unit="sig" n="5(6)v"/>
+<mw type="pageNum">64</mw>
+	      <lb/>Royal</placeName> was formerly the capital of <placeName>Jamaica</placeName>; it
+<lb/>stood upon the point of a narrow neck of land,
+<lb/>which, towards the sea, forms part of the border
+<lb/>of a very fine harbor of its own name. The con­
+<lb/>veniences of this harbor, which was capable
+<lb/>of containing a thousand sail of large ships, and
+<lb/>of such depth as to allow them to load and unload
+<lb/>with the greatest of ease, weighed so much with the 
+<lb/>inhabitants, that they chose to build their capital
+<lb/>on this spot, although the place was a hot, dry
+<lb/>sand, and produced none of the necessaries of 
+<lb/>life, not even fresh water. About the beginning
+<lb/>of the year <date when="1692">1692</date>, no place for its size could be
+<lb/>compared to this town for trade, wealth, and an
+<lb/>entire corruption of manners. In the month 
+		<lb/>of <date when="--06"><name>June</name></date> in this year, an earthquake which shook
+<lb/>the whole island to the foundation, totally over­
+<lb/>whelmed this city, so as to leave, in one quarter,
+<lb/>not even the smallest vestige remaining. In two
+<lb/>minutes the earth opened and swallowed up nine­
+<lb/>tenths of the houses, and two thousand people.
+<lb/>The waters gushed out from the openings of the
+<lb/>earth, and the people lay as it were in heaps: some
+<lb/>of them had the good fortune to catch hold
+<lb/>of beams and rafters of houses, and were after­
+<lb/>wards saved by boats. Several ships were cast
+<lb/>away in the harbor, and the <name>Swan Frigate</name>, which
+<lb/>lay in the Dock, was carried over the tops of 
+
+<pb n="65"/>
+<milestone unit="sig" n="6(1)r"/>
+<mw type="pageNum" rend="align(right)">65</mw>
+<lb/>sinking houses, and did not overset, but afforded
+<lb/>a retreat to some hundreds of people, who saved
+<lb/>their lives upon her. An officer who was in the
+<lb/>town at that time, says the earth opened and shut
+<lb/>very quick in some places, and he saw several 
+<lb/>people sink down to the middle, and others ap­
+<lb/>peared with their heads just above the ground, and
+		<lb/>were choked to death. At <placeName>Savannah</placeName> above a
+<lb/><measure>thousand acres</measure> were sunk, with the houses and
+<lb/>people in them, the place appearing, for some
+<lb/>time, like a lake; this was afterwards dried up,
+<lb/>but no houses were seen. In some parts moun­
+<lb/>tains were split, and at one place a plantation
+<lb/>was removed to the distance of <measure>a mile</measure>. The 
+<lb/>inhabitants again rebuilt the city, but it was a 
+<lb/>second time, ten years after, destroyed  by a great
+<lb/>fire. The extraordinary convenience of the har­
+<lb/>bor tempted them to build it once more, and in
+<lb/><date when="1722">1722</date> it was laid in ruins by a hurricane, the most
+<lb/>terrible on record.</p>
+                  <p>Such repeated calamities seemed to mark out
+<lb/>this spot as a devoted place; the inhabitants,
+<lb/>therefore, resolved to forsake it forever, and to
+<lb/>reside at the opposite bay, where they built
+	    <lb/><placeName>Kingston</placeName>, which is now the capital of the island.
+	    <lb/>In going up to <placeName>Kingston</placeName>, we pass over a part
+	    <lb/>of and between <placeName>Port Royal</placeName>, leaving the moun­
+<lb/>tains on the left, and a small town on the right.
+<mw type="sig" rend="align(center)">6</mw>
+
+<pb n="66"/>
+<milestone unit="sig" n="6(1)v"/>
+<mw type="pageNum">66</mw>
+<lb/>There are many handsome houses built there, one
+<lb/>story high, with porticos, and every convenience
+<lb/>for those who inhabit them. Not far from <placeName>King­
+	      <lb/>ston</placeName> stands <placeName>Spanish Town</placeName>, which, though at
+	    <lb/>present far inferior to <placeName>Kingston</placeName>, was once the
+	    <lb/>capital of <placeName>Jamaica</placeName>, and is still the seat of gov­
+<lb/>ernment.</p>
+                  <p>On the <date when="1780-10-03">3d of <name>October</name>, 1780</date>, there was a
+	    <lb/>dreadful hurricane, which overwhelmed the little 
+<lb/>seaport town of <placeName>Savannah</placeName>, in 
+<placeName>Jamaica</placeName>, and part
+<lb/>of the adjacent country; very few houses were
+<lb/>left standing, and a great number of lives were
+<lb/>lost; much damage was done also, and many
+<lb/>lives lost, in other parts of the island.</p>
+                  <p>In <date when="1823-01"><name>January</name>, 1823</date>, a society was formed in
+	    <lb/><placeName>London</placeName> for mitigating and gradually abolishing
+	    <lb/>slavery, throughout the British dominions, called
+<lb/>the <orgName>Anti-Slavery Society</orgName>. His Royal Highness,
+		  <lb/>the <persName>Duke of <placeName>Gloucester</placeName></persName>, was President of the
+<lb/>Society; in the list of Vice Presidents are the
+<lb/>names of many of the most distinguished phi­
+<lb/>lanthropists of the day, and among them that
+<lb/>of the never to be forgotten <persName>Mr. Wilberforce</persName>; as
+<lb/>a bold champion, we see him going forward,
+<lb/>pleading the cause of our down-trodden brethren.
+<lb/>In the year <date when="1834">1834</date>, it pleased God to break the
+<lb/>chains from 800,000 human beings, that had
+<lb/>been held in a state of personal slavery; and
+
+<pb n="67"/>
+<milestone unit="sig" n="6(2)r"/>
+<mw type="pageNum" rend="align(right)">67</mw>
+<lb/>this great event was effected through the instru­
+	    <lb/>mentality of <persName>Clarkson</persName>, <persName>Wilberforce</persName>, and other
+<lb/>philanthropists of the day.</p>
+                  <p>The population of <placeName>Jamaica</placeName> is nearly 400,000;
+	    <lb/>that of <placeName>Kingston</placeName>, the capital, 40,000. There are
+<lb/>many places of worship of various denomina­
+<lb/>tions, namely, <name>Church of England</name>, and of <name>Scot­
+<lb/>land</name>, <name>Wesleyan</name>, the <name>Baptist</name>, and <name>Roman Cath­
+	      <lb/>olics</name>, besides a Jewish Synagogue. These all
+	    <lb/>differ from what I have seen in <placeName>New England</placeName>,
+<lb/>and from those I have seen elsewhere. The
+	    <lb/><name>Baptist</name> hold what they call class-meetings. They
+<lb/>have men and women, deacons and deaconesses
+<lb/>in these churches; these hold separate class-
+<lb/>meetings; some of these can read, and some
+<lb/>cannot. Such are the persons who hold the
+<lb/>office of judges, and go round and urge the
+<lb/>people to come to the class, and after they come
+<lb/>in twice or three times, they are considered can­
+<lb/>didates for baptism. Some pay <measure>fifty cents</measure>, and
+<lb/>some more, for being baptized; they receive a
+<lb/>ticket as a passport into the church, paying one
+<lb/>mark a quarter, or more, and some less, but
+	    <lb/>nothing short of <measure>ten pence</measure>, that is, <measure>two English
+<lb/>shillings</measure> a year. They must attend their class
+<lb/>once a week, and pay <measure>three pence</measure> a week, total
+	    <lb/><measure>twelve English shillings</measure> a year, besides the sums
+<lb/>they pay once a month at communion, after
+
+<pb n="68"/>
+<milestone unit="sig" n="6(2)v"/>
+<mw type="pageNum">68</mw>
+<lb/>service in the morning. On those occasions the
+<lb/>minister retires, and the deacons examine the
+<lb/>people, to ascertain if each one has brought a
+<lb/>ticket; if not, they cannot commune; after this
+<lb/>the minister returns, and performs the ceremony,
+<lb/>then they give their money and depart. The
+<lb/>churches are very large, holding from four to six
+<lb/>thousand; many bring wood and other presents
+<lb/>to their class-leader, as a token of their attach­
+<lb/>ment; where there are so many communicants,
+<lb/>these presents, and the money exacted, greatly
+<lb/>enrich these establishments. Communicants are
+<lb/>so ignorant of the ordinance, that they join the
+<lb/>church merely to have a decent burial; for if
+<lb/>they are not members, none will follow them to
+<lb/>the grave, and no prayers will be said over them;
+<lb/>these are borne through the streets by four men,
+<lb/>the coffin a rough box; not so if they are church
+<lb/>members; as soon as the news is spread that one
+<lb/>is dying, all the class, with their leader, will
+<lb/>assemble at the place, and join in singing hymns;
+<lb/>this, they say, is to help the spirit up to glory;
+<lb/>this exercise sometimes continues all night, in so
+<lb/>loud a strain, that it is seldom that any of the
+<lb/>people in the neighborhood are lost in sleep.</p>
+                </div>
+              </body>
+            </floatingText>
+          </quote>
+        </p>
+        <p>After leaving <placeName>Jamaica</placeName>, the vessel was tacked
+<lb/>to a south-west course. I asked the Captain
+<lb/>what this meant. He said he must take the cur­
+
+<pb n="69"/>
+<milestone unit="sig" n="6(3)r"/>
+<mw type="pageNum" rend="align(right)">69</mw>
+<lb/>rent, as there was no wind. Without any cere­
+<lb/>mony, I told him it was not the case, and told the
+<lb/>passengers that he had deceived us. There
+	  <lb/>were two English men that were born on the
+<lb/>island, that had never been on the water; before
+<lb/>the third day passed, they asked the Captain
+	  <lb/>why they had not seen <placeName>Hayti</placeName>. He told them
+<lb/>they passed when they were asleep. I told them
+<lb/>it was not true, he was steering south south-west.
+<lb/>The passengers in the steerage got alarmed, and
+<lb/>every one was asking the Captain what this
+<lb/>meant. The ninth day we made land. <said rend="pre(“)post(”)">By
+<lb/>――,</said> said the Captain, <said rend="pre(“)post(”)">this is <placeName>Key West</placeName>;
+<lb/>come, passengers, let us have a vote to run over
+<lb/>the neck, and I will go ashore and bring aboard
+<lb/>fruit and turtle.</said> They all agreed but myself.
+<lb/>He soon dropped anchor. The officers from the
+<lb/>shore came on board and congratulated him on
+<lb/>keeping his appointment, thus proving that my
+<lb/>suspicions were well founded. The Captain went
+<lb/>ashore with these men, and soon came back,
+<lb/>called for the passengers, and asked for their
+<lb/>vote for him to remain until the next day, saying
+<lb/>that he could, by this delay, make <measure>five or six 
+<lb/>hundred dollars</measure>, as there had been a vessel
+<lb/>wrecked there lately. They all agreed but
+<lb/>myself. The vessel was soon at the side of the
+<lb/>wharf. In one hour there were twenty slaves at
+<mw type="sig" rend="align(center)">6*</mw>
+
+<pb n="70"/>
+<milestone unit="sig" n="6(3)v"/>
+<mw type="pageNum">70</mw>
+<lb/>work to unload her; every inducement was made
+<lb/>to persuade me to go ashore, or set my feet on
+<lb/>the wharf. A law had just been passed there that
+<lb/>every free colored person coming there, should
+<lb/>be put in custody on their going ashore; there
+<lb/>were five colored persons on board; none dared
+<lb/>to go ashore, however uncomfortable we might
+<lb/>be in the vessel, or however we might desire to
+<lb/>refresh ourselves by a change of scene. We 
+	  <lb/>remained at <placeName>Key West</placeName> four days.</p>
+        <p><date when="1842-09-03"><name>September</name> 3d</date> we set sail for <placeName>New York</placeName>, at 3
+<lb/>o'clock in the afternoon. At 10 o'clock a gale
+<lb/>took us, that continued thirty-six hours; my
+<lb/>state-room was filled with water, and my baggage
+<lb/>all upset; a woman, with her little boy, and
+<lb/>myself, were seated on a trunk thirty-six hours,
+<lb/>with our feet pressed against a barrel to prevent
+<lb/>falling; the water pouring over us at every
+	  <lb/>breaker. <date when="1842-09-09"><name>Wednesday</name>, the 9th</date>, the sun shone
+<lb/>out, so that the Captain could take an observation.
+<lb/>He found himself in great peril, near the coast
+	  <lb/>of <placeName>Texas</placeName>. All hands were employed in pumping
+	  <lb/>and bailing. On the <date when="1842-09-11">eleventh</date>, the <placeName>New Orleans</placeName> 
+<lb/>steamer came to our assistance; as we passed up
+<lb/>the river, I was made to forget my own condition,
+<lb/>as I looked with pity on the poor slaves, who
+<lb/>were laboring and toiling, on either side, as far
+<lb/>as could be seen with a glass. We soon reached
+
+<pb n="71"/>
+<milestone unit="sig" n="6(4)r"/>
+<mw type="pageNum" rend="align(right)">71</mw>
+<lb/>the dock, and we were there on the old wreck a
+<lb/>spectacle for observation; the whites went on
+<lb/>shore and made themselves comfortable, while
+<lb/>we poor blacks were obliged to remain on that
+<lb/>broken, wet vessel. The people were very busy
+<lb/>about me; one man asked me who I belonged
+<lb/>to, and many other rude questions; he asked me 
+	  <lb/>where I was born; I told him <placeName>Newburyport</placeName>.
+<lb/><said rend="pre(“)post(”)">What were your parents' names?</said> I told him
+	  <lb/>my father's name was <persName>Thomas Gardener</persName>; his 
+<lb/>countenance changed; said he, <said rend="pre(“)post(”)">I knew him
+<lb/>well;</said> and he proved friendly to me. He ap­
+<lb/>peared very kind, and offered to arrange my
+	  <lb/>affairs so that I might return to <placeName>New York</placeName>
+<lb/>through the States. I thought is best to decline
+<lb/>his proposal, knowing my spirit would not suffer
+<lb/>me to pass on, and see my fellow-creatures suf­
+<lb/>fering without a rebuke. We remained four days
+<lb/>on the wreck; the boxes that contained the sugar
+<lb/>were taken out; the two bottom tiers were
+<lb/>washed out clean. There were a great many 
+<lb/>people that came to see the vessel; they were
+<lb/>astonished that she did not sink; they watched
+<lb/>me very closely. I asked them what they
+<lb/>wished. In the mean time, there came along a
+<lb/>drove of colored people, fettered together in pairs
+<lb/>by the wrist; some had weights, with long chains
+<lb/>at their ankles, men and women, young and old.
+
+<pb n="72"/>
+<milestone unit="sig" n="6(4)v"/>
+<mw type="pageNum">72</mw>
+<lb/>I asked them what that meant. They all were
+<lb/>ready to answer. Said they, <said rend="pre(“)post(”)">these negroes
+<lb/>have been impudent, and have stolen; some 
+<lb/>of them are free negroes from the northern
+<lb/>ships;</said> <said rend="pre(“)post(”)">and what,</said> I asked, <said rend="pre(“)post(”)">are they
+there
+<lb/>for?</said> <said rend="pre(“)post(”)">For being on shore, some of them at
+<lb/>night.</said> I asked them who made them Lord over
+<lb/>God's inheritance. They told me I was very
+<lb/>foolish; they should think I had suffered enough
+<lb/>to think of myself. I looked pretty bad, it is
+<lb/>true; I was seated on a box, but poorly dressed;
+<lb/>the mate had taken my clothes to a washer-
+<lb/>woman; why he took this care, he was afraid to
+<lb/>send the cook or steward on shore, as they were
+<lb/>colored people. I kept still; but the other
+<lb/>woman seemed to be in perfect despair, running
+<lb/>up and down the deck, ringing her hands and
+<lb/>crying, at the thought of all her clothes being
+<lb/>destroyed; then her mind dwelt upon other
+<lb/>things, and she seemed as if she were deranged;
+<lb/>she took their attention for a few minutes, as she
+<lb/>was white. Soon the washer-woman came with
+<lb/>my clothes; they spoke to her as if she had been
+<lb/>a dog. I looked at them with as much astonish­
+<lb/>ment as if I had never heard of such a thing. I
+<lb/>asked them if they believed there was a God.
+<lb/><said rend="pre(“)post(”)">Of course we do,</said> they replied. <said rend="pre(“)post(”)">Then why
+<lb/>not obey him?</said> <said rend="pre(“)post(”)">We do.</said> <said rend="pre(“)post(”)">You do not;
+
+<pb n="73"/>
+<milestone unit="sig" n="6(5)r"/>
+<mw type="pageNum" rend="align(right)">73</mw>
+<lb/>permit me to say there is a God, and a just one,
+<lb/>that will bring you all to account.</said> <said rend="pre(“)post(”)">For what?</said>
+<lb/><said rend="pre(“)post(”)">For suffering these men that have just come in
+<lb/>to be taken out of these vessels, and that awful
+<lb/>sight I see in the streets.</said> <said rend="post(”)"><choice><sic/><corr>“</corr></choice>O that is nothing; I
+<lb/>should think you would be concerned about your­
+<lb/>self.</said> <said rend="pre(“)post(”)">I am sure,</said> I replied, <said rend="pre(“)post(”)">the
+Lord will
+<lb/>take care of me; you cannot harm me.</said> <said rend="pre(“)post(”)">No,<choice><sic>”</sic><corr/></choice>
+<lb/>we do not wish to; we do not want you here.</said>
+<lb/>Every ship that comes in, the colored men are
+<lb/>dragged to prison. I found it necessary to be
+<lb/>stern with them; they were very rude; if I had
+<lb/>not been so, I know not what would have been 
+<lb/>the consquences. They went off for that day;
+<lb/>the next day some of them came again. <said rend="pre(“)post(”)">Good
+<lb/>morning,</said> said they; <said rend="pre(“)post(”)">we shall watch you like
+<lb/>the d―― until you go away; you must not say
+<lb/>any thing to these negroes whilst you are here.</said>
+<lb/><said rend="pre(“)post(”)">Why, then, do you talk to me, if you do not
+<lb/>want me to say any thing to you? If you will let
+<lb/>me alone, I will you.</said> <said rend="pre(“)post(”)">Let me see your pro­
+<lb/>tection,</said> they replied, <said rend="pre(“)post(”)">they say it is under the
+	      <lb/>Russian government.</said> I pointed them to the
+<lb/><bibl><regMe>eighteenth chapter of Revelations and fifteenth 
+<lb/>verse</regMe></bibl>: <quote rend="pre(“)post(”)">The merchants of these things which
+<lb/>were made rich by her, shall stand afar off, for
+<lb/>the fear of her torment, weeping and wailing.
+<lb/>For strong is the Lord God who judgeth her.</quote>
+
+<pb n="74"/>
+<milestone unit="sig" n="6(5)v"/>
+<mw type="pageNum">74</mw>
+<lb/>They made no answer, but asked the Captain
+<lb/>how soon he should get away.</p>
+        <p>On the <date when="1842-09-17">17th</date>, the Captain put eight of us on
+	  <lb/>board the bark <name>H. W. Tyler</name>, for <placeName>New York</placeName>; we
+<lb/>had about <measure>a mile</measure> to walk; the Captain was in
+<lb/>honor bound to return us our passage money,
+	  <lb/>which we had paid him at <placeName>Jamaica</placeName>; he came
+<lb/>without it to see if we were there, and went away
+<lb/>saying he would soon return with it; but we saw
+<lb/>no more of him or our money! Our bark, and a
+<lb/>vessel loaded with slaves, were towed down the
+<lb/>river by the same steamer; we dropped anchor
+<lb/>at the bottom of the bay, as a storm was rising.
+<lb/>The <date when="1842-09-18">18th</date>, on <name>Sabbath</name>, it rained all day. <persName>Captain
+<lb/>Tyler</persName> knocked at my door, wishing me to come
+<lb/>out; it rained hard; the bulwork of the bark was
+<lb/>so high I could not look over it; he placed some­
+<lb/>thing for me to stand on, that I might see the
+<lb/>awful sight, which was the vessel of slaves laying
+<lb/>at the side of our ship; the deck was full of young
+	  <lb/>men, girls and children, bound to <placeName>Texas</placeName> for sale!
+	  <lb/><date when="1842-09-19"><name>Monday</name>, the 19th</date>, <persName>Captain Tyler</persName> demanded of us
+<lb/>to pay him for our passage. I had but <measure>ten
+<lb/>dollars</measure>, and was determined not to give it; he 
+<lb/>was very severe with all. I told him there were
+<lb/>articles enough to pay him belonging to me.
+<lb/>Those who had nothing, were obliged to go back
+	  <lb/>in the steamer. <date when="1842-09-20"><name>Tuesday</name>, the 20th</date>, we set sail;
+
+<pb n="75"/>
+<milestone unit="sig" n="6(6)r"/>
+<mw type="pageNum" rend="align(right)">75</mw>
+<lb/>the storm was not over. The <date when="1842-09-22">22nd</date> the gale took
+<lb/>us; we were dismasted, and to save sinking,
+<lb/>sixty casks of molasses were stove in, and holes
+<lb/>cut in the bulworks to let it off; all the fowls,
+<lb/>pigs, and fresh provisions, were lost. We were
+	    <lb/>carried <measure>seventy-five miles</measure> up the bay of <placeName>Mexico</placeName>.
+<lb/>The Captain was determined not to pay the
+	    <lb/>steamer for carrying him back to <placeName>New Orleans</placeName>,
+<lb/>and made his way the best he could.</p>
+        <p>The <date when="1842-10-03">3rd of <name>October</name></date> we arrived again at <placeName>Key
+<lb/>West</placeName>. The Captain got the bark repaired, and
+<lb/>took on board a number of turtles, and a plenty
+	  <lb/>of brandy. <date when="1842-10-07"><name>Friday</name>, the 7th</date>, set sail for <placeName>New 
+<lb/>York</placeName>; the Captain asked me why I did not go
+	  <lb/>ashore when there in the <name>Comet</name>; <said rend="pre(“)post(”)">had you,</said>
+	  <lb/>said he, <said rend="pre(“)post(”)">they intended to beat you. <persName>John</persName> and
+	    <lb/><persName>Lucy Davenport</persName>, of <placeName>Salem</placeName>, laid down the first
+<lb/><measure>ten dollars</measure> towards a hundred for that person
+	    <lb/>who should get you there.</said> The <placeName>Florida</placeName> laws
+	  <lb/>are about the same as those at <placeName>New Orleans</placeName>.
+<lb/>He was very talkative; wished to know if I saw
+	  <lb/>any thing of the <name>Creole's</name> crew while at <placeName>Jamaica</placeName>.
+<lb/>I told him they were all safe, a fine set of young
+<lb/>men and women; one dear little girl, that was
+	  <lb/>taken from her mother in <placeName>Virginia</placeName>, I should have 
+<lb/>taken with me, if I had had the money. He said 
+<lb/>his brother owned the <name>Creole</name>, and some of the
+<lb/>slaves were his. <said rend="pre(“)post(”)">I never owned any; I have
+
+<pb n="76"/>
+<milestone unit="sig" n="6(6)v"/>
+<mw type="pageNum">76</mw>
+<lb/>followed the sea all my life, and can tell every
+<lb/>port and town in your State.</said></p>
+        <p><date when="1842-10-19">October 19th, 1842</date>, arrived at <placeName>New York</placeName>, and 
+<lb/>thankful was I to set my feet on land, almost
+<lb/>famished for the want of food; we lost all of our
+<lb/>provisions; nothing was left but sailors' beef, and
+<lb/>that was tainted before it was salted. I went at
+<lb/>once to those who professed to be friends, but
+<lb/>found myself mistaken. I hardly knew what
+<lb/>was best. I had put up at <persName>Mrs. Raweses</persName>; she
+<lb/>did all she could to raise the <measure>twenty-five dollars</measure><lb/>that I must pay before I could take my baggage
+<lb/>from the vessel. This seemed hard to obtain;
+<lb/>I travelled from one to another for three days;
+<lb/>at last I called at the Second Advent office; <persName>Mr.
+<lb/>Nath'l Southard</persName> left his business at once, and took
+<lb/>me to <persName>Mr. Lewis Tappan</persName> and others; they raised
+<lb/>the money, and went with me to the ship after
+	  <lb/>my baggage. It was three o'clock on <name>Saturday</name>
+	  <lb/>afternoon when I called on <persName>Mr. Southard</persName>; the
+	  <lb/>vessel and Captain belonged to <placeName>Virginia</placeName>, was all
+<lb/>ready for sea, waiting for a wind; they had
+	  <lb/>ransacked my things. I took from <placeName>Jamaica</placeName> <measure>forty
+<lb/>dollar's</measure> worth of preserved fruits; part were lost
+	  <lb/>when we were cast away in the <name>Comet</name>, and some
+	  <lb/>they had stolen. At eight o'clock on <name>Saturday</name>
+<lb/>evening, I made out to have my things landed on
+<lb/>the wharf; it was very dark, as it rained hard.
+
+<pb n="77"/>
+<milestone unit="sig" n="7(1)r"/>
+<mw type="pageNum" rend="align(right)">77</mw>
+<lb/>My kind friend did not leave me until they were
+<lb/>all safely lodged at my residence. I boarded
+<lb/>there three weeks, thinking to come home; but
+<lb/>it was thought best for me to wait, and see if
+	  <lb/><persName>Captain Miner</persName> came or not, hoping that I might
+<lb/>recover my loss through him. I took a room and
+<lb/>went to sewing, and found the people very kind.</p>
+        <p><date when="1843-02"><name>February</name>, 1843</date>, the colored men that went
+	  <lb/>back to <placeName>New Orleans</placeName>, for want of passage
+	  <lb/>money, arrived at <placeName>New York</placeName>, wearied out. All
+<lb/>the white people remained there. I waited in
+	  <lb/><placeName>New York</placeName> until the 
+<date when="1843-07-31">last of <name>July</name></date>, when I started
+	    <lb/>for <placeName>Boston</placeName>. 
+<date when="1843-08-01"><name>August</name> 1st, 1843</date>, arrived, poor in
+<lb/>health and poor in purse, having sacrificed both,
+<lb/>hoping to benefit my fellow-creatures. I trust it
+<lb/>was acceptable to God, who in his providence
+<lb/>preserved me in perils by land and perils by sea.</p>
+        <quote rend="indent(2)post(”)pre(“)">
+          <lg type="poem" subtype="stanzaic">
+            <lg type="quatrain">
+              <l>God moves in a mysterious way</l>
+              <l rend="indent(3)">His wonders to perform;</l>
+              <l>He plants his footsteps on the sea,</l>
+              <l rend="indent(3)">And rides upon the storm.</l>
+            </lg>
+            <lg type="quatrain" rend="pre(“)">
+              <l>Deep in unfathomable mines</l>
+              <l rend="indent(3)">Of never-failing skill,</l>
+              <l>He treasures up his bright designs,</l>
+              <l rend="indent(3)">And works his sovereign will.</l>
+            </lg>
+          </lg>
+        </quote>
+        <p>Having lost all, I determined, by the help of
+<lb/>God, to leave the event; some of my friends in
+<lb/>this city sympathized with me, and others took
+<lb/>the advantage to reproach me. But in the hands
+<mw type="sig" rend="align(center)">7</mw>
+
+<pb n="78"/>
+<milestone unit="sig" n="7(1)v"/>
+<mw type="pageNum">78</mw>
+<lb/>of the Lord there is a cup; the Saviour drank it
+<lb/>to the dregs. They gather themselves together;
+<lb/>they hide themselves; they mark my steps; they
+<lb/>waited for my soul, but the Lord is my defence,
+	  <lb/>the Holy One of <placeName>Israel</placeName> is my Saviour. I'll trust
+<lb/>him for strength and defence. What things were
+	  <lb/>gain to me, I counted loss for Christ, for whom I
+<lb/>have suffered all things; and do count them
+	  <lb/>nothing, that I may win Christ and be found in
+<lb/>him, not having mine own righteousness, which
+<lb/>is of the Lord, but that which is through the faith
+	  <lb/>of Christ, that which is of God by faith, that I
+<lb/>may know him, and the power of his resurrec­
+<lb/>tion, and the fellowship of his sufferings, being
+<lb/>made conformable unto his death, strengthened
+<lb/>with all might, according to his glorious power,
+<lb/>unto all patience and long-suffering, with joyful­
+<lb/>ness, thinking it not strange concerning the fiery
+<lb/>trials, as though some strange thing happened;
+<lb/>for saith the apostle, it is better if the will of God
+<lb/>so be that ye suffer for well doing, than for evil;
+<lb/>they think it strange that ye run not with them
+<lb/>to the same excess of riot, speaking evil of you.
+<lb/>If they do these things in a green tree, what shall
+<lb/>be done in a dry?</p>
+        <quote rend="indent(2)pre(“)post(”)">
+          <lg type="poem" subtype="stanzaic">
+            <lg type="quatrain">
+              <l>I hate to walk, I hate to sit</l>
+              <l rend="indent(3)">With men of vanity and lies;</l>
+              <l>The scoffer and the hypocrite</l>
+              <l rend="indent(3)">Are the abhorrence of my eyes.</l>
+            </lg>
+            <pb n="79"/>
+            <milestone unit="sig" n="7(2)r"/>
+            <mw type="pageNum" rend="align(right)">79</mw>
+            <lg type="quatrain">
+              <l>God knows their impious thoughts are vain,</l>
+              <l rend="indent(3)">And they shall feel his power;</l>
+              <l>His wrath shall pierce their souls with pain,</l>
+              <l rend="indent(3)">In some surprising hour.</l>
+            </lg>
+          </lg>
+        </quote>
+        <p>The first twenty months after my arrival in the
+<lb/>city, notwithstanding my often infirmities, I 
+<lb/>labored with much success, until I hired with and
+<lb/>from those whom I mostly sympathized with, and
+<lb/>shared in common the disadvantages and stigma
+<lb/>that is heaped upon us, in this our professed
+	  <lb/>Christian land. But my lot was like the man
+	  <lb/>that went down from <placeName>Jerusalem</placeName> and fell among
+<lb/>thieves, which stripped him of his raiment, and
+<lb/>wounding him departed, leaving him half dead.
+<lb/>What I did not lose when cast away, has been
+<lb/>taken from my room where I hired. Three times
+<lb/>I had been broken up in business, embarrassed
+<lb/>and obliged to move, when not able to wait on
+<lb/>myself. This has been my lot. In the midst
+<lb/>of my afflictions, sometimes I have thought my
+	  <lb/>case like that of <persName>Paul's</persName>, when cast among wild
+<lb/>beasts. <quote rend="pre(“)post(”)">Had not the Lord been on my side,
+<lb/>they would have swallowed me up; but blessed
+<lb/>be the Lord who hath not given me a prey to
+<lb/>their teeth.</quote></p>
+        <p>In <date when="1848">1848</date> and <date when="1849">'49</date>, the Lord was pleased to lay
+<lb/>his hand upon me. Some of my friends came
+<lb/>to my relief; but the promises of God were
+<lb/>neither few nor small; he knows them that trust
+
+<pb n="80"/>
+<milestone unit="sig" n="7(2)v"/>
+<mw type="pageNum">80</mw>
+<lb/>and fear him, and in his providence had reserved
+<lb/>the good Samaritan. One of my unretired friends
+<lb/>made my case known to the <persName>Rev. Dr. Bigelow</persName>
+<lb/>and wife, who sought me out in my distress. I
+<lb/>shall not soon forget the morning she came to
+<lb/>me, with an expression of love and kindness,
+<lb/>wishing to know my case. <persName>Mrs. Bigelow</persName> was the
+<lb/>daughter of <persName>Captain Theodore Stanwood</persName>, of
+	  <lb/><placeName>Gloucester</placeName>, whom <persName>Mr. Prince</persName> sailed with as steward
+	  <lb/>the first time he went to <placeName>Russia</placeName>. <persName>Mrs. B.</persName> is one
+<lb/>of the kind friends I speak of, when carried to
+	  <lb/><placeName>Gloucester</placeName> sick, in <date when="1814">1814</date>; she was then a little
+<lb/>miss. A friend of mine lived with her mother;
+	  <lb/>she used to say that <persName>Amelia</persName> would not rest, when
+<lb/>she came from school, till she had something to
+<lb/>bring to my mother and me. <persName>Mrs. Bigelow</persName> and
+<lb/>family were very kind, doing all in their power to
+<lb/>make me comfortable, and even moved me from
+<lb/>the house of the tyrant that I then hired from, and
+<lb/>raised me up other kind friends; and, with the
+<lb/>blessing of God and the counsel of <persName>Dr. Grey</persName>, my
+<lb/>health is much improved. <quote rend="pre(“)post(”)">I am as a wonder
+<lb/>unto many, but the Lord is my strong refuge.</quote>
+<lb/>Underneath him is the everlasting arm of mercy;
+<lb/>misfortune is never mournful for the soul that
+<lb/>accepts it, for such do always see that every
+<lb/>cloud is an angel's face; sorrow connects the
+<lb/>soul with the invisible.</p>
+        <pb n="81"/>
+        <milestone unit="sig" n="8(1)r"/>
+        <mw type="pageNum" rend="align(right)">81</mw>
+        <p>O Father, fearful indeed is this world's pil­
+<lb/>grimage, when the soul has learned that all its
+<lb/>sounds are echos, all its sights are shadows. But
+<lb/>lo! a cloud opens, a face serene and hopeful
+<lb/>looks forth and saith, <quote rend="pre(“)post(”)">Be thou as a little child,
+<lb/>and thus shalt thou become a seraph, and bow
+<lb/>thyself in silent humility and pray, not that
+<lb/>afflictions might not visit, but be willing to be
+<lb/>purified through fire, and accept it meekly.</quote>
+</p>
+        <mw type="sig" rend="align(center)">8*</mw>
+      
+    </body>
+    <back>
+      <div type="essay">
+        <pb n="82"/>
+        <milestone unit="sig" n="8(1)v"/>
+        <mw type="pageNum">82</mw>
+        <head>Divine Contentment.</head>
+        <div type="section">
+          <head rend="case(mixed)slant(italic)">Advancement of Faith is Necessary.</head>
+          <p>All our disqui<choice><sic/><corr>e</corr></choice>tness do issue immediately from
+<lb/>unbelief. It is this that raiseth the storm of dis­
+<lb/>content in the heart. Oh, set faith at work! It
+<lb/>is the property of faith to silence our doubtings,
+<lb/>to scatter our fears, to still the heart when the
+<lb/>passions are up. Faith works the heart to a
+<lb/>sweet serene composure: it is not having food
+<lb/>or raiment, but having faith, which will make
+<lb/>us content. Faith chides down passion; when
+<lb/>Reason begins to swim, let Faith swim.</p>
+          <p><hi rend="slant(italic)"><choice><abbr>Quest.</abbr><expan>question</expan></choice></hi> How doth Faith work contentment?</p>
+          <p>
+            <hi rend="slant(italic)">
+              <choice>
+                <abbr>Answ.</abbr>
+                <expan>answer</expan>
+              </choice>
+            </hi>
+            <list rend="break(no)">
+              <item rend="break(no)">1. Faith shows the soul that whatever 
+<lb/>its trials are, yet it is from the hand of a kind
+<lb/>Father: it is indeed a bitter cup; but <quote rend="pre(“)post(”)">shall I
+<lb/>not drink the cup which my Father hath given 
+<lb/>me to drink?</quote> (<bibl><regMe>John xviii. 11</regMe></bibl>.) It is love to
+<lb/>my soul; God <emph>corrects</emph> with the same love that
+<lb/>he <emph>crowns</emph> me. God is now training me up for
+	      <lb/>heaven; he carves me, to make me a polished
+<lb/>pillar, fit to stand in the heavenly mansion.
+<lb/>These sufferings bring forth patience, humility,
+<lb/>even the peaceable fruits of righteousness, <bibl><regMe>Heb.
+<lb/>xii. 11</regMe></bibl>. And if God can bring such sweet fruit
+
+<pb n="83"/>
+<milestone unit="sig" n="8(2)r"/>
+<mw type="pageNum" rend="align(right)">83</mw>
+<lb/>out of a sour stock, let him graft me where he 
+<lb/>please. Thus faith brings the heart to holy
+<lb/>contentment.</item>
+              <item rend="break(yes)first-indent(1)">2. Faith sucks the honey of contentment out of 
+		<lb/>the hive of the Promise.<anchor xml:id="a001" corresp="#n001" rend="pre(*)"/> 
+Christ is the Vine, the
+<lb/>promises are the clusters of grapes that grow
+<lb/>upon this Vine; and Faith presseth the sweet 
+<lb/>vine of contentment out of these spiritual clusters
+<lb/>of the promises. I will show you but one clus­
+<lb/>ter,――The Lord will give grace and glory, and 
+<lb/>no good thing will he withhold from them that
+<lb/>walk uprightly; (<bibl><regMe>Psal. lxxxiv. 11</regMe></bibl>,) here is enough
+<lb/>for faith to live upon. The Promise is the flower
+<lb/>out of which Faith distils the spirits and quintes­
+<lb/>sence of divine contentment. In a word, Faith
+<lb/>carries up the soul, and makes it aspire after
+<lb/>more noble and generous delights than earth
+<lb/>affords, and to live in the world above the world.
+<lb/>Would you lead contented lives, live up to the
+<lb/>height of your faith.</item>
+            </list>
+          </p>
+        </div>
+        <div type="section">
+          <pb n="84"/>
+          <milestone unit="sig" n="8(2)v"/>
+          <mw type="pageNum">84</mw>
+          <head rend="case(mixed)slant(italic)">Breathe after Assurance.</head>
+          <p>Oh, let us get the interest cleared between
+<lb/>God and our own souls! Interest is a word
+<lb/>much in use; a pleasing word: interest in great
+<lb/>friends, interest-money. Oh, if there be an inter­
+<lb/>est worth looking after, it is an interest between
+	    <lb/>God and the soul. Labor to say with <persName>Thomas</persName>,
+<lb/>my Lord and my God. To be without money
+<lb/>and without friends, and without God too, (<bibl><regMe>Eph.
+<lb/>ii. 12</regMe></bibl>,) is said; but he whose faith doth flourish
+<lb/>into assurance, that can say, with <persName>St. Paul</persName>――I
+<lb/>know in whom I have believed, (<bibl><regMe>2 Tim. i. 12</regMe></bibl>.)
+<lb/>Be assured that man hath enough to give his
+<lb/>heart contentment. When a man's debts are
+<lb/>paid, and he can go abroad without fear of
+<lb/>arresting, what contentment is this! Oh, let
+<lb/>your title be cleared! if God be ours, whatever
+<lb/>we want in the creature is infinitely made up in
+	    <lb/>him. Do I want bread? I have Christ, the
+<lb/>Bread of Life. Am I under defilement? His
+<lb/>blood is like the trees of the sanctuary; not only
+<lb/>for meat, but medicine, <bibl><regMe>Ezek. xlvii. 12</regMe></bibl>. If any
+<lb/>thing in the world is worth laboring for, it is to
+<lb/>get sound evidences that God is ours. If this be
+<lb/>once cleared, what can come amiss? No matter
+<lb/>what storms I meet with, so that I know where to
+<lb/>put in for harbor. He that hath God to be his
+<lb/>God, is so well contented with his condition, that
+
+<pb n="85"/>
+<milestone unit="sig" n="8(3)r"/>
+<mw type="pageNum" rend="align(right)">85</mw>
+<lb/>he doth not much care whether he hath any
+<lb/>thing else. To rest in a condition where a
+	      <lb/><name>Christian</name> cannot say God is his God, is a matter
+<lb/>of <mcr>fear</mcr>: and if he can say so truly, and yet is
+	      <lb/>not contented, is matter of <mcr>shame</mcr>. <persName>David</persName> en­
+<lb/>couraged himself in the Lord his God. Although
+	      <lb/>it was sad with him, (<bibl><regMe>1 Sam. xxx. 62</regMe></bibl>.) <placeName>Ziklag</placeName>
+<lb/>was burnt, his wives taken captive, he lost all,
+<lb/>and had like to have lost his soldiers' hearts 
+<lb/>too――for they spoke of stoning him――yet he had
+<lb/>the ground of contentment within him, viz., an
+<lb/>interest in God; and this was a pillar of support­
+<lb/>ment to his spirit. He that knows God is his,
+<lb/>and that all that is in God is for his good; if this
+<lb/>doth not satisfy, I know nothing will.</p>
+        </div>
+        <div type="section">
+          <head rend="case(mixed)slant(italic)">Pray for an Humble Spirit.</head>
+          <p>The humble man is the contented man: if his
+<lb/>estate be low, his heart is lower than his estate;
+<lb/>therefore he is contented. If his esteem is the
+<lb/>world below, he that is little in his own eyes, will
+<lb/>not be much troubled to be little in the eyes of
+<lb/>others. He hath a meaner opinion of himself,
+<lb/>than others can have of him. The humble man
+<lb/>studies his own unworthiness; he looks upon
+<lb/>himself as less than the least of God's mercies,
+<lb/>(<bibl><regMe>Gen. xxxii. 10</regMe></bibl>,) and then a little will content
+	    <lb/>him. He cries out with <persName>Paul</persName>, that he is the chief
+
+<pb n="86"/>
+<milestone unit="sig" n="8(3)v"/>
+<mw type="pageNum">86</mw>
+<lb/>of sinners, (<bibl><regMe>1 Tim. i. 15</regMe></bibl>,) therefore doth not
+<lb/>murmur, but admire: he doth not say his com­
+<lb/>forts are small, but his sins are great. He
+<lb/>thinks it a mercy he is out of hell; therefore, is
+<lb/>contented. He doth not go to carve out a more
+<lb/>happy condition to himself; he knows the worst
+<lb/>piece God cuts him is better than he deserves.
+<lb/>A proud man is never contented; he is one that
+<lb/>hath a high opinion of himself; therefore, under
+<lb/>small blessings is disdainful, under small crosses
+<lb/>impatient. The humble spirit is the contented
+<lb/>spirit; if his cross be light, he reckons it in the
+<lb/>inventory of his mercies; if it be heavy, yet
+<lb/>takes it upon his knees, knowing that when his
+<lb/>estate is bad, it is to make him the better. Where
+<lb/>you lay humility for the foundation, contentment
+	    <lb/>will be the superstructure, and Christ the topstone.</p>
+        </div>
+        <div type="section">
+          <head rend="case(mixed)slant(italic)">Keep a clear Conscience. <bibl rend="slant(upright)"><regMe>1 Tim. iii. 9</regMe></bibl>.</head>
+          <p>Contentment is the <mcr>manna</mcr> that is laid up in the
+<lb/>ark of a good conscience. Oh, take heed of
+<lb/>indulging any sin! It is as natural for guilt to
+<lb/>breed disquietude, as for the earth to breed
+	    <lb/>worms. Sin lies like <persName>Jonah</persName> in the ship, it raises a
+<lb/>tempest. If dust or motes be gotten into the eye,
+<lb/>they make the eye water, and cause a soreness
+<lb/>in it; if the eye be clear, then it is free from that
+<lb/>soreness.  If sin be gotten into the conscience,
+
+<pb n="87"/>
+<milestone unit="sig" n="8(4)r"/>
+<mw type="pageNum" rend="align(right)">87</mw>
+<lb/>which is as the eye of the soul, then grief and
+<lb/>disquiet breed there: but keep the eye of con­
+	    <lb/>science clear, and all is well. What <persName>Solomon</persName>
+<lb/>saith of a good stomach, I may say of a good
+<lb/>conscience (<bibl><regMe>Prov. xxvii. 7</regMe></bibl>.) To the hungry soul
+<lb/>every bitter thing is sweet; so to a good con­
+<lb/>science every bitter thing is sweet; it can pick
+<lb/>contentment out of the Cross. A good con­
+	    <lb/>science turns the waters of <placeName>Marah</placeName> into wine.
+<lb/>Would you have a quiet heart? Get a smiling
+	    <lb/>conscience. I wonder not to hear <persName>Paul</persName> say, he
+<lb/>was in every state content; when he could make
+<lb/>that triumph――I have lived in all good conscience
+<lb/>unto this day, <bibl><regMe>Acts, xxiii. 1</regMe></bibl>. When once a man's
+<lb/>reckonings are clear, it must needs let in abund­
+<lb/>ance of contentment into the heart. A good
+<lb/>conscience can suck contentment out of the bit­
+<lb/>terest drug: under slanders――This is our rejoic­
+<lb/>ing, the testimony of our conscience, <bibl><regMe>2 Cor. i.
+		<lb/>12</regMe></bibl>. In case of imprisonment, <persName>Paul</persName> had his
+<lb/>prison-songs, and could play the sweet lesson of
+<lb/>contentment when his feet were in the stocks,
+	    <lb/><bibl><regMe>Acts xvi.24</regMe></bibl>. <persName>Augustine</persName> calls it the paradise of a
+<lb/>good conscience. When the times are trouble­
+<lb/>some, a good conscience makes a calm: if con­
+<lb/>science be clear, what though the days be cloudy?
+<lb/>… Oh, keep conscience clear, and you shall
+<lb/>never want contentment!</p>
+        </div>
+      </div>
+      <div type="poem">
+        <pb n="88"/>
+        <milestone unit="sig" n="8(4)v"/>
+        <head>The Hiding Place.</head>
+        <lg type="poem" subtype="stanzaic">
+          <lg type="quatrain">
+            <l>Amid this world's tumultuous noise,</l>
+            <l>For peace my soul to <persName>Jesus</persName> flies;</l>
+            <l>If I've an interest in his grace,</l>
+            <l>I want no other hiding place.</l>
+          </lg>
+          <lg type="quatrain">
+            <l>The world with all its charms is vain,</l>
+            <l>Its wealth and honors I disdain;</l>
+            <l>All its extensive aims embrace,</l>
+            <l>Can ne'er afford a hiding place.</l>
+          </lg>
+          <lg type="quatrain">
+            <l>A guilty sinful heart is mine,</l>
+            <l><persName>Jesus</persName>, unbounded love is thine!</l>
+            <l>When I behold thy smiling face,</l>
+            <l>'Tis then I see my hiding place.</l>
+          </lg>
+          <lg type="quatrain">
+            <l>To save, if once my Lord engage,</l>
+            <l>The world may laugh, and <persName>Satan</persName> rage:</l>
+            <l>The powers of hell can ne'er erase</l>
+            <l>My name from God's own hiding place.</l>
+          </lg>
+          <lg type="quatrain">
+            <l>I'm in a wilderness below,</l>
+            <l>Lord, guide me all my journey through,</l>
+            <l>Plainly let me thy footsteps trace,</l>
+            <l>Which lead to heaven my hiding place.</l>
+          </lg>
+          <lg type="quatrain">
+            <l>Should dangers thick impede my course,</l>
+            <l>O let my soul sustain no loss;</l>
+            <l>Help me to run the Christian race,</l>
+            <l>And enter safe my hiding place.</l>
+          </lg>
+          <lg type="quatrain">
+            <l>Then with enlarged powers,</l>
+            <l>I'll triumph in redeeming love,</l>
+            <l>Eternal ages will I praise</l>
+            <l>My Lord for such a hiding place.</l>
+          </lg>
+        </lg>
+      </div>
+    </back>
+  </text>
+</TEI>

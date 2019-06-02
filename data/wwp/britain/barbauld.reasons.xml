@@ -1,0 +1,1426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/wwp-store.rng"    type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../schema/wwp-store.isosch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- $Id: barbauld.reasons.xml 31962 2017-06-23 22:20:54Z syd $ -->
+<TEI xmlns="http://www.wwp.northeastern.edu/ns/textbase" xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en">
+  <teiHeader xml:id="TR00081.hdr">
+    <fileDesc>
+      <titleStmt>
+        <title type="main">Reasons for National Penitence, 1794</title>
+        <author>
+          <persName ref="p:abarbauld.ibw" type="person-female">Barbauld, Anna Laetitia (Aikin)</persName>
+        </author>
+        <sponsor>Brown University</sponsor>
+        <sponsor>Northeastern University</sponsor>
+        <funder>U.S. National Endowment for the Humanities</funder>
+      </titleStmt>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPedition)"/>    
+      <publicationStmt>
+        <publisher>Northeastern University Women Writers Project</publisher>
+        <address>
+          <addrLine>SL 213</addrLine>
+          <addrLine>Northeastern University</addrLine>
+          <addrLine>360 Huntington Avenue</addrLine>
+          <addrLine>Boston, MA  02115-5005</addrLine>
+          <addrLine>USA</addrLine>
+          <addrLine>url:mailto:wwp@neu.edu</addrLine>
+          <addrLine>url:http://www.wwp.northeastern.edu/</addrLine>
+        </address>
+        <idno type="WWP">TR00081</idno>
+        <idno type="URL">http://www.wwp.northeastern.edu/texts/barbauld.reasons.html</idno>
+        <xi:include href="../common-boilerplate.xml" xpointer="element(WWPavailability)"/>
+        <date when="2001-04-23"/>
+      </publicationStmt>
+      <sourceDesc n="OT00081">
+        <biblStruct>
+          <monogr>
+            <author>
+              <persName ref="p:abarbauld.ibw" type="regularized">Barbauld, Anna Laetitia (Aikin)</persName>
+            </author>
+            <title>Reasons for national penitence recommended for the fast, appointed February XXVIII, 1794</title>
+            <edition>First edition</edition>
+            <idno type="nnc">Pamphlet 942.073 Z411</idno>
+            <imprint>
+              <pubPlace>London</pubPlace>
+              <publisher><persName ref="p:grobinson.vuq" type="titlePage">G.</persName><persName ref="p:grobinson.vuq" type="regularized">Robinson, George</persName> <persName ref="p:grobinson.dmo" type="titlePage">G.</persName><persName ref="p:grobinson.dmo" type="regularized">Robinson, George</persName>
+ and 
+<persName ref="p:robinson.gmi" type="titlePage">J. Robinson</persName>
+<persName ref="p:robinson.gmi" type="regularized">Robinson, John</persName>
+</publisher>
+              <date when="1794">1794</date>
+            </imprint>
+            <extent>
+              <measure unit="page" quantity="44"/>
+            </extent>
+            <extent>
+              <dimensions>
+                <format>octavo</format>
+              </dimensions>
+            </extent>
+          </monogr>
+        </biblStruct>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPprojectDescription)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPsamplingDeclaration)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPeditorialDeclaration)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPcharacterDeclaration)"/>
+      <tagsDecl>
+        <rendition xml:id="rend.first-indent" selector="p">first-indent(1)</rendition>
+        <rendition xml:id="rend.it" selector="emph">slant(italic)</rendition>
+        <rendition xml:id="rend.ppquote" selector="quote, q">pre(“)post(”)</rendition>
+      </tagsDecl>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPclassificationDeclaration)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPlistPrefixDefinitions)"/>
+    </encodingDesc>
+    <profileDesc>
+      <handNotes>
+        <handNote xml:id="unknown.zzx" scribe="unknown.zzx"/>
+      </handNotes>
+      <textClass>
+        <catRef type="main" target="#G.non-fiction"/>
+        <catRef type="other" target="#G.non-fiction.essay"/>
+      </textClass>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPcalendarDescription)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPlangUsage)"/>
+    </profileDesc>
+    <revisionDesc>
+      <change n="RCS-1.42" when="2010-07-16" who="p:jmelson.nep">added <att>type</att> to <gi>docRole</gi></change>
+      <change n="RCS:1.38" when="2008-10-28" who="p:lmanders.vko">placeName nested in persName, Duke of Bruinswick</change>
+      <change n="RCS:1.37" when="2008-10-14" who="p:npeterson.gwx">improvement</change>
+      <change n="RCS:1.28" when="2000-02-21" who="p:jflanders.lfw">updated call number in header</change>
+      <change n="RCS:1.22" when="1999-08-12" who="p:jflanders.lfw">updated header names</change>
+      <change n="RCS:1.19" when="1999-08-03" who="p:pcaton.xzc">Added missing MILESTONE tag for F4r. Validated against DTD 1.2.1</change>
+      <change n="RCS:1.18" when="1999-08-02" who="p:rkempster.jgf">Minor encoding review correx.</change>
+      <change n="RCS:1.15" when="1999-07-28" who="p:pcaton.xzc">Added a rend of FIRST-INDENT(1) to some of the NOTE
+	  paras. Tidied up some renditional values. Validated against
+	  DTD 1.1.32b, and supravalidated.</change>
+      <change n="RCS:1.14" when="1999-07-13" who="p:anavot.nel">encoding review and minor corrections.</change>
+      <change when="1999-04-13" who="p:jrussom.zxg">Revised TEI header FILEDESC names, ordering, and contents.</change>
+      <change when="1999-02-17" who="p:cmah.dci">Brought file to validation with DTD version 1.1.23a, except for TEIHeader.</change>
+      <change when="1999-02-16" who="p:blandry.nua">entered proofreading corrections</change>
+      <change when="1998-09-01" who="p:rcapolung.ewo">hand renovation</change>
+      <change n="SGMWWP02" when="1995-07-11" who="p:jatlee.awv">validated file against latest DTD</change>
+      <change n="SGMWWP01" when="1995-06-13" who="p:jatlee.awv">Added TEI header.</change>
+      <change n="SGMWWP01" when="1995-03-16" who="p:kschoonov.usz">Revised format of change log.</change>
+      <change n="SGMWWP01" when="1995-01-20" who="p:gwagner.jkn">This text conformed to DTD without needing any changes.</change>
+      <change n="WWPPRF01" when="1994-11-23" who="p:cmah.dci">fixed title page to conform to P3 Note that this is one of many texts (many that E. McNulty has been working on have this problem) that has more than one so-called TITLE PAGE</change>
+      <change n="WWPPRF01" when="1994-09-29" who="p:aporter.hyu">I changed the 'tPage.p' tags to 'unknown' for lack of a more appropiate tag.</change>
+      <change n="WWPPRF01" when="1994-07-07" who="p:pcaton.xzc">Entered :body tags.</change>
+      <change when="1994-01-04" who="p:crounds.bzq">checked new printout against old, fixed errors etc.</change>
+      <change n="WWPPRF01" when="1993-11-29" who="p:cmah.dci">further conversion stuff.</change>
+      <change when="1992-05-22" who="p:ebrennan.gxl">Released to Nicola Timbrell at Oxford University Computing Services for testing usability with hypertext systems.</change>
+      <change when="1992-05-07" who="p:ebrennan.gxl">Tagcnt run and checked for weirdness.</change>
+      <change when="1991-09-16" who="p:cmah.dci">Conversion to point completed</change>
+      <change when="1991-09-13" who="p:cmah.dci">Conversion to pointy begun by Carole E. Mah.</change>
+      <change when="1991-06-24" who="p:ebrennan.gxl">Format updated to current "." standard.</change>
+      <change when="1991-03-05" who="p:across.dta">Corrections made by Ashley J. Cross.</change>
+      <change when="1990-06-15" who="p:across.dta">Further proofreading</change>
+      <change when="1990-04-02" who="p:ebrennan.gxl">Initial corrections made; spell-check run.</change>
+      <change when="1990-03-21" who="p:azabriski.znv">Proofread</change>
+      <change when="1990-03-19" who="p:dhirsch.nez">Input</change>
+    </revisionDesc>
+  </teiHeader>
+  <text xml:id="TR00081">
+    <hyperDiv>
+<notes>
+<note xml:id="n01" rend="place(foot)align(left)pre(*)" target="#a01">
+        <p rend="first-indent(1)">From the following passage in <persName ref="p:dhume.jzc">Hume</persName>, we may observe that the
+<lb/>crusaders of <emph rend="slant(italic)">the dark</emph>, as well as those of <emph rend="slant(italic)">more enlightened ages</emph>, could
+<lb/>atone for their excesses, by acts of the most fervent
+	  piety.—<quote rend="bestow((pre(“))(lb))">The
+<lb/>triumphant warriors, after every enemy was subdued and slaugh­
+<lb/>tered, immediately turned themselves, with sentiments of humi­
+<lb/>liation and contrition, towards the holy sepulchre: they threw
+<lb/>aside their arms, still streaming with blood; they advanced with
+<lb/>reclined bodies, and naked feet and heads, to that sacred monu­
+<lb/>ment: they sung anthems to their Saviour, who had there pur­
+<lb/>chased their salvation by his death and agony,</quote> &amp;c. &amp;c.</p>
+        <lb/>
+        <bibl rend="align(right)">
+          <author>
+            <persName rend="case(allcaps)" ref="p:dhume.jzc">Hume's</persName>
+          </author>
+          <title><choice><abbr rend="case(allcaps)">Hist.</abbr><expan>History</expan></choice><choice> <abbr>Vol.</abbr><expan>volume</expan></choice> I.</title>
+        </bibl>
+      </note>
+<note xml:id="n02" rend="place(foot)pre(*)" target="#a02">
+        <p rend="first-indent(1)">The manifesto of the <persName ref="p:cferdinan.bkh">duke of 
+<placeName>Brunswick</placeName></persName> is not, however, of
+<lb/>this ambiguous kind. It is expressed in a style of undisguised bar­
+<lb/>barity, and it is replete with threats, which <persName ref="p:attila.ard">Attila</persName>, or <persName ref="p:gkhan.avd">Zenghis Khan</persName>
+<lb/>would not have uttered without remorse. The other manifestoes
+<lb/>may be said to have the praise of hypocriſy, at least<choice><sic>,</sic><corr>.</corr></choice>
+</p>
+      </note>
+<note xml:id="n03" rend="place(foot)pre(*)" target="#a03">
+        <p rend="first-indent(1)">I allude to the prospect of success which the seizure of French
+<lb/>towns, and the exertions of the royalists, held out to us. Even
+<lb/>these hopes are now gone.
+</p>
+      </note>
+<note xml:id="n04" rend="place(foot)pre(†)" target="#a04">
+        <p rend="first-indent(1)">This was the burthen of the king's speech at the opening of
+<lb/>the present session of parliament.
+</p>
+      </note>
+<note xml:id="n05" rend="place(foot)pre(*)" target="#a05">
+        <p rend="first-indent(1)">In the address of <persName ref="p:galgacus.yuz">Galgacus</persName> to the <name>Caledonians</name>, this idea has been
+<lb/>forcibly expressed by <persName ref="p:tacitus.zle">Tacitus</persName>. <quote rend="bestow((pre(“))(lb))" xml:lang="la">Ne terreat vanus
+aspectus, et auri
+<lb/>fulgor, atque argenti, quod neque tegit, neque vulnerat.</quote>
+</p>
+      </note>
+<note xml:id="n06" rend="place(foot)pre(*)" target="#a06">
+        <p rend="first-indent(1)">It has been observed, rather more wittily than religiously, upon
+<lb/>the public conduct of our English bishops, that, according to the
+<lb/>pliant maxims of christianity, they can recommend war to our go­
+<lb/>vernors, and preach up peace and submission to the people.
+</p>
+      </note>
+<note xml:id="n07" rend="place(foot)align(center)pre(*)" target="#a07">
+        <p>
+          <bibl><author><persName ref="p:totway.tlj">Otway's</persName></author><title><placeName>Venice</placeName> Preserved</title>.</bibl>
+        </p>
+      </note>
+<note xml:id="n08" rend="place(foot)pre(*)" target="#a08">
+        <p rend="first-indent(1)">The severe and cruel sentences, which have been passed upon
+<lb/>the Scotch reformers, have, even by lawyers, been supposed to be
+<lb/>illegal and unconstitutional: but, even allowing that they were le­
+<lb/>gal, it cannot but be reproachful to a free nation, that it should
+pre­
+<lb/>serve the intolerant laws of arbitrary reigns. While such statutes
+<lb/>remain, we cannot wonder that the spirit of <persName ref="p:jefferies.woc">Jefferies</persName> is not extinct.
+</p>
+      </note>
+<note xml:id="n09" rend="place(foot)align(center)pre(*)" target="#a09">
+        <p xml:lang="la">Metus, et terror est infirma vincula caritatis.
+	  <persName rend="case(smallcaps)" ref="p:tacitus.zle">Tac.</persName>
+</p>
+      </note>
+</notes></hyperDiv>
+    <front>
+      <pb n="i"/>
+      <milestone unit="sig" n="A1r"/>
+      <titleBlock rend="align(center)">
+        <titlePart>
+          <hi rend="case(allcaps)">Reasons</hi>
+          <lb/>
+          <hi rend="case(allcaps)">For</hi>
+          <lb/>
+          <hi rend="slant(italic)">National Penitence, &amp;c.</hi>
+        </titlePart>
+        <docSale rend="post(#rule)face(blackletter)">
+Price <measure>One Shilling</measure>.
+</docSale>
+      </titleBlock>
+      <pb n="ii"/>
+      <milestone unit="sig" n="A1v"/>
+      <pb n="iii"/>
+      <milestone unit="sig" n="A2r"/>
+      <titleBlock rend="align(center)">
+        <gap desc="handwriting" reason="omitted" extent="1 line"/>
+        <titlePart rend="case(allcaps)">Reasons
+<lb/>For
+<lb/><hi rend="slant(italic)">National Penitence</hi>,
+</titlePart>
+        <titlePart type="sub">
+          <lb/>
+          <hi rend="case(allcaps)">Recommended For The</hi>
+          <lb/>
+          <hi rend="face(blackletter)">Fast,</hi>
+          <lb/>
+          <hi rend="case(allcaps)">Appointed</hi>
+          <date when="1794-02-28"><hi rend="case(allcaps)">February</hi> XXVIII.
+<lb/>1794.</date>
+        </titlePart>
+        <gap desc="handwriting" reason="omitted" extent="1 line"/>
+        <epigraph rend="align(center)case(smallcaps)post(#rule)" xml:lang="la">
+          <quote rend="case(allcaps)" xml:lang="la">sicut vetus ætas vidit, quid ultimum in libertate
+<lb/>esset: ita nos quid in servitute, adempto per in­
+<lb/>quisitiones et loquendi, audiendique, commercio.</quote>
+          <bibl rend="align(right)face(blackletter)">
+            <author>
+              <persName ref="p:tacitus.zle">Tacit.</persName>
+            </author>
+            <title>
+              <choice>
+                <abbr>vit. Agric.</abbr>
+                <expan>De vita Julii Agricolae</expan>
+              </choice>
+            </title>
+          </bibl>
+        </epigraph>
+        <docImprint rend="case(allcaps)post(#rule)"><pubPlace rend="case(mixed)face(blackletter)">London:</pubPlace>
+	  <lb/>Printed For <docRole type="publisher"><persName ref="p:grobinson.vuq">G. G.</persName></docRole> and <docRole type="publisher"><persName ref="p:robinson.gmi">J. Robinson</persName></docRole>,
+	  <lb/><placeName>Pater-Noster-Row</placeName>.</docImprint>
+      </titleBlock>
+    </front>
+    <pb n="iv"/>
+    <milestone unit="sig" n="A2v"/>
+    <body>
+      <pb n="1"/>
+      <milestone unit="sig" n="B1r"/>
+      <head rend="pre(#rule)post(#rule)">
+        <lb/>
+        <hi rend="case(allcaps)">Reasons</hi>
+        <lb/>
+        <hi rend="case(allcaps)">For</hi>
+        <lb/>
+        <hi rend="slant(italic)">National Penitence, &amp;c.</hi>
+      </head>
+      <p><hi rend="class(#DIC)">W</hi><hi rend="case(allcaps)">e</hi> are again commanded to supplicate a pardon of
+<lb/>our sins, and to implore the future protection of the
+<lb/>Divine Being. A whole people, united in one general act
+<lb/>of religion, and impressed with a general sense of their de­
+<lb/>pendence on Providence, exhibit an awful and magnificent
+<lb/>spectacle. But if the solemnities of the day are only calcu­
+<lb/>lated to display a pompous scene of national worship, their
+<lb/>purpose might very justly be derided, and their utility safely
+<lb/>denied. There would be a species of pride, even in our
+<lb/>acts of humiliation and penance, if they did not generate a
+<lb/>train of serious and sober reflections, suited to the present
+<lb/>aspect of the times, as well as to our participation in the
+<lb/>events which they have produced. We shall not reap any
+<mw type="sig" rend="align(center)">B</mw>
+<mw type="catch" rend="align(right)">instruc-</mw>
+<pb n="2"/>
+<milestone unit="sig" n="B1v"/>
+<mw type="pageNum" rend="align(center)">2</mw>
+<lb/>instructions from this religious exercise, unless our attention
+<lb/>be directed to the circumstances which rendered it necessary.
+<lb/>There are, indeed, in the history of nations, as in the lives
+<lb/>of individuals, seasons of sorrow and calamity, when no
+<lb/>employment is so pleasant, or useful, as that of <quote>lifting
+<lb/>the eyes upwards,</quote> and of counting, as it were, the links
+<lb/>of the chain, that connects us with heaven. We are, how­
+<lb/>ever, performing a service, as displeasing to God, as it is
+<lb/>uninstructive to man, if, upon such an occasion, we neg­
+<lb/>lected to enquire into the causes of the misfortunes we la­
+<lb/>ment, or if we did not feel the sincerest penitence for the
+<lb/>sins, whose pardon we implore.
+</p>
+      <p rend="first-indent(1)">It is necessary, therefore, that we should not join in the
+<lb/>appointed duties of the day, but with rational and proper
+<lb/>conceptions of the end of such an institution. If we
+<lb/>imagine that we ought to enter our churches, to pour out
+<lb/>our spleen, and express our malice to our enemies, to mingle
+<lb/>execrations against <emph>them</emph> with our prayers for
+<emph>ourselves</emph>, we
+<lb/>have grossly misunderstood its purpose and its principles.
+<lb/>Let us not be deceived. It is not surely an act of pub­
+<lb/>lic expiation, which is intended to absolve us, as it were,
+<lb/>from our former accounts with heaven, and to give us cou­
+<lb/>rage and vigour in the future perpetration of our crimes.
+<lb/>Nor let us reason thus with ourselves:—<said rend="bestow((pre(“))(lb))">The atheists of
+<lb/>France never offer up a prayer, nor proclaim public fastings.
+<lb/>Surely, then, our austerity and abstinence will obtain
+<mw type="catch" rend="align(right)">“the</mw>
+<pb n="3"/>
+<milestone unit="sig" n="B2r"/>
+<mw type="pageNum" rend="align(center)">3</mw>
+<lb/>the divine assistance and co-operation in our cause.</said>—
+<lb/>We cannot subsidize the Deity, as we have subsidized his
+<lb/>majesty of Sardinia. Unless our hearts be penitent, the
+<lb/>solemn repetition of liturgies, and the formal confession of
+<lb/>our sins, will avail us nothing against the judgments which
+<lb/>a whole year of slaughter and devastation has stored up
+<lb/>against us. We cannot bribe him into complacence, after
+<lb/>having laid waste, and destroyed the fairest scenes of his
+<lb/>creation. But when we approach the altar of Peace, with
+<lb/>our arms streaming with blood, and our hearts swelling with
+<lb/>meditations of still more complete and bloody vengeance,
+<lb/>we are only displaying to the world a disgusting alliance
+<lb/>of the fiercest barbarity with the most abject superstition.
+<lb/>Let us, therefore, clearly apprehend the nature, and the
+<lb/>object of the duties, which have been enjoined us, by the
+<lb/>public authority of the nation. But let me conjure you to
+<lb/>lay aside that ferocious and unrelenting malice, which is
+<lb/>more calculated for the synagogues of Satan, than the
+<lb/>temples of the Almighty. This is a day of repentance!
+<lb/>If we have committed any sins as a nation, we are called
+<lb/>upon to confess them with sincere and unfeigned penitence;
+<lb/>and if we have suffered any calamities, it is our duty to
+<lb/>deplore them with emotions of earnest piety, and with
+<lb/>humble hopes of divine forgiveness. A verbal acknow­
+<lb/>ledgement of our errors, however, and an idle and whining
+<lb/>lamentation over our misfortunes, is as inconsistent with our
+<lb/>duty, as it is unworthy of our dignity. We must resolve
+<mw type="sig" rend="align(center)">B2</mw>
+<mw type="catch" rend="align(right)">to</mw>
+<pb n="4"/>
+<milestone unit="sig" n="B2v"/>
+<mw type="pageNum" rend="align(center)">4</mw>
+<lb/>to turn from our evil conduct; and we must listen to a
+<lb/>lesson of instruction, under the pressure of affliction. Un­
+<lb/>less we do this, the confession of our crimes will resemble
+<lb/>the timid and superstitious devotion of savages; and our
+<lb/>sorrow for our calamities will be the voice of effeminate,
+<lb/>and even of guilty complaint. He who sins, in spite of
+<lb/>experience, incurs an aggravated and severer punishment.
+</p>
+      <p rend="first-indent(1)">We are, my brethren, a great nation, if we are considered
+<lb/>with regard to our power, our resources, our connections,
+<lb/>and dependencies. Whatever, therefore, may be the part
+<lb/>which we act in the great drama of the world, it is not at
+<lb/>least an unimportant, or trifling part. If we have con­
+<lb/>ducted our affairs with imprudence, or temerity; if our
+<lb/>measures have been dictated by passion, instead of being
+<lb/>conceived in wisdom, the effects of our misconduct must be
+<lb/>very extensively and severely felt. We have had it in
+<lb/>our power, by moderate and enlightened, or by violent and
+<lb/>precipitate counsels, to add to, or to diminish considerably,
+<lb/>the general bulk of human happiness. If, instead of availing
+<lb/>ourselves of our natural strength, and our acquired greatness,
+<lb/>that qualified us to sit as the judge and arbiter of sur­
+<lb/>rounding nations, we have communicated to them a passion
+<lb/>for war, and an ambition of conquest, our sin is grievous
+<lb/>in proportion to our means of avoiding it. If the mea­
+<lb/>sures, which have been fruitful of so much destruction and
+<lb/>slaughter, might have been averted by a temperate and con­
+<mw type="catch" rend="align(right)">ciliatory</mw>
+<pb n="5"/>
+<milestone unit="sig" n="B3r"/>
+<mw type="pageNum" rend="align(center)">5</mw>
+<lb/>ciliatory spirit, we are awfully responsible to Providence
+<lb/>for the neglect, or abuse of the trusts communicated to us.
+<lb/>If, in our conduct of war, we have been guilty of unne­
+<lb/>cessary acts of perfidy; and if, while our own island is re­
+<lb/>sounding with exclamations against anarchy and sedition,
+<lb/>we ourselves have been industrious in seducing the subjects
+<lb/>of another government from their allegiance, we stand con­
+<lb/>victed before God, of hypocrisy, as well as treachery. If,
+<lb/>at home likewise, we have been guilty of intolerance and
+<lb/>oppression, and if we have punished, with the same un­
+<lb/>discerning severity, the exertions of mistaken zeal with the
+<lb/>most base and ignominious crimes, we have abundant rea­
+<lb/>son for national penitence. These are some of those of­
+<lb/>fences, of which, as they stand the foremost in the cata­
+<lb/>logue, it behoves us seriously and earnestly to repent.
+</p>
+      <p rend="first-indent(1)">But if this be the guilt of the nation, it is the guilt of
+<lb/>the people. Every one, according to the true and legi­
+<lb/>timate maxims of civil government, has an immediate or
+<lb/>remote participation in the counsels of the legislature. The
+<lb/>right of exercising a judgment on public measures, exists
+<lb/>independently of the sanctions of human institutions. We
+<lb/>may sell our vote, and throw away our integrity at elections:
+<lb/>but no man can barter away the moral capacities of his
+<lb/>nature; and no man can suppress the faculties, which dis­
+<lb/>criminate between right and wrong. Government itself can­
+<lb/>not lawfully exist without some expression of popular con­
+<mw type="catch" rend="align(right)">sent,</mw>
+<pb n="6"/>
+<milestone unit="sig" n="B3v"/>
+<mw type="pageNum" rend="align(center)">6</mw>
+<lb/>sent, as its foundation. This, my brethren, is a maxim,
+<lb/>which cannot be superseded; it forms a part of the charter
+<lb/>which God himself has given to man. The decisions of a
+<lb/>Scotch judge, or the decrees of a British minister, can neither
+<lb/>annul, nor suspend its sacred authority. Every individual,
+<lb/>therefore, among you, if he be not in love with servitude,
+<lb/>even the meanest individual, may decide on the propriety
+<lb/>and expedience of all public measures: since, as a part
+<lb/>of a nation, he participates in the benefits, or evils which
+<lb/>may result from them. He may abandon, for a while, the
+<lb/>ordinary sphere of his actions; he may quit the anvil, or
+<lb/>the loom, and search keenly and narrowly for the sources
+<lb/>of every public mischief, or misfortune. A nation is not
+<lb/>governed by a system of laws alone; for the wisest rules
+<lb/>of legislature may consist with the grossest usurpation. The
+<lb/>energy of laws is instrumental, and secondary only; and
+<lb/>they derive their sanction and authority from the will of
+<lb/>the people. I have reverted to the origin of civil govern­
+<lb/>ment, that it might clearly appear to you, that every one
+<lb/>of you is involved in the guilt of public and national of­
+<lb/>fences. We have, therefore, on this occasion, a privilege
+<lb/>of greater importance, than that of making a ceremonial
+<lb/>confession of our sins, or of joining in a peculiar form of
+<lb/>public worship. Each of us may exercise a kind of ma­
+<lb/>gisterial authority, and erect his own judgment into a tri­
+<lb/>bunal for the cognizance of political affairs.
+</p>
+      <mw type="catch" rend="align(right)">If,</mw>
+      <pb n="7"/>
+      <milestone unit="sig" n="B4r"/>
+      <mw type="pageNum" rend="align(center)">7</mw>
+      <p rend="first-indent(1)">If, my brethren, there ever was a conjuncture, which
+<lb/>required a nice and accurate scrutiny, the situation of our af­
+<lb/>fairs, and the complexion of these times must make a striking
+<lb/>and solemn appeal to our attention. In the course of one
+<lb/>year, events have taken place, which must have roused into
+<lb/>reflection the dullest mind, and baffled the keenest skill of
+<lb/>political conjecture. War, indeed, to him who has not
+<lb/>shut his eyes to the uniform tenor of history, neither ex­
+<lb/>hibits a scene that is new, or extraordinary: but, perhaps,
+<lb/>the picture which it presents to us at this moment, if we
+<lb/>calculated all its immediate, or remote evils, is even more
+<lb/>disgusting and melancholy, than the contests, fierce and
+<lb/>sanguinary as they were, which in former ages have deso­
+<lb/>lated the world. The common intelligence of the day has
+<lb/>frequently displayed as diversified an image of destruction,
+<lb/>as that which is to be found in the fields of Cannæ, or
+<lb/>the deserts of Zama. The ordinary details of carnage,
+<lb/>which, as they are familiarized to our minds, are heard of
+<lb/>with indifference, are replete with relations of distress,
+<lb/>and sufferings as various as the accidents and chances of
+<lb/>battle. Or if the descriptions of this melancholy scene are
+<lb/>not so minute, or ample, a short arithmetical computation
+<lb/>informs us of the numbers, who have perished <emph>with so
+<lb/>much glory;</emph> of those who, <quote>though in the catalogue they
+<lb/>go for men,</quote> are usually considered as the necessary ma­
+<lb/>chines of war, constructed for the bloody purposes of the
+<lb/>despot, who directs them. But if these evils have been
+<mw type="catch" rend="align(right)">always</mw>
+<pb n="8"/>
+<milestone unit="sig" n="B4v"/>
+<mw type="pageNum" rend="align(center)">8</mw>
+<lb/>always characteristic of war, whenever it has taken place,
+<lb/>and under what circumstances soever it has been under­
+<lb/>taken, there are other consequences which distinguish all
+<lb/>the contests of modern times from those of remoter pe­
+<lb/>riods of society. The states of antiquity experienced only
+<lb/>half of the evils of war; when all its calamities consisted
+<lb/>in the destruction and bloodshed, which the contending
+<lb/>armies let loose upon each other. In the present age,
+<lb/>when nations cannot arrive at prosperity, nor even obtain
+<lb/>subsistence, but by commercial intercourse, it cannot surely
+<lb/>be contemplated, but in a shape of much greater and more
+<lb/>aggravated horror.
+</p>
+      <p rend="first-indent(1)">It is impossible, my brethren, that similar reflections
+<lb/>should not have frequently suggested themselves to your
+<lb/>minds, in almost every period of the present war. It
+<lb/>is impossible, that you should have been ignorant of those
+<lb/>multiplied spectacles of distress, which every manufacturing
+<lb/>town exhibits. It is impossible, not to trace these evils to
+<lb/>their true and productive source: and if they have been
+<lb/>incurred rashly, or precipitately, with too little regard for
+<lb/>public happiness, and too much regard to the voice of pas­
+<lb/>sion, they must be acknowledged to constitute a very ne­
+<lb/>cessary and ample theme of national repentance. They
+<lb/>are not susceptible of any exaggerations, were I inclined,
+<lb/>or were I able to heighten them, with the colours of
+<lb/>pathetic discourse. You must have observed the universal
+<mw type="catch" rend="align(right)">gloom,</mw>
+<pb n="9"/>
+<milestone unit="sig" n="C1r"/>
+<mw type="pageNum" rend="align(center)">9</mw>
+<lb/>gloom, which pervades our whole kingdom; you must have
+<lb/>observed how much the face of society is clouded, amidst
+<lb/>a sullen and melancholy cessation from almost every active
+<lb/>employment and cheerful exertion. And, do you imagine,
+<lb/>that the starving artizan and impoverished manufacturer are
+<lb/>much indebted to those, who have contributed to seduce
+<lb/>us into a measure, which has been hitherto so unprofitable
+<lb/>and destructive; and which, from its nature and principle,
+<lb/>cannot inspire us with any rational and well-grounded hopes
+<lb/>of its success? Is any consolation held out to them in
+<lb/>the pompous, and perhaps fallacious annunciations of success,
+<lb/>which are uttered with so much eagerness and exultation;
+<lb/>when the same wind, that wafts into our harbours the detail
+<lb/>of our victories, may convey to them the intelligence of
+<lb/>bankrupt debtors, and intercepted cargoes?
+</p>
+      <p rend="first-indent(1)">Since, however, we have undertaken the enterprize against
+<lb/>France, it is our duty, that we may be able to ascertain
+<lb/>whether it be a theme of rejoicing, or an object of re­
+<lb/>pentance, to examine the principles on which it has been
+<lb/>conducted. In such an enquiry, a knowledge of the cha­
+<lb/>racters and dispositions of those, into whose alliance we
+<lb/>have entered, will be very necessary and useful. If their
+<lb/>dispositions are to be estimated, or their purposes calculated
+<lb/>by the zeal which they have displayed in the cause of human
+<lb/>happiness, I cannot say that the examination would termi­
+<lb/>nate considerably in their praise. There is one transaction
+<mw type="sig" rend="align(center)">C</mw>
+<mw type="catch" rend="align(right)">in</mw>
+<pb n="10"/>
+<milestone unit="sig" n="C1v"/>
+<mw type="pageNum" rend="align(center)">10</mw>
+<lb/>in which our allies have borne a very strenuous and active
+<lb/>part; but it is a transaction, with whose memory the abhor­
+<lb/>rence of mankind will be coeval, while history shall be read,
+<lb/>and oppression hated. It need not be observed, that I al­
+<lb/>lude to the interference in the Polish government. With
+<lb/>these ferocious tyrants, the love of liberty is a crime of
+<lb/>the blackest enormity; and the reformation of those gloomy
+<lb/>and gothic systems of usurpation, which mankind have dig­
+<lb/>nified with the name of Government, is a most dangerous
+<lb/>and alarming species of treason. Perhaps, at some future
+<lb/>and happier period of our affairs, when more indulgence will
+<lb/>be shewn to the boldness of truth, it may be said, that it
+<lb/>was more becoming the dignity, as well as the interests of
+<lb/>England, had she interfered in the behalf of that unhappy
+<lb/>people, instead of engaging in an impotent and unfortunate
+<lb/>crusade<anchor xml:id="a01" corresp="#n01" rend="pre(*)"/>
+ against France. It may then be said, that re­
+<lb/>collecting the care and protection which the infancy of her
+<mw type="catch" rend="align(right)">own</mw>
+<pb n="11"/>
+<milestone unit="sig" n="C2r"/>
+<mw type="pageNum" rend="align(center)">11</mw>
+<lb/>own liberty required, she ought to have been united in a
+<lb/>bond of sympathy with a nation, that was contending against
+<lb/>injustice and oppression. It may then be said, that she
+<lb/>would eventually have consulted her own safety, as well
+<lb/>as her glory, had she interposed as a seasonable check to
+<lb/>so dangerous and destructive a spirit of aggrandizement.
+<lb/>When we consider who were the actors in the scene, we
+<lb/>need not be told, that faith solemnly pledged was violated,
+<lb/>and treaties of the most sacred obligation disregarded.
+</p>
+      <p rend="first-indent(1)">I have deviated somewhat from the reflections, which
+<lb/>more peculiarly belong to the duties of this occasion; but
+<lb/>some allusion to this disgraceful event was necessary to let
+<lb/>in a proper light on the system of policy pursued by our
+<lb/>allies; and in whose guilt, as far as we are subservient to
+<lb/>its purposes, we ourselves are partakers. If, indeed, we
+<lb/>estimated their concern for the happiness of the human race,
+<lb/>by the general tenor of the manifestoes,<anchor xml:id="a02" rend="pre(*)" corresp="#n02"/>
+ which they have
+<lb/>assiduously published, we might think that they were ac­
+<lb/>tuated by the purest motives of reverence towards God, and
+<lb/>of benevolence to man. We might, from these public de­
+<mw type="sig" rend="align(center)">C2</mw>
+<mw type="catch" rend="align(right)">clarations,</mw>
+<pb n="12"/>
+<milestone unit="sig" n="C2v"/>
+<mw type="pageNum" rend="align(center)">12</mw>
+<lb/>clarations, be inclined to suppose that their's was a confe­
+<lb/>deracy against tyranny, disorder, and irreligion; and that
+<lb/>instead of contending against a free, they were anxious
+<lb/>only to liberate an enslaved nation. But, were we to follow
+<lb/>these heroic knights, who have sallied forth against atheism
+<lb/>and oppression, to their own territories, we should not sus­
+<lb/>pect them of too violent an attachment to liberty, in its
+<lb/>theory, or in its enjoyment. We should neither see a
+<lb/>prosperous and thriving people, nor an equal and liberal
+<lb/>system of laws. A ruined and degraded peasantry, a people
+<lb/>without any principle of virtuous pride, or any sense of
+<lb/>their own dignity, form the completest description of their
+<lb/>maxims of government. The king of Prussia, and the other
+<lb/>rulers of Germany may be the leaders of <emph>armies</emph>, but they
+<lb/>can scarcely be said to be the governors of <emph>men:</emph> for the
+<lb/>discipline, which converts their subjects into soldiers, seems
+<lb/>to have depressed the faculties, in which man's pre-eminence
+<lb/>over other animals chiefly consists. All freedom of en­
+<lb/>quiry, which has a tendency to improve the political con­
+<lb/>dition of mankind, is strictly inhibited. A laborious com­
+<lb/>mentator may compose a dissertation on a particle, and ana­
+<lb/>lyze the beauty of a preposition. But in Germany, it
+<lb/>need not be said that neither a Locke nor a Milton were
+<lb/>ever permitted to discuss the principles, and display their
+<lb/>enlightened schemes of civil government.
+</p>
+      <mw type="catch" rend="align(right)">We</mw>
+      <pb n="13"/>
+      <milestone unit="sig" n="C3r"/>
+      <mw type="pageNum" rend="align(center)">13</mw>
+      <p rend="first-indent(1)">We have another ally too, in our most christian-like
+<lb/>cause, the illustrious princess of the North. It is unnessary,
+<lb/>surely, to enquire, with what intentions she has joined the
+<lb/>crusade, if we are not forgetful of the general policy of her
+<lb/>reign. And shall we, by conquering, or contributing to
+<lb/>conquer France, prepare another victim for the shrine of
+<lb/>her ambition? There is indeed but little either of a pro­
+<lb/>vident, or benevolent policy in a measure, which may ulti­
+<lb/>mately render her plans of usurpation and tyranny suc­
+<lb/>cessful and complete. From a horde of barbarians, shut
+<lb/>out of all intercourse with the more civilized states of Eu­
+<lb/>rope, can we either expect much regard to the happiness
+<lb/>and rights of mankind, or even mercy and mildness in the
+<lb/>violation of them?
+</p>
+      <p rend="first-indent(1)">These, my brethren, are the characters of those, with
+<lb/>whom we are now engaged, and to the completion of whose
+<lb/>purposes, be they innocent or guilty, we have considerably
+<lb/>conduced. On this occasion, it behoves us, therefore, to
+<lb/>reflect, that we are partakers of their designs, if rashly and
+<lb/>precipitately, even with the purest motives on our parts, we
+<lb/>have lent them our assistance. The temple, which they are
+<lb/>dedicating to despotism, may be reared on the foundations,
+<lb/>which we devoted to liberty. The guilt, however, of those,
+<lb/>who suffer themselves to be made their blind and imprudent
+<lb/>instruments, is not light or trifling. I cannot pass over this
+<lb/>topic, without urging it as an object of very attentive con­
+<mw type="catch" rend="align(right)">sideration.</mw>
+<pb n="14"/>
+<milestone unit="sig" n="C3v"/>
+<mw type="pageNum" rend="align(center)">14</mw>
+<lb/>sideration. It is, I acknowledge, very difficult to con­
+<lb/>jecture upon the events of political contests. But there is
+<lb/>much more cause of alarm, in the ambition of these united
+<lb/>powers, than in the spirit of proselytism imputed to the
+<lb/>French. Singly, they were sufficiently powerful; but in
+<lb/>their coalition, they present to our minds an image of gi­
+<lb/>gantic and bloated strength, which seems to require a strong
+<lb/>and effectual barrier. We have as much reason to be
+<lb/>alarmed at their mode of fraternization, as that of the na­
+<lb/>tion with whom we are at war: for they conquer, not
+<lb/>to liberate, but to enslave. Their march is not ushered
+<lb/>in with songs in praise of liberty, with the festive dance,
+<lb/>or the shouts of an applauding people. Destruction and
+<lb/>slavery are in their train, and should they be victorious,
+<lb/>Europe would begin a new æra of darkness and barbarity.
+<lb/>These are events which ought to have entered into our cal­
+<lb/>culations, if we acted wisely and providently, and even
+<lb/>now we ought not to be entirely free from alarm, though
+<lb/>perhaps the danger is more remote, or more doubtful.
+</p>
+      <p rend="first-indent(1)">Have we, then, acted with the prudence that became
+<lb/>us, in uniting with characters, whose purity is so ques­
+<lb/>tionable, and whose purposes are so ambiguous? Have we
+<lb/>duly reflected on the cruel and dangerous tendency of a
+<lb/>violent interference with the affairs of an independent na­
+<lb/>tion? For let us not amuse ourselves any longer with de­
+<lb/>bates on the opening of a river, or the violation of pre­
+<mw type="catch" rend="align(right)">tended</mw>
+<pb n="15"/>
+<milestone unit="sig" n="C4r"/>
+<mw type="pageNum" rend="align(center)">15</mw>
+<lb/>tended treaties. Those pretences are now no more, and
+<lb/>the opportunity of profiting by them, is past. To a
+<lb/>people, earnestly desirous of peace, and deeply impressed
+<lb/>with a sense of its benefits, if they had afforded grounds of
+<lb/>negotiation, they would not have afforded occasion for
+<lb/>arms. If, from the very beginning, we were determined
+<lb/>to prevent our neighbours from erecting the system of their
+<lb/>own government, if we were resolved to rebuild the
+<lb/>Bastille, and to reanimate the lifeless trunk of exhausted
+<lb/>despotism, it is the most exquisite hypocrisy, to resort
+<lb/>to these stale and forgotten pretences. Every twig and
+<lb/>every reed, however, we are willing to seize. We are now
+<lb/>sedulously pleading our indignation at their crimes, and dis­
+<lb/>playing our sorrow for their excesses. We have made our­
+<lb/>selves the instruments of divine justice, and we say that we
+<lb/>are fighting, to punish the French for their wickedness. But
+<lb/>whence have we derived this new maxim of hostility? Oh,
+<lb/>most enlightened discovery! How have we improved the
+<lb/>law of nations! Had this beautiful maxim been made
+<lb/>known before, how often would the very pillars of the
+<lb/>earth have been shaken by the trampling of crusaders against
+<lb/>vice and wickedness! Long ago should we have carried
+<lb/>our arms into Spain, to punish her priesthood for the vic­
+<lb/>tims devoted to their inquisition. We should have car­
+<lb/>ried our righteous indignation into the new world, to avenge
+<lb/>on the barbarous Mexican the human sacrifices offered up
+<lb/>at the shrine of his cruel superstition. Our fleets would
+<mw type="catch" rend="align(right)">have</mw>
+<pb n="16"/>
+<milestone unit="sig" n="C4v"/>
+<mw type="pageNum" rend="align(center)">16</mw>
+<lb/>have covered the Euxine, to chastize the worshippers of
+<lb/>Mahomet, for the institutions which consign the charms of
+<lb/>beauty to the custody of a tyrant, and condemn youth and
+<lb/>innocence to the sofas of the seraglio. And our swords would
+<lb/>have leapt from their scabbards, when Poland was torn from
+<lb/>the sweets of her newly tasted liberty, by a wicked confede­
+<lb/>racy of those, with whom we ourselves are allied.
+</p>
+      <p rend="first-indent(1)">We ought, also, to examine into the justice of our
+<lb/>claims to sit as the judge of vice and depravity, over neigh­
+<lb/>bouring nations, lest we be guilty of arrogance and pre­
+<lb/>sumption. If we undertake to deal out our punishments to
+<lb/>cruelty and oppression, we ourselves ought at least to be
+<lb/>free from all those imputations, which we have so pro­
+<lb/>fusely scattered on our enemies. And are there no com­
+<lb/>plaints preferred to heaven against us? Has the African,
+<lb/>who is made the object of commercial calculations and
+<lb/>bargains, ever had any reason to invoke blessings upon our
+<lb/>heads, while he feels the maddening sense of violated right,
+<lb/>and protracted cruelty? Have our eastern armies never in­
+<lb/>vaded the territories of an unoffending people, and broken
+<lb/>down the barriers, which nature herself seems to have erected
+<lb/>as limits to our ambition, and as lessons to our avarice? We
+<lb/>cannot, indeed, hear the execrations, which we may have
+<lb/>provoked; for oceans divide us from them. We cannot
+<lb/>hear the cries of divided families; we cannot hear the com­
+<lb/>plaints of nations, that have been subjected to the dominion
+<mw type="catch" rend="align(right)">of</mw>
+<pb n="17"/>
+<milestone unit="sig" n="D1r"/>
+<mw type="pageNum" rend="align(center)">17</mw>
+<lb/>of our rapacity and oppression. The coast of Guinea, or
+<lb/>the natives of India, do not represent their wrongs by am­
+<lb/>bassadors. But we may read them in the very nature of
+<lb/>man, and in those feelings, which teach him to revolt at
+<lb/>tyranny and usurpation, in every climate and quarter of
+<lb/>the globe.
+</p>
+      <p rend="first-indent(1)">Such reflections as these, my brethren, were they allowed
+<lb/>to have the weight, which they deserve, would perhaps ef­
+<lb/>fectually cure us of that spirit of intolerance, and of that
+<lb/>want of forbearance, which we have lately discovered.
+<lb/>Upon an occasion of this kind, it cannot but be very ser­
+<lb/>viceable, to meditate upon all these topics with seriousness
+<lb/>and concern. We have, unquestionably, the privilege of
+<lb/>exercising the severest judgements on the crimes of other
+<lb/>nations. It is good, it is salutary thus to do. But the
+<lb/>attempt of rooting out vice by violence has ever been un­
+<lb/>succesful, even when exerted upon an individual. There
+<lb/>are certain passions, which take the deepest root, when the
+<lb/>strongest efforts are used to prevent and check their growth.
+<lb/>Besides, we ought not to decide in the tone of an harsh and
+<lb/>rigorous morality upon excesses, which, there is every reason
+<lb/>to conclude, have arisen rather from peculiar circumstances,
+<lb/>than general principles. Let us recollect, that a state of
+<lb/>anarchy (for that is a crime, of which the French have been
+<lb/>copiously accused) is a temporary evil only; and that, as
+<lb/>it seems almost necessary to follow the first acquisition of
+<mw type="sig" rend="align(center)">D</mw>
+<mw type="catch" rend="align(right)">so</mw>
+<pb n="18"/>
+<milestone unit="sig" n="D1v"/>
+<mw type="pageNum" rend="align(center)">18</mw>
+<lb/>so valuable a gift, as liberty, it ought not to fall within the
+<lb/>jurisdiction of too strict and stern a rule of justice. It is
+<lb/>almost natural, that when the ordinary modes of admini­
+<lb/>strating affairs are suspended, or superseded, a licentiousness
+<lb/>of some sort or other should precede the new establishment
+<lb/>of things. When we reflect likewise, that they were so
+<lb/>long oppressed by excessive burdens and tyrannical imposts,
+<lb/>that they were under the galling yoke of subordination to
+<lb/>so many proud and insolent orders of men, we cannot be
+<lb/>surprized that the first effort of popular strength should have
+<lb/>been proportioned to the degree of its restraint and op­
+<lb/>pression. Retaliation is the privilege of misery; and in
+<lb/>the first moments of their liberty, men are too apt to exer­
+<lb/>cise it with little moderation, or prudence; to be flushed
+<lb/>with the restitution of their rights, and to feel the natural
+<lb/>insolence, which victory is so apt to generate in the mind of
+<lb/>man. We cannot be surprized, that in such a state as
+<lb/>this, the tardy operations of law should give way to the
+<lb/>hasty decisions of resentment. In the midst of universal
+<lb/>turbulence and confusion, private wrongs are not forgotten,
+<lb/>and all who have been obnoxious for their tyranny, and
+<lb/>even for their wealth or power, feel the undistinguishing
+<lb/>stroke of popular vengeance.
+</p>
+      <p rend="first-indent(1)">But dreadful as such a state of things is, it cannot be
+<lb/>permanent. It carries within it the principle of its own
+<lb/>remedy; for human intercourse itself cannot be held toge­
+<mw type="catch" rend="align(right)">ther,</mw>
+<pb n="19"/>
+<milestone unit="sig" n="D2r"/>
+<mw type="pageNum" rend="align(center)">19</mw>
+<lb/>ther, but by means of those securities which regular go­
+<lb/>vernment affords it. Let us not, therefore, discover too
+<lb/>delicate a sensibility to the miseries, which are sometimes
+<lb/>found in the first moments of newly-acquired liberty, lest
+<lb/>we be suspected of too warm an attachment to despotism:
+<lb/>for anarchy must necessarily be short-lived; but it is from
+<lb/>the universal silence and tranquillity with which despotism
+<lb/>is surrounded, and from the disguised and deceitful shapes
+<lb/>which it assumes, that it becomes an object of dread and
+<lb/>suspicion.
+</p>
+      <p rend="first-indent(1)">But however, as the lovers of order and good govern­
+<lb/>ment, it may be our duty to deplore these excesses, do they
+<lb/>furnish us with a just pretext for making war upon those,
+<lb/>whom we have accused of them? Has the mode, which
+<lb/>we have adopted, of conducting hostilities, a tendency to
+<lb/>alleviate these evils? Have our exertions restored the plun­
+<lb/>dered to their property, or the persecuted to their rights?
+<lb/>Have they lessened the number of internal factions, and
+<lb/>rendered the dreadful instrument of murder inactive and
+<lb/>unnecessary? We must ask ourselves these important
+<lb/>questions, or we shall be convicted of having been incon­
+<lb/>sistent with ourselves, as well as with the principles of ho­
+<lb/>nour and justice: for we cannot surely exclaim with sin­
+<lb/>cerity, that we are fighting to restore order and authority to
+<lb/>a country, if treasons and rebellions have been the fruit
+<lb/>of our intrigues, and if anarchy and dissention have formed
+<mw type="sig" rend="align(center)">D2</mw>
+<mw type="catch" rend="align(right)">a␣part</mw>
+<pb n="20"/>
+<milestone unit="sig" n="D2v"/>
+<mw type="pageNum" rend="align(center)">20</mw>
+<lb/>a part of our policy. We have looked <quote>like the innocent
+<lb/>flower,</quote> but we have really been <quote>the serpent under it,</quote> if
+<lb/>we have displayed, by this perverse and inconsistent con­
+<lb/>duct, our zeal for the blessings of peaceful and regular go­
+<lb/>vernment. Let us recollect, likewise, that our hypocrisy has
+<lb/>been productive of the most destructive consequences, by
+<lb/>our attempts to excite insurrections against the public autho­
+<lb/>rity of another nation, and if our precipitate and immature
+<lb/>schemes of success have made the scaffold blush with the
+<lb/>blood of traitors, if they have made widows and mothers
+<lb/>pay the forfeit of our rashness, that we have much to an­
+<lb/>swer for, and much to repent of, on this occasion!
+</p>
+      <p rend="first-indent(1)">We have now, my brethren, an opportunity to enquire
+<lb/>into the probability of ultimate success in the enterprize,
+<lb/>which we have undertaken. It is now time to reckon on the
+<lb/>advantages of our commercial treaty with the prince of
+<lb/>Hesse and Sardinia; to examine, whether the price which
+<lb/>we have paid for human blood, with so much mercantile
+<lb/>accuracy and precision, is likely to fulfil the expectations of
+<lb/>profit, with which we entered into <emph>so honourable an agree­
+<lb/>ment.</emph> Perhaps, at this time, we may be able to make the
+<lb/>enquiry, with our judgements more improved, and our pas­
+<lb/>sions more subdued, than when we began the contest:
+<lb/>for we cannot be proud in the midst of disgrace, we cannot,
+<lb/>surrounded by loss and defeat, feel the arrogance of victory.
+<lb/>We ought indeed to have reasoned on the improbability of
+<mw type="catch" rend="align(right)">advantage,</mw>
+<pb n="21"/>
+<milestone unit="sig" n="D3r"/>
+<mw type="pageNum" rend="align(center)">21</mw>
+<lb/>advantage, before we were instructed by calamity. Had we
+<lb/>listened to the voice of history and experience, we should
+<lb/>have reckoned France in the number of those nations, who,
+<lb/>in defence of their liberties, have gathered courage from en­
+<lb/>thusiasm, and strength from despair; for the efforts, which her
+<lb/>enemies have made to dissolve her government, have afforded
+<lb/>her a principle of union; and she has imbibed so much of a
+<lb/>sense of freedom, that the very memories of her citizens
+<lb/>must be obliterated, before her former tyranny can be
+<lb/>restored.
+</p>
+      <p rend="first-indent(1)">A revolution so complete, both with regard to her mode
+<lb/>of government, and to the public sentiments which uphold
+<lb/>it, is unprecedented in the long story of the world. She
+<lb/>has not only abolished monarchy, but she has diffused a
+<lb/>kind of oblivion over the mind, that the image of it can
+<lb/>scarcely be found in the thoughts of her people. Her armies
+<lb/>have exhibited a species of zeal, and even a spirit of mar­
+<lb/>tyrdom in their cause, which seems almost to present us with
+<lb/>a picture of human nature, that is totally new and extraor­
+<lb/>dinary. She has done all this, while powerful and dis­
+<lb/>ciplined forces were ravaging her frontiers, and while the
+<lb/>fiercest discontents and factions were dividing her at home.
+<lb/>She has poured on astonished foes, an army composed of
+<lb/>all ages and sexes; and the atchievements of their promis­
+<lb/>cuous multitudes have far surpassed the most renowned ex­
+<lb/>ploits of skilful and disciplined troops.
+</p>
+      <mw type="catch" rend="align(right)">Does</mw>
+      <pb n="22"/>
+      <milestone unit="sig" n="D3v"/>
+      <mw type="pageNum" rend="align(center)">22</mw>
+      <p rend="first-indent(1)">Does the history of this campaign then animate us with
+<lb/>hopes of future success? for we seem only to have marched
+<lb/>from one defeat to another, and to have gone on in a per­
+	  <lb/>petual transition from projects rashly medi<choice><sic>d</sic><corr>t</corr></choice>ated, to losses
+<lb/>acutely experienced. <quote rend="slant(italic)">Time and chances,
+which happen
+<lb/>to all men,</quote> seem to have been confederated against our pur­
+<lb/>poses; the very elements have joined the strife against us,
+<lb/>and nothing, except it is debased, sordid, and
+	  treacherous,<anchor xml:id="a03" rend="pre(*)" corresp="#n03"/>
+<lb/>declares in our favour. Are we unmoved by these re­
+<lb/>peated warnings? Are our armies to be subdued, before
+<lb/>our obstinacy is overcome?
+</p>
+      <p rend="first-indent(1)">But the struggle, which the French have made, is the
+<lb/>last convulsive exertion<anchor xml:id="a04" rend="pre(†)" corresp="#n04"/>
+ of their government. She is ex­
+<lb/>hausted by her contests, and she will soon be humbled. I
+<lb/>confess, however, notwithstanding the high authority from
+<lb/>which this argument for the continuance of the war pro­
+<lb/>ceeds, that such a sanguine kind of expectation seems to me
+<lb/>not very suitable to the complexion of many recent events,
+<lb/>nor to the actual situation of our enemies at this moment.
+<mw type="catch" rend="align(right)">If</mw>
+<pb n="23"/>
+<milestone unit="sig" n="D4r"/>
+<mw type="pageNum" rend="align(center)">23</mw>
+<lb/>If we were disposed to reflect upon the whole history of
+<lb/>the French revolution, with the cool and unprejudiced at­
+<lb/>tention, which such a theme demands, we should not, pro­
+<lb/>bably, be inclined to adopt such ill-grounded and unsatis­
+<lb/>factory speculations. We should be at a loss to discover
+<lb/>that appearance of distress and weakness, on which these
+<lb/>calculations are founded.
+</p>
+      <p rend="first-indent(1)">The frauds of bankrupt power, the wild struggles of ruined
+<lb/>despotism, and pitiful intrigues of impoverished courts, have
+<lb/>been pretty general on the continent. But in France, we
+<lb/>may behold a picture, that will produce impressions totally
+<lb/>different. In the midst of what is called anarchy and con­
+<lb/>fusion, we may observe a system, which is built on the
+<lb/>harmonious and applauding assent of many millions of men.
+<lb/>We must surely, when we observe how devoted are the lives
+<lb/>and fortunes of every individual to the republic, and when
+<lb/>we observe their enthusiastic, and even superstitious attach­
+<lb/>ment to their country, we must say to ourselves,—<said>These
+<lb/>men are invincible; we are contending against Nature her­
+<lb/>self.</said> We cannot likewise build any very valuable hopes
+<lb/>of success on the poverty, into which we have reduced them,
+<lb/>or on the narrowness and insufficiency of their resources.
+<lb/>Have we been unmindful of the wealth with which their
+<lb/>exchequer overflows, the treasures of unsuccessful treason, and
+<lb/>the spoils of ecclesiastic avarice. But had they been ut­
+<mw type="catch" rend="align(right)">terly</mw>
+<pb n="24"/>
+<milestone unit="sig" n="D4v"/>
+<mw type="pageNum" rend="align(center)">24</mw>
+	  <lb/>terly destitute<anchor xml:id="a05" rend="pre(*)" corresp="#n05"/>
+ of gold and silver, if their churches had
+<lb/>yielded up none of their pious offerings, and if their saints,
+<lb/>more useful than in days of yore, had not replenished their
+<lb/>coffers, still we should have found an hardy and invincible
+<lb/>enemy, in a people who were determined to defend their li­
+<lb/>berties, or resolved to sell them dearly. Still they might
+<lb/>have been rich enough to procure arms, and they might
+<lb/>have had sufficient courage to teach them how they were to
+<lb/>be used.
+</p>
+      <p rend="first-indent(1)">Such, my brethren, always have been, and such always
+<lb/>will be, the difficulties that oppose the execution of a project
+<lb/>so visionary and malevolent, as the extirpation of opinions.
+<lb/>We cannot expect to overturn a government, which is ce­
+<lb/>mented by the blood of so many patriots, unless we can
+<lb/>wash out of the minds of the French the knowledge of their
+<lb/>rights, and the love of their liberty: for were our arms,
+<lb/>and those of our allies, able to penetrate to the capital, and
+<lb/>to surround the walls of Paris; and were even the mani­
+<lb/>festo of the duke of Brunswick executed according to the
+<lb/>minutest injunctions of his merciless disposition, opinion,
+<lb/>our grand enemy, would not be destroyed. While the
+<lb/>sword was satiating its vengeance in the north, the soul of
+<mw type="catch" rend="align(right)">liberty</mw>
+<pb n="25"/>
+<milestone unit="sig" n="E1r"/>
+<mw type="pageNum" rend="align(center)">25</mw>
+<lb/>liberty would revive in the south; and it would be neces­
+<lb/>sary to destroy every citizen, and to cover the whole coun­
+<lb/>try with a camp of German barbarians, before our scheme
+<lb/>could be effectually accomplished.
+</p>
+      <p rend="first-indent(1)">Let us, I beseech you, remember, that as this is a
+<lb/>day of repentance, it behoves us to desist from an at­
+<lb/>tempt which is likely to be fruitful of nothing but slaughter:
+<lb/>for this is a day of repentance; and we should pervert the
+<lb/>very principles of such an institution, were we to suffer it to
+<lb/>glide over our heads, without having suggested one salutary
+<lb/>reflection, or one purpose of amendment. We may, there­
+<lb/>fore, spend our time not altogether unprofitably, by re­
+<lb/>volving the thoughts, which I have hinted to you, seriously
+<lb/>and earnestly, and dispassionately; much more profitably,
+<lb/>indeed, than by running hastily over our liturgy, or lis­
+<lb/>tening to a homily<anchor xml:id="a06" rend="pre(*)" corresp="#n06"/>
+ in favour of war and of passive obe­
+<lb/>dience. If we are resolved to go on in this destructive
+<lb/>course of hostility, we may not, perhaps, have any oppor­
+<lb/>tunity, at another period, of arriving at a termination either
+<lb/>honourable, or safe to ourselves; and the voice that <emph>warns</emph>
+<lb/>us now, may assume the tone that <emph>threatens</emph> us hereafter.
+</p>
+      <mw type="sig" rend="align(center)">E</mw>
+      <mw type="catch" rend="align(right)">Having,</mw>
+      <pb n="26"/>
+      <milestone unit="sig" n="E1v"/>
+      <mw type="pageNum" rend="align(center)">26</mw>
+      <p rend="first-indent(1)">Having, by our own perverse struggles against our ene­
+<lb/>mies, procured <emph>their</emph> union, we may probably discover,
+that
+<lb/><emph>we ourselves</emph> are divided, and that the annual
+accumulation
+<lb/>of grievous burdens has no tendency to generate affection,
+<lb/>even to the English constitution. Mankind may then be­
+<lb/>gin to think that antiquated charters, and immemorial usages,
+<lb/>are not alone sufficient for the varied purposes and benefits
+<lb/>of civil government. They may cease to study the blessings
+<lb/>of our constitution in the lectures of law professors, or in
+<lb/>the untried observations of foreigners. Every book of do­
+<lb/>mestic expenditures may refute even Blackstone and De
+<lb/>Lolme. They may then be invited towards another system
+<lb/>of things, instead of contemplating, with increased venera­
+<lb/>tion, a frame of laws which have stood the test of ages;
+<lb/>and may begin to prefer the efforts of present times to the
+<lb/>wisest and most venerable monuments of antient jurispru­
+<lb/>dence. As they feel, they will think; and they will re­
+<lb/>cognize no greater excellence in government, than that it
+<lb/>protects its subjects, and extends to laborious poverty its
+<lb/>well-earned and undiminished reward.
+</p>
+      <p rend="first-indent(1)">It imports us to reflect, whether an obstinate adherence
+<lb/>to our measures has a tendency to hasten us to such a situa­
+<lb/>tion; for there is a degree, beyond which even the patience
+<lb/>of Englishmen will not be preserved; and they too may
+<lb/>be infected with the spirit of innovation, which it is now
+<lb/>so fashionable to deprecate. A certain portion of the ne­
+<mw type="catch" rend="align(right)">cessary</mw>
+<pb n="27"/>
+<milestone unit="sig" n="E2r"/>
+<mw type="pageNum" rend="align(center)">27</mw>
+<lb/>cessary burdens of government, their loyalty, perhaps, may
+<lb/>bear without a murmur: but if we go on thus, year after
+<lb/>year, the peasant will not be able to procure food for the
+<lb/>day, that passes over him, nor to light a few bundles of wood
+<lb/>to dispel the damps and gloom of his hovel. In such
+<lb/>an abject and degraded state as this, to which, if our pre­
+<lb/>sent measures are prolonged, we are hastily tending, we shall
+<lb/>be inclined to contemplate with envy the confusion and
+<lb/>anarchy of France.
+</p>
+      <p rend="first-indent(1)">My brethren, these reflections appeal to our minds, with
+<lb/>an importunity that cannot be resisted, or evaded. They
+<lb/>admonish us not to sully history with the stain of fresh
+	  <lb/>crimes, and not to call, like Renault,<anchor xml:id="a07" rend="pre(*)" corresp="#n07"/>
+ <quote>for more blood.</quote>
+<lb/>They admonish us to return to our old, sober, and quiescent
+<lb/>habitudes of commercial industry, and to restore ourselves
+<lb/>from the violent agitation, which has <quote>frightened our isle
+<lb/>from its propriety,</quote> to those blessings, which our constitu­
+<lb/>tion cannot extend to us, in times of such turbulence and
+<lb/>distraction.
+</p>
+      <p rend="first-indent(1)">We have fought in former times the battle of our li­
+<lb/>berties; and it is in such fields only, that there can be
+<lb/>glory to our arms, or consolation in our victories. Let us
+<lb/>cease to fight in a cause so contradictory to our old and
+<mw type="sig" rend="align(center)">E2</mw>
+<mw type="catch" rend="align(right)">instinctive</mw>
+<pb n="28"/>
+<milestone unit="sig" n="E2v"/>
+<mw type="pageNum" rend="align(center)">28</mw>
+<lb/>instinctive principles; and let us not strive to intercept from
+<lb/>others, those invaluable benefits, of which we ourselves were
+<lb/>formerly enamoured. Liberty, like the rain of heaven,
+<lb/>that refreshes and fertilizes the earth, is the prerogative of
+<lb/>every people.
+</p>
+      <p rend="first-indent(1)">But, besides the guilt and folly of fighting in such a cause,
+<lb/>we have, upon this occasion, other national offences, for
+<lb/>which it is our duty to implore divine forgiveness. Does not
+<lb/>our own island resound with the complaints of those, who
+<lb/>have been the objects of unjust and oppressive persecutions?
+<lb/>Have not the securities of social life been undermined, by con­
+<lb/>verting our servants into spies and informers, and debauching
+<lb/>their fidelity and allegiance? Have we resigned so much of
+<lb/>our ancient attachment to freedom, that its name is become
+<lb/>no longer music to our ears, and that we should pour out
+<lb/>bitterness and malice, against those who have not yet learned
+<lb/>to despise it? Do we punish, with dungeons and exile, those
+<lb/>men, <quote rend="slant(italic)">who worship in the way, which we
+call sedition, the
+<lb/>constitution of our fathers?</quote> Have our towns, and even our
+<lb/>villages, been subjected to the domination of petty inqui­
+<lb/>sitions; and have the forgotten terrors of criminal justice been
+<lb/>revived, to overwhelm those of our brethren, who have been
+<lb/>more imboldened, or more enlightened by what they have
+<lb/>conceived to be the truth, than ourselves? We have indeed
+<lb/>many sins to account for on this day, if we have attempted to
+<lb/>crush the energies of public sentiment, and to silence the ef­
+<mw type="catch" rend="align(right)">forts</mw>
+<pb n="29"/>
+<milestone unit="sig" n="E3r"/>
+<mw type="pageNum" rend="align(center)">29</mw>
+<lb/>forts of honest zeal, by assigning them the narrow limits of
+<lb/>our own judgements and prepossessions. We have been
+<lb/>guilty of the most atrocious injustice, if we have taken away
+<lb/>from the oppressed the freedom of complaint, and the right
+<lb/>of remonstrance. We have sinned against reason itself,
+<lb/>the noblest of our moral perfections, if we have been in­
+<lb/>tolerant towards those, who have conscientiously and boldly
+<lb/>followed its guidance.
+</p>
+      <p rend="first-indent(1)">It is devoutly to be wished, that there were no reasons for
+<lb/>making predictions, not of a very flattering kind, to those
+<lb/>who have not acquired the new-fashioned relish for ser­
+<lb/>vitude. Political prophecy is not indeed infallible, as it
+<lb/>cannot be founded on systems of calculation, as certain as
+<lb/>the prediction of a comet, or any other event of the same
+<lb/>sort. But when the times are pregnant with a great and im­
+<lb/>portant mischief, from the very nature of the struggles we
+<lb/>may be allowed to predict concerning the birth; and with a
+<lb/>species of superstition to press into the service of our fore­
+<lb/>bodings every omen and every symptom. Recent appear­
+<lb/>ances in the political atmosphere have taught those minds,
+<lb/>who see the beginnings of despotism afar off, to be not a
+<lb/>little apprehensive and jealous; and those who are the most
+<lb/>unconcerned observers of the scenes that are shifting around
+<lb/>them, must have seen, that the sky is darkened by an unpro­
+<lb/>pitious and ill-omened flight, from which the most melan­
+<lb/>choly divinations may be derived. It is certain that there
+<mw type="catch" rend="align(right)">has</mw>
+<pb n="30"/>
+<milestone unit="sig" n="E3v"/>
+<mw type="pageNum" rend="align(center)">30</mw>
+<lb/>has been a mighty movement in the minds of Englishmen
+<lb/>from the love of freedom, to a total abhorrence of it, or, at
+<lb/>least, to submission and acquiescence under its frequent vio­
+<lb/>lations. The time was, when our rough and unsubmitting
+<lb/>hatred of oppression, in whatever shape it appeared, would
+<lb/>have been stirred up to mutiny by more moderate encroach­
+<lb/>ments, than our liberties have suffered within the space of
+<lb/>one or two years.
+</p>
+      <p rend="first-indent(1)">The faults, of which we are so eager to accuse our
+<lb/>enemies, and which proceed only from the luxuriance of
+<lb/>untried liberty, are more shocking in our sight, than the
+<lb/>cringing servilities of those titled or pensioned slaves, who
+<lb/>seem to have been created for nothing else, than to intercept
+<lb/>the blessings of Providence from more honest and deserving
+<lb/>objects of its protection. Since our alliance with conti­
+<lb/>nental despotism, we seem to have divorced ourselves from
+<lb/>Liberty herself, and to have forgotten her former endear­
+<lb/>ments. By our violent change of opinions and habits, we
+<lb/>have abandoned the principles which we inherited from our
+<lb/>ancestors, and we have convicted ourselves of the grossest
+<lb/>apostacy from the cause, in which they fought and pe­
+<lb/>rished.
+</p>
+      <p rend="first-indent(1)">It is not, indeed, compatible with our duty, as virtuous
+<lb/>and useful members of the commonwealth, to demand the
+<lb/>redress of grievances passionately or violently. It is, like­
+<mw type="catch" rend="align(right)">wise,</mw>
+<pb n="31"/>
+<milestone unit="sig" n="E4r"/>
+<mw type="pageNum" rend="align(center)">31</mw>
+<lb/>wise, unworthy of our dignity, as the subjects of a free go­
+<lb/>vernment, and as a part of an enlightened community, to
+<lb/>slumber over the violations of our liberties, or to divest
+<lb/>ourselves of that jealousy and alarm, with which it behoves
+<lb/>us to inspect the regulation of our affairs. Government,
+<lb/>unless it is to be dissolved, and renewed by every gene­
+<lb/>ration, is not an u<del hand="#unknown.zzx" type="crossout"><add rend="place(supra)" hand="#unknown.zzx">su</add>n</del>fruct only, but it is a trust, which is
+<lb/>to descend to our posterity, without loss or diminution.
+<lb/>We must, therefore, suffer no measure, whose principle or
+<lb/>tendency may be of a questionable nature, to pass by with­
+<lb/>out complaint or remonstrance. We must examine the
+<lb/>spirit in which it was dictated, and the object to which
+<lb/>it was directed; and we must keenly and assiduously strip
+<lb/>of their sophistries, every maxim and every practice that
+<lb/>wears the complexion of arbitrary domination.
+</p>
+      <p rend="first-indent(1)">I am now addressing you, my brethren, upon a subject,
+<lb/>which, on an occasion of this kind, has the strongest claim
+<lb/>to attention. We have already considered the war, in its
+<lb/>present and its future consequences. But, perhaps, were
+<lb/>we to examine the general tenor of our recent conduct, as
+<lb/>a nation, even war, dreadful as it is abstractedly, and cala­
+<lb/>mitous as it is under our present circumstances, is not the
+<lb/>most dangerous evil, of which these times have been so
+<lb/>productive. The madness, that torments and vexes itself, is
+<lb/>not incurable: and we cannot, surely, long persist in a
+<lb/>project so hazardous and ineffectual. We may once more
+<mw type="catch" rend="align(right)">trade</mw>
+<pb n="32"/>
+<milestone unit="sig" n="E4v"/>
+<mw type="pageNum" rend="align(center)">32</mw>
+<lb/>trade to the East and West, and commerce may recover
+<lb/>her former tone and energy; but the stab, which our li­
+<lb/>berties have suffered, is not susceptible of so speedy and
+<lb/>effectual a remedy. It is the very nature of all arbitrary
+<lb/>power to be felt lightly and gently, in its first approaches,
+<lb/>till by degrees it becomes, instead of an object of delight,
+<lb/>an image of terror. The serpent is gathering together its
+<lb/>venom, while we are amusing ourselves with its docility
+<lb/>and tameness.
+</p>
+      <p rend="first-indent(1)">I desire you to ask yourselves, whether we are improving
+<lb/>or preserving the blessings, of which we are so proud, by
+<lb/>letting loose a torrent of persecution upon those who have
+<lb/>opposed our opinions with zeal, and probably with effect.
+<lb/>Are we adding fresh beauty to our constitution, by such
+<lb/>unseemly outrages upon those, who have been the active
+<lb/>partizans of what they have thought, perhaps erroneously,
+<lb/>the cause of truth and justice? When we are wiping off
+<lb/>the dust from the statues of dark and intolerant ages, to
+<lb/>gratify our malice against them, do we exhibit an example
+<lb/>of an improved and enlightened state of society? Will
+<lb/>the victims, who have been offered up by our bigotry, be
+<lb/>the memorials, either of the equity, or the mildness of
+<lb/>British jurisprudence? Will our exiles carry in their
+<lb/>breasts, a grateful remembrance of the lenity or the benevo­
+<lb/>lence of their judges? Will they cherish, in noxious and
+<lb/>unwholesome climes, a juster or more improved sense of the
+<mw type="catch" rend="align(right)">benefits</mw>
+<pb n="33"/>
+<milestone unit="sig" n="F1r"/>
+<mw type="pageNum" rend="align(center)">33</mw>
+<lb/>benefits of the government by which they were persecuted?
+<lb/>Or, when the rigours of their punishment are felt no more,
+<lb/>will their sufferings be forgotten by succeeding times? Will
+<lb/>they not rather be recorded, as examples of cruelty, and op­
+<lb/>pression, and contemplated with horror, or pointed out as
+<lb/>lessons to mankind? But in whatever period they may
+<lb/>be observed, they must be considered as the stains of an
+<lb/>age, which boasts so high an advancement in knowledge
+<lb/>and refinement: for in reviving the punishments and the
+<lb/>laws of ancient times, we have practised <quote>the deeds of
+<lb/>darkness,</quote> in the midst of light; and we have acted with
+<lb/>aggravated injustice, in resorting so far back for precedents
+<lb/>of iniquity and persecution. We are punishing the subjects
+<lb/>of a free government, with the severities that were derived
+<lb/>from times of despotism and darkness. Since those days,
+<lb/>the powers of the human mind have not been torpid, or
+<lb/>inactive. An order of things totally new has arisen; and
+<lb/>with it a fearless and liberal spirit of enquiry has been
+<lb/>awakened. We have, therefore, punished these our<anchor xml:id="a08" rend="pre(*)" corresp="#n08"/>
+ fellow-
+<lb/>citizens, for that love of truth, and that zeal for her interests,
+<mw type="sig" rend="align(center)">F</mw>
+<mw type="catch" rend="align(right)">which</mw>
+<pb n="34"/>
+<milestone unit="sig" n="F1v"/>
+<mw type="pageNum" rend="align(center)">34</mw>
+<lb/>which the prevailing disposition of the times, and the ad­
+<lb/>vancement of the intellectual state of men, communicated
+<lb/>to them; and we have been guilty, in doing this, of a very
+<lb/>great and dangerous species of injustice!
+</p>
+      <p rend="first-indent(1)">Is, then, the cruse of truth to pour forth no more oil?
+<lb/>Is the privilege of remonstrance and complaint to be taken
+<lb/>away by our newly constituted star-chambers and courts of
+<lb/>inquisition? Have we ascertained, with such accuracy,
+<lb/>the boundaries within which our silent researches, or our
+<lb/>active efforts for improvement, ought to be confined? Have
+<lb/>we received a revelation from heaven, which has assured
+<lb/>us that we have received the true political faith, and com­
+<lb/>manded us to punish, with unrelenting severity, the sowers
+<lb/>of heresies, and the promoters of schisms? Is the result
+<lb/>of all enquiries upon political subjects to be a servile admi­
+<lb/>ration of the government, under which we were born, and
+<lb/>an ignorance of, or an indifference to, its errors and defects?
+<lb/>And do you think that all this conduces to the praise of your
+<lb/>constitution?
+</p>
+      <p rend="first-indent(1)">Surely, my brethren, if nothing is to be said or written,
+<lb/>but in favour of the present system; if our standard of ex­
+<lb/>cellence be derived from what it is, or has been, and not
+<lb/>from what it may be, it must soon be even disgusting to
+<lb/>those, who affect so much to admire it at present. Is its
+<mw type="catch" rend="align(right)">secu-</mw>
+<pb n="35"/>
+<milestone unit="sig" n="F2r"/>
+<mw type="pageNum" rend="align(center)">35</mw>
+<lb/>security, then, not to be the result of gradual and successive
+<lb/>improvements, but the effect of Scotch trials, and English
+<lb/>associations, with their black and gloomy train of pu­
+<lb/>nishments and terrors? Is a bigotted attachment to be the
+<lb/>test of patriotism and fear, and constraint to be the source
+<lb/>of our allegiance? These will prove but weak pillars, if
+<lb/>government is to be built upon them.<anchor xml:id="a09" rend="pre(*)" corresp="#n09"/>
+ Never did oppression
+<lb/>beget attachment; never did the exercise of unjust power
+<lb/>strengthen the bonds of obedience. If it is to be upheld
+<lb/>by such supports, its weakness is at once betrayed. Even
+<lb/>those who were once its most ardent admirers, will not
+<lb/>contemplate it with so much satisfaction, as if it had stood
+<lb/>upon its own foundations; as if it had undergone the ordeal of
+<lb/>keen and unrestricted research; as if it had been unshaken by
+<lb/>the complaints of those, who saw its abuses and corruptions;
+<lb/>as if it had refuted the visionary speculations of the philosopher,
+<lb/>and had rendered, by its purity, the touch of reform unneces­
+<lb/>sary. Can we say, that it deserves an equal degree of ve­
+<lb/>neration, as if it had not been supported by the rod of
+<lb/>power, and the menaces of authority? For her virtue, who
+<lb/>is confined by the locks and bars of a convent, is of a very
+<lb/>questionable nature; it is only the beauty, which with­
+<lb/>stands the assaults of flattery and temptation, that exhibits
+<lb/>a lesson of genuine and sincere chastity.
+</p>
+      <mw type="sig" rend="align(center)">F2</mw>
+      <mw type="catch" rend="align(right)">We</mw>
+      <pb n="36"/>
+      <milestone unit="sig" n="F2v"/>
+      <mw type="pageNum" rend="align(center)">36</mw>
+      <p rend="first-indent(1)">We have profited very little of the lights of reason and
+<lb/>philosophy, which have hitherto beamed upon us, if we
+<lb/>wish to check their future progress, or if we regret that
+<lb/>their advancement has been too rapid. One of the most dis­
+<lb/>tinguishing characteristics of man's nature, is its gradual
+<lb/>improvement, and its unlimited march towards moral and in­
+<lb/>tellectual perfection. A free and unrestricted intercourse
+<lb/>of opinions, and the silent dissemination of truth, are the
+<lb/>safest modes of effecting any melioration in the condition of
+<lb/>mankind; and the attempt is dangerous to impede the ope­
+<lb/>ration of causes which are preparing us for the final desti­
+<lb/>nation of our existence, with so much stillness and tran­
+<lb/>quility. If we did not perversely interfere, by endeavouring
+<lb/>to interpose the barrier of unjust authority to the acquisition
+<lb/>of truth, all revolutions that have taken place might have
+<lb/>been accomplished without violence or anarchy.
+</p>
+      <p rend="first-indent(1)">The advantages, which the present age enjoys, have been
+<lb/>derived from the liberal and fearless spirit of discussion,
+<lb/>which has distinguished it from all others. It has put to
+<lb/>flight a train of political and religious superstitions; it has
+<lb/>taught mankind to ascertain the nature of their social rights,
+<lb/>and, by purging religion of its mysteries and absurdities, it
+<lb/>has divested it of its terrors, and displayed only its conso­
+<lb/>lations. It is not possible for knowledge to be long sta­
+<lb/>tionary, or the human faculties to be in a perpetual state of
+<mw type="catch" rend="align(right)">depression</mw>
+<pb n="37"/>
+<milestone unit="sig" n="F3r"/>
+<mw type="pageNum" rend="align(center)">37</mw>
+<lb/>depression and inactivity. The energies of reason may be
+<lb/>frightened into silence for a while, and the intellectual
+<lb/>powers may be constrained into dulness: but, in pro­
+<lb/>portion to the length of their depression, and the seve­
+<lb/>rity of their restraint, they will be communicated in a
+<lb/>gentle diffusion, or poured out in a violent eruption. It is
+<lb/>impossible, however, to prevent its propagation and growth.
+<lb/>The effort to stop the motion of our globe itself, is equally
+<lb/>as absurd and impotent, as an attempt to impede the endless
+<lb/>revolutions of that little world, the mind of man.
+</p>
+      <p rend="first-indent(1)">Let us, therefore, endeavour to hasten the intellectual
+<lb/>progress of man, as far as we are able, by leaving to every
+<lb/>one the undisturbed right of private judgement. Let us
+<lb/>watch, with an anxious and trembling jealousy, the conduct
+<lb/>of those, who administer our affairs, and to whom we
+<lb/>have delegated the important functions of government. That
+<lb/>we may be able, likewise, to decide with propriety, and
+<lb/>to think with accuracy upon all political questions, let us
+<lb/>confer together upon these subjects, and communicate to
+<lb/>each other the fruits of our several enquiries. Let us not
+<lb/>imagine that political knowledge is beyond the sphere of our
+<lb/>duties, or the reach of our understandings; for happily those
+<lb/>maxims, which have the most important reference to civil
+<lb/>action, are the least recondite and abstruse; and the most
+<lb/>useful principles are those which are the most fitted for
+<mw type="catch" rend="align(right)">common</mw>
+<pb n="38"/>
+<milestone unit="sig" n="F3v"/>
+<mw type="pageNum" rend="align(center)">38</mw>
+<lb/>common reception and communication. They may indeed
+<lb/>have been perverted, or obscured by those pernicious so­
+<lb/>phistries, which have been devised to bewilder and perplex
+<lb/>the common sense of mankind; and they may have been
+<lb/>removed from vulgar apprehension and enquiry, by a veil
+<lb/>of mysterious and artful policy: but a very little judge­
+<lb/>ment and diligence will be sufficient to clear away that mass
+<lb/>of misconstructions and perversions, by which they may have
+<lb/>been overwhelmed.
+</p>
+      <p rend="first-indent(1)">For instance, when we are told (and it does not need an
+<lb/>elaborate train of reasoning to tell us) that the origin of all
+<lb/>government is the will of the people, and that its object is
+<lb/>the general good, we shall perceive the necessity of a pure
+<lb/>and uncorrupt legislature. We shall then look with indig­
+<lb/>nation at the shameless prostitution of the public revenue,
+<lb/>as the reward of apostacy, and the bribe of dishonest ser­
+<lb/>vices. We shall then enter into the business of reform,
+<lb/>by demanding the separation of corruption from the com­
+<lb/>monwealth, and by demanding from those, who have been
+<lb/>seduced into so unnatural an alliance, a restitution of the
+<lb/>gifts and the emoluments, which are now the pledges of
+<lb/>their connexion, and the monuments of their shame.
+</p>
+      <p rend="first-indent(1)">If we do this with zeal and earnestness, we shall exhibit
+<lb/>on our days of fastings, and other occasions, a truly penitent
+<mw type="catch" rend="align(right)">people.</mw>
+<pb n="39"/>
+<milestone unit="sig" n="F4r"/>
+<mw type="pageNum" rend="align(center)">39</mw>
+<lb/>people. Until we do this, we may be religious, but we
+<lb/>cannot be virtuous; and were we to roll ourselves in the
+<lb/>dust, and clothe ourselves with sackcloth and ashes, without
+<lb/>serious and vigorous resolution of amendment, we should
+<lb/>only deserve the contempt of man for our superstition, and
+<lb/>the vengeance of heaven for our hypocrisy.
+</p>
+      <trailer rend="align(center)case(allcaps)">
+Finis
+</trailer>
+    </body>
+  </text>
+</TEI>

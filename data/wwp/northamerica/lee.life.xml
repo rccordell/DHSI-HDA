@@ -1,0 +1,1129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/wwp-store.rng"    type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../schema/wwp-store.isosch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- $Id: lee.life.xml 31962 2017-06-23 22:20:54Z syd $ -->
+<TEI xmlns="http://www.wwp.northeastern.edu/ns/textbase" xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en">
+  <teiHeader xml:id="TR00229.hdr">
+    <fileDesc>
+      <titleStmt>
+        <title type="main">The Life and Religious Experience of Jarena Lee, 1836</title>
+        <author>
+          <persName ref="p:jlee.mlm" type="person-female">Lee, Jarena</persName>
+        </author>
+        <sponsor>Brown University</sponsor>
+        <sponsor>Northeastern University</sponsor>
+      </titleStmt>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPedition)"/>    
+      <publicationStmt>
+        <publisher>Northeastern University Women Writers Project</publisher>
+        <address>
+          <addrLine>SL 213</addrLine>
+          <addrLine>Northeastern University</addrLine>
+          <addrLine>360 Huntington Avenue</addrLine>
+          <addrLine>Boston, MA  02115-5005</addrLine>
+          <addrLine>USA</addrLine>
+          <addrLine>url:mailto:wwp@neu.edu</addrLine>
+          <addrLine>url:http://www.wwp.northeastern.edu/</addrLine>
+        </address>
+        <idno type="WWP">TR00229</idno>
+        <idno type="URL">http://www.wwp.northeastern.edu/texts/lee.life.html</idno>
+        <xi:include href="../common-boilerplate.xml" xpointer="element(WWPavailability)"/>
+        <date when="2007-07-31"/>
+      </publicationStmt>
+      <sourceDesc n="OT00229">
+        <biblStruct>
+          <monogr>
+            <author>
+              <persName ref="p:jlee.mlm" type="titlePage">Jarena Lee</persName>
+              <persName ref="p:jlee.mlm" type="regularized">Lee, Jarena</persName>
+            </author>
+            <title>The life and religious experience of Jarena Lee, a coloured lady, giving an account of her call to preach the
+ gospel</title>
+            <edition>First edition</edition>
+            <idno type="dlc">E185.97 L45 Rare Bk Coll.</idno>
+            <imprint>
+              <pubPlace>Philadelphia</pubPlace>
+              <publisher>
+              	<persName ref="p:jlee.mlm" type="titlePage">Jarena Lee</persName>
+              	<persName ref="p:jlee.mlm" type="regularized">Lee, Jarena</persName>
+              </publisher>
+              <date when="1836"/>
+            </imprint>
+            <extent>
+              <measure unit="page" quantity="24"/>
+            </extent>
+          </monogr>
+        </biblStruct>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPprojectDescription)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPsamplingDeclaration)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPeditorialDeclaration)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPcharacterDeclaration)"/>
+      <tagsDecl>
+        <rendition xml:id="r.para" selector="p">first-indent(1)</rendition>
+        <rendition xml:id="r.it" selector="">slant(italic)</rendition>
+        <rendition xml:id="r.break" selector="">break(yes)</rendition>
+        <rendition xml:id="r.nobreak" selector="">break(no)</rendition>
+        <rendition xml:id="r.head" selector="head">break(yes)align(center)case(allcaps)</rendition>
+      </tagsDecl>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPclassificationDeclaration)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPlistPrefixDefinitions)"/>
+    </encodingDesc>
+    <profileDesc>
+      <textClass>
+        <catRef type="main" target="#G.non-fiction.other"/>
+      </textClass>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPcalendarDescription)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPlangUsage)"/>
+    </profileDesc>
+    <revisionDesc>
+      <change n="RCS:1.20" when="2007-07-09" who="p:pcaton.xzc">Added correct EDITION content and release DATE value; deleted unnecessary pagination EXTENT content. Validated.</change>
+      <change n="RCS:1.18" when="2007-02-12" who="p:jmelson.nep">Entered 2nd corrections; corrected signature values and pagination; validated; supravalidated.</change>
+      <change n="RCS:1.16" when="2007-02-06" who="p:jflanders.lfw">Fixed minor typos, removed empty back element, changed non-line-ending hyphens to hard hyphens.</change>
+      <change n="RCS:1.13" when="2004-09-15" who="p:jmelson.nep">Entered additional corrections from first checking round</change>
+      <change n="RCS:1.12" when="2004-03-17" who="p:jmelson.nep">entered correx from 1st proofing; validated; supravalidated</change>
+      <change n="RCS:1.11" when="2003-09-22" who="p:mpelaez.yha">supravalidation</change>
+      <change n="RCS:1.7" when="2001-11-13" who="p:clocke.kav">coded to page 21</change>
+      <change n="RCS:1.7" when="2001-11-13" who="p:clocke.kav">encoding;</change>
+      <change n="RCS:1.2" when="2001-10-26" who="p:clocke.kav">encoded up to page 4</change>
+      <change n="RCS:1.1" when="2001-10-26" who="p:clocke.kav">encoded first page</change>
+      <change when="2001-10-26" who="p:clocke.kav">Began capture using emacs with psgml on Unix with
+		  version 1.2.9 of wwp-store DTD.</change>
+    </revisionDesc>
+  </teiHeader>
+  <text xml:id="TR00229">
+    <front>
+      <pb n="1"/>
+      <milestone n="1(1)r" unit="sig"/>
+      <titleBlock rend="align(center)">
+        <titlePart rend="case(allcaps)">Life
+<lb/>and
+<lb/>Religious Experience
+<lb/>of
+<lb/><persName>Jarena Lee</persName>,
+<lb/>A Coloured Lady,</titlePart>
+        <titlePart type="desc">Giving an account of her call to preach the Gospel.</titlePart>
+        <docImprint rend="pre(#rule)"><pubPlace rend="case(allcaps)">Philadelphia</pubPlace>:
+	  <lb/>Printed and Published for the Author.<docDate when="1836" rend="break(yes)">1836</docDate></docImprint>
+        <pb n="2"/>
+        <milestone n="1(1)v" unit="sig"/>
+        <docAuthorization rend="align(center)">Entered according to the Act of Congress, in the year <date when="1835">1835</date>,
+	  <lb/>By <persName rend="case(allcaps)">Jarena Lee</persName>,
+	  <lb/>In the Office of the Clerk of the Eastern District of <placeName>Pennsylvania</placeName>.</docAuthorization>
+      </titleBlock>
+    </front>
+    <pb n="3"/>
+    <milestone unit="sig" n="1(2)r"/>
+    <body>
+      <head rend="align(center)case(allcaps)post(#ornament)">Life
+	<lb/>of
+	<lb/><persName>Jarena Lee</persName>.</head>
+      <epigraph>
+        <quote rend="pre(“)post(”)">
+          <p>And it shall come to pass…that I will pour out my Spirit upon
+	    <lb rend="indent(1)"/>all flesh; and your sons, and your <emph>daughters</emph> shall prophecy.</p>
+        </quote>
+        <bibl rend="slant(italic)">
+          <regMe>Joel <hi rend="slant(upright)">ii. 28.</hi></regMe>
+        </bibl>
+      </epigraph>
+      <div type="section">
+        <p>I was born <date when="1783-02-11">February 11th, 1783,</date> at <placeName>Cape May</placeName>, state 
+<lb/>of <placeName>New Jersey</placeName>. At the age of seven years I was parted
+<lb/>from my parents, and went to live as a servant maid, with 
+<lb/>a <persName>Mr. Sharp</persName>, at the distance of about sixty miles from 
+<lb/>the place of my birth.</p>
+        <p>My parents being wholly ignorant of the knowledge of 
+<lb/>God, had not therefore instructed me in any degree in this 
+<lb/>great matter. Not long after the commencement of my
+<lb/>attendance on this lady, she had bid me do something re­
+<lb/>specting my work, which in a little while after, she
+	  <lb/>asked me if I had done, when I replied, <said>Yes</said>—but this
+<lb/> was not true.</p>
+        <p>At this awful point, in my early history, the spirit of 
+<lb/>God moved in power through my conscience, and told me 
+<lb/>I was a wretched sinner. On this account so great was
+<lb/>the impression, and so strong were the feelings of guilt,
+<lb/>that I promised in my heart that I would not tell an­
+<lb/>other lie.</p>
+        <p>But notwithstanding this promise my heart grew
+<lb/>harder, after a while, yet the spirit of the Lord never
+<lb/>entirely forsook me, but continued mercifully striving with
+<lb/> me, until his gracious power converted my soul.</p>
+        <p>The manner of this great accomplishment, was as
+	  <lb/>follows: In the year <date when="1804">1804</date>, it so happened that I went with
+<pb n="4"/>
+<milestone unit="sig" n="1(2)v"/>
+<mw type="pageNum" rend="align(center)">4</mw>
+<lb/>others to hear a missionary of the Presbyterian order
+<lb/>preach. It was an afternoon meeting, but few were there,
+<lb/>the place was a school room; but the preacher was solemn,
+<lb/>and in his countenance the earnestness of his master's
+<lb/>business appeared equally strong, as though he were
+<lb/>about to speak to a multitude.</p>
+        <p>At the reading of the <title>Psalms</title>, a ray of renewed convic­
+<lb/>tion darted into my soul. These were the words, com­
+<lb/>posing the first verse of the <title>Psalms</title> for the service:
+	  <lb/><quote rend="pre(“)post(”)"><lg rend="indent(3)" type="poem" subtype="indeterminate"><l>Lord, I am vile, conceived in sin,</l><l>Born unholy and unclean.</l><l>Sprung from man, whose guilty fall</l><l>Corrupts the race, and taints us all.</l></lg></quote></p>
+        <p>This description of my condition struck me to the
+<lb/>heart, and made me feel in some measure, the weight
+<lb/>of my sins, and sinful nature. But not knowing how to
+<lb/>run immediately to the Lord for help, I was driven of
+	  <lb/><persName>Satan</persName>, in the course of a few days, and tempted to destroy
+<lb/>myself.</p>
+        <p>There was a brook about a quarter of a mile from the
+<lb/>house, in which there was a deep hole, where the water
+<lb/>whirled about among the rocks; to this place it was
+<lb/>suggested, I must go and drown myself.</p>
+        <p>At the time I had a book in my hand; it was on a
+	  <lb/><name>Sabbath</name> morning, about ten o'clock; to this place I re­
+<lb/>sorted, where on coming to the water I sat down on the
+<lb/>bank, and on my looking into it; it was suggested, that
+<lb/>drowning would be an easy death. It seemed as if some
+<lb/>one was speaking to me, saying <said>put your head under, it
+<lb/>will not distress you</said>. But by some means, of which I can
+<lb/>give no account, my thoughts were taken entirely from
+<lb/>this purpose, when I went from the place to the house
+<lb/>again. It was the unseen arm of God which saved me from
+<lb/>self murder.</p>
+        <p>But notwithstanding this escape from death, my mind
+<lb/>was not at rest—but so great was the labour of my spirit
+<lb/>and the fearful oppressions of a judgment to come, that
+<lb/>I was reduced as one extremely ill. On which account
+<lb/>a physician was called to attend me, from which illness I
+<lb/>recovered in about three months.</p>
+        <p>But as yet, I had not found him of whom <name>Moses</name> and the
+<lb/>prophets did write, being extremely ignorant: there being
+	  <pb n="5"/>	  
+	  <milestone unit="sig" n="1(3)r"/>
+	  <mw rend="align(center)" type="pageNum">5</mw>
+<lb/>no one to instruct me in the way of life and salvation as
+<lb/>yet. After my recovery, I left the lady, who during my
+<lb/>sickness, was exceedingly kind, and went to <placeName>Philadelphia</placeName>.
+<lb/>From this place I soon went a few miles into the country,
+	  <lb/>where I resided in the family of a <name>Roman Catholic</name>. But
+<lb/>my anxiety still continued respecting my poor soul, on
+<lb/>which account I used to watch my opportunity to read
+<lb/>in the Bible; and this lady observing this, took the Bible
+<lb/>from me and hid it; giving me a novel in its stead—which
+<lb/>when I perceived, I refused to read.</p>
+        <p>Soon after this I again went to the city of <placeName>Philadelphia</placeName>;
+<lb/>and commenced going to the English Church, the pastor
+<lb/>of which was an <name>Englishman</name>, by the name of <persName>Pilmore</persName>,
+<lb/>one of the number, who at first preached <name>Methodism</name> in
+<lb/><placeName>America</placeName>, in the city of <placeName>New York.</placeName></p>
+        <p>But while sitting under the ministration of this man,
+<lb/>which was about three months, and at the last time, it ap­
+<lb/>peared that there was a wall between me and a communion
+<lb/>with that people, which was higher than I could possibly
+<lb/>see over, and seemed to make this impression upon my
+<lb/>mind, <emph>this is not the people for you.</emph></p>
+        <p>But on returning home at noon I inquired of the head
+ <lb/>cook of the house respecting the rules of the <name>Methodists</name>,
+ <lb/>as I knew she belonged to the society, who told me what
+	  <lb/>they were; on which account I replied, that I should not
+	  <lb/>be able to abide by such strict rules not even one year;—
+	  <lb/>however, I told her that I would go with her, and hear
+	  <lb/>what they had to say.</p>
+        <p>The man who was to speak in the afternoon of that day,
+	  <lb/>was the <persName>Rev. Richard Allen</persName>, since bishop of the <orgName>African
+	    <lb/>Episcopal Methodists</orgName> in <placeName>America</placeName>.During the labors of
+	  <lb/>this man that afternoon, I had come to the conclusion,
+	  <lb/>that this is the people to which my heart unites, and it so
+	  <lb/>happened, that as soon as the service closed he invited such
+	  <lb/>as felt a desire to flee the wrath to come, to unite on
+	  <lb/>trial with them—I embraced the opportunity. Three
+	  <lb/>weeks from that day, my soul was gloriously converted to
+	  <lb/>God, under preaching, at the very outset of the sermon.
+	  <lb/>The text was barely pronounced, which was: <said>I perceive
+	  <lb/>thy heart is not right in the sight of God,</said> when there
+	  <lb/>appeared to <emph>my</emph> view, in the centre of the heart <emph>one</emph> sin;
+	  <lb/>and this was <emph>malice</emph>, against one particular individual, who
+	  <lb/>had strove deeply to injure me, which I resented. At
+	  <mw rend="align(center)" type="sig">1*</mw>
+	  <pb n="6"/>
+	  <milestone unit="sig" n="1(3)v"/>
+<mw rend="align(center)" type="pageNum">6</mw>
+	  <lb/>this discovery I said, <said><emph>Lord</emph> I forgive <emph>every</emph> creature.</said> That
+	  <lb/>instant, it appeared to me, as if a garment, which had
+	  <lb/>entirely enveloped my whole person, even to my fingers
+	  <lb/>ends, split at the crown of my head, and was stripped away
+	  <lb/>from me, passing like a shadow, from my sight—when the
+	  <lb/>glory of God seemed to cover me in its stead.</p>
+        <p>That moment, though hundreds were present, I did leap to my feet, and declare that God, for Christ's sake,
+	  <lb/>had pardoned the sins of my soul. Great was the ecstacy
+	  <lb/>of my mind, for I felt that not only the sin of <emph>malice</emph> was
+	  <lb/>pardoned, but all other sins were swept away together.
+	  <lb/>That day was the first when my heart had believed, and
+	  <lb/>my tongue had made confession unto salvation—the first
+	  <lb/>words uttered, a part of that song, which shall fill eternity
+	  <lb/>with its sound, was <emph>glory to God.</emph>  For a few moments
+	  <lb/>I had power to exhort sinners, and to tell of the wonders
+	  <lb/>and of the goodness of him who had clothed me with <emph>his</emph>
+	  <lb/>salvation. During this, the minister was silent, until my
+	  <lb/>soul felt its duty had been performed, when he declared
+	  <lb/>another witness of the power of Christ to forgive sins on
+	  <lb/>earth, was manifest in my conversion.</p>
+        <p>From the day on which I first went to the Methodist
+	  <lb/>church, until the hour of my deliverance, I was strangely
+	  <lb/>buffetted by that enemy of all righteousness—the devil.</p>
+        <p>I was naturally of a lively turn of disposition; and dur­
+	  <lb/>ing the space of time from my first awakening until I
+	  <lb/>knew my peace was made with God, I rejoiced in the
+	  <lb/>vanities of this life, and then again sunk back into sor­
+	  <lb/>row.</p>
+        <p>For four years I had continued in this way, frequently
+	  <lb/>labouring under the awful apprehension, that I could
+never be happy in this life. This persuasion was greatly
+	  <lb/>strengthened, during the three weeks, which was the last
+	  <lb/>of <persName>Satan's</persName> power over me, in this peculiar manner: on
+	  <lb/>which account, I had come to the conclusion that I had
+	  <lb/>better be dead than alive. Here I was again tempted to
+	  <lb/>destroy my life by drowning; but suddenly this mode
+	  <lb/>was changed—and while in the dusk of the evening, as I
+	  <lb/>was walking to and fro in the yard of the house, I was
+	  <lb/>beset to hang myself, with a cord suspended from the
+	  <lb/>wall enclosing the secluded spot.</p>
+        <p>But no sooner was the intention resolved on in my
+	  <lb/>mind, than an awful dread came over me, when I ran
+	  <pb n="7"/>
+	  <milestone unit="sig" n="1(4)r"/>
+	  <mw rend="align(center)" type="pageNum">7</mw>
+<lb/>into the house; still the tempter pursued me. There
+	  <lb/>was standing a vessel of water—into this I was strongly
+	  <lb/>impressed to plunge my head, so as to extinguish the life
+	  <lb/>which God had given me. Had I have done this, I have
+	  <lb/>been always of the opinion that I should have been unable
+	  <lb/>to have released myself; although the vessel was scarce­
+	  <lb/>ly large enough to hold a gallon of water. Of me may it
+	  <lb/>not be said, as written by <title>Isaiah</title>, (chap. 65. verses 1, 2.)
+	  <lb/><quote rend="pre(“)post(”)">I am sought of them that asked not for me; I am found
+	    <lb/>of them that sought me not.</quote>  Glory be to God for his
+	  <lb/>redeeming power, which saved me from the violence of
+	  <lb/>my own hands, from the malice of <persName>Satan</persName>, and from eter­
+          <lb/>nal death; for had I have killed myself, a great ransom
+	  <lb/>could not have delivered me; for it is written—<quote rend="pre(“)post(”)">No mur­
+	  <lb/>derer hath eternal life abiding in him.</quote> How appropri­
+          <lb/>ately can I sing—
+	  <quote rend="pre(“)post(”)"><lg rend="indent(3)" type="poem" subtype="indeterminate"><l>Jesus sought me, when a stranger,</l><l rend="indent(+1)">Wandering from the fold of God;</l><l>He to rescue me from danger,</l><l rend="indent(+1)">Interposed his precious blood.</l></lg></quote>
+	  <lb/>But notwithstanding the terror which seized upon me,
+	  <lb/>when about to end my life, I had no view of the precipice
+	  <lb/>on the edge of which I was tottering, until it was over,
+	  <lb/>and my eyes were opened. Then the awful gulf of hell
+	  <lb/>seemed to be open beneath me, covered only, as it were,
+	  <lb/>by a spider's web, on which I stood. I seemed to hear
+	  <lb/>the howling of the damned, to see the smoke of the bot­
+	  <lb/>tomless pit, and to hear the rattling of those chains,
+	  <lb/>which hold the impenitent under clouds of darkness to
+	  <lb/>the judgment of the great day.</p>
+        <p>I trembled like <persName>Belshazzar</persName>, and cried out in the horror
+	  <lb/>of my spirit, <said rend="pre(“)post(”)">God be merciful to me a sinner.</said>  That
+	  <lb/>night I formed a resolution to pray; which, when resolv­
+	  <lb/>ed upon, there appeared, sitting in one corner of the
+	  <lb/>room, <persName>Satan</persName>, in the form of a monstrous dog, and in a
+	  <lb/>rage, as if in pursuit, his tongue prot<choice><sic/><corr>r</corr></choice>uding from his
+	  <lb/>mouth to a great length, and his eyes looked like two
+	  <lb/>balls of fire; it soon, however, vanished out of my sight.
+	  <lb/>From this state of terror and dismay, I was happily de­
+	  <lb/>livered under the preaching of the <title>Gospel</title> as before re­
+	  <lb/>lated.</p>
+        <p>This view, which I was permitted to have of <persName>Satan</persName>, in
+	  <lb/>the form of a dog, is evidence, which corroborates in my
+	  <pb n="8"/>
+	  <milestone unit="sig" n="1(4)v"/>
+	  <mw rend="align(center)" type="pageNum">8</mw>
+	  <lb/>estimation, the Bible account of a hell of fire, which
+	  <lb/>burneth with brimstone, called in Scripture the bottomless
+	  <lb/>pit; the place where all liars, who repent not, shall have
+	  <lb/>their portion; as also the <name>Sabbath</name> breaker, the adulterer,
+	  <lb/>the fornicator, with the fearful, the abominable, and the
+	  <lb/>unbelieving, this shall be the portion of their cup.</p>
+        <p>This language is too strong and expressive to be appli­
+	  <lb/>ed to any state of suffering in <emph>time</emph>.  Were it to be thus
+	  <lb/>applied, the reality could no where be found in human
+	  <lb/>life; the consequence would be, that <emph>this</emph> scripture would
+	  <lb/>be found a false testimony. But when made to apply to
+	  <lb/>an endless state of perdition, in eternity, beyond the
+	  <lb/>bounds of human life, then this language is found not to
+	  <lb/>exceed our views of a state of eternal damnation.</p>
+        <p>During the latter part of my state of conviction, I can
+	  <lb/>now apply to my case, as it then was, the beautiful words
+	  <lb/>of the poet:
+	    <quote rend="pre(“)post(”)"><lg type="indeterminate"><l>The more I strove against its power,</l><l>I felt its weight and guilt the more;</l><l>'Til late, I hear'd my Saviour say,</l><l><said>Come hither soul, I am the way.</said></l></lg></quote>
+	  <lb/>This I found to be true, to the joy of my disconsolate and
+	  <lb/>despairing heart, in the hour of my conversion to God.</p>
+        <p>During this state of mind, while sitting near the fire
+	  <lb/>one evening, after I had heard <persName>Rev. Richard Allen</persName>, as
+	  <lb/>before related, a view of my distressed condition so affect­
+	  <lb/>ed my heart, that I could not refrain from weeping and
+	  <lb/>crying aloud; which caused the lady with whom I then
+	  <lb/>lived, to inquire, with surprise, what ailed me; to which
+	  <lb/>I answered, that I knew not what ailed me. She replied
+	  <lb/>that I ought to pray. I arose from where I was sitting,
+	  <lb/>being in an agony, and weeping convulsively, requested
+	  <lb/>her to pray for me; but at the very moment when she
+	  <lb/>would have done so, some person wrapped heavily at the
+	  <lb/>door for admittance; it was but a person of the house,
+	  <lb/>but this occurrence was sufficient to interrupt us in our
+	  <lb/>intentions; and I believe to this day, I should then have
+	  <lb/>found salvation to my soul. This interruption was,
+	  <lb/>doubtless, also the work of <persName>Satan</persName>.</p>
+        <p>Although at this time, when my conviction was so
+	  <lb/>great, yet I knew not that <persName>Jesus Christ</persName> was the Son of
+	  <lb/>God, the second person in the adorable trinity. I knew
+	<pb n="9"/>
+	<milestone unit="sig" n="1(5)r"/>
+	<mw rend="align(center)" type="pageNum">9</mw>
+	<lb/>him not in the pardon of my sins, yet I felt a conscious­
+	  <lb/>ness that if I died without pardon, that my lot must inevi­
+	  <lb/>tably be damnation. If I would pray—I knew not how.
+	  <lb/>I could form no connexion of ideas into words; but I
+	  <lb/>knew the Lord's prayer; this I uttered with a loud voice,
+	  <lb/>and with all my might and strength. I was the most
+	  <lb/>ignorant creature in the world, I did not even know that
+	  <lb/>Christ had died for the sins of the world; and to save
+	  <lb/>sinners. Every circumstance, however, was so directed
+	  <lb/>as still to continue and increase the sorrows of my heart,
+	  <lb/>which I now know to have been a godly sorrow which
+	  <lb/>wrought repentence, which is not to be repented of.
+	  <lb/>Even the falling of the dead leaves from the forests, and
+	  <lb/>the dried spires of the mown grass, showed me that I
+	  <lb/>too must die, in like manner. But my case was awfully
+	  <lb/>different from that of the grass of the field, or the wide
+	  <lb/>spread decay of a thousand forests, as I felt within me a
+	  <lb/>living principle, an immortal spirit, which cannot die,
+	  <lb/>and must forever either enjoy the smiles of its Creator, or
+	  <lb/>feel the pangs of ceaseless damnation.</p>
+        <p>But the Lord led me on; being gracious, he took pity
+	  <lb/>on my ignorance; he heard my wailings, which had en­
+	  <lb/>tered into the ear of the Lord of <name>Sabaoth</name>. Circum­
+	  <lb/>stances so transpired that I soon came to a knowledge of
+	  <lb/>the being and character of the Son of God, of whom I
+	  <lb/>knew nothing.</p>
+        <p>My strength had left me. I had become feverish and
+	  <lb/>sickly through the violence of my feelings, on which
+	  <lb/>account I left my place of service to spend a week with a
+	  <lb/>coloured physician, who was a member of the Methodist
+	  <lb/>society, and also to spend this week in going to places
+	  <lb/>where prayer and supplication was statedly made for
+	  <lb/>such as me.</p>
+        <p>Through this means I had learned much, so as to be
+	  <lb/>able in some degree to comprehend the spiritual mean­
+	  <lb/>ing of the text, which the minister took on the <name>Sabbath</name>
+	  <lb/>morning, as before related, which was, <quote rend="pre(“)post(”)">I perceive thy
+	    heart is not right in the sight of God.</quote> <bibl><regMe>Acts, chap. 8, verse 21.</regMe></bibl></p>
+        <p>This text, as already related, became the power of God
+	  <lb/>onto salvation to me, because I believed. I was baptized
+	  <lb/>according to the direction of our Lord, who said, as he
+	  <lb/>was about to ascend from the mount, to his disciples,
+	<pb n="10"/>
+	<milestone unit="sig" n="1(5)v"/>
+	<mw rend="align(center)" type="pageNum">10</mw>
+	  <lb/><quote rend="pre(“)post(”)">Go ye into all the world and preach my gospel to every
+	    <lb/>creature, he that believeth and is baptized shall be
+	    <lb/>saved.</quote></p>
+        <p>I have now passed through the account of my convic­
+          <lb/>tion, and also of my conversion to God; and shall next
+	  <lb/>speak of the blessing of sanctification.</p>
+        <p>A time after I had received forgiveness flowed sweetly
+	  <lb/>on; day and night my joy was full, no temptation was
+	  <lb/>permitted to molest me. I could say continually with
+	  <lb/>the psalmist, that <quote rend="pre(“)post(”)">God had separated my sins from me,
+	    <lb/>as far as the east is from the west.</quote>  I was ready con­
+	  <lb/>tinually to cry,
+	  <quote rend="pre(“)post(”)"><lg rend="indent(+3)" type="indeterminate"><l>Come all the world, come sinner thou,</l><l>All things in Christ are ready now.</l></lg></quote></p>
+        <p>I continued in this happy state of mind for almost three
+	  <lb/>months, when a certain coloured man, by name <persName>William
+	    <lb/>Scott</persName>, came to pay me a religious visit. He had been for
+	  <lb/>many years a faithful follower of the Lamb; and he had
+	  <lb/>also taken much time in visiting the sick and distressed
+	  <lb/>of our colour, and understood well the great things be­
+	  <lb/>longing to a man of full stature in <persName>Christ Jesus</persName>.</p>
+        <p>In the course of our conversation, he inquired if the
+	  <lb/>Lord had justified my soul. I answered, yes. He then
+	  <lb/>asked me if he had sanctified me. I answered, no; and
+	  <lb/>that I did not know what that was. He then undertook
+	  <lb/>to instruct me further in the knowledge of the Lord res­
+	  <lb/>pecting this blessing.</p>
+        <p>He told me the progress of the soul from a state of
+	  <lb/>darkness, or of nature, was three-fold; or consisted in
+	  <lb/>three degrees, as follows:—First, conviction for sin.
+	  <lb/>Second, justification from sin. Third, the entire sancti­
+	  <lb/>fication of the soul to God. I thought this description
+	  <lb/>was beautiful, and immediately believed in it. He then
+	  <lb/>inquired if I would promise to pray for this in my secret
+	  <lb/>devotions. I told him, yes. Very soon I began to call
+	  <lb/>upon the Lord to show me all that was in my heart,
+	  <lb/>which was not according to his will. Now there appear­
+	  <lb/>ed to be a new struggle commencing in my soul, not
+	  <lb/>accompanied with fear, guilt, and bitter distress, as
+	  <lb/>while under my first conviction for sin; but a labouring
+	  <lb/>of the mind to know more of the right way of the Lord.
+	  <lb/>I began now to feel that my heart was not clean in his
+	  <pb n="11"/>
+	<milestone unit="sig" n="1(6)r"/>
+	<mw rend="align(center)" type="pageNum">11</mw>
+	  <lb/>sight; that there yet remained the roots of bitterness,
+	  <lb/>which if not destroyed, would ere long sprout up from
+	  <lb/>these roots, and overwhelm me in a new growth of the
+	  <lb/>brambles and brushwood of sin.</p>
+        <p>By the increasing light of the Spirit, I had found there
+	  <lb/>yet remained the root of pride, anger, self-will, with
+	  <lb/>many evils, the result of fallen nature. I now became
+	  <lb/>alarmed at this discovery, and began to fear that I had
+	  <lb/>been deceived in my experience. I was now greatly
+	  <lb/>alarmed, lest I should fall away from what I knew I had
+	  <lb/>enjoyed; and to guard against this I prayed almost in­
+	  <lb/>cessantly, without acting faith on the power and pro­
+	  <lb/>mises of God to keep me from falling. I had not yet
+	  <lb/>learned how to war against temptation of this kind.
+	  <lb/><persName>Satan</persName> well knew that if he could succeed in making me
+	  <lb/>disbelieve my conversion, that he would catch me either
+	  <lb/>on the ground of complete despair, or on the ground of
+	  <lb/>infidelity. For if all I had passed through was to go for
+	  <lb/>nothing, and was but a fiction, the mere ravings of a dis­
+	  <lb/>ordered mind, that I would naturally be led to believe that there is nothing in religion at all.</p>
+        <p>From this snare I was mercifully preserved, and led to
+	  <lb/>believe that there was yet a greater work than that of
+	  <lb/>pardon to be wrought in me. I retired to a secret place,
+	  <lb/>(after having sought this blessing, as well as I could, for
+	  <lb/>nearly three months, from the time brother <persName>Scott</persName> had
+	  <lb/>instructed me respecting it,) for prayer, about four
+	  <lb/>o'clock in the afternoon. I had struggled long and hard,
+	  <lb/> but found not the desire of my heart. When I rose from
+	  <lb/>my knees, there seemed a voice speaking to me, as I yet
+	  <lb/>stood in a leaning posture—<said rend="pre(“)post(”)">Ask for sanctification.</said>
+	  <lb/>When to my surprise, I recollected that I had not even
+	  <lb/>thought of it in my whole prayer. It would seem <persName>Satan</persName>
+	  <lb/>had hidden the very object from my mind, for which I
+	  <lb/>had purposely kneeled to pray. But when this voice
+	  <lb/>whispered in my heart, saying, <said rend="pre(“)post(”)">Pray for santification,</said>
+	  <lb/>I again bowed in the same place, at the same time, and
+	  <lb/>said, <said rend="pre(“)post(”)">Lord <emph>sanctify</emph> my soul for Christ's sake?</said>  That
+	  <lb/>very instant, as if lightning had darted through me, I
+	  <lb/>sprang to my feet, and cried, <said rend="pre(“)post(”)">The Lord has sanctified
+	  <lb/>my soul!</said>  There was none to hear this but the angels
+	  <lb/>who stood around to witness my joy—and <persName>Satan</persName>, whose
+	  <lb/>malice raged the more. That <persName>Satan</persName> was there, I knew;
+<pb n="12"/>
+	<milestone unit="sig" n="1(6)v"/>
+	<mw rend="align(center)" type="pageNum">12</mw>
+	  <lb/>for no sooner had I cried out <said rend="pre(“)post(”)">The Lord has sanctified
+	    <lb/>my soul,</said> than there seemed another voice behind me,
+	  <lb/>saying, <said rend="pre(“)post(”)">No, it is too great a work to be done.</said>  But
+	  <lb/>another spirit said, <said rend="pre(“)post(”)">Bow down for the witness—I re­
+	    <lb/>ceived it—<emph>thou art sanctified!</emph></said>  The first I knew of myself
+	  <lb/>after that, I was standing in the yard with my hands
+	  <lb/>spread out, and looking with my face toward heaven.</p>
+        <p>I now ran into the house and told them what had hap­
+	  <lb/>pened to me, when, as it were, a new rush of the same
+	  <lb/>ecstasy came upon me, and caused me to feel as if I
+	  <lb/>were in an ocean of light and bliss.</p>
+        <p>During this, I stood perfectly still, the tears rolling in
+	  <lb/>a flood from my eyes. So great was the joy, that it is
+	  <lb/>past description. There is no language that can des­
+	  <lb/>cribe it, except that which was heard by <persName>St. Paul</persName>, when
+	  <lb/>he was caught up to the third heaven, and heard words
+	  <lb/>which it was not lawful to utter.</p>
+      </div>
+      <div rend="pre(#rule)" type="section">
+        <head rend="post(#rule)">My Call to Preach the Gospel.</head>
+        <p>Between four and five years after my sanctification, on
+	  <lb/>a certain time, an impressive silence fell upon me, and I 
+	  <lb/>stood as if some one was about to speak to me, yet I had
+	  <lb/>no such thought in my heart. But to my utter surprise
+	  <lb/>there seemed to sound a voice which I thought I distinct­
+	  <lb/>ly heard, and most certainly understood, which said to
+	  <lb/>me, <said rend="pre(“)post(”)">Go preach the Gospel!</said>  I immediately replied
+	  <lb/>aloud, <said rend="pre(“)post(”)">No one will believe me.</said>  Again I listened, and
+	  <lb/>again the same voice seemed to say—<said rend="pre(“)post(”)">Preach the Gos­
+	    <lb/>pel; I will put words in your mouth, and will turn your
+	    <lb/>enemies to become your friends.</said></p>
+        <p>At first I supposed that <persName>Satan</persName> had spoken to me, for I
+	  <lb/>had read that he could transform himself into an angel of
+	  <lb/>light, for the purpose of deception. Immediately I went
+	  <lb/>into a secret place, and called upon the Lord to know if
+	  <lb/>he had called me to preach, and whether I was deceived
+	  <lb/>or not; when there appeared to my view the form and
+	 <pb n="13"/>
+	<milestone unit="sig" n="2(1)r"/>
+	<mw rend="align(center)" type="pageNum">13</mw>
+	  <lb/>figure of a pulpit, with a Bible lying thereon; the back of
+	  <lb/>which was presented to me as plainly as if it had been a
+	  <lb/>literal fact.</p>
+        <p>In consequence of this, my mind became so exercised,
+	  <lb/>that during the night following, I took a text, and preach­
+	  <lb/>ed in my sleep. I thought there stood before me a great
+	  <lb/>multitude, while I expounded to them the things of reli­
+	  <lb/>gion. So violent were my exertions, and so loud were my
+	  <lb/>exclamations, that I awoke from the sound of my own
+	  <lb/>voice, which also awoke the family of the house where I
+	  <lb/>resided. Two days after, I went to see the preacher in
+	  <lb/>charge of the <orgName>African Society</orgName>, who was the <persName>Rev. Richard
+	    <lb/>Allen</persName>, the same before named in these pages, to tell him
+	  <lb/>that I felt it my duty to preach the gospel. But as I
+	  <lb/>drew near the street in which his house was, which was
+	  <lb/>in the city of <placeName>Philadelphia</placeName>, my courage began to fail me;
+	  <lb/>so terrible did the cross appear, it seemed that I should
+	  <lb/>not be able to bear it. Previous to my setting out to go
+	  <lb/>to see him, so agitated was my mind, that my appetite
+	  <lb/>for my daily food failed me entirely. Several times on
+	  <lb/>my way there, I turned back again; but as often I felt
+	  <lb/>my strength again renewed, and I soon found that the
+	  <lb/>nearer I approached to the house of the minister, the
+	  <lb/>less was my fear. Accordingly, as soon as I came to the
+	  <lb/>door, my fears subsided, the cross was removed, all things
+	  <lb/>appeared pleasant—I was tranquil.</p>
+        <p>I now told him, that the Lord  had revealed it to me,
+	  <lb/>that I must preach the gospel. He replied, by asking,
+	  <lb/>in what sphere I wished to move in?  I said, among the
+	  <lb/><name>Methodists</name>. He then replied, that a <persName>Mrs. Cook</persName>, a Me­
+	  <lb/>thodist lady, had also some time before requested the
+	  <lb/>same privilege; who it was believed, had done much
+	  <lb/>good in the way of exhortation, and holding prayer meet­
+	  <lb/>ings; and who had been permitted to do so by the ver­
+	  <lb/>bal license of the preacher in charge at the time. But as
+	  <lb/>women preaching, he said that our Discipline knew
+	  <lb/>nothing at all about it—that it did not call for women
+	  <lb/>preachers. This I was glad to hear, because it removed
+	  <lb/>the fear of the cross—but not so sooner did this feeling
+	  <lb/>cross my mind, than I found that a love of souls had in a
+	  <lb/>measure departed from me; that holy energy which
+	  <lb/>burned within me, as a fire, began to be smothered. This
+	  <lb/>I soon perceived.</p>
+        <mw rend="align(center)" type="sig">2</mw>
+        <pb n="14"/>
+        <milestone unit="sig" n="2(1)v"/>
+        <mw rend="align(center)" type="pageNum">14</mw>
+        <p>O how careful ought we to be, lest through our by-laws
+	  <lb/>of church government and discipline, we bring into dis­
+	  <lb/>repute even the word of life. For as unseemly as it may
+	  <lb/>appear now-a-days for a woman to preach, it should be
+	  <lb/>remembered that nothing is impossible with God. And
+	  <lb/>why should it be thought impossible, heterodox, or im­
+	  <lb/>proper, for a woman to preach?  seeing the Saviour died
+	  <lb/>for the woman as well as the man.</p>
+        <p>If the man may preach, because the Saviour died for
+	  <lb/>him, why not the woman?  seeing he died for her also.
+	  <lb/>Is he not a whole Saviour, instead of a half one?  as those
+	  <lb/>who hold it wrong for a woman to preach, would seem
+	  <lb/>to make it appear.</p>
+        <p>Did not <persName>Mary</persName> <emph>first</emph> preach the risen Saviour, and is not
+	  <lb/>the doctrine of the resurrection the very climax of <name>Chris­
+	  <lb/>tianity</name>—hangs not all our hope on this, as argued by <persName>St.
+	    <lb/>Paul</persName>?  Then did not <persName>Mary</persName>, a woman, preach the gospel?
+	  <lb/>for she preached, the resurrection of the crucified Son of
+	  <lb/>God.</p>
+        <p>But some will say, that <persName>Mary</persName> did not expound the
+	  <lb/>Scripture, therefore, she did not preach, in the proper
+	  <lb/>sense of the term. To this I reply, it may be that the
+	  <lb/>term <emph>preach</emph>, in those primitive times, did not mean ex­
+	  <lb/>actly what it is not <emph>made</emph> to mean; perhaps it was a
+	  <lb/>great deal more simple then, than it is now:—if it were
+	  <lb/>not, the unlearned fishermen could not have preached the
+	  <lb/>gospel at all, as they had no learning.</p>
+        <p>To this it may be replied, by those who are determin­
+	  <lb/>ed not to believe that it is right for a woman to preach,
+	  <lb/>that the disciples, though they were fishermen, and igno­
+	  <lb/>rant of letters too, were inspired so to do. To which I
+	  <lb/>would reply, that though they were inspired, yet that in­
+	  <lb/>spiration did not save them from showing their ignorance
+	  <lb/>of letters, and of man's wisdom; this the multitude soon
+	  <lb/>found out, by listening to the remarks of the envious Jew­
+	  <lb/>ish priests. If then, to preach the gospel, by the gift of
+	  <lb/><choice><sic>of</sic><corr/></choice> heaven, comes by inspiration solely, is God straitened;
+	  <lb/>must he take the man exclusively?  May he not, did he
+	  <lb/>not, and can he not inspire a female to preach the simple
+	  <lb/>story of the birth, life, death, and resurrection of our Lord,
+	  <lb/>and accompany it too, with power to the sinner's heart.
+	  <lb/>As for me, I am fully persuaded that the Lord called me
+	  <lb/>to labour according to what I have received, in his vine­
+	  <lb/>yard. If he has not, how could he consistently bear tes­
+	  <pb n="15"/>
+	<milestone unit="sig" n="2(1)v"/>
+	<mw rend="align(center)" type="pageNum">15</mw>
+	<lb/>timony in favour of my poor labours, in awakening and
+	<lb/>converting sinners?</p>
+        <p>In my wanderings up and down among men, preaching
+	  <lb/>according to my ability, I have frequently found families
+	  <lb/>who told me that they had not for several years been to a
+	  <lb/>meeting, and yet, while listening to hear what God would
+	  <lb/>say by his poor coloured female instrument, have believed
+	  <lb/>with trembling—tears rolling down their cheeks, the
+	  <lb/>signs of contrition and repentence toward God. I firm­
+	  <lb/>ly believe that I have sown seed, in the name of the Lord,
+	  <lb/>which shall appear with its increase at the great day of
+	  <lb/>accounts, when Christ shall come to make up his jewels.</p>
+        <p>At a certain time, I was beset with the idea, that soon
+	  <lb/>or late I should fall from grace, and lose my soul at last.
+	  <lb/>I was frequently called to the throne of grace about this
+	  <lb/>matter, but found no relief; the temptation pursued me
+	  <lb/>still. Being more and more afflicted with it, till at a cer­
+	  <lb/>tain time when the spirit strongly impressed it on my
+	  <lb/>mind to enter into my closet, and carry my case once
+	  <lb/>more to the Lord; the Lord enabled me to draw nigh
+	  <lb/>to him, and to his mercy seat, at this time, in an extra­
+	  <lb/>ordinary manner; for while I wrestled with him for the
+	  <lb/>victory over this disposition to doubt whether I should
+	  <lb/>persevere, there appeared a form of fire, about the size of
+	  <lb/>a man's hand, as I was on my knees; at the same mo­
+	  <lb/>ment, there appeared to the eye of faith a man robed in a
+	  <lb/>white garment, from the shoulders down to the feet; from
+	  <lb/>him a voice proceeded, saying: <said rend="pre(“)post(”)">Thou shalt never return
+	    <lb/>from the cross.</said>  Since that time I have never doubted,
+	  <lb/>but believe that God will keep me until the day of re­
+	  <lb/>demption. Now I could adopt the very language of <persName>St.
+	    <lb/>Paul</persName>, and say that nothing could have separated my soul
+	  <lb/>from the love of God, which is in <persName>Christ Jesus</persName>. From
+	  <lb/>that time, <date when="1807">1807</date> until the present, <date when="1833">1833</date>, I have not yet
+	  <lb/>doubted the power and goodness of God to keep me from
+	  <lb/>falling, through sanctification of the spirit and belief of
+	  <lb/>the truth.</p>
+      </div>
+      <div rend="pre(#rule)" type="section">
+        <head rend="case(allcaps)align(center)">My Marriage</head>
+        <p>In the year <date when="1811">1811</date>, I changed my situation in life, having
+	  <lb/>married <persName>Mr. Joseph Lee</persName>, Pastor of a <name>Coloured Society</name>
+	  <pb n="16"/>
+	  <milestone unit="sig" n="2(2)r"/>
+	  <mw rend="align(center)" type="pageNum">16</mw>
+	  <lb/>at <placeName>Snow Hill</placeName>, about six miles from the city of <placeName>Philadel­
+	    <lb/>phia</placeName>. It became necessary therefore for me to remove.
+	    <lb/>This was a great trial at first, as I knew no person at
+	  <lb/><placeName>Snow Hill</placeName>, except my husband; and to leave my associ­
+	  <lb/>ates in the society, and especially those who composed
+	  <lb/>the <emph>band</emph> of which I was one. Not but those who have
+	  <lb/>been in sweet fellowship with such as really love God,
+	  <lb/>and have together drank bliss and happiness from the
+	  <lb/>same fountain, can tell how dear such company is, and
+	  <lb/>how hard it is to part from them.</p>
+        <p>At <placeName>Snow Hill</placeName>, as was feared, I never found that agree­
+	  <lb/>ment and closeness in communion and fellowship, that I
+	  <lb/>had in <placeName>Philadelphia</placeName>, among my young companions, nor
+	  <lb/>ought I to have expected it. The manners and customs
+	  <lb/>at this place were somewhat different, on which account
+	  <lb/>I became discontented in the course of a year, and began
+	  <lb/>to importune my husband to remove to the city. But
+	  <lb/>this plan did not suit him, as he was the Pastor of the So­
+	  <lb/>ciety, he could not bring his mind to leave them. This
+	  <lb/>afflicted me a little. But the Lord soon showed me in a
+	  <lb/>dream what his will was concerning this matter.</p>
+        <p>I dreamed that as I was walking on the summit of a
+	  <lb/>beautiful hill, that I saw near me a flock of sheep, fair
+	  <lb/>and white, as if but newly washed; when there came
+	  <lb/>walking toward me, a man of a grave and dignified coun­
+	  <lb/>tenance, dressed entirely in white, as it were in a robe,
+	  <lb/>and looking at me, said emphatically, <said rend="pre(“)post(”)"><persName>Joseph Lee</persName> must
+	    <lb/>take care of these sheep, or the wolf will come and devour
+	    <lb/>them.</said>  When I awoke, I was convinced of my error,
+	    <lb/>and immediately, with a glad heart, yielded to the right
+	    <lb/>way of the Lord. This also greatly strengthened my
+	  <lb/>husband in his care over them, for fear the wolf should by
+	  <lb/>some means take any of them away. The following
+	  <lb/>verse was beautifully suited to our condition, as well as
+	  <lb/>to all the little flocks of God scattered up and down this
+	  <lb/>land:
+	  <lb/><quote rend="pre(“)post(”)"><lg rend="indent(3)" type="poem" subtype="indeterminate"><l>Us into Thy protection take,</l><l rend="indent(+1)">And gather with Thine arm;</l><l>Unless the fold we first forsake,</l><l rend="indent(+1)">The wolf can never harm.</l></lg></quote></p>
+        <p>After this, I fell into a state of general debility, and in
+	  <lb/>an ill state of health, so much so, that I could not sit up;
+	  <lb/>but a desire to warn sinners to flee the wrath to come,
+	  <lb/>burned vehemently in my heart, when the Lord would
+	  <pb n="17"/>
+	  <milestone unit="sig" n="2(2)v"/>
+	  <mw rend="align(center)" type="pageNum">17</mw>
+	  <lb/>send sinners into the house to see me. Such opportuni­
+	  <lb/>ties I embraced to press home on their consciences the
+	  <lb/>things of eternity, and so effectual was the word of exhor­
+	  <lb/>tation made through the Spirit, that I have seen them fall
+	  <lb/>to the floor crying aloud for mercy.</p>
+        <p>From this sickness I did not expect to recover, and
+	  <lb/>there was but one thing which bound me to earth, and
+	  <lb/>this was, that I had not as yet preached the gospel to the
+	  <lb/>fallen sons and daughters of <persName>Adam's</persName> race, to the satisfac­
+	  <lb/>tion of my mind. I wished to go from one end of the
+	  <lb/>earth to the other, crying, <said>Behold, behold the Lamb!</said>
+	  <lb/>To this end I earnestly prayed the Lord to raise me up,
+	  <lb/>if consistent with his will. He condescended to hear my
+	  <lb/>prayer, and to give me a token in a dream, that in due
+	  <lb/>time I should recover my health. The dream was as
+	  <lb/>follows: I thought I saw the sun rise in the morning,
+	  <lb/>and ascend to an altitude of about half an hour high, and
+	  <lb/>then become obscured by a dense black cloud, which con­
+	  <lb/>tinued to hide its rays for about one third part of the
+	  <lb/>day, and then it burst forth again with renewed splendour.</p>
+        <p>This dream I interpreted to signify my early life, my
+	  <lb/>conversion to God, and the sickness, which was a great
+	  <lb/>affliction, as it hindered me, and I feared would forever
+	  <lb/>hinder me from preaching the gospel, was signified by
+	  <lb/>the cloud; and the bursting forth of the sun, again, was
+	  <lb/>the recovery of my health, and being permitted to preach.</p>
+        <p>I went to the throne of grace on this subject, where the
+	  <lb/>Lord made this impressive reply in my heart, while on
+	  <lb/>my knees: <said rend="pre(“)post(”)">Ye shall be restored to thy health again, and
+	    <lb/>worship God in full purpose of heart.</said></p>
+        <p>This manifestion was so impressive, that I could but
+	  <lb/>hide my face, as if some one was gazing upon me, to
+	  <lb/>think of the great goodness of the Almighty God to my
+	  <lb/>poor soul and body. From that very time I began to
+	  <lb/>gain strength of body and mind, glory to God in the
+	  <lb/>highest, until my health was fully recovered.</p>
+        <p>For six years from this time I continued to receive
+	  <lb/>from above, such baptisms of the Spirit as mortality
+	  <lb/>could scarcely bear. About that time I was called to
+	  <lb/>suffer in my family, by death—five, in the course of about
+	  <lb/>six years, fell by his hand; my husband being one of the
+	  <lb/>number, which was the greatest affliction of all.</p>
+        <p>I was now left alone in the world, with two infant chil­
+	  <lb/>dren, one of the age of about two years, the other six
+	  <mw type="sig">2*</mw>	  
+	  <pb n="18"/>
+	  <milestone unit="sig" n="2(3)r"/>
+	  <mw rend="align(center)" type="pageNum">18</mw>
+	  <lb/>months, with no other dependence than the promise of
+	  <lb/>Him who hath said—<said>I will be the widow's God, and a
+	  <lb/>father to the fatherless.</said> Accordingly, he raised me up
+	  <lb/>friends, whose liberality comforted and solaced me in my
+	  <lb/>state of widowhood and sorrows. I could sing with the
+	  <lb/>greatest propriety the words of the poet:
+	  <quote rend="pre(“)post(”)"><lg rend="indent(3)" type="poem" subtype="indeterminate"><l rend="indent(1)">He helps the stranger in distress,</l><l>The widow and the fatherless</l><l rend="indent(1)">And grants the prisoner sweet release.</l></lg></quote>
+	  <lb/>I can say even now, with the Psalmist, <quote rend="pre(“)post(”)">Once I was
+	    <lb/>young, but now I am old, yet I have never seen the right­
+	    <lb/>eous forsaken, nor his seed begging bread.</quote>  I have ever
+	  <lb/>been fed by his bounty, clothed by his mercy, comforted
+	  <lb/>and healed when sick, succoured when tempted, and
+	  <lb/>every where upheld by his hand.</p>
+      </div>
+      <div type="section">
+        <head rend="align(center)case(allcaps)">The Subject of my Call to Preach Renewed</head>
+        <p>It was now eight years since I had made application
+	  <lb/>to be permitted to preach the gospel, during which time
+	  <lb/>I had only been allowed to exhort, and even this privi­
+	  <lb/>lege but seldom. This subject now was renewed afresh
+	  <lb/>in my mind; it was as a fire shut up in my bones. About
+	  <lb/>thirteen months passed on, while under this renewed im­
+	  <lb/>pression. During this time, I had solicited of the <persName>Rev.
+	    <lb/>Bishop Richard Allen</persName>, who at this time had become
+	  <lb/>Bishop of the <orgName>African Episcopal Methodists in America</orgName>,
+	  <lb/>to be permitted the liberty of holding prayer meetings in
+	  <lb/>my own hired house, and of exhorting as I found liberty,
+	  <lb/>which was granted me. By this means, my mind was
+	  <lb/>relieved, as the house was soon filled when the hour ap­
+	  <lb/>pointed for prayer had arrived.</p>
+        <p>I cannot but relate in this place, before I proceed fur­
+	  <lb/>ther with the above subject, the singular conversion of a
+	  <lb/>very wicked young man. He was a coloured man, who
+	  <lb/>had generally attended our meetings, but not for any
+	  <lb/>good purpose; but rather to disturb and to ridicule our
+	  <lb/>denomination. He openly and uniformly declared that
+	  <lb/>he neither believed in religion, nor wanted any thing to
+	  <lb/>do with it. He was of a Gallio disposition, and took the
+	  <lb/>lead among the young people of colour. But after a
+	  <pb n="19"/>
+	  <milestone unit="sig" n="2(3)v"/>
+	  <mw rend="align(center)" type="pageNum">19</mw>
+	  <lb/>while he fell sick, and lay about three months in a state
+	  <lb/>of ill health; his disease was a consumption. Toward
+	  <lb/>the close of his days, his sister who was a member of the
+	  <lb/>society, came and desired me to go and see her brother,
+	  <lb/>as she had no hopes of his recovery, perhaps the Lord
+	  <lb/>might break into his mind. I went alone, and found him
+	  <lb/>very low. I soon commenced to inquire respecting his
+	  <lb/>state of feeling, and how he found his mind. His answer
+	  <lb/>was, <said rend="pre(“)post(”)">O tolerable well,</said> with an air of great indifference
+	  <lb/>I asked him if I should pray for him. He answered in a
+	  <lb/>sluggish and careless manner, <said rend="pre(“)post(”)">O yes, if you have time.</said>
+	  <lb/>I then sung a hymn, kneeled down and prayed for him,
+	  <lb/>and then went my way.</p>
+        <p>Three days after this, I went again to visit the young
+	  <lb/>man. At this time there went with me two of the sisters
+	  <lb/>in Christ. We found the <persName>Rev. Mr. Cornish</persName>, of our de­
+	  <lb/>nomination, labouring with him. But he said he receiv­
+	  <lb/>ed but little satisfaction from him. Pretty soon, howev­
+	  <lb/>er, brother <persName>Cornish</persName> took his leave; when myself, with
+	  <lb/>the other two sisters, one of which was an elderly woman
+	  <lb/>named <persName>Jane Hutt</persName>, the other was younger, both coloured,
+	  <lb/>commenced conversing with him, respecting his eternal
+	  <lb/>interest, and of his hopes of a happy eternity, if any he
+	  <lb/>had. He said but little; we then kneeled down together
+	  <lb/>and besought the Lord in his behalf, praying that if mer­
+	  <lb/>cy were not clear gone forever, to shed a ray of softening
+	  <lb/>grace upon the hardness of his heart. He appeared now
+	  <lb/>to be somewhat more tender, and we thought we could
+	  <lb/>perceive some tokens of conviction, as he wished us to
+	  <lb/>visit him again, in a tone of voice not quite as indifferent
+	  <lb/>as he had hitherto manifested.</p>
+        <p>But two days had elapsed after this visit, when his
+	  <lb/>sister came, for me in haste, saying, that she believed her
+	  <lb/>brother was then dying, and that he had <mcr rend="slant(italic)">sent</mcr> for me. I
+	  <lb/>immediately called on <persName>Jane Hutt</persName>, who was still among us
+	  <lb/>as a mother in Israel, to go with me. When we arrived
+	  <lb/>there, we found him sitting up in his bed, very restless
+	  <lb/>and uneasy, but he soon laid down again. He now wish­
+	  <lb/>ed me to come to him, by the side of his bed. I asked
+	  <lb/>him how he was. He said, <said>Very ill</said>; and added, <said rend="pre(“)post(”)">Pray
+	  <lb/>for me, quick?</said>  We now perceived his time in this
+	  <lb/>world to be short. I took up the hymn-book, and opened
+	  <lb/>to a hymn suitable to his case, and commenced to sing.
+	  <lb/>But there seemed to be a <emph>horror</emph> in the room—a darkness
+	  <pb n="20"/>
+	  <milestone unit="sig" n="2(4)r"/>
+	  <mw rend="align(center)" type="pageNum">20</mw>
+	  <lb/>of a mental kind, which was felt by us all; there being
+	  <lb/>five persons, except the sick young man and his nurse.
+	  <lb/>We had sung but one verse, when they all gave over sing­
+	  <lb/>ing, on account of this unearthly sensation, but myself.
+	  <lb/>I continued to sing on alone, but in a dull and heavy man­
+	  <lb/>ner, though looking upon to God all the while for help.
+	  <lb/>Suddenly, I felt a spring of energy awake in my heart,
+	  <lb/>when darkness gave way in some degree. It was but a
+	  <lb/>glimmer from above. When the hymn was finished, we
+	  <lb/>all kneeled down to pray for him. While calling on the
+	  <lb/>name of the Lord, to have mercy on his soul, and to grant
+	  <lb/>him repentance unto life, it came suddenly into my mind
+	  <lb/>never to rise from my knees until God should hear pray­
+	  <lb/>er in his behalf, until he should convert and save his soul.</p>
+        <p>Now, while I thus continued importuning heaven, as I
+	  <lb/>felt I was led, a ray of light, more abundant, broke forth
+	  <lb/>among us. There appeared to my view, though my eyes
+	  <lb/>were closed, the Saviour in full stature, nailed to the
+	  <lb/>cross, just over the head of the young man, against the
+	  <lb/>ceiling of the room. I cried out, <said>brother look up, the
+	  <lb/>Saviour is come, he will pardon you, your sins he will
+	  <lb/>forgive.</said> My sorrow for the soul of the young man was
+	  <lb/>gone; I could no longer pray—joy and <choice><sic>and</sic><corr/></choice>rapture made
+	  <lb/>it impossible. We rose up from our knees, when lo, his
+	  <lb/>eyes were gazing with ecstacy upward; over his face
+	  <lb/>there was an expression of joy; his lips were clothed in
+	  <lb/>a sweet and holy smile; but no sound came from his
+	  <lb/>tongue; it was heard in its stillness of bliss; full of hope
+	  <lb/>and immortality. Thus, as I held him by the hand, his
+	  <lb/>happy and purified soul soared away, without a sigh or a
+	  <lb/>groan, to its eternal rest.</p>
+        <p>I now closed his eyes, straightened out his limbs, and
+	  <lb/>left him to be dressed for the grave. But as for me, I was
+	  <lb/>filled with the power of the Holy Ghost—the very room
+	  <lb/>seemed filled with glory. His sister and all that were in
+	  <lb/>the room rejoiced, nothing doubting but he had entered
+	  <lb/>into Paradise; and I believe I shall see him at the last
+	  <lb/>and great day, safe on the shores of salvation.</p>
+        <p>But to return to the subject of my call to preach.
+	  <lb/>Soon after this, as above related, the <persName>Rev. Richard Wil­
+	    <lb/>liams</persName> was to preach at <name>Bethel Church</name>, where I with
+	  <lb/>others were assembled. He entered the pulpit, gave out
+	  <lb/>the hymn, which was sung; and then addressed the throne
+	  <lb/>of grace; took his text, passed through the exordium,
+	  <pb n="21"/>
+	  <milestone unit="sig" n="2(4)v"/>
+	  <mw rend="align(center)" type="pageNum">21</mw>
+
+	  <lb/>and commenced to expound it. The text he took is in
+	  <bibl><regMe>Jonah. 2d chap. 9th verse</regMe></bibl>,—<quote rend="pre(“)post(”)">Salvation is of the 
+Lord.</quote><lb/>But as he proceeded, to explain, he seemed to have lost
+	  <lb/>the spirit; when in the same instant, I sprang, as by an
+	  <lb/>altogether, supernatural impulse, to my feet, when I was
+	  <lb/>aided from above to give an exhortation on the very text
+	  <lb/>which my brother <persName>Williams</persName> had taken.</p>
+        <p>I told them that I was like <persName>Jonah</persName>; for it had been then
+	  <lb/>nearly eight years since the Lord had called me to preach
+	  <lb/>his gospel to the fallen sons and daughters of <persName>Adam's</persName>
+	  <lb/>race, but that I had lingered like him, and delayed to go
+	  <lb/>at the bidding of the Lord, and warn those who are as
+	  <lb/>deeply guilty as were the people of <placeName>Ninevah</placeName>.</p>
+        <p>During the exhortation, God made manifest his power
+	  <lb/>in a manner sufficient to show the world that I was call­
+	  <lb/>ed to labour according to my ability, and the grace given
+	  <lb/>unto me, in the vineyard of the good husbandman.</p>
+        <p>I now sat down, scarcely knowing what I had done,
+	  <lb/>being frightened. I imagined, that for this indecorum,
+	  <lb/>as I feared it might be called, I should be expelled from
+	  <lb/>the church. But instead of this, the Bishop rose up in
+	  <lb/>the assembly, and related that I had called upon him
+	  <lb/>eight years before, asking to be permitted to preach, and
+	  <lb/>that he had put me off; but that he now as much be­
+	  <lb/>lieved that I was called to that work, as any of the
+	  <lb/>preachers present. These remarks greatly strengthened
+	  <lb/>me, so that my fears of having given an offence, and made
+	  <lb/>myself liable as an offender, subsided, giving place to a
+	  <lb/><choice><sic>a</sic><corr/></choice> sweet serenity, a holy joy of a peculiar kind, untasted
+	  <lb/>in my bosom until then.</p>
+        <p>The next <name>Sabbath</name> day, while sitting under the word of
+	  <lb/>the gospel, I felt moved to attempt to speak to the peo­
+	  <lb/>ple in a public manner, but I could not bring my mind
+	  <lb/>to attempt it in the church. I said, <said>Lord, anywhere but
+	  <lb/>here.</said> Accordingly, there was a house not far off which
+	  <lb/>was pointed out to me, to this I went. It was the house
+	  <lb/>of a sister belonging to the same society with myself.
+	  <lb/>Her name was <persName>Anderson</persName>. I told her I had come to hold
+	  <lb/>a meeting in her house, if she would call in her neigh­
+	  <lb/>bours. With this request she immediately complied.
+	  <lb/>My congregation consisted of but five persons. I com­
+	  <lb/>menced by reading and singing, a hymn, when I dropped
+	  <lb/>to my knees by the side of a table to pray. When I arose
+	  <lb/>I found my hand resting on the Bible, which I had not
+	  <pb n="22"/>
+	  <milestone unit="sig" n="2(5)r"/>
+	  <mw rend="align(center)" type="pageNum">22</mw>
+	  
+	  <lb/>noticed till that moment. It now occurred to me to take
+	  <lb/>a text. I opened the Scripture, as it happened, at the
+	  <lb/><regMe>141st Psalm</regMe>, fixing my eye on the 3d verse, which reads:
+	  <lb/><quote rend="pre(“)post(”)">Set a watch, O Lord, before my mouth, keep the door
+	    <lb/>of my lips.</quote>  My sermon, such as it was, I applied whol­
+	  <lb/>ly to myself, and added an exhortation. Two of my con­
+	  <lb/>gregation went much, as the fruit of my labour this time.
+	  <lb/>In closing I said to the few, that if any one would open a
+	  <lb/>door, I would hold a meeting the next sixth-day evening;
+	  <lb/>when one answered that her house was at my service.
+	  <lb/>Accordingly I went, and God made manifest his power
+	  <lb/>among the people. Some wept while others shouted for
+	  <lb/>joy. One whole seat of females, by the power of God,
+	  <lb/>as the rushing of a wind, were all bowed to the floor at
+	  <lb/>once, and screamed out. Also a sick man and woman
+	  <lb/>in one house, the Lord convicted them both; one lived,
+	  <lb/>and the other died. God wrought a judgment—some
+	  <lb/>were well at night, and died in the morning. At this
+	  <lb/>place I continued to hold meetings about six months.
+	  <lb/>During that time I kept house with my little son, who was
+	  <lb/>very sickly. About this time I had a call to preach at a
+	  <lb/>place about thirty miles distant, among the <name>Methodists</name>,
+	  <lb/>with whom I remained one week, and during the whole
+	  <lb/>time, not a thought of my little son came into my mind;
+	  <lb/>it was hid from me, lest I should have been diverted from
+	  <lb/>the work I had to do, to look after my son. Here by the
+	  <lb/>instrumentality of a poor coloured woman, the Lord
+	  <lb/>poured forth his spirit among the people. Though, as I
+	  <lb/>was told, there were lawyers, doctors, and magistrates
+	  <lb/>present to hear me speak, yet there was mourning and
+	  <lb/>crying among sinners, for the Lord scattered fire among
+	  <lb/>them of his own kindling. The Lord gave his hand­
+	  <lb/>maiden power to speak for his great name, for he arrest­
+	  <lb/>ed the hearts of the people, and caused a shaking amongst
+	  <lb/>the multitude, for God was in the midst.</p>
+        <p>I now returned home, found all well; no harm had come to my child,
+	  <lb/>although I left it very sick. Friends had taken care of it which was of
+	  <lb/>the Lord. I now began to think seriously of breaking up housekeeping,
+	  <lb/>and forsaking all to preach the everlasting Gospel. I felt a strong desire
+	  <lb/>to return to the place of my nativity, at <placeName>Cape May</placeName>, after an absence of
+	  <lb/>about fourteen years. To this place, where the heaviest cross was to be
+	  <lb/>met with, the Lord sent me, as <persName>Saul</persName> of <placeName>Tarsus</placeName> was sent to
+<placeName>Jerusalem</placeName>, to
+	    <lb/>preach the same gospel which he had neglected and despised before his
+	  <lb/>conversion. I went by water, and on my passage was much distressed by
+	  <lb/>sea sickness, so much so that I expected to have died, but such was not
+	  <lb/>the will of the Lord respecting me. After I had disembarked, I proceeded
+	  <pb n="23"/>
+	  <milestone unit="sig" n="2(5)v"/>
+	  <mw rend="align(center)" type="pageNum">23</mw>
+	  <lb/>on as opportunities offered, toward where my mother lived. When with­
+	  <lb/>in ten miles of that place, I appointed an evening meeting. There were
+	  <lb/>a goodly number came out to hear. The Lord was pleased to give me
+	  <lb/>light and liberty among the people. After meeting, there came an elder­
+	  <lb/>ly lady to me and said, she believed the Lord had sent me among them;
+	  <lb/>she then appointed me another meeting there two weeks from that night.
+	  <lb/>The next day I hastened forward to the place of my mother, who was
+	  <lb/>happy to see me, and the happiness was mutual between us. With her
+	  <lb/>I left my poor sickly boy, while I departed to do my Master's will. In
+	  <lb/>this neighborhood I had an uncle, who was a <name>Methodist</name>, and who gladly
+	  <lb/>threw open his door for meetings to be held there. At the first meeting
+	  <lb/>which I held at my uncle's house, there was, with others who had come
+	  <lb/>from curiosity to hear the coloured woman preacher, an old man, who
+	  <lb/>was a <name>deist</name>, and who said he did not believe the coloured people had any
+	  <lb/>souls—he was sure they had none. He took a seat very near where I
+	  <lb/>was standing, and boldly tried to look me out of countenance. But as I
+	  <lb/>laboured on in the best manner I was able, looking to God all the while,
+	  <lb/>though it seemed to me I had but little liberty, yet there went an arrow
+	  <lb/>from the bent bow of the gospel, and fastened in his till then obdurate
+	  <lb/>heart. After I had done speaking, he went out, and called the people
+	  <lb/>around him, said that my preaching might seem a small thing, yet he be­
+	  <lb/>lieved I had the worth of souls at heart.  This language was different
+	  <lb/>from what it was a little time before, as he now seemed to admit that col­
+	  <lb/>oured people had souls, as it was to these I was chiefly speaking; and un­
+	  <lb/>less they had souls, whose good I had in view, his remark must have been
+	  <lb/>without meaning.  He now came into the house, and in the most friend­
+	  <lb/>ly manner shook hands with me, saying, he hoped God had spared him
+	  <lb/>to some good purpose.  This man was a great slave holder, and had been
+	  <lb/>very cruel; thinking nothing of knocking down a slave with a fence stake,
+	  <lb/>or whatever might come to hand.  From this time it was said of him that	 
+	  <lb/>he became greatly altered in his ways for the better.  At that time he was
+	  <lb/>about seventy years old, his head as white as snow; but whether he be­
+	  <lb/>came a converted man or not, I never heard.</p>
+        <p>The week following, I had an invitation to hold a meeting at the <name>Court
+	  <lb/>House of the County</name>, when I spoke from the <bibl><regMe>53rd chap. of Isaiah, 3d verse</regMe></bibl>.
+	  <lb/>It was a solemn time, and the Lord attended the word; I had life and lib­
+	  <lb/>erty, though there were people there of various denominations. Here
+	  <lb/>again I saw the aged slaveholder, who notwithstanding his age, walked
+	  <lb/>about three miles to hear me. This day I spoke twice, and walked six
+	  <lb/>miles to the place appointed. There was a magistrate present, who show­
+	  <lb/>ed his friendship, by saying in a friendly manner, that he had heard of
+	  <lb/>me; he handed me a hymnbook, pointing to a hymn which he had select­
+	  <lb/>ed. When the meeting was over, he invited me to preach in a schoolhouse
+	  <lb/>in his neighbourhood, about three miles distant from where I then was.
+	  <lb/>During this meeting one backslider was reclaimed. This day I walked
+	  <lb/>six miles, and preached twice to large congregations, both in the morning
+	  <lb/>and evening. The Lord was with me, glory be to his holy name. I next
+	  <lb/>went six miles and held a meeting in a coloured friend's house, at eleven
+	  <lb/>o'clock in the morning, and preached to a well behaved congregation of
+	  <lb/>both coloured and white. After service I again walked back, which was
+	  <lb/>in all twelve miles in the same day. This was on <name>Sabbath</name>, or as I some­
+	  <pb n="24"/>
+	  <milestone unit="sig" n="2(6)r"/>
+	  <mw rend="align(center)" type="pageNum">24</mw>
+	  <lb/>times call it, seventh-day; for after my conversion I preferred the plain
+	  <lb/>language of the <name>quakers</name>. On fourth day, after this, in compliance with an
+	  <lb/>invitation received by note, from the same magistrate who had heard me
+	  <lb/>at the above place, I preached to a large congregation, where we had a
+	  <lb/>previous time: much weeping was heard among the people. The same
+	  <lb/>gentleman, now at the close of the meeting gave out another appointment
+	  <lb/>at the same place, that day week. Here again I had liberty, there was a
+	  <lb/>move among the people. Ten years from that time, in the neighbour­
+	  <lb/>hood of <placeName>Cape May</placeName>, I held a prayer meeting in a school house, which
+<supplied reason="flawed-reproduction">was</supplied>
+	  <lb/>then the regular place of preaching for the <name>Episcopal Methodists</name>;
+<supplied reason="flawed-reproduction">after</supplied>
+	  <lb/>service, there came a white lady of the first distinction, a member of the
+	  <lb/><orgName>Methodist Society</orgName>, and told me that at the same school-house, ten years
+	  <lb/>before, under my preaching, the Lord first awakened her. She rejoiced
+	  <lb/>much to see me, and invited me home with her, where I staid till the next
+	  <lb/>day. This was bread cast on the waters, seen after many days.</p>
+        <p>From this place I next went to <placeName>Dennis Creek</placeName> meeting house, where at
+	  <lb/>the invitation of an elder, I spoke to a large congregation of various and
+	  <lb/>conflicting sentiments, when a wonderful shock of God's power was felt,
+	  <lb/>shown everywhere by groans, by sighs, and loud and happy amens. I
+	  <lb/>felt as if aided from above. My tongue was cut loose, the stammerer
+	  <lb/>spoke freely; the love of God, and his service, burned with a vehement
+	  <lb/>flame within me—his name was glorified among the people.</p>
+        <p>But here I feel myself constrained to give over, as from the smallness of
+	  <lb/>this pamphlet I cannot go through with the whole of my journal, as it
+	  <lb/>would probably make a volume of two hundred pages; which, if the Lord
+	  <lb/>be willing, may at some future day be published. But for the satisfaction
+	  <lb/>of such as may follow after me, when I am no more, I have recorded how
+	  <lb/>the Lord called me to his work, and how he has kept me from falling from
+	  <lb/>grace, as I feared I should. In all things he has proved himself a God of
+	  <lb/>truth to me; and in his service I am now as much determined to spend
+	  <lb/>and be spent, as at the very first. My ardour for the progress of his cause
+	  <lb/>abates not a whit, so far as I am able to judge, though I am now something
+	  <lb/>more than fifty years of age.</p>
+        <p>As to the nature of uncommon impressions, which the reader cannot
+	  <lb/>but have noticed, and possibly sneered at in the course of these pages,
+	  <lb/>they may be accounted for in the way: It is known that the blind have
+	  <lb/>the sense of hearing in a manner much more acute than those who can
+	  <lb/>see: also their sense of feeling is exceedingly fine, and is found to detect
+	  <lb/>any roughness on the smoothest surface, where those who can see can find
+	  <lb/>none. So it may be with such as <emph>I</emph> am, who has never had more than
+	  <lb/>three months schooling; and wishing to know much of the way and law
+	  <lb/>of God, have therefore watched the more closely, the operations of the
+	  <lb/>Spirit, and have in consequence been led thereby. But let it be remarked
+	  <lb/>that <emph>I</emph> have never found that Spirit to lead me contrary to the Scriptures of
+	  <lb/>truth as <emph>I</emph> understand them. <quote rend="pre(“)post(”)">For as many as are led by the
+<emph>Spirit</emph> of
+	    <lb/>God are the sons of God.</quote>—<bibl><regMe>Rom. viii, 14</regMe></bibl>.</p>
+        <p>I have now only to say, May the blessing of the Father, and of the Son,
+	  <lb/>and of the Holy Ghost, accompany the reading of the poor effort to speak
+	  <lb/>well of his name, wherever it may be read. <mcr rend="case(allcaps)">Amen</mcr>.</p>
+      </div>
+      <trailer rend="break(yes)case(allcaps)align(center)">Finis.</trailer>
+    </body>
+  </text>
+</TEI>

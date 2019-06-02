@@ -1,0 +1,3419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/wwp-store.rng"    type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../schema/wwp-store.isosch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- $Id: clarke.cornell.xml 31962 2017-06-23 22:20:54Z syd $ -->
+<TEI xmlns="http://www.wwp.northeastern.edu/ns/textbase" xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en">
+  <teiHeader xml:id="TR00111.hdr">
+    <fileDesc>
+      <titleStmt>
+        <title type="main">Sarah Maria Cornell, or The Fall River Murder, 1833</title>
+        <author>
+          <persName ref="p:mclarke.wtn" type="person-female">Clarke, Mary Carr</persName>
+        </author>
+        <sponsor>Brown University</sponsor>
+        <sponsor>Northeastern University</sponsor>
+      </titleStmt>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPedition)"/>    
+      <publicationStmt>
+        <publisher>Northeastern University Women Writers Project</publisher>
+        <address>
+          <addrLine>SL 213</addrLine>
+          <addrLine>Northeastern University</addrLine>
+          <addrLine>360 Huntington Avenue</addrLine>
+          <addrLine>Boston, MA  02115-5005</addrLine>
+          <addrLine>USA</addrLine>
+          <addrLine>url:mailto:wwp@neu.edu</addrLine>
+          <addrLine>url:http://www.wwp.northeastern.edu/</addrLine>
+        </address>
+        <idno type="WWP">TR00111</idno>
+        <idno type="URL">http://www.wwp.northeastern.edu/texts/clarke.cornell.html</idno>
+        <xi:include href="../common-boilerplate.xml" xpointer="element(WWPavailability)"/>
+        <date when="2009-12-12"/>
+      </publicationStmt>
+      <sourceDesc n="OT00111">
+        <biblStruct>
+          <monogr>
+            <author>
+              <persName ref="p:mclarke.wtn" type="titlePage">Mrs. M. Clarke</persName>
+              <persName ref="p:mclarke.wtn" type="regularized">Clarke, Mary Carr</persName>
+            </author>
+            <title>Sarah Maria Cornell, or the Fall River murder</title>
+            <edition>First edition</edition>
+            <idno type="mh">AL 1055.6.21.10</idno>
+            <imprint>
+              <pubPlace>New York</pubPlace>
+              <publisher>
+                <persName ref="p:unknown.zzx">[s.n.]</persName>
+              </publisher>
+              <date when="1813"/>
+            </imprint>
+            <extent>
+              <measure unit="page" quantity="48"/>
+            </extent>
+          </monogr>
+        </biblStruct>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPprojectDescription)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPsamplingDeclaration)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPeditorialDeclaration)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPcharacterDeclaration)"/>
+      <tagsDecl>
+        <rendition xml:id="r.it" selector="">slant(italic)</rendition>
+        <rendition xml:id="r.speaker" selector="speaker">slant(italic)break(no)</rendition>
+        <rendition xml:id="r.nobreak" selector="p">break(no)</rendition>
+        <rendition xml:id="r.stage" selector="stage">slant(italic)pre(\()post(\))break(no)</rendition>
+        <rendition xml:id="r.head" selector="head">break(yes)align(center)case(allcaps)</rendition>
+        <rendition xml:id="r.pagenumber" selector="mw">align(outside)</rendition>
+        <rendition xml:id="r.speech" selector="sp">first-indent(1)break(yes)</rendition>
+      </tagsDecl>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPclassificationDeclaration)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPlistPrefixDefinitions)"/>
+    </encodingDesc>
+    <profileDesc>
+      <textClass>
+        <catRef type="main" target="#G.drama"/>
+        <catRef type="other" target="#G.drama.prose"/>
+      </textClass>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPcalendarDescription)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPlangUsage)"/>
+    </profileDesc>
+    <revisionDesc>
+      <change n="RCS-1.57" when="2010-12-08" who="p:npeterson.gwx">added <att>type</att> to docRole.</change>
+      <change n="RCS:1.54" when="2010-01-04" who="p:jmelson.nep">corrected spelling of "villain" on p. 46 and removed unnecessary <gi>sic</gi> and <gi>corr</gi> encoding</change>
+      <change n="RCS:1.51" when="2009-12-14" who="p:jmelson.nep">changed AElig to aelig in cast list header; corrected spacing after stage directions.</change>
+      <change n="RCS:1.48" when="2009-12-09" who="p:jmelson.nep">fixed publisher in monogr</change>
+      <change n="RCS:1.47" when="2009-12-08" who="p:jmelson.nep">Corrections entry from third proofing round (by Wendy Lee) and validation.</change>
+      <change n="RCS:1.46" when="2009-07-20" who="p:jmelson.nep">minor corrections and fixes from checking round; a number of transcription errors slipped through first and second
+ proofing, so a final proofreading round is probably needed before publication</change>
+      <change n="RCS:1.45" when="2009-07-16" who="p:smarth.dkp">finished second correx entry and supravalidation</change>
+      <change n="RCS:1.44" when="2009-07-09" who="p:smarth.dkp">began supravalidation</change>
+      <change n="RCS:1.43" when="2009-07-09" who="p:smarth.dkp">correx entry through 55 in proof</change>
+      <change n="RCS:1.42" when="2009-07-08" who="p:smarth.dkp">correx entry</change>
+      <change n="RCS:1.41" when="2009-07-08" who="p:smarth.dkp">correx entry</change>
+      <change n="RCS:1.40" when="2009-07-07" who="p:smarth.dkp">began second proof correx entry</change>
+      <change n="RCS:1.38" when="2008-06-03" who="p:sbauman.emt">Checked in corrections entry Amanda performed using
+	oXygen on a Mac</change>
+      <change n="RCS:1.37" when="2007-10-23" who="p:jwernimon.lrv">ran break long lines</change>
+      <change n="RCS:1.36" when="2007-09-10" who="p:kholt.apc">supra finished, headed for proofreading</change>
+      <change n="RCS:1.33" when="2007-07-06" who="p:kholt.apc">finished supra</change>
+      <change n="RCS:1.32" when="2007-07-03" who="p:kholt.apc">supra continued</change>
+      <change n="RCS:1.31" when="2007-07-02" who="p:kholt.apc">supravalidation through line 1788</change>
+      <change n="RCS:1.25" when="2007-04-26" who="p:kholt.apc">finished encoding, ready to supravalidate</change>
+      <change n="RCS:1.24" when="2007-04-20" who="p:kholt.apc">Encoded and validated through p 48</change>
+      <change n="RCS:1.23" when="2007-04-13" who="p:kholt.apc">encoded through p. 44</change>
+      <change n="RCS:1.22" when="2007-04-12" who="p:kholt.apc">encoded and validated through p. 44</change>
+      <change n="RCS:1.21" when="2007-04-06" who="p:kholt.apc">encoded and validated throgh p 36</change>
+      <change n="RCS:1.20" when="2007-04-05" who="p:kholt.apc">encoded and validated through p. 32</change>
+      <change n="RCS:1.20" when="2007-03-23" who="p:kholt.apc">encoded and validated through p. 30</change>
+      <change n="RCS:1.19" when="2007-03-22" who="p:kholt.apc">validated through page 27</change>
+      <change n="RCS:1.18" when="2007-03-16" who="p:kholt.apc">encoded through top of page 24. problems from yesterday fixed. validated through top of p. 24</change>
+      <change n="RCS:1.17" when="2007-03-15" who="p:kholt.apc">coded through page 21. I have a validation question concerning elements at end of the document</change>
+      <change n="RCS:1.16" when="2007-03-09" who="p:kholt.apc">fixed scene changes and corrected errors from previous session, validated through page 18</change>
+      <change n="RCS:1.15" when="2007-03-08" who="p:kholt.apc">answered questions, validated through page 17</change>
+      <change n="RCS:1.14" when="2007-03-07" who="p:kholt.apc">Added new text through page 17. Need to work out questions makred by comments so not yet validated</change>
+      <change n="RCS:1.12" when="2007-02-23" who="p:kholt.apc">encoded new text through page 16, not validated yet due to character info questions</change>
+      <change n="RCS:1.9" when="2007-02-15" who="p:kholt.apc">changed rend defaults, began changing line breaks</change>
+      <change n="RCS:1.7" when="2007-02-08" who="p:jflanders.lfw">Added TEI header information, validated file and fixed errors.</change>
+      <change n="RCS:1.3" when="2006-07-19" who="p:mkohnen.shl">continued transcription</change>
+      <change n="RCS:1.2" when="2006-07-18" who="p:mkohnen.shl">continued transcription</change>
+      <change n="RCS:1.2" when="2006-07-18" who="p:mkohnen.shl">began transcription</change>
+    </revisionDesc>
+  </teiHeader>
+  <text xml:id="TR00111">
+    <hyperDiv>
+<castList>
+        <castItem>
+          <role xml:id="girl1" gender="female">1st Girl</role>
+        </castItem>
+        <castItem>
+          <role xml:id="girl2" gender="female">2d Girl</role>
+        </castItem>
+        <castItem>
+          <role xml:id="girl3" gender="female">3d Girl</role>
+        </castItem>
+        <castItem>
+          <role xml:id="girls" gender="female">Girls</role>
+        </castItem>
+        <castItem>
+          <role xml:id="all" gender="mixed">All</role>
+        </castItem>
+        <castItem>
+          <role xml:id="elder" gender="male">Elder</role>
+        </castItem>
+        <castItem>
+          <role xml:id="neverflinch" gender="male">Neverflinch</role>
+        </castItem>
+        <castItem>
+          <role xml:id="officer" gender="male">Officer</role>
+        </castItem>
+        <castItem>
+          <role xml:id="elders" gender="male">Elders</role>
+        </castItem>
+        <castItem>
+          <role xml:id="postboy" gender="male">Post Boy</role>
+        </castItem>
+        <castItem>
+          <role xml:id="voice" gender="unknown">Voice</role>
+        </castItem>
+        <castItem>
+          <role xml:id="man1" gender="male">1st Man</role>
+        </castItem>
+        <castItem>
+          <role xml:id="man2" gender="male">2d. Man</role>
+        </castItem>
+        <castItem>
+          <role xml:id="borden" gender="female">Mrs. Borden</role>
+        </castItem>
+        <castItem>
+          <role xml:id="gifford" gender="male">Gifford</role>
+        </castItem>
+        <castItem>
+          <role xml:id="woman1" gender="female">1st Woman</role>
+        </castItem>
+        <castItem>
+          <role xml:id="william" gender="male">William</role>
+        </castItem>
+        <castItem>
+          <role xml:id="judge" gender="male">Judge</role>
+        </castItem>
+        <castItem>
+          <role xml:id="betsy" gender="female">Betsy</role>
+        </castItem>
+      </castList></hyperDiv>
+    <front>
+      <pb n="1"/>
+      <milestone unit="sig" n="1(1)r"/>
+      <titleBlock rend="align(center)">
+        <titlePart>Sarah Maria Cornell,</titlePart>
+        <titlePart type="alt">or the
+	      <lb/>Fall River Murder.</titlePart>
+        <titlePart rend="slant(italic)" type="desc">A Domestic Drama,</titlePart>
+        <titlePart type="desc">In Three Acts</titlePart>
+        <epigraph rend="indent(2)align(left)">
+          <lg type="indeterminate">
+            <l>Let not a cloud obscure the murderer's crime,</l>
+            <l>But hunt him hence from clime to clime.</l>
+          </lg>
+        </epigraph>
+        <respLine rend="case(allcaps)pre(#rule)post(#rule)">By <docRole type="author"><persName>Mrs. M. Clarke</persName>,</docRole>
+	  <lb/>Authoress of <title>The Fair Americans</title>, <title>Benevolent
+	  <lb/>Lawyers</title>, &amp;c.</respLine>
+        <docImprint rend="case(allcaps)"><pubPlace>New York</pubPlace>:
+	  <lb/>Published and sold, wholesale and retail, at
+	  <lb/><placeName>No.5 Chatham Square</placeName>.
+	  <lb/><docDate rend="pre(#rule)" when="1833">1833</docDate></docImprint>
+        <docAuthorization rend="pre([)post(])">copyright secured.</docAuthorization>
+      </titleBlock>
+      <pb n="2"/>
+      <milestone unit="sig" n="1(1)v"/>
+      <div type="castlist">
+        <head>Dramatis Personæ.</head>
+        <castList>
+          <castGroup rend="braced()">
+            <castItem>
+              <role xml:id="averio" gender="male"><persName>Mr. Averio</persName>,</role>
+            </castItem>
+            <castItem>
+              <role xml:id="muffitt" gender="male"><persName>Mr. Muffitt</persName>,</role>
+            </castItem>
+            <castItem>
+              <role xml:id="jenks" gender="male"><persName>Brother Jenks</persName>,</role>
+            </castItem>
+            <castItem>
+              <role xml:id="elder1" gender="male"><persName>1st. Elder</persName>,</role>
+            </castItem>
+            <castItem>
+              <role xml:id="elder2" gender="male"><persName>2d. Elder</persName>,</role>
+            </castItem>
+            <roleDesc>Methodists.</roleDesc>
+          </castGroup>
+          <castItem>
+            <role xml:id="thornhill" gender="male"><persName>Mr. Thornhill</persName>,</role>
+            <roleDesc>a Magistrate.</roleDesc>
+          </castItem>
+          <castItem>
+            <role xml:id="houseman" gender="male"><persName>Mr. Houseman</persName>,</role>
+            <roleDesc>a Farmer.</roleDesc>
+          </castItem>
+          <castGroup rend="braced()">
+            <castItem>
+              <role xml:id="jonathan" gender="male"><persName>Jonathan</persName>,</role>
+            </castItem>
+            <castItem>
+              <role xml:id="hozey" gender="male"><persName>Hozey</persName>,</role>
+            </castItem>
+            <roleDesc>his Sons.</roleDesc>
+          </castGroup>
+          <castItem>
+            <role xml:id="allen" gender="male"><persName>Mr. Allen</persName>.</role>
+          </castItem>
+          <castItem>
+            <role xml:id="geffard" gender="male"><persName>Mr. Geffard</persName>.</role>
+          </castItem>
+          <castItem>
+            <role xml:id="coroner" gender="male"><persName>Coroner</persName>.</role>
+          </castItem>
+          <castItem>
+            <role xml:id="durfre" gender="male"><persName>Mr. Durfre</persName>.</role>
+          </castItem>
+          <castItem rend="pre([)post(])slant(italic)break(no)">
+            <roleDesc>Country Men, Officers, Judge, &amp;c</roleDesc>
+          </castItem>
+          <castGroup>
+            <head rend="case(smallcaps)align(center)">Women.</head>
+            <castItem>
+              <role xml:id="cornell" gender="female"><persName>Sarah M. Cornell</persName>.</role>
+            </castItem>
+            <castItem>
+              <role xml:id="mrshouseman" gender="female"><persName>Mrs. Houseman</persName>.</role>
+            </castItem>
+            <castItem>
+              <role xml:id="mary" gender="female"><persName>Mary</persName>,</role>
+              <roleDesc>her Daughter.</roleDesc>
+            </castItem>
+            <castItem>
+              <role xml:id="tabby" gender="female"><persName>Tabby</persName>,</role>
+              <roleDesc>her
+<choice><sic>Neice</sic><corr>Niece</corr></choice>.</roleDesc>
+            </castItem>
+            <castItem>
+              <role xml:id="patton" gender="female">
+                <persName>Mrs. Patton</persName>
+              </role>
+            </castItem>
+            <castItem>
+              <role xml:id="phebe" gender="female"><persName>Phebe</persName>,</role>
+              <roleDesc>her Daughter.</roleDesc>
+            </castItem>
+            <castItem>
+              <role xml:id="else" gender="female">
+                <persName>Else</persName>
+              </role>
+            </castItem>
+            <castItem rend="pre([)post(])slant(italic)break(yes)">
+              <roleDesc>Factory Girls</roleDesc>
+            </castItem>
+          </castGroup>
+        </castList>
+      </div>
+    </front>
+    <body>
+      <pb n="3"/>
+      <milestone unit="sig" n="1(2)r"/>
+      <head rend="case(allcaps)"><persName>Sarah M. Cornell</persName>;</head>
+      <head rend="case(allcaps)" type="sub"><hi rend="case(smallcaps)">or</hi><lb/>The Fall River Murder.</head>
+      <div rend="pre(#rule)" type="act">
+        <div type="scene">
+          <head>Act I.—Scene I.</head>
+          <stage type="setting entrance business" rend="break(yes)pre()post(])">An extensive Manufactory—time, sunrise. Several
+<lb/>girls enter, and after saluting each other, com­
+	    <lb/>mence working.</stage>
+          <sp who="#girl1">
+            <speaker>1st Girl.</speaker>
+            <p>—I wonder where Sarah stays this morn­
+<lb/>ing; she is not usually so late.</p>
+          </sp>
+          <sp who="#girl2">
+            <speaker>2d Girl.</speaker>
+            <p>—Oh, here she comes.</p>
+          </sp>
+          <stage rend="pre()post()break(yes)" type="entrance business"><hi rend="case(smallcaps)slant(upright)">Enter
+	      <persName>Sarah M. Cornell</persName></hi>—<hi rend="pre(\()post(\))slant(italic)">speaks as she en­
+<lb/>ters.</hi></stage>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>—Good morning sisters. I have been a 
+<lb/>lazy girl; you  have got a-head of me.</p>
+          </sp>
+          <sp who="#girl1">
+            <speaker>1st Girl.</speaker>
+            <p>—What detained you Sarah? you are
+<lb/>not usually behind us at work.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>—I have had such a dreadful dream, that,
+<lb/>were I inclined to superstition, I should fancy I was
+<lb/>to be murdered!</p>
+          </sp>
+          <sp who="#girls">
+            <speaker>Girls.</speaker>
+            <p>—<stage type="delivery">frightened</stage>—Horrid!—come, tell your
+<lb/>dream.—<stage type="business">they gather round her</stage></p>
+          </sp>
+          <sp who="#girl1">
+            <speaker>1st Girl.</speaker>
+            <p>—Did you see old <name>Satan</name>, <persName>Sarah</persName>?</p>
+          </sp>
+          <sp who="#girl2">
+            <speaker>2d Girl.</speaker>
+            <p>—Pshaw! he only visits bad folks. <persName>Sa­
+<lb/>rah</persName> we know is good, virtuous and industrious.</p>
+          </sp>
+          <pb n="4"/>
+          <milestone unit="sig" n="1(2)v"/>
+          <mw type="pageNum">
+            <choice>
+              <sic>5</sic>
+              <corr>4</corr>
+            </choice>
+          </mw>
+          <sp who="#cornell">
+            <speaker>Sarah</speaker>
+            <p>—<stage type="delivery">sadly</stage> Yet I know I am human, there­
+<lb/>fore prone to evil, and if I err, may I receive the
+<lb/>punishment I merit.</p>
+          </sp>
+          <sp who="#girl2">
+            <speaker>2d Girl.</speaker>
+            <p>—But do tell your dream. O, I do so
+<lb/>love to hear <persName>Sarah</persName> talk.</p>
+          </sp>
+          <sp who="#girl1">
+            <speaker>1st Girl.</speaker>
+            <p>Come now, tell us, that's a dear good
+<lb/>creature.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>No, no—you will all hate and despise
+<lb/>me if I tell you.</p>
+          </sp>
+          <sp who="#girl3">
+            <speaker>3d Girl.</speaker>
+            <p>What! hate you for a dream? impos­
+<lb/>sible! Why <persName>Sarah</persName>, I could not hate you if I would.
+<lb/>Don't you remember last winter, when I was sick a
+<lb/>whole week, how you did my work and your own
+<lb/>too—kept my place for me, and brought my wages
+<lb/>to mother every Saturday night.</p>
+          </sp>
+          <sp who="#girl1">
+            <speaker>1st Girl.</speaker>
+            <p>Yes, and you know, <persName>Sarah</persName>, it was you
+<lb/>that learn'd me to work;  so I am sure I could never
+<lb/>be so ungrateful as to despise you;  pray now do
+<lb/>not say so.</p>
+          </sp>
+          <sp who="#girl2">
+            <speaker>2d Girl.</speaker>
+            <p><persName>Sarah</persName>, you lent my mother money to
+<lb/>buy her wood this winter; so how can I be so wick­
+<lb/>ed as ever to hate you?</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah</speaker>
+            <p>—<stage type="delivery">cheerfully</stage> Well, there's dear good girls,
+<lb/>you all love me now; but if I was a naughty girl,
+<lb/>what then?</p>
+          </sp>
+          <sp who="#girls">
+            <speaker>Girls.</speaker>
+            <p>We will never forsake you.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah</speaker>
+            <p>—<stage type="delivery">in tears</stage> Thank you all, and now I
+<lb/>will tell you: I dream'd that I was at camp-meeting,
+<lb/>and that the <placeName>Bristol</placeName> minister killed me for saying
+<lb/>that he was the father of my child.</p>
+          </sp>
+          <sp who="#girls">
+            <speaker>Girls</speaker>
+            <p>—<stage type="delivery">laughing.</stage>What nonsense;  <persName>Mr. Ave­
+<lb/>rio</persName> is a married man, has a handsome wife, and
+<lb/>two fine children.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>What sort of a looking man is he?</p>
+          </sp>
+          <pb n="5"/>
+          <milestone unit="sig" n="1(3)r"/>
+          <mw type="pageNum">5</mw>
+          <sp who="#girl2">
+            <speaker>2d Girl.</speaker>
+            <p>A tall, dark complexioned man, of an
+<lb/>austere countenance, with great black eyes that al­
+<lb/>most pierces into your very heart. I don't like him.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>The very person I fancied shot me, and
+<lb/>then carried me on his shoulders all over the world
+<lb/>after I was dead and buried.</p>
+          </sp>
+          <sp who="#girl3">
+            <speaker>3d Girl.</speaker>
+            <p>Pshaw, nonsense! it was only a dream,
+<lb/>that can't hurt you. But, <persName>Sarah</persName>, I would not go
+<lb/>to a camp-meeting if I was you.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah</speaker>
+            <p>I won't; nor don't you, <persName>Jane</persName>.</p>
+          </sp>
+          <sp who="#girl2">
+            <speaker>2d Girl.</speaker>
+            <p>Po, nonsense! what, because you
+<lb/>dreamed what can never come true, must I deprive
+<lb/>myself of a pleasure? No, no, nor you shan't nei­
+<lb/>ther.—<stage type="business">Bell rings.</stage></p>
+          </sp>
+          <sp who="#girl3">
+            <speaker>3d Girl.</speaker>
+            <p>Oh dear, there's the breakfast bell—I <lb/>am glad, for I 
+      am so hungry.</p>
+          </sp>
+          <sp who="#girl1">
+            <speaker>1st Girl.</speaker>
+            <p>So am I.<stage type="exit">Exit all but <persName>Sarah</persName></stage></p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah</speaker>
+            <p>—<stage type="delivery">solus.</stage> Would that I could shake off
+<lb/>this distressing feeling and be myself again. But
+<lb/>in vain. Supersti<choice><sic/><corr>ti</corr></choice>ous apprehension of impending
+<lb/>evil hangs on my spirits and damps all energy. The
+<lb/><mcr rend="slant(italic)">blues</mcr> have got complete possession of my mind,
+<lb/>and unless I can expel them by singing, I shall be
+<lb/>miserable all day. But I will try the powers of
+<lb/>song.—<stage type="delivery exit">sings any song she pleases, and exits.</stage></p>
+          </sp>
+        </div>
+        <div type="scene">
+          <stage rend="pre([)post(])indent(1)first-indent(0)slant(italic)break(yes)" type="setting entrance business">Scene changes to a farm-house—view of an
+ extensive 
+<lb/>hill of rocks—men discovered on the rocks at a dis­
+<lb/>tance at work blowing rocks—in the side scene a 
+<lb/>garden—further on a large haystack—<placeName>Fall river</placeName> 
+<lb/>at a great distance.</stage>
+          <stage type="entrance modifier business" rend="align(center)pre()post()break(yes)"><hi rend="slant(upright)"><hi rend="case(smallcaps)">Enter</hi> <persName rend="case(smallcaps)">Mary</persName> and
+	      <persName rend="case(smallcaps)">Tabathy</persName></hi> <hi rend="slant(italic)">with milk pails</hi>. They
+<lb/> set them down.</stage>
+          <sp who="#tabby">
+            <speaker>Tab.</speaker>
+            <p>Oh, <persName>Mary</persName>, I had a horrid dream last night</p>
+          </sp>
+          <mw type="sig">1*</mw>
+          <pb n="6"/>
+          <milestone unit="sig" n="1(3)v"/>
+          <mw type="pageNum">6</mw>
+          <sp who="#mary">
+            <speaker>Mary.</speaker>
+            <p>A dream, <persName>Tabby</persName>? Oh, do tell.</p>
+          </sp>
+          <sp who="#tabby">
+            <speaker>Tab.</speaker>
+            <p>Why, I dreamt that a girl was killed on our 
+<lb/>haystack.</p>
+          </sp>
+          <sp who="#mary">
+            <speaker>Mary.</speaker>
+            <p>Oh, horrid, I will never go near it again.</p>
+          </sp>
+          <sp who="#tabby">
+            <speaker>Tab.</speaker>
+            <p>Nor I, depend upon it. But come, <persName>Mary</persName>,
+<lb/>let's go and milk the cows, for here comes <persName>Jonathan</persName>
+<lb/>and <persName>Hozey.</persName> <stage rend="pre([)post()slant(italic)align(right)" type="exit">Exeunt Girls.</stage></p>
+          </sp>
+          <stage type="entrance" rend="break(yes)align(center)pre()post()"><hi rend="case(smallcaps)slant(upright)">Enter
+<persName>Jonathan</persName></hi> and <hi rend="case(smallcaps)slant(upright)"><persName>Hozey.</persName></hi></stage>
+          <sp who="#jonathan">
+            <speaker>Jon.</speaker>
+            <p>I say, <persName>Hozey</persName>, hadn't we best get all 
+<lb/>the stones off the ground before we goes to ploughing 
+<lb/>this fall?</p>
+          </sp>
+          <sp who="#hozey">
+            <speaker>Hozey.</speaker>
+            <p>Yes, Don'ty, I thinks as how we had. 
+<lb/>But I guess we shall have a tough job on't.</p>
+          </sp>
+          <sp who="#jonathan">
+            <speaker>Jon.</speaker>
+            <p>Why, you tarnal lazy fellow, you don't 
+<lb/>mind work, do you?</p>
+          </sp>
+          <sp who="#hozey">
+            <speaker>Hozey.</speaker>
+            <p>I don't see as how a body needs to kill 
+<lb/>themselves to keep themselves, not I; but I am as 
+<lb/>ready to job as another if I can get any thing by it.</p>
+          </sp>
+          <sp who="#jonathan">
+            <speaker>Jon.</speaker>
+            <p>Get, what do you want to get? han't you 
+<lb/>enough to eat?</p>
+          </sp>
+          <sp who="#hozey">
+            <speaker>Hozey.</speaker>
+            <p>Yes.</p>
+          </sp>
+          <sp who="#jonathan">
+            <speaker>Jon</speaker>
+            <p>And to drink?</p>
+          </sp>
+          <sp who="#hozey">
+            <speaker>Hozey</speaker>
+            <p>Yes, plenty of water.</p>
+          </sp>
+          <sp who="#jonathan">
+            <speaker>Jon.</speaker>
+            <p>Well, father you know is a temperance 
+<lb/>man, so he won't keep any thing but milk and wa­
+<lb/>ter in the house, and switchel in the field; an't that 
+<lb/>good enough?</p>
+          </sp>
+          <sp who="#hozey">
+            <speaker>Hozey.</speaker>
+            <p>No, I likes cider; and I tell you more, 
+<lb/>darn me if I an't in love.</p>
+          </sp>
+          <sp who="#jonathan">
+            <speaker>Jon.</speaker>
+            <p>—<stage type="business">running away from him.</stage> No! sure now; 
+<lb/>how did you get so? do tell.</p>
+          </sp>
+          <sp who="#hozey">
+            <speaker>Hozey.</speaker>
+            <p>I don't know.</p>
+          </sp>
+          <sp who="#jonathan">
+            <speaker>Jon.</speaker>
+            <p>When was it?</p>
+          </sp>
+          <pb n="7"/>
+          <milestone unit="sig" n="1(4)r"/>
+          <mw type="pageNum">7</mw>
+          <sp who="#hozey">
+            <speaker>Hozey.</speaker>
+            <p>At camp-meeting. There I saw the 
+<lb/>loveliest little girl eyes ever beheld, and I kept 
+<lb/>thinking and looking at her till she looked at me; 
+<lb/>then souse I fell over head and ears in love.</p>
+          </sp>
+          <sp who="#jonathan">
+            <speaker>Jon.</speaker>
+            <p>Poor <persName>Hozey</persName>; what will you do now?</p>
+          </sp>
+          <sp who="#hozey">
+            <speaker>Hozey.</speaker>
+            <p>Marry her.</p>
+          </sp>
+          <sp who="#jonathan">
+            <speaker>Jon.</speaker>
+            <p>Who is she?</p>
+          </sp>
+          <sp who="#hozey">
+            <speaker>Hozey.</speaker>
+            <p>I knows; you don't.
+<stage type="exit" rend="align(right)break(yes)">Runs off laughing.</stage></p>
+          </sp>
+          <sp who="#jonathan">
+            <speaker>Jonathan</speaker>
+            <p>—<stage type="delivery">solus.</stage> In love; that's darn'd fun­
+<lb/>ny. Every body says in love; how can that be? 
+<lb/>the love must be in them, not they in the love. What 
+<lb/>is love? It must be a darn'd droll notion. I hope 
+<lb/>I shall not catch it into me, for I shall be tarnal mad 
+<lb/>if I does; yet there's a rotten pretty gall a the fac­
+<lb/>tory, ten miles off. I seed her at meeting, and 
+<lb/>liked the looks of her, though I am not in love—no, 
+<lb/>nor don't mean to be such a fool as to do that, yet 
+<lb/>I should like tarnal well to get alongside of her at 
+<lb/>camp-meeting, and sing in her ear,
+<quote rend="pre(“)post(”)"><lg xml:id="lg002" type="poem" subtype="indeterminate" next="#lg003"><l rend="align(center)">Oh, dear, how I likes you.</l></lg></quote>
+But the preachers take nation good care not to let a 
+<lb/>young fellow get a squint at the galls, they hugs 
+<lb/>them so close themselves. But if I can, I will sing, 
+<lg xml:id="lg003" type="poem" subtype="indeterminate" prev="#lg002"><l rend="indent(2)">Of all the girls in the land,</l><l rend="indent(3)">There's none like pretty <persName>Sally</persName>,</l><l rend="indent(2)">She is the darling of my heart,</l><l rend="indent(3)">And lives in <placeName>Factory Alley</placeName>.</l></lg>
+<lb/>Yes, <persName>Sally Cornell's</persName> the gal for my money, and I
+<lb/>mean to marry her, darn me if I don't.<stage type="exit" rend="align(right)pre([)post()">Exit.</stage></p>
+          </sp>
+        </div>
+        <pb n="8"/>
+        <milestone unit="sig" n="1(4)v"/>
+        <mw type="pageNum">8</mw>
+        <div type="scene">
+          <stage type="setting entrance" rend="indent(1)first-indent(0)pre([)post(])">Scene changes to a wood. Enter
+<persName rend="slant(upright)">Mr. <hi rend="case(smallcaps)">Averio</hi></persName>, <persName rend="slant(upright)"><lb/><hi rend="case(smallcaps)">Muffit</hi></persName>, <persName>brother
+	      <hi rend="case(smallcaps)slant(upright)">Jenks</hi></persName>, and several other <name>Methodists</name>.</stage>
+          <sp who="#muffitt">
+            <speaker>Mr Muff.</speaker>
+            <p>Well, brothers, what do you think of 
+<lb/>the situation?</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Mr. Av.</speaker>
+            <p>Beautiful! the moonbeams sporting 
+<lb/>through these branches, and the hum of the insects 
+<lb/>as they flit round will allure the soul to harmony 
+<lb/>and impel each heart to the love of God.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Mr. Muff.</speaker>
+            <p>To the worship of God, brother, and 
+<lb/>the love of his creatures.</p>
+          </sp>
+          <sp who="#elder1">
+            <speaker>1st Elder.</speaker>
+            <p>Fye, brother; no love but spiritual 
+<lb/>ought to proceed from lips sanctified by the divine 
+<lb/>spirit of holy grace.</p>
+          </sp>
+          <sp who="#elder2">
+            <speaker>2nd Elder</speaker>
+            <p>Thy servant <persName>Grace</persName>'s lips were no
+	    <lb/>doubt sanctified when you kissed her so closely last
+	    <lb/>night in meeting. Take care, brother; evil eyes
+	    <lb/>are abroad, others as well I may have seen you.</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Broth. Jenks.</speaker>
+            <p>Be careful dear brothers, nor let 
+<lb/>the devil's children view the secret acts of our so­
+<lb/>ciety; for then would all our private enjoyments 
+<lb/>be cut off, as wise and prudent parents would not 
+<lb/>permit their daughters to attend our meetings.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Mr. Muff.</speaker>
+            <p>Then what would be the pleasure of 
+<lb/>love-feasts and prayer meetings, or what happiness 
+<lb/>could we have in our converts if secrecy did not 
+<lb/>enhance the bliss, and secure our reputations?</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Averio.</speaker>
+            <p>Aye, that's the main object of our camp-
+<lb/>meetings. Here on our ground alone the dear 
+<lb/>little creatures' hearts will melt at our preaching—
+<lb/>the singing soothes even pride, and at the lonely 
+<lb/>midnight hour, when only the silver moon and 
+<lb/>twinkling stars are witnesses of our spiritual con­
+
+
+<pb n="9"/>
+<milestone unit="sig" n="1(5)r"/>
+<mw type="pageNum">9</mw>
+
+
+
+<lb/>versation, we mould them to our will, and are di­
+<lb/>vinely bless'd. This is my mode of conversion.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Mr. Muff.</speaker>
+            <p>And mine—the mantle of religion in 
+<lb/>which we envelope our secret transactions com­
+<lb/>pletely deceives the world at large, and we enjoy 
+<lb/>all the luxuries of life without care of to-day, or
+<lb/>thought for to-morrow</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Broth. Jenks.</speaker>
+            <p>Be prudent, and we are rich, hap­
+<lb/>py, and respected. The wealthy trust us with their 
+<lb/>money to bestow in charity. Ha! ha! ha!—cha­
+<lb/>rity begins at home. What say you, brothers?</p>
+          </sp>
+          <sp who="#all">
+            <speaker>All.</speaker>
+            <p>Certainly.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Mr. Muff.</speaker>
+            <p>My wants are manifold, and must be 
+<lb/>supplied.</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Averio.</speaker>
+            <p>My emoluments from  my flock are 
+<lb/>great; but I have numerous private resources. My 
+<lb/>worthy sisters are liberal in the extreme to their 
+<lb/>pious pastor.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Mr. Muff.</speaker>
+            <p>Particularly the ancient maiden sis­
+<lb/>ters—ha! ha! ha!</p>
+          </sp>
+          <sp who="#all">
+            <speaker>All</speaker>
+            <p>—<stage type="business">laugh.</stage> Ha! ha! ha!</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Broth. Jenks</speaker>
+            <p>This is likely to be a profitable 
+<lb/>meeting; the ground is spacious and romantic; 
+<lb/>charming shrubbery, plenty of bushes, and I hope 
+<lb/>for a variety of fine girls to admire them with us.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Mr. Muff.</speaker>
+            <p>We shall nett by this speculation at 
+<lb/>least two hundred dollars each in cash, besides all 
+<lb/>the valuable jewelery our gay converts will place on 
+<lb/>the altar. Pleasure and profit are charming com­<lb/>binations.</p>
+          </sp>
+          <sp who="#elder1">
+            <speaker>1st Elder</speaker>
+            <p>When I am a preacher, brother, I hope 
+<lb/>to have my share of the profit. All I get now is the 
+<lb/>pleasure.</p>
+          </sp>
+          <sp who="#elder2">
+            <speaker>2d Elder</speaker>
+            <p>Aye, of that you take care to have a
+
+<pb n="10"/>
+<milestone unit="sig" n="1(5)v"/>
+<mw type="pageNum">10</mw>
+
+<lb/>good share. But  be careful; the young fellows are, 
+<lb/>as they say, wide awake for our poaching; they are 
+<lb/>twigging our movements pretty sharply.</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Averio.</speaker>
+            <p>At our last camp-meeting, I saw the
+<lb/>prettiest little dark eyed brunette I ever beheld.</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>Who was she?</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Averio.</speaker>
+            <p>I do not know; but I imagine she be­
+<lb/>longs to one of the manufactories not far from 
+<lb/>hence. I long to see her again.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>Did you convert her?—ha, ha, ha!</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Averio.</speaker>
+            <p>No, but I intend to do that this meeting.</p>
+          </sp>
+          <sp who="#elder1">
+            <speaker>1st Eld.</speaker>
+            <p>Was she alone?</p>
+          </sp>
+          <sp who="#elder2">
+            <speaker>2d Eld.</speaker>
+            <p>Was she well dress'd? had she a watch? 
+<lb/>rings, and fine buckles? ha, ha, ha! You convert 
+<lb/>the girl, and I will gather the spoil.</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Averio.</speaker>
+            <p>I care not who takes the temporals, so 
+<lb/>that I get the person. Oh, she is a delicious girl! 
+<lb/>such eyes! such teeth! such lovely pouting lips!—
+<lb/> they were only made for kissing.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>Is she tall?</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Averio.</speaker>
+            <p>No, of middle size—a fine full figure 
+<lb/>richly dressed, easy in her manners, and I fancy 
+<lb/>chaste in her person. There was a modest dignity 
+<lb/>in her air that awed even <emph rend="slant(italic)">me</emph> into distance.</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>I'll bet a dollar it was <persName>Sarah Cornell</persName>. 
+<lb/>She is the boast of the country; well-born and 
+<lb/>properly educated; very smart, intelligent, and in­
+<lb/>dustrious. She will not be an easy conquest.</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Averio.</speaker>
+            <p>The greater the difficulty the sweeter 
+<lb/>the conquest. I hate the ripe unblushing girls we 
+<lb/>generally meet with who are ready to pop into your 
+<lb/>arms without asking.</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>Those are the sort for me. I hate trou­
+<lb/>ble with a girl.</p>
+          </sp>
+          <pb n="11"/>
+          <milestone unit="sig" n="1(6)r"/>
+          <mw type="pageNum">11</mw>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>I detest all girls; give me the married 
+<lb/>women. We get substantial comforts from them; 
+<lb/>a good home when we please; bed and board free, <lb/>and a bed-fellow too, if we choose.</p>
+          </sp>
+          <sp who="#elder1">
+            <speaker>1st Eld.</speaker>
+            <p>Aye, only sing that solemn hymn,
+              <quote rend="pre(“)post(”)"><lg type="poem" subtype="indeterminate"><l rend="indent(2)">Oh, my loving sister,</l><l rend="indent(2)">Will you go to heaven with me.</l></lg></quote>
+Throw your arms round their necks, hug them
+	      <lb/><choice><sic>elosely</sic><corr>closely</corr></choice>, and they are yours as long as you please. 
+<lb/>Yes, give me the <emph rend="slant(italic)">married</emph> sisters; they can and 
+<lb/><emph rend="slant(italic)">must</emph> keep secrets. No danger of tell-tale children
+<lb/>—the husband, good man, must father them all.</p>
+          </sp>
+          <sp who="#elder2">
+            <speaker>2d Eld.</speaker>
+            <p>—<stage type="delivery">aside</stage>—I wonder if I father any of his. 
+<lb/>Come, brother, as we have surveyed the ground, we 
+<lb/>had better make our arrangements.</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Averio.</speaker>
+            <p>I will send the workmen; get hand­
+<lb/>bills put out, and advertise in our paper.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>I will ride round the country and call at 
+<lb/>the factory where your charmer works, and invite 
+<lb/>the whole of the people to attend our meeting for 
+<lb/>their soul's good and our profit.</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>Do so; the more the better—every tent 
+<lb/>pays two hundered per cent interest—let's have 
+<lb/>them all full.<stage type="exit" rend="align(right)pre([)post()">Exeunt.</stage></p>
+          </sp>
+          <trailer rend="align(center)case(smallcaps)slant(upright)break(yes)">End of the first act.</trailer>
+        </div>
+      </div>
+      <div type="act">
+        <div type="scene">
+          <pb n="12"/>
+          <milestone unit="sig" n="1(6)v"/>
+          <mw type="pageNum">12</mw>
+          <head>Act II.—SceneI.</head>
+          <stage type="business delivery" rend="indent(1)first-indent(0)pre([)post(])">The factory girls at work at different machines—
+<lb/><persName>Sarah</persName> very busily employed, and singing,</stage>
+          <quote rend="pre(“)post(”)"><lg type="poem" subtype="indeterminate">
+            <l rend="indent(2)">And as the wind blows,</l>
+            <l rend="indent(2)">So the mill goes—</l>
+            <l rend="indent(2)">Say who are so happy,</l>
+            <l rend="indent(2)">So  happy, as we.</l>
+          </lg></quote>
+          <stage rend="pre()post()" type="entrance">
+            <hi rend="case(smallcaps)slant(upright)align(center)break(yes)">Enter
+<persName>Mr. Thornhill</persName>.</hi>
+          </stage>
+          <sp who="#thornhill">
+            <speaker>Mr.T.</speaker>
+            <p>What, my pretty <persName>Sally</persName>, ever gay and
+<lb/>industrious.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>Ah, sir, it is industry makes me gay.
+<lb/>When I have no work I am so sad and low-spirit­
+<lb/>ed. Oh, dear me, what would we poor girls do if
+<lb/> it was not for the institution of manufactories?—
+<lb/>how could we live? Indeed, sir, you must be the
+<lb/>happiest man on earth.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Mr. T.</speaker>
+            <p>How so, <persName>Sarah</persName>?</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>Why to be able to give all of us steady
+<lb/>employment, and pay us our wages so regularly.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Thorn.</speaker>
+            <p>Thank the American system of domes­
+<lb/>tic industry for that, as it is that alone which enables
+<lb/>me to give employment to my working people,
+<lb/>whose services are as essential to me as my employ­
+<lb/>ment is to them.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>How kind of you, sir, to say so. Now
+<lb/>we look up to you for our means of subsistance 
+<lb/>while you depend on on every one to purchase our 
+<lb/>work.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Thorn.</speaker>
+            <p>Even so, my good girl; you have only 
+<lb/>one care on your mind. your daily task perform­
+<lb/>ed, your toil ends. But my mind knows no relax­
+<lb/>ation from care.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>How is that, sir?—you are very rich.</p>
+          </sp>
+          <pb n="13"/>
+          <milestone unit="sig" n="2(1)r"/>
+          <mw type="pageNum">13</mw>
+          <sp who="#thornhill">
+            <speaker>Thorn.</speaker>
+            <p>True; but my wealth is tangible, and 
+<lb/>business variable. If I cannot get cotton, your work 
+<lb/>would cease. This is a great care on my mind, 
+<lb/>and if I can't dispose of my goods, I should be com­
+<lb/>pelled to shut the factory.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>For what reason?</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Thorn</speaker>
+            <p>Want of money to pay my working peo­
+<lb/>ple. Thus your see, <persName>Sarah</persName>, I am in a sense depen­
+<lb/>dent on the world as you are on me.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>I never thought so deep before.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Thorn.</speaker>
+            <p>Society, <persName>Sarah</persName>, is a vast chain; one link 
+<lb/>depends on the other, and an injury to one of them 
+<lb/>may be felt by the whole. But there is a supreme 
+<lb/>power that governs all, and to him alone we ought 
+<lb/>to look for comfort, support, and happiness.</p>
+          </sp>
+          <stage rend="pre()post()break(yes)align(center)slant(upright)" type="entrance">Enter <persName>Mr. Muffit</persName>
+<hi rend="slant(italic)">and</hi> First Elder</stage>
+          <stage type="delivery" rend="break(yes)align(center)">They are very serious and speak in a deep solemn 
+<lb/>voice.</stage>
+          <sp who="#muffitt">
+            <speaker>Mr. Muff.</speaker>
+            <p>Peace be here: brother, in the spirit, 
+<lb/>how is it with your soul?</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Mr. Thornhill.</speaker>
+            <p>—<stage type="delivery">aside</stage>—Rather a strange ques­
+<lb/>tion. Why, Mr. Muffit, I hope I am at peace with, 
+<lb/>the world.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>Poh! what has the peace of the world to 
+<lb/>do with regeneration? the second birth. That 
+<lb/>should be your only object. What are all the good 
+<lb/>works of this life, if you are not regenerated and 
+<lb/>born again of the Holy Ghost?—You will be 
+<lb/>damn'd, sir; sent down to the bottomless pit, to 
+<lb/>abide with the devil and his angels. Hell's flames 
+<lb/>will be your bed, and blue blazes for your blan­
+<lb/>kets.</p>
+          </sp>
+          <mw type="sig">2</mw>
+          <pb n="14"/>
+          <milestone unit="sig" n="2(1)v"/>
+          <mw type="pageNum">14</mw>
+          <sp who="#cornell">
+            <speaker>Sarah</speaker>
+            <p>—<stage type="delivery">innocently</stage>—How do you know that, 
+<lb/>sir? Was you ever there to see?</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Thorn.</speaker>
+            <p>—<stage type="delivery">laughing.</stage>—Rather a hard question,
+<lb/><persName>Mr. Muffit</persName>. How will you answer it?</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>With the holy bible and a set of tracts. 
+<lb/>Here girl, take that and read it, and all these tracts; 
+<lb/>they will purify your soul from its natural sin—
+              <lb/><quote rend="pre(“)post(”)">wean your heart from the world, and the things 
+<lb/>of the world,</quote> and make it an offering worthy the 
+<lb/><name>Methodist church.</name></p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>—<stage type="business">taking the books.</stage>—Thank you, sir; I 
+<lb/>have a large bible, but I will give these to one of 
+<lb/>the other girls—<stage type="business">—curtseys.</stage></p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>So now pay me three dollars.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>For what, sir?</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>The books I gave you.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>Gave me? True, you did give them to 
+              <lb/>me to read, and <quote rend="pre(“)post(”)">wean my heart from the things of 
+<lb/>the world.</quote> Why then am I to pay for a free gift.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>No, no; I sold them to you.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>But I won't buy them.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>You have them, and you must pay for them.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p> I can get them for less money at a book­
+<lb/>store; so I won't give you any such price for
+<lb/>them.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>Then hand them back.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>It is rude to return a present, and I
+<lb/>would not be ill-mannered enough to return to so
+<lb/>pious a gentleman any thing that I considered a gift;
+<lb/>so I will keep the books.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Thorn.</speaker>
+            <p> I thought, <persName>Mr. Muffitt</persName>, you were a mem­
+<lb/>ber of the <name>Bible Society</name>.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>So I am, sir; a humble disposer of the
+<lb/>divine word.</p>
+          </sp>
+          <pb n="15"/>
+          <milestone unit="sig" n="2(2)r"/>
+          <mw type="pageNum">15</mw>
+          <sp who="#thornhill">
+            <speaker>Thorn.</speaker>
+            <p>Don't they give away the bibles they
+<lb/>print gratis?</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>No, sir, we sell them.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Thorn.</speaker>
+            <p>Then why do you solicit money to print
+<lb/>them if they are for sale; and what use to you turn
+<lb/>your stock to?</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p> We print large editions of our books, sir
+<lb/>for exportation.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Thorn.</speaker>
+            <p>Which you sell?</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>Yes, sir.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Thorn.</speaker>
+            <p>Enough, sir. I penetrate into the bible
+<lb/>society's secrets. They collected a large captial to
+<lb/>commence business with; monopolize the sale of a
+<lb/>very profitable branch of trade to the injury of the
+<lb/>booksellers as a body; sell the bible said to be print­
+<lb/>ed for free distribution, and call this a religious
+<lb/>charitable institution. Avaunt, thou hypocrite!—
+<lb/>Quit my house.</p>
+          </sp>
+          <sp who="#elder1">
+            <speaker>1st Elder.</speaker>
+            <p>We came here, brother <persName>Thornhill</persName>, to
+<lb/>announce to this good company that we shall hold
+<lb/>a camp-meeting at ――,the ensuing week, at 
+<lb/>which we hope to receive a visit from all these in­
+<lb/>dustrious sisters, who can surely spare a few hours
+<lb/>to hear the word of the Lord expounded to them.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>Certainly <persName>Mr. Thornhill</persName> will permit the
+<lb/>visit; for what doth it profit a man or woman if
+<lb/>they gain the whole world and lose their own souls.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p> Will selling bibles and tracts at an ex­
+<lb/>travagant price to poor girls, and cheat them into
+<lb/>the purchase, fill your pockets or save your soul 
+<lb/>best.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Thorn.</speaker>
+            <p>Let that pass, <persName>Sarah</persName>; I will pay for
+<lb/>the books; I am a subscriber to the <name>Bible Society</name>, <lb/>and
+will seek further information on that subject.</p>
+          </sp>
+          <pb n="16"/>
+          <milestone unit="sig" n="2(2)v"/>
+          <mw type="pageNum">16</mw>
+          <sp who="#elder">
+            <speaker>Elder.</speaker>
+            <p>You will visit our meeting, brother in
+<lb/>the flesh.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Thorn.</speaker>
+            <p>Perhaps I may, as a magistrate. My
+<lb/>presence may be requisite to keep the peace.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p> We shall be pleased to see you and these
+<lb/>maidens.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p> I won't go, you may be sure, after the
+<lb/>trick you played me with the books. I believe you
+<lb/>all to be hypocrites and imposters.</p>
+          </sp>
+          <sp who="#elder">
+            <speaker>Elder.</speaker>
+            <p>Nay, fair sister, condemn not all our so­
+<lb/>ciety because one hath deceived you. Charity, fair
+	      <lb/>sister, is the offspring of a generous <choice><sic><g ref="#invertedn"/></sic><corr>n</corr></choice>ature. Yours
+<lb/>is not the age in which suspicion stamps its signet
+<lb/>on the heart; therefore say, sweet sister, that thou
+<lb/>wilt come and seek thy soul's salvation.</p>
+          </sp>
+          <sp who="#girl1">
+            <speaker>1st Girl.</speaker>
+            <p>Will <persName>Mr. Averio</persName> be there?</p>
+          </sp>
+          <sp who="#elder1">
+            <speaker>1st Elder.</speaker>
+            <p>Yea, verily will that holy and pious
+<lb/>man use his powerful voice to enforce the repentance
+<lb/>on the sinner's heart, and call him to the flock of
+<lb/>the righteous. Oh! parson <persName>Averio</persName> is a saint on
+<lb/>earth.</p>
+          </sp>
+          <sp who="#girl2">
+            <speaker>2d Girl.</speaker>
+            <p><persName>Sarah</persName>, remember  your dream. Be­
+<lb/>ware of wolves in sheep's clothing.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>I will, <persName>Phebe.</persName></p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Thorn.</speaker>
+            <p>Why <persName>Sarah</persName>, have you turned dreamer,
+<lb/>or has your guardian angel condescended to point
+<lb/>out danger from an unknown hand by a vision?</p>
+          </sp>
+          <sp who="#elder">
+            <speaker>Elder</speaker>
+            <p>Folly and fancy all. What are dreams
+<lb/>but the offsprings of an oppressed stomach after a
+<lb/>heavy supper. If all the world were to adopt the
+<lb/><name>Graham</name> system of living, they would not be troub­
+<lb/>led with frightful dreams.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>Thou sayest true, brother. Oh! the de­
+
+<mw type="sig">2*</mw>
+<pb n="17"/>
+<milestone unit="sig" n="2(3)r"/>
+<mw type="pageNum">17</mw>
+
+<lb/>lightful slumber a working man would enjoy after
+<lb/>a supper of dry bread, and a cup of cold water.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>Is that your customary supper, sir?</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>—<stage type="modifier">looking confused</stage>—Why not altogether.
+<lb/>My habits were formed before that Saint had com­
+<lb/>menced his labour of love and reformation, and crea­
+<lb/>ture comforts are now necessary to my existence.
+<lb/>But I support his principles.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Thorn.</speaker>
+            <p> It must be by theory, then, as bread and
+<lb/>water would not swell that body to its immense
+<lb/>size. But, gentlemen, I am in haste, and will wait
+<lb/>on you both to the door. It is contrary to rule to
+<lb/>admit visiters.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>We missionaries are privileged to go
+<lb/>where we please.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Thor<choice><sic>u</sic><corr>n</corr></choice>.</speaker>
+            <p>By whom?</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>Our master.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Thorn.</speaker>
+            <p>Who is he?</p>
+          </sp>
+          <sp who="#elder">
+            <speaker><choice><sic>Etder</sic><corr>Elder</corr></choice>.</speaker>
+            <p>The church, sir.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Thorn.</speaker>
+            <p>I know not any such authority for per­
+<lb/>sons to intrude upon my premises and disturb my
+<lb/>people from pursuing their avocations, So depart
+<lb/>in peace.—<stage type="business">Shows them out.</stage></p>
+          </sp>
+        </div>
+        <div type="scene">
+          <stage type="setting entrance business delivery" rend="break(yes)indent(1)first-indent(0)pre()post()">Scene changes to a farm yard—
+Enter <hi rend="case(smallcaps)slant(upright)"><persName>Mrs. House­
+<lb/>man</persName>, <persName>Mary</persName>,</hi> and <hi rend="case(smallcaps)slant(upright)"><persName>Tabby.</persName></hi> They <choice><sic>[</sic><corr/></choice>commence clean­
+<lb/>ing their milking utensils, and singing to the tune
+<lb/>of <title>Yankee Doodle,</title></stage>
+          <quote rend="pre(“)post(”)"><lg type="poem" subtype="indeterminate">
+            <l rend="indent(1)">Father and I went down to camp</l>
+            <l rend="indent(1)">Along with eldest brother,</l>
+            <l rend="indent(1)">Eleven more was left at home,</l>
+            <l rend="indent(1)">For to take care of Mother.</l>
+          </lg></quote>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H.</speaker>
+            <p>Hush with your profane singing, galls
+
+<pb n="18"/>
+<milestone unit="sig" n="2(3)v"/>
+<mw type="pageNum">18</mw>
+
+<lb/>here <persName>Tab</persName>, hang these pails on yonder haystack—
+<lb/>there is hooks on purpose for them.</p>
+          </sp>
+          <sp who="#tabby">
+            <speaker>Tab.</speaker>
+            <p>—<stage type="delivery">hesitating</stage>—I, I, I can't
+aunt—I dare
+<lb/>not go there.</p>
+          </sp>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H.</speaker>
+            <p>Why not?</p>
+          </sp>
+          <sp who="#tabby">
+            <speaker>Tab.</speaker>
+            <p>For <persName>Mary</persName>'s dream.</p>
+          </sp>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H.</speaker>
+            <p><persName>Mary</persName>'s dream is a profane song about
+<lb/>a spirit at sea. What has that to do with our hay­
+<lb/>stack?</p>
+          </sp>
+          <sp who="#mary">
+            <speaker>Mary.</speaker>
+            <p>No, no mother—I dreamed a gall was
+<lb/>killed by parson <persName>Averio</persName> on our haystack.</p>
+          </sp>
+          <sp who="#mrshouseman">
+            <speaker>Mrs.H.</speaker>
+            <p>God protect us, gall. Why did you
+<lb/>dream that?</p>
+          </sp>
+          <sp who="#mary">
+            <speaker>Mary.</speaker>
+            <p>I don't know, mother.</p>
+          </sp>
+          <sp who="#tabby">
+            <speaker>Tab.</speaker>
+            <p>I would not go there for a penny; for it
+<lb/>might be one of us, <persName>Mary</persName>. So let us keep away
+<lb/>from it.</p>
+          </sp>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H</speaker>
+            <p>Parson <persName>Averio</persName> is a great and shining
+<lb/>light in the church; so don't for to tell such
+<lb/>trash about him, or I will be very angry.</p>
+          </sp>
+          <sp who="#mary">
+            <speaker>Mary.</speaker>
+            <p>Then I won't, mother, say nothing to
+<lb/>nobody about him.</p>
+          </sp>
+          <sp who="#tabby">
+            <speaker>Tab.</speaker>
+            <p>Nor I won't either aunt—no, not even
+<lb/>to uncle.</p>
+          </sp>
+          <stage type="entrance modifier" rend="break(yes)align(center)pre()post()">Enter <persName rend="case(smallcaps)slant(upright)">Mr.
+Houseman</persName> with a small bill in his hand,
+<lb/>rather angry.</stage>
+          <sp who="#houseman">
+            <speaker>Mr. H.</speaker>
+            <p> I wish these plaguy <name>methodists</name> would
+<lb/>not thus disturb the peace of families with their vile
+<lb/>camp-meetings. Now we shall have every woman
+<lb/>for twenty miles round crazy to go to camp-meet­
+<lb/>ing, while all the horses are wanted for ploughing
+<lb/>before the frost sets into the ground. My wife
+<lb/>hasn't go, that's poz.</p>
+          </sp>
+          <pb n="19"/>
+          <milestone unit="sig" n="2(4)r"/>
+          <mw type="pageNum">19</mw>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H.</speaker>
+            <p>What is that, hubby, you have in your
+<lb/>hand?</p>
+          </sp>
+          <sp who="#houseman">
+            <speaker>Mr. H</speaker>
+            <p>A play bill from <placeName>Bristol</placeName>—that's all.</p>
+          </sp>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H.</speaker>
+            <p>Why do you bring it here?—the play­
+<lb/>house is the devil's tabernacle, where all who visit
+<lb/>get into the high road to destruction. Thank Pro­
+<lb/>vidence none of my children ever go there.</p>
+          </sp>
+          <sp who="#mary">
+            <speaker>Mary.</speaker>
+            <p>Because we can't go, mother; my will is
+<lb/>good enough, but I have no money, and father won't
+<lb/>take me.</p>
+          </sp>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H.</speaker>
+            <p>No; nor shall he never let you go.</p>
+          </sp>
+          <sp who="#houseman">
+            <speaker>Mr. H.</speaker>
+            <p>Would you be willing that they should
+<lb/>go to a Camp Meeting?</p>
+          </sp>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H.</speaker>
+            <p>Certainly: I intend going to the next
+<lb/>one.</p>
+          </sp>
+          <sp who="#houseman">
+            <speaker>Mr.H.</speaker>
+            <p>Do you so, wife?</p>
+          </sp>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H.</speaker>
+            <p>Yes, that I do, and it won't be long till
+<lb/>there is one. Then, girls, you shall both go with
+<lb/>me.</p>
+          </sp>
+          <sp who="#tabby">
+            <speaker>Tabby.</speaker>
+            <p>I don't want to go—no, not I—it is a
+<lb/>tarnal bad place—the men and women all lying
+<lb/>higglety-pigglety on straw in tents.</p>
+          </sp>
+          <sp who="#mary">
+            <speaker>Mary.</speaker>
+            <p>And when it rains, oh how delightful to
+<lb/>be awakened by the rain dropping in your eye or
+<lb/>beating on your head. Don't you remember mo­
+<lb/>ther, at the last camp-meeting we went to, how <persName>Mr.
+<lb/>Muffit</persName> squeezed you one night till you were almost
+<lb/>dead.</p>
+          </sp>
+          <sp who="#houseman">
+            <speaker> Mr. H.</speaker>
+            <p>—<stage type="delivery">aside</stage>—The devil he did—</p>
+          </sp>
+          <sp who="#tabby">
+            <speaker>Tabby.</speaker>
+            <p>Yes, and parson <persName>Averio</persName> said I was a
+<lb/>sweet blooming girl, and would make a fine woman
+<lb/>when I was old enough, and he went to buss me;
+<lb/>but I bit him. Fegs, he won't want to buss me
+<lb/>again.</p>
+          </sp>
+          <pb n="20"/>
+          <milestone unit="sig" n="2(4)v"/>
+          <mw type="pageNum">20</mw>
+          <sp who="#houseman">
+            <speaker>Mr.H.</speaker>
+            <p>That's good, girls—ha, ha, ha! So, wife
+<lb/>the parson hugged you as the devil did the witch,
+<lb/>almost to death. Did you scream? I wish I had
+<lb/>been there to see how the parson did.</p>
+          </sp>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H.</speaker>
+            <p>—<stage type="delivery">angrily</stage>—Why, hubby, you are a fool;
+<lb/>it was holy zeal for the welfare of my soul.</p>
+          </sp>
+          <sp who="#houseman">
+            <speaker>Mr. H.</speaker>
+            <p>Ha, ha, ha!—Well, wife, you shall not
+<lb/>excite his holy zeal any more, for I don't want to
+<lb/>wear horns.<stage type="exit" rend="align(right)pre([)post()">Exit laughing heartily.</stage></p>
+          </sp>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H.</speaker>
+            <p>What did you tell that stuff for, you
+<lb/>great fool?</p>
+          </sp>
+          <sp who="#mary">
+            <speaker>Mary.</speaker>
+            <p>I don't know, mother.<stage type="exit" rend="align(right)pre([)post()">Exit.</stage></p>
+          </sp>
+          <sp who="#tabby">
+            <speaker>Tabby.</speaker>
+            <p>Don't look so mad, aunt.
+<stage type="exit" rend="align(right)pre([)post()">Exit.</stage></p>
+          </sp>
+          <stage type="entrance" rend="break(yes)align(center)pre()post()">Enter
+<persName rend="case(smallcaps)slant(upright)">Jonathan</persName></stage>
+          <sp who="#jonathan">
+            <speaker>Jon.</speaker>
+            <p> Oh, mother, there's going to be a great
+<lb/>camp-meeting at ――, won't you go?</p>
+          </sp>
+          <sp who="#mrshouseman">
+            <speaker>Mrs.H.</speaker>
+            <p>To be sure I will, <persName>Donty</persName>; but you must
+<lb/>not let your father know of our going.</p>
+          </sp>
+          <sp who="#jonathan">
+            <speaker>Jon.</speaker>
+            <p>Yes, for he won't let us have the horses
+<lb/>and waggon.</p>
+          </sp>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H.</speaker>
+            <p><persName>Donty</persName>, we can gear up the horses when
+<lb/>he is out, and I will take all the blame. Come in, I
+<lb/>will give you money to buy what we want.
+<stage type="exit" rend="break(yes)align(right)pre([)post()">Exeunt.</stage></p>
+          </sp>
+        </div>
+        <div type="scene">
+          <stage type="setting" rend="break(yes)align(center)">Scene changes to
+<hi rend="case(smallcaps)slant(upright)"><persName>Mrs. Patton</persName>'s</hi> parlour.</stage>
+          <stage type="business" rend="break(yes)pre([)post(])"><hi rend="case(smallcaps)slant(upright)"><persName>Sarah</persName>, <persName>Phebe</persName></hi> and
+<persName rend="case(smallcaps)slant(upright)">Mrs. Patton</persName> at work.</stage>
+          <sp who="#cornell">
+            <speaker>Sarah</speaker>
+            <p>—<stage type="delivery">sighing</stage>—Heigho!</p>
+          </sp>
+          <sp who="#patton">
+            <speaker>Mrs. P.</speaker>
+            <p>Why do you sigh, <persName>Sally</persName>?</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>I don't know, madam<choice><sic>?</sic><corr>.</corr></choice>.</p>
+          </sp>
+          <sp who="#phebe">
+            <speaker>Phebe.</speaker>
+            <p>She wants to go to camp-meeting, mo­
+<lb/>ther, and is afraid since that frightful dream.</p>
+          </sp>
+          <sp who="#patton">
+            <speaker>Mrs. P.</speaker>
+            <p>Dreams are not always to be attended
+
+<pb n="21"/>
+<milestone unit="sig" n="2(5)r"/>
+<mw type="pageNum">21</mw>
+
+<lb/>to, and hers is nonsense. What, to suppose the
+<lb/>pious <persName>Mr. Averio</persName> would hurt her—impossible!—
+<lb/><persName>Sarah</persName>, if you wish to go, do not balk a good inten­
+<lb/>tion. Perhaps you may get religion from his
+<lb/>preaching, and be a shining light hereafter in the 
+<lb/>world.</p>
+          </sp>
+          <sp who="#phebe">
+            <speaker>Phebe.</speaker>
+            <p>Let us all go, <persName>Sarah</persName>. Father will take
+<lb/>us in his waggon. Come, cheer up your spirits,
+<lb/>and all will yet be well. Think dreams go contra­
+<lb/>ry; besides, <persName>Mr. Averio</persName> may not be the man you
+<lb/>dreamt about, and you are frightened without any
+<lb/>reason.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>Well come what will, I am resolved to
+<lb/>go. So let's get ready as fast as we can.</p>
+          </sp>
+          <sp who="#phebe">
+            <speaker>Phebe.</speaker>
+            <p>Agreed on. I am so glad.</p>
+          </sp>
+          <sp who="#patton">
+            <speaker>Mrs.P.</speaker>
+            <p>So am I.<stage type="exit" rend="align(right)pre([)post()">Exeunt.</stage></p>
+          </sp>
+        </div>
+        <div type="scene">
+          <stage type="setting entrance" rend="break(yes)align(center)pre([)post(])">Scene changes to
+<hi rend="case(smallcaps)slant(upright)"><persName>Mr. Houseman</persName>'s</hi> barn yard. En­
+<lb/>ter <hi rend="case(smallcaps)slant(upright)"><persName>Jonathan</persName> and <persName>Mrs.H.</persName></hi></stage>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H.</speaker>
+            <p>Make haste, <persName>Donty</persName>, or your father will
+<lb/>be here. Come, girls.</p>
+          </sp>
+          <stage type="entrance" rend="break(yes)align(center)pre([)post(])">Enter 
+<persName rend="case(smallcaps)slant(upright)">Mary</persName> and <persName rend="case(smallcaps)slant(upright)">Tabby</persName>.</stage>
+          <sp who="#tabby">
+            <speaker>Tab.</speaker>
+            <p>I only go for the ride and a holiday.</p>
+          </sp>
+          <sp who="#mary">
+            <speaker>Mary.</speaker>
+            <p>Lord, mother, what will father say?
+<stage type="exit" rend="break(yes)align(right)pre([)post()">Exeunt all.</stage></p>
+          </sp>
+          <stage type="entrance delivery business" rend="break(yes)pre([)post(])">Enter
+<persName rend="case(smallcaps)slant(upright)">Hozey</persName>,
+    calling Mother, <persName>Mary</persName>, <persName>Tab</persName>—where
+    are all you gone to.—Runs about the stage, call­
+<lb/>ing, Mother, <persName>Mary</persName>, <persName>Tab</persName>,
+<persName>Donty</persName>, Father.</stage>
+          <stage type="entrance" rend="break(yes)align(center)pre([)post(])">Enter <persName>Mr. H.</persName></stage>
+          <sp who="#houseman">
+            <speaker>Mr. H.</speaker>
+            <p>Why, boy, what's the matter with you?</p>
+          </sp>
+          <sp who="#hozey">
+            <speaker>Hozey</speaker>
+            <p>—<stage type="business">looking out</stage>—There they go father, as
+<lb/>fast as the horses can run—I be corn dipt if they
+<lb/>an't off to camp-meeting.</p>
+          </sp>
+          <pb n="22"/>
+          <milestone unit="sig" n="2(5)v"/>
+          <mw type="pageNum">22</mw>
+          <sp who="#houseman">
+            <speaker>Mr. H</speaker>
+            <p>Who, boy?</p>
+          </sp>
+          <sp who="#hozey">
+            <speaker>Hozey.</speaker>
+            <p>Why, mother, <persName>Donty,</persName> and the gal's;—
+<lb/><persName>Tab</persName> and all are off as hard as they can split, to
+<lb/>camp-meeting; and there the tarnal <name>methodists</name> will
+<lb/>hug and squeeze them till it will be a shame to see
+    <lb/>them afterwards.</p>
+          </sp>
+          <sp who="#houseman">
+            <speaker>Mr. H.</speaker>
+            <p><persName>Hozey</persName>, saddle the other horses, let's after them.</p>
+          </sp>
+        </div>
+        <div type="scene">
+          <stage type="setting" rend="break(yes)align(center)pre([)post(])">Scene changes to camp-meeting, tents in rows; a
+<lb/>fine wood scene; moonlight</stage>
+          <stage type="entrance" rend="break(yes)align(center)">
+            <hi rend="case(smallcaps)slant(upright)">Enter <persName>Mr.
+Averio</persName> and <persName>Brother Jenks</persName></hi>
+          </stage>
+          <sp who="#averio">
+            <speaker>Mr. A.</speaker>
+            <p><persName>Brother Jenks</persName>, that maiden <persName>Sarah Cor­
+<lb/>nell</persName> hath found favour in my sight, and verily my
+<lb/>heart doth yearn towards the maiden with holy
+<lb/>love; I must possess her.</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>She is a very virago, and that will be a hard
+<lb/>colt to break; she out talked <persName>Brother Muffet</persName>, he
+<lb/>says at the factory; verily, the wench hath a
+<lb/>shrewd wit, and words to show it.</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Mr. A</speaker>
+            <p>Her beauty pleaseth me, and her wit I
+<lb/>fear not.</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>Take your own way, I say nothing.</p>
+          </sp>
+          <p>
+            <stage rend="pre()post()break(yes)" type="business"><persName>Sarah</persName> and
+<persName>Phebe</persName> crosses the stage towards the wood.</stage>
+          </p>
+          <sp who="#averio">
+            <speaker>Mr. A</speaker>
+            <p>There she goes, let us follow her, do
+<lb/>you engage her companion, while I lead her into
+<lb/>the woods.
+<stage type="exit" rend="align(right)">Exeunt after the girls.</stage></p>
+          </sp>
+          <stage type="entrance" rend="break(yes)align(center)">
+            <hi rend="case(smallcaps)">Enter <persName>Jonathan.</persName></hi>
+          </stage>
+          <sp who="#jonathan">
+            <speaker>Jon.</speaker>
+            <p>That was the pretty girl I came after, there
+<lb/>she goes, and parson <persName>Averio</persName> in full chase of her;
+<lb/>darn the sanctified rascal, how dare he follow a
+<lb/>girl? But I will watch them!</p>
+          </sp>
+          <stage type="entrance" rend="break(yes)align(center)">
+            <hi rend="case(smallcaps)slant(upright)">Enter
+<persName>Dr. Neverflinch</persName></hi>
+          </stage>
+          <sp who="#neverflinch">
+            <speaker>Dr.</speaker>
+            <p>Why <persName>Donty</persName>, what brought you here?</p>
+          </sp>
+          <pb n="23"/>
+          <milestone unit="sig" n="2(6)r"/>
+          <mw type="pageNum">23</mw>
+          <sp who="#jonathan">
+            <speaker>Jon.</speaker>
+            <p>Petticoats, I com'd with mother's sister
+<lb/>and <persName>Tab</persName>; but I had a petticoat of my own in
+<lb/>my eye you know, pretty <persName>Sally</persName> of <persName>Thornhill's</persName> fac­
+<lb/>tory.</p>
+          </sp>
+          <sp who="#neverflinch">
+            <speaker>Dr.</speaker>
+            <p>Yes, she is the finest girl in the county.</p>
+          </sp>
+          <sp who="#jonathan">
+            <speaker>Jon.</speaker>
+            <p>I bees in love with her; but parson <persName>Ave­
+<lb/>rio</persName> has cut me out.</p>
+          </sp>
+          <sp who="#neverflinch">
+            <speaker>Dr.</speaker>
+            <p>Why he is a married man.</p>
+          </sp>
+          <sp who="#jonathan">
+            <speaker>Jon.</speaker>
+            <p>A darned sly poacher, he has just gone to
+<lb/>the wood to meet her, <quote rend="pre(“)post(”)">by moonlight alone.</quote></p>
+          </sp>
+          <sp who="#neverflinch">
+            <speaker>Dr.</speaker>
+            <p>Follow them, <persName>Donty,</persName> <quote rend="pre(“)post(”)">don't give up the
+<lb/>ship.</quote> She is worth trying for. Such girls as <persName>Sally
+<lb/>Cornell</persName> is not to be met with every day.</p>
+          </sp>
+          <sp who="#jonathan">
+            <speaker>Jon.</speaker>
+            <p>Come with me, <persName>Dr.</persName> you are a professional
+<lb/>man like himself, and can talk to him in his own
+<lb/>lingo. I am only a country lad, and he would out­
+<lb/>gab me by ten miles.</p>
+          </sp>
+          <sp who="#neverflinch">
+            <speaker>Dr.</speaker>
+            <p>Come on <persName>Donty</persName> my boy, you mean the
+<lb/>girl fair, so I will stick to you.
+<stage type="exit" rend="align(right)break(yes)pre([)post()">Exeunt into the woods.</stage></p>
+          </sp>
+        </div>
+        <div type="scene">
+          <stage type="setting" rend="break(yes)pre()post()">Scene changes to another part of the wood very wild.</stage>
+          <stage type="entrance business" rend="break(yes)align(center)">Enter <persName rend="case(smallcaps)slant(upright)">Mr. Averio</persName> and
+<persName rend="case(smallcaps)slant(upright)">Sarah Cornell</persName> who holds
+<lb/>his arm.</stage>
+          <sp who="#averio">
+            <speaker>Mr.A</speaker>
+            <p><persName>Sarah</persName>, as an orphan, you have a power­
+<lb/>ful claim on my sympathy. I am an orphan, edu­
+<lb/>cated by the school-law, and placed in my present
+<lb/>situation by the influence of power. My wife—I
+<lb/>married from interested motives, not the influ­
+<lb/>ence of the heart's best feelings—these, dear <persName>Sa­
+<lb/>rah</persName>, are yours. I have long loved you—long sighed
+<lb/>for you; but I was poor. You left the neighbor­
+<lb/>hood where I resided, and was lost to me. I mar­
+<lb/>ried through despair, and now I meet once more
+<lb/>the dear object of my first and only love. Matured
+
+<pb n="24"/>
+<milestone unit="sig" n="2(6)v"/>
+<mw type="pageNum">24</mw>
+
+<lb/>in person and mind, a beautiful sensible woman,
+<lb/>who I cannot legally make my own. Ah! <persName>Sarah</persName>,
+<lb/>pity me, I love you to distraction, and must call
+<lb/>you mine, or die at your feet.
+<stage type="business" rend="align(right)pre([)post(])">Kneels.</stage></p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>Ah! Mr. Averio, how can you thus tempt
+<lb/>a simple girl like me to sin?</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Mr. A</speaker>
+            <p>No, <persName>Sarah</persName>. Love is not sin, and I love 
+<lb/>you, <persName>Sarah</persName>, more than life. Was I single I would
+<lb/>make you my wife—as I am, you alone possess
+<lb/>my heart. Come then, dear girl, make me blest
+<lb/>and all I possess or can command is yours.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>Unhand me, sir—what dare you use
+<lb/>force, forbear.<stage type="delivery exit" rend="pre([)post(])">Calls help! help! He carries her
+<lb/>off.</stage></p>
+          </sp>
+          <stage type="entrance" rend="align(center)break(yes)pre()post()">Enter
+<persName rend="case(smallcaps)slant(upright)">Jonathan</persName> and
+<persName rend="case(smallcaps)slant(upright)">Doctor N.</persName></stage>
+          <sp who="#jonathan">
+            <speaker>Jon.</speaker>
+            <p>This way the sounds was; but all here is
+<lb/>silent.</p>
+          </sp>
+          <sp who="#neverflinch">
+            <speaker>Dr.</speaker>
+            <p>Let's on, the wood is intricate; but our
+<lb/>cause is good.<stage type="exit" rend="align(right)pre([)post(])">Exeunt.</stage></p>
+          </sp>
+          <stage type="entrance business" rend="break(yes)align(center)pre()post()">Enter <persName rend="case(smallcaps)slant(upright)">Brother
+Jenks</persName>, pulling <persName rend="case(smallcaps)slant(upright)">Phebe</persName> along.</stage>
+          <sp who="#jenks">
+            <speaker>B. Jenks</speaker>
+            <p>That is a good girl, here we are safe.
+<lb/>Come and sit down, I am tired.</p>
+          </sp>
+          <sp who="#phebe">
+            <speaker>Phebe.</speaker>
+            <p> I won't sit down, I am not tired, and I
+<lb/>will go to my mother.</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks</speaker>
+            <p> Never mind your old mother. I am a
+<lb/>lively young man, and will do more for you than 
+<lb/>she can.</p>
+          </sp>
+          <sp who="#phebe">
+            <speaker>Phebe</speaker>
+            <p>Now don't lie; you know you want to
+<lb/>deceive me; but you are mistaken in the stuff—
+<lb/>half silk—you ugly old fool—ha, ha, ha!— a very 
+<lb/>pretty young man to make love to a fine gay, spright­
+<lb/>ly girl like me— ha, ha, ha!—young indeed<stage type="business">turns
+<lb/>him round</stage> let me look at my young lover.</p>
+          </sp>
+          <pb n="25"/>
+          <milestone unit="sig" n="3(1)r"/>
+          <mw type="pageNum">25</mw>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>Yes, fair maid, I am your lover.</p>
+          </sp>
+          <sp who="#phebe">
+            <speaker>Phebe.</speaker>
+            <p>Will you marry me?</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>When my wife dies.</p>
+          </sp>
+          <sp who="#phebe">
+            <speaker>
+                <supplied reason="illegible">Phebe.</supplied>
+              </speaker>
+            <p>Then I won't wait for old shoes. So good-bye
+<lb/>old man.</p>
+          </sp>
+          <stage type="delivery" rend="break(no)pre()post()">Sings:</stage>
+          <lg type="poem" subtype="indeterminate">
+            <l rend="indent(2)">An old man would be wooing,</l>
+            <l rend="indent(2)">A handsome young maiden pursuing,</l>
+            <l rend="indent(2)">But she had an eye,</l>
+            <l rend="indent(2)">That his greey hairs could espy,</l>
+            <l rend="indent(2)">And laugh at all his whimsical cooing.</l>
+          </lg>
+          <stage type="business" rend="break(yes)indent(1)pre([)post(])">Attempts to run off. He seizes her in his arms
+<lb/>She throws him down in the struggle; puts her foot
+<lb/>on him, laughing.</stage>
+          <sp who="#phebe">
+            <speaker>Phebe.</speaker>
+            <p>Well, <persName>Brother Jenks</persName>, how do you do?
+	      <lb/>Nay, lay still, or I will put my scissars into your
+<lb/>heart. What does an old goat like you fancy, that
+<lb/>a true born <placeName>New England</placeName> girl has not courage to
+<lb/>defend her honor?—Ha, ha ha!—poor old man,
+<lb/>how do you feel now? Shall I let you get on your
+<lb/>feet?</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>For mercy's sake let me go to the camp,
+<lb/>and I will ever be your friend.</p>
+          </sp>
+          <sp who="#phebe">
+            <speaker>Phebe.</speaker>
+            <p><stage type="delivery">Contemptiously</stage> You my friend! foul
+<lb/>fiend, sooner would I take corruption to my bosom
+<lb/>and call it brother, than own you for an acquaint­
+<lb/>ance. Away, thou fool, you are beneath contempt.</p>
+          </sp>
+          <stage type="business" rend="break(yes)align(center)pre([)post(])">Going, meets the
+<persName rend="case(smallcaps)slant(upright)">Doct<choice><sic>e</sic><corr>o</corr></choice>r</persName> and
+<persName rend="case(smallcaps)slant(upright)">Jonathan.</persName></stage>
+          <sp who="#neverflinch">
+            <speaker>Dr.</speaker>
+            <p>Noble girl, we seen and heard all that past
+<lb/>between you and that monster. Oh! why will
+<lb/>woman desert herself. Was every girl to use com­
+<lb/>mon sense as you did, there would be no seducer
+<lb/>nor unfortunate females.</p>
+          </sp>
+          <sp who="#jonathan">
+            <speaker>Jon.</speaker>
+            <p><persName>Brother Jenks</persName> you lay very comfortable
+
+<mw type="sig">3</mw>
+<pb n="26"/>
+<milestone unit="sig" n="3(1)v"/>
+<mw type="pageNum">26</mw>
+
+<lb/>there, so we will take the gall, and bid you good
+<lb/>bye. Come <persName>Phebe</persName>, tuck yourself under my arm
+	      <lb/>and let us trudge home. I have had eno<choice><sic><g ref="#invertedu"/></sic><corr>u</corr></choice>gh of
+<lb/>camp-meetings and <name>methodist</name> hypocrisy.</p>
+          </sp>
+          <stage type="exit" rend="break(yes)align(center)pre([)post(])">Exeunt <persName rend="case(smallcaps)slant(upright)">Doctor</persName>,
+<persName rend="case(smallcaps)slant(upright)">Phebe</persName>, and 
+<persName rend="case(smallcaps)slant(upright)">Jonathan.</persName></stage>
+          <sp who="#jenks">
+            <speaker>Jenks</speaker>
+            <stage type="business" rend="pre()post()">rises.</stage>
+            <p>Well, I am not the first a girl has
+<lb/>made a fool of—but won't she expose me? No;
+<lb/>her modesty will prevent her, and I am safe there,
+<lb/>I wonder how <persName>Brother Averio</persName> succeeds with
+<persName>Sarah</persName>?</p>
+          </sp>
+          <stage type="exit" rend="break(yes)align(right)pre([)post()">Exit.</stage>
+          <stage type="entrance" rend="break(yes)align(center)pre()post()">Enter
+<persName rend="case(smallcaps)slant(upright)">Averio</persName> and <persName rend="case(smallcaps)slant(upright)">Sarah</persName></stage>
+          <sp who="#averio">
+            <speaker>A.</speaker>
+            <p>Where can <persName>Brother Jenks</persName> be. We must not
+<lb/>be seen together. He and your friend are engaged
+<lb/>somewhere hereabouts, if we find them, you girls
+<lb/>can return together, if not I will protect you to the
+<lb/>Camp.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>Protect me, from what? who can injure
+<lb/>me more than you have already done?</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>A.</speaker>
+            <p>I, <persName>Sarah</persName>, loved you and would have married you
+<lb/>had we met earlier. Now, I will support
+<lb/>you without toiling.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>And do you think, sir, <persName>Sarah Maria
+<lb/>Cornell</persName> will live for your pleasure, or a dependent
+<lb/>on your bounty? No, no <persName>Averio</persName>, we part to meet
+<lb/>no more.—Farewell.<stage type="exit" rend="align(right)pre([)post()">Exit.</stage></p>
+          </sp>
+          <sp who="#averio">
+            <speaker rend="align(center)case(smallcaps)slant(upright)">Averio,</speaker>
+            <p><stage type="delivery" rend="pre()post()">Solus.</stage><lb/>There goes another of my mistresses. I have
+<lb/>her secure, and will place her in <placeName>Bristol</placeName> for my
+<lb/>own use until I am tired of her; then send her off to
+<lb/><placeName>New-York</placeName>—it is rich ground for the frail sisterhood
+<lb/>as the <name>Magdalen Society</name> reports. What a happy
+<lb/>fellow I am—blest in love—rich in worldly wealth
+	      <lb/>and prized by my congregation. I may <choice><sic>sct</sic><corr>act</corr></choice>
+ cen<supplied reason="flawed-reproduction">­</supplied>
+<pb n="27"/>
+<milestone unit="sig" n="3(2)r"/>
+<mw type="pageNum">27</mw>
+
+<lb/>sure at defiance, and glory in my happiness. <persName>Sa­
+<lb/>rah</persName>, the lovely <persName>Sarah</persName>, my own—a worthy wife,
+<lb/>and fair character; who so blest as I?—But hold,
+<lb/>may not <persName>Sarah</persName> expose me to the world—what
+<lb/>then?—who will credit her assertions? a poor and
+<lb/>unknown girl, in opposition to a wealthy popular
+<lb/>man, will stand a small chance to injure me—and I
+<lb/>can easily ruin her character. So she is my slave.<stage type="exit" rend="break(yes)align(right)pre([)post()">Exit.</stage></p>
+          </sp>
+          <stage type="entrance" rend="break(yes)align(center)pre()post()">Enter <hi rend="case(smallcaps)slant(upright)"><persName>Mr.
+Houseman</persName></hi> and <hi rend="case(smallcaps)slant(upright)"><persName>Hozey</persName>.</hi></stage>
+          <sp who="#houseman">
+            <speaker>H.</speaker>
+            <p>A very pretty parson that. I wonder who
+<lb/>his poor slave is; I wish I knew.</p>
+          </sp>
+          <sp who="#hozey">
+            <speaker>Hozey.</speaker>
+            <p>We can soon learn, father.<stage type="exit" rend="align(right)pre([)post()">Exit.</stage></p>
+          </sp>
+        </div>
+      </div>
+      <div type="act">
+        <div type="scene">
+          <head rend="pre(#rule)">Act Third.—Scene First.</head>
+          <stage type="setting entrance" rend="break(yes)indent(1)first-indent(0)slant(upright)pre([)post(])">A view of a large meeting at sunrise.
+The trum­
+<lb/>pet blows; persons enter promiscuously among
+<lb/>them. <persName>Sarah</persName>, <persName>Phebe</persName>, <persName>Mrs. Patt<choice><sic>e</sic><corr>o</corr></choice>n</persName>,
+<persName>Mrs. House­
+<lb/>man</persName>, <persName>M.H. Hozey</persName>, and the girls</stage>
+          <stage type="entrance" rend="break(yes)indent(1)first-indent(0)slant(upright)pre([)post(])"><hi rend="slant(italic)">Enter</hi> <persName>Averio</persName>, <persName>Jenks</persName>, <persName>Muffet</persName>, and
+<persName>Elder</persName>, then <persName>Mr.
+<lb/>Thornhill</persName> and Officers.</stage>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>Brethern and sisters, one and all, precious
+<lb/>souls, you are all born to salvation if you seek it,
+<lb/>so says the <name>Holy Bible</name>, of which I have a number
+<lb/>to sell at tent No. 10, with a great variety of tracts,
+<lb/>all for ready cash only. So now let us proceed to
+<lb/>the worship of the day. <persName>Brother Jenks</persName>, commence
+<lb/>with singing a hymn; after which <persName>Brother Averio</persName>
+<lb/>will proceed to preach.</p>
+          </sp>
+          <pb n="28"/>
+          <milestone unit="sig" n="3(2)v"/>
+          <mw type="pageNum">28</mw>
+          <lg type="poem" subtype="indeterminate">
+            <head>Song</head>
+            <head rend="case(smallcaps)">Tune.—<hi rend="slant(italic)case(mixed)">The Dog and Gun.</hi></head>
+            <l>When morning's gay smiles awaken the day,</l>
+            <l>I spring from my couch, and its summons obey.</l>
+            <l>With what pleasure then I haste in search of</l>
+            <l>truth and fun,</l>
+            <l>As I range o'er the hills with my dog and my gun.</l>
+          </lg>
+          <stage type="business" rend="break(yes)align(center)pre([)post()">Full chor<choice><sic>a</sic><corr>u</corr></choice>s. At the end of which
+<persName>Averi<choice><sic>n</sic><corr/></choice>o</persName> ascends
+<lb/>the pulpit.</stage>
+        </div>
+        <div type="speech">
+          <head>Sermon</head>
+          <sp who="#averio">
+            <p>Bretheren! Bretheren! Bretheren! The word bre­
+<lb/>thren proceeds from the tabernacle, because we all
+<lb/>breathe therein. If you are drowsy I will rouse
+<lb/>you. I will beat a tattoo on the parchment cases of
+<lb/>your consciences. I will send a volley of small
+<lb/>shot at your outward man, to compel you to throw
+<lb/>off the garments of sin, in which you are now
+<lb/>clothed, and to induce you all to put on the
+<lb/>robes of repentance; clothe yourselves in sack­
+<lb/>cloth; put ashes on your heads, and fall prostrate
+<lb/>in the dust, there remain until repentance shall
+<lb/>cause your eyes to rain tears, and you wallow like
+<lb/>the swine in the filth of your own unrighteousness.
+<lb/>Lay there ye vile sinners, for your hearts are sinks
+<lb/>of corruption. Look at that maiden, is she not
+<lb/>fair to the eye, but ah, her soul is tainted by the
+<lb/>vanities of the world, and her inside is in a state
+<lb/>of putrefaction. Was she to wed, she would be
+<lb/>rotteness to the bones of her husband; for she
+<lb/>hath not yet found religion. Cast off, fair sisters,
+<lb/>these trappings of the world; throw them from you,
+
+<pb n="29"/>
+<milestone unit="sig" n="3(3)r"/>
+<mw type="pageNum">29</mw>
+
+<lb/>as you would all save your souls from the fangs of
+<lb/><persName>Satan</persName> and the tortures of eternal fire and brim­
+<lb/>stone, there to be burned forever. Ah, how will
+<lb/>you cry for one drop of water to cool the
+<lb/>flame on your tongues; and there will be neither
+<lb/>firemen nor engines to quench your flame, or ex­
+<lb/>tinguish the blue blazes that will envelope you.
+<lb/>Ah! what a pitiable state you people of the world
+<lb/>will be thus tormented, while we, the saints, will
+<lb/>look down from the realms of bliss, with pitying
+<lb/>eyes; but then our pity will avail you nothing;
+<lb/>for crime on crime will have rendered your state
+<lb/>past hope or forgiveness. So come now to our
+<lb/>altar; lay your vain toys at the feet of the minister
+<lb/>of God; even as the children of <placeName>Israel</placeName> offered their
+<lb/>fatted cattle to the sons of <persName>Levi</persName>,to attone for sins
+<lb/>committed in the flesh.</p>
+          </sp>
+          <stage type="business delivery" rend="break(yes)slant(upright)indent(1)first-indent(0)pre()post()">Girls cry; men shout; all is a scene of
+confusion.
+<lb/><persName>Mrs. Houseman</persName> lays her watch on the table; the
+<lb/>girls take off their ear-rings, &amp;c. and lays them
+<lb/>on the table—the elders gather them up. <persName>Mr.
+<lb/>Houseman</persName> goes to the table, seizes the elder,
+	    <lb/>and calls theives, theives; help. <name>Methodists</name>
+<lb/>seize him; his sons take his part. <persName>Mr. Thorn­
+<lb/>hill</persName> and constable rescues <persName>Mr. H.</persName> from them.</stage>
+          <sp who="#houseman">
+            <speaker>Mr. H.</speaker>
+            <p><persName>Mr. Thornhill</persName>, I am very happy to see
+<lb/>you here, these babling fanatics have taken from
+<lb/>my wife and daughter, property worth above fifty
+<lb/>dollars, which I demand from them instantly.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Thorn.</speaker>
+            <p>How do you prove that? produce your
+<lb/>witnesses.</p>
+          </sp>
+          <sp who="#jonathan">
+            <speaker>Jon.</speaker>
+            <p>I seed them lay the jim-cracks dow ere
+<lb/>and old elder what dye-call-um, has them now.</p>
+          </sp>
+          <mw type="sig">3*</mw>
+          <pb n="30"/>
+          <milestone unit="sig" n="3(3)v"/>
+          <mw type="pageNum">30</mw>
+          <sp who="#elder2">
+            <speaker>2d. Elder</speaker>
+            <p>Will you take your oath of that? young
+<lb/>man.</p>
+          </sp>
+          <sp who="#jonathan">
+            <speaker>Jon.</speaker>
+            <p>Yes, I will; for I saw you pocket them.
+<lb/>Mother's gold watch cost thirty dollars and you
+<lb/>has it.</p>
+          </sp>
+          <sp who="#elder2">
+            <speaker>2d. Elder</speaker>
+            <p>Swear this man, <persName>Mr. Thornhill</persName>, to that.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker> M.T.</speaker>
+            <p>No, sir, we will search you first.</p>
+          </sp>
+          <stage type="business" rend="slant(upright)post()">They
+<lb/>search him. <choice><sic>)</sic><corr/></choice><persName>First Elder</persName> tries to escape.</stage>
+          <sp who="#officer">
+            <speaker>Officer</speaker>
+            <p>Stop Mr. You have the articles.
+<lb/><stage type="business" rend="slant(upright)">Takes the jewelry from the Elder's pocket.</stage>
+<lb/>I seen your brother saint there, hand them to
+<lb/>you when <persName>Jonathan Houseman</persName> offered to <choice><sic>sweah e</sic><corr>swear he</corr></choice>
+<lb/>had them, intending to trap him into a perjury.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker> Mr.T</speaker>
+            <p>A precious set of saints you all are.
+<lb/>But by the virtue of the laws, I dismiss this as­
+<lb/>semblage of persons. Men, take your wives and
+<lb/>daughters from this scene of fanaticism, and hypo­
+<lb/>crisy. Come, <persName>Sarah</persName>, you are from my manufactory
+<lb/>therefore entitled to my protection.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>Ah, sir, I cannot go with you from hence.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Mr. T</speaker>
+            <p>Pho, why do you suffer such nonsense as
+<lb/>you heard here, depress your spirits. Come along
+<lb/>with your friends</p>
+          </sp>
+          <stage type="business" rend="post()"><persName>Sarah</persName> looks at <persName>Averio</persName>, he signs
+<lb/>to her to go. <persName>Mr. T.</persName> observes them.</stage>
+          <stage type="location" rend="break(yes)pre()post()align(center)"><persName>Averio</persName>, <persName>Jenks</persName>, 
+<persName>Muffet</persName>, and Elders, alone, in the
+<lb/>Camp.</stage>
+          <sp who="#averio">
+            <speaker>Averio.</speaker>
+            <p>A bad morning's work, Brothers: what
+<lb/>shall we do?</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>Pack up, and go directly.</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>Who will pay for the ground, removing
+<lb/>the tents, cartage, the groceries, liquors, beds, and
+<lb/>all the expense? Three hundred dollars will not
+<lb/>pay the bills, and I have not one hundred yet!</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>Come, <persName>Brother Jenks</persName>, no goaging; all the
+
+<pb n="31"/>
+<milestone unit="sig" n="3(4)r"/>
+<mw type="pageNum">31</mw>
+
+<lb/>tents are rented and paid for, amounting to three
+<lb/>hundred and fifty dollars. Supper last night, and
+<lb/>beds was one hundred and fifty dollars more. The
+<lb/>stock we have on hand will do for the next camp­
+<lb/>meeting. The goods were purchased by a com­
+<lb/>mittee, who cannot be compelled to pay for them
+<lb/>by law; and if we use our own wagons to carry
+<lb/>them away by night; we can lay the blame on <persName>Mr.
+<lb/>Thornhill</persName> for breaking up the meeting and causing
+<lb/>our loss, as we can assert the store tent was robbed
+<lb/>in our absence. After the disturbance, then we
+<lb/>may compromise with the creditors—pay part of
+<lb/>the money—pocket the remainder, and be thought
+<lb/>honourable men.</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Averio.</speaker>
+            <p>Good! Pretend instantly to leave the
+<lb/>camp ground; go to the store tent, and hide all day:
+<lb/>—if any one attempts to enter, a few groans will
+<lb/>strike terror to them; and at night we can drive
+<lb/>the wagons off silently.</p>
+          </sp>
+          <sp who="#elders">
+            <speaker>Elders.</speaker>
+            <p>An excellent plan.</p>
+          </sp>
+          <sp who="#elder2">
+            <speaker>2d. Elder.</speaker>
+            <p><persName>Brother Averio</persName>, thou art a wise man,
+<lb/>aye, and a successful one too. I was in the wood
+<lb/>last night—hem!</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>So was I, but I had a vixen to deal with,
+<lb/>and encountered a disappointment.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>This has been a rather unpropitious cam­
+<lb/>paign. <persName>Brother Averio</persName> alone has succeeded in his
+<lb/>pleasure. We must be content with profit; but
+<lb/>when money is gained, we won't complain as that
+<lb/>is the grand object of our lives.</p>
+          </sp>
+          <stage type="exit" rend="post()align(right)">Exeunt.</stage>
+        </div>
+        <div type="scene">
+          <stage type="setting" rend="align(center)pre()post()">Scene changes to <persName>Mrs. Patton's</persName> parlour.</stage>
+          <sp who="#patton">
+            <speaker>Mrs. Patton</speaker>
+            <p><stage type="delivery" rend="pre()post()">solus.</stage> What can be the matter with
+<lb/>poor <persName>Sarah Cornell</persName>? she has been so low spirited
+<lb/>and poorly ever since she went to the last camp­
+<lb/>meeting; all her fine rosy colour is gone; she looks
+
+<pb n="32"/>
+<milestone unit="sig" n="3(4)v"/>
+<mw type="pageNum">32</mw>
+
+<lb/>pale, cannot eat—and I do not know what to make
+<lb/>of her. Then here is that nice young farmer <persName>Jona­
+<lb/>than Houseman</persName>, comes a courting after her, and she
+<lb/>won't look at him, not hear a word about him. If the
+<lb/>girls talk of her being married, she says yes, to my
+<lb/>grave soon; I don't like things as they are; and
+<lb/>then she talks of turning <name>methodist</name>, and joining par­
+<lb/>son <persName>Averio's</persName> church and has written to him about it.</p>
+          </sp>
+          <stage type="entrance" rend="break(yes)pre()post()align(center)">Enter Post Boy.</stage>
+          <sp who="#postboy">
+            <speaker>Post Boy.</speaker>
+            <p>A letter for <persName>Miss Cornell</persName>.</p>
+          </sp>
+          <sp who="#patton">
+            <speaker>Mrs. P.</speaker>
+            <p>From where?</p>
+          </sp>
+          <sp who="#postboy">
+            <speaker>Post Boy.</speaker>
+            <p><placeName>Bristol</placeName>;—rather a stylish colour for a
+<lb/>letter; pink paper is a new fashion.</p>
+          </sp>
+          <stage type="business exit" rend="post()"><persName>Mrs. Patton</persName><lb/><choice><sic>P</sic><corr>p</corr></choice>ays the post boy. He exits.</stage>
+          <sp who="#phebe">
+            <speaker>Phebe.</speaker>
+            <p>What have you there, mother?</p>
+          </sp>
+          <sp who="#patton">
+            <speaker>Mrs.P.</speaker>
+            <p>A letter for <persName>Sarah</persName>.</p>
+          </sp>
+          <sp who="#phebe">
+            <speaker>Phebe.</speaker>
+            <p>Oh, dear, she will be so pleased. I wonder
+<lb/>where this letter comes from! why, it is the <placeName>Bristol</placeName>
+<lb/>postmark! What friends has she there? No matter
+<lb/>I will carry it to her.</p>
+          </sp>
+          <stage type="exit" rend="post()align(right)">Exit, gaily.</stage>
+          <sp who="#patton">
+            <speaker>Mrs. Patton,</speaker>
+            <stage type="delivery" rend="pre()post()">solus.</stage>
+            <p><persName>Mr.
+Averio</persName> lives in <name>Bristol</name>
+<lb/><persName>Sarah</persName> has been talking of joining his congregation.
+<lb/>If this letter should confirm her intention, she will
+<lb/>change her residence; and <persName>Mr. Thornhill</persName> will lose
+<lb/>the best hand in his factory, my daughter her friend
+<lb/>and we an agreeable boarder. What will she gain
+<lb/>by the removal; he is a married man, and may bring
+<lb/>her to shame. I will apprise <persName>Mr. Thornhill</persName> of my
+<lb/>suspicions.</p>
+          </sp>
+          <stage type="entrance" rend="align(center)break(yes)pre()post()">Enter <persName>Dr. Neverflinch.</persName></stage>
+          <sp who="#neverflinch">
+            <speaker>Dr. N.</speaker>
+            <p><persName>Mrs. Patton</persName>, from whom did <persName>Sarah Cornell</persName><lb/>receive a letter to-day?</p>
+          </sp>
+          <sp who="#patton">
+            <speaker>Mrs. Patton.</speaker>
+            <p>I do not know, Sir;—why do you
+<lb/>enquire?</p>
+          </sp>
+          <pb n="33"/>
+          <milestone unit="sig" n="3(5)r"/>
+          <mw type="pageNum">33</mw>
+          <sp who="#neverflinch">
+            <speaker>Dr.</speaker>
+            <p>Mere curiosity. When will she be at home<choice><sic>!</sic><corr>?</corr></choice>
+<lb/>Ah, here she comes. Pray leave us alone a few mi­
+<lb/>nutes.</p>
+          </sp>
+          <stage type="exit" rend="align(right)pre(\()post()">Exit, <persName>Mrs. Patton.</persName></stage>
+          <stage type="entrance" rend="break(yes)align(center)pre()post()">Enter <persName>Sarah</persName>, sorrowfully.</stage>
+          <sp who="#neverflinch">
+            <speaker>Dr.</speaker>
+            <p><persName>Sarah</persName>, did you send a receipt to my shop a
+<lb/>short time ago?</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sar.</speaker>
+            <p>I did, Sir.</p>
+          </sp>
+          <sp who="#neverflinch">
+            <speaker>Dr.</speaker>
+            <p>From whom did you receive it?</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>From a friend at a distance, to whom I
+<lb/>have disclosed the delicate weak state I am in.</p>
+          </sp>
+          <sp who="#neverflinch">
+            <speaker>Dr.</speaker>
+            <p>Who is that friend, <persName>Sarah</persName>?</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sar.</speaker>
+            <p>
+              <persName>Mr. Averio</persName>
+            </p>
+          </sp>
+          <stage type="business" rend="align(right)post()">She bursts into tears.</stage>
+          <sp who="#neverflinch">
+            <speaker>Dr.</speaker>
+            <p><stage type="delivery">aside.</stage> The base hypocrite! Well, <persName>Sarah</persName>, the
+<lb/>draught will answer his purpose, but you will be a
+<lb/>murderess. Either you or the child will be killed, if
+<lb/>you take any of his prescriptions. Write this to him,
+<lb/>and say you do it by my direction.</p>
+          </sp>
+          <stage type="exit" rend="align(right)post()">Exit.</stage>
+          <sp who="#cornell">
+            <speaker>Sar.</speaker>
+            <p><stage type="delivery" rend="pre()post()">solus, weeping.</stage> Oh what a miserable wretch
+<lb/>have I made myself! Now I know what ails me; a
+<lb/>mother—an unmarried mother—whither can I fly to
+<lb/>conceal my guilty head, and to whom look for re­
+<lb/>dress? Every door will close against me, and the fin­
+<lb/>ger of scorn will be pointed at me eve<choice><sic>-</sic><corr>r</corr></choice>y where.</p>
+          </sp>
+          <stage type="business" rend="break(yes)align(right)pre()post()">She weeps.</stage>
+          <stage type="entrance business" rend="break(yes)align(center)slant(upright)">Enter
+<persName>Mrs. Patt<choice><sic>e</sic><corr>o</corr></choice>n.</persName> She takes her in her arms and
+<lb/>soothes her. <persName>Sarah</persName> weeps on her bosom.</stage>
+          <sp who="#patton">
+            <speaker>Mrs. P.</speaker>
+            <p>My poor girl, do not thus distract your
+<lb/>mind with distressing fancies; you are not the first
+<lb/>of your sex, by numbers, who has been deceived, nor
+<lb/>you won't be the last: so cheer up; my door will
+<lb/>never close on you for this error; continue at your
+<lb/>work; trust in that power never deceived, and
+<lb/>all will be well.</p>
+          </sp>
+          <pb n="34"/>
+          <milestone unit="sig" n="3(5)v"/>
+          <mw type="pageNum">34</mw>
+          <sp who="#cornell">
+            <speaker>Sarah,</speaker>
+            <p><stage type="delivery" rend="pre()post()">fervently.</stage> May heaven bless you for your
+<lb/>goodness to a friendless orphan and a betrayed
+<lb/>girl. The villain would have poisoned me had not
+<lb/><persName>Dr. Neverflinch</persName> have saved me. Ah, horrid man!
+<lb/>But, <persName>Mrs. Patton</persName>, <persName>Jonathan Houseman</persName> must visit
+<lb/>here no more. I will deceive no man by a sem­
+<lb/>blance of virtue, since I am lost to that.</p>
+          </sp>
+          <sp who="#patton">
+            <speaker>Mrs. P.</speaker>
+            <p>That is a good girl; go to your cham­
+<lb/>ber; I will dismiss him when he comes.</p>
+          </sp>
+          <stage type="exit" rend="align(right)">Exeunt.
+<lb/>Scene changes to a street.</stage>
+          <stage type="entrance" rend="align(center)break(yes)pre()post()">Enter
+<persName>Averio</persName> <hi rend="slant(upright)">and</hi> 
+<persName>Muff</persName>.</stage>
+          <sp who="#averio">
+            <speaker>Averio.</speaker>
+            <p>Cursed folly! My intercourse with <persName>Sa­
+<lb/>rah</persName> will be detected—my name stigmatised—my
+<lb/>place lost—my ministry be suspended, and all for
+<lb/>what? a paltry girl, who will, if she dies, be out of
+<lb/>misery. Who could have supposed that she would
+<lb/>have told the <persName>Doctor</persName> from whence the prescription
+<lb/>came. She must be an ideot thus to betray such a
+<lb/>secret.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>Aye, you are in a very bad predicament;
+<lb/>and if you escape other ways, the Conference will
+<lb/>arraign you for adultery.</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Averio.</speaker>
+            <p>They dare not; there I am secure. My
+<lb/>physical studies has saved too many of them from
+<lb/>detection not to ensure me of their protection.
+<lb/>and though all the world would condemn me, the
+<lb/>Conference must protect me, or I will blast them.
+<lb/>It is society at large I fear, and my wife's temper in
+<lb/>private. Women rarely submit peaceably to such
+<lb/>conduct in a husband.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>Now, to send him to lie in the gallows, I marry
+<lb/>the rich widow, as my rib cannot live long; ahem,
+<lb/><persName>Brother Averio</persName>, can't you send her on a hasty call
+<lb/>to heaven! eh, do you take?</p>
+          </sp>
+          <pb n="35"/>
+          <milestone unit="sig" n="3(6)r"/>
+          <mw type="pageNum">35</mw>
+          <sp who="#averio">
+            <speaker>Averio.</speaker>
+            <p>O yes; I understand you; but how can
+<lb/>I effect the matter now she is put on her guard: I
+<lb/>can send no potion that she will take.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>Yes, you can write to her to meet you in a 
+<lb/>lonely place, then send her home.—Take care no
+<lb/>one sees you, and you are secure from even suspi­
+<lb/>cion. We will employ emissaries to declare she
+<lb/>was deranged and a vile girl; so no one will cre­
+<lb/>dit her tale about the dose you prescribed for her.</p>
+          </sp>
+          <stage type="entrance" rend="break(yes)align(center)pre()post()">Enter <persName>Brother Jenks.</persName></stage>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>Good morning, friends. Ha, <persName>Mr. Averio</persName>,
+<lb/>how goes your affair, with the pretty <persName>Sarah</persName>; fame
+<lb/>give you a rival in her love.</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Averio.</speaker>
+            <p><stage type="delivery" rend="slant(upright)">pleased.</stage> Perhaps she never loved me,
+<lb/>nor I her;—it was lust on my part, and weakness
+<lb/>on hers: my passions were too powerful for her
+<lb/>strength, so I conquered; once mine, I command­
+<lb/>ed as I pleased: poor girl, I wish she would marry.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>Try to persuade her to it.</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Averio.</speaker>
+            <p>I will ride there to night, and do my
+<lb/>best to induce her to take a husband; then all will
+<lb/>be secure.</p>
+          </sp>
+          <stage type="exit" rend="align(right)slant(upright)pre([)post()">Exit.</stage>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>What is the matter with <persName>Brother Averio</persName>?</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>Pho! a mere trifle; the girl is in the fa­
+<lb/>mily way, and says he is the father: we must con­
+<lb/>ceal the fact, or our camp-meetings will be broken up.</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>She must die, Brother, or she will swear
+<lb/>the brat to him, and we shall be done up.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>Nonsense! people don't condemn a
+<lb/>whole body for one bad member.</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>Yes, but he is the most persuasive
+<lb/>preacher we have, and highly useful <choice><sic>ta</sic><corr>to</corr></choice> the whole
+<lb/>Conference; why don't he give her a dose.</p>
+          </sp>
+          <pb n="36"/>
+          <milestone unit="sig" n="3(6)v"/>
+          <mw type="pageNum">36</mw>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>She won't take any thing from him, and
+<lb/>has betrayed the secret to <persName>Dr. Neverflinch</persName>, one of
+<lb/>our greatest opposers.</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>Then she dies, by <persName>Pluto</persName>; no power
+<lb/>shall save her.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>Just as you say, but who will endanger
+<lb/>their lives to take hers?</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>He shall: what must all our reputations
+<lb/>lay at the mercy of a silly girl? No; the world can
+<lb/>spare her; she will be better off, and our society
+<lb/>secure</p>
+          </sp>
+          <stage type="exit" rend="align(right)slant(upright)pre(\()post()">Exeunt.</stage>
+        </div>
+        <div type="scene">
+          <stage type="setting entrance business" rend="align(center)pre()post()">Scene changes to a view of a river.—Enter
+<persName>Averio.</persName>
+<lb/>musing.</stage>
+          <sp who="#averio">
+            <speaker>Averio.</speaker>
+            <p>I cannot murder her: my soul recoils
+<lb/><choice><sic>m</sic><corr>fr</corr></choice>om the act; yet if she rejects the offer I shall
+<lb/>make her, she must die;—but how? I dare not stab
+<lb/>her, lest my trembling hand should not inflict a
+<lb/>deadly wound, then she might linger, and proclaim
+<lb/>me as her destroyer. I cannot drown her; yet
+<lb/>that might be done by inducing her to meet me
+<lb/>near the water, My mind is a chaos――some­
+<lb/>thing must be effected. She will write, and I fan­
+<lb/>cy her letters are opened ere they reach my hand.
+<lb/>My wife's property is all in her own power, she
+<lb/>seems cool. <persName>Brother Muffet</persName> is a great favorite
+<lb/>with her, and <quote rend="pre(“)post(”)">thereby may hang a tale.</quote> I will
+<lb/>not live in fear of the world's power, and at the
+<lb/>phantom futurity I smile in inward scorn: give me
+<lb/>the enjoyment of this world's, and them that
+<lb/>please may take the others. <persName>Sarah</persName> is a good inno­
+<lb/>cent girl. If she quits this for a better life, what
+<lb/>harm is done to her? None: and on the solitary
+<lb/>wilds of <placeName>Fall River</placeName> banks she dies, or the brat will
+
+<pb n="37"/>
+<milestone unit="sig" n="4(1)r"/>
+<mw type="pageNum">37</mw>
+
+<lb/>be exterminated. I will write, and desire her to
+<lb/>meet me there on Thursday evening at sunset; then
+<lb/>shall doubt be reduced to certainty.</p>
+          </sp>
+          <stage type="exit" rend="slant(upright)pre([)post()">Exits, musing.</stage>
+        </div>
+        <div type="scene">
+          <stage type="setting business exit" rend="break(yes)slant(upright)pre()post()indent(1)first-indent(0)">Scene changes to the
+factory. <persName>Mr.
+Thornhill</persName> at a
+<lb/>desk, writing. Enter <persName>Post Boy</persName>—Gives a letter.
+<lb/>Exits.</stage>
+          <sp who="#thornhill">
+            <speaker>Mr. T.</speaker>
+            <p>Ha! for <persName>Sarah Cornell</persName>! the <placeName>Bristol</placeName>
+<lb/>post-mark! What correspondent can she have
+<lb/>there? <stage type="business" rend="slant(upright)">Calls <persName>Sarah Cornell</persName>: she comes forward
+<lb/>to the desk.</stage> <persName>Sarah</persName>, a letter from <placeName>B――l</placeName> for you.
+<lb/><stage type="business" rend="slant(upright)">She trembles.</stage> Why this agitation, child? One
+<lb/>might fancy there was some dire mystery attached
+<lb/>to your correspondent; who is it from?</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p><persName>Mr. Averio</persName>, sir, and on a matter of
+<lb/>great importance.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Mr. T.</speaker>
+            <p>To your soul or body, <persName>Sarah</persName>?</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>Both, perhaps, <stage type="business">Weeps.</stage> Excuse me,
+<lb/>Sir. I am very low spirited this morning, and
+<lb/>wish to finish my day's work early.</p>
+          </sp>
+          <stage type="business exit" rend="break(yes)align(center)slant(upright)">Retires up the stage, reading the letter.—Exit
+<lb/><persName>Mr. T</persName></stage>
+          <stage type="business" rend="align(right)slant(italic)pre([)post()">She comes down again.</stage>
+          <sp who="#cornell">
+            <speaker>Sar.</speaker>
+            <p>What can this mean? —wants to see me at
+<lb/>six o' clock on Thursday evening at <placeName>Fall River</placeName>;
+<lb/>shall I go? No, I won't; I know he is a villain, and
+<lb/>shall I trust my life to his mercy? Yet what is life,
+<lb/>when peace and reputation are lost! I can but die.
+<lb/>Will he kill me? No, no, he cannot be so cruel.
+<lb/>Perhaps he has secured me a private asylum for a
+<lb/>time, and wants to conduct me thence; he said he
+<lb/>loved me, therefore he cannot mean me ill. Yes;
+<lb/>I will go secretly, as he desires, but I will leave a
+<lb/>line to detect him, if he means me wrong.</p>
+          </sp>
+          <mw type="sig">4</mw>
+          <pb n="38"/>
+          <milestone unit="sig" n="4(1)v"/>
+          <mw type="pageNum">38</mw>
+          <stage type="business" rend="align(center)slant(upright)pre([)post()"><hi rend="case(smallcaps)"><persName>Phebe</persName></hi> comes down the stage to
+ her.</stage>
+          <sp who="#phebe">
+            <speaker>Phebe</speaker>
+            <p>What ails you, <persName>Sarah</persName>? You tremble,
+<lb/>and seem distressed.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>You only fancy so, <persName>Phebe</persName>. I am very
+<lb/>happy, and intend going to the consecration. Will
+<lb/>you go?</p>
+          </sp>
+          <sp who="#phebe">
+            <speaker>Phebe</speaker>
+            <p>I cannot spare the time, nor you neither.
+<lb/>poor girls like us, that depend on our labour for
+<lb/>subsistence, ought not to run about the world as
+<lb/>fancy suggests; these flights suit men best.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sarah.</speaker>
+            <p>Maybe so; come let us go to work.</p>
+          </sp>
+          <stage type="exit" rend="break(yes)align(right) post()">Exeunt.</stage>
+        </div>
+        <div type="scene">
+          <stage type="setting entrance" rend="indent(1)slant(upright)pre()post()">Scene changes to <persName>Mr. Housemans's</persName>.
+<lb/><hi rend="align(center)">Enter <persName>Mr. and Mrs. Houseman.</persName></hi></stage>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H.</speaker>
+            <p>Husband, I wish you would not leave
+<lb/>home to day.</p>
+          </sp>
+          <sp who="#houseman">
+            <speaker>Mr. H.</speaker>
+            <p>Nonsense, wife, poultry is scarce and
+<lb/>dear, therefore I will take our whole stock to mar­
+<lb/>ket, The boys shall go with me; and I will bring
+<lb/>you and the girls new dresses for Christmas.</p>
+          </sp>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H.</speaker>
+            <p>I feel as if something dreadful was go­
+<lb/>ing to happen.</p>
+          </sp>
+          <sp who="#houseman">
+            <speaker>Mr. H.</speaker>
+            <p>Fancy, wife—more Camp-meeting non­
+<lb/>sense! what, do you expect old <name>Satan</name> will fly away
+<lb/>with you when I am gone? ha, ha! if he does, and
+<lb/>you set your tongue going, he'll soon bring you
+<lb/>back.</p>
+          </sp>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H.</speaker>
+            <p><stage type="delivery" rend="slant(upright)">angrily.</stage> Well, go along with you;
+<lb/>and if the house is burnt in your absence, don't
+<lb/>blame me.</p>
+          </sp>
+          <sp who="#houseman">
+            <speaker>Mr. H.</speaker>
+            <p>That I won't wife, if you are in the
+<lb/>middle of it: ha! ha! ha! <stage type="delivery" rend="pre([)post(])">Calls.</stage> <persName>Mary</persName>,
+<persName>Tab</persName>,
+
+<pb n="39"/>
+<milestone unit="sig" n="4(2)r"/>
+<mw type="pageNum">39</mw>
+
+<lb/><persName>Donty</persName>, <persName>Hozey</persName>, holloo, there! come stir all hands
+<lb/>for market, load up the wagon, heap on the turkeys,
+<lb/>geese, fowls, ducks, pigs, pork, and pumpkins.</p>
+          </sp>
+          <sp who="#houseman">
+            <speaker>Mr. H.</speaker>
+            <p>All is ready; good bye, old woman.</p>
+          </sp>
+          <stage type="business exit" rend="break(yes)slant(upright)align(right)post()">Kisses her and exit.</stage>
+          <stage type="entrance modifier" rend="break(yes)slant(upright)align(center)pre()post()">Enter <persName>Mary</persName> and
+<persName>Tabby</persName>, frightened.</stage>
+          <sp who="#mary">
+            <speaker>Mary</speaker>
+            <p>Ah, mother, I wish father had not gone
+<lb/>with the boys; I feel so queer, as if something
+<lb/>was going to happen.</p>
+          </sp>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H.</speaker>
+            <p>So do I: let us go into the house and
+<lb/>fasten all the doors; it is almost night; where is
+<lb/><persName>Tabby</persName>?</p>
+          </sp>
+          <sp who="#tabby">
+            <speaker>Tab.</speaker>
+            <p>Oh! aunt, I have seen a great tall fright­
+<lb/>ful looking man walking about our fields, and he
+<lb/>looks so queer; I really think it was <persName>Parson
+<lb/>Averio</persName>, only he had spectacles on.</p>
+          </sp>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H.</speaker>
+            <p>In girls, and fasten all the doors and
+<lb/>windows; it is a cold dreary time for any person
+<lb/>to be walking alone here, and they come for no
+<lb/>good that is certain.</p>
+          </sp>
+          <stage type="exit" rend="align(right)post()">Exeunt into the house.</stage>
+        </div>
+        <div type="scene">
+          <stage type="setting entrance business" rend="break(yes)align(center)slant(upright)pre()post()">Scene changes to a view of
+<placeName>Fall River</placeName>.
+<lb/>Enter <persName>Averio</persName>, musing.</stage>
+          <sp who="#averio">
+            <speaker>Av.</speaker>
+            <p>Will she come? I hope not: pride and
+<lb/>the prejudices of the world bid me destroy her;
+<lb/>but there is a monitor here forbids me to injure her;
+<lb/>I hope she will not come. Ha! what form ap­
+<lb/>proaches? 'tis <persName>Sarah</persName>, and I am lost for ever.</p>
+          </sp>
+          <stage type="entrance modifier" rend="break(yes)align(center)slant(upright)post()">Enter
+<persName>Sarah M. Cornell</persName> in a cloak and calash.</stage>
+          <sp who="#averio">
+            <speaker>Av.</speaker>
+            <p><persName>Sarah</persName>, is that you?</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sar.</speaker>
+            <p><stage type="delivery" rend="slant(upright)">faintly.</stage> Yes, Sir. I came at your request,
+<lb/>but I am so feeble, I can hardly support myself.</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>A..</speaker>
+            <p><stage type="delivery" rend="slant(upright)">tenderly</stage>. Lean on me, love; I will sup­
+<lb/><choice><sic>support</sic><corr>port</corr></choice> yo<choice><sic>n</sic><corr>u</corr></choice>.</p>
+          </sp>
+          <pb n="40"/>
+          <milestone unit="sig" n="4(2)v"/>
+          <mw type="pageNum">40</mw>
+          <sp who="#cornell">
+            <speaker>Sar.</speaker>
+            <p>Ah, Sir, how can you protect me? shame
+<lb/>and remorse presses me to the earth; would that I
+<lb/>were in my grave.</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Av.</speaker>
+            <p>Do you, <persName>Sarah</persName>? if so, why did you not take
+<lb/>the medicine I prescribed for you?</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sar.</speaker>
+            <p>Because I could not; the innocent should
+<lb/>not suffer for the guilty.</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Av.</speaker>
+            <p>You would not be guilty; on me the sin
+<lb/>would fall. <persName>Sarah</persName>, I am a condemned man in the
+<lb/>sight of God and you; but why should you blast
+<lb/>my reputation in the eyes of the world?</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sar.</speaker>
+            <p>I did not: I will not; I will fly to the de­
+<lb/>sert to save you from censure; you are the father
+<lb/>of my child, and if I cannot love, I will not injure
+<lb/>you; you have a wife and children—are a minister
+<lb/>of the gospel; I am a poor friendless girl, for whom
+<lb/>no one cares; then why do I thus meet you alone,
+<lb/>at this solemn hour? my better judgment impels
+<lb/>me to fly from you, yet here I lean on you in love
+<lb/>and confidence.</p>
+          </sp>
+          <stage type="business" rend="align(right)post()">Falls on his bosom, weeping.</stage>
+          <sp who="#averio">
+            <speaker>Av.</speaker>
+            <p>Oh! this is too much; I cannot murder her.</p>
+          </sp>
+          <sp who="#cornell">
+            <speaker>Sar.</speaker>
+            <p><stage type="delivery" rend="slant(upright)">starting.</stage> Murder me, said you? was it
+<lb/>for that purpose you sent for me?</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Av.</speaker>
+            <p>It was, Syren. You shall die.</p>
+          </sp>
+          <stage type="business" rend="pre([)post(])">Seizes her
+<lb/>by the throat, strangles her, and carries her off. She
+<lb/>screams murder! help! murder!</stage>
+        </div>
+        <div type="scene">
+          <stage type="setting exit" rend="break(yes)indent(1)first-indent(0)pre([)post(])">Scene changes to a stack-yard.
+<persName>Averio</persName> is seen go­
+<lb/>ing away from it very fast. Night gets darker.
+<lb/>He runs off.</stage>
+        </div>
+        <div type="scene">
+          <stage type="setting entrance business" rend="break(yes)indent(1)first-indent(0)pre()post()">Scene changes to a ferry-house. Enter
+<persName>Averio</persName>, who
+<lb/>knocks at the door.</stage>
+          <sp who="#voice">
+            <speaker rend="pre([)post(])slant(italic)break(no)">Voice within.</speaker>
+            <p>Who's there at this late hour?</p>
+          </sp>
+          <pb n="41"/>
+          <milestone unit="sig" n="4(3)r"/>
+          <mw type="pageNum">41</mw>
+          <sp who="#averio">
+            <speaker>Av.</speaker>
+            <p>I want to cross the ferry in haste.</p>
+          </sp>
+          <sp who="#voice">
+            <speaker>Voice.</speaker>
+            <p>You can't, nor shan't cross to-night; it is
+<lb/>past ferry-hour. What have you been about till
+<lb/>this hour of night? or, who are you?</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Av.</speaker>
+            <p>No matter who I am; can't I cross?</p>
+          </sp>
+          <sp who="#voice">
+            <speaker>Voice.</speaker>
+            <p>No; I tell you once for all, you must stay
+<lb/>here to-night. So come in.</p>
+          </sp>
+          <stage type="exit" rend="align(right)pre([)post()">Exit into the house.</stage>
+        </div>
+        <div type="scene">
+          <stage type="setting" rend="slant(upright)indent(1)first-indent(0)pre([)post()">Scene changes to the farm-yard. Time, sunrise.
+<lb/>All seems dark and dreary.</stage>
+          <stage type="entrance" rend="break(yes)align(center)slant(upright)pre()post()">Enter
+<persName>Mary</persName>, <persName>Mrs. H.</persName>, and <persName>Tabby</persName>.</stage>
+          <sp who="#mary">
+            <speaker>Mary.</speaker>
+            <p>Mother, I heard horrid screams last night.</p>
+          </sp>
+          <sp who="#tabby">
+            <speaker>Tab.</speaker>
+            <p>So did I.</p>
+          </sp>
+          <stage type="business">Goes to the stack-yard—shrieks
+<lb/>murder; runs back trembling—faints—they carry
+<lb/>her in.</stage>
+          <stage type="entrance" rend="break(yes)align(center)slant(upright)pre()post()">Enter
+    two men from the stack-yard.</stage>
+          <sp who="#man1">
+            <speaker>1st Man.</speaker>
+            <p>Hallo, neighbour <persName>Houseman</persName>, here's a dead woman hanging on your hay-stack.</p>
+          </sp>
+          <sp who="#man2">
+            <speaker>2d. Man.</speaker>
+            <p>How is this neighbour <persName>Houseman</persName>? Come down directly. Where are you all?</p>
+          </sp>
+          <stage type="entrance modifier" rend="break(yes)slant(upright)align(center)pre()post()">Enter
+<persName>Mary</persName>, trembling.</stage>
+          <sp who="#mary">
+            <speaker>Mary.</speaker>
+            <p>Ah, neighbor <persName>Durf<choice><sic>e</sic><corr>r</corr></choice>e</persName>, what is the matter?</p>
+          </sp>
+          <sp who="#durfre">
+            <speaker>Dur.</speaker>
+            <p>Matter enough to hang us all. Who is that
+<lb/>women hanging on your haystack? Where is your
+<lb/>father and the boys.</p>
+          </sp>
+          <sp who="#mary">
+            <speaker>Mary.</speaker>
+            <p>Father and both my brothers went off to
+<lb/><placeName>Bristol Market</placeName> two days ago, as you all know.</p>
+          </sp>
+          <sp who="#allen">
+            <speaker>Mr. Allen</speaker>
+            <p>Yes, I met him on the road, and pro­
+<lb/>mised to take care of the girls till they came back.
+<lb/>But this is too horrible—here is a murder committed
+<lb/>by some person</p>
+          </sp>
+          <sp who="#mary">
+            <speaker>Mary.</speaker>
+            <p>Maybe she hung herself.</p>
+          </sp>
+          <mw type="sig">4*</mw>
+          <pb n="42"/>
+          <milestone unit="sig" n="4(3)v"/>
+          <mw type="pageNum">42</mw>
+          <sp who="#durfre">
+            <speaker>Mr. D.</speaker>
+            <p>Haste, <persName>Allen</persName>, summon the neighborhood.</p>
+          </sp>
+          <stage type="exit" rend="break(yes)align(right)pre([)post()">Exit <persName>Mr. A.</persName></stage>
+          <stage type="entrance modifier" rend="break(yes)align(center)slant(upright)pre()post()">Enter persons running terrified.</stage>
+          <sp who="#man1">
+            <speaker>1st Man.</speaker>
+            <p>What has poor <persName>Mrs. Houseman</persName> hung
+<lb/>himself for?</p>
+          </sp>
+          <sp who="#man2">
+            <speaker>2d. Man.</speaker>
+            <p>No, no, its a strange woman they have
+<lb/>refused lodging to, who had killed herself.</p>
+          </sp>
+          <stage type="entrance" rend="break(yes)align(center)slant(upright)pre()post()">Enter <persName>Mrs. Borden.</persName></stage>
+          <sp who="#borden">
+            <speaker>Mrs. B.</speaker>
+            <p><persName>Mary</persName>, where is your mother and <persName>Tabby</persName>?</p>
+          </sp>
+          <sp who="#mary">
+            <speaker>Mary.</speaker>
+            <p><persName>Tab</persName> is frightened half to death. She has
+<lb/>seen the dead woman, and fainted away.</p>
+          </sp>
+          <sp who="#borden">
+            <speaker>Mrs. B.</speaker>
+            <p>Let us see who she is, and what she has
+<lb/>on.</p>
+          </sp>
+          <stage type="exit" rend="align(right)slant(upright)pre([)post()">Goes off.</stage>
+          <stage type="entrance" rend="break(yes)align(center)slant(upright)pre()post()">Enter several Men.</stage>
+          <sp who="#durfre">
+            <speaker>Mr. D.</speaker>
+            <p>Coroner, we want your help here.</p>
+          </sp>
+          <sp who="#coroner">
+            <speaker>Cor.</speaker>
+            <p>I am ready. Call a jury.</p>
+          </sp>
+          <stage type="exit" rend="pre([)post(])">The men go off
+<lb/>behind the haystack. Women go into the house.</stage>
+          <stage type="entrance" rend="break(yes)align(center)slant(upright)pre()post()">Enter people, among them
+<persName>Mr. Gifford</persName></stage>
+          <sp who="#gifford">
+            <speaker>Giff.</speaker>
+            <p>Is she a short girl, with a cloak on and a
+<lb/>calash. let me see her</p>
+          </sp>
+          <sp who="#woman1">
+            <speaker>1st Woman.</speaker>
+            <p>Very droll. How can it be? Where
+<lb/><persName>Donty</persName>, <persName>Hosey</persName>,and <persName>Mr.
+<choice><sic>H</sic><corr>M</corr></choice>r, Housema<choice><sic>a</sic><corr>n</corr></choice></persName>? Why
+<lb/>should <persName>Mrs. H.</persName> kill her only daughter, poor <persName>Mary</persName>?
+<lb/>She was the best girl in the place.</p>
+          </sp>
+          <sp who="#mary">
+            <speaker>Mary.</speaker>
+            <p>Thank you, <persName>Else</persName>, for speaking good of
+<lb/>me when I am a<choice><sic>a</sic><corr>b</corr></choice>sent.</p>
+          </sp>
+          <stage type="business" rend="slant(upright)pre([)post(])"><persName>Else</persName> embraces <persName>Mary</persName>.</stage>
+          <sp who="#else">
+            <p>Ah,
+<lb/>I thought you were hanged.</p>
+          </sp>
+          <sp who="#mary">
+            <speaker>Mary.</speaker>
+            <p>You see me here, don't you?</p>
+          </sp>
+          <stage type="entrance" rend="break(yes)align(center)slant(upright)pre()post()">Enter
+<persName>Mrs. Ho<choice><sic>n</sic><corr>u</corr></choice>seman</persName> and <persName>Mr. Borden</persName></stage>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H.</speaker>
+            <p>The girls said they heard dreadful
+
+<pb n="43"/>
+<milestone unit="sig" n="4(4)r"/>
+<mw type="pageNum">43</mw>
+
+<lb/>screams last night, just before bed-time; but as we
+<lb/>were alone, I thought it was only fancy. Poor <persName>Tab</persName>. is
+<lb/>quite wild with fright; who can it be? are any of
+<lb/>the women of the neighborhood missing</p>
+          </sp>
+          <sp who="#gifford">
+            <speaker>Giff.</speaker>
+            <p>She no more tied that clove hitch around her
+<lb/>own neck, than I tied it around mine!</p>
+          </sp>
+          <sp who="#else">
+            <speaker>Else.</speaker>
+            <p>Lawk! I seed a short lady, and a very tall
+<lb/>gentleman walking together, just at dark last night;
+<lb/>so I did!</p>
+          </sp>
+          <sp who="#man1">
+            <speaker>1st Man.</speaker>
+            <p>I sed a tall parson looking man dodg­
+<lb/>ing here abouts, at dark last night.</p>
+          </sp>
+          <sp who="#gifford">
+            <speaker>Giff.</speaker>
+            <p>I has it! I has it! the very man that slept
+<lb/>at my house last night; he is a methodist parson,
+<lb/>said he had been at the coal mines. I thought it was
+<lb/>a droll time of night to be at the coal mines: but
+<lb/>he is gone away.</p>
+          </sp>
+          <sp who="#william">
+            <speaker>Wm.</speaker>
+            <p>Yes, I rowed him over, he was very proud,
+<lb/>said he had been about his own business; and a bad
+<lb/>business it is.</p>
+          </sp>
+          <sp who="#coroner">
+            <speaker>Cor.</speaker>
+            <p>But who is the girl? No person seems to
+<lb/>know her.</p>
+          </sp>
+          <stage type="entrance" rend="break(yes)slant(upright)pre()post()">Enter <persName>Mr. Thornhill</persName> and
+<persName>Dr. Neverflinch</persName>, hastily.</stage>
+          <sp who="#thornhill">
+            <speaker>Mr. T.</speaker>
+            <p>Let me see the body, it is as I suspected.
+<stage type="exit" rend="slant(upright)pre([)post(])">Goes out, then returns.</stage>
+ <persName>Sarah M. Cornell</persName> one of
+<lb/>the most industrious girls in my factory.</p>
+          </sp>
+          <sp who="#neverflinch">
+            <speaker>Dr. N.</speaker>
+            <p>Haste! pursue the dark fiend, <persName>Averio</persName>, seize
+<lb/>him if he is in the pulpit; he alone has done the
+<lb/>deed.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Mr. T</speaker>
+            <p>Neighbours, the laws have been complied
+<lb/>with, leave the body to the care of those kind sis­
+<lb/>ters, whilst we pursue, and if possible bring the as­
+<lb/>assin to justice, though I fear there is not testimony
+
+<pb n="44"/>
+<milestone unit="sig" n="4(4)v"/>
+<mw type="pageNum">44</mw>
+
+<lb/>sufficient to prove his guilt, yet we can unmask a
+<lb/>hypocrite by placing him before a tribunal of ci<choice><sic>it</sic><corr>ti</corr></choice>t­
+<lb/>zens, they alone can clear or condemn him in this
+<lb/>world;—but that omnipotent power, whose eye sees
+<lb/>all deeds, will not spare him.</p>
+          </sp>
+          <sp who="#neverflinch">
+            <speaker>Dr. N.</speaker>
+            <p>Come on friends and neighbours, let us
+<lb/>throw the stigma he has attempted to put on our vil­
+<lb/>lage, back on the head of the villain.</p>
+          </sp>
+          <stage type="exit" rend="break(yes)align(right)pre([)post()">Exeunt men.</stage>
+          <sp who="#mrshouseman">
+            <speaker>Mrs. H.</speaker>
+            <p>Poor <persName>Sarah</persName>! my husband intended you
+<lb/>should have been his daughter-in-law,<stage type="delivery" rend="slant(upright)">weeps,</stage> I am
+<lb/>sorry for your untimely and dreadful death—from
+<lb/>my house, as a daughter, she shall be buried.</p>
+          </sp>
+          <stage type="entrance business" rend="break(yes)indent(1)first-indent(0)slant(upright)pre([)post(])">Enter two men carrying the body on a
+bier, the wo­
+<lb/>men form and follow it, weeping, into the hou<choice><sic>ra</sic><corr>se</corr></choice></stage>
+        </div>
+        <div type="scene">
+          <stage type="setting" rend="break(yes)align(center)case(smallcaps)slant(upright)pre()post()">Scene changes to a street.</stage>
+          <stage type="entrance" rend="break(yes)align(center)slant(upright)pre()post()">Enter <persName>Muffitt</persName> and
+<persName>Jenks</persName>.</stage>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p><persName>Brother Averio</persName> was from home all night,
+<lb/>and <persName>Sister Averio</persName> was so ill I remained with her
+<lb/>to comfort her till a late hour.</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>A brotherly duty, which no doubt you
+<lb/>fulfilled with much pleasure!</p>
+          </sp>
+          <stage type="delivery" rend="pre([)post()">Winks—they laugh.</stage>
+          <stage type="entrance" rend="break(yes)align(center)pre()post()">Enter
+<persName rend="case(smallcaps)">Averio</persName>, meeting
+them.</stage>
+          <sp who="#averio">
+            <speaker>Av.</speaker>
+            <p>Good morning, Brothers: how fares it with
+<lb/>you? I have been absent at a prayer-meeting
+<lb/>near <placeName>Fall River</placeName>, and was detained at <persName>Brother
+<lb/>Cook's</persName>.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p><stage type="delivery">slily.</stage> Aye, <persName>Sister Cooke</persName> is a nice wo­
+<lb/>man, and very friendly.</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p><stage type="delivery">aside, to <persName>Muffett</persName>.</stage> Leave us alone, will
+<lb/>you? I long to hear if all is safe.</p>
+          </sp>
+          <sp who="#muffitt">
+            <speaker>Muff.</speaker>
+            <p>Brethren, I must leave you for the pre­
+<lb/>sent, but we shall meet, God willing, this evening,
+
+<pb n="45"/>
+<milestone unit="sig" n="4(5)r"/>
+<mw type="pageNum">45</mw>
+
+<lb/>at <persName>Sister Gladdens</persName>: till then, peace be with you.</p>
+          </sp>
+          <stage type="exit" rend="break(yes)align(right)post()">Exits.</stage>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>Well, how have you succeeded? is all <lb/>things as they should be?</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Av.</speaker>
+            <p>All is at rest. Silence deep and profound
+<lb/>reigned. No eye was witness to the act, and we
+<lb/>are safe.</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>That is wel<choice><sic> </sic><corr>l</corr></choice>: She was a silly babbling
+<lb/>chit, that could not keep her own secret.</p>
+          </sp>
+          <stage type="business" rend="break(yes)align(center)">A noise, as if a hum of voices at a distance. <persName>Averio</persName>
+<lb/>starts.</stage>
+          <sp who="#averio">
+            <speaker>Av.</speaker>
+            <p>Hark! What sounds are those that float
+<lb/>upon the gale?</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>It is only a steam-boat letting off the
+<lb/>steam? Let us proceed to your house: your wife
+<lb/>is better.</p>
+          </sp>
+          <stage type="exit" rend="align(right)pre([)post()">Exeunt.</stage>
+          <stage type="entrance" rend="break(yes)pre()post()">Enter <persName>Mr. Thornhill</persName>,
+	  <persName>Dr. Neverflinch</persName>, <hi rend="slant(upright)">and</hi> Officers.</stage>
+          <sp who="#officer">
+            <speaker>Off.</speaker>
+            <p>Sir, it is impossible: there is not a more
+<lb/>religious man in <placeName>B――</placeName> than the person you accuse.</p>
+          </sp>
+          <sp who="#neverflinch">
+            <speaker>Dr.</speaker>
+            <p>Was he at home last night.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Mr. T.</speaker>
+            <p>Did he not return from <placeName>Fall River</placeName> early
+<lb/>this morning?</p>
+          </sp>
+          <sp who="#officer">
+            <speaker>Off.</speaker>
+            <p>I know not; but <choice><sic>doubtles</sic><corr>doubtless</corr></choice> he will satisfy
+<lb/>our inquiries. Oh! there comes his servant.</p>
+          </sp>
+          <stage type="entrance" rend="break(yes)align(center)pre()post()">Enter <persName>Betsy Hills</persName>.</stage>
+          <sp who="#officer">
+            <speaker>Off.</speaker>
+            <p><persName>Betsy</persName>, was <persName>Mr. Averio</persName> at home last night,
+<lb/>as usual?</p>
+          </sp>
+          <sp who="#betsy">
+            <speaker>Betsy.</speaker>
+            <p>No, indeed; the poor man was forced
+<lb/>to stay at <persName>Brother Cook</persName>'s all night, at <placeName>Fall River</placeName>.</p>
+          </sp>
+          <stage type="exit" rend="break(yes)align(right)pre()post()">Exit B.</stage>
+          <sp who="#neverflinch">
+            <speaker>Dr.</speaker>
+            <p>Are you satisfied now, sir.</p>
+          </sp>
+          <sp who="#officer">
+            <speaker>Off.</speaker>
+            <p>I am astonished, but not convinced.
+
+
+<pb n="46"/>
+<milestone unit="sig" n="4(5)v"/>
+<mw type="pageNum">46</mw>
+
+<lb/>man so pious in his heart—so mild in his manners,
+<lb/>and gentle as a dove, to all persons, cannot have
+<lb/>perpetrated the horrid crime.</p>
+          </sp>
+          <sp who="#neverflinch">
+            <speaker>Dr.</speaker>
+            <p>Yes, gentle as the serpent, when he lures
+<lb/>the bird to his mouth to satisfy his appetite. Ah!
+<lb/>I know the hypocrite. Under the cloak of religion
+<lb/>there are many more and darker crimes perpetrated than,
+<lb/>by the daring villains that fill our prisons</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Mr. T.</speaker>
+            <p>At last Camp Meeting he seduced her.
+<lb/>Now she cannot confront her betrayer; she and her
+<lb/>infant are gone together; but the law shall investi­
+<lb/>gate the case; and if that cannot bring the prepe­
+<lb/>trator to his merits, the judgment of a nation's voice
+<lb/>shall rest on him.</p>
+          </sp>
+          <sp who="#officer">
+            <speaker>Off.</speaker>
+            <p>I am at your service, sir; he is nothing to
+<lb/>me; I am not of his profession.</p>
+          </sp>
+          <sp who="#neverflinch">
+            <speaker>Dr.</speaker>
+            <p>Come on, or he may escape.</p>
+          </sp>
+          <stage type="exit" rend="align(right)post()">Exeunt.</stage>
+        </div>
+        <div type="scene">
+          <stage type="setting business delivery" rend="pre([)post(])">Scene changes to <persName>Averio</persName>'s house; he and
+<persName>Jenks</persName> are
+    <lb/>seated at a table, reading; a noise; —<persName>Averio</persName> starts.</stage>
+          <sp who="#averio">
+            <speaker>Av.</speaker>
+            <p>Hark! What is that noise?</p>
+          </sp>
+          <stage type="entrance business"><persName>Betsey</persName> runs in,
+<lb/>crying</stage>
+          <sp who="#betsy">
+            <speaker>Betsey.</speaker>
+            <p>Oh, sir, run for your life, or you will be
+<lb/><choice><sic>(</sic><corr/></choice>taken to jail.</p>
+          </sp>
+          <stage type="business" rend="break(yes)indent(1)first-indent(0)pre()"><persName>Averio</persName> starts up, attempts
+to run out of the
+house;
+<lb/>meets officer; tries to jump out of the window; is
+<lb/>seized by <persName>Mr. Thornhill</persName></stage>
+          <sp who="#averio">
+            <speaker>Av.</speaker>
+            <p>What means this outrage on a minister of
+<lb/>the gospel, and in his own house?</p>
+          </sp>
+          <sp who="#officer">
+            <speaker>Off.</speaker>
+            <p>The Court, sir, requires your attendance on
+<lb/>a charge I do not choose to mention;—I want to
+<lb/>conduct you by virtue of this authority.</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Av.</speaker>
+            <p><persName>Brother Jenks</persName>, what shall I do in this case?</p>
+          </sp>
+          <sp who="#jenks">
+            <speaker>Jenks.</speaker>
+            <p>Keep silent; they have no proof.</p>
+          </sp>
+          <pb n="47"/>
+          <milestone unit="sig" n="4(6)r"/>
+          <mw type="pageNum">47</mw>
+          <sp who="#averio">
+            <speaker>Av.</speaker>
+            <p>Good. I attend you to the office.</p>
+          </sp>
+          <stage type="exit" rend="pre(\()post()">Exeunt.</stage>
+        </div>
+        <div type="scene">
+          <stage type="setting entrance" rend="indent(1)first-indent(0)pre([)">Scene changes to the court room; a crowd; the
+<lb/>judges seated. Enter Officer, <persName>Averio</persName>, and <persName>Dr. N.</persName></stage>
+          <sp who="#judge">
+            <speaker>Judge.</speaker>
+            <p>Gentlemen, state your charge against the
+<lb/>reverend divine.</p>
+          </sp>
+          <sp who="#neverflinch">
+            <speaker>Dr. N.</speaker>
+            <p>I accuse him of the murder of <persName>Sarah M.
+<lb/>Cornell</persName>, at <placeName>Fall River</placeName>, on the 20th of December, by
+<lb/>first bruising, and then hanging her to a hay stack,
+<lb/>where she was found dead on the 21st of the said
+<lb/>month.</p>
+          </sp>
+          <sp who="#judge">
+            <speaker>Judge.</speaker>
+            <p>Produce your witnesses</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Mr. T.</speaker>
+            <p>He wrote her, a letter of appointment to
+<lb/>meet her on that evening at the very place where
+<lb/>her body was found.</p>
+          </sp>
+          <sp who="#judge">
+            <speaker>Judge.</speaker>
+            <p>Produce the letter</p>
+          </sp>
+          <stage type="business" rend="align(right)post()"><persName>Dr. <choice><sic>M</sic><corr>N</corr></choice>.</persName> gives it.</stage>
+          <sp who="#judge">
+            <speaker>Judge.</speaker>
+            <p>Who can substantiate this as <persName>Mr. Averio</persName>'s
+<lb/>hand writing <stage type="business">looks round</stage>? can you swear to it ei­
+<lb/>ther of you gentlemen?</p>
+          </sp>
+          <sp who="#neverflinch">
+            <speaker>Dr.</speaker>
+            <p>I can.</p>
+          </sp>
+          <sp who="#judge">
+            <speaker>Judge.</speaker>
+            <p>You are the accuser; your testimony is
+<lb/>not proof.</p>
+          </sp>
+          <stage type="modifier" rend="align(right)pre([)post()">Profound silence.</stage>
+          <sp who="#judge">
+            <p>Can no man swear to the crime? who saw him
+<lb/>strangle her?</p>
+          </sp>
+          <sp who="#neverflinch">
+            <speaker>Dr.</speaker>
+            <p>No eye but God's. Who would have looked
+<lb/>on and seen the crime perpetrated? No one; he
+<lb/>chose the time and place with judgment.</p>
+          </sp>
+          <sp who="#judge">
+            <speaker>Judge.</speaker>
+            <p>So you say; but until I have more sub­
+<lb/>stantial testimony of his guilt I must hold him inno­
+<lb/>cent, and dismiss the case.</p>
+          </sp>
+          <sp who="#thornhill">
+            <speaker>Mr. T.</speaker>
+            <p>I feared as much; but Heaven will, in
+<lb/>its own time, avenge the murder; till then may the
+<lb/>execration of ten times ten thousand virtuous hearts
+<lb/>pursue the assassin of poor <persName>Sarah Maria Cornell.</persName></p>
+          </sp>
+          <pb n="48"/>
+          <milestone unit="sig" n="4(6)v"/>
+          <mw type="pageNum">48</mw>
+          <sp who="#neverflinch">
+            <speaker>Dr. N.</speaker>
+            <p>If proof can be obtained, even a chain of
+<lb/>presumptive evidence, the villain shall not thus
+<lb/>brave and elude the law of God and man with im­
+<lb/>punity.</p>
+          </sp>
+          <sp who="#averio">
+            <speaker>Av.</speaker>
+            <p>Do your worst, <persName>Doctor</persName>, I am secure, thanks
+<lb/>to the law, not you.</p>
+          </sp>
+          <stage type="exit" rend="align(right)pre([)post()">Exeunt.</stage>
+        </div>
+        <div type="scene">
+          <stage type="setting business entrance" rend="break(yes)indent(1)first-indent(0)pre([)post(])">Changes to the second scene—persons around
+<persName>Mr.
+<lb/>Houseman</persName>'s door, others enter promiscuously among
+<lb/>them, <persName>Dr. Neverflinch</persName> and <persName>Mr. Thornhill</persName>.</stage>
+          <sp who="#houseman">
+            <speaker>Mr. H.</speaker>
+            <p><stage type="delivery">solemnly.</stage> Welcome neighbours, we are
+<lb/>met on a melancholy occasion, but though a stran­
+<lb/>ger to me, the ill-fated victim of seduction and bar­
+<lb/>barity, shall receve every testimony of pity and
+<lb/>respect we can show her.—See! the poor remains
+<lb/>of an admired beauty comes.</p>
+          </sp>
+          <stage type="setting business entrance modifier exit" rend="break(yes)indent(1)first-indent(0)pre([)post(])"><hi rend="slant(upright)case(smallcaps)">Solemn
+dirge.</hi>—The body of <persName>Sarah M. Cornel<choice><sic> </sic><corr>l</corr></choice></persName>
+<lb/>is bourne on the stage, followed by <persName>Mrs. Patten</persName>,
+<lb/><persName>Phebe</persName>, <persName>Mrs. Houseman</persName>, <persName>Mary</persName>,
+<persName>Tabby</persName>, and <persName>Else</persName>, in
+<lb/>couples; then a train of the factory girls, in black.
+<lb/>After them the men follow, they proceed around
+<lb/>the stage, then go off in procession.</stage>
+          <trailer rend="align(center)case(allcaps)">End of the play.</trailer>
+        </div>
+      </div>
+    </body>
+  </text>
+</TEI>

@@ -1,0 +1,2633 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/wwp-store.rnc"    type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schema/wwp-store.isosch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- $Id: trench.thoughts.xml 31962 2017-06-23 22:20:54Z syd $ -->
+<TEI xmlns="http://www.wwp.northeastern.edu/ns/textbase" xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en">
+  <teiHeader xml:id="TR00717.hdr">
+    <fileDesc>
+      <titleStmt>
+        <title type="main">Thoughts of a Parent on Education, 1837</title>
+        <author>
+          <persName type="person-female" ref="p:mtrench.lhx">Trench, Melesina (Chenevix)</persName>
+        </author>
+        <sponsor>Northeastern University</sponsor>
+      </titleStmt>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPedition)"/>    
+      <publicationStmt>
+        <publisher>Northeastern University Women Writers Project</publisher>
+        <address>
+          <addrLine>SL 213</addrLine>
+          <addrLine>Northeastern University</addrLine>
+          <addrLine>360 Huntington Avenue</addrLine>
+          <addrLine>Boston, MA  02115-5005</addrLine>
+          <addrLine>USA</addrLine>
+          <addrLine>url:mailto:wwp@neu.edu</addrLine>
+          <addrLine>url:http://www.wwp.northeastern.edu/</addrLine>
+        </address>
+        <idno type="WWP">TR00717</idno>
+        <idno type="URL">http://www.wwp.northeastern.edu/texts/trench.thoughts.html</idno>
+        <xi:include href="../common-boilerplate.xml" xpointer="element(WWPavailability)"/>
+        <date when="2015-05-18"/>
+      </publicationStmt>
+      <sourceDesc n="OT00717">
+ 
+        <biblStruct>
+          <monogr>
+            <author>
+              <persName type="titlePage" ref="p:mtrench.lhx">Mrs. Richard Trench</persName>
+              <persName type="regularized" ref="p:mtrench.lhx">Trench, Melesina (Chenevix)</persName>
+            </author>
+            <title>Thoughts of a parent on education</title>
+              <edition>Second edition</edition>
+            <idno type="ukoxu">Nuneham 37.305</idno>
+            <idno type="STC"/>
+            <imprint>
+              <pubPlace>London</pubPlace>
+              <publisher>
+                <persName type="titlePage" ref="p:jparker.pcw">John W. Parker</persName>
+                  <persName type="regularized" ref="p:jparker.pcw">Parker, John W.</persName>
+              </publisher>
+              <date when="1837"/>
+            </imprint>
+            <extent>
+              <measure unit="page" quantity="92"/>
+            </extent>
+            <extent>
+              <dimensions>
+                <format>octavo</format>
+              </dimensions>
+            </extent>
+          </monogr>
+        </biblStruct>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPprojectDescription)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPsamplingDeclaration)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPeditorialDeclaration)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPcharacterDeclaration)"/>
+     
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPclassificationDeclaration)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPlistPrefixDefinitions)"/>
+    </encodingDesc>
+    <profileDesc>
+      <textClass>
+        <catRef type="main" target="#G.non-fiction"/>
+        <catRef type="other" target="#G.non-fiction"/>
+      </textClass>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPcalendarDescription)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPlangUsage)"/>
+    </profileDesc>
+    <revisionDesc>
+      <change when="2015-04-09" who="p:llapszyn.vuf">Checked corrections, moved to final proof.</change>
+      <change when="2015-03-25" who="p:sstanley.fxj">Entered corrections from second proof.</change>
+      <change when="2015-03-04" who="p:sstanley.fxj">Completed first checking.</change>
+      <change when="2015-02-17" who="p:sconnell.yuw">Completed corrections entry.</change>
+      <change when="2014-05-22" who="p:jnelson.bbt">Capture complete</change>
+      <change when="2014-02-10" who="p:jflanders.lfw">File created
+      by exporting data from data in 'Transcription Database' in FileMaker Pro into
+      FMPXMLRESULT then transforming with generate_tadpole.xslt (this may have been done
+      with the FileMaker Pro script "?????")</change>
+    </revisionDesc>
+  </teiHeader>
+  <text xml:id="TR00717">
+    <hyperDiv>
+      <notes>
+        <note type="editorial" xml:id="n001" target="#a001" rend="pre(*)place(foot)"><p rend="first-indent(1)">This appalling fact would not now perhaps be so gene­
+            <lb/>rally admitted, as it must have been (especially in <placeName>Ireland</placeName>)
+            <lb/>when these pages were written. Religion <emph rend="slant(italic)">is</emph> now taught
+            <lb/>as <emph rend="slant(italic)">a branch</emph> of education at least. And did <name>Christianity</name>
+            <lb/>consist of outward <term>ordinances</term>,—<gloss>fixed rules of conduct</gloss>,—
+            <lb/>and assent to certain dogmas, it might be so taught. But
+            <lb/>the truth is, that though the facts and doctrines of our
+            <lb/>religion may be <emph rend="slant(italic)">learnt</emph> by the pupil, their results, their
+            <lb/>practical consequences, must be imbibed from the teacher's
+            <lb/>own life. Her temper, her views, her hopes, must <quote rend="pre(“)post(”)">tell
+            <lb/>of the doctrine,</quote> whether, at least, <emph rend="slant(italic)">she</emph> believes its truth.
+            <lb/>And if this comment be wanting, our children may be
+            <lb/>reading the <rs type="title">Scriptures</rs> daily, yet may not, after all, be re­
+            <lb/>ceiving a <rs type="properAdjective">Christian</rs> education. Nay, should this reading
+            <lb/>bring forth fruit to them, may it not rather be in spite of,
+            <lb/>than in consequence of, their education? Such a view
+            <lb/>of the subject, I conceive, would have been taken by the
+            <lb/>author at the present day.
+        </p></note>
+        <note type="editorial" xml:id="n002" target="#a002" rend="pre(*)place(foot)"><p rend="first-indent(1)">The author appears to have fallen into the mistake,
+            <lb/>so common at the present day, though almost uknown
+            <lb/>in the age of our reformers, of confounding the <rs type="properAdjective">Jewish</rs>
+            <lb/><name>Sabbath</name>, instituted in memory of the Creation, with the
+            <lb/><rs type="properAdjective">Christian</rs> commemoration of Christ's Resurrection, cele­
+            <lb/>brated on a different day, in a different manner, and on
+            <lb/>different grounds.</p></note>
+        <note type="editorial" xml:id="n003" target="#a003" rend="pre(*)place(foot)"><p rend="first-indent(1)">The late <persName>Mr. Parnell</persName>, the friend of <placeName>Ireland</placeName>, the friend
+            <lb/>of the poor, the affectionate relative, the sincere <name>Christian</name>.</p></note>
+        <note type="editorial" xml:id="n004" target="#a004" rend="pre(*)place(foot)"><p rend="first-indent(1)">Great as is the improvement in this class of books
+            <lb/>since these pages were written; yet, the false notions of
+            <lb/>religion and morality conveyed in many popular, and, in
+            <lb/>some respects, useful works of the present day, are very
+            <lb/>extraordinary.</p></note>
+        <note type="editorial" xml:id="n005" target="#a005" rend="pre(*)place(foot)"><p rend="first-indent(1)">From the mode of life usually adopted by the highest
+            <lb/>classes of our countrymen, this advantage is denied to their
+            <lb/>children. They see them, doubtless, daily, but how rarely
+            <lb/><emph rend="slant(italic)">alone</emph>. Until a young person is come out, she is the com­
+            <lb/>panion of her governess, not of her mother. And doubt­
+            <lb/>less this exchange may, in some cases, be valuable to the
+            <lb/>child; but how shall the mother answer for her personal
+            <lb/>neglect of the precious talent committed to her!</p>
+        <p rend="first-indent(1)">I am aware that a mother, who <emph rend="slant(italic)">does</emph> devote the largest
+            <lb/>portion of her time to her children, will be assailed and
+            <lb/>perplexed by the reproaches of most of her acquaintance.
+            <lb/>Her friends will urge the claims of society upon her; and
+            <lb/>it will be well, therefore, if she settle honestly with her
+            <lb/>own conscience what these claims really are. They are
+            <pb xml:id="pbn001" corresp="#pb001"/>
+            <lb/>not, we find, permitted to interfere with the wordly calling
+            <lb/>of our husbands. The lawyer may devote himself to his
+            <lb/>clients,—the merchant to his counting-house; official men
+            <lb/>may plead their indispensable engagements; but when a
+            <lb/>mother would devote herself to the calling evidently
+            <lb/>marked out for her by Providence, she is told of the <emph rend="slant(italic)">claims
+            <lb/>of society</emph>! An illustrious exception to the above remark
+            <lb/>will, however, readily occur to the reader's mind.</p></note>
+        <note type="editorial" xml:id="n006" target="#a006" rend="pre(*)place(foot)"><p rend="first-indent(1)"><quote rend="pre(“)post(”)">We should <emph rend="slant(italic)">lead</emph> them,</quote> the author wisely inserts.
+            <lb/>Aware, doubtless, that these visits, profitable to both
+            <lb/>parties, if made in company with a parent or older friend,
+            <lb/>may do much harm to a young person if made alone.
+            <lb/>Those who have seen something of the poor, are aware of
+            <lb/>the quantity of low flattery poured into the ears of the
+            <lb/>young people who visit them. By the better sort, pro­
+            <lb/>bably, <emph rend="slant(italic)">well meant</emph>, (though not, from that circumstance, less
+            <lb/>pernicious,) but, by the more numerous and designing class,
+            <lb/>intended to answer their own purposes in disposing their 
+            <lb/>young visiters to listen more favourably to the claims they
+            <lb/>put forth.</p></note>
+        <note type="editorial" xml:id="n007" target="#a007" rend="pre(*)place(foot)"><p rend="first-indent(1)">It may be doubted whether field sports do at all en­
+            <lb/>hance the sufferings of the brute creation, since the death
+            <lb/>they meet with in this way, is, probably, the least painful
+            <lb/>that could be devised: and since we conceive that we
+            <lb/>have a right, not only to kill, but to breed up—<emph rend="slant(italic)">on purpose to
+            <lb/>kill them</emph> for the table,—tame animals,—we can scarcely
+            <lb/>be scrupulous about destroying wild ones for the same
+            <lb/>purpose.</p>
+        <p rend="first-indent(1)">With respect to the Insect tribes also, much false sen­
+            <lb/>sibility, and subsequent hardness of heart, may be excited,
+            <lb/>by representing their sufferings as much greater than they
+            <lb/>really are—as something even analogous to our own. But
+            <lb/>the fly, whose depredations on our sugar-basin are not
+            <lb/>disturbed, even by the loss of a leg in the service, need
+            <lb/>not be made an object of sympathy. Nor, perhaps, have
+            <lb/>the wasps, who sip their deadly syrup to the last, much
+            <lb/>right to complain of the cruelty of their fate. But if we
+            <lb/>make our children feel that this <emph rend="slant(italic)">is</emph> the case, their hearts
+            <lb/>must either become hardened under constant exposure
+            <lb/>to scenes of this nature, or themselves the slaves of a
+            <lb/>morbid sensibility.</p></note>
+        <note type="editorial" xml:id="n008" target="#a008" rend="pre(*)place(foot)"><p rend="align(center)">See <persName>Alison's</persName> <title>Essay on Taste</title>.</p></note>
+        <note type="editorial" xml:id="n009" target="#a009" rend="pre(*)place(foot)"><p rend="first-indent(1)">This sentiment has been before expressed in this
+            <lb/>little work, yet its introduction here seems necessary.—
+            <lb/>See page 13.</p></note>     
+        <note type="editorial" xml:id="n010" target="#a010" rend="pre(*)place(foot)"><p rend="first-indent(1)">It is important, however, to observe, that among chil­
+            <lb/>dren brought up in the same way, and with equally good 
+            <pb xml:id="pbn002" corresp="#pb002"/>
+            <lb/>dispositions, some are by constitution positively more sus­
+            <lb/>ceptible of pain than others; and some from their nervous
+            <lb/>temperament are more exposed to a <emph rend="slant(italic)">dread</emph> of it. I know
+            <lb/>a child who <emph rend="slant(italic)">does</emph> come to the dentist pale and in tears, but
+            <lb/>determined to undergo the suffering, because he thinks it
+            <lb/>is his duty. I believe that he actually exerts greater self-
+            <lb/>command than his sister, who sits down cheerfully to the 
+            <lb/>same operation.</p></note>
+        <note type="editorial" xml:id="n011" target="#a011" rend="pre(*)place(foot)"><p rend="align(center)">See p. 20.</p></note>
+        <note type="editorial" xml:id="n012" target="#a012" rend="pre(*)place(foot)"><p rend="align(center)">See <bibl><title rend="slant(italic)">The Rambler</title>, <biblScope unit="issue">No. 89</biblScope>.</bibl></p></note>
+      </notes>
+    </hyperDiv>
+        <pb n="001"/>
+        <milestone unit="sig" n="π1v"/>
+    <front>
+      <div type="frontispiece">
+        <figure>
+          <figDesc>A seated woman, shown from the waist up, wearing a garment with long sleeves. Fabric of some sort is draped over her head. Her hands rest on what appears to be the back of a chair. She holds a pen in her right hand.</figDesc>
+          <ab type="caption">Engraved by <persName>T.S. Inglehart</persName> from a Miniature by <persName>Hamilton</persName></ab>
+        </figure>
+      </div>
+ <pb n="002"/>
+ <milestone unit="sig" n="π2r"/>
+ <gap reason="omitted" desc="printed"/>       
+ <pb n="003"/>
+ <milestone unit="sig" n="π2v"/>
+ <pb n="004"/>
+ <milestone unit="sig" n="A1r"/>
+      <titleBlock rend="align(center)">
+        <titlePart rend="case(allcaps)">Thoughts of a Parent
+            <lb/>on
+            <lb/>Education.
+        </titlePart>
+          <respLine rend="case(allcaps)">By the Late
+          <lb/><docRole type="author"><persName><hi rend="case(smallcaps)">Mrs.</hi> Richard Trench</persName></docRole>.
+        </respLine>
+        <docEdition rend="pre(#rule)post(#rule)"><hi rend="case(allcaps)">A New Edition,
+          <lb/>with
+          <lb/><hi rend="slant(italic)">a Preface and Notes by the Editor</hi></hi>.
+        </docEdition>
+        <docImprint rend="case(allcaps)">
+          <pubPlace><placeName>London</placeName></pubPlace>:
+          <lb/><docRole type="publisher"><persName>John W. Parker</persName></docRole>, <placeName>West Strand</placeName>.
+            <docDate when="1837" rend="pre(#rule)">M.DCCC.XXXVII.</docDate>
+        </docImprint>
+      </titleBlock>
+<pb n="005"/>
+<milestone unit="sig" n="A1v"/>
+<pb n="006"/>
+<milestone unit="sig" n="A2r"/>
+    <div type="prefatory" rend="post(#rule)">
+       <head rend="post(#rule)case(allcaps)">Editor's Preface.</head>
+       <p><hi rend="case(smallcaps)">The</hi> valuable and interesting little work
+            <lb/>now offered to the public, fell into the
+            <lb/>Editor's hands a short time ago, during
+            <lb/>her residence in <placeName>Ireland</placeName>; and anxious to
+            <lb/>be the means of diffusing more widely,
+            <lb/>thoughts so just, so pure, and intelligent,
+            <lb/>she has obtained permission to reprint
+            <lb/>them.</p>
+       <p rend="first-indent(1)">It was originally her desire to have
+            <lb/>appended a slight sketch of the lamented
+            <lb/>Author's life, which is said to have been
+            <lb/>eventful and interesting; but this wish
+            <lb/>has been readily relinquished, under the
+            <lb/>expectation that a memoir, with collected
+<mw type="sig" rend="indent(7)break(yes)">A2</mw>
+<pb n="007"/>
+<milestone unit="sig" n="A2v"/>
+<mw type="pageNum" rend="align(left)">iv</mw>
+            <lb/>remains in prose and verse, will shortly be
+            <lb/>published, by a member of <persName>Mrs. Trench's</persName>
+            <lb/>own family.</p>
+       <p rend="first-indent(1)">The work has been republished without
+            <lb/>any alteration in the text. The Editor is,
+            <lb/>therefore, answerable for the notes alone;
+            <lb/>in one or two of which she has ventured
+            <lb/>to express a difference of opinion from the
+            <lb/>gifted Author; in others, to confirm or
+            <lb/>develop her views more fully.</p>
+    </div>
+<pb n="008"/>
+<milestone unit="sig" n="A3r"/>
+      <div type="prefatory" rend="post(#rule)">
+        <head rend="post(#rule)case(allcaps)">Author's Preface.</head>
+        <p><hi rend="case(smallcaps)">Had</hi> not a few copies of the following
+            <lb/><title>Thoughts</title> been printed, and privately cir­
+            <lb/>culated, some years since, I could myself
+            <lb/>have almost believed that I had insensibly 
+            <lb/>borrowed the greatest part of them from
+            <lb/>a more important work on the same sub­
+            <lb/>ject, which I have only just seen. How­
+            <lb/>ever, as I have sometimes presented the
+            <lb/>same truths in a different dress, I am not
+            <lb/>deterred from offering to young mothers
+            <lb/>this slighter attempt.</p>
+        <p rend="first-indent(1)">I may be thought to refrain from giving
+            <lb/>the title of the work I allude to, lest I
+          <pb n="009"/>
+          <milestone unit="sig" n="A3v"/>
+          <mw type="pageNum" rend="align(left)">vi</mw>
+            <lb/>should seem to challenge a comparison
+            <lb/>unfavourable to mine. I do refrain from
+            <lb/>it, lest some readers might erroneously
+            <lb/>suspect that I intend to convey an accu­
+            <lb/>sation, when I only wish to offer an
+            <lb/>excuse.</p></div>
+        </front>
+    <pb n="010"/>
+    <milestone unit="sig" n="A4r"/>
+    <body>
+      <head rend="case(allcaps)post(#rule)">Thoughts of a Parent.</head>
+      <div type="chapter" rend="post(#rule)">
+        <head rend="case(smallcaps)">Chapter I.</head>
+          <argument rend="first-indent(-1)indent(1)case(allcaps)"><p>The aim of education usually con­
+          <lb/>tracted to minor interests and ad­
+          <lb/>vantages.</p></argument>
+        
+        <p><hi rend="case(smallcaps)">The</hi> first object of education is to train up an
+          <lb/>immortal soul. The second (but second at an
+          <lb/>immeasurable distance) is, to do this in a man­
+          <lb/>ner most conducive to human happiness; never
+          <lb/>sacrificing either the interests of the future
+          <lb/>world to those of the present, or the welfare of
+          <lb/>the man to the inclinations of the child: errors
+          <lb/>not dissimilar in complexion, though so awfully
+          <lb/>different in the importance of their results.</p>
+        <p rend="first-indent(1)">This simple position seems so evident, as to
+          <lb/>require neither repetition nor enforcement; yet
+          <lb/>experience proves how little it is acted upon in
+          <lb/>education: and among those who do act upon it,
+          <lb/>how many discover a strange species of false
+          <lb/>shame in confessing their motive.</p>
+        <pb n="011"/>
+        <milestone unit="sig" n="A4v"/>
+        <mw type="pageNum" rend="align(left)">8</mw>
+      <p rend="first-indent(1)">When a mother boasted to <persName>Lucinda</persName>, in a 
+          <lb/>confidential moment, of her daughter's accom­
+          <lb/>plishments, the latter, a sincere and clear­
+          <lb/>sighted person, observing how exclusively the
+          <lb/>embellishments of life had superseded all else in
+          <lb/>her friend's estimation, ventured to hint that
+          <lb/>such acquirements ought not to be the great
+          <lb/>object of education.</p>
+      <p rend="first-indent(1)"><said rend="pre(“)post(”)">I know what you mean,</said> replied the careful
+          <lb/>matron: <said rend="pre(“)post(”)">the great object is, her marrying
+          <lb/>advantageously.</said></p>
+      <p rend="first-indent(1)"><said rend="pre(“)post(”)">Not exactly,</said> replied <persName>Lucinda</persName>: <said rend="pre(“)post(”)">so many
+          <lb/>of the unmarried are eminently useful in walks
+          <lb/>where wives and mothers can seldom tread, and
+          <lb/>the balance of happiness so equal, that nothing
+          <lb/>is more surprising than the prevalent solicitude
+          <lb/>to ensure the marriage of young women.</said></p>
+       <p rend="first-indent(1)"><said rend="pre(“)post(”)">How stupid I am!</said> replied mamma.
+          <lb/><said rend="pre(“)post(”)">You mean, by <emph rend="slant(italic)">the great object</emph>, living in the
+          <lb/>best company?</said></p>
+       <p rend="first-indent(1)"><persName>Lucinda</persName> shook her head.</p>
+       <p rend="first-indent(1)"><said rend="pre(“)post(”)">Oh! then you mean the power of amusing
+          <lb/>herself at home.</said></p>
+       <p rend="first-indent(1)">In short, when <persName>Lucinda</persName> explained, by hinting
+          <lb/>somewhat of that religious instruction—that
+         <pb n="012"/>
+         <milestone unit="sig" n="A5r"/>
+         <mw type="pageNum" rend="align(right)">9</mw>
+          <lb/>education of the heart, which prepares for a 
+          <lb/>higher existence, she was listened to with
+          <lb/>evident <mcr rend="slant(italic)">ennui</mcr>; and a certain degree of restless­
+          <lb/>ness in her fair auditor, showed the desire of
+          <lb/>terminating a conversation derogatory to <persName>Lu­
+          <lb/>cinda's</persName> understanding.</p>
+       <p rend="first-indent(1)">One mother, indulging for her daughter the
+          <lb/>wish she has felt most powerfully for herself,
+          <lb/>thinks she displays a graceful candour, in own­
+          <lb/>ing that <said rend="pre(“)post(”)">her great ambition is to see her
+          <lb/>admired.</said> Another declares she has chiefly set
+          <lb/>her heart on <emph rend="slant(italic)">making</emph> her girls excellent musi­
+          <lb/>cians. A third, on their <said rend="pre(“)post(”)">being perfectly
+          <lb/>women of fashion.</said> These sentiments are sel­
+          <lb/>dom openly avowed, and are most acted upon in
+          <lb/>that class of persons, who, uniting wealth and
+          <lb/>idleness to a thirst for dissipation, are eagerly
+          <lb/>pressing upwards; and though not within the
+          <lb/>pale of fashion, conceive that envied distinction
+          <lb/>not wholly unattainable, either by themselves
+          <lb/>or their children.
+       </p>
+       <p rend="first-indent(1)">One father professes he will be satisfied if his
+          <lb/>son <said rend="pre(“)post(”)">never does anything unworthy of a gentle­
+          <lb/>man!</said> We all know the latitude of the phrase.
+          <lb/>Another, only wishes that <emph rend="slant(italic)">his</emph> should <said rend="pre(“)post(”)">advance
+            <pb n="013"/>
+            <milestone unit="sig" n="A5v"/>
+            <mw type="pageNum" rend="align(left)">10</mw>
+          <lb/>by his talents, and be distinguished in the
+          <lb/>world.</said></p>
+      <p rend="first-indent(1)">Any person who ventures, except in the
+          <lb/>pulpit, to speak with the openness of <persName>Lucinda</persName>,
+          <lb/>is considered (unless mildly set aside as a saint
+          <lb/>or a <name>Methodist</name>) as either half mad, half fool;
+          <lb/>or an untutored, <rs type="properAdjective" rend="slant(italic)">Parson Adams-ish</rs> sort of per­ 
+          <lb/>son, regardless or ignorant of the common usages
+          <lb/>of life<anchor xml:id="a001" corresp="#n001" rend="post(*)"/>.
+      </p>
+      <p rend="first-indent(1)">Were the plain, but unpopular assertion, that
+          <lb/>this world is a preparation for the next, uni­
+        <pb n="014"/>
+        <milestone unit="sig" n="A6r"/>
+        <mw type="pageNum" rend="align(right)">11</mw>
+          <lb/>formly attended to, how would it simplify the
+          <lb/>apparently complicated task of education:—how
+          <lb/>many systems and theories would crumble into
+          <lb/>dust:—how few parents could mistake the plain
+          <lb/>road pointed out by the <rs type="title">Gospel</rs>. An affectionate
+          <lb/>mother, guided by its precepts, would need but
+          <lb/>little study to become the best instructor of
+          <lb/>early youth. As she would acknowledge that
+          <lb/>we find in the human heart the soil for every
+          <lb/>virtue, the seeds of every vice, she would be in
+          <lb/>no danger of following those rash philosophers
+          <lb/>who advise us to trust <quote rend="pre(“)post(”)">implicitly to Nature.</quote>
+          <lb/>On the contrary, she would vigilantly eradicate
+          <lb/>those vices to which she knows our nature is
+          <lb/>prone, though some of them may shoot up in
+          <lb/>the most brilliant and beautiful colours; for the
+          <lb/>graces of infancy reflect a charm on its very
+          <lb/>faults. Falsehood, from the lips of a lovely and
+          <lb/>sprightly child, who has no apparent design but
+          <lb/>to amuse, wears the garb of lively invention;
+          <lb/>and, if we reflect not on the habit thus formed,
+          <lb/>is often highly entertaining. Obstinacy takes
+          <lb/>the shape of firmness;—anger, of spirit and
+          <lb/>courage;—selfishness, of forethought and pene­
+          <lb/>tration. The <rs type="properAdjective">Christian</rs> mother feels that the
+        <pb n="015"/>
+        <milestone unit="sig" n="A6v"/>
+        <mw type="pageNum" rend="align(left)">12</mw>
+          <lb/>seeds of these imperfections are thickly sown,
+          <lb/>and she will endeavour to stifle them before
+          <lb/>they appear above the surface; conscious that
+          <lb/>this can best be done by an assiduous and early
+          <lb/>cultivation of the opposite virtues.
+      </p>  
+      <p rend="first-indent(1)">Above all, she will be aware of resigning her­
+          <lb/>self wholly to the guidance of any general sys­
+          <lb/>tem of education, recommended by so short-
+          <lb/>sighted a being as man; because the difference
+          <lb/>of external circumstances, of organization, of
+          <lb/>mental powers, and imperceptible early asso­
+          <lb/>ciations, must create the necessity of continual 
+          <lb/>variation from systems the most plausible and
+          <lb/>imposing.
+      </p>
+      <p rend="first-indent(1)">That we are all born alike in disposition and
+          <lb/>capability of acquiring knowledge, no one who
+          <lb/>has studied children will be hardy enough to
+          <lb/>assert; though it has been boldly insisted on by
+          <lb/>some modern <rs type="properAdjective">French</rs> philosophers.
+      </p>
+      <p rend="first-indent(1)">Difference of temper, though health and all
+          <lb/>other external circumstances are the same, is
+          <lb/>observable in a few days after our birth. While
+          <lb/>nature is so various, an unbending systematic
+          <lb/>education will too often prove no better than 
+          <lb/>the bed of <persName>Procrustes</persName>.
+      </p>
+        <pb n="016"/>
+        <milestone unit="sig" n="A7r"/>
+        <mw type="pageNum" rend="align(right)">13</mw>
+      <p rend="first-indent(1)">This education of the heart must begin in
+          <lb/>the cradle. The principles which are to guide
+          <lb/>our lives, ought to be implanted in the nursery:
+          <lb/>they will otherwise be too weak, however ac­
+          <lb/>knowledged by the understanding, to operate as
+          <lb/>restraints during the perilous and impassioned
+          <lb/>hours of youth. If reserved to be taught in
+          <lb/>in the later years of childhood, they may certainly 
+          <lb/>be imprinted in our hearts, and we may return
+          <lb/>to their guidance after having wandered far
+          <lb/>astray; but the ideas impressed on infancy—
+          <lb/>these—and, in most cases, these alone, enable
+          <lb/>us to do our part, and co-operate with the assist­
+          <lb/>ance from above, in resisting strong and urgent
+          <lb/>temptation, at that season when the imagina­
+          <lb/>tion and senses are in their fullest vigour—while
+          <lb/>the energies of our intellect, and clearness of
+          <lb/>our judgment, have not acquired half their
+          <lb/>strength.
+       </p>
+       <p rend="first-indent(1)">Much depends on the choice of a nurse, or
+          <lb/>the conduct of those valuable mothers who,
+          <lb/>when it is possible, undertake that endearing
+          <lb/>office. A nurse of a serene temper is preferable
+          <lb/>to those noisy, laughter-loving, loquacious
+          <lb/>dames, so often applauded by parents for their
+         <pb n="017"/>
+         <milestone unit="sig" n="A7v"/>
+         <mw type="pageNum" rend="align(left)">14</mw>
+          <lb/>high spirits. Equanimity and gentle cheerful­
+          <lb/>ness are delightful to infants, from the first
+          <lb/>dawning of apprehension; and <persName>Raphael</persName> was
+          <lb/>true to nature, as well as to taste, when he gave
+          <lb/>his <name>Madonna</name> that soft and subdued tenderness
+          <lb/>of aspect, which we cannot gaze upon without
+          <lb/>feeling ourselves harmonized and improved.
+          <lb/>The effects of the disposition of a nurse on our
+          <lb/>future temper, has been often observed; and it
+          <lb/>would be well if mothers would lay down a few
+          <lb/>simple rules for her moral management of an
+          <lb/>infant, giving her the <emph rend="slant(italic)">reasons</emph> for them. This
+          <lb/>will, in general, render her obedience more will­
+          <lb/>ing and intelligent; for obedient she must be,
+          <lb/>as the authority of a parent should supersede
+          <lb/>every other. Mildness, patience, truth, and
+          <lb/>self-denial, (virtues absolutely necessary to the
+          <lb/>performance of her duties,) she must be taught
+          <lb/>by the example as well as precepts of her mis­
+          <lb/>tress. Without the first of these virtues, all
+          <lb/>the rest will be useless; and she must learn
+          <lb/>that meekness and gentleness are much more
+          <lb/>compatible with steadiness and courage, than
+          <lb/>either noise or violence.
+       </p>
+       <p rend="first-indent(1)">To <emph rend="slant(italic)">resign</emph> is our last moral lesson: it ought
+         <pb n="018"/>
+         <milestone unit="sig" n="A8r"/>
+         <mw type="pageNum" rend="align(right)">15</mw>
+          <lb/>also to be our first. In this great preparatory
+          <lb/>school, called human life, we are continually
+          <lb/>required to practise the virtues of patience and
+          <lb/>self-denial. From the dawn of observation, in
+          <lb/>our very cradles, the temper may equally be
+          <lb/>spoiled by neglect, severity, or a timid, slavish
+          <lb/>indulgence. The real wants of an infant should
+          <lb/>be satisfied, the moment they are known. To
+          <lb/>supply them before they are announced by tears
+          <lb/>and cries, will often wholly prevent those
+          <lb/>whimpering and noisy habits, so injurious to
+          <lb/>children, and so distressing to their parents.
+          <lb/>The writer is so fortunate as to know a little
+          <lb/>group who have scarcely ever been heard to cry,
+          <lb/>and it may partly be attributed to a careful
+          <lb/>observance of this rule. They have not found
+          <lb/>tears and clamour necessary to the attainment
+          <lb/>of their wishes.
+       </p>
+       <p rend="first-indent(1)">An infant should ever be addressed with mild
+          <lb/>cheerfulness, and treated with that uniform
+          <lb/>kindness of which it appears conscious: I dare
+          <lb/>not say how soon. Those who have observed
+          <lb/>infancy, know it well: those who have not, will
+          <lb/>listen with a smile of incredulity. But we must
+          <lb/>accustom even infants to <emph rend="slant(italic)">resign</emph> immediately
+         <pb n="019"/>
+         <milestone unit="sig" n="A8v"/>
+         <mw type="pageNum" rend="align(left)">16</mw>
+          <lb/>whatever we do not wish them to retain, and to
+          <lb/>be refused whatever is unfit for us to grant. At
+          <lb/>the same time, we ought not to seek occasions
+          <lb/>for practising this rule: there are more than
+          <lb/>enough in the natural course of things. Nay,
+          <lb/>we ought to diminish these occasions; and
+          <lb/>affectionate intelligence is often necessary, in
+          <lb/>order to turn the attention of the child from an
+          <lb/>object of earnest desire, by exciting some other
+          <lb/>interest or inclination. The power of narrating,
+          <lb/>with simplicity and good sense, is invaluable: it
+          <lb/>almost saves the trouble of refusing. Most
+          <lb/>children will accept a story, without knowing it
+          <lb/>to be so intended, as a substitute for any other
+          <lb/>pleasure. When, however, we must refuse, our
+          <lb/>denial ought to be good-humoured, prompt, and
+          <lb/>decisive. We ought not to excite false hope, or
+          <lb/>create suspense: we ought not to associate the
+          <lb/>idea of our displeasure with that of privation.
+          <lb/>But, <quote rend="pre(“)post(”)">let your <mcr rend="slant(italic)">No</mcr> be as a wall of brass, which
+          <lb/>the child, with all his endeavours, shall not be
+          <lb/>able to shake.</quote>
+       </p>
+       <p rend="first-indent(1)">Your child is prepared to walk, and longs to
+          <lb/>play in your garden. If he bear with patience
+          <lb/>being prevented by a storm, but fall into a pas­
+         <pb n="020"/>
+         <milestone unit="sig" n="B1r"/>
+         <mw type="pageNum" rend="align(right)">17</mw>
+          <lb/>sion of tears at losing his amusement by your
+          <lb/>refusal, it is your own fault; you have either
+          <lb/>taught him to use tears as weapons of conquest,
+          <lb/>or to consider your denials as sometimes the
+          <lb/>fruits of harshness or caprice. Were your con­
+          <lb/>duct to him always unalterable as the law of
+          <lb/>necessity,—gentle as the law of kindness,—the
+          <lb/>chief source of infantine sorrow would be dried
+          <lb/>up.
+       </p>
+       <p rend="first-indent(1)">Parents who spoil by <emph rend="slant(italic)">self</emph>-indul­
+          <lb/>gence, (for so it may properly be called,) often
+          <lb/>refuse them in an humble and deprecating
+          <lb/>manner; nay, sometimes atone for their pre­
+          <lb/>sumption by a bribe, or else express their denial
+          <lb/>with the utmost peevishness. Their temper is 
+          <lb/>not unfrequently ruffled by being forced to act
+          <lb/>in a way contrary to habit and inclination; and 
+          <lb/>this often vents itself on the little petitioner,
+          <lb/>thus doubly a sufferer: unused to a refusal, and
+          <lb/>refused with a degree of harshness which ha­
+          <lb/>bitual indulgence has rendered him peculiarly
+          <lb/>unfit to bear.
+       </p>
+       <p rend="first-indent(1)">We are sometimes a little angry with those
+          <lb/>whom we refuse, as well as with those who
+          <lb/>refuse us. Courtiers are aware of this; and
+         <mw type="sig" rend="indent(7)break(yes)">B</mw>
+         <pb n="021"/>
+         <milestone unit="sig" n="B1v"/>
+         <mw type="pageNum" rend="align(left)">18</mw>
+          <lb/>there are some who never <quote rend="pre(“)post(”)"><emph rend="slant(italic)">fritter</emph> away their
+          <lb/>interest,</quote> (to borrow a phrase from one of them­
+          <lb/>selves,) by asking any favour for others; dreading
+          <lb/>compliance as a waste of their influence; and
+          <lb/>fearing a denial, lest it should indispose towards
+          <lb/>them, those from whom it proceeded.
+       </p>
+       <p rend="first-indent(1)">Children, at different periods of their infancy,
+          <lb/>particularly if delicate in their frame, are often
+          <lb/>subject to severe fits of involuntary crying; and
+          <lb/>nothing can be more cruel than to treat these as
+          <lb/>faults. We have known this error carried to a
+          <lb/>most barbarous excess. They are, in fact, a 
+          <lb/>malady, which will be increased either by inju­
+          <lb/>dicious fondling, or stern severity. With gravity,
+          <lb/>sweet, firm composure, and an effort, wholly
+          <lb/>unperceived by the child, to divert his attention,
+          <lb/>they ought to be met. The command of, <said rend="pre(“)post(”)">Have
+          <lb/>done!</said> issued in a harsh and violent manner, is
+          <lb/>as useless as the adoption of looks and epithets
+           <lb/>more endearing than at other times. <said rend="pre(“)post(”)">You
+          <lb/><emph rend="slant(italic)">shall</emph> cease from cying!</said> in all cases of this kind,
+          <lb/>commits our authority; for we never can be
+          <lb/>sure of the extent of human wilfulness; and the
+          <lb/>child, even when he cries from obstinacy, may
+          <lb/>go on in spite of all threats, and whatever degree
+         <pb n="022"/>
+         <milestone unit="sig" n="B2r"/>
+         <mw type="pageNum" rend="align(right)">19</mw>
+          <lb/>of punishment we may think proper to inflict.
+          <lb/>If so, he has gained a victory, which sows the
+          <lb/>seeds of future <choice><sic>disobediencc</sic><corr>disobedience</corr></choice>. The peremptory
+          <lb/>command to cease from crying, it is impossible
+          <lb/>to obey, if the tears of a child spring from weak­
+          <lb/>ness; and all punishment will increase them,
+          <lb/>sometimes to a most alarming excess. <said rend="pre(“)post(”)">While
+          <lb/>you cry, I shall whip,</said> was the expression of a 
+          <lb/>highly-approved governess of our acquaintance,
+          <lb/>in former times; and she suited the action to the
+          <lb/>word, to the utter extinction of health and
+          <lb/>firmness in her pupil, but without gaining her 
+          <lb/>point.
+       </p>
+       <p rend="first-indent(1)">It appeared in a court of justice, in <placeName>Paris</placeName>, a
+          <lb/>few years ago, that a governess had thus caused
+          <lb/>the death of a little girl intrusted to her care.
+       </p>
+        <mw type="sig" rend="indent(7)break(yes)">B2</mw>
+        <pb n="023"/>
+        <milestone unit="sig" n="B2v"/>
+        <mw type="pageNum" rend="align(center)">20</mw>
+  </div>
+  <div type="chapter" rend="post(#rule)">
+    <head rend="case(smallcaps)align(center)">Chapter II.</head>
+        <argument rend="align(center)case(allcaps)"><p>On Instilling Early Notions of 
+          <lb/>Religion.</p></argument>
+       <p><said rend="pre(“)post(”)"><hi rend="case(smallcaps)">I teach</hi> my children their prayers, and desire
+          <lb/>them to read the <rs type="title">Bible</rs>; but say very little on
+          <lb/>religion, as I make it a rule to talk to them only
+          <lb/>on what they can understand.</said> Such is the
+          <lb/>substance of what is said by many parents, with
+          <lb/>an air of triumph over those who attempt to
+          <lb/>impress the truths of religion on the infant heart.
+          <lb/>Few opinions are more erroneous, few mistakes
+          <lb/>more fatal. Children, who are as yet undis­
+          <lb/>turbed by the passions, <quote rend="pre(“)post(”)">those vultures of the
+          <lb/>mind,</quote> are peculiarly fitted to receive religious
+          <lb/>impressions, and Heaven is reflected in their
+          <lb/>little bosoms, as in a clear, unruffled lake.
+          <lb/><said rend="pre(“)post(”)">What!</said> it is said, <said rend="pre(“)post(”)">will you attempt to explain
+          <lb/>to a child the nature and attributes of the
+          <lb/>Supreme Being?</said>
+       </p>
+       <p rend="first-indent(1)">I shall not attempt to explain what is above
+          <lb/>all human comprehension; but I shall tell them
+         <pb n="024"/>
+         <milestone unit="sig" n="B3r"/>
+         <mw type="pageNum" rend="align(right)">21</mw>
+          <lb/>of a Being, all-powerful, all-wise, all-good, who
+          <lb/>sees us in every moment of our lives, and reads
+          <lb/>every thought of our hearts; who will reward
+          <lb/>the good, and punish the wicked, if not in this
+          <lb/>life, certainly in the next. I shall particularly
+          <lb/>dwell on the happiness he has prepared for those
+          <lb/>who obey him; and on his beneficence, in making
+          <lb/>this earth, though only formed as a place of trial,
+          <lb/>so often the abode of peace and pleasure. They
+          <lb/>shall learn to <quote rend="pre(“)post(”)">see God in the clouds, and hear
+          <lb/>him in the wind:</quote>—in fruits and in flowers:—
+          <lb/>in the sun, the moon, the stars, the beauties of
+          <lb/>nature, and the joys of family affection. They
+          <lb/>shall learn to observe how many delights he has
+          <lb/>showered upon us; and, in their pains and their
+          <lb/>sicknesses, their sorrows and their fears, to look
+          <lb/>onwards to a fairer scene, where suffering will be
+          <lb/>unknown. I shall pass more lightly over the
+          <lb/>punishment prepared for the wicked, as it is not
+          <lb/>eligible, at an early age, to cloud the mind by
+          <lb/>deep or frequent representations of guilt and
+          <lb/>misery. Children must know that both exist,
+          <lb/>as soon as they are capable of observation; and
+          <lb/>although the advantage of bringing them up in
+          <lb/>total ignorance of evil, physical and moral, has
+         <pb n="025"/>
+         <milestone unit="sig" n="B3v"/>
+         <mw type="pageNum" rend="align(left)">22</mw>
+          <lb/>proved an attractive subject for eloquent decla­
+          <lb/>mation, it is needless to state the objections to
+          <lb/>it, which must arise in thinking minds, because
+          <lb/>the plan is wholly impracticable. But the oppo­
+          <lb/>site extreme is far more dangerous. It has fre­
+          <lb/>quently thrown a lasting gloom over the mind;
+          <lb/>and the melancholy impression made on <persName>Johnson</persName>,
+          <lb/>by his mother's vivid description of the torments
+          <lb/>of hell, when he was but three years old, as
+          <lb/>related by <persName>Madame Piozzi</persName>, may have imparted
+          <lb/>to his religious feelings that dark hue, which filled
+          <lb/>his latter days with disquietude.
+       </p>
+  <p rend="first-indent(1)">All the topics I have selected, will interest at
+          <lb/>five or six years of age, sometimes much earlier;
+          <lb/>and are particularly enjoyed by children, as sub­
+          <lb/>jects of consideration, if not taught with a 
+          <lb/>melancholy countenance, as a lecture, but intro­
+          <lb/>duced in their walks, in their beds, and mingled
+          <lb/>with the most interesting occurences of their
+          <lb/>existence, whether joyous or melancholy.</p>
+    <p rend="first-indent(1)">We often hear parents say, sometimes with
+          <lb/>very mysterious faces, sometimes with an ex­
+          <lb/>pression of humour, as if enjoying the thoughts
+          <lb/>of carrying on a deception, that <said rend="pre(“)post(”)">children ask
+          <lb/>such extraordinary questions on religion, as it is
+            <pb n="026"/>
+            <milestone unit="sig" n="B4r"/>
+            <mw type="pageNum" rend="align(right)">23</mw>
+          <lb/>quite impossible to answer.</said> They will then
+          <lb/>cite some expression or mistake, that seems to
+          <lb/>them to place it in a ludicrous light; and they
+          <lb/>appear to wish you should draw an inference
+          <lb/>not very honourable to <name>Christianity</name>. They treat
+          <lb/>it as something most reverenced, when least
+          <lb/>inquired into or understood. <said rend="pre(“)post(”)">I think the less
+          <lb/>that is said about religion, the better,</said> is a
+          <lb/>phrase of the same nature, which we all have
+          <lb/>heard, from moral and well-conducted people;
+          <lb/>and it never can be heard, without pain, by
+          <lb/>those whose hearts are feelingly alive to the
+          <lb/>best interests of men. It is certain that intel­
+          <lb/>ligent children will sometimes require explana­
+          <lb/>tions no man can give. We may allow the
+          <lb/>truth of that assertion, though we deny the
+          <lb/>inference too often meant to be drawn from it;
+          <lb/>and we deprecate the habit of making it a text
+          <lb/>for indecorous and insipid jests.</p>
+    <p rend="first-indent(1)">On religious subjects we are doubly armed;
+          <lb/>for, when pressed by inquiries it is impossible to
+          <lb/>satisfy, we can reply, as to questions on all other
+          <lb/>topics, <said rend="pre(“)post(”)">You are yet too young to comprehend
+          <lb/>the meaning of my answer.</said> In this, a well-
+          <lb/>taught child will cheerfully acquiesce, from a 
+      <pb n="027"/>
+      <milestone unit="sig" n="B4v"/>
+      <mw type="pageNum" rend="align(left)">24</mw>
+          <lb/>confidence founded on experience, that you will
+          <lb/>explain to him all you can, as soon as possible.
+          <lb/>And we can also say: <said rend="pre(“)post(”)">What you inquire
+          <lb/>about cannot be understood in this world—it
+          <lb/>may in the next. One of the pleasures of
+          <lb/>heaven will be, the knowledge of many things
+          <lb/>no one can comprehend in this life.</said> They are
+          <lb/>so fully satisfied with this, that an intelligent
+          <lb/>child, of five years old, said to his mother:—
+          <lb/><said rend="pre(“)post(”)">Mamma, the foolishest angel in heaven, is
+          <lb/>wiser than <persName>Sir Isaac Newton</persName> while he was
+          <lb/>here.</said> And they may be so impressed with
+          <lb/>the hope of a future state, that the same child
+          <lb/>at seven, when as well-informed in history as
+          <lb/>most of his age, observed: <said rend="pre(“)post(”)">I am surprised the
+          <lb/>wicked ever put a good man to death; since
+          <lb/>they must know how much happier he will be,
+          <lb/>than if they allowed him to live.</said> Many will
+          <lb/>smile as his simplicity; but some will own that
+          <lb/>he had only a clearer view than his seniors, of
+          <lb/>the difference between time and eternity.</p>
+    <p rend="first-indent(1)">In <rs type="title"><persName>Moorehead's</persName> twelfth and thirteenth Ser­
+          <lb/>mons</rs>, both this duty, and the manner of its
+          <lb/>performance, are beautifully described and en­
+          <lb/>forced. He advises us to begin by expatiating
+      <pb n="028"/>
+      <milestone unit="sig" n="B5r"/>
+      <mw type="pageNum" rend="align(right)">25</mw>
+          <lb/>on the rule of doing to others as we would they
+          <lb/>should do unto us; and on the fourth and fifth 
+          <lb/>commandments, so intelligible to infant capaci­
+          <lb/>ties, I may add, so soothing to youthful hearts.
+          <lb/>It seems a pleasure to them to know, that in the
+          <lb/>necessary, easy, and obvious duty of honouring
+          <lb/>their parents, they are also obeying the Governor
+          <lb/>of the Universe. And the contemplation of the
+          <lb/><name>Sabbath</name>, that day which gives <quote rend="pre(“)post(”)">a pause from
+          <lb/>labour to the whole <rs type="properAdjective">Christian</rs> world<anchor xml:id="a002" corresp="#n002" rend="post(*)"/>,</quote> and
+          <lb/>whose venerable form is coëval with creation, is
+          <lb/>always delightful to their opening minds.</p>
+    <p rend="first-indent(1)">Till they can read well, selections from the
+          <lb/><rs type="title">Bible</rs> should be read to them, and its phrase­
+          <lb/>ology carefully explained, where it differs from 
+          <lb/>the language of conversation. This is far better
+          <lb/>than their stammering over the Sacred Volume
+          <lb/>as a task, or making use of it as a book for
+          <lb/>learning to read. <persName>Mrs. Trimmer's</persName> judicious
+      <pb n="029"/>
+      <milestone unit="sig" n="B5v"/>
+      <mw type="pageNum" rend="align(left)">26</mw>
+          <lb/>selections will assist parents in this part of their
+          <lb/>duty; but if we mean the very young should
+          <lb/>profit by her Annotations, they must be consi­
+          <lb/>derably familiarized and abridged. <persName>Mr. Bullar's</persName>
+          <lb/><title>Bible Questions</title> may be used in conversation,
+          <lb/>before we give them to be answered in writing.
+          <lb/>This little book, at once simple, concise, and
+          <lb/>ingenious, fills up a chasm which many instruc­
+          <lb/>tors had observed with regret. The Crea­
+          <lb/>tion, the Deluge, the pious confidence of <persName>Abra­
+          <lb/>ham</persName>, the resignation of <persName>Isaac</persName>, the eventful
+          <lb/>history of <persName>Joseph</persName>, the firmness of <persName>Moses</persName>, the
+          <lb/>escape of the <name>Israelites</name>, their wanderings in the
+          <lb/>desert, the magnanimity of <persName>David</persName>, the patience
+          <lb/>of <persName>Job</persName>, and the devoted affection of <persName>Ruth</persName>, are
+          <lb/>more interesting to children, when related with
+          <lb/>due attention to their powers and taste, than any
+          <lb/>other points of history, ancient or modern. But
+          <lb/>if with a sad face, and peevish voice, we summon
+          <lb/>them, in the dreaded words, <said rend="pre(“)post(”)">Come, read your
+          <lb/>chapter, then you may take some amusing 
+          <lb/>book;</said> and give them a fragment, in an idiom
+          <lb/>not rendered familar to their ears, of a history
+          <lb/>they have never been led to relish or understand,
+          <lb/>(just as if so much medicine were first to be
+      <pb n="030"/>
+      <milestone unit="sig" n="B6r"/>
+      <mw type="pageNum" rend="align(right)">27</mw>
+          <lb/>swallowed, and then more agreeable food per­
+          <lb/>mitted,) we raise powerful difficulties against
+          <lb/>their reaping the full benefit, in after-life, of the
+          <lb/>Inspired Writings: we associate with a thou­
+          <lb/>sand unpleasing recollections, that which it is
+          <lb/>our duty to present in the fullest and clearest 
+          <lb/>light.</p>
+    <p rend="first-indent(1)">It will scarcely be thought irrelevant to re­
+          <lb/>mark, that the unwieldly form of a well-printed
+          <lb/><rs type="title">Bible</rs>, and the very small type of a moderate-
+          <lb/>sized one, occasionally prevent the Sacred
+          <lb/>Volume from being read. There is also some­
+          <lb/>times an apprehension of being supposed to
+          <lb/>make a parade of devotion, which prevents the
+          <lb/><rs type="title">Bible</rs> from lying on tables where it would
+          <lb/>appear, if less distinguished in shape and size.
+          <lb/>The publication of a few, in five or six volumes,
+          <lb/>would obviate these inconveniences, and make
+          <lb/>any particular part, selected for study, more
+          <lb/>portable in travelling, and more manageable in
+          <lb/>sickness.</p>
+    <p rend="first-indent(1)">What <persName>Moorehead</persName> has said of the introduc­
+          <lb/>tory steps to a knowledge of <name>Christianity</name>, con­
+          <lb/>veys a new idea, so just and important, that
+          <lb/>my readers will be pleased to see it in his own
+          <lb/>words.</p>
+    <pb n="031"/>
+    <milestone unit="sig" n="B6v"/>
+    <mw type="pageNum" rend="align(left)">28</mw>
+      <p rend="first-indent(1)"><quote rend="pre(“)post(”)">In this branch of religious instruction, there
+          <lb/>is one view to which the minds of the young
+          <lb/>ought to be particularly directed: I mean the
+          <lb/>character of our Saviour. His connexion with a 
+          <lb/>higher nature than ours, renders him an object
+          <lb/>of peculiar reverence to the young mind to
+          <lb/>which he is first introduced; but the simplicity
+          <lb/>and the gentleness of his virtues, render him still
+          <lb/>more an object of love and confidence. It is
+          <lb/>not, perhaps, one of the least wonderful circum­
+          <lb/>stances in this divine character, that while it is
+          <lb/>encompassed with the rays of Deity, and in all
+          <lb/>the trying circumstances of human life carries a
+          <lb/>form so lofty and commanding, it is yet quite
+          <lb/>level to the capacity of a child. The fact is, I
+          <lb/>believe it is more capable of being felt by chil­
+          <lb/>dren than by ourselves: for this plain reason,
+          <lb/>that, in some of its most striking peculiarities,
+          <lb/>their minds are as yet less distantly removed
+          <lb/>from it.</quote></p>
+  </div>
+      <pb n="032"/>
+      <milestone unit="sig" n="B7r"/>
+      <mw type="pageNum" rend="align(center)">29</mw>
+  <div type="chapter" rend="post(#rule)">
+      <head rend="case(smallcaps)align(center)">Chapter III.</head>
+      <argument rend="align(center)case(allcaps)"><p>On Forming the Manners.</p></argument>
+      <p rend="first-indent(1)"><quote rend="pre(“)post(”)"><hi rend="case(smallcaps)">Manners</hi> are all,</quote> was the favourite maxim
+          <lb/>of a prudent matron, well known in her little
+          <lb/>circle, as an adept in worldly wisdom. With­
+          <lb/>out subscribing to her opinion, one is willing to
+          <lb/>allow that, in things indifferent, an action iden­
+          <lb/>tically the same, may please or displease, accord­
+          <lb/>ing to the method of doing it.</p>
+    <p rend="first-indent(1)">Those who desire to improve the manners of 
+          <lb/>their children, should rarely speak to them on
+          <lb/>the subject. After they have been taught those
+          <lb/>obvious rules which prevent them from being
+          <lb/>unnecessarily troublesome, example can do much,
+          <lb/>but precept may destory its good effects. In
+          <lb/>ameliorating hearts, you polish manners. Good
+          <lb/>nature, good humour, gentleness, the habit of
+          <lb/>respecting one's self <mcr rend="pre(“)post(”)">soberly,</mcr> and, if attended
+          <lb/>to, the feelings of others, will, without the for­
+          <lb/>mality of precept, give sweetness, courtesy, and
+      <pb n="033"/>
+      <milestone unit="sig" n="B7v"/>
+      <mw type="pageNum" rend="align(left)">30</mw>
+          <lb/>that higher species of grace which depends on 
+          <lb/>the mind.</p>
+    <p rend="first-indent(1)">Forms are so insignificant, that no one ever
+          <lb/>missed or was awkward in adopting them, except
+          <lb/>by laying too much or too little stress on their per­
+          <lb/>formance. The first is the more common cause of
+          <lb/>failure, as our instinctively imitative habits usually
+          <lb/>preserve us from any ill effects arising from con­
+          <lb/>tempt or neglect of common forms. But if a 
+          <lb/>child has been led to think too highly of the
+          <lb/>effects of his bow, his mode of entering or leaving
+          <lb/>a room, of picking up a fan, or giving a tea-cup,
+          <lb/>a great step has been taken towards lowering
+          <lb/>his mind, and throwing restraint on his manners.
+          <lb/>That person was proverbially deficient in <soCalled rend="pre(“)post(”)">the
+          <lb/>graces,</soCalled> to whom the most elaborate lectures
+          <lb/>ever written on the subject were addressed:
+          <lb/>lectures which formed, for some years, a code of
+          <lb/>manners for the nation, and founded a school, of
+          <lb/>which the remaining professors still think them­
+          <lb/>selves superior to all who went before, and all
+          <lb/>who may follow after. Yet his instructor, the
+          <lb/>head of that school, united the highest polish,
+          <lb/>and habits of the best society, in every sense of
+          <lb/>the word, with admirable talents and extensive
+      <pb n="034"/>
+      <milestone unit="sig" n="B8r"/>
+      <mw type="pageNum" rend="align(right)">31</mw>
+          <lb/>knowledge; therefore he was peculiarly qualified
+          <lb/>to impress whatever he desired to teach, both by
+          <lb/>precept and example. Where <emph rend="slant(italic)">he</emph> failed, who
+          <lb/>can expect to succeed? The graces seldom
+          <lb/>flourish, unless indigenous to the soil. Ease
+          <lb/>and self-possession are advantages universally
+          <lb/>attractive, and peculiarly sought for by all who
+          <lb/>make manners a study, either as masters or
+          <lb/>scholars. These are essential parts of good
+          <lb/>breeding, without which it can scarcely be said
+          <lb/>to exist; and they belong, in a very high degree,
+          <lb/>to many of the members of the <orgName>Society of
+          <lb/>Friends</orgName>, who often possess a graceful simplicity
+          <lb/>of address that emperors might envy. May not
+          <lb/>this partly arise from their being, from youth
+          <lb/>upwards, unincumbered by forms, while, at the
+          <lb/>same time, a pleasing serenity is ensured by the
+          <lb/>mildness of their habits, and the peaceful, bene­
+          <lb/>volent tenour of their occupations?</p>
+      <p rend="first-indent(1)"><quote rend="pre(“)post(”)">She glides in like a spirit, and is by your
+          <lb/>side before you know she is in the room,</quote> was
+          <lb/>the description given to us of that heroine of
+          <lb/>humanity we are not permitted to name, by a
+          <lb/>man of talent<anchor xml:id="a003" corresp="#n003" rend="post(*)"/>, who had attended her levee in
+      <pb n="035"/>
+      <milestone unit="sig" n="B8v"/>
+      <mw type="pageNum" rend="align(left)">32</mw>
+          <lb/><placeName>London</placeName> last spring, when rank, and worth, and
+          <lb/>influence, and taste, (all who were <emph rend="slant(italic)">something</emph>,
+          <lb/>and all who would be <emph rend="slant(italic)">something</emph>,) sought for an
+          <lb/>audience from this harbinger of mercy, this
+          <lb/>bearer of the olive-branch, penetrating into the
+          <lb/>dungeon like a ray of light—<quote rend="pre(“)post(”)">a sun-beam that
+          <lb/>had lost its way.</quote></p>
+    <p rend="first-indent(1)">There is, in essentials, more resemblance
+          <lb/>betwen some of our most polished members
+          <lb/>of general society, our <rs type="properAdjective">Corinthian</rs> pillars, and
+          <lb/>well-educated individuals of this sect, than one
+          <lb/>could have imagined before the comparison was
+        <lb/>made. Both are placid, serene, still, or, at least 
+          <lb/>free from impatient or affected gesticulation:
+          <lb/>both keep self out of sight, are minutely atten­
+          <lb/>tive to the feelings and wishes of others, and
+          <lb/>make no secret of their pain at hearing of any
+          <lb/>instance, in any quarter, or harshness, cruelty,
+          <lb/>or injustice.</p>
+    <p rend="first-indent(1)">The <rs type="properAdjective">French</rs> idea of studying to adapt our
+          <lb/>manners to different classes of life, to <emph rend="slant(italic)">shade</emph> them,
+          <lb/>(<foreign xml:lang="fr" rend="slant(italic)">les nuançer</foreign>,) sometimes makes the society of
+          <lb/>individuals of that nation uninteresting to per­
+          <lb/>sons of lively imagination, and seems never to
+          <lb/>succeed when transplanted into <rs type="properAdjective">English</rs> edu­
+          <lb/>cation.</p>
+    <pb n="036"/>
+    <milestone unit="sig" n="C1r"/>
+    <mw type="pageNum" rend="align(right)">33</mw>
+    <p rend="first-indent(1)">Let us inspire children with kindly feelings
+          <lb/>for the weak and helpless, respect for old age
+          <lb/>and misfortune, a due deference for rank and
+          <lb/>station; and they will express these sentiments
+          <lb/>better from the dicates of their own hearts,
+          <lb/>than from any code of rules, which enfeeble the
+          <lb/>powers, and occupy too great a portion of atten­
+          <lb/>tion, to the exclusion of matter more suited to
+          <lb/>the dignity of man: not to mention the danger
+          <lb/>that such rules may generate stiffness, affectation,
+          <lb/>and insincerity.</p>
+    <p rend="first-indent(1)">Do you wish to intimidate a gentle and re­
+          <lb/>fined mind, so as to dispossess it, perhaps for
+          <lb/>ever, of its full powers, in the presence of su­
+          <lb/>periors, whether in rank or station? You need
+          <lb/>only show too much anxiety for their captivating
+          <lb/>those superiors; lay too much stress on their
+          <lb/>suffrages; and this practice will, as assuredly in
+          <lb/>wordly and insensible characters, lay the foun­
+          <lb/>dation of fawning to those above, for which the
+          <lb/>actor usually repays himself by insolence to those
+          <lb/>below.</p>
+    <p rend="first-indent(1)">But some who are at ease with their equals,
+          <lb/>and with person of higher rank than themselves,
+          <lb/>are unaccountably embarrassed in addressing
+      <mw type="sig" rend="indent(7)break(yes)">C</mw>
+      <pb n="037"/>
+      <milestone unit="sig" n="C1v"/>
+      <mw type="pageNum" rend="align(left)">34</mw>
+          <lb/>those in humble life. This may arise from
+          <lb/>having been too sedulously restrained, in early
+          <lb/>life, from knowing anything of this class, and
+          <lb/>imbibing their notions of it from affectedly sen­
+          <lb/>timental productions, where every inhabitant of
+          <lb/>a cottage is a model of patience and refinement,
+          <lb/>every landlord a tyrant, and every steward an
+          <lb/>oppressor. Many little novelets<anchor xml:id="a004" corresp="#n004" rend="post(*)"/>, written ex­
+          <lb/>pressly for youth, seem composed only to exem­
+          <lb/>plify these assertions, and to show that poverty
+          <lb/>and virtue, riches and vice, are synonymous
+          <lb/>terms. All their labourers are saints or heroes,
+          <lb/>and all their gentlemen wholly worthless; except
+          <lb/>one great leviathan, who scatters about his
+          <lb/>hundreds without reflection or inquiry, in a way
+          <lb/>that, in real life, would probably be rewarded
+          <lb/>with a statute of lunacy, or, at least, would de­
+          <lb/>serve one. These books are well intended, but
+          <lb/>they are not sources whence real kindliness will
+          <lb/>ever flow. They may prepare one in a hundred,
+      <pb n="038"/>
+      <milestone unit="sig" n="C2r"/>
+      <mw type="pageNum" rend="align(right)">35</mw>
+          <lb/>with a very soft heart, or a very weak head, for
+          <lb/>being a dupe; but they will not assist in giving
+          <lb/>habits of enlightened, efficient, and persevering
+          <lb/>benevolence.</p>
+    <p rend="first-indent(1)">False ideas of the poorer classes are peculiarly
+          <lb/>inconvenient to women. <persName>Louisa</persName> had never been
+          <lb/>permitted to speak to any such, except a few
+          <lb/>confidential servants, till womanhood, and invo­
+          <lb/>luntarily expected them all to assimilate, in some
+          <lb/>degree, with those she had read of in novels and
+          <lb/>romances. Upon her marriage, when a desire
+          <lb/>of being useful led her to converse with her
+          <lb/>poorer neighbours in the country, she found some
+          <lb/>difficulties arise: first, from an acquired habit of
+          <lb/>considering them all as unfortunates; and next,
+          <lb/>from supposing that her kindness would awaken
+          <lb/>in their hearts that exquisite tenderness, and
+          <lb/>deep respect, so affectingly described in works of
+          <lb/>fiction. She feared that her generosity, united
+          <lb/>to that delicacy, sweetness, intellect, and beauty,
+          <lb/>of which she had heard so much, would almost
+          <lb/>overpower their feelings; and she dreaded the
+          <lb/>pathos of their gratitude. What was her sur­
+          <lb/>prise at finding, that too apparent a consideration
+          <lb/>for them sometimes awakened only a desire to
+      <mw type="sig" rend="indent(7)break(yes)">C2</mw>
+      <pb n="039"/>
+      <milestone unit="sig" n="C2v"/>
+      <mw type="pageNum" rend="align(left)">36</mw>
+          <lb/>impose; and that they were not so feelingly alive
+          <lb/>to the appearance and manners of their benefac­
+          <lb/>tors, as in novels, where every dying sufferer
+          <lb/>invariably mistakes the youthful female who
+          <lb/>relieves him for an angel. She discovered also,
+          <lb/>that when <quote rend="pre(“)post(”)">reality was dealing</quote> with the chil­
+          <lb/>dren of sorrow, outward show had no effect;—
+          <lb/>that a gift bore the same value to a starving
+          <lb/>family, whether the donor was sixty or sixteen;—
+          <lb/>and that those who would serve the poor effec­
+          <lb/>tually, must, in general, rather conceal than
+          <lb/>display any excess of sensibility.</p>
+    <p rend="first-indent(1)">Suffering children to associate with servants,
+          <lb/>is justly condemned; dispensing wholly with
+          <lb/>attendance, as recommended by some, is more
+          <lb/>desirable than practicable; but commanding the
+          <lb/>young never to speak to those from whom they
+          <lb/>daily receive assistance, as proposed by others,
+          <lb/>is to require what is nearly impossible, and to
+          <lb/>cherish the seeds of pride. It is of some im­
+          <lb/>portance never to allow their attendants to be
+          <lb/>called <mentioned rend="pre(“)post(”)"><name>Miss Mary's</name></mentioned> or <mentioned rend="pre(“)post(”)"><name>Master John's</name> maid.</mentioned>
+          <lb/>On the contrary, we should say: <said rend="pre(“)post(”)">They are not
+          <lb/>your servants: they are mine, whom I allow to
+          <lb/>assist you, while you behave to them with pro­
+      <pb n="040"/>
+      <milestone unit="sig" n="C3r"/>
+      <mw type="pageNum" rend="align(right)">37</mw>
+          <lb/>priety.</said> We have lately heard of a plantation
+          <lb/>in the <placeName>West Indies</placeName>, where all the slaves were
+          <lb/>in the habit of falling on their knees to their
+          <lb/>proprietor's eldest boy, when he returned, after
+          <lb/>an absence from home. This, we hope, is an
+          <lb/>extreme case; it is certainly an awful one.</p>
+    <p rend="first-indent(1)">All prudent and affectionate parents must feel
+          <lb/>the incalculable advantage of being the com­
+          <lb/>panions of their children, to the utmost limit
+          <lb/>their situations will admit<anchor xml:id="a005" corresp="#n005" rend="post(*)"/>; and they will
+          <lb/>consider morals, discretion and piety, as the
+          <lb/>most valuable qualities the attendants or instruc­
+          <lb/>tors of youth, or infancy, can possess; always
+          <lb/>preferring a moderate degree of skill, with a high
+      <pb n="041" xml:id="pb001" corresp="#pbn001"/>
+      <milestone unit="sig" n="C3v"/>
+      <mw type="pageNum" rend="align(left)">38</mw>
+          <lb/>tone of principle, to the most useful or acceptable
+          <lb/>talents, divested of this firm foundation. But,
+          <lb/>instead of prohibiting the young from speaking
+          <lb/>to servants, we should rather accustom them,
+          <lb/>occassionally, to give our orders, to make inqui­
+          <lb/>ries, and to confer favours, which will prevent
+          <lb/>them from performing such offices, in their ma­
+          <lb/>turity, with stiffness and embarrassment. We
+          <lb/>should also lead them<anchor xml:id="a006" corresp="#n006" rend="post(*)"/> to visit the cottage and
+      <pb n="042"/>
+      <milestone unit="sig" n="C4r"/>
+      <mw type="pageNum" rend="align(right)">39</mw>
+          <lb/>the workshop. This will enable them hereafter
+          <lb/>to know the real wants of the poor, as well as to
+          <lb/>relieve them, with that well-judging charity
+          <lb/>which is <quote rend="pre(“)post(”)">twice blessed;</quote> and will guard them
+          <lb/>against that morbid sensibility, which shrinks
+          <lb/>from the very idea of the indispensable grada­
+          <lb/>tions of society. We know how successfully
+          <lb/>this was practised, in the education of one in
+          <lb/>the highest rank: that beloved one, <quote rend="pre(“)post(”)">the first
+          <lb/>in virtue as in place,</quote> who has left us the inhe­
+          <lb/>ritance of an example, over which her early
+          <lb/>death, and sublimely simple resignation of <quote rend="pre(“)post(”)">a
+          <lb/>high and palmy state</quote> of happiness, that realized
+          <lb/>the dreams of fiction, seems to have thrown an
+          <lb/>added brightness: like those light clouds which
+          <lb/>sometimes hang on the moon, and, instead of
+          <lb/>diminishing, reflect and diffuse, and even seem
+          <lb/>to increase, its original lustre. We have seen
+          <lb/>her visiting the cottages in <placeName>Bognor</placeName>, and leaving,
+          <lb/>together with some judicious gift, that remem­
+          <lb/>brance of her kindliness and courtesy, which
+          <lb/>gave more than <quote rend="pre(“)post(”)">an hour's importance to the
+          <lb/>poor man's heart,</quote> a pure and indelible satis­
+          <lb/>faction.</p>
+    <p rend="first-indent(1)">We recollect this practice and condemned at
+      <pb n="043"/>
+      <milestone unit="sig" n="C4v"/>
+      <mw type="pageNum" rend="align(left)">40</mw>
+          <lb/>the time, as tending to lessen the dignity of her
+          <lb/>manners. That it had not this effect, is now
+          <lb/>universally allowed; and that it tended to foster
+          <lb/>that spirit of humanity she so eminently pos­
+          <lb/>sessed, can scarcely be denied.</p>
+    <p rend="first-indent(1)">Nothing gives so high a polish as truly reli­
+          <lb/>gious feelings: they shrink into nothingness all 
+          <lb/>those minor objects which create asperities be­
+          <lb/>tween man and man: they give, from the habit
+          <lb/>of self-examination, an insight into the heart, a
+          <lb/>quickness of perception that knows every tender
+          <lb/>point, and avoids touching it, except to heal,
+          <lb/>whether its delicacy spring from the virtues, the
+          <lb/>infirmities, or even the vices of our nature. The
+          <lb/><name>Christian</name> cannot be proud, vain, or negligent,
+          <lb/>except in the inverse of his religion: as the sun
+          <lb/>of righteousness shines out in his heart, these
+          <lb/>clouds will melt away.</p>
+    <p rend="first-indent(1)">The courtesy of <name>Christianity</name> is equally visible
+          <lb/>in health and sickness, in retirement as in a 
+          <lb/>crowd, in a cottage as in a palace. Those
+          <lb/>sudden gusts of adverse or prosperous fortune, so 
+          <lb/>fatal to artificial pretensions, do not throw it off
+          <lb/>its guard. Like the finest porcelain of the East,
+          <lb/>when broken in a thousand pieces, every fracture
+      <pb n="044"/>
+      <milestone unit="sig" n="C5r"/>
+      <mw type="pageNum" rend="align(right)">41</mw>
+          <lb/>displays new smoothness and polish; and, in its
+          <lb/>shivered state, it best shows the superiority of
+          <lb/>its beautiful structure, over those coarser kinds
+          <lb/>which are <quote rend="pre(“)post(”)">of the earth, earthy.</quote></p>
+    <p rend="first-indent(1)">The courtesy of <name>Christianity</name> is equally soli­
+          <lb/>citous to avoid offending the poor and low, as the
+          <lb/>rich and great; recollecting that to the poor the
+          <lb/>Gospel was first preached, and that the Saviour
+          <lb/>of the world ennobled their situation, by choosing
+          <lb/>it for his own.</p>
+    <p rend="first-indent(1)">From the great difference some persons show 
+          <lb/>in their manners to the high and low, they
+          <lb/>almost may be said to assume, alternately, the
+          <lb/>appearance of two opposite beings. The gentle
+          <lb/>tone, the sweet smile, the diffident yet easy
+          <lb/>address, the hesitating mildness with which they
+          <lb/>differ in opinion, when conversing with a superior,
+          <lb/>form a strong contrast to those harsh interroga­
+          <lb/>tories, that raised voice, that clouded brow, and
+          <lb/>those blunt contradictions, which they reserve
+          <lb/>for the humbler classes. Nothing is more
+          <lb/>amusing than the mistakes that have arisen
+          <lb/>when the <emph rend="slant(italic)">actor</emph> has misjudged the rank of those
+          <lb/>whom he addressed. An instance of this sort is
+        <lb/>humorously told, in that instructive tale, <title rend="pre(“)post(”)">The
+      <pb n="045"/>
+      <milestone unit="sig" n="C5v"/>
+      <mw type="pageNum" rend="align(left)">42</mw>
+          <lb/>Countess and <persName>Gertrude</persName></title>. More serious conse­
+          <lb/>quences have sometimes ensued from this species
+          <lb/>of duplicity; and the following anecdote is
+          <lb/>closely connected with the subject.</p>
+    <p rend="first-indent(1)"><persName>Laura</persName> was a lovely girl of eighteen, when
+          <lb/><persName>Edward M.</persName>, a young man of the highest personal
+          <lb/>and intellectual endowments, became attached
+          <lb/>to her. His father promised a cheerful con­
+          <lb/>sent to their marriage, notwithstanding such
+          <lb/>a disparity of rank and fortune as would have
+          <lb/>justified his refusal in the eyes of the majority,
+          <lb/>provided <persName>Edward</persName> would defer his proposal, till
+          <lb/>six months of absence, and six more of acquaint­
+          <lb/>ance, had proved the stability of his affection.</p>
+    <p rend="first-indent(1)">During his foreign tour, <persName>Laura's</persName> image rested
+          <lb/>in the sanctuary of his heart, drawn in the most
+          <lb/>attractive colours. The fairest faces only recalled
+          <lb/>the idea of one, whose beauty was illuminated,
+          <lb/>in her lover's eyes, by that lustre of moral excel­
+          <lb/>lence, without which it is valueless and insipid
+          <lb/>to men of refined taste. Such cheerfulness was
+          <lb/>in her smile, such mildness in her accent, as
+          <lb/>promised a perpetual spring of domestic felicity.
+          <lb/>When he returned to his country, he resolved to
+          <lb/>make his arrival first known to <persName>Laura</persName>, although
+      <pb n="046"/>
+      <milestone unit="sig" n="C6r"/>
+      <mw type="pageNum" rend="align(right)">43</mw>
+          <lb/>he never had appared to her but in the character
+          <lb/>of a friend; and as lovers, on the eve of meeting
+          <lb/>or separation, have seldom the proper use of
+          <lb/>their reasoning faculties, he indulged the inju­
+          <lb/>dicious idea of increasing her pleasure at seeing
+          <lb/>him, by surprise. Having leaped over a wall,
+          <lb/>he placed himself in that favourite seat, in the
+          <lb/>ground near her own peculiar flower-garden,
+          <lb/>whither his fancy had so often strayed. After a 
+          <lb/>few tedious moments of breathless suspense, he
+          <lb/>hears a rustling in the leaves. <said rend="pre(“)post(”)">'Tis <persName>Laura</persName>!</said>
+          <lb/>No, it is a decrepit old weeding-woman, who
+          <lb/>begins her daily task. But she is followed by
+          <lb/>the radiant form of <persName>Laura</persName>; not, however, beam­
+          <lb/>ing in smiles. She has just discovered that this 
+          <lb/>poor woman had pulled, by mistake, and sent to
+          <lb/>another young lady, as a present, the curious
+          <lb/>exotics intended for the ornament of <persName>Laura's</persName>
+          <lb/>luxuriant tresses, at an approaching ball. The
+          <lb/>unseen lover remains mute and motionless from
+          <lb/>astonishment, at hearing a storm of coarse re­
+          <lb/>proach, and energetic scolding, in tones, now
+          <lb/>sharp, now rough, varied through all the notes
+          <lb/>of the gamut, from those lovely lips which 
+          <lb/>seemed hitherto to have opened only to breathe
+      <pb n="047"/>
+      <milestone unit="sig" n="C6v"/>
+      <mw type="pageNum" rend="align(left)">44</mw>
+          <lb/>music and perfume. The scene concluded with
+          <lb/>the final dismissal of the poor woman. <persName>Laura</persName>
+          <lb/>retired. The lover put a bank-note into the
+          <lb/>hand of the astonished weeder, whom he re­
+          <lb/>spected as the instrument of his deliverance;
+          <lb/>leaped the wall; returned, for a short time, to
+          <lb/><placeName>Italy</placeName>; came home restored to himself; and
+          <lb/>never forgot the gratitude he owed his father,
+          <lb/>for having prevailed on him to conceal his at­
+          <lb/>tachment till confirmed by time and intimacy.</p>
+  </div>
+      <pb n="048"/>
+      <milestone unit="sig" n="C7r"/>
+      <mw type="pageNum" rend="align(center)">45</mw>
+  <div type="chapter" rend="post(#rule)">
+      <head rend="case(smallcaps)align(center)">Chapter IV.</head>
+      <argument rend="align(center)case(allcaps)"><p>On Humanity to Animals.</p></argument>
+      <p><hi rend="case(smallcaps)">Long</hi> before children can practise any lessons of
+          <lb/>humanity to their fellow-men, they may be ac­
+          <lb/>customed to perform their duties to inferior
+          <lb/>animals; and the seeds of kindness, or cruelty,
+          <lb/>may be cherished by the conduct they are taught
+          <lb/>to observe to the fly in the window.</p>
+     <p rend="first-indent(1)">Women have it completely in their power to
+          <lb/>mould the rising generation into habits of rational
+          <lb/>kindness to the inferior world; and the minute
+          <lb/>attention of parents would be more efficacious
+          <lb/>than even <persName>Lord Erskine's</persName> bill, so honourable to
+          <lb/>his head and heart—with which we <choice><sic>carnestly</sic><corr>earnestly</corr></choice>
+          <lb/>wish their efforts were destined to co-operate.
+          <lb/>But we must be consistent. If a boy sees his
+          <lb/>mother tread on, what she terms, <said rend="pre(“)post(”)">the odious
+          <lb/>spider,</said> with eye of hate, and step of triumph,
+          <lb/>he will not think her prompted by compassion,
+          <lb/>but caprice, when she restrains him from touch­
+       <pb n="049"/>
+       <milestone unit="sig" n="C7v"/>
+       <mw type="pageNum" rend="align(left)">46</mw>
+          <lb/>ing <said rend="pre(“)post(”)">the dear little goldfinch's nest,</said> to which
+          <lb/>he is impelled by a powerful instinct, probably
+          <lb/>given to man, to assist him in procuring his
+          <lb/>food, when in a state of nature. The taste of
+          <lb/>children for beauty and melody is not awakened
+          <lb/>very early, Providence having kindly ordained
+          <lb/>that feelings of a higher nature should be first
+          <lb/>developed. In the bottom of his heart, the boy
+          <lb/>thinks mamma either <said rend="pre(“)post(”)">ill-natured for killing
+          <lb/>the poor little spider,</said> or unreasonable for saving
+          <lb/>the bird's nest; and, at best, strangely capricious.</p>
+    <p rend="first-indent(1)">In the scale of existence, wherever sensibility
+          <lb/>to pain and pleasure commences, there should
+          <lb/>commence our respect for the feelings of beings
+          <lb/>thus endowed. No matter, whether they are
+          <lb/>covered with scales, repugnant to our limited
+          <lb/>senses, or clothed more beautifully than <persName>Solomon</persName>
+          <lb/>in all his glory. Where sensation begins, there
+          <lb/>begin the rights of beings partaking, in one
+          <lb/>respect, of a joint nature with ourselves; and
+          <lb/>whenever we are forced to destroy them, we are
+          <lb/>bound to do it in the most humane and expedi­
+          <lb/>tious manner.</p>
+    <p rend="first-indent(1)">Even in this compassionate age, we may hourly
+          <lb/>see instances of hardness of heart towards the
+      <pb n="050"/>
+      <milestone unit="sig" n="C8r"/>
+      <mw type="pageNum" rend="align(right)">47</mw>
+          <lb/>animal creation. In the sports of the field<anchor xml:id="a007" corresp="#n007" rend="post(*)"/>, in
+          <lb/>most of our unnecessary despatch in travelling,
+          <lb/>in the treatment of horses, and in several modes
+          <lb/>of preparing the creatures which we use as food,
+          <lb/>there is still much cruelty. We still see fruit-
+          <lb/>trees protected by bottles of honey, where wasps
+          <lb/>and other insects meet with that lingering death,
+          <lb/>which we ought not to inflict on any sentient
+      <pb n="051"/>
+      <milestone unit="sig" n="C8v"/>
+      <mw type="pageNum" rend="align(left)">48</mw>
+          <lb/>being. This cruel device gives a striking image
+          <lb/>of the life of the idle and dissipated in luxurious
+          <lb/>capitals; for these creatures, smothered in dis­
+          <lb/>tasteful sweets, (distasteful only from their ex­
+          <lb/>cess,) seem all equally engaged in a painful
+          <lb/>struggle for pre-eminence. So live, so die, thou­
+          <lb/>sands in our populous cities, victims of luxury,
+          <lb/>and struggling for a mere pre-eminence:—not
+          <lb/>for distinction in arts, in literature, or in virtue;
+          <lb/>but for a precedence in the court of that phan­
+          <lb/>tom, <name>Fashion</name>; that most despotic tyrant that
+          <lb/>ever ruled over willing slaves.</p>
+    <p rend="first-indent(1)">We have, more than once, shrunk at hearing
+          <lb/>women single out certain animals—a cat, a toad,
+          <lb/>or a poor patient ass, (unless <persName>Alison's</persName> eulogium<anchor xml:id="a008" corresp="#n008" rend="post(*)"/>
+          <lb/>has rescued the latter,) as objects of their aver­
+          <lb/>sion, and out of the pale of their pity, on account
+          <lb/>of somewhat in their exterior, intolerable to the
+          <lb/>senses of an exquisitely-delicate female. To the
+          <lb/>sufferings of these <soCalled rend="pre(“)post(”)">odious animals,</soCalled> some have
+          <lb/>been heard to profess themselves indifferent.
+          <lb/>This could not have happened, had their atten­
+          <lb/>tion been properly directed, in youth, to the
+      <pb n="052"/>
+      <milestone unit="sig" n="D1r"/>
+      <mw type="pageNum" rend="align(right)">49</mw>
+          <lb/>feelings of the brute creation; but where parents
+          <lb/>have neglected this essential duty, it is surprising
+          <lb/>how frequently those, who are humane in other
+          <lb/>respects, are, in this particular, miserably
+          <lb/>deficient.</p>
+    <p rend="first-indent(1)">Those ladies, who are all tenderness to their
+          <lb/>linnets, and callous to the pains of less-attractive
+          <lb/>animals, would do well to reflect on that passage
+          <lb/>in <persName>Locke</persName>, where he says, that a trifling change
+          <lb/>in the formation of any of our organs of sense,
+          <lb/>would render repulsive and disgusting to us,
+          <lb/>those objects now most agreeable to that organ.
+          <lb/>They might then ask themselves, whether, in
+          <lb/>the scale of existence supposed by <persName>Milton</persName>, <persName>Ad­
+          <lb/>dison</persName>, <persName>Locke</persName>, and other eminent persons, to rise
+          <lb/>from us to the Divinity, there may not be some
+          <lb/>superior natures, exalted a little above ourselves,
+          <lb/>to whom mankind <emph rend="slant(italic)">may</emph> be an object of dislike,
+          <lb/>though of compassion; and who may look down
+          <lb/>on us with a mixture of pity and contempt. In
+          <lb/>the development of this principle, and others of
+          <lb/>similar tendency, consists the moral beauty of
+          <lb/><title rend="pre(“)post(”)">Gulliver's Travels</title>. On such a subject, we
+          <lb/>must speak, and even <emph rend="slant(italic)">think</emph> with deep humility;
+          <lb/>but, from analogy, we may deem it not impossi­
+      <mw type="sig" rend="indent(7)break(yes)">D</mw>
+      <pb n="053"/>
+      <milestone unit="sig" n="D1v"/>
+      <mw type="pageNum" rend="align(left)">50</mw>
+          <lb/>ble, and the reflection may tend to abate our
+          <lb/>pride: it can, at least, have no injurious effect;
+          <lb/>for we can apprehend nothing from created
+          <lb/>beings, while guarded by infinite power and
+          <lb/>perfection.</p>
+    <p rend="first-indent(1)">It is of some use to show children, that many
+          <lb/>actions, which appear vicious to them, in ani­
+          <lb/>mals, are the effects of instinct, and to familiar­
+          <lb/>ize them with the distinction between this faculty
+          <lb/>and human reason. They comprehend as much 
+          <lb/>of this as is necessary for the cultivation of the
+          <lb/>heart, very early; and if we wait to give them
+          <lb/>some explanation of so abstruse a subject, till
+          <lb/>they can perfectly understand it, we must defer
+          <lb/>it for ever.</p>
+    <p rend="first-indent(1)">It is not difficult to prove to a child, that the
+          <lb/>spider is no more cruel in killing a fly for his
+          <lb/>dinner, than man in making the same use of a
+          <lb/>sheep; that the laws of Providence have ap­
+          <lb/>pointed us to live by destruction; and that it is
+          <lb/>our duty to bow submissively to the decree, at
+          <lb/>the same time that we endeavour to diminish
+          <lb/>the sufferings with which it must necessarily be
+          <lb/>attended. This will put an end to childish
+          <lb/>irritation, and feelings of revenge towards such
+      <pb n="054"/>
+      <milestone unit="sig" n="D2r"/>
+      <mw type="pageNum" rend="align(right)">51</mw>
+          <lb/>animals as may chance to injure their favourites;
+          <lb/>and the indulgence of these feelings often makes
+          <lb/>a channel in the heart, that lays it open to the
+          <lb/>influence of vindictive passion on more serious
+          <lb/>occassions. Let us awaken their attention on
+          <lb/>these subjects—lay down a few broad principles;
+          <lb/>and they will learn to apply them much <choice><sic>soooner</sic><corr>sooner</corr></choice>
+          <lb/>than is generally supposed. In <persName>Mrs. Hamilton's</persName>
+          <lb/>excellent <title rend="pre(“)post(”)">Popular Essays</title>, the effects of guiding
+          <lb/>and arresting the attention of youth, are de­
+          <lb/>veloped with great ingenuity, and happily illus­
+          <lb/>trated.</p>
+    <p rend="first-indent(1)">Among the few fictitious tales we would
+          <lb/>recommend, <persName>Mrs. Trimmer's</persName> <title rend="pre(“)post(”)">"Fabulous His­
+          <lb/>tories</title>, professedly inculcating a proper treatment
+          <lb/>of animals, hold a distinguished place. They
+          <lb/>are charming. We have never met any person
+          <lb/>who did not look back with pleasure on the
+          <lb/>amusement this volume gave their childhood;
+          <lb/>and we confess, that we still find the <name>Robin</name> and
+          <lb/>his Mate a most interesting pair, fully deserving
+          <lb/>the pre-eminence acquired by their ancestors,
+          <lb/>and the high place they hold in the world's
+          <lb/>esteem.</p>
+    <p rend="first-indent(1)">One is tempted to believe, from the relations
+      <mw type="sig" rend="indent(7)break(yes)">D 2</mw>
+      <pb n="055"/>
+      <milestone unit="sig" n="D2v"/>
+      <mw type="pageNum" rend="align(left)">52</mw>
+          <lb/>of travellers, that the docility of domestic animals
+          <lb/>bears, in most countries, a pretty exact propor­
+          <lb/>tion to the gentleness of the inhabitants.</p>
+    <p rend="first-indent(1)"><persName>Thomson</persName>, who travelled through <placeName>Sweden</placeName> in
+          <lb/><date when="1812">1812</date>, thus speaks of the peasantry:—<quote rend="pre(“)post(”)">There is
+          <lb/>nothing to be seen which indicates the existence
+          <lb/>of the more violent passions; but every one
+          <lb/>expresses a docility and good humour in his face,
+          <lb/>which, I believe, all possess.</quote> Of these qualities,
+          <lb/><persName>Thomson</persName>, who seems a minute and faithful ob­
+          <lb/>server, gives some remarkable instances from his
+          <lb/>own knowledge, and concludes by saying:—
+          <lb/><quote rend="pre(“)post(”)">They are a most amiable and innocent people.</quote>
+          <lb/>A late traveller in <placeName>Sweden</placeName> has also informed us,
+          <lb/>in conversation, that in posting, the drivers sel­
+          <lb/>dom mount their horses, and are moved, almost
+          <lb/>to tears, if these animals suffer hardship or
+          <lb/>fatigue.</p>
+    <p rend="first-indent(1)">The effects of this mild treatment, <persName>Thomson</persName>
+          <lb/>thus describes:—<quote rend="pre(“)post(”)">The sheep in <placeName>Sweden</placeName> are
+          <lb/>exceedingly tame. I had occasion to see re­
+          <lb/>peated flocks of these driven to <placeName>Stockholm</placeName> by
+          <lb/>women. I have seen the sheep surrounding
+          <lb/>the woman on the road, licking her hand with
+          <lb/>as much familiarity as so many dogs. The
+            <pb n="056"/>
+            <milestone unit="sig" n="D3r"/>
+            <mw type="pageNum" rend="align(right)">53</mw>
+          <lb/>domestic animals do not differ from those of
+          <lb/><placeName>England</placeName>, except in being much tamer. I have
+          <lb/>repeatedly gone up and patted the head of a 
+          <lb/>watch-dog, kept chained to protect a farm-yard.
+          <lb/>The cats frequently make up to you, though a 
+          <lb/>perfect stranger; and I have seen repeated
+          <lb/>instances of their following you in the fields,
+          <lb/>like a dog.</quote></p>
+    <p rend="first-indent(1)">It is certain the accidents and inconvenience,
+          <lb/>caused by the indocility of our domestic animals,
+          <lb/>might be diminished, if a more gentle mode of
+          <lb/>treating them were universal. It is well known,
+          <lb/>that horses neither thrive nor work well, when
+          <lb/>harshly treated. They are peculiarly sensible of
+          <lb/>the kindness of men. We are aware, that they
+          <lb/>are so tamed and taught by the <name>Arabs</name>, as to
+          <lb/>sleep in a crowded tent, without injuring an
+          <lb/>infant family: and the feats of an <name>Arab</name>, chiefly
+          <lb/>in consequence of the docility of his horse, are
+          <lb/><choice><sic>alway</sic><corr>always</corr></choice> a source of wonder to <name>Europeans</name>. <persName>Sir J.
+          <lb/>Sinclair</persName> is of opinion, that gentleness is of the
+          <lb/>highest importance to the well-being of this
+          <lb/>noble animal. He also says, in his work on the
+          <lb/>husbandry of <placeName>Scotland</placeName>:—<quote rend="pre(“)post(”)">The horses will do
+          <lb/>their work more easily, and their lives will be
+            <pb n="057"/>
+            <milestone unit="sig" n="D3v"/>
+            <mw type="pageNum" rend="align(left)">54</mw>
+          <lb/>considerably prolonged, by keeping the same
+          <lb/>persons long about them, so as to become ac­
+          <lb/>quainted with their tempers, instead of changing
+          <lb/>every half year.</quote></p>
+    <p rend="first-indent(1)">Perhaps we have digressed a little too much
+          <lb/>in this chapter. Be it so. We shall be forgiven
+          <lb/>by those, who have feelings of gratitude or com­
+          <lb/>passion for the horse; and perhaps no one was
+          <lb/>ever thoroughly grateful, who did not experience
+          <lb/>something like that sentiment for all beings,
+          <lb/>whether endowed with reason or not, who have
+          <lb/>contributed to his ease and pleasure.</p>
+    <p rend="first-indent(1)">When a young woman, apparently mild and
+          <lb/>compassionate, sees her own coachman and
+          <lb/>another exercise their whips with savage ferocity,
+          <lb/>forcing their horses to a desperate struggle, at
+          <lb/>the risk of dashing through their sides the poles
+          <lb/>of each carriage, merely to arrive soonest, by one
+          <lb/>moment, at the door of an assembly, we are
+          <lb/>surprised she can endure a sight so cruel and
+          <lb/>offensive. But when she proves herself the in­
+          <lb/>stigator, by telling us, with an animated smile,
+          <lb/>that she has ordered her coachman <said rend="pre(“)post(”)">never to
+          <lb/>give way,</said> can we avoid turning from her with
+          <lb/>distaste?—inferior, however, to what we feel for
+      <pb n="058"/>
+      <milestone unit="sig" n="D4r"/>
+      <mw type="pageNum" rend="align(right)">55</mw>
+          <lb/>those who blame the practice, but declare they
+          <lb/>cannot restrain their servants from it; thus try­
+          <lb/>ing to unite, by a flimsy falsehood, the honours
+          <lb/>of humanity with the indulgence of a silly and
+          <lb/>pettish spirit of competition.</p>
+    <p rend="first-indent(1)">The nightly scenes of riot, at the doors of our
+          <lb/>great houses, are disgraceful. How often, be­
+          <lb/>neath the calm splendour of the summer moon,
+          <lb/><quote rend="pre(“)post(”)">shining on, shining on,</quote> as with a disdainful
+          <lb/>smile, the air resounds with oaths, execrations,
+          <lb/>and those strokes of the whip, that prove de­
+          <lb/>graded man is exercising his ungrateful cruelty
+          <lb/>on that noble animal, one is, at such a moment,
+          <lb/>tempted to think his superior! Not only a
+          <lb/>summer's moon, but the mild radiance of a sum­
+          <lb/>mer's dawn is thus greeted; the quiet pursuits
+          <lb/>of early labour thus impeded. I have seen the
+          <lb/>slow-moving pile of fruits and flowers, gemmed
+          <lb/>with morning-dew, as it entered from the country,
+          <lb/>overturned, trampled on, and destroyed, in these
+          <lb/>fierce and foolish contests; and have endeavoured
+          <lb/>to conceive, what can be thought of the pleasures
+          <lb/>of the rich, by those peasants, who, rising at the
+          <lb/>break of day to their humble and useful pursuits,
+          <lb/>find themselves entangled in the turmoil so in­
+      <pb n="059"/>
+      <milestone unit="sig" n="D4v"/>
+      <mw type="pageNum" rend="align(left)">56</mw>
+          <lb/>separably connected with most of our splendid
+          <lb/><soCalled rend="slant(italic)">evening</soCalled>-amusements:—<emph rend="slant(italic)">so</emph> we continue to call
+          <lb/>them, although they seldom begin till near
+          <lb/>twelve, and sometimes, as has been whimsically
+          <lb/>expressed, commence on the following day.
+          <lb/>Even the despotic oligarchy, the committee of
+          <lb/><name>Almack's</name>, in its desire to patronize early hours,
+          <lb/>has found the greatest difficulty in the enforce­
+          <lb/>ment of that decree, which insists on attendance
+          <lb/>before midnight.</p>
+  </div>
+      <pb n="060"/>
+      <milestone unit="sig" n="D5r"/>
+      <mw type="pageNum" rend="align(center)">57</mw>      
+  <div type="chapter" rend="post(#rule)">
+      <head rend="case(smallcaps)align(center)">Chapter V.</head>
+      <argument rend="align(center)case(allcaps)"><p>On Courage.</p></argument>
+    <p><hi rend="case(smallcaps)">It</hi> is probable that all cowardice is acquired, and
+          <lb/>that man is naturally a courageous animal: it is,
+          <lb/>however, a vice, or to speak more mildly, a
+          <lb/>quality, easily implanted in the human mind,
+          <lb/>though seldom indigenous. It is often produced
+          <lb/>by a desire to preserve children from accident,
+          <lb/>rather by their fears than our cares. To avoid
+          <lb/>a little present trouble, we give them exaggerated 
+          <lb/>ideas of danger, and enlist Imagination on the
+          <lb/>side of Cowardice.</p>
+    <p rend="first-indent(1)"><said rend="pre(“)post(”)">Take care,</said> should be sparingly used in our
+          <lb/>dialogues with a child. Those who have
+          <lb/>received most cautions, and heard most lectures
+          <lb/>on their personal safety, are not always the most
+          <lb/>secure. Some are incited to temerity by weari­
+          <lb/>ness of reiterated advice, or contempt of inju­
+          <lb/>dicious prohibition; and others, when they find
+          <lb/>themselves in a situation really perilous, have
+      <pb n="061"/>
+      <milestone unit="sig" n="D5v"/>
+      <mw type="pageNum" rend="align(left)">58</mw>
+          <lb/>not only the danger to struggle with, but their
+          <lb/>own fears. Why do the intoxicated prover­
+          <lb/>bially escape? Because they are guarded by
+          <lb/>instinct, left undisturbed by apprehension. As
+          <lb/>we cannot give children the prudence of manly
+          <lb/>reason, let us not take from them the advantages
+          <lb/>of youthful instinct. Before such writers as
+          <lb/><persName>Miss Edgeworth</persName> and <persName>Mrs. Barbauld</persName> conde­
+          <lb/>scended to enlighten the nursery, a popular little
+          <lb/>volume, with terrific engravings, warned us
+          <lb/>against all animals, foreign and domestic, in 
+          <lb/>terms calculated to excite the most lively appre­
+          <lb/>hensions. The motto to each dreadful tale had
+          <lb/>an oracular and imposing sound in the ears of
+          <lb/>children, and was imprinted on their minds by
+          <lb/>frequent recurrence, with a slight variation.
+          <lb/><quote rend="pre(“)post(”)first-indent(1)">When you play with a horse, take cares of his <emph rend="slant(italic)">heels</emph>.</quote>
+          <lb/><quote rend="pre(“)post(”)first-indent(1)">When you play with a bull, take care of his <emph rend="slant(italic)">horns</emph>.</quote>
+          <lb/>And so on, through the whole animal creation.
+          <lb/>There are many who can trace to this book the
+          <lb/>birth of fears, which materially diminish their
+          <lb/>independence, and their pleasure in rural walks.</p>
+    <p rend="first-indent(1)">The cultivation of courage, as of every desirable
+          <lb/>quality, cannot commence too soon. A mother,
+      <pb n="062"/>
+      <milestone unit="sig" n="D6r"/>
+      <mw type="pageNum" rend="align(right)">59</mw>
+          <lb/>irritable or nervous, must resign the pleasure of
+          <lb/>being a nurse. She will find full scope for
+          <lb/>maternal care, in the watchfulness her substitute
+          <lb/>will probably require. Sudden noise, dazzling
+          <lb/>light, violent motion, whatever can excite in an 
+          <lb/>infant strong sensations, should be carefully
+          <lb/>avoided<anchor xml:id="a009" corresp="#n009" rend="post(*)"/>. A placid, gentle disposition in a 
+          <lb/>nurse, is on this account more desirable than that
+          <lb/>turbulent gaiety so often and so injudiciously
+          <lb/>required, which adds nothing to the cheerfulness
+          <lb/>of a healthy child, and depresses the spirits of
+          <lb/>such as are weak. When an infant wakens,
+          <lb/>let it be addressed with particular mildness; and
+          <lb/>if it be ever necessary to disturb its slumbers,
+          <lb/>this should be done in the most quiet way, with
+          <lb/>every precaution to avoid surprise. Surprise is
+          <lb/>sometimes nearly akin to fear, in young or
+          <lb/>uncultivated minds; therefore, when anything
+          <lb/>visibly astonishes an infant, let us not treat it
+          <lb/>worse than we should a starting horse. Let us
+          <lb/>lead it gently to consider the object, and, if pos­
+          <lb/>sible, to discover the cause of any singular effect.
+      <pb n="063"/>
+      <milestone unit="sig" n="D6v"/>
+      <mw type="pageNum" rend="align(left)">60</mw>
+          <lb/>An intelligent child, fifteen months old, showed
+          <lb/>some apprehension, one night, at observing
+          <lb/>strongly-marked shadows on a white wall, which
+          <lb/>probably had been pointed out to him in an 
+          <lb/>injudicious manner. We have known artful
+          <lb/>nurses take such advantage of similar cir­
+          <lb/>cumstances, in exciting vague fears, as to give
+          <lb/>those intrusted to their care much present and
+          <lb/>future pain, in the hope of governing them with
+          <lb/>greater ease. It were well if such artifices were
+          <lb/>confined to nurses. By a little address, the child
+          <lb/>was induced to approach these shadows; and, on
+          <lb/>seeing that they could be produced, at will, by
+          <lb/>his mother's hands and his own, he soon became
+          <lb/>amused, by what might have been converted into
+          <lb/>a source of terror.</p>
+    <p rend="first-indent(1)">Those who have strong talents for description,
+          <lb/>are dangerous companions to the young, unless
+          <lb/>remarkably discreet. When a child begins to
+          <lb/>prattle, let us avoid all tragical stories: no <title>Little
+          <lb/>Red Ridinghood</title>; no <title>Bluebeard</title>; no horrible
+          <lb/>murders or cruel punishments, till the blossom is
+          <lb/>knit, and the mind has a sufficient variety of
+          <lb/>ideas, to save it from dwelling too much on one.
+          <lb/>Indiscriminate reading, for a thousand reasons,
+      <pb n="064"/>
+      <milestone unit="sig" n="D7r"/>
+      <mw type="pageNum" rend="align(right)">61</mw>
+          <lb/>must never be permitted. A few scenes in <title><persName>Mac­
+          <lb/>beth</persName></title>, or <title><persName>Richard the Third</persName></title>, with some of the
+          <lb/>horrid murders in the <title>Gentleman's Magazine</title>,
+          <lb/>may baffle all our cares in this point, if read at
+          <lb/>too early a period. The cultivation of firmness
+          <lb/>is chiefly negative: we are rather called upon to
+          <lb/>avoid and prevent mischief, than to act.</p>
+    <p rend="first-indent(1)">The custom, once prevalent, of terrifying
+          <lb/>young minds with stories of ghosts, is now uni­
+          <lb/>versally reprobated, in consequence of the in­
+          <lb/>creasing stock of national good sense. But many
+          <lb/>yet living can place fears of supernatural agency,
+          <lb/>and of darkness, among the real miseries of child­
+          <lb/>hood; and have had reason, through life, to
+          <lb/>lament the effect of such feelings, on their nerves
+          <lb/>and health. It is useful to observe the conse­
+          <lb/>quences of exploded errors, that we may be
+          <lb/>stimulated to avoid others of the same tendency.</p>
+    <p rend="first-indent(1)">A child scratches its finger, or its nose happens
+          <lb/>to bleed. If mamma or nurse show signs of
+          <lb/>disgust and horror at sight of blood, and repeat
+          <lb/>this whenever a similar accident occurs, an asso­
+          <lb/>ciation of ideas is formed, which reason finds it
+          <lb/>difficult afterwards to dissolve; if, on the con­
+          <lb/>trary, they amuse the child at this moment; if
+      <pb n="065"/>
+      <milestone unit="sig" n="D7v"/>
+      <mw type="pageNum" rend="align(left)">62</mw>
+          <lb/>they remark how beautiful and bright the colour
+          <lb/>of blood appears, on the little one's frock or
+          <lb/>handkerchief, he will not afterwards feel that 
+          <lb/>vague horror at its appearance, confessed by
+          <lb/>many, and often evinced by swooning, sickness,
+          <lb/>and other painful emotions.</p>
+    <p rend="first-indent(1)"><quote rend="pre(“)post(”)">The sense of pain is most in apprehension;</quote>
+          <lb/>therefore, when it is necessary to speak of bodily
+          <lb/>pain, (a topic to be in general avoided with
+          <lb/>children,) let it be mentioned simply, without
+          <lb/>exaggeration, and, if possible, compared to
+          <lb/>something they have already suffered. What
+          <lb/>we imagine, impresses far more terror than what
+          <lb/>we recollect.</p>
+    <p rend="first-indent(1)">I knew a person who was cured of extreme
+          <lb/>fear of every insect of the bee kind, by being
+          <lb/>accidentally stung. Her apprehensions had been
+          <lb/>instilled by a nurse, who, to prevent her from
+          <lb/>what she called <said rend="pre(“)post(”)">meddling with flowers</said> in her
+          <lb/>garden-walks, represented bees as their powerful,
+          <lb/>intelligent, and vindictive guardians.</p>
+    <p rend="first-indent(1)">Extracting a firm tooth, gives all children
+          <lb/>much the same <mcr rend="slant(italic)">pain</mcr><anchor xml:id="a010" corresp="#n010" rend="post(*)"/>; but observe the difference
+      <pb n="066" xml:id="pb002" corresp="#pbn002"/>
+      <milestone unit="sig" n="D8r"/>
+      <mw type="pageNum" rend="align(right)">63</mw>
+          <lb/>in their <emph rend="slant(italic)">sufferings</emph>, created by education. One
+          <lb/>child comes to the dentist, pale and trembling,
+          <lb/>in tears, like a criminal going to execution;
+          <lb/>another enters firm, cheerful, animated; not from
+          <lb/>ostentation of courage or hope of a bribe, but
+          <lb/>because she, who never deceived him, has de­
+          <lb/>clared it would conduce to his future comfort,
+          <lb/>and her present satisfaction. One tooth is
+          <lb/>extracted: the dentist and mamma propose
+          <lb/>drawing the others to-morrow. <said rend="pre(“)post(”)">No,</said> cries the
+          <lb/>more sensible boy, in a cheerful tone; <said rend="pre(“)post(”)">pray,
+          <lb/>mamma, let all be finished to-day.</said> We were
+          <lb/>present at this incident, and much pleased with
+          <lb/>the little stoic, who was just seven years old.</p>
+    <p rend="first-indent(1)">But it may be said, <said rend="pre(“)post(”)">Are children to burn,
+          <lb/>drown, or wound themselves, without receiving
+          <lb/>a caution from the lips of experience?</said> By no
+          <lb/>means: we must require their strict obedience,
+      <pb n="067"/>
+      <milestone unit="sig" n="D8v"/>
+      <mw type="pageNum" rend="align(left)">64</mw>
+          <lb/>in avoiding such real hazards as we cannot
+          <lb/>remove. But it is better, if possible, to ward off
+          <lb/>danger by our own precautions than their fears,
+          <lb/>or even their obedience. Rather let us bar our
+          <lb/>windows, than terrify a child from leaping out,
+          <lb/>by frightful descriptions of his fate, were he to
+          <lb/>fall and break his neck.</p>
+    <p rend="first-indent(1)">In his father's absence, when a boy is educated
+        <lb/>by his mother, (<quote rend="pre(“)post(”)">a woman, <emph rend="slant(italic)">therefore</emph>, full of
+          <lb/>fears,</quote>) how, it may be said, can she teach a 
+          <lb/>virtue, of which she cannot show the example?</p>
+    <p rend="first-indent(1)">Let her recollect, that although children should
+          <lb/>be impressed with a high degree of respect for
+          <lb/>their parents, it is not necessary, even if it were
+          <lb/>possible, that they should consider them as per­
+          <lb/>fect. Where she has not self-command enough
+          <lb/>to conceal her fears, let her ascribe them to their
+          <lb/>real cause; and if this should happen to be a
+          <lb/>mistaken education, let her express a hope that
+          <lb/>her son, who is so fortunate as to be more judi­
+          <lb/>ciously brought up, and can feel no similar weak­
+          <lb/>ness, will one day be her protector.</p>
+    <p rend="first-indent(1)">Thus the child's affection may superadd fresh
+          <lb/>motives to the exertion of firmness; and the
+      <pb n="068"/>
+      <milestone unit="sig" n="E1r"/>
+      <mw type="pageNum" rend="align(right)">65</mw>
+          <lb/>mother's sincerity prove, as usual, more politic
+          <lb/>than any subterfuge or partial concealment.</p>
+    <p rend="first-indent(1)">Let not death be spoken of as necessarily
+          <lb/>attended with every circumstance of horror and 
+          <lb/>pain, but mentioned simply as a change of being,
+          <lb/>or a voyage to a distant country,—a change and
+          <lb/>a voyage productive of nothing but good to those
+          <lb/>who endeavour to obey their Creator.</p>
+    <p rend="first-indent(1)">They who are unwilling to admit that courage
+          <lb/>is natural to man, assert, that a self-reared indi­
+          <lb/>vidual would be the most cowardly of beings;
+          <lb/>but of these we can never observe a sufficient
+          <lb/>number, to obtain absolute proof on the subject.
+          <lb/>A boy, about fifteen, was shown in <placeName>Paris</placeName>, in the
+          <lb/>winter of <date when="1809">1809</date>, who had been found two years
+          <lb/>before in a wood, where he had probably been
+          <lb/>exposed when old enough to obtain subsistence
+          <lb/>by seeking wild fruits, roots, salads, and eggs.
+          <lb/>He was incapable of articulating, but his coun­
+          <lb/>tenance and gestures showed a restless anxiety
+          <lb/>wholly distinct from fear. He seemed actuated
+          <lb/>merely by a vague desire of escaping to his
+          <lb/>native woods, and his attitudes and movements
+          <lb/>resembled those of a wild beast shut up in a 
+          <lb/><mcr rend="slant(italic)">menagerie</mcr>. There was the same soft, unquiet
+      <mw type="sig" rend="indent(7)break(yes)">E</mw>
+      <pb n="069"/>
+      <milestone unit="sig" n="E1v"/>
+      <mw type="pageNum" rend="align(left)">66</mw>
+          <lb/>step, continued waving restlessness, and sullen
+          <lb/>consciousness of powers deprived of opportunities
+          <lb/>of exertion.</p>
+    <p rend="first-indent(1)">As to fears of supernatural agency, they will
+          <lb/>never exist where just ideas of the Supreme
+          <lb/>Being are entertained. True religion is the
+          <lb/>parent of courage as well as cheerfulness. <quote rend="pre(“)post(”)slant(italic)" xml:lang="fr">Je
+          <lb/>crains Dieu, cher <persName>Abner</persName>, et n'ai point d'autre
+          <lb/>crainte,</quote> like a line from our own <persName>Shakespeare</persName>, in
+          <lb/>describing a particular feeling, marks a general
+          <lb/>effect with beauty and precision.</p>
+    <p rend="first-indent(1)"><persName>Johnson</persName> is sometimes cited as an instance of
+          <lb/>the depressing nature of religious feeling<anchor xml:id="a011" corresp="#n011" rend="post(*)"/>; but
+          <lb/>had his mother confined herself to the topic of
+          <lb/>the delights of heaven, and reserved her terrors
+          <lb/>till her son was old enough to require, in
+          <lb/>addition to the allurements of hope, the stronger
+          <lb/>restraints of fear, she had acted more wisely,
+          <lb/>and more in unison with the scripture precept,
+          <lb/>of giving <quote rend="pre(“)post(”)">milk to babes,</quote>—of teaching the
+          <lb/>young and ignorant such doctrines as are best
+          <lb/>suited to their limited conceptions, and least
+          <lb/>likely to overpower weak minds.</p>
+    <pb n="070"/>
+    <milestone unit="sig" n="E2r"/>
+    <mw type="pageNum" rend="align(right)">67</mw>
+    <p rend="first-indent(1)">The physical habits most favourable to firm­
+          <lb/>ness of mind and body are well known. Health­
+          <lb/>ful exercises, open air, cold bathing, plain diet,
+          <lb/>a country education, and youthful companions,
+          <lb/>all contribute their share to the attainment of
+          <lb/>these valuable qualities.</p>
+  </div>
+      <mw type="sig" rend="indent(7)break(yes)">E 2</mw>
+      <pb n="071"/>
+      <milestone unit="sig" n="E2v"/>
+      <mw type="pageNum" rend="align(center)">68</mw>
+  <div type="chapter">
+      <head rend="case(smallcaps)align(center)">Chapter VI.</head>
+      <argument rend="align(center)case(allcaps)"><p>On Punishments.</p></argument>
+    <p><hi rend="case(smallcaps)">It</hi> may afford some consolation to those whose
+          <lb/>views are now called visionary, to look back and
+          <lb/>inquire how many opinions are at present re­
+          <lb/>ceived into the company of undoubted truths,
+          <lb/>which, thirty years since, were ridiculed as the
+          <lb/>fine-spun dreams of a sickly sensibility. With
+          <lb/>what shrugs of contempt would the majority of
+          <lb/>persons, then reputed wise, have heard of an
+          <lb/>attempt to bestow on our whole population the
+          <lb/>forbidden fruit of the alphabet, and all its com­
+          <lb/>binations, ending with the alarming power of
+          <lb/>actually <quote rend="pre(“)post(”)">reading a book.</quote> But great as this
+          <lb/>wonder would have been, <quote rend="pre(“)post(”)">a greater is behind:</quote>
+          <lb/>the population is to be thus instructed without
+          <lb/>the assistance of the rod or cane. <quote rend="pre(“)post(”)">These,</quote> it
+          <lb/>is now said, <quote rend="pre(“)post(”)">are reserved for the sons of the
+          <lb/>nobility and gentry.</quote> <persName>Dr. Bell</persName> and <persName>Joseph 
+          <lb/>Lancaster</persName> have discarded them, and rule by the
+      <pb n="072"/>
+      <milestone unit="sig" n="E3r"/>
+      <mw type="pageNum" rend="align(right)">69</mw>
+          <lb/>mixed principles of imitation, habit, and that
+          <lb/>much-calumniated feeling, emulation: a feeling
+          <lb/>as distinct from envy, as generosity from pro­
+          <lb/>fuseness, prudence from avarice, or any other
+          <lb/>virtue from the relative vice to which its excess
+          <lb/>might possibly lead.</p>
+    <p rend="first-indent(1)">The habit of governing children by the fear
+          <lb/>of corporal suffering, has fortunately been
+          <lb/>losing ground for many years, but by very slow
+          <lb/>degrees. As improvements advance, however,
+          <lb/>their motion is accelerated; and the conscious­
+          <lb/>ness of this tendency should console us for
+          <lb/>seeing that they move with an almost imper­
+          <lb/>ceptible progression at their commencement.</p>
+    <p rend="first-indent(1)">As soon as a child can comprehend why it is
+          <lb/>punished by physical pain, it has intelligence
+          <lb/>enough to be restrained by milder measures.
+          <lb/>Some are so extremely obstinate, that it is neces­
+          <lb/>sary to prevent them, by force, from doing what
+          <lb/>we forbid; but even this rarely happens under
+          <lb/>a tolerable system of education, and when it
+          <lb/>does, our coercion should stop at the point which
+          <lb/>operates merely as restraint.</p>
+    <p rend="first-indent(1)">Chastisement, whether in the form of whip­
+          <lb/>ping, caning, slapping, ear-pulling, hair-drag­
+      <pb n="073"/>
+      <milestone unit="sig" n="E3v"/>
+      <mw type="pageNum" rend="align(left)">70</mw>
+          <lb/>ging, or any other uncouth and barbarous shape,
+          <lb/>never can produce good in private education;
+          <lb/>and many of the wise are doubtful of its having
+          <lb/>a favourable effect, even in public schools. It
+          <lb/>has, we believe, been banished from the <placeName>Charter­
+          <lb/>house</placeName>, and the principle of emulation substi­
+          <lb/>tuted with the happiest results. In domestic
+          <lb/>life there are few sights more degrading and dis­
+          <lb/>gusting, than that of a person at once judge and 
+          <lb/>executioner, inflicting indefinite pain on a trem­
+          <lb/>bling child, whose punishment is often redoubled
+          <lb/>and prolonged, under pretence of the manner in
+          <lb/>which he receives it, be that manner what it
+          <lb/>may: his fortitude being called obstinacy, his
+          <lb/>timidity peevishness, his patience want of feel­
+          <lb/>ing; while sometimes the passionate actor in
+          <lb/>this odious scene, increasing in violence by the
+          <lb/>expression of his own anger, after having given
+          <lb/>the first blow, is much more inclined to give the
+          <lb/>second: a melancholy proof of that disposition 
+          <lb/>to cruelty, which is the darkest stain on our
+          <lb/>fallen nature.</p>
+    <p rend="first-indent(1)">If parents find the tutors and governesses
+          <lb/>they have selected unable to enforce obedience
+          <lb/>without chastisement, they cannot too soon dis­
+      <pb n="074"/>
+      <milestone unit="sig" n="E4r"/>
+      <mw type="pageNum" rend="align(right)">71</mw>
+          <lb/>miss them as incompetent; for anything may
+          <lb/>be made a punishment to a child. Where
+          <lb/>pocket-money is allowed, a slight fine, or at
+          <lb/>other times a temporary privation, is often a
+          <lb/>useful addition to a word or a look of displea­
+          <lb/>sure; but these last alone, well managed, are
+          <lb/>rarely insufficient. To make use of shame in
+          <lb/>this way, is a hazardous experiment. Shame is
+          <lb/>so fine a weapon, it were pity to risk its edge,
+          <lb/>or even its polish, by tampering with it for our
+          <lb/>purposes. <quote rend="pre(“)post(”)"><emph rend="slant(italic)">Therein</emph> the patient must minister
+          <lb/>unto himself.</quote></p>
+    <p rend="first-indent(1)">Above all, a child should see that no punish­
+          <lb/>ment, however slight, is intended to be vindic­
+          <lb/>tive, but simply an act destined to prevent him
+          <lb/>from hurting himself or hurting others. This
+          <lb/>prevents him from feeling any resentment or
+          <lb/>sense of injustice, or receiving those false im­
+          <lb/>pressions, which even now render it, to many
+          <lb/>persons, so difficult to separate some idea of
+          <lb/>vengeance from punishment. In the debates of
+          <lb/>the last session, whenever the reform of our
+          <lb/>criminal code, or prison discipline, was touched
+          <lb/>on, we saw proofs of this, even among our
+          <lb/>legislators.</p>
+    <pb n="075"/>
+    <milestone unit="sig" n="E4v"/>
+    <mw type="pageNum" rend="align(left)">72</mw>
+    <p rend="first-indent(1)">The sense of injustice being, perhaps, the
+          <lb/>severest of inflictions, is a pang from which we
+          <lb/>should most carefully shield the young com­
+          <lb/>mitted to our care. To an ingenuous nature it
+          <lb/>is a torment never forgot, and with difficulty
+          <lb/>forgiven: what must it be when united with 
+          <lb/>personal suffering!</p>
+    <p rend="first-indent(1)">From ill-advised corporal punishments, re­
+          <lb/>ceived in youth and infancy, have sprung pusil­
+          <lb/>lanimity and insanity, in some constitutions;
+          <lb/>hardness, cruelty, and obstinacy, in others; be­
+          <lb/>sides various minor failings, and indescribable
+          <lb/>aberrations from a healthy tone of mind.</p>
+    <p rend="first-indent(1)">It has been urged that, <quote rend="pre(“)post(”)">Spare not the rod,</quote>
+          <lb/>is a maxim of the highest authority. But, if
+          <lb/>not figurative, we may humbly conceive that,
+          <lb/>although meant to be acted on under the <rs type="properAdjective">Jewish</rs>
+          <lb/>dispensation, which deterred from crime chiefly
+          <lb/>by denunciations of temporal evils, it is super­
+          <lb/>seded by the law of kindness in the <rs type="title">New Testa­
+          <lb/>ment</rs>, where we find meekness and gentleness
+          <lb/>uniformly inculcated in all domestic relations.</p>
+    <p rend="first-indent(1)">Parents are seldom sufficiently anxious to
+          <lb/>proportion censure to offence. Some are capable
+          <lb/>of giving a benignant and grave rebuke, when
+      <pb n="076"/>
+      <milestone unit="sig" n="E5r"/>
+      <mw type="pageNum" rend="align(right)">73</mw>
+          <lb/>faults of an immoral tendency are committed,
+          <lb/>who betray far more displeasure, perhaps entirely
+          <lb/>lose their temper, if their child chance to break
+          <lb/>a <rs type="properAdjective">China</rs> jar, spill ink on a fine carpet, or neglect
+          <lb/>some immaterial point of civility towards a
+          <lb/>stranger, whom his father or mother wishes to
+          <lb/>please. This is hurtful in many directions;
+          <lb/>and, if it does not lower the parent's character
+          <lb/>in the eye of the child, must create a false scale
+          <lb/>of right and wrong in his mind, increasing that
+          <lb/>value for externals which it is part of the busi­
+          <lb/>ness of a good education to diminish. The in­
+          <lb/>tention, not the event, should call forth our
+          <lb/>reproofs; and they should never be tedious or
+          <lb/>insulting.</p>
+    <p rend="first-indent(1)">Examples of youthful merit should be sought
+          <lb/>for among the absent or dead. It is dangerous
+          <lb/>to offer a friend, or relation, or even an acquaint­
+          <lb/>ance, as a model: it often excites envy, and
+          <lb/>always awakens a desire to know the faults, as
+          <lb/>well as merits, of one proposed as such. This
+          <lb/>leads our pupils to excuse similar faults in them­
+          <lb/>selves, or to suppose their absence atones for the
+          <lb/>absence also of those merits we hold up for their
+          <lb/>imitation.</p>
+    <pb n="077"/>
+    <milestone unit="sig" n="E5v"/>
+    <mw type="pageNum" rend="align(left)">74</mw>
+    <p rend="first-indent(1)">There is a species of lecturing used to the
+          <lb/>young, which degenerates sometimes into rating
+          <lb/>and scolding, that we should never permit,
+          <lb/>either in ourselves or others. It spoils the
+          <lb/>temper of those that give and those that receive
+          <lb/>it, and induces an indifference to the temperate,
+          <lb/>grave, and mild rebukes of truth and well-regu­
+          <lb/>lated affection. The wisdom that is from above,
+          <lb/>is gentle; and <persName>St. Paul</persName> could find no stronger
+          <lb/>adjuration, by which to entreat his own converts,
+          <lb/>than, <quote rend="pre(“)post(”)">by the meekness and gentleness of the
+          <lb/>Author and Finisher</quote> of our faith.</p>
+  </div>
+      <pb n="078"/>
+      <milestone unit="sig" n="E6r"/>
+      <mw type="pageNum" rend="align(center)">75</mw>
+  <div type="chapter">
+      <head rend="case(smallcaps)align(center)">Chapter VII.</head>
+      <argument rend="align(center)case(allcaps)"><p>Amusements.</p></argument>
+    <p><hi rend="case(smallcaps)">We</hi> can best judge of the dispositions of the
+          <lb/>young, by the choice and conduct of their
+          <lb/>amusements. One of the benefits of a great
+          <lb/>school is, that these are enjoyed in public. The
+          <lb/>heart is often wofully injured, in domestic edu­
+          <lb/>cation, by the plays which occur between two
+          <lb/>or three children, <quote rend="pre(“)post(”)">when some still, removed
+          <lb/>place will fit,</quote> at a distance from all inspection.
+          <lb/><said rend="pre(“)post(”)">Now you have finished your business, you may
+          <lb/>go and play,</said> is frequently the signal for a return
+          <lb/>to plays where habits are fostered of teasing, of
+          <lb/>artifice, of tyranny, of meanness, and many
+          <lb/>others equally reprehensible. The amusements
+          <lb/>of childhood and youth, should be shared among
+          <lb/>so many as to create that respect for truth and
+          <lb/>firmness generated by the public eye, or should
+          <lb/>be sedulously inspected. Children should not
+          <lb/>feel the bridle, but it should be ever on their
+      <pb n="079"/>
+      <milestone unit="sig" n="E6v"/>
+      <mw type="pageNum" rend="align(left)">76</mw>
+          <lb/>necks. A parent, or governor, who acts as he
+          <lb/>ought, will always be their favourite play-fellow;
+          <lb/>and may have some trouble in complying with
+          <lb/>their solicitations for his constant presence and
+          <lb/>assistance, though he will have none in seeking
+          <lb/>to prevent their escape from his jurisdiction.</p>
+    <p rend="first-indent(1)">Still less should a single child be abandoned
+          <lb/>to himself in the hours of relaxation. His dis­
+          <lb/>position is in danger of being deteriorated by his
+          <lb/>own musings, as much as that of two or three
+          <lb/>by their communications. The reveries indulged
+          <lb/>in by the young, if they have lively imaginations,
+          <lb/>weaken their reasoning powers, and create a love
+          <lb/>of excitement through life: those who are ad­
+          <lb/>dicted to this fantastic habit seldom avow it,
+          <lb/>and usually possess singular address in its con­
+          <lb/>cealment. So far it partakes of the character of
+          <lb/>insanity.</p>
+    <p rend="first-indent(1)"><quote rend="pre(“)post(”)">To cure the habit of reverie,</quote> says <persName>Miss
+          <lb/>Edgeworth</persName>, <quote rend="pre(“)post(”)">we must take different methods
+          <lb/>with different tempers: with those who indulge
+          <lb/>in the stupid reverie, we should employ strong
+          <lb/>excitation, and present to the senses a rapid
+          <lb/>succession of objects; but to break the habit in
+          <lb/>children of great sensibility, we should set them
+            <pb n="080"/>
+            <milestone unit="sig" n="E7r"/>
+            <mw type="pageNum" rend="align(right)">77</mw>
+          <lb/>to some employment which is wholly new, and
+          <lb/>will exercise and exhaust all their faculties, so
+          <lb/>as to leave them no <emph rend="slant(italic)">life</emph> for castle-building.</quote></p>
+    <p rend="first-indent(1)">Such exercises in the open air as employ
+          <lb/>both mind and body, particularly <mcr rend="slant(italic)">gardening</mcr>, (in
+          <lb/>which the pupil should be taught some of the
+          <lb/>nicer branches, and allowed to try experiments,
+          <lb/>uniting practice with theory,) are invaluable in
+          <lb/>this disease of day-dreaming. If you do not
+          <lb/>promote healthful and deep sleep, by efficient
+          <lb/>exercise, you will vainly chain down your pupil's
+          <lb/>mind in the day. When he closes his eyes at
+          <lb/>night, it will be to muse, but not to rest: the
+          <lb/>favourite visions will be recalled, the broken
+          <lb/>thread of the narrative will be resumed, and all
+          <lb/>your web unravelled by his superior skill. We
+          <lb/>recommend <persName>Dr. Johnson's</persName> admirable paper on
+          <lb/>castle-building<anchor xml:id="a012" corresp="#n012" rend="post(*)"/>, to those who may think this
+          <lb/>point has been more dwelt upon than it deserves.
+          <lb/>If they still retain that opinion, they will thank
+          <lb/>us for referring them to such an eloquent de­
+          <lb/>lineation of what often passes in the recesses of
+          <lb/>the human mind, and has seldom been a subject
+          <lb/>of inquiry.</p>
+    <pb n="081"/>
+    <milestone unit="sig" n="E7v"/>
+    <mw type="pageNum" rend="align(left)">78</mw>
+    <p rend="first-indent(1)">Children are fond of many employments which
+          <lb/>neither exert mind nor body, but give pleasant
+          <lb/>feelings of occupation without any fatigue.
+          <lb/>These are often condemned as loss of time.
+          <lb/>Perhaps <persName>Miss Edgeworth</persName> and <persName>Rousseau</persName> are too
+          <lb/>partial to them; and yet it may, possibly, be a 
+          <lb/>greater error to reject them altogether. The
+          <lb/>hours of youth are long enough to allow a space
+          <lb/>for these harmless amusements. The day of
+          <lb/>childhood is long as a polar day,
+          <quote rend="indent(3)"><lg type="indeterminate"><l>Which will not see</l>
+          <l>A sunset till its summer's gone,</l>
+          <l>Its sleepless summer of long night.</l></lg></quote>
+          <lb/>That of advanced age, in comparison, seems 
+          <lb/>contracted to a span. Nothing is more curious
+          <lb/>than this apparent, and therefore, as to its effects,
+          <lb/>real inequality of duration; this accelerated
+          <lb/>motion of time, like that which impelled the
+          <lb/><persName>Caliph Vathek</persName> and his companions to the <placeName>Hall
+          <lb/>of Eblis</placeName>: this spiral line, contracting at every
+          <lb/>turn, till it comes to a point, and concludes all.</p>
+    <p rend="first-indent(1)">The mind is not of necessity idle, because the
+          <lb/>fingers are busy: while making a screen, or
+          <lb/>arranging a series of prints, thought may take
+          <lb/>flight, and the imagination ripen by long excur­
+      <pb n="082"/>
+      <milestone unit="sig" n="E8r"/>
+      <mw type="pageNum" rend="align(right)">79</mw>
+          <lb/>sions into the ideal world. The time we pass
+          <lb/>in reflection is that which improves, not the
+          <lb/>hours we bend over a book or a pen. Technical
+          <lb/>employments promote calmness; and of those
+          <lb/>who are not forced to labour for subsistence,
+          <lb/>whose wants are supplied, and whose pleasures
+          <lb/>are prepared, the greater part require to be
+          <lb/>quieted rather than excited. One would hesi­
+          <lb/>tate in proposing these pastimes to a boy of
+          <lb/>genius, but it is ill-judged to forbid them. His
+          <lb/>own mind may discern what is good for him,
+          <lb/>better than any observer, however-clear-sighted;
+          <lb/>and the mechanical pursuit we condemn, may
+          <lb/>sheath some corroding sharpness, or tranquillize
+          <lb/>some irritation, which opposition or neglect
+          <lb/>might exasperate.</p>
+    <p rend="first-indent(1)"><quote xml:lang="fr" rend="pre(“)post(”)slant(italic)">Laissez-nous faire</quote> is too much neglected in
+          <lb/>education, as well as in politics. Parents and
+          <lb/>governors are too anxious their pupils should
+          <lb/>be wise, good, and happy, exactly their way.
+          <lb/>They forget the infinite variety of existence, and
+          <lb/>diversity of excellence, this world affords, and
+          <lb/>would narrow all modes of actions to the breadth
+          <lb/>of that invisible hair, on which the <name>Mohammed­
+          <lb/>dans</name> suppose all true believers must pass, over a 
+      <pb n="083"/>
+      <milestone unit="sig" n="E8v"/>
+      <mw type="pageNum" rend="align(left)">80</mw>
+          <lb/>fiery gulf, to reach their paradise. In the hands of
+          <lb/>such instructors, either all the blossoms of moral
+          <lb/>beauty are crushed, or the pupil, if his mind be
+          <lb/>ardent, and his sensibility acute, imbibes a silent
+          <lb/>and deep-rooted disgust towards his teachers;
+          <lb/>for which, internally, he sometimes reproaches
+          <lb/>himself, and sometimes them.</p>
+    <p rend="first-indent(1)">When this disgust occurs, their influence is
+          <lb/>over. The spell is broken. The vessel is adrift:
+          <lb/>perhaps to enter on a nobler career; perhaps to
+          <lb/>perish from the want of a pilot.</p>
+    </div>
+      <trailer rend="align(center)case(allcaps)">The End.</trailer>
+    </body>      
+<back>
+    <titleBlock type="colophon" rend="align(center)case(allcaps)pre(#rule)"><docImprint><placeName>London</placeName>: <docRole type="publisher"><persName>John W. Parker</persName></docRole>, <placeName>St. Martin's Lane</placeName>.</docImprint></titleBlock>
+  <pb n="084"/>
+  <milestone unit="sig" n="F1r"/>
+  <div type="advert">
+      <head rend="post(#rule)pre([)post(])align(center)"><hi rend="case(smallcaps)">List No</hi>. 2.</head>
+      <head rend="case(allcaps)align(center)">Approved Books of Instruction and
+          <lb/>Entertainment,
+          <lb/><hi rend="slant(italic)">for Young Persons</hi>.
+    </head>
+      <p rend="first-indent(-1)indent(1)pre(#rule)post(#rule)">Those to which a * is prefixed, are published under the Direction of the
+          <lb/><orgName>Committee of General Literature and Education of the Society for Promoting 
+          <lb/><rs type="properAdjective">Christian</rs> Knowledge</orgName>.</p>
+    <advertisement>
+      <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">First Sundays <hi rend="case(mixed)">at</hi> Church; <hi rend="case(mixed)">or</hi>, Familiar Con­
+          <lb/>versations <hi rend="case(mixed)">on the</hi> Morning <hi rend="case(mixed)">and</hi> Evening Services</title>.
+          <lb/>By the <author><persName rend="case(allcaps)"><hi rend="case(mixed)">Rev</hi>. J.E. Riddle</persName>, <hi rend="case(allcaps)">M.A.</hi></author> <measure rend="slant(italic)">3s. 6d.</measure></bibl>
+      <p><hi rend="case(smallcaps)">This</hi> Work has been composed with a view to explain and recommend the
+          <lb/>chief of those principles of religious worship, and of <rs type="properAdjective">Christian</rs> sentiment and
+          <lb/>practice, which are set forth in Scripture, and are maintained, in all purity, by
+          <lb/>that reformed branch of the <rs type="properAdjective">Apostolical</rs> Church which is established in
+          <lb/>these realms.</p>
+    </advertisement>
+    <advertisement rend="post(#rule)">
+        <bibl rend="first-indent(-1)indent(1)"><title><hi rend="case(allcaps)">The <rs type="properAdjective">Roman Catholic</rs> Chapel</hi>, or <placeName rend="case(smallcaps)">Lindenhurst
+          <lb/>Parish</placeName>, a Tale;</title> by <author rend="case(allcaps)"><persName>Rosina M. Zornlin</persName></author>. <measure rend="slant(italic)">2s. 6d.</measure></bibl>
+    </advertisement>
+    <advertisement>
+      <bibl rend="align(center)"><title rend="slant(italic)case(allcaps)">Popular Delineations of Youthful
+          <lb/>Character</title>;
+          <lb/>By <author rend="case(allcaps)"><persName>Catherine Grace Godwin</persName></author>, Author of <title rend="pre(“)post(”)case(smallcaps)">The Wan­
+          <lb/>derer's Legacy,</title> <title rend="pre(“)post(”)case(smallcaps)">The Reproving Angel,</title> &amp;c.</bibl>
+      <p><hi rend="case(smallcaps)">Familiar</hi> Tales of domestic life, wherein the results of education, and the
+          <lb/>effects of habit, for good or bad, are practically illustrated. The stories abound
+          <lb/>in sketches of life and character—the incidents are those of every-day occurence
+          <lb/>—the scenes are at once instructive and cheerful—and the narratives are relieved
+          <lb/>by poetry and dialogue.</p>
+      <list type="toc"><item><label>1</label>. <title><hi rend="case(allcaps)">Cousin <persName>Kate</persName></hi>; or, the Punishment of Pride</title>.</item>
+               <item><label>2</label>. <title><persName rend="case(allcaps)">Basil Harlow</persName>; or, Prodigality is not Generosity</title>.</item>
+               <item><label>3</label>. <title><persName rend="case(allcaps)">Esther More</persName>; or, Truth is Wisdom</title>.</item>
+               <item><label>4</label>. <title><persName rend="case(allcaps)">Louisa Seymour</persName>; or, Hasty Impressions</title>.</item>
+               <item><label>5</label>. <title><persName rend="case(allcaps)">Alicia Grey</persName>; or, To be Useful is to be Happy</title>.</item>
+               <item><label>6</label>. <title><persName rend="case(allcaps)">Josephine</persName>; or, Early Trials</title>.</item>
+      </list>
+      <p rend="align(center)">All with many Engravings. <measure>2s.</measure> each.</p>
+    </advertisement>
+    <mw type="pageNum" rend="align(right)">1</mw>
+    <pb n="085"/>
+    <milestone unit="sig" n="F1v"/>   
+    <advertisement>
+       <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Tales and Stories from History</title>. By
+         <lb/><author><persName rend="case(allcaps)">Agnes Strickland</persName></author>. Two Vols., with many Engravings. <measure rend="slant(italic)">7s.</measure></bibl>
+      <p><hi rend="case(smallcaps)">Each</hi> of these stories is either founded upon, or connected with, some im­
+          <lb/>portant event in History, and furnishes useful and entertaining information as
+          <lb/>to the Manners and Customs of the peculiar era to which it relates.</p>
+    </advertisement>
+    <advertisement>
+       <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Fables <hi rend="case(mixed)">and</hi> Moral Maxims, <hi rend="case(mixed)">in</hi> Prose <hi rend="case(mixed)">and</hi> Verse</title>.
+          <lb/>Selected by <persName rend="case(allcaps)">Anne Parker</persName>. With One Hundred Cuts. <measure rend="slant(italic)">3s. 6d.</measure></bibl>
+      <p><hi rend="case(smallcaps)">Of</hi> the numerous collections of Fables published from time to time, a large
+          <lb/>majority, and particularly some which are known as <title>School Editions of <persName rend="case(smallcaps)">Æsop's</persName>
+          <lb/>and of <hi rend="case(smallcaps)"><persName>Gay's</persName> Fables</hi></title>, abound in subjects and expressions, not merely repulsive
+          <lb/>from their coarseness, but more gravely objectionable from their anti-social, and,
+          <lb/>frequently, immoral tendency. The grounds of such objections have been avoided
+          <lb/>in the present collection, into which it is hoped and believed that nothing has
+          <lb/>been admitted of which parents and teachers can disapprove.</p>
+    </advertisement>
+    <advertisement>
+       <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Popular Poems for Young Persons</title>. Se­
+          <lb/>lected by <persName rend="case(allcaps)">Elizabeth Parker</persName>. <measure rend="slant(italic)">3s. 6d.</measure></bibl>
+    </advertisement>
+    <advertisement rend="pre(*)">
+       <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">A Familiar History <hi rend="case(mixed)">of</hi> Birds: <hi rend="case(mixed)">their Nature,
+          <lb/>Habits, and Instincts</hi></title>. By the <author><persName rend="case(allcaps)"><hi rend="case(mixed)">Rt. Rev.</hi> Edward Stanley,
+          <lb/>D.D., F.F.S., <hi rend="case(mixed)">Lord Bishop of <placeName>Norwich</placeName></hi></persName></author>. Two Volumes with
+          <lb/>many Engravings. <measure rend="slant(italic)">7s.</measure></bibl>
+      <p><hi rend="case(smallcaps)">This</hi> work is intended for a class of readers to whom mere scientific details
+          <lb/>would be unacceptable, if not unintelligible. Such therefore have been, as
+          <lb/>much as possible, avoided, and only alluded to as inducements to those who
+          <lb/>are interested in the subject, to make further progress in so attractive a de­
+          <lb/>partment of Natural History.</p>
+    </advertisement>
+    <advertisement rend="pre(*)">
+       <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Domesticated Animals <hi rend="case(mixed)">considered with reference
+          <lb/>to Civilization and the Arts</hi></title>. By <author><persName rend="case(allcaps)">Mary Roberts</persName></author>. With
+          <lb/>Engravings. <measure rend="slant(italic)">3s. 6d.</measure></bibl>
+        <p><hi rend="case(smallcaps)">This</hi> work comprises a general survey of Domestic Quadrupeds, and the pur­
+            <lb/>poses they subserve in the great economy of nature: their connexion, too,
+            <lb/>with the progress of civilization and the arts, with the history of nations, and
+            <lb/>the peculiarities of soil and climate, are also specified. 
+           </p>
+    </advertisement>
+    <advertisement rend="pre(*)">
+      <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Wild Animals; <hi rend="case(mixed)">their Nature, Habits, and Instincts;
+          <lb/>with Incidental Notices of the Regions they inhabit</hi></title>. By the same
+          <lb/>Author. With Engravings. <measure rend="slant(italic)">3s. 6d.</measure></bibl>
+      <p><hi rend="case(smallcaps)">Who</hi> is willing to follow with me, in imagination, Wild Animals to their ac­
+          <lb/>customed haunts, and to observe how wonderfully they are adapted for the
+          <lb/>places which they are designed to fill? Who is inclined to notice the grand or
+          <lb/>beautiful scenery by which they are surrounded, and to learn somewhat con­
+          <lb/>cerning the instincts with which their Maker has endowed them?</p>  
+    </advertisement>
+    <mw type="pageNum" rend="align(right)">2</mw>
+    <pb n="086"/>
+    <milestone unit="sig" n="F2r"/>
+      <advertisement>
+      <bibl rend="first-indent(-1)indent(1)"><title rend="pre(*)case(allcaps)">Conversations <hi rend="case(mixed)">of a</hi> Father <hi rend="case(mixed)">with his</hi> Chil­
+          <lb/>dren</title>. Two volumes. <measure rend="slant(italic)">5s. 6d.</measure></bibl>
+      <p><hi rend="case(smallcaps)">The</hi> principles here inculcated are those of the Religion of the Gospel. The
+          <lb/>little work is intended to promote cheerful and fervent piety, a contented,
+          <lb/>obedient, and grateful frame of mind, feelings of affection and kindness towards
+          <lb/>our friends, and of active benevolence towards all.</p>
+    </advertisement>
+    <advertisement>
+      <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Conversations <hi rend="case(mixed)">on</hi> Gardening <hi rend="case(mixed)">and</hi> Natural
+          <lb/>History</title>. By the Author of <title rend="slant(italic)">Elements of Botany</title>. <measure rend="slant(italic)">2s. 6d.</measure></bibl>
+      <p><hi rend="case(smallcaps)">To</hi> render that most rational and innocent of occupations attractive to young
+          <lb/>persons, by divesting it of its technical details, and its practical difficulties, is
+          <lb/>the object of this publication. Incidental observations on Natural History are
+          <lb/>interspersed, to vary the subject, and to lead the young reader to habits of obser­
+          <lb/>vation and reflection on the <mcr rend="case(smallcaps)">Wonders</mcr> of <mcr rend="case(smallcaps)">Creation</mcr>.</p>
+    </advertisement>
+    <advertisement rend="pre(*)">
+      <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Scenes <hi rend="case(mixed)">and</hi> Sketches <hi rend="case(mixed)">from</hi> <rs type="properAdjective">English</rs> History</title>.
+          <lb/>With <hi rend="case(smallcaps)">Engravings</hi>. <measure rend="slant(italic)">3s. 6d.</measure></bibl>
+      <p><hi rend="case(smallcaps)">It</hi> is our purpose to narrate the principal and most interesting events in the
+          <lb/>annals of <placeName>England</placeName>; not to reject any topic connected with them which is likely
+          <lb/>to entertain and instruct; Religion, Literature, Customs, and Manners; to avail
+          <lb/>ourselves of authentic private memoirs and anecdotes of celebrated personages;
+          <lb/>sometimes to comprise the history of many years in a brief passing notice; at
+          <lb/>others, to dwell for a considerable period on that of a few weeks, or even of a
+          <lb/>single day.</p>
+    </advertisement>
+    <advertisement rend="pre(*)">
+      <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)"><persName>Sister Mary's</persName> Tales <hi rend="case(mixed)">in</hi> Natural History</title>.
+          <lb/><measure rend="slant(italic)">2s. 6d.</measure></bibl>
+      <p><hi rend="case(smallcaps)">In</hi> drawing up these Tales for children at an early age, the writer has endea­
+          <lb/>voured to <emph rend="slant(italic)">interest</emph> her young readers, and yet has been very careful not to <emph rend="slant(italic)">mis­
+          <lb/>lead</emph> them by exaggerated statements; satisfied if she has in any degree
+          <lb/>succeeded in awakening the spirit of inquiry, and, still more, if she has
+          <lb/>directed the infant mind to seek for those proofs of Divine wisdom, power,
+          <lb/>and goodness, in the formation and habits of these various beings, which at
+          <lb/>a mature age will assuredly reward the study of the naturalist.</p>
+    </advertisement>
+    <advertisement>
+      <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">The Ear; <hi rend="case(mixed)">a Tale of the Deaf and Dumb</hi></title>. By the <author><persName rend="case(allcaps)"><hi rend="case(mixed)">Rev</hi>
+        <lb/><hi rend="case(allcaps)">W. Fletcher</hi></persName>, M.A.</author> <hi rend="slant(italic)">In the Press</hi>.</bibl>
+    </advertisement>
+    <advertisement>
+      <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">The History of <persName>Sandford</persName> <hi rend="case(mixed)">and</hi> <persName>Merton</persName></title>; ori­
+          <lb/>ginally written by <persName rend="case(allcaps)">Thomas Day</persName>, for the Use of Young Persons<unclear reason="flawed-reproduction">,</unclear>
+          <lb/><hi rend="case(smallcaps)">Revised, Modernized</hi>, and <hi rend="case(smallcaps)">Abridged</hi>, by <author><persName rend="case(allcaps)">Rosina Maria
+          <lb/>Zornlin</persName></author>. With many Cuts. <measure rend="slant(italic)">3s. 6d.</measure></bibl>
+    </advertisement>
+    <mw type="pageNum" rend="align(right)">3</mw>
+    <pb n="087"/>
+    <milestone unit="sig" n="F2v"/>  
+      <advertisement>
+      <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Five Hundred Charades, <hi rend="case(mixed)">from History, Geography,
+          <lb/>and Biography</hi></title>. Third Edition. <measure rend="slant(italic)">1s. 6d.</measure></bibl>
+      <p><hi rend="case(smallcaps)">It</hi> is trusted that this humble attempt to blend some degree, however small, of
+          <lb/>useful information with the harmless, but generally unprofitable, practice of
+          <lb/>amusement by means of Charades, will be favourably received by parents and
+          <lb/>teachers.</p>
+    </advertisement>
+    <advertisement>
+      <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">The Child's Verse Book of Devotion</title>. <hi rend="slant(italic)">In
+          <lb/>the Press</hi>.</bibl>
+    </advertisement>
+    <advertisement>
+      <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Pretty Lessons <hi rend="case(mixed)">for</hi> Good Children</title>; to which
+          <lb/>are added, <title rend="case(allcaps)">Easy Lessons in <name>Latin</name></title>. <measure rend="slant(italic)">2s.</measure></bibl>
+    </advertisement>
+    <advertisement>
+      <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Simple Stories for Young Children</title>. By a 
+          <lb/><author rend="case(allcaps)">Lady</author>. With Cuts. <measure rend="slant(italic)">1s. 6d.</measure></bibl>
+    </advertisement>
+    <advertisement>
+      <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)"><persName>Abbott's</persName> Reader; <hi rend="case(mixed)">a Series of Familiar Pieces, in Prose
+          <lb/>and Verse, calculated to produce a Moral Influence on the Hearts
+          <lb/>and Lives of Young Persons</hi></title>. By the Authors of <title rend="slant(italic)">The Young Chris­
+          <lb/>tian</title>; <title rend="slant(italic)">The Corner Stone</title>; <title rend="slant(italic)">The Teacher</title>; <hi rend="slant(italic)">&amp;c</hi>. <measure rend="slant(italic)">3s.</measure></bibl>
+      <p><hi rend="case(smallcaps)">The</hi> design of this <mcr rend="case(smallcaps)">Reader</mcr> is to exert a direct and powerful moral influence
+           <lb/>upon the hearts of children; such an influence as shall make them faithful
+           <lb/>and industrious in the improvement of their time, obedient and affectionate to
+          <lb/>their parents, and kind and upright in their intercourse with others. The comp­
+          <lb/>ilers have honestly endeavoured to exclude everything which they supposed
+          <lb/>would be unacceptable to any of the friends of piety and morality, of whatever
+          <lb/>name.</p>
+    </advertisement>
+      <advertisement><bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">The Young Lady's Friend; <hi rend="case(mixed)">a</hi> Manual <hi rend="case(mixed)">of</hi> 
+      <lb/>Practical Advice <hi rend="case(mixed)">and</hi> Instruction <hi rend="case(mixed)">to</hi> Young
+      <lb/>Females <hi rend="case(mixed)">on their entering upon the</hi> Duties <hi rend="case(mixed)">of</hi> Life <hi rend="case(mixed)">after
+          <lb/>quitting School</hi></title>. By a <author rend="case(allcaps)">Lady</author> <measure rend="slant(italic)">3s. 6d.</measure></bibl>
+      <p><hi rend="case(smallcaps)">The</hi> Subjects treated of in this Popular and Useful Volume comprise, among
+          <lb/>others, the following: <list><item rend="break(no)">—Advice on Leaving School</item> <item rend="break(no)">—On the Improvement of
+          <lb/>Time</item> <item rend="break(no)">—Domestic Economy</item> <item rend="break(no)">—Nursing the Sick</item> <item rend="break(no)">—Behaviour of the Sick</item> <item rend="break(no)">—Dress</item> <item rend="break(no)">—
+          <lb/>Means of Preserving Health</item> <item rend="break(no)">—Behaviour to Parents and their Friends</item> <item rend="break(no)">—Conduct
+          <lb/>to Teachers</item> <item rend="break(no)">—The Relation of Brothers and Sisters</item> <item rend="break(no)">—Treatment of Servants and
+          <lb/>Workwomen</item> <item rend="break(no)">—Female Companionship</item> <item rend="break(no)">—Behaviour to Gentlemen</item> <item rend="break(no)">—Conduct at
+          <lb/>Public Places</item> <item rend="break(no)">—Dinner Parties</item> <item rend="break(no)">—Evening Parties</item> <item rend="break(no)">—Conversation</item> <item rend="break(no)">—Visits</item> <item rend="break(no)">—Tra­
+          <lb/>velling</item> <item rend="break(no)">—Mental Culture</item></list>.</p>
+    </advertisement>
+    <advertisement rend="pre(*)">
+      <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Manual <hi rend="case(mixed)">of</hi> Instruction <hi rend="case(mixed)">in</hi> Vocal Music,
+          <lb/><hi rend="case(mixed)">chiefly with a view to Psalmody</hi></title>. By <author><persName rend="case(allcaps)">John Turner</persName> Esq.</author> <measure rend="slant(italic)">4s.</measure></bibl>
+      <p><hi rend="case(smallcaps)">The</hi> author offers this work not as an experiment now for the first time to be
+          <lb/>tried, but as the result of long experience. Though chiefly designed for the use
+          <lb/>of children collected in large numbers, it may, with equal advantage, be adopted
+          <lb/>in smaller assemblages, and in the domestic circle; and may also be rendered
+          <lb/>serviceable to adults.</p>
+    </advertisement>
+    <mw type="pageNum" rend="align(right)">4</mw>
+    <pb n="088"/>
+    <milestone unit="sig" n="F3r"/>
+       <advertisement rend="pre(*)">
+      <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Readings <hi rend="case(mixed)">in</hi> <rs type="properAdjective">English</rs> Prose Literature;
+          <lb/><hi rend="case(mixed)">containing choice Specimens from the best <rs type="properAdjective">English</rs> Writers, and</hi>
+          <lb/><hi rend="case(smallcaps)">Essays</hi> <hi rend="case(mixed)">on</hi> <hi rend="case(smallcaps)"><rs type="properAdjective">English</rs> Literature</hi></title>. <measure rend="slant(italic)">4s. 6d.</measure></bibl>
+      <p><hi rend="case(smallcaps)">This</hi> volume contains some valuable speciments of <rs type="properAdjective">English</rs> prose composition,
+          <lb/>taken from the works of those writers who have chiefly determined the style of
+          <lb/>our prose literature. It will be found a useful introduction to the systematic
+          <lb/>study of our national literature.</p>
+    </advertisement>
+    <advertisement rend="pre(*)">
+      <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Readings <hi rend="case(mixed)">in</hi> Biography. <hi rend="case(mixed)">A Selection of the Lives
+          <lb/>of the most Eminent Men of all Nations</hi></title>. <measure rend="slant(italic)">4s. 6d.</measure></bibl>
+      <p><hi rend="case(smallcaps)">The</hi> design of this work is to give an account of the lives of the leaders in
+          <lb/>the most important revolutions which history records, from the age of <persName>Sesostris</persName>
+          <lb/>to those of our own times.</p>
+    </advertisement>
+    <advertisement rend="pre(*)">
+      <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Readings <hi rend="case(mixed)">in</hi> Poetry. <hi rend="case(mixed)">Selections from the Works
+          <lb/>of the best <rs type="properAdjective">English</rs> Poets; with Specimens of the <rs type="properAdjective">American</rs> Poets;
+          <lb/>Literary Notices of the Writers, and Notes.</hi></title>. <measure rend="slant(italic)">4s. 6d.</measure></bibl>
+      <p><hi rend="case(smallcaps)">Care</hi> has been taken to select such pieces and passages as best illustrate
+          <lb/>the style of the respective Authors, and are, at the same time, not beyond the
+          <lb/>average capacity of youthful students. It is scarecely necessary to add, that the
+          <lb/>most scrupulous attention has been paid to the moral character of the extracts.</p>
+    </advertisement>
+    <advertisement rend="pre(*)">
+      <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Lives <hi rend="case(mixed)">of</hi> Sacred Poets. <hi rend="case(mixed)">Containing</hi> <hi rend="case(smallcaps)">Introductory
+          <lb/>Sketch <hi rend="case(mixed)">of</hi> Sacred Poetry</hi>. <hi rend="case(mixed)">Lives of</hi> <hi rend="case(smallcaps)"><persName>George Wither</persName>, <persName>Francis
+          <lb/>Quarles</persName>, <persName>Giles Fletcher</persName>, <persName>George Herbert</persName>, <persName>Richard Cra­
+              <lb/>shaw</persName></hi></title>. By <author><persName rend="case(allcaps)">R.A. Willmott</persName>, Esq.</author>, <choice><abbr>Trin.</abbr><expan>Trinity</expan></choice> <choice><abbr>Coll.</abbr><expan>College</expan></choice>, <placeName><choice><abbr>Camb.</abbr><expan>Cambridge</expan></choice></placeName> <measure rend="slant(italic)">4s. 6d.</measure></bibl>
+       <p><hi rend="case(smallcaps)">The</hi> writer of these Lives has endeavoured to present as ample a view as the
+          <lb/>limits of a volume would permit, of the state of Sacred Poetry in the reigns of
+          <lb/><persName>Elizabeth</persName>, <persName>James the First</persName>, and <persName>Charles the First</persName>.</p>
+    </advertisement>
+    <advertisement rend="pre(*)">
+      <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Lives <hi rend="case(mixed)">of</hi> Eminent <name>Christians</name></title>. By the <author><persName rend="case(allcaps)"><hi rend="case(mixed)">Rev</hi>.
+         <lb/>R.B. Hone</persName>, M.A.</author> Two volumes. <measure rend="slant(italic)">9s.</measure></bibl>
+       <p><hi rend="case(smallcaps)">The</hi> paths of good men are commonly so full of peace, and the sorrows which
+          <lb/>befall them so mercifully softened and blessed by a sacred influence, that few
+          <lb/>more pleasing or successful ways of recommending the fear and love of God
+          <lb/>have been found, than the publication of religious biography.</p>
+    </advertisement>
+    <advertisement>
+       <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Life <hi rend="case(allcaps)">of</hi> <persName>Sir William Jones</persName>. <hi rend="case(mixed)">by the late</hi> <persName>Lord
+          <lb/>Teignmouth</persName>; <hi rend="case(mixed)">with Selections from his Works, and a</hi> Life <hi rend="case(mixed)">of
+          <lb/>the Author</hi></title>. By the <author><persName rend="case(allcaps)"><hi rend="case(mixed)">Rev</hi>. S.C. Wilks</persName>, M.A.</author> Two vols. <measure rend="slant(italic)">10s. 6d.</measure></bibl>
+       <p><persName rend="case(smallcaps)">Sir William Jones</persName> was not only the most eminent linguist, but in many re­
+          <lb/>pects one of the most remarkable men of the last century; and <persName rend="case(smallcaps)">Lord Teign­
+          <lb/>mouth's</persName> Memoir of him has been justly accounted one of the most interesting,
+          <lb/>instructive, and entertaining pieces of modern biography.</p>
+    </advertisement>
+    <mw type="pageNum" rend="align(right)">5</mw>
+    <pb n="089"/>
+    <milestone unit="sig" n="F3v"/>   
+    <advertisement rend="pre(*)">
+       <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Readings <hi rend="case(mixed)">in</hi> Science; <hi rend="case(mixed)">being familiar</hi> Expla­
+          <lb/>nations <hi rend="case(mixed)">of various interesting</hi> Appearances <hi rend="case(mixed)">and</hi> Prin­
+          <lb/>ciples <hi rend="case(mixed)">in</hi> Natural Philosophy</title>. With many Cuts. <measure rend="slant(italic)">5s.</measure></bibl>
+       <p><hi rend="case(smallcaps)">This</hi> volume differs from previous publications having the same object, namely,
+          <lb/>that of rendering the path of science easy and inviting to beginners.</p>
+    </advertisement>
+    <advertisement rend="pre(*)">
+       <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Easy Lessons in Mechanics; <hi rend="case(mixed)">with Familiar
+          <lb/>Illustrations, showing the practical Application of the various Me­
+          <lb/>chanical Principles</hi></title>. <measure rend="slant(italic)">3s.</measure></bibl>
+       <p><hi rend="case(smallcaps)">The</hi> object of this little work is to give a familiar and connected account of the 
+          <lb/>first principles of Mechanics. Since no accurate knowledge can be gained
+          <lb/>without a clear perception of the meaning of the terms employed, great care has
+          <lb/>been taken to define all technical words as they occur. Very plain illustrations
+          <lb/>and experiments have been referred to, throughout the work; and it is hoped
+          <lb/>that, although the expressions and processes of Mathematics have been neces­
+          <lb/>sarily excluded, the reasoning by which the several parts are connected will
+          <lb/>be found to be sound and convincing.</p>
+    </advertisement>
+    <advertisement rend="pre(*)">
+       <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Minerals <hi rend="case(mixed)">and</hi> Metals; <hi rend="case(mixed)">their Natural History and
+          <lb/>Uses in the Arts; with Incidental Accounts of</hi> <hi rend="case(smallcaps)">Mines</hi> <hi rend="case(mixed)">and</hi> <hi rend="case(smallcaps)">Mining</hi></title>.
+          <lb/>With many Engravings. <measure rend="slant(italic)">2s. 6d.</measure></bibl>
+       <p><hi rend="case(smallcaps)">Familiar</hi> as we are, from our earliest years, with the various articles manu­
+          <lb/>factured from the metals, for purposes of use and comfort, the nature and pro­
+          <lb/>perties of the metals themselves, and the means by which they are obtained,
+          <lb/>are comparatively little known. With a view of supplying that knowledge in
+          <lb/>a popular and attractive form, this little volume has been prepared; and as the
+          <lb/>object has been to make it entertaining as well as instructive, it is neither of a 
+          <lb/>chemical, mineralogical, commercial, nor historical character, but comprises
+          <lb/>as much of all these features, in addition to being descriptive, as was deemed
+          <lb/>consistent with the proposed plan.</p>
+    </advertisement>
+    <advertisement rend="pre(*)">
+       <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Popular Physiology; <hi rend="case(mixed)">being a familiar Explanation
+          <lb/>of the most Interesting Facts connected with the Structure and
+          <lb/>Functions of Animals, and particularly of Man</hi></title>. By <author><persName rend="case(allcaps)">Perceval
+            <lb/>B. Lord</persName>, M.B., M.R.C.S.</author> <measure rend="slant(italic)">7s. 6d.</measure></bibl>
+       <p><hi rend="case(smallcaps)">To</hi> trace the finger of God in the works of creation, to consider <quote rend="pre(“)post(”)">the wonders
+          <lb/>that He doeth amongst the children of men,</quote> has ever been a source of the
+          <lb/>purest and noblest gratification. This volume, taking for its subject the animal
+          <lb/>body, and more peculiarly that of man, explains the various contrivances by
+          <lb/>which he is enabled to <quote rend="pre(“)post(”)">live, move, and have his being;</quote> shows him first as
+          <lb/>consisting of numerous sets of organs, all performing different offices, yet all 
+          <lb/>conspiring with beautiful harmony for the benefit and preservation of the
+          <lb/>whole; then views him as an individual, his organism animated by one vital
+          <lb/>principle, and directed by one mind, situated in the midst of numberless other
+          <lb/><supplied reason="flawed-reproduction" resp="p:jnelson.bbt">bei</supplied>ngs, with whom he is destined to maintain relations, pincipally by means
+          <lb/><supplied reason="flawed-reproduction" resp="p:jnelson.bbt">of</supplied> his external organs of sense.</p>
+    </advertisement>
+    <mw type="pageNum" rend="align(right)">6</mw>
+    <pb n="090"/>
+    <milestone unit="sig" n="F4r"/>  
+    <advertisement rend="pre(*)">
+       <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Mechanics Applied to the Arts; <hi rend="case(mixed)">including</hi>
+          <lb/>Statics <hi rend="case(mixed)">and</hi> Hydrostatics</title>. By the <author><persName rend="case(allcaps)"><hi rend="case(mixed)">Rev. Professor</hi>
+          <lb/>Moseley</persName></author>, King's College, <placeName>London</placeName>. <measure rend="slant(italic)">6s. 6d.</measure></bibl>
+       <p><hi rend="case(smallcaps)">Throughout</hi> this work, an attempt has been made to bring the principles of
+          <lb/>exact science to bear upon questions of practical application in the arts, and to
+          <lb/>place the discussion of them within the reach of the more intelligent of that
+          <lb/>useful class of men who are connected with the manufactures of the country.</p>
+    </advertisement>
+    <advertisement>
+       <bibl rend="first-indent(-1)indent(1)"><title xml:lang="fr" rend="case(allcaps)">Le Bouquet Litteraire. <hi rend="case(mixed)">Recueil de Beautés Re­
+          <lb/>ligieuses et Morales, de divers Auteurs</hi></title>. Par feu <author><persName rend="case(allcaps)">L.T. Ven­
+          <lb/>touillac</persName>, Professeur de Littérature <rs type="properAdjective">Française</rs></author> au Collège
+           <lb/>Royal à <placeName>Londres</placeName>. <measure rend="slant(italic)">3s. 6d.</measure></bibl>
+    </advertisement>
+    <advertisement rend="pre(*)">
+       <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Three Weeks <hi rend="case(mixed)">in</hi> <placeName>Palestine</placeName> <hi rend="case(mixed)">and</hi> <placeName>Lebanon</placeName></title>. 
+           <lb/>With many <hi rend="case(smallcaps)">Engravings</hi>. <measure rend="slant(italic)">3s.</measure></bibl>
+       <p><hi rend="case(smallcaps)">A little</hi> volume from the travelling notes of a party who made the tour.
+          <lb/>Descriptions of <placeName>Baalbac</placeName>, <placeName>Beirot</placeName>, <placeName>Damietta</placeName>, <placeName>Jaffa</placeName>, <placeName>Jerusalem</placeName>, <placeName>Ramlah</placeName>, and
+          <lb/>other places, are blended with remarks upon the natives, the incidents of the
+          <lb/>journey and the observations and reflections which naturally occur to a Clergy­
+          <lb/>man in travelling through the Holy Land.</p>
+    </advertisement>
+    <advertisement>
+       <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">Two Years <hi rend="case(mixed)">at</hi> Sea; <hi rend="case(mixed)">being the Narrative of a Voyage
+          <lb/>to the <placeName>Swan River</placeName> and <placeName>Van Diemen's Land</placeName>; thence, through the
+          <lb/><placeName>Torres' Straits</placeName>, to various parts of <placeName>India</placeName>. With Notes of a Visit to,
+          <lb/>and Residence in, the <placeName>Burman Empire</placeName>; including an interesting 
+          <lb/>Account of the Services and Sufferings of the Missionaries in that
+          <lb/>Country, from the date of the first <rs type="properAdjective">Protestant</rs> Mission there</hi></title>. By
+          <lb/><author rend="case(allcaps)"><persName>Jane Roberts</persName></author>.</bibl>
+    </advertisement>
+    <advertisement rend="pre(*)">
+       <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">The Crusaders; <hi rend="case(mixed)">or</hi> Scenes, Events, <hi rend="case(mixed)">and</hi> Cha­
+          <lb/><hi rend="case(mixed)">racters, from the</hi> Times <hi rend="case(mixed)">of the</hi> <name>Crusaders</name></title>. By <author><persName rend="case(allcaps)">Thomas
+            <lb/>Keightley</persName>, Esq.</author> Two volumes. <measure rend="slant(italic)">11s.</measure></bibl>
+       <p><hi rend="case(smallcaps)">In</hi> this work, the <name>Crusaders</name>, the <name>Greeks</name>, <name>Turks</name>, and <name>Saracens</name>, of the times of the
+          <lb/><name>Crusaders</name>, are set before the view of the reader as they lived, thought, and acted.
+          <lb/>Their valour, their superstition, their ferocity, their honour, are displayed in as
+          <lb/>strong a light as the existing historical documents permit, and accurate de­
+          <lb/>scriptions and graphic illustrations exhibit the towns and scenery of <placeName>Syria</placeName>, and
+          <lb/>the other countries which were the theatre of the exploits of the <name>Crusaders</name>.</p>
+    </advertisement>
+    <advertisement rend="pre(*)">
+       <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">The History <hi rend="case(mixed)">of</hi> <name>Mohammedanism</name>, <hi rend="case(mixed)">and the
+          <lb/>principal</hi> <rs type="properAdjective">Mohammedan</rs> Sects, <hi rend="case(mixed)">derived chiefly from <rs type="properAdjective">Ori­
+            <lb/>ental</rs> Authorities</hi></title>. By <author><persName rend="case(allcaps)">W.C. Taylor</persName>, LL.D., T.C.D.</author> <measure rend="slant(italic)">5s. 6d.</measure></bibl>
+       <p><hi rend="case(smallcaps)">This</hi> work contains a full account of the <rs type="properAdjective">Mohammedan</rs> traditions respecting the
+          <lb/>origin of their faith; an account of the political, religious, and social state of
+          <lb/>the East, when first the doctrines of <name>Islamism</name> were promulgated; a history of
+          <lb/><persName>Mohammed's</persName> life, mainly derived from his own autobiographical notices in the
+          <lb/><rs type="title">Koran</rs>; the original <rs type="properAdjective">Mohammedan</rs> Creed; and the fullest particulars that have
+          <lb/>yet appeared in <name>English</name> of the leading sects that divide the <name>Mussulmans</name>.</p>
+    </advertisement>
+    <pb n="091"/>
+    <milestone unit="sig" n="F4v"/>
+    <advertisement rend="pre(*)">
+       <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">The Family History of <placeName>England</placeName></title>, by the
+          <lb/><author><persName rend="case(allcaps)"><hi rend="case(mixed)">Rev</hi>. George Robert Gleig</persName>, M.A.</author>, with a series of Pic­
+          <lb/><hi rend="case(smallcaps)">torial Illustrations</hi> of the <hi rend="case(smallcaps)">Costumes, Architecture, Shipping,</hi>
+          <lb/>&amp;c., of the successive periods of <rs type="properAdjective">British</rs> History. In Eighteen
+          <lb/>Parts, at <measure rend="slant(italic)">1s</measure> each, or in Three Volumes, <measure rend="slant(italic)">6s. 6d.</measure> each.</bibl>
+       <p><hi rend="case(smallcaps)">The</hi> main purpose of the <title rend="case(smallcaps)">Family History of <placeName>England</placeName></title> has been to unite objects
+          <lb/>which in such undertakings are not always found to coincide; namely, to render
+          <lb/>the study of <rs type="properAdjective">English</rs> History not merely instructive, but interesting and amusing.
+          <lb/>For this purpose, the greatest care has been taken to seize upon all those striking
+          <lb/>features in the detail of events, which not only convey to the mind of the reader
+          <lb/>a vivid picture of scenes past, but induce him to argue from effects to their causes.
+          <lb/>While the philosophy of history, therefore, is sedulously taught, it is taught in a 
+          <lb/>manner calculated to gratify both young and old, by affording to the one class
+          <lb/>ample scope to reflection; to the other, matter that stirs and excites, while it
+          <lb/>conveys sound moral instuction.</p>
+       <p rend="first-indent(1)">The <title rend="case(smallcaps)">Family History of <placeName>England</placeName></title> is addressed to readers of all ranks and
+          <lb/>ages. It is eminently adapted for the use of Schools, and will be found not
+          <lb/>unworthy of perusal by persons more advanced in historical information.</p>
+    </advertisement>
+    <advertisement>
+       <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">The Student's Manual of Ancient His­
+          <lb/>tory; <hi rend="case(mixed)">containing Accounts of the</hi> <hi rend="case(smallcaps)">Political Condition, Geogra­
+          <lb/>phical Situation</hi>, <hi rend="case(mixed)">and</hi> <hi rend="case(smallcaps)">Social State</hi> <hi rend="case(mixed)">of the principal</hi> <hi rend="case(smallcaps)">Nations of 
+          <lb/>Antiquity</hi>; <hi rend="case(mixed)">carefully digested from the Ancient Writers, and illus­
+          <lb/>trated by the Discoveries of Modern Scholars and Travellers</hi></title>. By 
+          <lb/><author><persName rend="case(allcaps)">W.C. Taylor</persName>, LL.D, M.R.A.S.</author> Crown Octavo. <measure rend="slant(italic)">10s. 6d.</measure></bibl>
+       <p><hi rend="case(smallcaps)">The</hi> design of this work is to supply the student with an outline of the prin­
+          <lb/>cipal events in the annals of the ancient world, and, at the same time, to lead
+          <lb/>him to the consideration of the causes that produced the principal revolutions
+          <lb/>recorded. The geographical position, natural productions, and progress of civi­
+          <lb/>lization, in all the great monarchies and republics, have been diligently investi­
+          <lb/>gated, and their effect on the fortunes of the state pointed out. Thus the philo­
+          <lb/>sophy of history is made to illustrate the narrative without interrupting it.</p>
+    </advertisement>
+    <advertisement>
+       <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">A Popular History of the Reformation,
+          <lb/><hi rend="case(mixed)">in</hi> <placeName rend="case(smallcaps)">Germany</placeName>, <placeName rend="case(smallcaps)">Switzerland</placeName>, <hi rend="case(mixed)">and</hi> <placeName rend="case(smallcaps)">Great Britain</placeName>; <hi rend="case(mixed)">and of its
+          <lb/>chief Promoters, Opposers, and Victims</hi></title>. By <author><persName rend="case(allcaps)">Thomas B. Fox</persName></author>.
+          <lb/><measure rend="slant(italic)">3s. 6d.</measure></bibl>
+    </advertisement>
+    <advertisement>
+       <bibl rend="first-indent(-1)indent(1)"><title rend="case(allcaps)">The Early <name>Christians</name>; <hi rend="case(mixed)">their</hi> Manners <hi rend="case(mixed)">and</hi>
+          <lb/>Customs, Trials <hi rend="case(mixed)">and</hi> Sufferings</title>. By the <author><persName rend="case(allcaps)"><hi rend="case(mixed)">Rev.</hi> W.
+            <lb/>Pridden</persName>, M.A.</author> <measure rend="slant(italic)">4s.</measure></bibl>
+    </advertisement>
+ </div>
+  <titleBlock type="colophon" rend="align(center)break(yes)"><docImprint><placeName>London</placeName>: <docRole type="publisher"><persName rend="case(allcaps)">John W. Parker</persName></docRole>, <hi rend="case(smallcaps)">Publisher, <placeName>West Strand</placeName></hi>.</docImprint></titleBlock>
+    </back>
+  </text>
+</TEI>

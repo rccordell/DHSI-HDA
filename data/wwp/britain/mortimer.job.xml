@@ -1,0 +1,2371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/wwp-store.rng"    type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../schema/wwp-store.isosch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- $Id: mortimer.job.xml 31962 2017-06-23 22:20:54Z syd $ -->
+<TEI xmlns="http://www.wwp.northeastern.edu/ns/textbase" xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en">
+   <teiHeader xml:id="TR00698.hdr">
+      <fileDesc>
+         <titleStmt>
+	   <title type="main">The History of Job, in Language Adapted to Children, 1842</title>
+	   <author>
+	     <persName type="person-female" ref="p:fmortimer.itq">Mortimer, Favell (Lee)</persName>
+	   </author>
+	   <sponsor>Brown University</sponsor>
+	   <sponsor>Northeastern University</sponsor>
+	 </titleStmt>
+         <xi:include href="../common-boilerplate.xml" xpointer="element(WWPedition)"/>    
+         <publicationStmt>
+	   <publisher>Northeastern University Women Writers Project</publisher>
+	   <address>
+	     <addrLine>SL 213</addrLine>
+	     <addrLine>Northeastern University</addrLine>
+	     <addrLine>360 Huntington Avenue</addrLine>
+	     <addrLine>Boston, MA  02115-5005</addrLine>
+	     <addrLine>USA</addrLine>
+	     <addrLine>url:mailto:wwp@neu.edu</addrLine>
+	     <addrLine>url:http://www.wwp.northeastern.edu/</addrLine>
+	   </address>
+	   <idno type="WWP">TR00698</idno>
+	   <idno type="URL">http://www.wwp.northeastern.edu/texts/mortimer.job.html</idno>
+	   <xi:include href="../common-boilerplate.xml" xpointer="element(WWPavailability)"/>
+	   <date when="2015-05-18"/>
+	 </publicationStmt>
+	 <sourceDesc n="OT00698">
+	   <biblStruct>
+	     <monogr>
+	       <author>
+		 <persName ref="p:fmortimer.itq" type="titlePage">The author of the "Peep of Day", "Line upon Line", &amp;c.</persName>
+		 <persName ref="p:fmortimer.itq" type="regularized">Mortimer, Favell (Lee)</persName>
+	       </author>
+	       <title>The history of Job, in language adapted to children</title>
+	       <edition>First edition</edition>
+	       <idno type="ukoxu">Nuneham (42.104)</idno>
+            <imprint>
+		 <pubPlace>London</pubPlace>
+		 <publisher>
+		   <persName ref="p:jhatchard.kpd" type="titlePage">J. Hatchard and Son</persName> and <persName ref="p:jharris.bfq" type="titlePage">J. Harris</persName>
+		 </publisher>
+		 <date when="1842"/>
+	       </imprint>
+	       <extent>
+		 <measure unit="page" quantity="84"/>
+	       </extent>
+	       <extent>
+		 <dimensions>
+		   <height unit="cm" quantity="14"/>
+		 </dimensions>
+	       </extent>
+	     </monogr>
+	   </biblStruct>
+	 </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+	<xi:include href="../common-boilerplate.xml" xpointer="element(WWPprojectDescription)"/>
+	<xi:include href="../common-boilerplate.xml" xpointer="element(WWPsamplingDeclaration)"/>
+	<xi:include href="../common-boilerplate.xml" xpointer="element(WWPeditorialDeclaration)"/>
+	<xi:include href="../common-boilerplate.xml" xpointer="element(WWPcharacterDeclaration)"/>
+	<tagsDecl>
+	  <rendition xml:id="r.head" selector="head">align(center)case(allcaps)</rendition>
+	  <rendition xml:id="r.indent" selector="p">first-indent(1)</rendition>
+	  <rendition xml:id="r.sig" selector="mw">align(right)right-indent(2)break(yes)</rendition>
+	  <rendition xml:id="r.said" selector="said">pre(“)post(”)</rendition>
+	</tagsDecl>
+	<xi:include href="../common-boilerplate.xml" xpointer="element(WWPclassificationDeclaration)"/>
+        <xi:include href="../common-boilerplate.xml" xpointer="element(WWPlistPrefixDefinitions)"/>
+    </encodingDesc>
+      <profileDesc>
+	<textClass>
+	  <catRef type="main" target="#G.fiction"/>
+	  <catRef type="other" target="#G.fiction.story"/>
+	  <catRef type="other" target="#G.verse.other"/>
+	</textClass>
+        <xi:include href="../common-boilerplate.xml" xpointer="element(WWPcalendarDescription)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPlangUsage)"/>
+    </profileDesc>
+      <revisionDesc>
+      <change when="2014-12-15" who="sstanley.fxj">Entered second corrections.</change>
+      <change n="RCS:1.5" when="2010-06-23" who="p:mrymszapa.mvu">finished encoding! validated text and did everything on checklist except for supravalidate</change>
+      <change n="RCS:1.4" when="2010-06-22" who="p:mrymszapa.mvu">finished encoding main text, fixed validation errors, started aux section</change>
+      <change n="RCS:1.3" when="2010-06-21" who="p:mrymszapa.mvu">encoded to page 57</change>
+      <change n="RCS:1.2" when="2010-06-09" who="p:mrymszapa.mvu">set up structure for all encoding, encoded to page 29</change>
+      <change n="RCS:1.1" when="2010-06-08" who="p:mrymszapa.mvu">made rendition ladder and encoded all footnotes, started on front matter</change>
+      <change when="2010-02-15" who="p:jmelson.nep">File created by exporting data from data in WWP_Transcription database in FileMaker Pro into FMPXMLRESULT, then transforming with transcriptionData2wwp-store.xslt.</change>
+    </revisionDesc>
+    </teiHeader>
+    <text xml:id="TR00698">
+      <hyperDiv>
+
+<notes>
+     <note rend="pre(*)" xml:id="n001" target="#a001">
+<p>His oxen went in a yoke when they ploughed his 
+<lb/>fields, and his asses were for riding.</p>
+</note>
+
+<note rend="pre(*)" xml:id="n002" target="#a002">
+<p><quote><persName>Job</persName> sent and sanctified them.</quote> <bibl><regMe>i.5.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n003" target="#a003">
+<p><quote>O that I were as in months past, as in the days when
+<lb/>God preserved me; when his candle shined upon my head.
+<lb/>… When the secret of God was upon my taber­
+<lb/>nacle; when the Almightly was yet with me.</quote> <bibl><regMe>xxix.2—4.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n004" target="#a004">
+<p><quote>Then I said <said rend="post()">I shall die in my nest, and I shall mul­
+<lb/>tiply my days as the sand.</said></quote> <bibl><regMe>xxix.18</regMe></bibl></p>
+</note>
+
+<note rend="pre(‡)" xml:id="n005" target="#a005">
+<p><quote>When the morning stars sang together, and all the
+<lb/><mcr rend="slant(italic)">sons of God</mcr> shouted for joy.</quote> <bibl><regMe>xxxviii.7.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n006" target="#a006">
+<p><quote>Your adversary, the devil, as a roaring lion, walketh
+<lb/>about, seeking whom he may devour.</quote> <bibl><regMe>1 Peter v.8.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n007" target="#a007">
+<p><quote>The accuser of our brethren is cast down, which ac­
+<lb/>cused them before God day and night.</quote> <bibl><regMe>Rev.xii.10.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n008" target="#a008">
+<p><quote>I have sewed sackcloth upon my skin.</quote> <bibl><regMe>xvi.15.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n009" target="#a009">
+<p><quote><persName>Elisha</persName> said, <said rend="pre()post()">I am young and ye are old.</said> I said,
+<lb/><said>Days should speak, and multitude of years should teach
+<lb/>wisdom.</said></quote> <bibl><regMe>xxxii.6,7.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n010" target="#a010">
+<p><quote>When I say, <said>My bed shall comfort me; my couch
+<lb/>shall ease my complaint, then thou scarest me with dreams.</said></quote>
+<lb/><bibl><regMe>vii.13,14.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n011" target="#a011">
+<p><quote>By the great force of my disease is my garment
+<lb/>changed; it bindeth me about as the collar of my coat.</quote>
+<lb/><bibl><regMe>xxx.18.</regMe></bibl></p>
+</note>
+
+<note rend="pre(‡)" xml:id="n012" target="#a012">
+<p><quote>My skin is black upon me, and my bones are burned
+<lb/>with heat.</quote> <bibl><regMe>xxx.30.</regMe></bibl></p>
+</note>
+
+<note rend="pre(§)" xml:id="n013" target="#a013"> 
+<p><quote>My face is foul with weeping.</quote> <bibl><regMe>xvi.16.</regMe></bibl></p>
+</note>
+
+<note rend="pre(‖)" xml:id="n014" target="#a014"> 
+<p><quote>My flesh is clothed with worms and clods of dust.</quote>
+<lb/><bibl><regMe>vii.5.</regMe></bibl></p>
+</note>
+
+<note rend="pre(¶)" xml:id="n015" target="#a015"> 
+<p><quote>When I lie down I say, <said rend="post()">When shall I arise, and
+<lb/>the nights be gone?</said> And I am full of tossings to and fro,
+<lb/>unto the dawning of the day.</quote> <bibl><regMe>vii.4.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n016" target="#a016">
+<p><quote>My sighing cometh before I eat, and my roarings are
+<lb/>poured out like the waters.</quote> <bibl><regMe>iii.24</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n017" target="#a017">
+<p><quote>Is not thy wickedness great, and thine iniquities in­
+<lb/>finite? For thou hast taken a pledge from thy brother
+<lb/>for nought, and therefore snares are round about thee, and
+<lb/>sudden fear troubleth thee; thou sayest, <said>How doth God
+<lb/>know? Can He judge through the dark cloud?</said></quote> <bibl><regMe>xxii.
+<lb/>5—13.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n018" target="#a018">
+<p><quote>Remember, I pray thee, who ever perished, being in­
+<lb/>innocent?</quote> <bibl><regMe>iv.7.</regMe></bibl> <quote>I would seek unto God, and unto God
+<lb/>would I commit my cause.</quote> <bibl><regMe>v.8, to the end.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n019" target="#a019">
+<p><quote>To him that is afflicted, pity should be showed from
+<lb/>his friend.</quote> <bibl><regMe>vi.14</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n020" target="#a020">
+<p><quote>O that God would grant me the thing that I long for,
+<lb/>even that it would please God to destroy me.</quote> <bibl><regMe>vii.8,9.</regMe></bibl></p>
+</note>
+
+<note rend="pre(‡)" xml:id="n021" target="#a021">
+<p><quote>If thou wouldest seek unto God, and make thy sup­
+<lb/>plication unto the Almighty; if thou wert pure, and up­
+<lb/>right, surely he would not awake for thee.</quote> <bibl><regMe>viii.5,6.</regMe></bibl></p>
+</note>
+
+<note rend="pre(§)" xml:id="n022" target="#a022"> 
+<p><quote>Should thy lies make men hold their peace? and
+<lb/>when thou mockest, shall no man make thee ashamed&gt;?</quote> 
+<lb/><bibl><regMe>xi.3.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n023" target="#a023">
+<p><quote>Behold, God will not cast away a perfect man, neither
+<lb/>will he help the evil doers.</quote> <bibl><regMe>viii.20.</regMe></bibl> <quote>Even as I have seen,
+<lb/>they that plow iniquity, and sow wickedness, reap the
+<lb/>same.</quote> <bibl><regMe>iv.8.</regMe></bibl> <quote>If thou return to the Almighty, thou shalt
+<lb/>be built up. Then shalt thou lay upon gold as dust.</quote> <bibl><regMe>xxii.
+<lb/>23,24.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n024" target="#a024">
+<p><quote>This is one thing, therefore I said it; <said rend="pre(“)post()">He de­
+<lb/>stroyeth the perfect and the wicked. The earth is given
+<lb/>into the hand of the wicked.</said></quote> <bibl><regMe>ix.22—24.</regMe></bibl></p>
+</note>
+
+<note rend="pre(‡)" xml:id="n025" target="#a025">
+<p><quote>Thou makest me to possess the iniquities of my youth.</quote>
+<lb/><bibl><regMe>xiii.26.</regMe></bibl></p>
+</note>
+
+<note rend="pre(§)" xml:id="n026" target="#a026"> 
+<p><quote>He shall also be my salvation, for an hypocrite shall
+<pb corresp="#p027"/>
+<lb/>not come before him.</quote> <bibl><regMe>xiii.16.</regMe></bibl> <quote>My face is foul with weep­
+<lb/>ing, and on my eyelids is the shadow of death; not for
+<lb/>any injustice in my hands; also my prayer is pure.</quote> <bibl><regMe>xvi.
+<lb/>16,17.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n027" target="#a027">
+<p><bibl><regMe>Job xxiii.6—9.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n028" target="#a028">
+<p><bibl><regMe>Job xix.13—17.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n029" target="#a029">
+<p><quote>Children of fools, yea, children of base men; they
+<lb/>were viler than the earth. And now I am their song, yea,
+<lb/>I am their byword. They abhor me; they flee far from 
+<lb/>me, and spare not to spit in my face &amp;c.</quote> <bibl><regMe>Job xxx.</regMe></bibl></p>
+</note>
+
+<note rend="pre(‡)" xml:id="n030" target="#a030">
+<p><quote>I am a brother to dragons, and a companion to owls.</quote> 
+<lb/><bibl><regMe>xxx.29.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n031" target="#a031">
+<p><bibl><regMe>xxix. The whole.</regMe></bibl> <quote>If I laughed on them, they be­
+<lb/>lieved it not. I chose out their way, and sat chief, and
+<lb/>dwelt as a king in the army.</quote> <bibl><regMe>24,25.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n032" target="#a032">
+<p><quote>They whom I loved are turned against me</quote> <bibl><regMe>xix.19.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n033" target="#a033">
+<p><quote>They have gaped upon me with their mouth; they 
+<lb/>have smitten me on the cheek reproachfully; they have
+<lb/>gathered themselves together against me. God hath de­
+<lb/>livered me to the ungodly.</quote> <bibl><regMe>xvi.10,11.</regMe></bibl></p>
+</note>
+
+<note rend="pre(‡)" xml:id="n034" target="#a034">
+<p><bibl><regMe>xiii.15.</regMe></bibl></p>
+</note>
+
+<note rend="pre(§)break(no)" xml:id="n035" target="#a035"> 
+<p><bibl><regMe>xxiii.10.</regMe></bibl></p>
+</note>
+
+<note rend="pre(‖)break(no)" xml:id="n036" target="#a036">
+<p><bibl><regMe>xix.25—27.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n037" target="#a037">
+<p><bibl><regMe>xxxi.13—15.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)break(no)" xml:id="n038" target="#a038">
+<p><bibl><regMe>xxxi.17—20.</regMe></bibl></p>
+</note>
+
+<note rend="pre(‡)break(no)" xml:id="n039" target="#a039">
+<p><bibl><regMe>xxxi.24,25.</regMe></bibl></p>
+</note>
+
+
+<note rend="pre(§)" xml:id="n040" target="#a040">
+<p><bibl><regMe>xxxi.26—28.</regMe></bibl></p>
+</note>
+
+<note rend="pre(‖)break(no)" xml:id="n041" target="#a041">
+<p><bibl><regMe>xxxi.29,39.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n042" target="#a042">
+<p><bibl><regMe>xxxi.33.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)break(no)" xml:id="n043" target="#a043">
+<p><bibl><regMe>xxxi.38,39.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n044" target="#a044">
+<p>See Frontispiece.</p>
+</note>
+
+<note rend="pre(†)" xml:id="n045" target="#a045">
+<p><quote>I am clean without transgression, I am innocent, nei­
+<lb/>ther is there any iniquity in me.</quote> <bibl><regMe>xxxiii.9.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n046" target="#a046">
+	  <p><quote><persName>Job</persName> hath spoken without knowledge, and his words
+<lb/>were without wisdom. (He) <choice><sic>muliplieth</sic><corr>multiplieth</corr></choice> his words against
+<lb/>God.</quote> <bibl><regMe>xxxiv.37.</regMe></bibl> <quote>God hath visited in his anger.</quote> <bibl><regMe>xxxv.15.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n047" target="#a047">
+<p><quote>God is greater than man.</quote> <bibl><regMe>xxxiii.12.</regMe></bibl></p>
+</note>
+
+<note rend="pre(‡)" xml:id="n048" target="#a048">
+<p><quote>Surely it is meet to be said unto God, <said rend="pre(“)post()">I have borne
+<lb/>chastisement, I will not offend any more.</said></quote> <bibl><regMe>xxxiv.31.</regMe></bibl></p>
+</note>
+
+<note rend="pre(§)" xml:id="n049" target="#a049">
+<p><quote>Even so would he have removed thee out of the strait
+<lb/>into a broad place.</quote> <bibl><regMe>xxxvi.16.</regMe></bibl></p>
+</note>
+
+<note rend="pre(‖)" xml:id="n050" target="#a050">
+<p><quote>God thundereth marvellously with his voice; great
+<lb/>things doeth he, which we cannot comprehend.</quote> <bibl><regMe>xxxvii.5.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n051" target="#a051">
+<p><quote>Now men see not the bright light which is in the
+<lb/>clouds; but the wind passeth, and cleanseth them. Fair
+<lb/>weather cometh out of the north; (or is brought by the
+<lb/>north wind;) with God is terrible majesty.</quote> <bibl><regMe>xxxvii.22.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n052" target="#a052">
+<p><quote>At <emph rend="slant(italic)">this</emph> (or the thunder) also my heart trembleth, and
+<lb/>is moved out of his place.</quote> <bibl><regMe>xxxvii.1.</regMe></bibl></p>
+</note>
+
+<note rend="pre(‡)" xml:id="n053" target="#a053">
+<p><bibl><regMe>xxxviii.1.</regMe></bibl></p>
+</note>
+
+<note rend="pre(§)" xml:id="n054" target="#a054">
+<p><quote>O that God would speak, and open his lips against
+<lb/>thee.</quote> <bibl><regMe>xi.5.</regMe></bibl></p>
+</note>
+
+<note rend="pre(‖)" xml:id="n055" target="#a055">
+<p><quote>Behold my desire is, that the Almighty would answer
+<lb/>me.</quote> <bibl><regMe>xxxi.35.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n056" target="#a056">
+<p> <bibl><regMe>xxxiv.4—7.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n057" target="#a057">
+<p><bibl><regMe>xxxiv.8—11.</regMe></bibl></p>
+</note>
+
+<note rend="pre(‡)" xml:id="n058" target="#a058">
+<p><quote>Hast thou commanded the morning since thy days?</quote> 
+<lb/><bibl><regMe>xxxviii.12.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n059" target="#a059">
+<p><quote>Hast thou entered into the springs of the sea? or hast
+<lb/>thou walked in the search of the depth?</quote> <bibl><regMe>16.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n060" target="#a060">
+<p><quote>As for darkness, where is the place thereof?</quote> <bibl><regMe>19.</regMe></bibl></p>
+</note>
+
+<note rend="pre(‡)" xml:id="n061" target="#a061">
+<p><quote>Hast thou entered into the treasures of the snow, or
+<lb/>hast thou entered into the treasures of the hail?</quote> <bibl><regMe>22.</regMe></bibl></p>
+</note>
+
+<note rend="pre(§)" xml:id="n062" target="#a062">
+<p><quote>Canst thou bring forth <name>Mazzaroth</name> in his <mcr rend="slant(italic)">season?</mcr> Or
+<lb/>canst thou find <name>Arcututus</name> with his sons?</quote></p>
+</note>
+
+<note rend="pre(‖)" xml:id="n063" target="#a063">
+<p><quote>Canst thou send out lightnings, that they may go, and
+<lb/>say unto thee, <said rend="pre()post()">Here we are</said>?</quote> <bibl><regMe>35.</regMe></bibl></p>
+</note>
+
+<note rend="pre(¶)" xml:id="n064" target="#a064">
+<p><quote>Who can number the clouds in wisdom? or who can
+<lb/>stay the bottles of heaven?</quote> <bibl><regMe>37.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n065" target="#a065">
+<p><quote>They couch in their dens, and abide in the covert to
+<lb/>lie in wait.</quote></p>
+</note>
+
+<note rend="pre(†)" xml:id="n066" target="#a066">
+<p><quote>Wilt thou hunt the prey for the lion? or fill the appe­
+<lb/>tite of the young lions?</quote> <bibl><regMe>39.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n067" target="#a067">
+<p><quote>Who provideth for the raven his food, when his young
+<lb/>ones cry unto God?</quote> <bibl><regMe>41.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n068" target="#a068">
+<p><quote>Their young ones are in good liking; they grow up
+<lb/>with corn; they go forth<choice><sic>.</sic><corr>,</corr></choice> and return not unto them.</quote> 
+<lb/><bibl><regMe>xxxix.4.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n069" target="#a069">
+<p><quote>Who hath sent out the wild ass free? or who hath
+<lb/>loosed the bonds of the wild ass? Whose house I have
+<lb/>made the wilderness, and the barren land (a <emph rend="slant(italic)">salt</emph> place) his
+<lb/>dwelling.</quote></p>
+</note>
+
+<note rend="pre(*)" xml:id="n070" target="#a070">
+<p><quote>Will the unicorn be willing to serve thee, or to abide
+<lb/>by thy crib?</quote> <bibl><regMe>xxxix.9.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n071" target="#a071">
+<p><quote>Wilt thou trust him because his strength is great? or
+<lb/>wilt thou leave thy labour to him?</quote> <bibl><regMe>11.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n072" target="#a072">
+<p><quote>Canst thou bind the unicorn with his band in the fur­
+<lb/>row? or will he harrow the valleys after thee? Wilt thou
+<lb/>believe <choice><sic>bim</sic><corr>him</corr></choice>, that he will bring home thy seed, and gather
+<lb/>it into thy barn?</quote> <bibl><regMe>10—12.</regMe></bibl></p>
+</note>
+
+<note rend="pre(‡)" xml:id="n073" target="#a073">
+<p><quote>Gavest thou the goodly wings unto the peacock?</quote> <bibl><regMe>13.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n074" target="#a074">
+<p><quote>What time she lifteth up herself on high, she scorneth
+<lb/>the horse and his rider.</quote> <bibl><regMe>18.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n075" target="#a075">
+<p><quote>Gavest thou wings and feathers unto the ostrich?</quote> <bibl><regMe>13<choice><sic/><corr>.</corr></choice></regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n076" target="#a076">
+<p><quote>Which leaveth her eggs in the earth, and warmeth
+<lb/>them in dust, and forgetteth that the foot may crush, or
+<lb/>that the wild beast may break them? She is hardened
+<lb/>against her young ones, as though they were not hers, be­
+<lb/>cause God hath deprived her of wisdom; neither hath he
+<lb/>imparted to her understanding.</quote> <bibl><regMe>14—16.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n077" target="#a077">
+<p><quote>He saith among the trumpets, <said rend="pre()post()">Ha, ha.</said> He smelleth
+<pb corresp="#p045"/> 
+<lb/>the battle afar off, the thunder of the captains, and the
+<lb/>shouting.</quote> <bibl><regMe>25.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n078" target="#a078">
+<p><quote>He mocketh at fear, and is not affrighted, neither
+<lb/>turneth he back from the sword. The quiver rattleth
+<lb/>against him, the glittering spear, and the shield.</quote> <bibl><regMe>22,23.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n079" target="#a079">
+<p><quote>They shall beat their swords into ploughshares, and 
+<lb/>their spears into pruning-hooks; nation shall not lift up
+<lb/>sword against nation, neither shall they learn war any
+<lb/>more.</quote> <bibl><regMe>Isa. ii.4.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n080" target="#a080">
+<p><quote>Doth the hawk fly by thy wisdom, and stretch her
+<lb/>wings towards the earth?</quote> <bibl><regMe>xxxix.26.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n081" target="#a081">
+<p><quote>Doth the eagle mount up by thy command, and make
+<lb/>her nest on high? She dwelleth and abideth upon the
+<lb/>rock, and the strong place.</quote> <bibl><regMe>xxxix.27,28.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n082" target="#a082">
+<p><quote>From thence she seeketh the prey, and her eyes be­
+<lb/>hold afar off.</quote> <bibl><regMe>29.</regMe></bibl> <quote>Her young ones also suck up blood.</quote> 
+<lb/><bibl><regMe>39</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n083" target="#a083">
+<p><quote>Where the slain are, there is she.</quote> <bibl><regMe>39.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n084" target="#a084">
+<p><quote>He is the chief of the ways of God.</quote> <bibl><regMe>xl.10.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n085" target="#a085">
+<p><quote>His bones are like bars of iron.</quote> <bibl><regMe>18.</regMe></bibl></p>
+</note>
+
+<note rend="pre(‡)" xml:id="n086" target="#a086">
+<p><quote>He moveth his tail like a cedar.</quote> <bibl><regMe>17.</regMe></bibl></p>
+</note>
+
+<note rend="pre(§)" xml:id="n087" target="#a087">
+<p><quote>Surely the mountains bring forth food, where all the
+<lb/>beasts of the field do play.</quote> <bibl><regMe>20.</regMe></bibl></p>
+</note>
+
+<note rend="pre(‖)" xml:id="n088" target="#a088">
+<p><quote>He lieth under the shady trees, in the covert of the
+<lb/>reeds and fens. The shady trees cover him with their
+<lb/>shadow; the willows of the brook compass him about.
+<lb/>Behold, he drinketh up a river, and hasteth not; he trusteth
+<lb/>that he can draw up <placeName>Jordan</placeName> into his mouth.</quote> <bibl><regMe>21—23.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n089" target="#a089">
+<p>The <name>Mammoth</name>, was, perhaps, intended. Some of its
+<lb/>bones have been found, and show that it was more than
+<lb/>twice as large as the elephant.</p>
+<p>If this animal had been preserved upon the earth, many
+<lb/>other animals must have been destroyed to give it room;
+<lb/>for this reason, perhaps, it was permitted to perish, while
+<lb/>its bones remain to show forth its Creator's power.</p>
+</note>
+
+<note rend="pre(†)" xml:id="n090" target="#a090">
+<p><quote>He maketh the deep to boil like a pot.</quote> <bibl><regMe>xli.31.</regMe></bibl></p>
+</note>
+
+<note rend="pre(‡)" xml:id="n091" target="#a091">
+<p><quote>His eyes are like the eyelids of the morning.</quote></p>
+</note>
+
+<note rend="pre(§)" xml:id="n092" target="#a092">
+<p><quote>Who can open the doors of his face? His teeth are
+<lb/>terrible round about.</quote> <bibl><regMe>14.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n093" target="#a093">
+<p><quote>His scales are his pride, shut up together as with a
+<lb/>close seal. One is so near to another that no air can come
+<lb/>between them. He esteemeth iron as straw. Darts are
+<lb/>counted as stubble; sharp stones are under him; he
+<lb/>spreadeth sharp-pointed things upon the mire.</quote> <bibl><regMe>15,16,
+<lb/>27,30.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n095" target="#a095">
+<p>Some have supposed the crocodile was intended, but
+<lb/>that animal neither is found in the sea, nor makes a path
+<lb/>after it in the water.</p>
+</note>
+
+<note rend="pre(‡)" xml:id="n094" target="#a094">
+<p><quote>Upon earth there is not his like, who is made without
+<lb/>fear.</quote></p>
+</note>
+
+<note rend="pre(§)" xml:id="n096" target="#a096">
+<p><bibl><regMe>xlii.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n097" target="#a097">
+<p><quote>Confess your faults one to another, and pray for one
+<lb/>another, that ye may be healed. The effectual fervent
+<lb/>prayer of the righteous man availeth much.</quote> <bibl><regMe>James v.16.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n098" target="#a098">
+<p><quote>The Lord turned the captivity of <persName>Job</persName> when he prayed
+<lb/>for his friends.</quote> <bibl><regMe>10.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n099" target="#a099">
+<p><quote>Thou shalt come to the grave in a full age, like as a 
+<lb/>shock of corn cometh in his season.</quote> <bibl><regMe>v.26.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n100" target="#a100">
+<p><quote>Take, my brethren, the prophets who have spoken in
+<lb/>the name of the Lord, for an example of suffering, afflic­
+<lb/>tion, and of patience. Behold, we count them happy which
+<lb/>endure; ye have heard of the patience of <persName>Job</persName>, and have
+<lb/>seen the <emph rend="slant(italic)">end</emph> of the Lord, that the Lord is very pitiful, and
+<lb/>of tender mercy.</quote> <bibl><regMe>James v.10,11.</regMe></bibl></p>
+</note>
+
+<note rend="pre(*)" xml:id="n101" target="#a101">
+<p>These calamities happened to a bookbinder in <placeName>Lon­
+<lb/>don</placeName>, in <date when="1840-05">May, 1840</date>.</p>
+</note>
+
+<note rend="pre(*)" xml:id="n102" target="#a102">
+<p><quote>We have not an High Priest which cannot be touched
+<lb/>with the feeling of our infirmities; but was in all points
+<lb/>tempted like as we are, yet without sin. Let us, therefore
+<lb/>come boldly unto the throne of grace, that we may obtain
+<lb/>mercy, and find <emph rend="slant(italic)">grace to help in time of need</emph>.</quote> <bibl><regMe>Heb. iv.15.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n103" target="#a103">
+<p><bibl><regMe>Rev. xxi.4.</regMe></bibl></p>
+</note>
+
+<note rend="pre(†)" xml:id="n104" target="#a104">
+<p><quote rend="pre(“)post(”)">Child of sorrow.</quote></p>
+</note>
+</notes>
+      </hyperDiv>
+
+<front>
+<pb n="i"/>
+<milestone unit="sig" n="A1r"/>
+
+
+
+<titleBlock rend="case(allcaps)align(center)">
+<titlePart type="main">The
+<lb/>History of <persName>Job</persName>.</titlePart></titleBlock>
+
+<pb n="ii"/>
+<milestone unit="sig" n="A1v"/>
+
+<pb n="1"/>
+<milestone unit="sig" n="A2r"/>
+
+<pb n="2"/>
+<milestone unit="sig" n="A2v"/>
+
+<div type="frontispiece">
+<figure><head rend="case(mixed)slant(italic)">Frontispiece.</head>
+<figDesc>Elihu speaking to Job before his friends</figDesc></figure>
+
+</div>
+
+<pb n="3"/>
+<milestone unit="sig" n="A3r"/>
+
+<titleBlock rend="case(allcaps)align(center)">
+<titlePart type="main">The
+<lb/>History of <persName>Job</persName>,</titlePart>
+<lb/><titlePart type="desc">In
+<lb/>language adapted to children.</titlePart>
+<respLine>by the
+<lb/>Author of the <title rend="pre(“)post(”)">Prep of Day</title>, <title rend="pre(“)post(’)">Line Upon Line</title>, &amp;c.</respLine>
+<gap reason="omitted" desc="handwriting" extent="3 words"/>
+
+<docImprint><pubPlace><placeName>London</placeName></pubPlace>:
+<lb/><docRole type="publisher"><persName>J. Hatchard</persName> and son</docRole>, <placeName>187, Piccadilly</placeName>;
+<lb/>and <docRole type="publisher"><persName>J. Harris</persName></docRole>, <placeName>St. Paul's Churchyard</placeName>.
+<lb/><docDate when="1842">1842</docDate>.</docImprint>
+<gap reason="omitted" desc="handwriting" extent="3 letters"/>
+</titleBlock>
+
+<pb n="4"/><milestone unit="sig" n="A3v"/>
+
+<pb n="5"/><milestone unit="sig" n="B1r"/>
+
+<div type="prefatory">
+<head rend="post(#rule)">Preface.</head>
+
+<p><hi rend="case(smallcaps)">The</hi> object of this little work is the same
+<lb/>as that of its predecessors, to obtain an
+<lb/>audience for its Divine Master.</p>
+<p>The book of <persName>Job</persName>, especially the didactic
+<lb/>parts, contains many difficulties, which might
+<lb/>discourage a child from reading it—yet, if
+<lb/>these were removed, even a child might find 
+<lb/>much in it to interest the mind and heart. 
+<lb/>For children are born into a world of trouble,
+<lb/>and should be early made acquainted with
+<lb/>the highest human example of patience, and
+<lb/>the most wonderful instance of God's re­
+<lb/>storing mercy to a mere man. Those, indeed,
+<lb/>whose minds have been debilitated by read­
+
+<mw type="sig">B</mw>
+
+<pb n="6"/><milestone unit="sig" n="B1v"/>
+<mw type="pageNum" rend="align(outside)">6</mw>
+
+<lb/>ing fairy tales and infantine novels, may be
+<lb/>indifferent to a history at once so simple and
+<lb/>so solemn. But there are others, who,
+<lb/>nursed in the lap of a praying mother, early
+<lb/>taught to kneel beside her, accustomed to
+<lb/>listen to her pious remarks, and to behold
+<lb/>her holy example—will accept with pleasure
+<lb/>from her hand this little gift,—read it, while
+<lb/>seated by her side, with attention, and after­
+<lb/>wards commit it to the nursery, or school­
+<lb/>room shelf—entreating to be allowed to look
+<lb/>at that sacred original, of which this work is
+<lb/>a feeble outline.</p>
+<p>Such are the hopes with which this im­
+<lb/>perfect production is presented to the pa­
+<lb/>rents of the rising generation—a generation,
+<lb/>on which the eyes of the present are fixed,
+<lb/>expecting to behold in it, when sinking
+<lb/>themselves into the grave, the first-fruits of
+<lb/>their humble labours.</p>
+
+</div>
+
+<pb n="7"/><milestone unit="sig" n="B2r"/>
+
+<div type="contents">
+<head rend="post(#rule)">Contents.</head>
+<list>
+
+<head rend="case(smallcaps)align(right)">Page</head>
+
+<item target="#c001">
+<label rend="case(allcaps)align(center)">Chapter I.</label>
+<lb/><rs rend="fill(#leader)">The first trial of Job's patience</rs>
+<ref type="pageNum">9</ref>
+</item>
+
+<item target="#c002">
+<label rend="case(allcaps)align(center)">Chapter II.</label>
+<lb/><rs rend="fill(#leader)">The second trial of Job's patience</rs>
+<ref type="pageNum">18</ref>
+</item>
+
+<item target="#c003">
+<label rend="case(allcaps)align(center)">Chapter III.</label>
+<lb/><rs rend="fill(#leader)">The greatest trial of Job's patience</rs>
+<ref type="pageNum">24</ref>
+</item>
+
+<item target="#c004">
+<label rend="case(allcaps)align(center)">Chapter IV.</label>
+<lb/><rs rend="fill(#leader)">How great God is in his works</rs>
+<ref type="pageNum">32</ref>
+</item>
+
+<item target="#c005" rend="post(#rule)">
+<label rend="case(allcaps)align(center)">Chapter V.</label>
+<lb/><rs rend="fill(#leader)">How good God was to Job</rs>
+<ref type="pageNum">48</ref>
+</item>
+
+<item target="#c006">
+<rs rend="case(smallcaps)fill(#leader)">The Mysterious Glass</rs>
+<ref type="pageNum">61</ref>
+</item>
+
+
+
+</list>
+</div>
+
+<pb n="8"/><milestone unit="sig" n="B2v"/>
+
+
+      </front>
+      <body>
+
+<pb n="9"/><milestone unit="sig" n="B3r"/>
+
+<head rend="post(#rule)">History of <persName>Job</persName>.</head>
+<div type="chapter" xml:id="c001">
+<head>Chapter I.
+<lb/>The first trial of <persName>Job's</persName> patience.</head>
+<head type="sub" rend="case(mixed)"><bibl><regMe>Job i.</regMe></bibl></head>
+
+<p><hi rend="case(smallcaps)">I am</hi> now going to relate the history of a 
+<lb/>man named <persName>Job</persName>, who lived a long while ago.
+<lb/>I am sure that he lived after <persName>Noah</persName>, and I
+<lb/>think he lived after <persName>Abraham</persName>, but not long
+<lb/>after. He did not live in the land of <placeName>Ca­
+<lb/>naan</placeName>; he lived in a land called <placeName>Uz</placeName>, which
+<lb/>is somewhere near the great river called
+<lb/><placeName>Euphrates</placeName>.</p>
+<p><persName>Job</persName> was the richest man in the land of
+<lb/><placeName>Uz</placeName>. In those days rich men had a great
+<lb/>many animals: <persName>Job</persName> had seven thousand
+
+<mw type="sig" rend="align(right)indent(2)">B 3</mw>
+
+<pb n="10"/><milestone unit="sig" n="B3v"/>
+<mw type="pageNum" rend="align(outside)">10</mw>
+
+<lb/>sheep, three thousand camels, <seg xml:id="a001" corresp="#n001" rend="post(*)">five hundred
+<lb/>yoke of oxen, (that is one thousand, for two
+<lb/>oxen go in one yoke,) and five hundred
+<lb/>asses.</seg></p>
+<p><persName>Job</persName> was not only the richest man in <placeName>Uz</placeName>, he
+<lb/>was something much better than rich; he was
+<lb/>good. Rich people often do not think of
+<lb/>God; but <persName>Job</persName> feared him, and hated sin.
+<lb/>He was upright in his behaviour to man,
+<lb/>and his heart was sincere in God's sight.</p>
+<p>He had also a wife, seven sons, and
+<lb/>three daughters. I believe his children were
+<lb/>grown up, for his sons had houses of their
+<lb/>own. There was a custom among <persName>Job's</persName>
+<lb/>sons which showed that they loved each
+<lb/>other. They used each to give a feast to
+<lb/>the others by turns, on particular days that
+<lb/>they fixed upon; and they always invited
+<lb/>their sisters to come and dine with them.
+<lb/>I do not know whether they invited their
+<lb/>friends to come also, but I suppose they
+<lb/>did. I think that <persName>Job</persName> did not go to these
+<lb/>feasts, for he was a man that spent his time
+
+<pb n="11"/><milestone unit="sig" n="B4vr"/>
+<mw type="pageNum" rend="align(outside)">11</mw>
+
+<lb/>chiefly in doing good to the poor, and in
+<lb/>judging the people, and in prayer; and he
+<lb/>had not much time for feasting. It is not
+<lb/>wrong to go to some kinds of feasts, for the
+<lb/><persName>Lord Jesus</persName> went to feasts sometimes. <persName>Job</persName>  
+<lb/>wished very much for his children to be
+<lb/>good. He was afraid lest, when they were
+<lb/>at their feasts, they should commit sin, even
+<lb/>in their hearts, by not thanking God for his
+<lb/>goodness: so this was what <persName>Job</persName> did. After
+<lb/>they had each given a feast, he rose up
+<lb/>early in the morning and sent for his chil­
+<lb/>dren, and prepared them for offering sacri­
+<lb/>fices for their sins. <seg xml:id="a002" corresp="#n002" rend="post(*)">I suppose he spoke to
+<lb/>them of their sins, and of their need of
+<lb/>God's pardon.</seg> Then he offered ten sacri­
+<lb/>fices of sheep, and some other animal, and
+<lb/>prayed to God for his children. What a 
+<lb/>good father he was! He loved his chil­
+<lb/>dren's souls: he feared lest they should be
+<lb/>lost for ever. Perhaps, my dear children,
+<lb/>your parents pray with you sometimes, and
+<lb/>often pray for you with many tears when
+<lb/>they are alone.</p>
+
+<pb n="12"/><milestone unit="sig" n="B4v"/>
+<mw type="pageNum" rend="align(outside)">12</mw>
+
+<p>Do you not think that such a good man 
+<lb/>as <persName>Job</persName> must have been very happy? And
+<lb/>so he was. <seg xml:id="a003" corresp="#n003" rend="post(*)">He knew that God loved him,</seg>
+<lb/><seg xml:id="a004" corresp="#n004" rend="post(†)">and he thought that he should always be
+<lb/>happy.</seg> But O what sad afflictions came
+<lb/>upon him! You shall hear why <persName>Job</persName> was
+<lb/>at last so much afflicted.</p>
+<p>Now there was a day when the sons of
+<lb/>God came to present themselves before the
+<lb/>Lord. Do you wish to know who the sons
+<lb/>of God were? I think they were the angels,
+<lb/><seg xml:id="a005" corresp="#n005" rend="post(‡)">for angels are called the sons of God.</seg>
+<lb/>But now you will be surprised at what I am 
+<lb/>going to tell you. Among the angels <persName>Satan</persName>
+<lb/>came. He is an angel too, a wicked angel.
+<lb/>But might <persName>Satan</persName> come into heaven? No
+<lb/>—he can never go there, but God is 
+<lb/>everywhere; and <persName>Satan</persName> might come before
+
+<mw type="sig" rend="align(right)indent(2)">4</mw>
+
+<pb n="13"/><milestone unit="sig" n="B5r"/>
+<mw type="pageNum" rend="align(outside)">13</mw>
+
+<lb/>God without going into heaven. And the
+<lb/>Lord spoke to <persName>Satan</persName> and said, <said>Where do
+<lb/>you come from?</said> Then <persName>Satan</persName> answered,
+<lb/><said>From going to and fro in the earth, and
+<lb/>from walking up and down in it.</said></p>
+<p><seg xml:id="a006" corresp="#n006" rend="post(*)">You know why <persName>Satan</persName> walks up and down
+<lb/>on the earth. To tempt men, and bring
+<lb/>them, if he can, to be with him in hell.</seg>
+<lb/>And the Lord asked <persName>Satan</persName> whether he had
+<lb/>seen <persName>Job</persName>, and whether there were any man as
+<lb/>good as <persName>Job</persName> in all the earth? <persName>Satan</persName> does 
+<lb/>not like people to be good. He does not
+<lb/>like God to love people. He is envious of
+<lb/>good people. <seg xml:id="a007" corresp="#n007" rend="post(†)"><persName>Satan</persName> could not bear to hear
+<lb/>God praise <persName>Job</persName>,</seg> and he said that <persName>Job</persName>
+<lb/>obeyed God only for what he could get.
+<lb/><said>Have you not taken so much care of him
+<lb/>and of his things? but only just hurt his
+<lb/>things, and he will curse thee to thy face.</said>
+<lb/><persName>Satan</persName> said that <persName>Job</persName> was a hypocrite, but we
+<lb/>know that he was not; for God said that he
+<lb/>was the best man in all the earth.</p>
+
+<pb n="14"/><milestone unit="sig" n="B5v"/>
+<mw type="pageNum" rend="align(outside)">14</mw>
+
+<p>Would God let <persName>Job</persName> be hurt? Yes, he would,
+<lb/>that <persName>Satan</persName> might see, and that all people
+<lb/>might see, that <persName>Job</persName> really loved him. So
+<lb/>God allowed <persName>Satan</persName> to hurt all the things
+<lb/>that <persName>Job</persName> had; but not at first to hurt <persName>Job</persName>
+<lb/>himself.</p>
+<p>How glad <persName>Satan</persName> must have been when
+<lb/>God allowed him to afflict <persName>Job</persName>, for <persName>Satan</persName> is
+<lb/>full of hatred and malice!</p>
+<p>Now we shall hear what <persName>Satan</persName> did. One
+<lb/>of those joyful days came when <persName>Job's</persName> chil­
+<lb/>dren feasted together. This time they were
+<lb/>all in the house of their eldest brother. <persName>Job</persName>
+<lb/>had not gone to the feast. But even when 
+<lb/>fathers are at home, and their children are
+<lb/>out, they are pleased to think their children
+<lb/>are happy. <persName>Job</persName> little thought what sorrow
+<lb/>he was going soon to feel.</p>
+<p>A messenger came suddenly to <persName>Job</persName> and
+<lb/>said, <said>The oxen were ploughing, and the
+<lb/>asses were feeding near, when the <name>Sabeans</name>
+<lb/>came and took them all away, and killed all
+<lb/>the servants with the sword, and I only am
+<lb/>escaped alone to tell thee.</said></p>
+<p>The <name>Sabeans</name> were robbers, who went
+
+<pb n="15"/><milestone unit="sig" n="B6r"/>
+<mw type="pageNum" rend="align(outside)">15</mw>
+
+<lb/>about the country stealing cattle. <persName>Job</persName> must
+<lb/>have been sorry to hear his cattle were
+<lb/>stolen, but much more to hear that the poor
+<lb/>ploughmen were all murdered. But before
+<lb/>that messenger had done speaking, another
+<lb/>came, and brought still worse news. He
+<lb/>said, <said>The fire of God is fallen from heaven,
+<lb/>and has burned up the sheep and the ser­
+<lb/>vants, and I only am escaped alone to tell 
+<lb/>thee.</said></p>
+<p>This fire, I suppose, was a thunderbolt
+<lb/>that sometimes comes from heaven, when
+<lb/>there is a terrible storm. What a storm this
+<lb/>must have been! The oxen and the asses
+<lb/>had not only been stolen, but the sheep had
+<lb/>been burned, and the poor shepherds with
+<lb/>them.</p>
+<p>Was there anything left to <persName>Job</persName>? Yes.
+<lb/>Were there not his camels? But before the
+<lb/>second messenger had done speaking, a third
+<lb/>man arrived, and said, <said>The <name>Chaldeans</name>
+<lb/>came in three bands, (a little army of sol­
+<lb/>diers,) and fell upon the camels, and carried
+<lb/>them away, and killed the servants with the
+<lb/>sword, and I only am escaped alone to tell
+<lb/>thee.</said></p>
+
+<pb n="16"/><milestone unit="sig" n="B6v"/>
+<mw type="pageNum" rend="align(outside)">16</mw>
+
+<p>Now <persName>Job</persName> had no animals left. He still
+<lb/>had a house, but he was not a rich man any
+<lb/>longer. His ploughmen, his shepherds, and
+<lb/>his camel-drivers, were all dead. But there
+<lb/>was greater trouble still to come. While 
+<lb/>the third messenger was yet speaking, a 
+<lb/>fourth arrived, and said, <said>Thy sons and
+<lb/>thy daughters were eating and drinking
+<lb/>wine in their eldest brother's house, when
+<lb/>there came a great wind from the wilder­
+<lb/>ness, and smote the four corners of the
+<lb/>house, and it fell upon the young men, and
+<lb/>I alone am escaped to tell thee.</said></p>
+<p>Now everything dreadful had happened
+<lb/>to <persName>Job</persName>. His daughters were dead, as well
+<lb/>as his sons, and only his wife was left him.
+<lb/>Will <persName>Job</persName> now curse God, as <persName>Satan</persName> had said?
+<lb/>Listen, and I will tell you what <persName>Job</persName> did.</p>
+<p>He rose up and he tore his cloak that he
+<lb/>wore, and shaved his head, and he threw
+<lb/>himself down upon the ground, and wor­
+<lb/>shipped, and said <said>I had no clothes, and
+<lb/>nothing at all when I was first born, and I
+<lb/>shall take nothing with me when I die. The 
+<lb/>Lord gave and the Lord hath taken away;
+
+<pb n="17"/><milestone unit="sig" n="C1r"/>
+<mw type="pageNum" rend="align(outside)">17</mw>
+
+<lb/>blessed be the name of the Lord.</said> Thus,
+<lb/>you see, <persName>Job</persName> blessed God instead of cursing
+<lb/>him. He was, indeed, very, very unhappy;
+<lb/>and he showed his unhappiness (as people
+<lb/>did in those days) by tearing his cloak and
+<lb/>shaving his head. But he did not say that
+<lb/>God was unkind. He did not know <emph rend="slant(italic)">why</emph>
+<lb/>God had let these troubles come upon him,
+<lb/>yet he knew that God might do what He
+<lb/>pleased; for God gave him everything at
+<lb/>first, and might take them all back again
+<lb/>when He saw fit. Ah! my dear children,
+<lb/>when your parents punish you, do you be­
+<lb/>have in this way? Are you not sometimes
+<lb/>angry with them, because they will not let
+<lb/>you have what you want? Grown-up people
+<lb/>sometimes feel displeased with what God
+<lb/>does to them. There is one thing which we
+<lb/>ought to remember in all our troubles. It
+<lb/>is this short sentence, <quote rend="pre(“)post(”)">God is love.</quote></p>
+<p><persName>Job</persName> knew this, and he loved God even
+<lb/>when God afflicted him.</p>
+
+<mw type="sig" rend="align(right)indent(2)">C</mw>
+
+</div>
+
+<pb n="18"/><milestone unit="sig" n="C1v"/>
+<mw type="pageNum" rend="align(outside)">18</mw>
+
+<div type="chapter" xml:id="c002">
+<head>Chapter II.
+<lb/>The second trial of <persName>Job's</persName> patience.</head>
+<head type="sub" rend="case(mixed)"><bibl><regMe>Job ii. and iii.</regMe></bibl></head>
+
+<p><hi rend="case(smallcaps)">We</hi> have heard how <persName>Job</persName> became quite a
+<lb/>poor man, and how he lost all his children.
+<lb/>He bore these afflictions very patiently.</p>
+<p>Would <persName>Satan</persName> still say that <persName>Job</persName> was a 
+<lb/>hypocrite, and only pretended to love God?</p>
+<p>Again there was a day when the sons of 
+<lb/>God came before the Lord, and <persName>Satan</persName> came
+<lb/>with them. And God said to <persName>Satan</persName>, <said>Where
+<lb/>do you come from?</said> And <persName>Satan</persName> answered,
+<lb/><said>From going to and fro in the earth, and
+<lb/>from walking up and down in it.</said></p>
+<p>And the Lord asked him again whether
+<lb/>he had seen <persName>Job</persName>, and had observed how, in
+<lb/>all his troubles, he went on worshipping
+<lb/>the Lord. But <persName>Satan</persName> said that <persName>Job</persName> had not
+<lb/>been hurt himself; and that he would care
+<lb/>more if his body were hurt than for anything
+<lb/>else. <said>Touch his bones and his flesh, and he
+<lb/>will curse thee to thy face.</said></p>
+
+<pb n="19"/><milestone unit="sig" n="C2r"/>
+<mw type="pageNum" rend="align(outside)">19</mw>
+
+<p>And the Lord allowed <persName>Satan</persName> to hurt him;
+<lb/>only not to kill him.</p>
+<p>Would not <persName>Satan</persName> be much pleased to be
+<lb/>allowed to hurt <persName>Job</persName>?</p>
+<p>He sent <persName>Job</persName> a very dreadful disease.
+<lb/>Boils covered his whole body from the top
+<lb/>of his head to the sole of his feet. Now
+<lb/>boils give a great deal of pain. They also
+<lb/>make a person look very frightful, and seem
+<lb/>very unpleasant.</p>
+<p>How unhappy poor <persName>Job</persName> now felt! He
+<lb/>could not be comfortable for one moment;
+<lb/>nor could he lie down, or sit, or stand.
+<lb/>There was no part of him that was
+<lb/>well and sound. <seg xml:id="a008" corresp="#n008" rend="post(*)">He clothed himself in
+<lb/>sackcloth,</seg> and sat down among some ashes,
+<lb/>to show his grief; and he took a piece of a 
+<lb/>broken basin to scrape himself with, though
+<lb/>by doing so he made his sore places worse
+<lb/>than they were before.</p>
+<p>Now, while he was sitting there, his wife
+<lb/>spoke to him. Perhaps you think she came
+<lb/>to comfort him. Not so. She came to tempt 
+<lb/>him. I do not think she was a godly wo­
+
+<pb n="20"/><milestone unit="sig" n="C2v"/>
+<mw type="pageNum" rend="align(outside)">20</mw>
+
+<lb/>man; for she asked <persName>Job</persName> to curse God, and
+<lb/>die. I suppose she thought that if he cursed
+<lb/>God, he would be struck dead by God.
+<lb/>What wicked advice this was! I am not
+<lb/>surprised that she was unhappy, for she had
+<lb/>lost her riches and children (though she
+<lb/>was not sick,) but I am surprised she could
+<lb/>advise <persName>Job</persName> to be so wicked.</p>
+<p>But <persName>Job</persName> would not mind what she said.
+<lb/>He answered, <said>You speak like a foolish
+<lb/>(a wicked) woman. Shall we recieve good
+<lb/>at the hand of the Lord, and shall we not
+<lb/>recieve evil?</said> O how grateful <persName>Job</persName> was to
+<lb/>God! He remembered how many things
+<lb/>God had once given him, and how well he
+<lb/>had felt day after day; and though now he
+<lb/>was in such pain, he still loved God.</p>
+<p>I asked you before, my dear children,
+<lb/>whether you do not sometimes think your
+<lb/>parents unkind when they punish you? Do
+<lb/>you not forget how many kind things they
+<lb/>have done to you? If you were grateful, you
+<lb/>would <emph rend="slant(italic)">never</emph> forget their kindness. Grown­
+<lb/>up people sometimes are angry with God, 
+<lb/>when he lets them be unhappy, and they 
+<lb/>murmur against Him.</p>
+
+<pb n="21"/><milestone unit="sig" n="C3r"/>
+<mw type="pageNum" rend="align(outside)">21</mw>
+
+<p>You see that <persName>Job's</persName> wife did not comfort
+<lb/>him; but <persName>Job</persName> had three friends who lived
+<lb/>in places a great way off, and who heard
+<lb/>of his great trouble, and they came to com­
+<lb/>fort him. <seg xml:id="a009" corresp="#n009" rend="post(*)">They were very old men, and
+<lb/>were thought to be very wise.</seg> Before they
+<lb/>came to the place where <persName>Job</persName> sat, they looked
+<lb/>up, and saw him; and they were so much
+<lb/>shocked to see him in such a dreadful state,
+<lb/>that they all began to weep aloud; for they
+<lb/>would not have known him, had they not
+<lb/>heard what had happened to him. They
+<lb/>tore their cloaks, and threw dust in the air
+<lb/>over their heads, to show their grief. Then
+<lb/>they sat down near <persName>Job</persName> for seven days and
+<lb/>seven nights, and never spoke to him all that
+<lb/>time, because they saw he was very un­
+<lb/>happy; for when people are very unhappy
+<lb/>indeed, it is best not to speak to them, but
+<lb/>only to sit with them and weep. It must
+<lb/>have been a little comfort to <persName>Job</persName> to see that
+<lb/>his friends had not forsaken him. They did
+
+<mw type="sig" rend="align(right)indent(2)">C 3</mw>
+
+<pb n="22"/><milestone unit="sig" n="C3v"/>
+<mw type="pageNum" rend="align(outside)">22</mw>
+
+<lb/>not sit by <persName>Job</persName> without leaving their places
+<lb/>at all for a whole week; for they ate and
+<lb/>drank, and slept, part of the time; <seg xml:id="a010" corresp="#n010" rend="post(*)">and <persName>Job</persName>
+<lb/>also sometimes lay on his bed, and tried to
+<lb/>sleep.</seg></p>
+<p>All this time, <persName>Job</persName> remained in great pain
+<lb/>and agony. <seg xml:id="a011" corresp="#n011" rend="post(†)">His clothes stuck to his flesh,</seg>
+<lb/><seg xml:id="a012" corresp="#n012" rend="post(‡)">and his skin was almost black with the heat
+<lb/>of his blood;</seg> <seg xml:id="a013" corresp="#n013" rend="post(§)">his face was covered with
+<lb/>tears;</seg> <seg xml:id="a014" corresp="#n014" rend="post(‖)">his flesh with clods of dust.</seg> <seg xml:id="a015" corresp="#n015" rend="post(¶)">He
+<lb/>could get no rest night or day, for when he
+<lb/>lay down he tossed from side to side, and
+<lb/>said, <said>When will the night be gone?</said></seg>
+
+<pb n="23"/><milestone unit="sig" n="C4r"/>
+<mw type="pageNum" rend="align(outside)">23</mw>
+
+<lb/><seg xml:id="a016" corresp="#n016" rend="post(*)">And while he ate his food, he sighed, and
+<lb/>even cried out with pain.</seg> At last he
+<lb/>opened his mouth, and began to speak. He
+<lb/>did not curse his God, but he did curse the
+<lb/>day on which he was born. This was wrong;
+<lb/>for God had let him be born that he might
+<lb/>at last live for ever in heaven. But <persName>Job</persName> was 
+<lb/>in such pain that he spoke what he ought
+<lb/>not. He said, <said>Let that day be darkness.</said> 
+<lb/>He wished there never had been such a day
+<lb/>at all. Then he wished that he had died
+<lb/>when he was a little baby.</p>
+<p><persName>Job</persName> was not so patient as the blessed <persName>Lord
+<lb/>Jesus</persName> was when he was in the garden and
+<lb/>on the cross; yet he was more patient than
+<lb/>any wicked man could have been. We can­
+<lb/>not tell how much pain <persName>Job</persName> felt. If we did
+<lb/>know, we should not wonder at what he 
+<lb/>said.</p>
+</div>
+
+
+<pb n="24"/><milestone unit="sig" n="C4v"/>
+<mw type="pageNum" rend="align(outside)">24</mw>
+
+<div type="chapter" rend="post(#rule)" xml:id="c003">
+<head>Chapter III.
+<lb/>The greatest trial of <persName>Job's</persName> patience.</head>
+
+<p><hi rend="case(smallcaps)">The</hi> names of <persName>Job's</persName> friends were <persName>El-i-phaz</persName>,
+<lb/><persName>Bil-dad</persName>, and <persName>Zo-phar</persName>.</p>
+<p>Now was the time for them to comfort
+<lb/><persName>Job</persName>; but instead of comforting him, they
+<lb/>began to speak unkindly to him.</p>
+<p><seg xml:id="a017" corresp="#n017" rend="post(*)">While they had been watching by him,
+<lb/>they had been thinking in their hearts that
+<lb/><persName>Job</persName> must have done some very wicked things
+<lb/>secretly, for which God was now punishing
+<lb/>him.</seg></p>
+<p>But this was not true. <persName>Job</persName> was good—
+<lb/>but God let him have troubles to try him.</p>
+<p>One of the friends, called <persName>Eliphaz</persName>, an­
+<lb/>swered <persName>Job</persName>; <seg xml:id="a018" corresp="#n018" rend="post(†)">and he told <persName>Job</persName>, that if he were
+<lb/>good, God would help him.</seg></p>
+
+<pb n="25"/><milestone unit="sig" n="C5r"/>
+<mw type="pageNum" rend="align(outside)">25</mw>
+
+<p><seg xml:id="a019" corresp="#n019" rend="post(*)">When <persName>Job</persName> found his friends did not feel
+<lb/>for him, he was still more unhappy,</seg> <seg xml:id="a020" corresp="#n020" rend="post(†)">and
+<lb/>wished that God would make him die.</seg></p>
+<p>When <persName>Job</persName> had answered <persName>Eliphaz</persName>, <seg xml:id="a021" corresp="#n021" rend="post(‡)">then
+<lb/><persName>Bildad</persName> spoke, and advised <persName>Job</persName> to repent of
+<lb/>his wickedness; and told him, God would
+<lb/>then help him.</seg> Poor <persName>Job</persName> then answered
+<lb/><persName>Bildad</persName> <seg xml:id="a022" corresp="#n022" rend="post(§)">Then <persName>Zophar</persName> spoke the most un­
+<lb/>kindly of all;</seg> and <persName>Job</persName> answered him. In
+<lb/>this way the three friends went on speaking
+<lb/>to <persName>Job</persName>. They spoke by turns; and <persName>Job</persName>
+<lb/>answered each of them after he had spoken.</p>
+<p>They were no comfort to <persName>Job</persName>—so that he
+<lb/>cried out, <said>Miserable comforters are ye all.</said></p>
+<p>These friends were wise, but they made
+<lb/>one great mistake. It was this. <seg xml:id="a023" corresp="#n023" rend="post(*)">They
+
+<pb n="26"/><milestone unit="sig" n="C5v"/>
+<mw type="pageNum" rend="align(outside)">26</mw>
+
+<lb/>thought that God only afflicted wicked
+<lb/>people; and that if He did sometimes
+<lb/>punish the righteous for their sins, He made
+<lb/>them happy again, as soon as ever they
+<lb/>confessed their fault.</seg></p>
+<p><persName>Job</persName> knew that this was not true. <seg xml:id="a024" corresp="#n024" rend="post(†)">He
+<lb/>said that God afflicted righteous people, as
+<lb/>well as wicked people.</seg> This was true.
+<lb/><persName>Job</persName> knew, that though he was righteous,
+<lb/>yet God had afflicted him.</p>
+<p>You must not suppose that <persName>Job</persName> was so
+<lb/>proud as to think he was not a sinner. <seg xml:id="a025" corresp="#n025" rend="post(‡)">He
+<lb/>knew that he had committed many sins,</seg>
+<lb/><seg xml:id="a026" corresp="#n026" rend="post(§)">but still he felt that he really loved God,
+<lb/>and wished to serve him.</seg> <seg xml:id="a027" corresp="#n027" rend="post(*)">It hurt him very
+
+<pb n="27" xml:id="p027"/><milestone unit="sig" n="C6r"/>
+<mw type="pageNum" rend="align(outside)">27</mw>
+
+<lb/>much to hear his friends say that he had
+<lb/>been unkind to poor people, taking away
+<lb/>their clothes, not giving water to the thirsty,
+<lb/>or bread to the hungry; and treating widows
+<lb/>and fatherless children very cruelly.</seg> <persName>Job</persName>
+<lb/>knew he had not done any of these things.
+<lb/>He felt so grieved that once he cried out,
+<lb/><said>Have pity upon me, have pity upon me,
+<lb/>O ye my friends, for the hand of God hath
+<lb/>touched me.</said> Another time he said, <said>My
+<lb/>friends scorn me, but mine eye poureth out
+<lb/>tears unto God.</said></p>
+<p><seg xml:id="a028" corresp="#n028" rend="post(*)">But it was not his three friends only that
+<lb/>behaved unkindly to him. His relations and
+<lb/>acquaintance would not speak to him, and
+<lb/>even the maids in his house behaved to
+<lb/>him as if they did not know him. When
+<lb/>he called his servant, he gave him no answer,
+<lb/>not even when he begged him to listen:
+<lb/>but worse than all, his wife would not come
+
+<pb n="28"/><milestone unit="sig" n="C6v"/>
+<mw type="pageNum" rend="align(outside)">28</mw>
+
+<lb/>near him.</seg> Why did they all treat him in
+<lb/>this manner? They believed he was wicked,
+<lb/>because he was afflicted.</p>
+<p><seg xml:id="a029" corresp="#n029" rend="post(†)">There were some children who laughed at
+<lb/>him, and even dared to spit in his face.
+<lb/>These children had been brought up by very
+<lb/>wicked fathers, who had been driven for their
+<lb/>wickedness to live among the bushes in the
+<lb/>wilderness. Once these children would have 
+<lb/>been afraid of <persName>Job</persName>, knowing that they de­
+<lb/>served to be punished, but now they were
+<lb/>so mean as to mock him in his misery.</seg>
+<lb/><seg xml:id="a030" corresp="#n030" rend="post(‡)">Poor <persName>Job</persName> longed to be alone, away from
+<lb/>wicked people; and to be a brother to the
+<lb/>dragons who live in desert places, and a 
+<lb/>companion to owls, who hide themselves in 
+<lb/>the trees.</seg></p>
+<p><persName>Job</persName> thought of the days that were past.
+<lb/>He remembered the time when his children
+
+<pb n="29"/><milestone unit="sig" n="D1r"/>
+<mw type="pageNum" rend="align(outside)">29</mw>
+
+<lb/>were around him; when he was anointed
+<lb/>with oil from his olive-trees, that grew on
+<lb/>the rocks,—when he sat in the high seats
+<lb/>in the city where judges sat. He remem­
+<lb/>bered what respect people paid to him then,
+<lb/>—how the bad young men hid themselves,
+<lb/>and how the old men stood up, as he went
+<lb/>by,—how the ears of poor people were
+<lb/>pleased to hear his voice, and how their eyes
+<lb/>rejoiced to see him, because he had helped
+<lb/>them in distress.</p>
+<p><persName>Job</persName> said, <said>I was eyes to the blind, and
+<lb/>feet was I to the lame. I was a father to
+<lb/>the poor. I made the widow's heart to sing
+<lb/>for joy.</said> For <persName>Job</persName> had been kind to the
+<lb/>blind, and lame, and poor. When he sat
+<lb/>in the judgement-seat, every one listened to
+<lb/>him; they liked to hear him speak, because
+<lb/>he was wise and good; they were not tired
+<lb/>of listening, but longed for his words, as for
+<lb/>rain in a hot day. <seg xml:id="a031" corresp="#n031" rend="post(*)">How pleased they were,
+<lb/>if <persName>Job</persName> looked kindly on them; and how
+<lb/>ready they were to follow all his advice!</seg></p>
+
+<mw type="sig" rend="align(right)indent(2)">D</mw>
+
+<pb n="30"/><milestone unit="sig" n="D1v"/>
+<mw type="pageNum" rend="align(outside)">30</mw>
+
+<p>And now every one was turned against
+<lb/><persName>Job</persName>. <seg xml:id="a032" corresp="#n032" rend="post(*)">His friends had left off loving him,</seg> 
+<lb/>and the wicked struck him in the face, and
+<lb/>abused him.</p>
+<p>Was ever any man so much afflicted as
+<lb/>he was? Yet he still kept on believing in
+<lb/>God. He said several things which showed
+<lb/>his faith.</p>
+<p>He said—<said xml:id="a033" corresp="#n033" rend="post(†)">Though God slay me, yet will
+<lb/>I trust in Him.</said></p>
+<p><seg xml:id="a034" corresp="#n034" rend="post(‡)">He said that he knew God was trying
+<lb/>him like gold, which the goldsmith puts in
+<lb/>the fire, to make it bright.</seg></p>
+<p>And again he said, <said xml:id="a035" corresp="#n035" rend="pre(“)post(§)">I know that my Re­
+<lb/>deemer liveth, and that he shall stand in the
+<lb/>latter day upon the earth; and that though
+<lb/>worms destroy this body, I shall see him,
+<lb/>(with my own eyes.)</said> <seg xml:id="a036" corresp="#n036" rend="post(‖)"><persName>Job</persName> believed that he
+<lb/>should rise again when the Lord comes from
+<lb/>heaven.</seg></p>
+
+<pb n="31"/><milestone unit="sig" n="D2r"/>
+<mw type="pageNum" rend="align(outside)">31</mw>
+
+<p><persName>Job</persName> tried to persuade his friends that he
+<lb/>had not been a wicked man. He confessed
+<lb/>that he had committed many sins; but he
+<lb/>declared that he had not lived a wicked
+<lb/>life. He mentioned some of the chief things
+<lb/>that he had done right.</p>
+<p><seg xml:id="a037" corresp="#n037" rend="post(*)">He had been kind to his servants, for he
+<lb/>had remembered that the same God had
+<lb/>made them who had made him.</seg></p>
+<p><seg xml:id="a038" corresp="#n038" rend="post(†)">He had not eaten his dinner alone; he
+<lb/>had sent some to the fatherless, and he had
+<lb/>given the fleeces of his sheep to warm poor
+<lb/>people who were old.</seg></p>
+<p><seg xml:id="a039" corresp="#n039" rend="post(‡)">He had not loved his gold, and been proud
+<lb/>of it.</seg></p>
+<p><seg xml:id="a040" corresp="#n040" rend="post(§)">He had not worshipped the sun or
+<lb/>moon, by kissing his hand in secret to
+<lb/>them.</seg></p>
+<p><seg xml:id="a041" corresp="#n041" rend="post(‖)">If a person had offended him, he had not
+<lb/>wished him to be hurt.</seg></p>
+<p>He had not let strangers lie in the street
+<lb/>at night, but had opened his doors to them.</p>
+
+<pb n="32"/><milestone unit="sig" n="D2v"/>
+<mw type="pageNum" rend="align(outside)">32</mw>
+
+<p><seg xml:id="a042" corresp="#n042" rend="post(*)">Neither had he hidden his sins like <persName>Adam</persName>,
+<lb/>but had confessed them to God.</seg></p>
+<p><seg xml:id="a043" corresp="#n043" rend="post(†)">Neither had he refused to pay the wages
+<lb/>of the men who worked in his fields.</seg> <said>If 
+<lb/>I have done so,</said> said <persName>Job</persName>, <said>let thistles grow
+<lb/>instead of wheat, and cockle instead of
+<lb/>barley.</said></p>
+<p>When <persName>Job</persName> had done speaking, his friends
+<lb/>did not know what to answer, for they found
+<lb/>they could not make <persName>Job</persName> own that he was a 
+<lb/>wicked man. They had been very cruel to
+<lb/><persName>Job</persName> in speaking as they had done. It was
+<lb/>time for them to leave off tormenting him.</p>
+</div>
+
+<div type="chapter" rend="post(#rule)" xml:id="c004">
+<head>Chapter IV.
+<lb/>How Great God Is In All His Works.</head>
+
+
+<p><hi rend="case(smallcaps)">But</hi> there were some other people there
+<lb/>besides the three friends. One of them was
+<lb/>named <persName>Elihu</persName>. He had listened to all that
+
+<pb n="33"/><milestone unit="sig" n="D3r"/>
+<mw type="pageNum" rend="align(outside)">33</mw>
+
+<lb/><persName>Job</persName> and his friends had said, and he had
+<lb/>not liked what he had heard. He thought
+<lb/>that <persName>Job</persName> had spoken too much of his own
+<lb/>goodness, and that he had not praised God;
+<lb/>and he thought the friends had spoken too
+<lb/>much against <persName>Job</persName>. <seg xml:id="a044" corresp="#n044" rend="post(*)">Still he had not chosen
+<lb/>to speak, because he was young, and the
+<lb/>three friends were very old; but when they
+<lb/>could not answer anymore, then he began
+<lb/>to speak.</seg></p>
+<p><persName>Elihu</persName> did not say that <persName>Job</persName> was wicked,
+<lb/>as the friends had done, but he told <persName>Job</persName>
+<lb/>that he had boasted too much.</p>
+<p>He said to him, <said xml:id="a045" corresp="#n045" rend="post(†)">I heard you say that
+<lb/>you had no sin.</said> Had <persName>Job</persName> said that? No,
+<lb/>he had not said that he had <emph rend="slant(italic)">no</emph> sin at all,
+<lb/>for many times since he had been sick he 
+<lb/>had confessed his sins. <persName>Elihu</persName> should not
+<lb/>have accused <persName>Job</persName> of saying what he had
+<lb/>not said. Yet <persName>Elihu</persName> gave good advice, but
+<lb/>in an unkind manner. He ought to have
+<lb/>pitied <persName>Job</persName>. We ought to be very kind to
+
+<mw type="sig" rend="align(right)indent(2)">D 3</mw>
+
+
+<pb n="34"/><milestone unit="sig" n="D3v"/>
+<mw type="pageNum" rend="align(outside)">34</mw>
+
+<lb/>people who are sick; we ought not to be
+<lb/>sharp in marking what they say wrong.
+<lb/><persName>Elihu</persName> could not tell what great pain <persName>Job</persName>
+<lb/>had been feeling all the time he had been
+<lb/>speaking.</p>
+<p><persName>Elihu</persName> said many unkind things to <persName>Job</persName>:
+<lb/>he said, <said xml:id="a046" corresp="#n046" rend="post(*)"><persName>Job</persName> has not spoken wisely; he
+<lb/>has spoken against God; therefore God is 
+<lb/>angry with him.</said> <seg xml:id="a047" corresp="#n047" rend="post(†)">Then <persName>Elihu</persName> spoke of
+<lb/>the greatness of God,</seg> <seg xml:id="a048" corresp="#n048" rend="post(‡)">and told <persName>Job</persName> he
+<lb/>ought to humble himself before God,</seg> <seg xml:id="a049" corresp="#n049" rend="post(§)">and
+<lb/>that God would then comfort him.</seg></p>
+<p>But while <persName>Elihu</persName> was speaking, a terrible
+<lb/>thunder-storm came on. <seg xml:id="a050" corresp="#n050" rend="post(‖)"><persName>Elihu</persName> called the
+<lb/>thunder the voice of God, and said that it 
+<lb/>showed how great God was.</seg> <seg xml:id="a051" corresp="#n051" rend="post(*)">At last some
+
+<pb n="35"/><milestone unit="sig" n="D4r"/>
+<mw type="pageNum" rend="align(outside)"><choice><sic type="seq">3</sic><corr>35</corr></choice></mw>
+
+<lb/>brightness appeared among the clouds, and
+<lb/>this light showed how great God was.</seg></p>
+<p><seg xml:id="a052" corresp="#n052" rend="post(†)"><persName>Elihu's</persName> heart had trembled at the thun­
+<lb/>der,</seg> but he could not know that a greater
+<lb/>voice would soon be heard. <seg xml:id="a053" corresp="#n053" rend="post(‡)">When <persName>Elihu</persName>
+<lb/>had done speaking, the voice of God was
+<lb/>heard out of the whirlwind.</seg> God spoke to
+<lb/><persName>Job</persName>, and asked him why he had said so many
+<lb/>unwise things. How frightened all the per­
+<lb/>sons must have been who heard this voice!
+<lb/><seg xml:id="a054" corresp="#n054" rend="post(§)"><persName>Zophar</persName>, one of the friends, had wished that
+<lb/>God would speak,</seg> <seg xml:id="a055" corresp="#n055" rend="post(‖)">and <persName>Job</persName> had wished it
+<lb/>too;</seg> and now God <emph rend="slant(italic)">did</emph> speak. He asked
+<lb/><persName>Job</persName> some questions, to show <persName>Job</persName> how little
+<lb/>he knew. His first question was about the
+
+
+<pb n="36"/><milestone unit="sig" n="D4v"/>
+<mw type="pageNum" rend="align(outside)">36</mw>
+
+<lb/>earth. Most children know that the earth
+<lb/>is like a round ball, and that it hangs in the
+<lb/>air, as the moon does, and that it is fast­
+<lb/>ened to nothing. God said to <persName>Job</persName>, <said xml:id="a056" corresp="#n056" rend="post(*)">Where
+<lb/>were you when I began to make the earth,
+<lb/>and when the morning stars sang together,
+<lb/>and all the sons of God shouted for joy?</said>
+<lb/>Who saw God make the earth? The angels,
+<lb/>and they were glad, because the earth shows
+<lb/>forth the glory of their God.</p>
+<p>Could <persName>Job</persName> answer this question? He
+<lb/>was not born when God made the earth.</p>
+<p>God next asked <persName>Job</persName> where he was when
+<lb/>the great sea was shut up in the deep place
+<lb/>that God made for it. For the sea is almost
+<lb/>as great as the dry land, and it is always
+<lb/>tossing itself, as if it wanted to get out of
+<lb/>the deep place where it is; but it cannot get
+<lb/>out, for God has said, <said xml:id="a057" corresp="#n057" rend="post(†)">Come so far, but no
+<lb/>farther.</said></p>
+<p><seg xml:id="a058" corresp="#n058" rend="post(‡)">God asked <persName>Job</persName> whether he had made it
+<lb/>light every morning</seg>—<seg xml:id="a059" corresp="#n059" rend="post(*)">whether he had seen
+
+<pb n="37"/><milestone unit="sig" n="D5r"/>
+<mw type="pageNum" rend="align(outside)">37</mw>
+
+<lb/>the great caves in the bottom of the sea,
+<lb/>where the precious stones are hid</seg>—<seg xml:id="a060" corresp="#n060" rend="post(†)">whether
+<lb/>he knew where the darkness came from,</seg>
+<lb/><seg xml:id="a061" corresp="#n061" rend="post(‡)">and where the snow and hail were kept that
+<lb/>came down in such quantities on the earth;</seg>
+<lb/><seg xml:id="a062" corresp="#n062" rend="post(§)">whether he could make the stars shine in
+<lb/>winter or in summer in the sky,</seg> <seg xml:id="a063" corresp="#n063" rend="post(‖)">or send out
+<lb/>the lightnings,</seg> <seg xml:id="a064" corresp="#n064" rend="post(¶)">or count the clouds, or stop
+<lb/>the rain from falling.</seg> Could <persName>Job</persName> do any
+<lb/>of these things?</p>
+<p>Then God spoke of the beasts, and birds,
+<lb/>and of the care he took of them.</p>
+<p>I will describe to you some of these beasts
+<lb/>and birds of which God spoke to <persName>Job</persName>, and I
+<lb/>will tell you some things about them that
+<lb/>are not written in the Bible.</p>
+
+<pb n="38"/><milestone unit="sig" n="D5v"/>
+<mw type="pageNum" rend="align(outside)">38</mw>
+
+<p><label>1.</label> The Lion.—He is called the king of 
+<lb/>beasts, because he has so terrible a look;
+<lb/>and has such enormous strength, that he can
+<lb/>break a horse's leg with his tail. All the
+<lb/>beasts of the forest are alarmed at the sound
+<lb/>of his roaring when he is hungry. He lives
+<lb/>upon the flesh of animals, and he prefers
+<lb/>the flesh of man to that of any other animal.
+<lb/>He dwells in dark dens in secret places in
+<lb/>the woods, and comes out of them at night
+<lb/>to seek for food. <seg xml:id="a065" corresp="#n065" rend="post(*)">Often in the day he lies
+<lb/>hid among the bushes, and bursts out upon
+<lb/>people who pass by.</seg></p>
+<p><seg xml:id="a066" corresp="#n066" rend="post(†)">God spoke of this terrible lion to <persName>Job</persName>, and
+<lb/>asked him whether he could provide food for
+<lb/>the young lions.</seg></p>
+<p><label>2.</label> The Raven.— This bird is black like a 
+<lb/>crow, but is much larger. It is a fierce
+<lb/>bird, and feeds upon chickens, and rabbits,
+<lb/>and other small animals. It brings them
+<lb/>home to its young ones in their nest, which
+
+<pb n="39"/><milestone unit="sig" n="D6r"/>
+<mw type="pageNum" rend="align(outside)">39</mw>
+
+<lb/>is built in the hole of a rock, or in a high
+<lb/>tree. These young ones make much noise
+<lb/>when in their nest, to show their hunger.</p>
+<p xml:id="a067" corresp="#n067" rend="post(*)">God asked <persName>Job</persName> whether he knew who
+<lb/>provided food for the ravens when they cried
+<lb/>out for hunger.</p>
+<p><label>3.</label> The wild goats.—Numbers of goats
+<lb/>live on the tops of high mountains, and leap
+<lb/>from rock to rock. They are fond of the
+<lb/>grass and plants that grow there; but when
+<lb/>they can they break into the corn-fields, and
+<lb/>get fat and strong upon the nice food they
+<lb/>find there.</p>
+<p xml:id="a068" corresp="#n068" rend="post(†)">God spoke to <persName>Job</persName> of these goats, who
+<lb/>bring up their little ones without any one to
+<lb/>help them.</p>
+<p><label>4.</label> The wild ass.—Every child knows that
+<lb/>the tame ass is a patient, stupid, slow ani­
+<lb/>mal; but the wild ass is quite different.
+<lb/><seg xml:id="a069" corresp="#n069" rend="post(*)">Wild asses live in the deserts, and like best
+
+<pb n="40"/><milestone unit="sig" n="D6v"/>
+<mw type="pageNum" rend="align(outside)">40</mw>
+
+<lb/>salt plants, and to drink salt water.</seg> As
+<lb/>many as twenty asses live in a flock toge—
+<lb/>ther; and one of them watches to see whe­
+<lb/>ther any one is coming near. If the ass on
+<lb/>the watch sees a man coming, he runs to
+<lb/>the other asses, and they all set off in a 
+<lb/>very fast gallop; and so fast can they gallop,
+<lb/>that no horse can overtake them; indeed
+<lb/>they will sometimes stop to let a man on
+<lb/>horseback get almost up to them, and then
+<lb/>set off with more swiftness than before. If
+<lb/>any one does come near a wild ass, the 
+<lb/>animal begins to bite and kick in such a 
+<lb/>furious manner than he is soon killed. It is
+<lb/>therefore very difficult to catch wild asses.
+<lb/>Sometimes, however, they are caught either
+<lb/>by many hunters, who come round them on all
+<lb/>sides, and throw nooses over their heads, or
+<lb/>in pits dug for them, into which they fall.
+<lb/>When they are caught, they are exceedingly 
+<lb/>fierce, and try to wound the people who
+
+<pb n="facing 40"/>
+<pb n="facing 41"/>
+
+<figure>
+<figDesc>An engraving of a rhinoceros standing on a grassy bank by a body of water</figDesc>
+<ab rend="align(right)case(mixed)slant(italic)" type="caption">To face page <hi rend="slant(upright)">41</hi>.</ab>
+</figure>
+
+
+<pb n="41"/><milestone unit="sig" n="E1r"/>
+<mw type="pageNum" rend="align(outside)">41</mw>
+
+<lb/>seize hold of them. But all animals can be
+<lb/>tamed, and therefore the wild ass can be
+<lb/>made to draw a load, and to bear a rider on
+<lb/>his back.</p>
+<p>God spoke to <persName>Job</persName> of the wild ass that lived
+<lb/>in troops near his dwelling.</p>
+<p><label>5.</label> The Unicorn.—This is a very large
+<lb/>animal, that has one horn between his eyes.
+<lb/>The name now given to it is the Rhi-no-ce-
+<lb/>ros. It is the strongest beast in the world,
+<lb/>and the largest except one. The skin of its
+<lb/>back and sides is so hard that nothing can
+<lb/>pierce it; so that it can run quickly through
+<lb/>the woods without being hurt by the thorns
+<lb/>and great boughs. It does not eat other
+<lb/>animals, but lives upon plants. None dare
+<lb/>to attack it, for even the tiger is soon pierced
+<lb/>through by its sharp strong horn. <seg xml:id="a070" corresp="#n070" rend="post(*)">It is
+<lb/>hard to tame such an animal,</seg> <seg xml:id="a071" corresp="#n071" rend="post(*)">or to trust it
+<lb/>even when it is tame, for it is sometimes in
+<lb/>a fury, and turns upon its masters, and de­
+
+<mw type="sig" rend="align(right)indent(2)">E</mw>
+
+
+<pb n="42"/><milestone unit="sig" n="E1v"/>
+<mw type="pageNum" rend="align(outside)">42</mw>
+
+<lb/>stroys them.</seg> <seg xml:id="a072" corresp="#n072" rend="post(†)">How useful it would be if
+<lb/><choice><sic>if</sic><corr>it</corr></choice> were like the ox, and would draw the
+<lb/>plough to prepare for the seed being sown;
+<lb/>or draw the harrow to cover up the seed 
+<lb/>after it is sown; or draw the wagon to take
+<lb/>the seed home to the barn!</seg> But the uni­
+<lb/>corn, or rhinoceros, cannot be trusted to do
+<lb/>these useful services.</p>
+<p><label>6.</label> The Peacock.—<seg xml:id="a073" corresp="#n073" rend="post(‡)">God then spoke of the
+<lb/>beautiful wings he had given to the pea­
+<lb/>cock; that splendid bird whose feathers, when
+<lb/>they are spread out like a fan, shine with
+<lb/>purple, and green, and gold.</seg></p>
+<p><label>7.</label> The Ostrich.—This is the largest of
+<lb/>birds, and it is taller than the tallest man.
+<lb/><seg xml:id="a074" corresp="#n074" rend="post(*)">With its wings it cannot fly, but it stretches
+<lb/>them out, when it runs, to catch the wind,
+<lb/>and then the swiftest horse could not over­
+
+<pb n="facing 42"/>
+
+	    <figure>
+<figDesc>An engraving of an ostrich in the desert with an egg behind it</figDesc>
+<ab rend="align(right)case(mixed)slant(italic)" type="caption">To face page <hi rend="slant(upright)">42</hi>.</ab>
+</figure>
+
+<pb n="facing 43"/>
+
+<pb n="43"/><milestone unit="sig" n="E2r"/>
+<mw type="pageNum" rend="align(outside)">43</mw>
+
+<lb/>take it.</seg> <seg xml:id="a075" corresp="#n075" rend="post(†)">The feathers of its tail are very
+<lb/>beautiful. They are long and white, and
+<lb/>are used by princesses and great ladies to
+<lb/>adorn their heads.</seg> Hunters pursue the
+<lb/>ostriches for the sake of its feathers; but
+<lb/>they would never be able to catch it, were
+<lb/>it not that the bird is so silly that it runs
+<lb/>crooked, first on one side and then on the
+<lb/>other, so that the hunters, who take care to
+<lb/>run straight, after some days can overtake
+<lb/>it; then the foolish bird often hides its head
+<lb/>in the sand, and thinks that no one can see
+<lb/>it. The ostrich puts me in mind of those
+<lb/>foolish people who think God cannot see
+<lb/>them, because they cannot see God. <seg xml:id="a076" corresp="#n076" rend="post(*)">But
+<lb/>the ostrich shows its folly chiefly in the
+<lb/>little care it takes of its eggs; for instead of
+<lb/>making a nest in some secret place, like
+<lb/>other birds, it digs a hole in the sand, and
+<lb/>lays them in it, just covering them over with
+<lb/>sand. She leaves them in the day-time,
+<lb/>trusting the sun to warm them while she
+
+<pb n="44"/><milestone unit="sig" n="E2v"/>
+<mw type="pageNum" rend="align(outside)">44</mw>
+
+<lb/>is gone, forgetting that the foot may crush
+<lb/>them, or that the wild beast may break
+<lb/>them. It is true that the ostriches sit upon
+<lb/>their nests in the night, and often in the
+<lb/>day, in order to hatch them: but they ought
+<lb/>to be watching the eggs, for when they are
+<lb/>away, not only do beasts tread on them, but
+<lb/>black men often come to rob the nests, and
+<lb/>feast upon the eggs, which are very large
+<lb/>and good to eat. But God has not given
+<lb/>the ostrich so much sense as he has given
+<lb/>to most other birds.</seg></p>
+<p><label>8.</label> The horse.—God next spoke of one of 
+<lb/>the most beautiful and glorious of animals.
+<lb/>The horse is both gentle and brave. He
+<lb/>will obey his master, and yet he will venture
+<lb/>into the battle. <seg xml:id="a077" corresp="#n077" rend="post(†)">Indeed, the war-horse de­
+<lb/>lights in the sound of the trumpet,</seg> <seg xml:id="a078" corresp="#n078" rend="post(*)">and
+
+<pb n="45" xml:id="p045"/><milestone unit="sig" n="E3r"/>
+<mw type="pageNum" rend="align(outside)">45</mw>
+
+<lb/>rushes into the field, not afraid of the sword,
+<lb/>or of the spear.</seg> The horse does not be­
+<lb/>have as the unicorn often does, who grows
+<lb/>furious in the battle, and sometimes kills his
+<lb/>own master, but he bears his rider in the
+<lb/>midst of the enemy, till he falls down dead
+<lb/>upon the field.</p>
+<p>How sad to think that men should fight
+<lb/>so fiercely against their fellow-creatures!
+<lb/>They even did so in the days of <persName>Job</persName>, and
+<lb/>they have done so ever since. <seg xml:id="a079" corresp="#n079" rend="post(†)">But when all
+<lb/>men love the Lord, they will turn the sword
+<lb/>into the share of the plough, which makes
+<lb/>furrows in the ground, and the spear into a 
+<lb/>sharp hook with which to prune the vine
+<lb/>and the trees of the orchard.</seg> What plea­
+<lb/>sant times will those be! But God did not
+
+<mw type="sig" rend="align(right)indent(2)">E 3</mw>
+
+<pb n="46"/><milestone unit="sig" n="E3v"/>
+<mw type="pageNum" rend="align(outside)">46</mw>
+
+<lb/>speak of those times to <persName>Job</persName>, but of the times
+<lb/>of war and bloodshed.</p>
+<p><label>9.</label> The Hawk.—There are some hawks
+<lb/>that like to live in a very hot country in
+<lb/>winter. The country which <persName>Job</persName> lived in
+<lb/>was hot, but not so hot as some others.
+<lb/>The hawk is so wise that it knows when the
+<lb/>winter is coming, and which way to go
+<lb/>through the air to find a hotter country.
+<lb/><seg xml:id="a080" corresp="#n080" rend="post(*)">Did <persName>Job</persName> make the hawk so wise, and teach
+<lb/>it where to fly?</seg></p>
+<p><label>10.</label> The Eagle.—Though it is not so large
+<lb/>as the ostrich, it is a much braver, and
+<lb/>stronger, and wiser bird. There is no bird
+<lb/>whose wings are so strong, therefore none
+<lb/>can fly so high or so fast. <seg xml:id="a081" corresp="#n081" rend="post(†)">It does not build
+<lb/>its nest on the sand, but on the very high
+<lb/>trees, or the rocks, and sometimes in places
+<lb/>where no creature can come.</seg> Its nest is 
+<lb/>made of strong boughs, like a floor; and they
+
+<pb n="facing 46"/>
+
+	  <figure>
+<figDesc>An engraving of an eagle bringing a lamb to its nest, which is on a crag and has two eggs inside.</figDesc>
+<ab rend="align(right)slant(italic)case(mixed)" type="caption">To face page <hi rend="slant(upright)">46</hi>.</ab>
+</figure>
+
+<pb n="facing 47"/>
+
+<pb n="47"/><milestone unit="sig" n="E4r"/>
+<mw type="pageNum" rend="align(outside)">47</mw>
+
+<lb/>are placed like a bridge between two rocks,
+<lb/>or two branches. The eagle feeds its young
+<lb/>ones with lambs and kids, for it is so strong
+<lb/>that it can carry them in its claws to these
+<lb/>very high places. <seg xml:id="a082" corresp="#n082" rend="post(*)">The eagle has sharp­
+<lb/>sighted eyes, so that when she is flying so
+<lb/>high in the air that she looks only like a 
+<lb/>little black speck, she can see the beasts
+<lb/>below in the meadow, and she can pounce
+<lb/>suddenly upon them, and carry them off be­
+<lb/>fore they are aware,</seg> to feed her young ones
+<lb/>upon their blood. <seg xml:id="a083" corresp="#n083" rend="post(†)">When a battle has
+<lb/>been fought, and the field is strewed with
+<lb/>dead bodies, the eagles see them very far off,
+<lb/>and fly to the spot to feed upon the flesh.</seg>
+<lb/>Of this strong and brave bird the Lord spoke
+	  <lb/>to <persName>Job</persName>.</p>
+<p>Then the Lord asked <persName>Job</persName> whether he
+<lb/>could answer him—for <persName>Job</persName> had said he
+<lb/>could—and that he wished God to speak to
+<lb/>him.</p>
+
+<pb n="48"/><milestone unit="sig" n="E4v"/>
+<mw type="pageNum" rend="align(outside)">48</mw>
+
+<p><persName>Job</persName> now felt, more than he had ever done
+<lb/>before, how great that God was, who had
+<lb/>made all these wonderful creatures, and
+<lb/>taught them all their different ways, and
+<lb/>this was the answer he made to God.
+<lb/><said>Behold, I am vile; what shall I answer
+<lb/>thee? I will lay my hand upon my mouth.
+<lb/>Once have I spoken; but I will not answer.
+<lb/>Yea, twice; but (<emph rend="slant(italic)">I will say no more</emph>.)</said></p>
+<p>This was the humble way in which <persName>Job</persName> 
+<lb/>now spoke; for he felt that though he was
+<lb/>not a hypocrite as his friends had suspected,
+<lb/>yet that he was a great sinner in the eyes of
+<lb/>the high and holy God.</p>
+</div>
+
+<div type="chapter" xml:id="c005">
+<head>Chapter V.
+<lb/>How Good God was to <persName>Job</persName>.</head>
+
+<p><hi rend="case(smallcaps)">But</hi> God had still more wonderful things
+<lb/>to speak of; and He bade <persName>Job</persName> listen again
+<lb/>to Him.</p>
+<p><label>I.</label> God spoke of Be-he-moth. What ani­
+
+<pb n="facing 48"/>
+<pb n="facing 49"/>
+
+<figure>
+<figDesc>An engraving of a "behemoth" (resembles the elephant) standing on a grassy bank drinking from a body of water, vegitation in background</figDesc>
+<ab rend="align(right)case(mixed)slant(italic)" type="caption">To face page <hi rend="slant(upright)">49</hi>.</ab>
+</figure>
+
+
+
+<pb n="49"/><milestone unit="sig" n="E5r"/>
+<mw type="pageNum" rend="align(outside)">49</mw>
+
+<lb/>mal is that? <seg xml:id="a084" corresp="#n084" rend="post(*)">It is a beast stronger than
+<lb/>any other,</seg> <seg xml:id="a085" corresp="#n085" rend="post(†)">whose bones are like bars of
+<lb/>iron,</seg> <seg xml:id="a086" corresp="#n086" rend="post(‡)">and whose tail is like a cedar-tree.</seg>
+<lb/><seg xml:id="a087" corresp="#n087" rend="post(§)">Yet this enormous beast eats grass and
+<lb/>plants, which grow upon the mountains,
+<lb/>where the deer and the goats play.</seg> <seg xml:id="a088" corresp="#n088" rend="post(‖)">It
+<lb/>likes to lie under shady trees, or in the
+<lb/>damp places where the seeds grow by the 
+<lb/>river-side, and it drinks such large draughts
+<lb/>from the river, that it seems as if it would
+<lb/>drink it all up.</seg> What animal can this be?
+<lb/>Is it the largest of beasts that we call the
+<lb/>elephant? But then the elephant has not
+<lb/>a tail like the cedar-tree, but a very small 
+<lb/>one. <seg xml:id="a089" corresp="#n089" rend="post(*)">Then it may be some beast, even
+
+<pb n="50"/><milestone unit="sig" n="E5v"/>
+<mw type="pageNum" rend="align(outside)">50</mw>
+
+<lb/>larger than the elephant, that we have not
+<lb/>seen.</seg></p>
+<p><label>II.</label> Last of all, the Lord spoke of an
+<lb/>animal called Levi-a-than.</p>
+<p>This animal lives in the sea, so we sup­
+<lb/>pose it must be a fish. <seg xml:id="a090" corresp="#n090" rend="post(†)">It is so large that,
+<lb/>when it swims near the top of the sea, it
+<lb/>seems to make it to boil.</seg> <seg xml:id="a091" corresp="#n091" rend="post(‡)">It has large
+<lb/>bright eyes,</seg> <seg xml:id="a092" corresp="#n092" rend="post(§)">and it has a wide mouth that
+<lb/>opens like doors, and is full of great teeth.</seg>
+<lb/><seg xml:id="a093" corresp="#n093" rend="post(*)">It is covered all over with hard pieces,
+<lb/>closely joined together, called scales; and
+<lb/>these are so strong that darts can no more
+<lb/>pierce it than straws. Nor can it be hurt
+<lb/>when it lies down on the sharp stones at
+
+<pb n="51"/><milestone unit="sig" n="E6r"/>
+<mw type="pageNum" rend="align(outside)">51</mw>
+
+<lb/>the bottom of the sea.</seg> <seg xml:id="a094" corresp="#n094" rend="post(†)">There is no crea­
+<lb/>ture on the earth like Leviathan</seg> And who
+<lb/>is Leviathan? Is it the great whale? No;
+<lb/>for the whale has no scales, and no great
+<lb/>teeth, nor fiery eyes. <seg xml:id="a095" corresp="#n095" rend="post(‡)">It must then be some
+<lb/>animal that men do not know of now.</seg></p>
+<p><seg xml:id="a096" corresp="#n096" rend="post(§)">After speaking of the wonderful Levia­
+<lb/>than, God left off speaking; and <persName>Job</persName> again
+<lb/>spoke, even more humbly than before.</seg>
+<lb/>He owned that he knew nothing, and that
+<lb/>he had spoken what he did not understand;
+<lb/>for now that he had seen God, he knew
+<lb/>what a vile creature he was, and he said­
+<lb/><said>I abhor myself, and repent in dust and
+<lb/>ashes.</said> Yes; even good <persName>Job</persName>, the very best
+
+<pb n="52"/><milestone unit="sig" n="E6v"/>
+<mw type="pageNum" rend="align(outside)">52</mw>
+
+<lb/>man on the earth, felt that he was a sinful
+<lb/>worm in the sight of God.</p>
+<p>What, then, dear children, are you?—<emph rend="slant(italic)">You</emph>,
+<lb/>who are not the <emph rend="slant(italic)">best</emph> of all people, but who
+<lb/>are often naughty? What must <emph rend="slant(italic)">you</emph> be?</p>
+<p>Do you think that God was angry with
+<lb/><persName>Job</persName>? O no; though He had taught him
+<lb/>to be more humble, He was much pleased
+<lb/>with the way in which he had behaved in 
+<lb/>his affliction. But God <emph rend="slant(italic)">was</emph> angry with the
+<lb/>three friends for what they had said to <persName>Job</persName>:
+<lb/>and he told them to offer up sacrifices for
+<lb/>their sins, and to ask <persName>Job</persName> to pray for them.</p>
+<p>How ashamed they must now have been
+<lb/>of their cruel speeches to <persName>Job</persName>! But they
+<lb/>were not wicked men. They did fear God,
+<lb/>but they were not as loving and merciful as
+<lb/>God is. Their hearts were too hard, and
+<lb/>they had unkind thoughts in their minds.
+<lb/>How glad they must have been to think 
+<lb/>that God would forgive them! They took
+<lb/>seven bullocks, and seven sheep, as God
+<lb/>had commanded, and they asked <persName>Job</persName> to
+<lb/>pray for them. Would <persName>Job</persName> pray for them?
+<lb/>Would he forgive all their unkindness, and
+<lb/>ask God to forgive them? O yes; he was
+
+
+<pb n="53"/><milestone unit="sig" n="F1r"/>
+<mw type="pageNum" rend="align(outside)">53</mw>
+
+<lb/>like the <persName>Lord Jesus</persName>. <persName>Job</persName> prayed, and the
+<lb/>Lord heard his prayers for his friends.
+<lb/>What a happy thing it is to have good
+<lb/>friends to pray for us when we have sinned!
+<lb/><seg xml:id="a097" corresp="#n097" rend="post(*)">We ought to ask our good friends to pray
+<lb/>for us, as God will hear righteous men.</seg>
+<lb/>And we ought to pray for ourselves too.</p>
+<p>But do you not long to know whether
+<lb/>poor <persName>Job</persName> got well? <seg xml:id="a098" corresp="#n098" rend="post(†)">Yes; for the Lord had
+<lb/>now taken him from <persName>Satan</persName>,</seg> who had made
+<lb/>the dreadful boils to break out over his body.</p>
+<p>All <persName>Job's</persName> friends and relations came to see
+<lb/>him. They ate bread in his house, and
+<lb/>they pitied him, and comforted him. They
+<lb/>knew how poor he was, and they each
+<lb/>brought him a present of some money. No
+<lb/>doubt the friends had heard that God had
+<lb/>spoken to <persName>Job</persName>, and had been pleased with
+<lb/>him; so no one could think that God had 
+<lb/>sent these troubles because he was angry
+<lb/>with <persName>Job</persName>.</p>
+<p><persName>Job</persName> soon grew rich again, for with the
+
+<mw type="sig" rend="align(right)indent(2)">F</mw>
+
+<pb n="54"/><milestone unit="sig" n="F1v"/>
+<mw type="pageNum" rend="align(outside)">54</mw>
+
+<lb/>money he would buy sheep and oxen,
+<lb/>camels and asses, and God made the flocks
+<lb/>and herds to grow larger and larger, till at
+<lb/>last <persName>Job</persName> had twice as many animals as he
+<lb/>had before his afflictions.</p>
+<p>But <persName>Job</persName> had lost his children. God gave
+<lb/>him as many children as he had before. He 
+<lb/>had seven sons and three daughters. The
+<lb/>names of the daughters were <persName>Jemima</persName>, which
+<lb/>means <gloss rend="pre(“)post(”)">Days upon days;</gloss> <persName>Kezia</persName>, or
+<lb/><persName rend="pre(“)post(”)">Cassia</persName>, a sweet-smelling plant; and 
+<lb/><persName>Keren-happuch</persName>, or <gloss rend="pre(“)post(”)">the horn of plenty.</gloss>
+<lb/>These daughters were the fairest in all the
+<lb/>land, and <persName>Job</persName> gave them some of his riches.
+<lb/><persName>Job</persName> lived long enough to see his children
+<lb/>grown up and married, and to see his grand­
+<lb/>children, and even to see their children, who 
+<lb/>were his great-grandchildren. <seg xml:id="a099" corresp="#n099" rend="post(*)">I do not know
+<lb/>how old <persName>Job</persName> was when he died, but I know
+<lb/>that he lived one hundred and forty years 
+<lb/>after his troubles had been taken away; and
+<lb/>when he died he was very old indeed, and
+<lb/>was like a shock of corn fully ripe, and fit 
+<lb/>to be carried into the barn.</seg></p>
+
+<pb n="55"/><milestone unit="sig" n="F2r"/>
+<mw type="pageNum" rend="align(outside)">55</mw>
+
+<p>Who was ever afflicted so much as <persName>Job</persName>?
+<lb/>Not one, except the <persName>Lord Jesus Christ</persName>.
+<lb/>Yet we see that he was delivered out of his
+<lb/>afflictions. All people in trouble should
+<lb/>think of <persName>Job</persName>, and hope that God will deliver
+<lb/>them. God does not like to let troubles
+<lb/>come; He is so kind that he would rather
+<lb/>be always doing us good; and when he does
+<lb/>send afflictions, he longs to make us happy
+<lb/>again. <seg xml:id="a100" corresp="#n100" rend="post(*)">Ought we not, therefore, to be pa­
+<lb/>tient, trusting the Lord to help us?</seg></p>
+<p>My little children, if you live you will
+<lb/>have troubles, but I cannot tell you of what sort;
+<lb/>perhaps you will have troubles of all sorts.
+<lb/>You may, perhaps, lose your things, as <persName>Job</persName>
+<lb/>lost his cattle. Thieves may steal your
+<lb/>money, or storms may destroy your corn, or
+<lb/>the fire may consume your house.</p>
+<p>Perhaps you may lose your friends. You
+<lb/>may have a kind wife, or husband, or some
+
+<pb n="56"/><milestone unit="sig" n="F2v"/>
+<mw type="pageNum" rend="align(outside)">56</mw>
+
+<lb/>sweet little children, that may be taken off
+<lb/>by a fever quite suddenly.</p>
+<p>Perhaps you may lose your health. You
+<lb/>may be obliged to lie upon a sofa, or in a
+<lb/>bed year after year, even while you are
+<lb/>young.</p>
+<p>Perhaps you may lose your character.
+<lb/>Unkind people may think you have done
+<lb/>wicked things, which you have not done,
+<lb/>and may speak against you, and laugh at you.</p>
+<p>I have read of people who have had many
+<lb/>afflictions come upon them quite suddenly.
+<lb/><seg xml:id="a101" corresp="#n101" rend="post(*)">I heard of a man who lost all his property,
+<lb/>and almost all his family, in one night.
+<lb/>This man was wakened in the night by the
+<lb/>flames; he escaped through a door at the
+<lb/>top of the house with a child or two in his
+<lb/>arms: but his wife and four older boys, who
+<lb/>were trying to come after him, were suffocated
+<lb/>by the smoke in a moment. This poor man
+<lb/>was afterwards almost mad with grief.</seg> I 
+<lb/>cannot tell you whether he knew where to go for
+<lb/>comfort. Whatever afflictions you may have,
+
+<pb n="57"/><milestone unit="sig" n="F3r"/>
+<mw type="pageNum" rend="align(outside)">57</mw>
+
+<lb/>dear children, I hope you will go to the
+<lb/><persName>Lord Jesus</persName> for comfort, because he was af­
+<lb/>flicted in <emph rend="slant(italic)">every</emph> way, and He knows how to
+<lb/>feel for those who are in <emph rend="slant(italic)">any</emph> sort of trouble.</p>
+<p><persName>Jesus</persName> lost all He had, for He left his throne
+<lb/>to be very poor.</p>
+<p><persName>Jesus</persName> lost his friends, for they left Him
+<lb/>alone in his distress.</p>
+<p><persName>Jesus</persName> had no strength, for sorrow made
+<lb/>Him so weak, that He could not carry his
+<lb/>cross up the hill.</p>
+<p><persName>Jesus</persName> was spoken against by all, though
+<lb/>He had done no sin.</p>
+<p xml:id="a102" corresp="#n102" rend="post(*)"><persName>Jesus</persName> remembers how He felt when He
+<lb/>was in trouble, and He can feel for us more
+<lb/>than any one else can; and He alone can
+<lb/>always comfort us.</p>
+<p>Go to Him, <emph rend="slant(italic)">now</emph>, dear little ones, in all
+<lb/>your little troubles. Ask Him to help you out
+<lb/>of them, and to forgive your sins, and to take
+
+<mw type="sig" rend="align(right)indent(2)">F 3</mw>
+
+<pb n="58"/><milestone unit="sig" n="F3v"/>
+<mw type="pageNum" rend="align(outside)">58</mw>
+
+<lb/>you at length to that place where no trouble
+<lb/>ever comes, (because no <emph rend="slant(italic)">sin</emph> is there,) <seg xml:id="a103" corresp="#n103">that
+<lb/>sweet place where God will wipe away all
+<lb/>tears from all eyes, and where there is no
+<lb/>death, neither sorrow, nor crying, nor any
+<lb/>more pain.</seg></p></div>
+
+<pb n="59"/><milestone unit="sig" n="F4r"/>
+
+<div type="section">
+<head>The
+<lb/>Mysterious Glass.</head>
+<head type="sub" rend="case(mixed)">An Allegory.</head>
+
+<pb n="60"/><milestone unit="sig" n="F4v"/>
+
+<pb n="61"/><milestone unit="sig" n="F5r"/>
+
+<div type="poem" xml:id="c006">
+<head rend="post(#rule)">The Mysterious Glass.
+<lb/>An Allegory.</head>
+
+<epigraph><p><quote rend="pre(“)post(”)">When I thought to know this, it was too painful for
+<lb/>me, until I went into the sanctuary of God.</quote> <bibl><regMe>Ps. lxxiii.
+<lb/>16,17.</regMe></bibl></p></epigraph>
+
+<lg type="poem" subtype="indeterminate">
+
+<lg type="indeterminate">
+<label type="speaker" rend="case(allcaps)align(center)"><persName>Emmeline</persName>.</label>
+<l><hi rend="case(smallcaps)">What</hi> is that glass you're looking through?</l>
+<l>O let me look as well as you;</l>
+<l>I see you smile, and then you weep,—</l>
+<l>Dear mother, let me have a peep.</l></lg>
+
+<lg type="indeterminate">
+<label rend="case(allcaps)align(center)" type="speaker">Mother.</label>
+<l>Have patience, little <persName>Emmeline</persName>,</l>
+<l>And you shall see the sights within;</l>
+<l>This is the glass that shows us how</l>
+<l>God treats his children here below,</l>
+
+<pb n="62"/><milestone unit="sig" n="F5v"/>
+<mw type="pageNum" rend="align(outside)">62</mw>
+
+<l>Before He takes them to his rest</l>
+<l>To render them completely blest.</l>
+<l>Come, look, and tell what you espy</l>
+<l>To little <persName>Charles</persName>, who's standing by.</l></lg>
+
+<lg type="indeterminate">
+<label type="speaker" rend="case(allcaps)align(center)"><persName>Emmeline</persName>.</label>
+<l><persName>Emmy</persName> will tell you all she sees.</l>
+<l>Behold a man upon his knees,</l>
+<l>Lab'ring to fill a bag with gold</l>
+<l>As full as ever it will hold:</l>
+<l>He's weary, now, and falls asleep,</l>
+<l>But none are near a watch to keep.</l>
+<l>Lo! now an aged man appears,</l>
+<l>And in his hand a pair of shears.</l>
+<l>He has a pallid, haggard look,</l>
+<l>And wears a scanty, tatter'd cloak;</l>
+<l>He pierces the great bag with holes,—</l>
+<l>The gold through every opening rolls;</l>
+<l>But while the pieces lie about,</l>
+<l>Such pretty wings begin to sprout!</l>
+<l>Their wings they spread, they mount, they fly,</l>
+<l>Like stars they glitter in the sky—</l>
+<l>Of golden fishes I have heard,</l>
+<l>But never saw a golden bird.</l>
+
+<pb n="63"/><milestone unit="sig" n="F6r"/>
+<mw type="pageNum" rend="align(outside)">63</mw>
+
+<l>Oh! now the sleeping man awakes,</l>
+<l>Alas! what piteous moans he makes!</l>
+<l>And when his children call for bread,</l>
+<l>What bitter tears I see him shed!</l>
+<l>His empty bag he bids them feel,</l>
+<l>Nor ask him for their evening meal.</l>
+<l>O joy! an angel form descends,</l>
+<l>And over him she gently bends;</l>
+<l>Shows him a scroll, and lets him read,</l>
+<l><quote rend="pre(“)post(”)">Thy shepherd shall supply thy need.</quote></l>
+<l>He scarce has wip'd away his tears,</l>
+<l>When, lo! a raven troop appears,</l>
+<l>Some bearing flesh, and others bread,</l>
+<l>Which on the grass they quickly spread,—</l>
+<l>Then feed each child with tender care,</l>
+<l>As angels kind, though not as fair.</l>
+<l>But now I can no more discern,</l>
+<l>For shades of night o'er all return;</l>
+<l>O tell me what the things may mean,</l>
+<l>That in the glass I just have seen.</l></lg>
+
+<lg type="indeterminate">
+<label type="speaker" rend="case(allcaps)align(center)">Mother.</label>
+<l>That aged man you saw appear,</l>
+<l>Is <mcr rend="pre(“)post(”)">Poverty,</mcr> whom all men fear; </l>
+
+<pb n="64"/><milestone unit="sig" n="F6v"/>
+<mw type="pageNum" rend="align(outside)">64</mw>
+
+<l>Yet oft, when left without a crust,</l>
+<l>The <name>Christian</name> learns in God to trust;</l>
+<l>For in his sorrow, <mcr rend="pre(“)post(”)">Mercy</mcr> shows </l>
+<l>The promises, which give repose.</l>
+<l>Tis now my little <persName>Charlie's</persName> turn;</l>
+<l>Come, darling, what do you discern?</l></lg>
+
+<lg type="indeterminate">
+<label type="speaker" rend="case(allcaps)align(center)"><persName>Charles</persName>.</label>
+<l>I think the man that I behold,</l>
+<l>Is he who lately lost his gold;</l>
+<l>His little children, full of mirth,</l>
+<l>Are sitting round his cottage hearth;</l>
+<l>Their father looks so very glad!</l>
+<l>But now, a man, in armour clad,</l>
+<l>Roughly bursts through the cottage-door,</l>
+<l>And loudly stamps upon the floor;</l>
+<l>Then takes a child within his grasp;</l>
+<l>It's father's neck it tries to clasp;</l>
+<l>The warrior seizes every one,</l>
+<l>And leaves the father all alone.</l>
+<l>At first, he can no comfort take;</l>
+<l>It seems as though his heart would break,</l>
+<l>When, through an opening in the sky,</l>
+<l>He sees his children all on high,</l>
+
+<pb n="65"/><milestone unit="sig" n="G1r"/>
+<mw type="pageNum" rend="align(outside)">65</mw>
+
+<l>Who, by their looks appear to say,</l>
+<l><said>O come, dear father, come away.</said></l>
+<l>Beside them is an empty place;—</l>
+<l>How chang'd is now the father's face!</l>
+<l>Is it for <emph rend="slant(italic)">him</emph> that place they keep,</l>
+<l>That he so soon has ceased to weep?</l></lg>
+
+<lg type="indeterminate">
+<label type="speaker" rend="case(allcaps)align(center)">Mother.</label>
+<l>Yes, <persName>Jesus</persName> keeps a place above</l>
+<l>For all the people of his love,</l>
+<l>And often lets <mcr rend="pre(“)post(”)">Bereavement</mcr> come</l>
+<l>To make them love that better home;</l>
+<l>I need no more explain to you.</l>
+<l>Let little <persName>Emmeline</persName> look through.</l></lg>
+
+<lg type="indeterminate">
+<label type="speaker" rend="case(allcaps)align(center)"><persName>Emmeline</persName>.</label>
+<l>I see him o'er his Bible bent,</l>
+<l>Then looking up with calm content;</l>
+<l>I see a figure ghastly grim,—</l>
+<l>Its bony hand now presses him;</l>
+<l>His skin is shrivelled by the touch,</l>
+<l>He throws himself upon a couch,</l>
+<l>He seems to feel tormenting pain,</l>
+<l>When suddenly he smiles again;</l>
+
+<mw type="sig" rend="align(right)indent(2)">G</mw>
+
+<pb n="66"/><milestone unit="sig" n="G1v"/>
+<mw type="pageNum" rend="align(outside)">66</mw>
+
+<l>A tender hand him pillow smoothes,</l>
+<l>A gentle voice his anguish soothes.</l>
+<l>Is it an angel hovers near?</l>
+<l>Is it an angel's voice I hear?</l></lg>
+
+<lg type="indeterminate">
+<label type="speaker" rend="case(allcaps)align(center)">Mother.</label>
+	      <l>My child, remember <persName>Jesus</persName> said,</l>
+<l><emph rend="slant(italic)">He</emph> will in sickness make our bed.</l></lg>
+
+<lg type="indeterminate">
+<label type="speaker" rend="case(allcaps)align(center)"><persName>Charles</persName>.</label>
+<l>Now, sister, let me look once more;</l>
+<l>I see the man I saw before,</l>
+<l>Poor and bereav'd, and racked with pain,</l>
+<l>No earthly joys to him remain.</l>
+<l>Yes, <emph rend="slant(italic)">one</emph>; his friends sit round his bed,</l>
+<l>And tears of sweet compassion shed,</l>
+<l>And tell him that they gladly will</l>
+<l>Attend him while he lies so ill.</l>
+<l>Now some one softly opens the door,</l>
+<l>His velvet slippers press the floor,</l>
+<l>His face his hid within a hood,—</l>
+<l>O tell me, mother, is he good?</l>
+<l>Lo! from his mouth comes burning smoke,</l>
+<l>And just beneath his velvet cloak</l>
+
+<pb n="67"/><milestone unit="sig" n="G2r"/>
+<mw type="pageNum" rend="align(outside)">67</mw>
+
+<l>A snaky curl is peeping out.</l>
+<l>How cunningly he goes about,</l>
+<l>Whispering in every person's ear</l>
+<l>Something which turns him pale with fear;</l>
+<l>All look at the sick man with scorn,</l>
+<l>And leave him on his bed forlorn.</l>
+<l>O, mother, how I do detest</l>
+<l>That wicked one in velvet drest!</l></lg>
+
+<lg type="indeterminate">
+<label type="speaker" rend="case(allcaps)align(center)">Mother.</label>
+<l>Yes, <mcr rend="pre(“)post(”)">Slander</mcr> hate, whose fatal breath</l>
+<l>Inflicts a wound more deep than death.</l>
+<l>But every grief that we can feel,</l>
+<l>The Saviour has the power to heal.</l></lg>
+
+<lg type="indeterminate">
+<label type="speaker" rend="case(allcaps)align(center)"><persName>Charles</persName>.</label>
+<l>O yes, now joy lights up his eye,</l>
+<l>He sees an open book on high,</l>
+<l>With countless names in letters bright,</l>
+<l>Written on leaves of purest white.</l>
+<l>He gazes on its pages fair,</l>
+<l>And sees <emph rend="slant(italic)">his</emph> name, <seg xml:id="a104" corresp="#n104" rend="post(*)"><persName rend="pre(“)post(”)">Ben-oni</persName>,</seg> there,</l>
+
+<pb n="68"/><milestone unit="sig" n="G2v"/>
+<mw type="pageNum" rend="align(outside)">68</mw>
+
+<l>Then cries, <said rend="post()" xml:id="s001" next="#s002">My name on earth despis'd,</said></l>
+<l><said rend="pre()post()" xml:id="s002" prev="#s001" next="#s003">O is it by my Saviour prized?</said></l>
+<l><said rend="pre()post()" xml:id="s003" prev="#s002" next="#s004">Though now bereav'd, diseas'd, forlorn,</said></l>
+<l><said rend="pre()" xml:id="s004" prev="#s003">I bless my God that I was born.</said></l>
+<l>Mother, the glass has grown so bright,</l>
+<l>I can no longer bear the sight.</l></lg>
+
+<lg type="indeterminate">
+<label type="speaker" rend="case(allcaps)align(center)">Mother.</label>
+<l>He now has left this world of sin</l>
+<l>For one where foes ne'er enter in.</l>
+<l>God <emph rend="slant(italic)">could</emph> have given him back his wealth,</l>
+<l>His children, character, and health;</l>
+<l>(For often when his people pray,</l>
+<l>God gives them all He took away:)</l>
+<l>But what if he had done all this?</l>
+<l>On earth there is no <emph rend="slant(italic)">perfect</emph> bliss.</l>
+<l>Beneath an ever-changing sky</l>
+<l>The leaves of spring in autumn die,</l>
+<l>But O! there is a heavenly shore,</l>
+<l>Where leaves are seen that fade no more;</l>
+<l>Through all the troubles of the way,</l>
+<l>Be thou, my God, my children's stay.</l>
+<l>Children, when I lie in my grave,</l>
+<l>Remember how the Lord can save.</l>
+
+<pb n="69"/><milestone unit="sig" n="G3r"/>
+<mw type="pageNum" rend="align(outside)">69</mw>
+      
+<l>Whatever enemies assail,</l>
+<l>There is an arm can never fail,</l>
+<l>A bosom where my lambs may rest;</l>
+<l>It is the blessed Saviour's breast.</l></lg>
+</lg>
+
+</div>
+</div>
+
+<trailer rend="align(center)case(allcaps)">The End.</trailer>
+
+</body>
+      <back>
+
+<titleBlock type="colophon" rend="case(allcaps)align(center)">
+<docImprint><pubPlace>London</pubPlace>:
+<lb/>printed by <docRole type="printer"><persName>G. J. Palmer</persName>,</docRole>, <placeName>Savoy Street, Strand</placeName>.</docImprint>
+</titleBlock>
+
+<pb n="70"/><milestone unit="sig" n="G3v"/>
+
+<pb n="71"/><milestone unit="sig" n="G4r"/>
+
+<div type="advert" rend="align(center)">        
+<head rend="post(#rule)">Works
+<lb/>By the same Author.</head>
+
+<advertisement rend="post(#rule)">
+	  <p rend="first-indent(0)"><bibl><title><hi rend="case(allcaps)">The History of a Young <name>Jew</name></hi>;
+<lb/>A <emph rend="slant(italic)">True</emph> History,
+<lb/>Adapted to Children and to Village Libraries.</title></bibl>
+<lb/>Price <measure>1s</measure>.</p>
+</advertisement>
+
+<advertisement rend="post(#rule)">
+<p rend="first-indent(0)"><bibl><title rend="case(allcaps)">The Peep of Day;
+<lb/>Or, a Series of the Earliest Instructions the
+<lb/>Infant Mind is Capable of Recieving.</title></bibl>
+<lb/>Seventh Edition. Price <measure>3s</measure>. cloth.</p>
+</advertisement>
+
+<advertisement>
+<p rend="first-indent(0)"><bibl><title rend="case(allcaps)">Line Upon Line;
+<lb/>Or, a Second Series of the Earliest Religious 
+<lb/>Instructions the Infant Mind is 
+<lb/>Capable of Recieving.</title></bibl>
+<lb/>In Two Volumes.
+<lb/>Fourth Edition, Price <measure>5s</measure>. cloth.</p>
+</advertisement>
+</div>
+      </back>
+   </text>
+ </TEI>

@@ -1,0 +1,1020 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/wwp-store.rng"    type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../schema/wwp-store.isosch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- $Id: kilham.claims.xml 31962 2017-06-23 22:20:54Z syd $ -->
+<TEI xmlns="http://www.wwp.northeastern.edu/ns/textbase" xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en">
+  <teiHeader xml:id="TR00226.hdr">
+    <fileDesc>
+      <titleStmt>
+        <title type="main">The Claims of West Africa to Christian Instruction, Through the Native Languages, 1830</title>
+        <author>
+          <persName ref="p:hkilham.whv" type="person-female">Kilham, Hannah</persName>
+        </author>
+        <sponsor>Brown University</sponsor>
+        <sponsor>Northeastern University</sponsor>
+      </titleStmt>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPedition)"/>    
+      <publicationStmt>
+        <publisher>Northeastern University Women Writers Project</publisher>
+        <address>
+          <addrLine>SL 213</addrLine>
+          <addrLine>Northeastern University</addrLine>
+          <addrLine>360 Huntington Avenue</addrLine>
+          <addrLine>Boston, MA  02115-5005</addrLine>
+          <addrLine>USA</addrLine>
+          <addrLine>url:mailto:wwp@neu.edu</addrLine>
+          <addrLine>url:http://www.wwp.northeastern.edu/</addrLine>
+        </address>
+        <idno type="WWP">TR00226</idno>
+        <idno type="URL">http://www.wwp.northeastern.edu/texts/kilham.claims.html</idno>
+        <xi:include href="../common-boilerplate.xml" xpointer="element(WWPavailability)"/>
+        <date when="2007-07-31"/>
+      </publicationStmt>
+      <sourceDesc n="OT00226">
+        <biblStruct>
+          <monogr>
+            <author>
+              <persName ref="p:hkilham.whv" type="titlePage">Hannah Kilham</persName>
+              <persName ref="p:hkilham.whv" type="regularized">Kilham, Hannah</persName>
+            </author>
+            <title>The claims of West Africa to Christian instruction, through the native languages</title>
+            <edition>First edition</edition>
+            <idno type="unknown">unknown</idno>
+            <imprint>
+              <pubPlace>London</pubPlace>
+              <publisher>
+              	<persName ref="p:harvey.nev" type="titlePage">Harvey</persName>
+              	<persName ref="p:harvey.nev" type="regularized">Harvey, Joseph</persName>
+ and 
+		
+<persName ref="p:darton.nej" type="titlePage">Darton</persName>
+<persName ref="p:darton.nej" type="regularized">Darton, William</persName>
+</publisher>
+              <date when="1830"/>
+            </imprint>
+            <extent>
+              <measure unit="page" quantity="33"/>
+            </extent>
+            <extent>
+              <dimensions>
+                <format>octavo</format>
+              </dimensions>
+            </extent>
+          </monogr>
+        </biblStruct>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPprojectDescription)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPsamplingDeclaration)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPeditorialDeclaration)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPcharacterDeclaration)"/>
+      <tagsDecl>
+        <rendition xml:id="r.break" selector="">break(yes)</rendition>
+        <rendition xml:id="r.nobreak" selector="">break(no)</rendition>
+        <rendition xml:id="indentme" selector="p, item, note">indent(1)</rendition>
+        <rendition xml:id="breakaligncaps" selector="head, titlePart">break(yes)align(center)case(allcaps)</rendition>
+        <rendition xml:id="italics" selector="emph, mentioned">slant(italic)</rendition>
+        <rendition xml:id="quotemarks" selector="quote">pre(“)post(”)</rendition>
+        <rendition xml:id="allcaps" selector="">case(allcaps)</rendition>
+      </tagsDecl>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPclassificationDeclaration)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPlistPrefixDefinitions)"/>
+    </encodingDesc>
+    <profileDesc>
+      <textClass>
+        <catRef type="main" target="#G.non-fiction"/>
+        <catRef type="other" target="#G.non-fiction.letter"/>
+      </textClass>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPcalendarDescription)"/>
+      <xi:include href="../common-boilerplate.xml" xpointer="element(WWPlangUsage)"/>
+    </profileDesc>
+    <revisionDesc>
+      <change n="RCS:1.29" when="2010-12-08" who="p:npeterson.gwx">added <att>type</att> to docRole.</change>
+      <change n="RCS:1.24" when="2008-09-04" who="p:jmelson.nep">Corrected single date value.</change>
+      <change n="RCS:1.23" when="2007-07-09" who="p:pcaton.xzc">Added correct EDITION value; added release date value; deleted unnecessary pagination content. Validated.</change>
+      <change n="RCS:1.17" when="2005-03-25" who="p:jlambe.rks">did correx entry and supravalidated</change>
+      <change n="RCS:1.16" when="2004-07-15" who="p:jmelson.nep">Corrected validation error caused by missing space in some renditional markup</change>
+      <change n="RCS:1.14" when="2004-01-05" who="p:jflanders.lfw">supravalidated.</change>
+      <change n="RCS:1.9" when="2003-08-15" who="p:dreineke.neq">Finish Capture</change>
+      <change n="RCS:1.2" when="2003-08-06" who="p:dreineke.neq">Began capture</change>
+      <change n="RCS:1.1" when="2003-08-05" who="p:jflanders.lfw">Created TEI header and filled in values.</change>
+    </revisionDesc>
+  </teiHeader>
+  <text xml:id="TR00226">
+    <hyperDiv>
+<notes>
+<note xml:id="n001" target="#a001" rend="pre(*)">
+        <bibl>See <title>Wesleyan Missionary Notices</title>, dated <date when="1830-06">June, 1830</date>.</bibl>
+      </note>
+<note xml:id="n002" target="#a002" rend="pre(†)">
+        <p>Since this appeal was put to press, <orgName>the Committee of the
+	    <lb/>Wesleyan Missionary Society</orgName> have received the mournful in­
+	  <lb/>telligence, that their much esteemed and valued Missionary,
+	  <lb/><persName>Richard Marshall</persName>, who had laboured with such encouraging
+	  <lb/>success in this station, during most of the last two years, died of
+	  <lb/>fever after a sickness of five days, during the present rainy
+	  <lb/>season. His estimable widow, with her infant child, arrived in
+	  <lb/><placeName>Bristol</placeName> on the <date when="--01-10">1st of 10th month</date>: they also had been sick of
+	  <lb/>fever, and ordered by their medical attendant to return to <placeName>Eng­
+	    <lb/>land</placeName>, as the only hope, humanly speaking, of their lives being
+	  <lb/>preserved. <persName>A.M.</persName> appeared, on her arrival, much restored, and
+	  <lb/>gave a very satisfactory account of the state of the mission in the
+	  <lb/><placeName>Gambia</placeName>. Her friends, who knew and justly loved her, have
+	  <lb/>since received the very unexpected and affecting intelligence,
+	  <lb/>that two days after her arrival she was suddenly called away
+	  <lb/>from this state of mortality.</p>
+      </note>
+<note xml:id="n003" target="#a003" rend="pre(*)">
+        <p>The natives, though they call themselves <name>Jolofs</name>, use the
+	  <lb/>term <name>Wolof</name> in speaking of their language.</p>
+      </note>
+</notes></hyperDiv>
+    <pb n="i"/>
+    <milestone n="A1r" unit="sig"/>
+    <front>
+      <titleBlock>
+        <docImprint><docRole type="printer"><persName>Harvey</persName></docRole> and <docRole type="printer"><persName>Darton</persName></docRole>, Printers,<lb/><pubPlace><placeName rend="case(allcaps)align(center)">Gracechurch Street</placeName></pubPlace>.</docImprint>
+      </titleBlock>
+      <pb n="ii"/>
+      <milestone n="A1v" unit="sig"/>
+      <pb n="iii"/>
+      <milestone n="A2r" unit="sig"/>
+      <titleBlock>
+        <titlePart>The
+	  <lb/>Claims of <placeName>West Africa</placeName>
+	    <lb/>To
+	    <lb/><hi rend="face(blackletter)">Christian Instruction,</hi>
+	    <lb/>Through
+	    <lb/>The Native Languages.</titlePart>
+        <respLine>By
+	  <lb/><docRole type="author"><persName>Hannah Kilham</persName></docRole>.</respLine>
+        <lb/>
+        <docImprint><placeName>London</placeName>:
+	  <lb/><docRole type="printer"><persName>Harvey</persName></docRole> and <docRole type="printer"><persName>Darton</persName></docRole>, 
+	  <pubPlace rend="post(#rule)"><placeName>Gracechurch Street.</placeName></pubPlace><lb/><docDate when="1830">MDCCCXXX.</docDate></docImprint>
+      </titleBlock>
+      <pb n="iv"/>
+      <milestone n="A2v" unit="sig"/>
+      <pb n="v"/>
+      <milestone n="A3r" unit="sig"/>
+      <titleBlock type="halfTitle">
+        <titlePart> The
+	    <lb/>Claims of West Africa,
+	    <lb/>&amp;c.</titlePart>
+      </titleBlock>
+      <pb n="1"/>
+      <milestone n="B1r" unit="sig"/>
+    </front>
+    <body type="tract">      
+        <head rend="post(#rule)">The 
+	  <lb/>Claims of <placeName>West Africa</placeName>, 
+	  <lb/>&amp;c.</head>
+        <div type="section">
+          <p rend="indent(0)">The colony of <placeName>Sierra Leone</placeName>, interesting and im­
+	    <lb/>portant as it is, when regarded as a station
+	    <lb/>inhabited by <name>Africans</name> from more than thirty dif­
+	    <lb/>ferent tribes, has not yet, it must be allowed,
+	    <lb/>exhibited all those encouraging marks of ad­
+	    <lb/>vancement, either in civil or religious knowledge,
+	    <lb/>which have been anxiously desired, and which
+	    <lb/>indeed are still hoped for by many who look to
+	    <lb/>this colony as a point from which, through the
+	    <lb/>favour of Divine Goodness, may one day be ex­
+	    <lb/>tended the blessings of civilization and Christian
+	    <lb/>instruction to many nations on the wide and
+	    <lb/>almost unexplored continent of <placeName>Africa</placeName>.</p>
+          <p>This station having been formed and main­
+	    <lb/>tained on a principle of benevolent concern for
+	    <lb/>the good of <placeName>Africa</placeName>, and as a place of reception
+	    <lb/>for the unhappy victims of cruelty and oppres­
+	    <mw rend="indent(3)" type="sig">B</mw>
+	    <pb n="2"/>
+	    <milestone n="B1v" unit="sig"/>
+	    <mw rend="align(center)" type="pageNum">2</mw>
+	    <lb/>sion, when rescued from the slave-ships, presents
+	    <lb/>a very peculiar and a very powerful claim to our
+	    <lb/>interest and regard; and the enquiry ought to be
+	    <lb/>fairly met as to what really is its present state,
+	    <lb/>and what the impediments to its more rapid ad­
+	    <lb/>vancement.</p>
+          <p>If from feelings of individual compassion a
+	    <lb/>Christian philanthropist had rescued from the
+	    <lb/>hold of a slave-ship one helpless child, and
+	    <lb/>placed it under care for shelter and instruction,
+	    <lb/>would he not feel so much interest for his rescued
+	    <lb/>charge, as fully to inform himself from time to time
+	    <lb/>how the child was cared for and instructed?—
+	    <lb/>whether its physical wants as to food, shelter,
+	    <lb/>and medical care were suitably provided for, and
+	    <lb/>its mind receiving the advantages of appropriate
+	    <lb/>instruction and judicious Christian care?</p>
+          <p>But have the advocates of the African cause
+	    <lb/>as yet obtained all the information of the state of
+	    <lb/>the liberated slaves, the children, and the people,
+	    <lb/>when landed in <placeName>Sierra Leone</placeName>, which their depen­
+	    <lb/>dent position in society has called for?—the chil­
+	    <lb/>dren especially, who from their greater helpless­
+	    <lb/>ness do assuredly claim much of a parent's care
+	    <lb/>from the friends of <placeName>Africa</placeName> in this country? And
+	    <lb/>is it not much to be desired, that regular reports
+	    <lb/>should be furnished as to the manner in which
+	    <lb/>these children are disposed of on arrival in the
+	    <lb/>colony, and how they are subsequently provided
+	    <pb n="3"/>
+	    <milestone n="B2r" unit="sig"/>
+	    <mw rend="align(center)" type="pageNum">3</mw>
+	    <lb/>and cared for; how lodged, and fed, and taught?
+	    <lb/>Whether means are provided for maintaining their
+	    <lb/>health, or restoring them when sick, and for pro­
+	    <lb/>moting their effectual instruction and improve­
+	    <lb/>ment? Although much has been done for the
+	    <lb/>colony of <placeName>Sierra Leone</placeName> by the friendly care and
+	    <lb/>liberal aid of Government, and many lives have
+	    <lb/>been sacrificed in exhausting labour, by devoted
+	    <lb/>agents of <orgName>the Missionary Societies</orgName>, the colony is
+	    <lb/>yet, it must be allowed, but in a state of infancy,
+	    <lb/>both as respects its civil and religious advance­
+	    <lb/>ment: at the same time, the limited state of the
+	    <lb/>population as to numbers, is such as loudly to call
+	    <lb/>for enquiry into the cause, when it is considered
+	    <lb/>how many have been brought in, from year to
+	    <lb/>year, from the captured slave-vessels.</p>
+          <p>With regard to many of the apprenticed chil­
+	    <lb/>dren, there is very great reason for anxious fear
+	    <lb/>as to what becomes of them; little or no notice
+	    <lb/>being taken of them officially after they have
+	    <lb/>been put out. It is well known, that many of
+	    <lb/>the poor natives who take them as apprentices,
+	    <lb/>imagine that the money which they pay for the
+	    <lb/>indenture, constitutes a kind of purchase of the
+	    <lb/>child, and that they are then at liberty to do with
+	    <lb/>him or her whatever they please. There is
+	    <lb/>ground to fear that not a few are by some means
+	    <lb/>taken away from the colony, and again made vic­
+	    <lb/>tims of the horrid trade in human beings.</p>
+          <mw rend="indent(3)" type="sig">B2</mw>
+          <pb n="4"/>
+          <milestone n="B2v" unit="sig"/>
+          <mw rend="align(center)" type="pageNum">4</mw>
+          <p>That there is a great, a distressing mortality
+	    <lb/>among the children, is, to those who make a lit­
+	    <lb/>tle enquiry in the colony, a painfully conspicuous
+	    <lb/>fact; yet the <emph>extent</emph> of that mortality there does
+	    <lb/>not appear to exist, in any printed reports, the
+	    <lb/>means of ascertaining. We do not learn, either
+	    <lb/>with regard to the children placed out as ap­
+	    <lb/>prentices, or in the schools, how many have
+	    <lb/>lived, and how many have died. Neither are we
+	    <lb/>informed how many in the schools <emph>can read</emph>, and
+	    <lb/>how many know <name>English</name> so far as to <emph>understand</emph>
+	    <lb/>what they read.</p>
+          <p>And with regard to education, from what has
+	    <lb/>been observed of African capacity, when intel­
+	    <lb/>ligible means of instruction are given, it appears
+	    <lb/>very evident, that were suitable measures adopted
+	    <lb/>to prepare for them the elements of instruction,
+	    <lb/>in a clear and simple form, these children would
+	    <lb/>be far from being backward, either in applying to
+	    <lb/>the acquisition of useful knowledge, or in im­
+	    <lb/>bibing what they are taught. But in the system
+	    <lb/>hitherto pursued in the schools, of using English
+	    <lb/>lessons only, for children, to whom <name>English</name> is
+	    <lb/>quite a foreign language, (excepting that they
+	    <lb/>have a very few words in occasional and collo­
+	    <lb/>quial use,) whilst the native languages, for con­
+	    <lb/>versation, are of course in general use among
+	    <lb/>themselves, can it be expected that the lessons
+	    <lb/>thus learned should prove any more than mere
+	    <pb n="5"/>
+	    <milestone n="B3r" unit="sig"/>
+	    <mw rend="align(center)" type="pageNum">5</mw>
+	    <lb/><emph>sound</emph> to the pupil? What would be the con­
+	    <lb/>sequence, if we gave to an English child, at
+	    <lb/>home, a Latin book to learn without any English
+	    <lb/>translation, and just taught it to spell and read
+	    <lb/>the Latin words? Would the child, by practising
+	    <lb/>in this way, acquire a knowledge of that lan­
+	    <lb/>guage? Assuredly not: and it would be very un­
+	    <lb/>just to complain of the want of capacity in the
+	    <lb/><name>Africans</name> in <placeName>Sierra Leone</placeName>, as the cause of their
+	    <lb/>not having advanced more than they have, when
+	    <lb/>that which has been offered to them as a medium
+	    <lb/>of school instruction, must have been to them
+	    <lb/>quite as unintelligible as a French, or Latin, or
+	    <lb/>German book, without translation, would be to
+	    <lb/>an English child.</p>
+          <p>For more than a century a prepossession was
+	    <lb/>indulged in <placeName>Great Britain</placeName>, for teaching the Eng­
+	    <lb/>lish language to Gaelic children, by English
+	    <lb/>books alone; and the children were thus taught
+	    <lb/>to read the English Scriptures, and to repeat
+	    <lb/>English catechisms: and they did this, and, so far
+	    <lb/>as sound could satisfy, they appeared to be well
+	    <lb/>advanced; but they conversed constantly in the
+	    <lb/><name>Gaelic</name>, and were unable to give any account of
+	    <lb/>what they had so freely read and repeated in
+	    <lb/><name>English</name>.</p>
+          <p>Eventually their directors found their mis­
+	    <lb/>take, and now the Gaelic children, as well as the
+	    <lb/><name>Welch</name> and some of the native <name>Irish</name>, receive
+	    <pb n="6"/>
+	    <milestone n="B3v" unit="sig"/>
+	    <mw rend="align(center)" type="pageNum">6</mw>
+	    <lb/>more effectual instruction in <name>English</name> through
+	    <lb/>the medium of their own native languages.</p>
+          <p>And even with regard to the adult population,
+	    <lb/>the public instruction given to the liberated
+	    <lb/><name>Africans</name> cannot be expected, under present cir­
+	    <lb/>cumstances, to contribute greatly to their im­
+	    <lb/>provement, since they are so much strangers to
+	    <lb/>the English language, and have not the medium
+	    <lb/>of their own languages in use, through which
+	    <lb/>they might receive instruction. Let the friends
+	    <lb/>of <placeName>Africa</placeName> be only willing to meet this difficulty,
+	    <lb/>and provide means for its removal, by opening
+	    <lb/>the doors for intelligible communication with the
+	    <lb/>people, through the Native languages, and it will
+	    <lb/>soon be discovered that <name>Africans</name> have powers to
+	    <lb/>cultivate, and dispositions to improve, that would
+	    <lb/>well repay the Christian labours of their European
+	    <lb/>brethren. And let it be remembered, that as im­
+	    <lb/>mortal and responsible beings, and equally with
+	    <lb/>ourselves dependent on Redeeming pwer and
+	    <lb/>love, they claim our sympathy and our Christian
+	    <lb/>care.</p>
+          <p>It is not only for the welfare and advancement
+	    <lb/>of the <name>Africans</name> in <placeName>Sierra Leone</placeName>, that we are 
+	    called
+	    <lb/>upon to do what we can for the improvement of
+	    <lb/>the people of that colony, and for the attainment
+	    <lb/>of an intelligible medium of instruction for them­
+	    <lb/>selves and for their children; we have also to
+	    <lb/>take into view the prospective, yet deeply inter­
+	    <pb n="7"/>
+	    <milestone n="B4r" unit="sig"/>
+	    <mw rend="align(center)" type="pageNum">7</mw>
+	    <lb/>esting object of preparing, through the various
+	    <lb/>languages now spoken in <placeName>Sierra Leone</placeName>, the
+	    <lb/>means of Christian instruction to many nations
+	    <lb/>of <placeName>Africa</placeName> at a distance from that colony, whose
+	    <lb/>minds we cannot hope to reach but through such
+	    <lb/>a medium. With an object of so deep interest
+	    <lb/>before us, what a field does <placeName>Sierra Leone</placeName> pre­
+	    <lb/>sent! Surely the cultivation of this field, to as
+	    <lb/>great an extent as circumstances are now calling
+	    <lb/>for, is a Christian duty that cannot be with­
+	    <lb/>held.</p>
+          <p>The work of translation into a great number
+	    <lb/>of unwritten languages, must indeed be an en­
+	    <lb/>gagement of close mental labour and of anxious
+	    <lb/>responsibility. It is well known, that one great
+	    <lb/>hindrance to the prosecution of such work in
+	    <lb/><placeName>Africa</placeName>, is the relaxing effect of the climate on
+	    <lb/>European constitutions. It must yet be allowed,
+	    <lb/>that <placeName>Sierra Leone</placeName>, from its peculiar circum­
+	    <lb/>stances, in being a centre for the reception of
+	    <lb/>people from so many nations, does undoubtedly
+	    <lb/>afford scope for much being done there, could
+	    <lb/>agents be found prepared for the work, and ca­
+	    <lb/>pable of bearing the difficulties of the climate.
+	    <lb/>The time may come, when <name>Africans</name> themselves
+	    <lb/>may <emph>carry on</emph> this work, if the means could now
+	    <lb/>be found of giving to some of the most intelli­
+	    <lb/>gent and well-disposed among them, such edu­
+	    <lb/>cation as to prepare them for it, and at the same
+	    <pb n="8"/>
+	    <milestone n="B4v" unit="sig"/>
+	    <mw rend="align(center)" type="pageNum">8</mw>
+	    <lb/>time establishing, through European agency,
+	    <lb/>such elementary principles and introductory ar­
+	    <lb/>rangements in the concern, as the present cir­
+	    <lb/>cumstances of the colony are calling for.</p>
+          <p>In order to raise a native agency to assist in
+	    <lb/>the important and responsible work of African
+	    <lb/>translations, it would be requisite that the best
+	    <lb/>opportunities be afforded for the natives intro­
+	    <lb/>duced to this work, to gain a knowledge of the
+	    <lb/>English language, from whence both elemen­
+	    <lb/>tary books and Scripture lessons would have
+	    <lb/>to be translated, previously to the more extensive
+	    <lb/>engagement of their assisting in the translations
+	    <lb/>of the Scriptures at large.</p>
+          <p><placeName>England</placeName> would, no doubt, afford the best op­
+	    <lb/>portunities for the natives of <placeName>Africa</placeName> to obtain a
+	    <lb/>knowledge of our language, and <placeName>England</placeName> would
+	    <lb/>also afford the means for a strict revisal and exa­
+	    <lb/>mination of translations attempted, were intelli­
+	    <lb/>gent natives here to give the required evidence.
+	    <lb/>When the awfulness of the work of Scripture
+	    <lb/>translation is considered, it must indeed be felt
+	    <lb/>that every advantage of examination and revisal
+	    <lb/>is greatly to be desired.</p>
+          <p>But, alas for poor <placeName>Africa</placeName>! how little has yet been
+	    <lb/>done for that wide continent, with its thousands
+	    <lb/>of peopled towns and villages: how little is yet
+	    <lb/>known there of the great and important work of
+	    <lb/>Scripture translations, or of the widely extended
+	    <pb n="9"/>
+	    <milestone n="B5r" unit="sig"/>
+	    <mw rend="align(center)" type="pageNum">9</mw>
+	    <lb/>labours of the <orgName>British and Foreign Bible Society</orgName>,
+	    <lb/>the rivers and streams of whose Christian bounty
+	    <lb/>have so richly flowed, even far and near, in every
+	    <lb/>other quarter of the habitable world. Oh! that
+	    <lb/>the powerful appeal of those who sit in <quote>the
+	      <lb/>dark places of the earth</quote>, surrounded by <quote>habi­
+	      <lb/>tations of cruelty</quote>, might be heard and regarded.
+	    <lb/><quote>Are we not the children of one Father?</quote> Why
+	    <lb/>then should difficulties deter those whom Divine
+	    <lb/>Providence has favoured with many spiritual
+	    <lb/>and temporal blessings, from coming forward
+	    <lb/>in devotedness of heart in the Redeemer's
+	    <lb/>cause, to the help of this benighted and afflicted
+	    <lb/>people?</p>
+          <p>Were some who feel deeply in this cause to
+	    <lb/>come forward and contribute their part in dili­
+	    <lb/>gent Christian labour, and others to sacrifice a
+	    <lb/>portion of property, and thought, and care, much
+	    <lb/>might, through the blessing of Divine Goodness,
+	    <lb/>be speedily effected. And although an uncer­
+	    <lb/>tainty must be incurred, as to whether natives
+	    <lb/>engaged as assistants in translation would them­
+	    <lb/>selves become sincere <name>Christians</name>, or be negli­
+	    <lb/>gent and regardless of the advantages pre­
+	    <lb/>sented to them; yet experience has proved, that
+	    <lb/>even where native agents themselves lose, by
+	    <lb/>their own subsequent misconduct, the privileges
+	    <lb/>which they might have enjoyed, the benefit of
+	    <lb/>the translations is still felt by others, and the
+	    <pb n="10"/>
+	    <milestone n="B5v" unit="sig"/>
+	    <mw rend="align(center)" type="pageNum">10</mw>
+	    <lb/>advantage of thus employing the translators is far
+	    <lb/>from being lost.</p>
+          <p>It is true, indeed, that since <orgName>the Church Mis­
+	      <lb/>sionary Society</orgName> have now lately commenced,
+	    <lb/>among their own agents, African translations,
+	    <lb/>much good may be hoped from this work being
+	    <lb/>carried on by them in <placeName>Sierra Leone</placeName>, should the
+	    <lb/>lives of the individuals, to whom the work has
+	    <lb/>been committed in that colony, be long con­
+	    <lb/>tinued. Yet it is well known, that their benevo­
+	    <lb/>lent Christian interest in this cause would lead
+	    <lb/>them greatly to rejoice in every facility for the
+	    <lb/>promotion of the work, and they would hear
+	    <lb/>gladly of the adoption of measures for its being
+	    <lb/>carried forward extensively, both in <placeName>Africa</placeName> and
+	    <lb/>in <placeName>England</placeName>.</p>
+          <p>Were a few well-chosen <name>Africans</name> to be
+	    <lb/>brought, on their own desire, to this country,
+	    <lb/>from some of the principal tribes, so selected
+	    <lb/>as to retain their languages by conversing
+	    <lb/>with each other, they might, in an Institution
+	    <lb/>prepared here for their reception, rapidly ac­
+	    <lb/>quire the English language and become va­
+	    <lb/>luable assistants in translation; and preserv­
+	    <lb/>ing the general forms and structure of their
+	    <lb/>own languages, these translations, written from
+	    <lb/>their dictation by their English friends appointed
+	    <lb/>to the work, would, if well attended to, be found
+	    <lb/>clear and intelligible when hear or read in the
+	    <pb n="11"/>
+	    <milestone n="B6r" unit="sig"/>
+	    <mw rend="align(center)" type="pageNum">11</mw>
+	    <lb/>native districts. <name>Europeans</name> engaged in the
+	    <lb/>translation, might at the same time acquire suf­
+	    <lb/>ficient knowledge of these languages, to check or
+	    <lb/>prevent the passing of erroneous translations re­
+	    <lb/>specting important truths.</p>
+          <p>African agents thus trained and employed,
+	    <lb/>might some of them, it is hoped, in a future day,
+	    <lb/>whilst in <placeName>England</placeName>, give valuable help in the
+	    <lb/>translation of the Scriptures; whilst others, hav­
+	    <lb/>ing spent two or three years in this country, and
+	    <lb/>given their assistance in translating merely ele­
+	    <lb/>mentary lessons, might return, prepared to pur­
+	    <lb/>sue with respectability some other engagement
+	    <lb/>in the colony from whence they came: yet all
+	    <lb/>persons thus received into the Institution, to have
+	    <lb/>the opportunity, on returning home, of continued
+	    <lb/>communications with their friends here, by occa­
+	    <lb/>sional correspondence, so long as their conduct
+	    <lb/>should be such as to leave the way open for such
+	    <lb/>communication.</p>
+          <p>Should encouragement be given for the prose­
+	    <lb/>cution of this work, it would, in present circum­
+	    <lb/>stances, it is hoped, be easy to obtain a good selec­
+	    <lb/>tion of pupils, who would gladly come over for a few
+	    <lb/>years to learn our language, and to assist in trans­
+	    <lb/>lations in some of the principal languages of <placeName>Africa</placeName>.
+	    <lb/>Already has the advantage of such translations
+	    <lb/>been experienced in a school on the <placeName>river Gambia</placeName>,
+	    <lb/>in which the Jolof elementary and Scripture
+	    <lb/>lessons are now used, which a few years ago were
+	    <pb n="12"/>
+	    <milestone n="B6v" unit="sig"/>
+	    <mw rend="align(center)" type="pageNum">12</mw>
+	    <lb/>prepared and printed in <placeName>England</placeName> under the
+	    <lb/>sanction of a <orgName>Committee of Friends for promoting
+	      <lb/>African Instruction</orgName>. These lessons have not
+	    <lb/>only been used in schools for teaching the Jolof
+	    <lb/>children both their own language and the Eng­
+	    <lb/>lish, but some of the young men have also read
+	    <lb/>the Jolof Scripture lessons contained in them to
+	    <lb/>their families at home. From that station are
+	    <lb/>lately received accounts truly consoling and en­
+	    <lb/>couraging to perseverance in this labour of love.<anchor xml:id="a001" rend="pre(*)" corresp="#n001"/>
+	    <lb/>The present Missionary in the <placeName>Gambia</placeName>, who
+	    <lb/>has also conducted the public instruction
+	    <lb/>through the medium of native interpreters, has
+	    <lb/>been favoured with so much success as to induce
+	    <lb/>the hope, that ere long the Native Teachers may
+	    <lb/>supply that district alone, or at least without the
+	    <lb/>constant residence of European missionaries.<anchor xml:id="a002" rend="pre(†)" corresp="#n002"/></p>
+          <pb n="13"/>
+          <milestone n="B7r" unit="sig"/>
+          <mw rend="align(center)" type="pageNum">13</mw>
+          <p>At the same time, from the villages of libe­
+	    <lb/>rated <name>Africans</name> in <placeName>Sierra Leone</placeName>, we hear perpe­
+	    <lb/>tually, in the printed statements, the report of
+	    <lb/>discouragement and complaint. The people
+	    <lb/>understand but little of the instructions offered,
+	    <lb/>and the children in the schools are under similar
+	    <lb/>disadvantages. Still there is sounded among
+	    <lb/>some in that colony, the alarm of a supposed im­
+	    <lb/>possibility of giving any other instruction than
+	    <lb/>through the English language only; the lan­
+	    <lb/>guages of the natives being so many and so
+	    <lb/>little known. Allowing, that so far as the resi­
+	    <lb/>dence in an English colony is intended, it is in­
+	    <lb/>deed desirable that the <name>English</name> should be known
+	    <lb/>as a <emph>general</emph> language among the people, and be
+	    <lb/>their common medium of communication; still,
+	    <lb/>in the attainment even of this object, we shall
+	    <lb/>find, that to cultivate, to a certain extent,
+	    <lb/>each of the distinctly ascertained native lan­
+	    <lb/>guages spoken in the colony, would be the most
+	    <lb/>facile and effectual means of teaching the natives
+	    <lb/><name>English</name>. But if the English language itself be
+	    <lb/><emph>not understood</emph> by the <name>Africans</name>, how can it be
+	    <lb/>the <emph>medium</emph> of instruction either in their religious
+	    <lb/>assemblies or in their schools? What foreigner,
+	    <lb/>either German, French, or African, can teach the
+	    <lb/>English but through his own vernacular language,
+	    <lb/>unless it be just so much as can be gained by
+	    <lb/>signs, as in teaching the deaf and dumb? This
+	    <pb n="14"/>
+	    <milestone n="B7v" unit="sig"/>
+	    <mw rend="align(center)" type="pageNum">14</mw>
+	    <lb/>system of teaching only by signs and motions, even
+	    <lb/>if desired, could not easily be practised in <placeName>Africa</placeName>,
+	    <lb/>where all engagements requiring much thought
+	    <lb/>and application are, on account of the relaxing
+	    <lb/>influence of the climate, so peculiarly difficult to
+	    <lb/><name>Europeans</name>. Let the friends of African education
+	    <lb/>then avail themselves, in teaching <name>English</name>, of
+	    <lb/>the advantages of the simplest and most effec­
+	    <lb/>tual system of instruction, that of <emph>teaching 
+	      <lb/>through the medium of something already known
+	      <lb/>to the pupil</emph>, and acquiring at least the elements
+	    <lb/>of <name>English</name>, through the familiar means of intro­
+	    <lb/>ductory lessons in the native languages, with
+	    <lb/>the <name>English</name> attached to them.</p>
+          <p>In the attempt to reduce a new language to
+	    <lb/>writing, it is undoubtedly requisite to use great
+	    <lb/>care in every step of a work so responsible, and
+	    <lb/>especially in attempting to convey in such lan­
+	    <lb/>guage any religious truth: still, by close atten­
+	    <lb/>tion and repeated examination of what is pre­
+	    <lb/>pared, it is possible to obtain clear and imtelligi­
+	    <lb/>ble translations even of Scripture lessons; trans­
+	    <lb/>lations which may be clearly understood by the
+	    <lb/>natives who read them. From Scripture lessons,
+	    <lb/>if thus gained in each principal language, and
+	    <lb/>read occasionally among the people by whom
+	    <lb/>they were understood, might now we hope that
+	    <lb/>even a few words thus conveyed, would avail
+	    <lb/>more for their real instruction than ten thou­
+	    <pb n="15"/>
+	    <milestone n="B8r" unit="sig"/>
+	    <mw rend="align(center)" type="pageNum">15</mw>
+	    <lb/>sand words spoken to them in an unknown
+	    <lb/>tongue?</p>
+          <p>The elementary works printed by <orgName>the Society
+	      <lb/>of Friends</orgName> within the last few years, in the Afri­
+	    <lb/>can languages, are the following:—
+	    <list><item><label>1</label>. African Lessons, <name xml:id="a003" rend="post(*)" corresp="#n003">Jolof</name>
+		(or <name>Wolof</name>) and
+		<lb/><name>English</name>, in three parts. Part I. Early Lessons
+		<lb/>and easy Narratives. II. Small vocabulary,
+		<lb/>Family Advices, and Examples in Sentences on
+		<lb/>the different Parts of Speech. III. Scripture Les­
+		<lb/>sons in twenty-two sections.</item><item><label>2</label>. A little sketch of elementary words in <name>Man­
+		  <lb/>dingo</name>, intended as General Spelling Lessons for
+		<lb/>any of the liberated <name>Africans</name> or others, in a
+		<lb/>school consisting of children of different tribes,
+		<lb/>which being in the same simple orthography
+		<lb/>used in each of the present translation, would
+		<lb/>be suitable to be used by the pupils in a mixed
+		<lb/>school. The children may afterwards learn from
+		<lb/>books, each in their own language, written in
+		<lb/>the same orthography. In addition to this, a
+		<lb/>book of words and sentences on each part of
+		<lb/>speech, in the Mandingo language, together
+		<lb/>with the <name>English</name>, having also a few passages
+		<lb/>of Scripture in <name>Mandingo</name> and <name>English</name>. These
+		<lb/>Lessons were prepared, with the assistance
+		<pb n="16"/>
+		<milestone n="B8v" unit="sig"/>
+		<mw rend="align(center)" type="pageNum">16</mw>
+		<lb/>of one of the native pupils in <placeName>England</placeName>, previously
+		<lb/>to the time in which several <name>Friends</name> went out to
+		<lb/>the <placeName>Gambia</placeName>, in <date when="1823">1823</date>, where they were revised.
+		<lb/>(The African Lessons, <name>Jolof</name> and <name>English</name>, were
+		<lb/>also prepared in <placeName>England</placeName> and revised in <placeName>Africa</placeName>
+		<lb/>at that time.) The Mandingo tract includes the
+		<lb/>General Spelling Lessons already noticed. The
+		<lb/>charge of printing this tract was defrayed by the
+		<lb/><orgName>Committee of the Language Institution</orgName> in <date when="1827">1827</date>.</item><item><label>3</label>. Specimens of African Languages. A book
+		<lb/>containing a short outline of words, together
+		<lb/>with the ten numbers in thirty different languages
+		<lb/>spoken in the colony of <placeName>Sierra leone</placeName>, and de­
+		<lb/>signed for use in some of the liberated African
+		<lb/>schools. By the use of these little sketches it
+		<lb/>has been ascertained what were the native coun­
+		<lb/>tries of several <name>Africans</name> in <placeName>England</placeName>, of different
+		<lb/>tribes long absent from their own land, and in­
+		<lb/>capable of giving any further account to ascertain
+		<lb/>the districts in which they were born, excepting
+		<lb/>from their words used in numbering, and a 
+		<lb/>few obvious terms in their native languages.</item><item><label>4</label>. Single Lessons in the Thirty Languages: two
+		<lb/>duodecimo pages only in each. These Lessons
+		<lb/>are the same with the last, only arranged in a
+		<lb/>different form, having each language detached,
+		<lb/>and some additional words in each more than are
+		<lb/>introduced in the <title rend="pre(“)post(”)">Specimens</title>. Both these Single
+		<lb/>Lessons and the Specimens are designed as a little
+		<pb n="17"/><milestone n="C1r" unit="sig"/><mw rend="align(center)" type="pageNum">17</mw><lb/>introduction to <name>English</name>, and the writer hopes,
+		<lb/>should life be given, to see the proposed system
+		<lb/>of instruction in a few months brought into
+		<lb/>practice, with the assistance of these books,
+		<lb/>in some of the liberated African schools. The
+		<lb/>materials for these lessons were prepared during
+		<lb/>the writer's last visit to <placeName>Sierra Leone</placeName>, excepting a
+		<lb/>few of them, which were previously obtained, and
+		<lb/>at that time revised.</item><item><label>5</label>. A school book of <name>Jolof</name> only, containing
+		<lb/>easy lessons on subjects exhibited in twelve pic­
+		<lb/>tures. These lessons were printed in a twelve
+		<lb/>page tract, as the least expensive form. The
+		<lb/>Jolof schools have also the same lessons in <name>Eng­
+		  <lb/>lish</name>, and one set of pictures will serve for both.</item><item><label>6</label>. A single sheet lesson, containing the alpha­
+		<lb/>bets; a number of small pictures of common ob­
+		<lb/>jects, with the native names attached: also the
+		<lb/>ten numbers in figures and words. This introduc­
+		<lb/>tory lesson is printed in six languages each, on a 
+		<lb/>separate sheet—the <name>Mandingo</name>, <name>Jolof</name>, <name>Aku</name>, or <name>E-i-o</name>,
+		<lb/><name>Bassa</name>, <name>Ibo</name>, and <name>Kru</name>. A lesson of the same kind
+		<lb/>is also printed on a separate sheet in <name>English</name>.</item></list></p>
+          <p>There are also prepared, in addition to the print­
+	    <lb/>ed books, a few Scripture translations in <name>Mandin­
+	      <lb/>go</name>, which are still in manuscript, and wait an op­
+	    <lb/>portunity for revision in <placeName>Africa</placeName>. A sketch of the
+	    <lb/>grammar of the Jolof language in manuscript,
+	    <mw rend="indent(3)" type="sig">C</mw>
+	    <pb n="18"/>
+	    <milestone n="C1v" unit="sig"/>
+	    <mw rend="align(center)" type="pageNum">18</mw>
+	    <lb/>and a Jolof vocabulary, larger than that intro­
+	    <lb/>duced in the printed lessons. Also a few lessons
+	    <lb/>in the <name>Sussu</name>, obtained from a native of that
+	    <lb/>country when in <placeName>England</placeName>, in <date when="1829">1829</date>. The sys­
+	    <lb/>tem pursued in the formation of these elementary
+	    <lb/>lessons, or in writing African words from the
+	    <lb/>voice of a native, is the following.</p>
+          <list>
+            <item><label>1st</label>. To use only such letters as are sounded
+	      <lb/>in the words, and not any mute or superfluous
+	      <lb/>letters.</item>
+            <item><label>2nd</label>. That each letter should express one
+	      <lb/>sound only; that is, not to have the same letters
+	      <lb/>used as in <name>English</name> for hard and soft sounds, (the
+	      <lb/><mentioned>g</mentioned> always hard.)</item>
+            <item><label>3rd</label>. To adopt the continental sounds of the
+	      <lb/>vowels, <mentioned>a</mentioned>, <mentioned>e</mentioned>,
+	      <mentioned>i</mentioned>, <mentioned>o</mentioned>, <mentioned>u</mentioned> 
+	      as heard in <mentioned>ark</mentioned>, <mentioned>great</mentioned>,
+	      <mentioned>field</mentioned>,
+	      <lb/><mentioned>hope</mentioned>, <mentioned>truth</mentioned>. The vowels to be sounded short in
+	      <lb/>the beginning, or the middle of a word or sylla­
+	      <lb/>ble, and long at the end: or when required to be
+	      <lb/>sounded long in the beginning or middle of a
+	      <lb/>syllable, to place a dash (-) over the vowel to
+	      <lb/>show the long sound.</item>
+            <item><label>4th</label> To reject the letters <mentioned>c</mentioned>, <mentioned>q</mentioned>, and <mentioned>x</mentioned>, these
+	      <lb/>sounds being provided in the letters <mentioned>s</mentioned> and <mentioned>k</mentioned>.</item>
+            <item><label>5th</label>. To use the compound vowel sound of <mentioned>ai</mentioned><lb/>for the English sound <mentioned>i</mentioned>, and the letters <mentioned>iu</mentioned> for the
+	      <lb/>English sound of <mentioned>u</mentioned>.</item>
+            <item><label>6th</label>. When a guttural sound is to be described,
+	      <pb n="19"/><milestone n="C2r" unit="sig"/><mw rend="align(center)" type="pageNum">19</mw><lb/>to adopt the letter nearest to it, as <mentioned>h</mentioned> or <mentioned>k</mentioned>, and
+	      <lb/>by the addition of a mark over the <mentioned><g ref="#hmacr"/></mentioned> or <mentioned><g ref="#kmacr"/></mentioned> to de­
+	      <lb/>scribe that sound.</item>
+          </list>
+          <p>This system is so simple in practice, that if
+	    <lb/>adhered to, there is but little liability to write in
+	    <lb/>a way that would not be easily read.</p>
+          <p>A satisfactory degree of correctness may be at­
+	    <lb/>tained in translation, if care be only taken clearly
+	    <lb/>to ascertain the first steps in the work; as by
+	    <lb/>writing down from the voice of a native, the
+	    <lb/>names of <emph>visible objects</emph>, as man, boy, &amp;c. which
+	    <lb/>are either present in the room, or the pictures of
+	    <lb/>them present. Afterwards, <emph>visible actions</emph>; as
+	    <lb/>walk, run, and so on: next, <emph>obvious qualities</emph>, 
+	    <lb/>added to some of the nouns; as a round table, a
+	    <lb/>little bird; and thus to proceed taking down dif­
+	    <lb/>ferent classes of words and short sentences, until
+	    <lb/>by degrees not only a considerable stock of words
+	    <lb/>may be obtained, but a sufficient number of
+	    <lb/>sentences from which to ascertain what parts of
+	    <lb/>speech are in general use; and, in time, to form
+	    <lb/>deductions on the structure of the language.</p>
+          <p>It is necessary, in obtaining some of the parts
+	    <lb/>of speech, and their variations, to give a sentence
+	    <lb/>in several different forms for translation, so as to
+	    <lb/>ascertain perhaps an adverb, a preposition, &amp;c.
+	    <lb/>as <quote>he walks <emph>slowly</emph>,</quote> <quote>he walks <emph>quickly</emph>,</quote>
+	    <mw rend="indent(3)" type="sig">C2</mw>
+	    <pb n="20"/>
+	    <milestone n="C2v" unit="sig"/>
+	    <mw rend="align(center)" type="pageNum">20</mw>
+	    <lb/><quote>I go <emph>to</emph> the door,</quote> <quote>I come <emph>from</emph> the door,</quote> <quote>my
+	      <lb/>house,</quote> <quote>my father's house;</quote> and to analyse, with
+	    <lb/>close attention, the different parts of the simplest
+	    <lb/>sentence, carefully separating word from word.
+	    <lb/>Still, in the very first attempts, it will often be
+	    <lb/>best to leave, at least in manuscript, the pronoun
+	    <lb/>attached to the verb; as <quote>I go;</quote> since the natives
+	    <lb/>will understand this better than the more abstract
+	    <lb/>terms of, <quote>go,</quote> or <quote>to go,</quote> (the same difficulty
+	    <lb/>they might find also in other verbs, in the terms
+	    <lb/>of the infinitive mood;) and especially to wait
+	    <lb/>with patience, and give repeated trials before we
+	    <lb/>conclude upon the correctness of terms given to
+	    <lb/>us relative to mind; as, <quote>hope,</quote> <quote>fear,</quote>
+	    <lb/><quote>love,</quote> &amp;c.</p>
+          <p>The very great responsibility attaching to that
+	    <lb/>part of the work of translation with which Chris­
+	    <lb/>tian instruction is connected, renders it a very de­
+	    <lb/>sirable measure that persons so engaged should
+	    <lb/>have near to them every aid that could be obtain­
+	    <lb/>ed for the revision of their essays, by a Commit­
+	    <lb/>tee well acquainted with the general principles of
+	    <lb/>language, and prepared to give occasional help
+	    <lb/>and counsel as to any points on which there
+	    <lb/>might be more than common obscurity, or liability
+	    <lb/>to mistake. Such a Committee would, no doubt,
+	    <lb/>be without difficulty appointed, if an Institution
+	    <lb/>for translations were formed in <placeName>England</placeName>.</p>
+          <p>Let not any turn away from this important
+	    <pb n="21"/>
+	    <milestone n="C3r" unit="sig"/>
+	    <mw rend="align(center)" type="pageNum">21</mw>
+	    <lb/>subject, fearing that it is too difficult for accom­
+	    <lb/>plishment, or that the means of its pursuance
+	    <lb/>may be inadequate and soon fail. There are
+	    <lb/>certain simple principles for the prosecution of
+	    <lb/>this work, which are allowed and understood by
+	    <lb/>not a very few persons, and are regarded as being
+	    <lb/>solid and worthy to be acted upon. May the
+	    <lb/>important object of endeavouring, should Divine
+	    <lb/>Providence permit, to raise up an African agency
+	    <lb/>to assist in preparing the means of intelligible
+	    <lb/>instruction, in an Institution for translations in
+	    <lb/><placeName>England</placeName>—may this important object be freely
+	    <lb/>sanctioned by the friends of <placeName>Africa</placeName>, and perse­
+	    <lb/>veringly pursued, trusting in Him who can at
+	    <lb/>His pleasure raise up and preserve agents for
+	    <lb/>carrying on His own beneficent designs on the
+	    <lb/>earth, and who has again and again evinced that	    
+	    <lb/>it is His Divine will to carry on <emph rend="slant(upright)case(allcaps)">His own</emph>
+	    <lb/>designs by instrumental agency! May it be ours
+	    <lb/>to attain to a sincere desire to know and to do
+	    <lb/>His will, trusting for help in Him!</p>
+          <p>Although fully aware that <name>Friends</name> in encourag­
+	    <lb/>ing the work of elementary translations, so far as
+	    <lb/>has been alluded to, have regarded the concern as
+	    <lb/>a part of a common cause, in which, if good
+	    <lb/>could be done, their attention was called for, for
+	    <lb/>the sake of the cause itself; it would yet be un­
+	    <lb/>grateful not to acknowledge the obligation which
+	    <lb/>indeed the writer sensibly feels towards <name>Friends</name>
+	    <pb n="22"/>
+	    <milestone n="C3v" unit="sig"/>
+	    <mw rend="align(center)" type="pageNum">22</mw>
+	    <lb/>who have so kindly given every facility for the
+	    <lb/>prosecution of this work, not only in taking
+	    <lb/>charge, for several years, of the two native
+	    <lb/><name>Africans</name> who assisted in the first translation,
+	    <lb/>(that of the lessons now used in the <placeName>Gambia</placeName>,)
+	    <lb/>but in every subsequent step, providing the re­
+	    <lb/>quisite expences for promoting the design, and
+	    <lb/>facilitating with the most friendly confidence and
+	    <lb/>aid its further prosecution.</p>
+          <p>The obligations of the writer to a few endeared
+	    <lb/>friends in particular, must ever be combined with
+	    <lb/>the remembrance of the earliest, and every sub­
+	    <lb/>sequent step which has been taken in this
+	    <lb/>deeply interesting cause—a cause which they
+	    <lb/>have most kindly and essentially promoted by
+	    <lb/>their judgment, by their literary aid and counsel,
+	    <lb/>by the unremitting kindnesses of Christian sym­
+	    <lb/>pathy and hospitality, and in various other ways
+	    <lb/>in which liberal help could be given in the fur­
+	    <lb/>therance of an arduous and responsible engage­
+	    <lb/>ment—an engagement, the difficulties of which
+	    <lb/>are not worthy to be considered, when so much
+	    <lb/>lessened by the sympathy and aid of Christian
+	    <lb/>kindness, and accompanied as they have been by
+	    <lb/>the sustaining belief that the pursuance of this
+	    <lb/>cause is in consonance with the will of the Most
+	    <lb/>High, and the feeling, that in His will alone we
+	    <lb/>find our rest.
+	    <lb/></p>
+          <p>Although the work of translation may not in
+	    <pb n="23"/>
+	    <milestone n="C4r" unit="sig"/>
+	    <mw rend="align(center)" type="pageNum">23</mw>
+	    <lb/>itself have all the attraction of some other engage­
+	    <lb/>ments, yet its ultimate object, when directed to
+	    <lb/>the attainment, for a suffering and benighted
+	    <lb/>people, of that divine revelation in the Scriptures
+	    <lb/>of Truth, with which we have ourselves been so
+	    <lb/>mercifully favoured, the prospect of this attain­
+	    <lb/>ment may well give a deep and lasting interest to
+	    <lb/>long-continued exertions in such a cause—an
+	    <lb/>interest which will live, and grow, and still ex­
+	    <lb/>pand, when occupations that need the zest of
+	    <lb/>novelty for their support shall cease to excite
+	    <lb/>their wonted attraction.</p>
+          <p>It should never be forgotten, that Translations
+	    <lb/>are as indispensably requisite to the cause of
+	    <lb/>Christian education in heathen lands, as Schools
+	    <lb/>are necessary to the effectual diffusion of the
+	    <lb/>Holy Scriptures. We must be satisfied to com­
+	    <lb/>mence with the earliest steps, and should surely
+	    <lb/>feel great thankfulness for the favour of being
+	    <lb/>permitted to take any step in a cause so precious
+	    <lb/>as that of preparing, in the least degree, to open
+	    <lb/>the way for our African brethren to a knowledge
+	    <lb/>of those sacred records which direct to <quote>Him of
+	      <lb/>whom <persName>Moses</persName> and the prophets wrote.</quote></p>
+          <p>With an object in view so important and so
+	    <lb/>delighful to every feeling of Christian love, it is
+	    <lb/>therefore proposed, that a few, to whom the ad­
+	    <lb/>vancement of truth and righteousness on the
+	    <lb/>earth is precious, should, without further delay
+	    <pb n="24"/>
+	    <milestone n="C4v" unit="sig"/>
+	    <mw rend="align(center)" type="pageNum">24</mw>
+	    <lb/>make arrangements for the introduction of a few
+	    <lb/>native <name>Africans</name> into this country, selected from
+	    <lb/>some of the most important tribes known in the
+	    <lb/>colony of <placeName>Sierra Leone</placeName>, or other parts of <placeName>West
+	      <lb/> Africa</placeName>, as <name>Mandingo</name>, <name>Jolof</name>, <name>Balaf</name>, &amp;c. and
+	    <lb/>brought over with their own concurrence and
+	    <lb/>desire, to be taught here the English language,
+	    <lb/>and prepared to give assistance in translating
+	    <lb/>from the <name>English</name> into their own languages.</p>
+          <list>
+            <item rend="first-indent(1)"><label>2nd</label>. That after appointing a <orgName>Provisional Com­
+		<lb/>mittee</orgName> for carrying this design into effect, arrange­
+	      <lb/>ments be made for providing the requisite funds,
+	      <lb/>and for directing the means by which <name>Africans</name>
+	      <lb/>shall be selected, and introduced to the proposed
+	      <lb/>means of instruction.</item>
+            <item rend="first-indent(1)"><label>3rd</label>. That at a suitable time a house be hired
+	      <lb/>for the purpose, and care taken to have it suf­
+	      <lb/>ficiently warm to shield the natives of a hot cli­
+	      <lb/>mate from the dangers they would otherwise be
+	      <lb/>exposed to during the winter season.</item>
+            <item rend="first-indent(1)"><label>4th</label>. That persons be engaged to take the
+	      <lb/>charge of the family as to domestic care, School
+	      <lb/>instruction, and the prosecution of Translations.</item>
+            <item rend="first-indent(1)"><label><choice><sic type="seq">6</sic><corr>5</corr></choice>th</label>. That the Committee take the
+	      <lb/> charge, as far as may be found expedient, of printing, in
+	      <lb/>different languages, Elementary books and Scrip­
+	      <lb/>ture lessons.</item>
+          </list>
+          <p>Any persons disposed to give their sanction
+	    <pb n="25"/>
+	    <milestone n="C5r" unit="sig"/>
+	    <mw rend="align(center)" type="pageNum">25</mw>
+	    <lb/>and aid to the proposed object, by Subscriptions
+	    <lb/>or Donations, are requested to give notice of their
+	    <lb/>purpose, or to forward their Contributions to
+	    <lb/><orgName rend="slant(upright)case(smallcaps)">Drewett</orgName> and 
+	    <orgName rend="slant(upright)case(smallcaps)">Fowler</orgName>, <placeName>60,
+	      Old Broad Street</placeName>, or
+	    <lb/>to any of the following <name>Friends</name>, who have agreed
+	    <lb/>to act as a Committee to carry the preceding
+	    <lb/>plan into effect, provided they meet with the
+	    <lb/>requisite pecuniary support.</p>
+          <list rend="case(smallcaps)indent(5)">
+            <item><persName>William Allen</persName>,</item>
+            <item><persName>John Thomas</persName>,</item>
+            <item><persName>Peter Bedford</persName>,</item>
+            <item><persName>John Capper</persName>,</item>
+            <item><persName>Samuel Darton</persName>,</item>
+            <item><persName>Josiah Forster</persName>,</item>
+            <item><persName>Robert Forster</persName>,</item>
+            <item><persName>William Hargrave</persName>,</item>
+            <item><persName>Thomas Hodgkin, M.D.</persName>,</item>
+            <item><persName>Wm. Forster Reynolds</persName>,</item>
+            <item><persName>John Sanderson</persName>.</item>
+          </list>
+        </div>
+        <pb n="26"/>
+        <milestone n="C5v" unit="sig"/>
+        <mw rend="align(center)" type="pageNum">26</mw>
+        <div type="section">
+          <head rend="align(left)slant(italic)case(mixed)">Extract of a Letter from an experienced and
+	    <lb rend="align(center)"/>devoted Agent of <orgName>the Church Missionary
+	      <lb rend="align(center)"/>Society</orgName>, who is now engaged in the work of
+	    <lb rend="align(center)"/>African Translations, dated <date when="1828-09-19">Sept. 19, 1828</date>.</head>
+          <quote rend="bestow((pre(“))(p))">
+            <p>The observations contained in your commu­
+	      <lb/>nication on the advantage of preparing elemen­
+	      <lb/>tary books in this country, in preference to
+	      <lb/><placeName>Africa</placeName>, meet my entire concurrence. The more
+	      <lb/>I reflect on the subject the more I see the very
+	      <lb/>great importance of studying the native lan­
+	      <lb/>guages in every point of view; but especially, as
+	      <lb/>you remark, when connected with the great and
+	      <lb/><choice><sic>and</sic><corr/></choice> blessed object of advancing the cause of our
+	      <lb/>Redeemer.</p>
+            <p>Of the dangers to which <name>Africans</name>, especially
+	      <lb/>young persons, are exposed when brought to this
+	      <lb/>country for instruction, I am fully sensible. I
+	      <lb/>trust, however, it may be found, that with pro­
+	      <lb/>per attention to situation and management, they
+	      <lb/>are not wholly insurmountable.</p>
+            <p>With respect to the great difficulty of sus­
+	      <lb/>taining the mental exertion necessary in the
+	      <lb/>study of languages, while resident in <placeName>Africa</placeName>, I
+	      <lb/>can speak in some measure from experience.
+	      <lb/>It appears to me next to impossible that the
+	      <pb n="27"/>
+	      <milestone n="C6r" unit="sig"/>
+	      <mw rend="align(center)" type="pageNum">27</mw>
+	      <lb/>work can be carried on with any thing like de­
+	      <lb/>sirable speed, by an individual or two exposed to
+	      <lb/>the debilitating effects of a tropical climate;
+	      <lb/>while, in order to be performed effectively, such
+	      <lb/>supervision as you suggest would, I think, be
+	      <lb/>necessary. For though the <emph>sounds</emph> must un­
+	      <lb/>doubtedly be learned from natives, yet as to the
+	      <lb/>manner of <emph>expressing</emph> those sounds, and as to
+	      <lb/>the construction of any particular language,
+	      <lb/>valuable assistance might probably be derived
+	      <lb/>from individuals in this country who are well
+	      <lb/>acquainted with language in general. So
+	      <lb/>far, therefore, as I have yet considered the
+	      <lb/>subject, I conceive that a work of this kind
+	      <lb/>would be best carried on conjointly, in <placeName>England</placeName>
+	      <lb/>and in <placeName>Africa</placeName> at the same time.</p>
+            <p>When I reflect on the great labour required
+	      <lb/>to communicate knowledge to <name>Africans</name>, through
+	      <lb/>the medium of <name>English</name>, and the degree of uncer­
+	      <lb/>tainty which exists as to the precise result of
+	      <lb/>that labour, I am forcibly impressed with the 
+	      <lb/>very great importance of adopting another plan;
+	      <lb/>that is, of endeavouring to open the natural chan­
+	      <lb/>nel of communication between them and us, by
+	      <lb/>becoming acquainted with their languages, and
+	      <lb/>by reducing them to writing. Indeed, I can
+	      <lb/>scarcely help wondering that such a plan should
+	      <lb/>not have been more decidedly adopted, and more
+	      <lb/>vigourously pursued in times past.  Having, how­
+	      <pb n="28"/>
+	      <milestone n="C6v" unit="sig"/>
+	      <mw rend="align(center)" type="pageNum">28</mw>
+	      <lb/>ever, once more been brought forward, I hope it
+	      <lb/>will never be lost sight of, till, through the bless­
+	      <lb/>ing of the Most High upon the exertions of those
+	      <lb/>who may give themselves to this work, the ines­
+	      <lb/>timable treasure of the Scriptures shall be laid
+	      <lb/>open to all the tribes of our African brethren who
+	      <lb/>are or may be within our reach.</p>
+          </quote>
+          <trailer rend="slant(upright)case(allcaps)">The End.</trailer>
+        </div>
+      
+    </body>
+    <back>
+      <titleBlock rend="pre(#rule)align(center)" type="colophon">
+        <docImprint><persName>Harvey</persName> and <persName>Darton</persName>, Printers, <placeName>Gracechurch Street</placeName></docImprint>
+      </titleBlock>
+    </back>
+  </text>
+</TEI>
