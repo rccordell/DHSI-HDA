@@ -1,4 +1,3 @@
-library(mallet)
 library(tidyverse)
 library(tidytext)
 

@@ -139,3 +139,15 @@ plot <- titleWords %>%
 ggplotly(plot)
 
 ```
+
+# Solutions for Workbook 8
+
+Regex to remove citation information in text field
+
+```{r}
+
+allWRIGHTtext <- allWRIGHTtext %>%
+  mutate(text = gsub("----CITATION----.*----FULL TEXT---- ", "", text))
+
+
+```
