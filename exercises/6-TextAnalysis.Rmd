@@ -429,7 +429,42 @@ ggplot(test %>% filter(filename %in% recent_addresses$filename),
 
 ## N-grams
 
-Another way me might start to take into account the content of our text while modeling it is to . This may help us account for the assumptions involved in tokenizing at the word level, is to incorporate some more context for each word into our analysis. 
+Another way that me might start to take into account the content of a text tokenized by word is to model it as a series of smaller sequences of words. Called "n-grams," these little chunks of text are `n` words in length. When we tokenize a string of text by an n-gram, we start with the first word in the string, and count `n-1` words along the string. We then move on to the next word in the string, and repeat.
+
+```{r}
+sample_string <- "The quick brown fox jumped over the lazy dog."
+
+sample_string %>%
+  tokenize_ngrams(n=4)
+```
+
+Varying `n` changes how many words are captured in each iteration. A "bi-gram" means `n = 2`, "tri-gram" means `n = 3`, "four-gram" means `n = 4`, and so on. Below, try tokenizing `sample_string` by a different n-gram for yourself, and see how it affects the result.
+
+```{r}
+
+
+```
+
+There is a lot of potential here: we can also complicate this a bit by using "k-skip-n-grams," in which we "skip" `k` words while counting. This is a common strategy in tracing the reuse of text; we won't cover it here, but want you to be aware it exists. 
+
+```{r}
+address_ngrams <- addresses %>%
+  group_by(filename) %>%
+  mutate(ngram = tokenize_ngrams(text, n = 4)) %>%
+  select(filename,ngram) %>%
+  unnest(ngram) %>%
+  group_by(filename,ngram) %>%
+  summarize(count = n()) %>%
+  arrange(-count)
+```
+
+Spreading this data will show us the number of times a particular n-gram (in this case, a 4-gram) occurs in each text.
+
+```{r}
+address_ngrams %>% spread(filename,count,fill=0) %>% View()
+```
+
+Generally speaking, a larger `n` will yield much more specific n-grams that incorporate more context, but are much less likely to be shared by other texts. Making a choice for `n` is thus a balancing act between , and there is no one "right" choice: it depends on what you want to know.
 
 stylistic analysis (stock phrases between different presidents); 30-year increments
 
