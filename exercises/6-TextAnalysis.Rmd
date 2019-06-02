@@ -31,11 +31,13 @@ trump
 
 ## Importing a Corpus of Text Files
 
-Using the base-R `dir` function, we can tell R to give us a list of filenames in a directory that meet certain criteria. Can you read the regular expression here that tells R the pattern? What kind of files is it bringing in? Why might we specify, instead of just bringing in all the files in the directory?
+Using the base-R `dir` function, we can tell R to give us a list of filenames in a directory that meet certain criteria. Can you decode the regular expression here that tells R the pattern? What kind of files is it bringing in? Why might we specify, instead of just bringing in all the files in the directory?
 
 ```{r}
 base_url <- "./data/inaugural/"
-filenames <- dir(base_url,pattern = "(\\d{4})-([A-Za-z]+).txt")
+
+filenames <- list.files(base_url,pattern = "(\\d{4})-([A-Za-z]+).txt")
+
 ```
 
 We need this list of file paths in order to tell R where each file is, in order to read it in. Below, the `paste0` lets us "concatenate" (combine) the base URL (the directory where the files live) with the filename for a text file. Here, let's do the first one in the list.
@@ -55,10 +57,12 @@ filepaths <- sprintf(paste0(base_url,"%s"),filenames)
 If we create an empty character vector with the `c` function, we can then loop through the filepaths and tell R to read in each file.
 
 ```{r}
+
 inaugural_text <- c()
 for (filepath in filepaths){
   inaugural_text <- c(inaugural_text, paste((readLines(filepath)), collapse = "\n"))
-  }
+}
+
 ```
 
 Looking at the structure of `text` with the `str` function, what do we have?
@@ -93,7 +97,6 @@ read_address_text = function(filename) {
   address = paste(readLines(paste0(base_url,filename)),collapse="\n")
   return(address)
 }
-
 addresses <- filenames %>%
   lapply(read_address_text)
 ```
@@ -196,6 +199,7 @@ What are the most frequent words here? We may want to subtract out "stop words" 
 
 ```{r}
 library(tidytext)
+
 stopwordlist <- stop_words %>%
   filter(lexicon == "SMART") %>%
   select(word)
@@ -345,7 +349,7 @@ So far, our simple counts have quantified properties of these speeches' language
 
 Here, we're going to model this lexical meaning of words using *sentiment analysis*, which makes use of lexicons that assign a sentiment to each word in an amassed list of words. Ryan has had this to say about the method:
 
-"Sentiment analysis is a method for tracing the emotional valences of texts. It does this, at base, by assigning an emotional valence to each word in a given text from a menu of possibilities. There are different SA algorithms that construe these possibilities differently, and there's a robust debate in computer science and related fields about which of these best represent the realities of language that SA models. Like any field, there are competing theories and methods, from which we will experiment with a few. But you should not construe the analyses we will conduct below as the only possibilities within the sentiment analysis field. Remember that humans design, debate, and modify algorithms: they are expressions of human intentions and desire for understanding, not impersonal structures descended from on high."
+> "Sentiment analysis is a method for tracing the emotional valences of texts. It does this, at base, by assigning an emotional valence to each word in a given text from a menu of possibilities. There are different SA algorithms that construe these possibilities differently, and there's a robust debate in computer science and related fields about which of these best represent the realities of language that SA models. Like any field, there are competing theories and methods, from which we will experiment with a few. But you should not construe the analyses we will conduct below as the only possibilities within the sentiment analysis field. Remember that humans design, debate, and modify algorithms: they are expressions of human intentions and desire for understanding, not impersonal structures descended from on high."
 
 So how do we do it? Once again, `tidytext` has assembled helpful data for performing different types of text analysis. Here, let's call the NRC Word-Emotion Association Lexicon. (Note that using a lexicon like this starts by tokenizing at th word level. What assumptions does this make, and what information do we potentially "lose"?)
 
@@ -376,6 +380,7 @@ Once we've done this preliminary assessment, we can start asking informed questi
 
 ```{r}
 address_words %>% 
+  ungroup() %>%
   inner_join(addresses) %>%
   inner_join(sentiments) %>%
   filter(is.na(sentiment) == FALSE) %>%
@@ -405,7 +410,8 @@ A potentially more interesting thing we might do is to plot the sentiment over e
 sentiments2 <- get_sentiments("bing")
 
 test <- address_words %>%
-  left_join(addresses) %>%
+  ungroup() %>%
+  inner_join(addresses) %>%
   inner_join(sentiments2) %>%
   count(filename, president, index = as.numeric(rownames(.)) %/% 80, sentiment) %>% #this is throwing an error (what's the floor divide 80 for?)
   spread(sentiment, n, fill = 0) %>%
