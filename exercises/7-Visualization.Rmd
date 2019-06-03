@@ -1,0 +1,91 @@
+---
+title: "Introduction to Visualization in the Tidyverse"
+author: "Gregory Palermo"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+In previous lessons, we've explored how visualization can be a useful tool to use while performing analysis. It is a mean of exploring the contours of our data: how they may be regularized and organized, what patterns they may form given that modeling, and how these patterns might answer our ever-changing research questions. Visualization can help us to anticipate how we might further transform the data to answer these same questions, or new ones. It can also help us to get a sense of how transformations we try out reshape our data as we try.
+
+So far, however, we haven't really focused on the *process* of visualizing. We've been content for the moment to treat the plots in our notebooks as a means of getting a better look at the *results* of our data tinkering. But just as we have considered other aspects of analysis as data transformations, we might frame visualization, too, as a means of transforming data.
+
+One of the major reasons R has been the historical choice of data analysts is that it has a wealth of visualization options. Our primary mechanisms for visualizing data in the `tidyverse` make use of the `ggplot2` package (from here, we'll just call it `ggplot`). Like other ways to create plots with which you might already be familiar — say, Microsoft Excel's — the `ggplot` package's functions are "representational" means of visualization: they **represent existing data in a visual medium**. This lesson will teach you how to use `ggplot` to control what parts of your data are represented and how. 
+
+# `ggplot`'s "grammar of graphics"
+
+Like in any act of representation that changes media, data's visual representation depends on choices made during the transformation. What makes `ggplot` relatively unique is that its philosophy in visualization is enacted. The "gg" in `ggplot` stands for "grammar of graphics."
+
+A general run of these choices are as follows:
+
+1. What data are you plotting?
+2. In what **geometry** or plot type do you want to display your data?
+3. What **aesthetic map** will you use to link your variables to your plot's visual elements? (More on this below.)
+4. What range of data (i.e., what **scales**) will you plot?
+5. Are there any variables across which you'd like to plot your data, or **facet**, for comparison?
+
+# What data?
+
+For this lesson, we'll be making use of a dataset with which I have a degree of familiarity: some (now pretty outdated) publication and citation data from the journal _Digital Humanities Quarterly_. This dataset represents articles published in *DHQ* in a period from 2007-2014 and was provided by the journal in a "tab-separated variable" files, which have `.tsv` extensions. A `.tsv` file is like a `.csv` file, except the data elements are separated by tab characters rather than commas.
+
+```{r}
+library(tidyverse)
+
+dhq_articles  <- read_tsv(file = "./data/dhq_ivmooc_data/dhq_articles.tsv") %>%
+  mutate (
+    isDHQ = as.logical(isDHQ))
+
+dhq_article_citations <- read_tsv(file = "./data/dhq_ivmooc_data/works_cited_in_dhq.tsv") %>%
+  mutate(
+    year = as.integer(year),
+    isDHQ = as.logical(isDHQ)
+  )
+
+# original works_cited_in_dhq.tsv modified to correct parsing failures:
+# 1558: year column added
+# 2030: curly quote fixed
+# 1801: missing quote in title
+```
+
+The observations in each of these tibbles are individual articles written by _DHQ_ authors. Because I've analyzed this type of data before, I also know that I'll want to spread the citation data such that our data is organized by *cited* work, in addition to the work doing the citing. These are represented in a variable of the `dhq_articles` tibble that separates citations by pipe characters, a concise  model that's not uncommon in these sorts of spreadsheets. (A side question to consider: Why does the journal provide the data this way?) Changing the frame of reference requires some data restructuring:
+
+```{r}
+
+dhq_cited_works <- dhq_articles %>%
+  mutate(`ref list` = strsplit(`reference IDs`,"\\|")) %>%
+  unnest(`ref list`) %>%
+  group_by(`article id`)  %>%
+  mutate(index = row_number()) %>%
+  spread(index, `ref list`)  %>%
+  ungroup() %>%
+  gather(
+    "index",
+    "citation",
+    -(`article id`:isDHQ) #excluding this range from the gather
+    ) %>%
+  na.omit() %>% #getting rid of 
+  select(citation,everything()) %>% #making citation the left-most varible in our tibble
+  arrange(citation)
+
+```
+
+
+# Geometries: Types of Plots in `ggplot2`
+
+## Historgrams
+
+## Bar Charts
+
+## Box and Whisker Plots
+
+## Scatter Plots
+
+## Line Graphs
+
+A line graph is a useful choice when we have data that changes over time.
+
+# Mapping Variables to Plot Elements
+
+# The Importance of Scales
+
+# Faceting
