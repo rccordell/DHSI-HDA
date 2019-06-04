@@ -14,7 +14,7 @@ One of the major reasons R has been the historical choice of data analysts is th
 
 # `ggplot`'s "grammar of graphics"
 
-Like in any act of representation that changes media, data's visual representation depends on choices made during the transformation. What makes `ggplot` relatively unique is that its philosophy in visualization is enacted. The "gg" in `ggplot` stands for "grammar of graphics."
+Like in any act of representation that changes media, data's visual representation depends on choices made during the transformation. What makes `ggplot` relatively unique is that its visualization philosophy is enacted in the structure of the code you write to call the package's functions. The "gg" in `ggplot` stands for "grammar of graphics." 
 
 A general run of these choices are as follows:
 
@@ -50,7 +50,14 @@ dhq_articles_biblio <- read_tsv(file = "./data/dhq_ivmooc_data/works_cited_in_dh
 
 Each of the resulting tibbles has a journal article as each observation. The first tibble contains articles written by _DHQ_ authors. The second tibble contains cited articles that the journal has collected data about, as part of an old project called _Biblio_.
 
-Because I've analyzed this type of data before, I also know that I'll want to spread the citation data such that our data is organized by *cited* work, in addition to the work doing the citing. These are represented in a variable of the `dhq_articles` tibble that separates citations by pipe characters, a concise  model that's not uncommon in these sorts of spreadsheets. (A side question to consider: Why does the journal provide the data this way?) Changing the frame of reference requires some data restructuring:
+Because I've analyzed this type of data before, I also know that I'll want to spread the citation data such that our data is organized by *cited* work, in addition to the work doing the citing. These are represented in a variable of the `dhq_articles` tibble that separates citations by pipe characters, a concise  model that's not uncommon in these sorts of spreadsheets. (A side question to consider: Why does the journal provide the data this way?)
+
+```{r}
+dhq_articles %>% 
+  select(`reference IDs`)
+```
+
+Changing the frame of reference requires some data restructuring:
 
 ```{r}
 
@@ -121,7 +128,7 @@ dhq_articles_biblio %>%
 
 ## Box and Whisker Plots
 
-Box and whisker plots are used to visualize some of the most relevant summary data associated with chosen groupings of data on the horizontal axis.
+Box and whisker plots can be used to visualize some summary stastics associated with chosen groupings of data on the horizontal axis. 
 
 ```{r}
 dhq_cited_works %>%
@@ -135,6 +142,8 @@ dhq_cited_works %>%
       ) +
   ggtitle("Citation Counts in DHQ Articles by Year")
 ```
+
+The "box" represents one standard deviation above and below the mean of the data, which is represented by a line somewhere . Outliers are represented as dots.
 
 ## Scatter Plots
 
@@ -172,7 +181,7 @@ ggplot() +
   geom_point() +
   aes(x = title_word_count,
       y=abstract_word_count,
-      label= `article id?`
+      label= `article id`
       )
 ```
 
@@ -224,11 +233,11 @@ require(gridExtra)
 grid.arrange(p1,p2,ncol=2)
 ```
 
-See if you can spot an issue with the line chart!
+See if you can spot a potentially misleading issue with the line chart!
 
 # 4. Axes and Scales
 
-Sometimes the default scale that `ggplot` chooses will not be the most elucidatory one. We can
+Sometimes the default scale that `ggplot` chooses will not be the most elucidatory choice. We can
 
 # 5. Faceting
 
@@ -240,7 +249,7 @@ A way of having semantic control over your variables and making your aesthetic m
 
 There are two major types of elements that you might want to label: those outside the plot area and those inside.
 
-Generally speaking, labels of the elements outside the plot area — such as axis titles and a title for the plot — are specified in a `labels` function that builds on the `ggplot` function. 
+Generally speaking, labels of the elements outside the plot area — such as axis titles and a title for the plot — are specified in a `labels` function that builds on the `ggplot` function. This is especially useful if you weren't so diligent about naming your variables well. It's also nice for polish, when you're looking to publish your visualizations as results.
 
 Also generally speaking, labels of the the elements in the plot area  the `labs` argument in your aesthetic map, and are the `aes` function (`labs` stands for `labels`). This is particularly useful in scatter plots when you'd like to label particular data points.
 
@@ -268,6 +277,7 @@ dhq_cited_works %>%
   coord_flip()
 ```
 
+# Closing Notes
 
-Last but not least, we'd like to link you to a potentially helpful [cheatsheat](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)!
+This is by no means an exhaustive walkthrough of visualization options in `ggplot2`, but we hope to have given you the tools to understand some of what's possible and branch out, using the package's documentation to help you. Last but not least, we'd like to link you to a potentially helpful [cheatsheat](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)!
 # Exercises
