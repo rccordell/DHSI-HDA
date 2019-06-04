@@ -137,13 +137,51 @@ Scatter plots are most useful to plot two separate variables "against" one each 
 
 ```
 
-## Line Graphs
+## Line chart
+
+A line chart is a useful choice when we have data that changes over time.
 
 ```{r}
-
+dhq_articles %>%
+  group_by(year) %>%
+  summarize(count = n()) %>%
+  ggplot() +
+  geom_line() +
+  aes(x = year, y=count)
 ```
 
-A line graph is a useful choice when we have data that changes over time.
+In this case, a line chart works pretty well. A word of caution, however: you might think that a line chart is always the best way to show data over time, but it isn't always! Generally, you use a line chart when you want to emphasize overall trends in the story you are trying to tell with your data. **Interpolation** between the points plotted on the chart, used to connect them with straight lines, can obscure precision of the values in your data. In fact, depending on the scale of your horizontal axis, it can look like you have plotted data that you don't have!
+
+What if we pretended, for the sake of argument, that the journal went on a brief break in 2011? Let's compare a bar chart and line chart of the same data.
+
+First, we'll need to install a package that lets us look at plots side by side.
+
+```{r}
+install.packages("gridExtra")
+```
+
+```{r}
+dhq_articles_test <- dhq_articles %>%
+  filter(!year == "2011")
+
+p1 <- dhq_articles_test %>%
+  group_by(`article id`,year) %>%
+  ggplot() +
+  geom_bar() +
+  aes(x = year)
+
+p2 <- dhq_articles_test %>%
+  group_by(year) %>%
+  summarize(count = n()) %>%
+  ggplot() +
+  geom_line() +
+  aes(x = year, y=count)
+
+require(gridExtra)
+grid.arrange(p1,p2,ncol=2)
+```
+
+See if you can spot an issue with the line chart!
 
 # 3. Mapping Variables to Plot Elements
 
