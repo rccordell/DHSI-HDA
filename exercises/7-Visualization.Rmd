@@ -23,6 +23,7 @@ A general run of these choices are as follows:
 3. What **aesthetic map** will you use to link your variables to your plot's visual elements? (More on this below.)
 4. What range of data (i.e., what **scales**) will you plot?
 5. Are there any variables across which you'd like to plot your data, or **facet**, for comparison?
+6. How can I use **formatting** to best elminiate ambiguity for the viewer? (This may require returning to some of the steps above!)
 
 # 1. What data?
 
@@ -77,11 +78,14 @@ dhq_cited_works <- dhq_articles %>%
 ```
 
 
-# 2. Geometries: Types of Plots in `ggplot2`
+# 2. & 3. Mapping your Variables to Geometries in `ggplot2`
+
 
 ## Historgrams
 
 Histograms are used to plot the frequency of a single, continuous variable across equal intervals of a given window. These intervals, called bins, appear on the horizontal axis, while the frequency, or count, appears on the vertical axis.
+
+Note the `aes` function that we've built on top of our `ggplot()`. 
 
 ## Bar Charts
 
@@ -103,7 +107,7 @@ dhq_cited_works %>%
   aes(x = isDHQ)
 ```
 
-This can help us see just how many works cited by DHQ authors have yet to be included in the Biblio corpus (some of these are likely duplicates!).
+This can help us see just how many works previously cited by DHQ authors have yet to be included in the Biblio corpus (some of these are also likely duplicates).
 
 Here's a bar plot of just the ones from biblio.
 
@@ -125,16 +129,51 @@ dhq_cited_works %>%
   summarize(count=n()) %>%
   ggplot() +
   geom_boxplot() +
-  aes(x = year, group= year,y = count) +
+  aes(x = year,
+      group= year,
+      y = count
+      ) +
   ggtitle("Citation Counts in DHQ Articles by Year")
 ```
 
 ## Scatter Plots
 
-Scatter plots are most useful to plot two separate variables "against" one each other — that is, one on the vertical axis and one on the horizontal. Most often, we do this in order to visualize a relationship between these variables, potentially expressing a mathematical equation, the parameters of which we choose, that represents a "best fit" of the plotted data. 
+Scatter plots are most useful to plot two separate variables "against" one each other — that is, one on the vertical axis and one on the horizontal. Most often, we do this in order to visualize a relationship between these variables, potentially expressing a mathematical equation, the parameters of which we choose, that represents a "best fit" of the plotted data.
+
+Let's compare the length of article titles against the length of their abstracts.
 
 ```{r}
+library(tokenizers)
 
+abstract_words <- dhq_articles %>%
+  na.omit(abstract) %>%
+  select(`article id`, abstract) %>%
+  mutate(word = tokenize_words(abstract)) %>%
+  unnest() %>%
+  select(`article id`,word)
+
+title_words <- dhq_articles %>%
+  select(`article id`, title) %>%
+  mutate(word = tokenize_words(title)) %>%
+  unnest() %>%
+  select(`article id`,word)
+
+word_counts <- abstract_words %>%
+  group_by(`article id`) %>%
+  summarize(abstract_word_count = n()) %>%
+  left_join(
+    title_words %>%
+      group_by(`article id`) %>%
+      summarize(title_word_count = n())
+  )
+
+word_counts %>%
+ggplot() +
+  geom_point() +
+  aes(x = title_word_count,
+      y=abstract_word_count,
+      label= `article id?`
+      )
 ```
 
 ## Line chart
@@ -150,15 +189,17 @@ dhq_articles %>%
   aes(x = year, y=count)
 ```
 
-In this case, a line chart works pretty well. A word of caution, however: you might think that a line chart is always the best way to show data over time, but it isn't always! Generally, you use a line chart when you want to emphasize overall trends in the story you are trying to tell with your data. **Interpolation** between the points plotted on the chart, used to connect them with straight lines, can obscure precision of the values in your data. In fact, depending on the scale of your horizontal axis, it can look like you have plotted data that you don't have!
+In this case, a line chart works pretty well. A word of caution, however: you might think that a line chart is always the best way to show data over time, but it isn't always! Generally, you would use a line chart to emphasize overall trends in the story you are trying to tell with your data. However, **interpolation** between the points plotted on the chart, used to connect them with straight lines, can obscure precision of the values in your data. In fact, depending on the scale of your horizontal axis, it can look like you have plotted data that you don't have!
 
-What if we pretended, for the sake of argument, that the journal went on a brief break in 2011? Let's compare a bar chart and line chart of the same data.
+What if we pretended, for the sake of argument, that the journal went on a brief haitus in 2011 and published no articles? Let's compare a bar chart and line chart of the same data.
 
-First, we'll need to install a package that lets us look at plots side by side.
+First, we'll need to install a package that lets us look at plots side by side. Uncomment the code below and run it to do that.
 
 ```{r}
-install.packages("gridExtra")
+#install.packages("gridExtra")
 ```
+
+Then, we'll filter out the records for 2011 and plot.
 
 ```{r}
 dhq_articles_test <- dhq_articles %>%
@@ -175,7 +216,9 @@ p2 <- dhq_articles_test %>%
   summarize(count = n()) %>%
   ggplot() +
   geom_line() +
-  aes(x = year, y=count)
+  aes(x = year,
+      y=count
+      )
 
 require(gridExtra)
 grid.arrange(p1,p2,ncol=2)
@@ -183,8 +226,48 @@ grid.arrange(p1,p2,ncol=2)
 
 See if you can spot an issue with the line chart!
 
-# 3. Mapping Variables to Plot Elements
-
 # 4. Axes and Scales
 
+Sometimes the default scale that `ggplot` chooses will not be the most elucidatory one. We can
+
 # 5. Faceting
+
+# 6. Formatting
+
+A way of having semantic control over your variables and making your aesthetic map much clearer to your plot's viewers is to custmoize plots with labels, legends, colors, and other formatting choices.
+
+## Labels
+
+There are two major types of elements that you might want to label: those outside the plot area and those inside.
+
+Generally speaking, labels of the elements outside the plot area — such as axis titles and a title for the plot — are specified in a `labels` function that builds on the `ggplot` function. 
+
+Also generally speaking, labels of the the elements in the plot area  the `labs` argument in your aesthetic map, and are the `aes` function (`labs` stands for `labels`). This is particularly useful in scatter plots when you'd like to label particular data points.
+
+## Legends
+
+## Colors
+
+## Specifying Plot Size
+
+## Coordinate Flipping
+
+It's also possible in `ggplot` to quickly and easly flip the coordinates — making the horizontal axis the vertical one, and vice-versa. This can be useful in categorical plots when the vertical axis would potentially be a bit squished by a traditional aspect ratio. This can happen, for example, when the vertical axis is much denser than the horizontal axis, or when there are a lot of categories on the horizontal axis and you have vertical space to spare.
+
+```{r}
+dhq_cited_works %>%
+  group_by(`article id`,year) %>%
+  summarize(count=n()) %>%
+  ggplot() +
+  geom_boxplot() +
+  aes(x = year,
+      group= year,
+      y = count
+      ) +
+  ggtitle("Citation Counts in DHQ Articles by Year") +
+  coord_flip()
+```
+
+
+Last but not least, we'd like to link you to a potentially helpful [cheatsheat](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)!
+# Exercises
