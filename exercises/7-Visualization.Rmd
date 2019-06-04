@@ -24,7 +24,7 @@ A general run of these choices are as follows:
 4. What range of data (i.e., what **scales**) will you plot?
 5. Are there any variables across which you'd like to plot your data, or **facet**, for comparison?
 
-# What data?
+# 1. What data?
 
 For this lesson, we'll be making use of a dataset with which I have a degree of familiarity: some (now pretty outdated) publication and citation data from the journal _Digital Humanities Quarterly_. This dataset represents articles published in *DHQ* in a period from 2007-2014 and was provided by the journal in a "tab-separated variable" files, which have `.tsv` extensions. A `.tsv` file is like a `.csv` file, except the data elements are separated by tab characters rather than commas.
 
@@ -35,7 +35,7 @@ dhq_articles  <- read_tsv(file = "./data/dhq_ivmooc_data/dhq_articles.tsv") %>%
   mutate (
     isDHQ = as.logical(isDHQ))
 
-dhq_article_citations <- read_tsv(file = "./data/dhq_ivmooc_data/works_cited_in_dhq.tsv") %>%
+dhq_articles_biblio <- read_tsv(file = "./data/dhq_ivmooc_data/works_cited_in_dhq.tsv") %>%
   mutate(
     year = as.integer(year),
     isDHQ = as.logical(isDHQ)
@@ -47,45 +47,106 @@ dhq_article_citations <- read_tsv(file = "./data/dhq_ivmooc_data/works_cited_in_
 # 1801: missing quote in title
 ```
 
-The observations in each of these tibbles are individual articles written by _DHQ_ authors. Because I've analyzed this type of data before, I also know that I'll want to spread the citation data such that our data is organized by *cited* work, in addition to the work doing the citing. These are represented in a variable of the `dhq_articles` tibble that separates citations by pipe characters, a concise  model that's not uncommon in these sorts of spreadsheets. (A side question to consider: Why does the journal provide the data this way?) Changing the frame of reference requires some data restructuring:
+Each of the resulting tibbles has a journal article as each observation. The first tibble contains articles written by _DHQ_ authors. The second tibble contains cited articles that the journal has collected data about, as part of an old project called _Biblio_.
+
+Because I've analyzed this type of data before, I also know that I'll want to spread the citation data such that our data is organized by *cited* work, in addition to the work doing the citing. These are represented in a variable of the `dhq_articles` tibble that separates citations by pipe characters, a concise  model that's not uncommon in these sorts of spreadsheets. (A side question to consider: Why does the journal provide the data this way?) Changing the frame of reference requires some data restructuring:
 
 ```{r}
 
 dhq_cited_works <- dhq_articles %>%
-  mutate(`ref list` = strsplit(`reference IDs`,"\\|")) %>%
+  mutate(`ref list` = strsplit(`reference IDs`," \\| ")) %>%
   unnest(`ref list`) %>%
   group_by(`article id`)  %>%
   mutate(index = row_number()) %>%
-  spread(index, `ref list`)  %>%
+  spread(index, `ref list`) %>%
   ungroup() %>%
   gather(
     "index",
     "citation",
     -(`article id`:isDHQ) #excluding this range from the gather
     ) %>%
-  na.omit() %>% #getting rid of 
-  select(citation,everything()) %>% #making citation the left-most varible in our tibble
+  na.omit(`citation`) %>%
+  select(citation,everything(),-isDHQ) %>% #dhqmaking citation the left-most varible in our tibble and removing the `isDHQ` associated with the article
+  left_join(
+    dhq_articles_biblio %>%
+      select(`article id`,isDHQ),
+    by = c('citation' = 'article id')
+  ) %>%
   arrange(citation)
 
 ```
 
 
-# Geometries: Types of Plots in `ggplot2`
+# 2. Geometries: Types of Plots in `ggplot2`
 
 ## Historgrams
 
+Histograms are used to plot the frequency of a single, continuous variable across equal intervals of a given window. These intervals, called bins, appear on the horizontal axis, while the frequency, or count, appears on the vertical axis.
+
 ## Bar Charts
+
+Bar charts are like histograms, but the variable across which we are measuring frequency is discrete. In other words, each of the "bins" on the horizontal axis is a single category.
+
+```{r}
+dhq_cited_works %>%
+  ggplot() +
+  geom_bar() +
+  aes(x=`article id`)
+```
+
+We might also plot a categorical variable from the cited works. Here, we can plot how much we know about whether a work cited in DHQ is also in DHQ.
+
+```{r}
+dhq_cited_works %>%
+  ggplot() +
+  geom_bar() +
+  aes(x = isDHQ)
+```
+
+This can help us see just how many works cited by DHQ authors have yet to be included in the Biblio corpus (some of these are likely duplicates!).
+
+Here's a bar plot of just the ones from biblio.
+
+```{r}
+dhq_articles_biblio %>%
+  ggplot() +
+  geom_bar() +
+  aes(x = isDHQ)
+```
+
 
 ## Box and Whisker Plots
 
+Box and whisker plots are used to visualize some of the most relevant summary data associated with chosen groupings of data on the horizontal axis.
+
+```{r}
+dhq_cited_works %>%
+  group_by(`article id`,year) %>%
+  summarize(count=n()) %>%
+  ggplot() +
+  geom_boxplot() +
+  aes(x = year, group= year,y = count) +
+  ggtitle("Citation Counts in DHQ Articles by Year")
+```
+
 ## Scatter Plots
+
+Scatter plots are most useful to plot two separate variables "against" one each other — that is, one on the vertical axis and one on the horizontal. Most often, we do this in order to visualize a relationship between these variables, potentially expressing a mathematical equation, the parameters of which we choose, that represents a "best fit" of the plotted data. 
+
+```{r}
+
+```
 
 ## Line Graphs
 
+```{r}
+
+```
+
 A line graph is a useful choice when we have data that changes over time.
 
-# Mapping Variables to Plot Elements
+# 3. Mapping Variables to Plot Elements
 
-# The Importance of Scales
+# 4. Axes and Scales
 
-# Faceting
+# 5. Faceting
