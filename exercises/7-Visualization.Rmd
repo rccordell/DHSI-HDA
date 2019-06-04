@@ -1,0 +1,283 @@
+---
+title: "Introduction to Visualization in the Tidyverse"
+author: "Gregory Palermo"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+In previous lessons, we've explored how visualization can be a useful tool to use while performing analysis. It is a mean of exploring the contours of our data: how they may be regularized and organized, what patterns they may form given that modeling, and how these patterns might answer our ever-changing research questions. Visualization can help us to anticipate how we might further transform the data to answer these same questions, or new ones. It can also help us to get a sense of how transformations we try out reshape our data as we try.
+
+So far, however, we haven't really focused on the *process* of visualizing. We've been content for the moment to treat the plots in our notebooks as a means of getting a better look at the *results* of our data tinkering. But just as we have considered other aspects of analysis as data transformations, we might frame visualization, too, as a means of transforming data.
+
+One of the major reasons R has been the historical choice of data analysts is that it has a wealth of visualization options. Our primary mechanisms for visualizing data in the `tidyverse` make use of the `ggplot2` package (from here, we'll just call it `ggplot`). Like other ways to create plots with which you might already be familiar — say, Microsoft Excel's — the `ggplot` package's functions are "representational" means of visualization: they **represent existing data in a visual medium**. This lesson will teach you how to use `ggplot` to control what parts of your data are represented and how. 
+
+# `ggplot`'s "grammar of graphics"
+
+Like in any act of representation that changes media, data's visual representation depends on choices made during the transformation. What makes `ggplot` relatively unique is that its visualization philosophy is enacted in the structure of the code you write to call the package's functions. The "gg" in `ggplot` stands for "grammar of graphics." 
+
+A general run of these choices are as follows:
+
+1. What data are you plotting?
+2. In what **geometry** or plot type do you want to display your data?
+3. What **aesthetic map** will you use to link your variables to your plot's visual elements? (More on this below.)
+4. What range of data (i.e., what **scales**) will you plot?
+5. Are there any variables across which you'd like to plot your data, or **facet**, for comparison?
+6. How can I use **formatting** to best elminiate ambiguity for the viewer? (This may require returning to some of the steps above!)
+
+# 1. What data?
+
+For this lesson, we'll be making use of a dataset with which I have a degree of familiarity: some (now pretty outdated) publication and citation data from the journal _Digital Humanities Quarterly_. This dataset represents articles published in *DHQ* in a period from 2007-2014 and was provided by the journal in a "tab-separated variable" files, which have `.tsv` extensions. A `.tsv` file is like a `.csv` file, except the data elements are separated by tab characters rather than commas.
+
+```{r}
+library(tidyverse)
+
+dhq_articles  <- read_tsv(file = "./data/dhq_ivmooc_data/dhq_articles.tsv") %>%
+  mutate (
+    isDHQ = as.logical(isDHQ))
+
+dhq_articles_biblio <- read_tsv(file = "./data/dhq_ivmooc_data/works_cited_in_dhq.tsv") %>%
+  mutate(
+    year = as.integer(year),
+    isDHQ = as.logical(isDHQ)
+  )
+
+# original works_cited_in_dhq.tsv modified to correct parsing failures:
+# 1558: year column added
+# 2030: curly quote fixed
+# 1801: missing quote in title
+```
+
+Each of the resulting tibbles has a journal article as each observation. The first tibble contains articles written by _DHQ_ authors. The second tibble contains cited articles that the journal has collected data about, as part of an old project called _Biblio_.
+
+Because I've analyzed this type of data before, I also know that I'll want to spread the citation data such that our data is organized by *cited* work, in addition to the work doing the citing. These are represented in a variable of the `dhq_articles` tibble that separates citations by pipe characters, a concise  model that's not uncommon in these sorts of spreadsheets. (A side question to consider: Why does the journal provide the data this way?)
+
+```{r}
+dhq_articles %>% 
+  select(`reference IDs`)
+```
+
+Changing the frame of reference requires some data restructuring:
+
+```{r}
+
+dhq_cited_works <- dhq_articles %>%
+  mutate(`ref list` = strsplit(`reference IDs`," \\| ")) %>%
+  unnest(`ref list`) %>%
+  group_by(`article id`)  %>%
+  mutate(index = row_number()) %>%
+  spread(index, `ref list`) %>%
+  ungroup() %>%
+  gather(
+    "index",
+    "citation",
+    -(`article id`:isDHQ) #excluding this range from the gather
+    ) %>%
+  na.omit(`citation`) %>%
+  select(citation,everything(),-isDHQ) %>% #dhqmaking citation the left-most varible in our tibble and removing the `isDHQ` associated with the article
+  left_join(
+    dhq_articles_biblio %>%
+      select(`article id`,isDHQ),
+    by = c('citation' = 'article id')
+  ) %>%
+  arrange(citation)
+
+```
+
+
+# 2. & 3. Mapping your Variables to Geometries in `ggplot2`
+
+
+## Historgrams
+
+Histograms are used to plot the frequency of a single, continuous variable across equal intervals of a given window. These intervals, called bins, appear on the horizontal axis, while the frequency, or count, appears on the vertical axis.
+
+Note the `aes` function that we've built on top of our `ggplot()`. 
+
+## Bar Charts
+
+Bar charts are like histograms, but the variable across which we are measuring frequency is discrete. In other words, each of the "bins" on the horizontal axis is a single category.
+
+```{r}
+dhq_cited_works %>%
+  ggplot() +
+  geom_bar() +
+  aes(x=`article id`)
+```
+
+We might also plot a categorical variable from the cited works. Here, we can plot how much we know about whether a work cited in DHQ is also in DHQ.
+
+```{r}
+dhq_cited_works %>%
+  ggplot() +
+  geom_bar() +
+  aes(x = isDHQ)
+```
+
+This can help us see just how many works previously cited by DHQ authors have yet to be included in the Biblio corpus (some of these are also likely duplicates).
+
+Here's a bar plot of just the ones from biblio.
+
+```{r}
+dhq_articles_biblio %>%
+  ggplot() +
+  geom_bar() +
+  aes(x = isDHQ)
+```
+
+
+## Box and Whisker Plots
+
+Box and whisker plots can be used to visualize some summary stastics associated with chosen groupings of data on the horizontal axis. 
+
+```{r}
+dhq_cited_works %>%
+  group_by(`article id`,year) %>%
+  summarize(count=n()) %>%
+  ggplot() +
+  geom_boxplot() +
+  aes(x = year,
+      group= year,
+      y = count
+      ) +
+  ggtitle("Citation Counts in DHQ Articles by Year")
+```
+
+The "box" represents one standard deviation above and below the mean of the data, which is represented by a line somewhere . Outliers are represented as dots.
+
+## Scatter Plots
+
+Scatter plots are most useful to plot two separate variables "against" one each other — that is, one on the vertical axis and one on the horizontal. Most often, we do this in order to visualize a relationship between these variables, potentially expressing a mathematical equation, the parameters of which we choose, that represents a "best fit" of the plotted data.
+
+Let's compare the length of article titles against the length of their abstracts.
+
+```{r}
+library(tokenizers)
+
+abstract_words <- dhq_articles %>%
+  na.omit(abstract) %>%
+  select(`article id`, abstract) %>%
+  mutate(word = tokenize_words(abstract)) %>%
+  unnest() %>%
+  select(`article id`,word)
+
+title_words <- dhq_articles %>%
+  select(`article id`, title) %>%
+  mutate(word = tokenize_words(title)) %>%
+  unnest() %>%
+  select(`article id`,word)
+
+word_counts <- abstract_words %>%
+  group_by(`article id`) %>%
+  summarize(abstract_word_count = n()) %>%
+  left_join(
+    title_words %>%
+      group_by(`article id`) %>%
+      summarize(title_word_count = n())
+  )
+
+word_counts %>%
+ggplot() +
+  geom_point() +
+  aes(x = title_word_count,
+      y=abstract_word_count,
+      label= `article id`
+      )
+```
+
+## Line chart
+
+A line chart is a useful choice when we have data that changes over time.
+
+```{r}
+dhq_articles %>%
+  group_by(year) %>%
+  summarize(count = n()) %>%
+  ggplot() +
+  geom_line() +
+  aes(x = year, y=count)
+```
+
+In this case, a line chart works pretty well. A word of caution, however: you might think that a line chart is always the best way to show data over time, but it isn't always! Generally, you would use a line chart to emphasize overall trends in the story you are trying to tell with your data. However, **interpolation** between the points plotted on the chart, used to connect them with straight lines, can obscure precision of the values in your data. In fact, depending on the scale of your horizontal axis, it can look like you have plotted data that you don't have!
+
+What if we pretended, for the sake of argument, that the journal went on a brief haitus in 2011 and published no articles? Let's compare a bar chart and line chart of the same data.
+
+First, we'll need to install a package that lets us look at plots side by side. Uncomment the code below and run it to do that.
+
+```{r}
+#install.packages("gridExtra")
+```
+
+Then, we'll filter out the records for 2011 and plot.
+
+```{r}
+dhq_articles_test <- dhq_articles %>%
+  filter(!year == "2011")
+
+p1 <- dhq_articles_test %>%
+  group_by(`article id`,year) %>%
+  ggplot() +
+  geom_bar() +
+  aes(x = year)
+
+p2 <- dhq_articles_test %>%
+  group_by(year) %>%
+  summarize(count = n()) %>%
+  ggplot() +
+  geom_line() +
+  aes(x = year,
+      y=count
+      )
+
+require(gridExtra)
+grid.arrange(p1,p2,ncol=2)
+```
+
+See if you can spot a potentially misleading issue with the line chart!
+
+# 4. Axes and Scales
+
+Sometimes the default scale that `ggplot` chooses will not be the most elucidatory choice. We can
+
+# 5. Faceting
+
+# 6. Formatting
+
+A way of having semantic control over your variables and making your aesthetic map much clearer to your plot's viewers is to custmoize plots with labels, legends, colors, and other formatting choices.
+
+## Labels
+
+There are two major types of elements that you might want to label: those outside the plot area and those inside.
+
+Generally speaking, labels of the elements outside the plot area — such as axis titles and a title for the plot — are specified in a `labels` function that builds on the `ggplot` function. This is especially useful if you weren't so diligent about naming your variables well. It's also nice for polish, when you're looking to publish your visualizations as results.
+
+Also generally speaking, labels of the the elements in the plot area  the `labs` argument in your aesthetic map, and are the `aes` function (`labs` stands for `labels`). This is particularly useful in scatter plots when you'd like to label particular data points.
+
+## Legends
+
+## Colors
+
+## Specifying Plot Size
+
+## Coordinate Flipping
+
+It's also possible in `ggplot` to quickly and easly flip the coordinates — making the horizontal axis the vertical one, and vice-versa. This can be useful in categorical plots when the vertical axis would potentially be a bit squished by a traditional aspect ratio. This can happen, for example, when the vertical axis is much denser than the horizontal axis, or when there are a lot of categories on the horizontal axis and you have vertical space to spare.
+
+```{r}
+dhq_cited_works %>%
+  group_by(`article id`,year) %>%
+  summarize(count=n()) %>%
+  ggplot() +
+  geom_boxplot() +
+  aes(x = year,
+      group= year,
+      y = count
+      ) +
+  ggtitle("Citation Counts in DHQ Articles by Year") +
+  coord_flip()
+```
+
+# Closing Notes
+
+This is by no means an exhaustive walkthrough of visualization options in `ggplot2`, but we hope to have given you the tools to understand some of what's possible and branch out, using the package's documentation to help you. Last but not least, we'd like to link you to a potentially helpful [cheatsheat](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)!
+# Exercises
