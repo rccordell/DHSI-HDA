@@ -14,6 +14,10 @@ library(topicmodels)
 
 ```
 
+# Preparing the Corpus
+
+## Loading Wright Fiction Corpus
+
 Okay, to get started today, we are going to load some different text data: works of fiction drawn from the [Wright American Fiction project](http://webapp1.dlib.indiana.edu/TEIgeneral/projectinfo.do?brand=wright) out of Indiana University. The methods we are discussing could be applied to texts of many kinds, however, including historical datasets like the presidential addresses we discussed yesterday. We are going to load these texts using a script created by former HDA RA [Jonathan Fitzgerald](http://jonathandfitzgerald.com/), which will also give you a chance to see code written by a different writer from either of your instructors. Before running the line below, open the file `readWright.R` and look at the code: do you understand each thing that happening? If not, let's discuss together. 
 
 ```{r}
@@ -29,6 +33,15 @@ Note that the existing code does not remove the citation information at the begi
 
 ```
 
+## Prepartory Analysis
+
+We will overview the basic assumptions and processes of topic modeling algorithms together now. Essentially, the probabilities behind topic models rely on a concept of *documents*: discrete units of text that, the method assumes, tell us something about the relationships among the words in those documents. 
+
+Thus one of the most important considerations when preparing a corpus for topic modeling is determining a reasonable document size for analysis. If your documents are too long, we might not imagine that all words they comprise are as closely related to one another as the words comprising shorter documents. Often when scholars topic model novels, for instance, they use individual chapters as their documents, rather than entire novels. 
+
+Another option, which we employ below, is to simply "chunk" texts into documents of a given size: e.g. 100 words, 500 words. This method has the advantage of creating documents of roughly identical size across works that may not have parallel structures. Even novel chapters, for instance, might be widely disparate lengths, and we might decide they are not as comparable as 1000-word chunks. 
+
+There isn't likely one answer to how to prepare a corpus for topic modeling: the right size for documents, as well as some of the other settings we will experiment with below, may vary depending on a scholar's primary texts and what she seeks to learn about them. We will talk about the decisions we made below but we also encourage you to modify some of these choices and see how the resulting topic models change. 
 
 ```{r}
 
@@ -37,7 +50,13 @@ wrightChunks <- chunk_text(allWRIGHTtext$text, chunk_size = 100, doc_id = allWRI
   gather(doc_id, text)
 
 words <- wrightChunks %>%
-  unnest_tokens(word, text)
+  unnest_tokens(word, text) 
+
+```
+
+There are a series of deliberate steps required to prepare our texts for topic modeling. To begin with, we need to bring the words from our books into a data format we haven't used much this week: a matrix. Specifically we need to create a "document term matrix." We will not be able to view this data directly (it's just too big a table) but essentially a DTM lists every document on one axis and every word on the other, filling in the intersections with the count of each term in each document. [Here is an example](https://www.darrinbishop.com/blog/2017/10/text-analytics-document-term-matrix/) if this is difficult to visualize in your mind.
+
+```{r}
 
 wordCounts <- words %>%
   anti_join(stop_words) %>%
@@ -45,32 +64,122 @@ wordCounts <- words %>%
   count(word, sort = TRUE) %>%
   ungroup()
 
-booksDTM <- wordCounts %>%
+docsDTM <- wordCounts %>%
   cast_dtm(doc_id, word, n)
 
-booksLDA <- LDA(booksDTM, k = 10, method="Gibbs", control=list(alpha=0.5))
+```
 
-bookTopics <- tidy(booksLDA, matrix = "beta")
+# Building a Topic Model
 
-topTerms <- bookTopics %>%
+## Why Not Mallet?
+
+Using this document-term matrix, we can use the `topicmodels` package to build our topic model. There is also a package that allows R users to use the popular `mallet` software for topic modeling (which I have done in prior courses). However, the `mallet` package is really just an R wrapper around Java-based software, and it can be difficult to understand what is really happening in it. For this week's class, then, we developed a more `tidyverse` friendly workflow following the example from [*Text Mining with R: A Tidy Approach*](https://www.tidytextmining.com/). 
+
+## LDA
+
+There are a number of arguments that can be passed to the `LDA` function, but the most important one we use below is `k`, which determines the number of topics the corpus will be sorted into. Note that this code will take a little bit to finish running: it's doing *a lot*. We can talk about precisely what it's doing while it runs.
+
+```{r}
+
+docsLDA <- LDA(docsDTM, k = 20, method="Gibbs", control=list(alpha=0.5))
+
+```
+
+# Exploring Topic Models
+
+Once we prepare a topic model, we can begin to explore it and attempt to learn more about our corpus. We will have as many individual topics as we specified in the `LDA` function above, and we can explore the words in each topic as well as exploring the documents that draw most fully from given topics. 
+
+## Beta 
+
+```{r}
+docsTopics <- tidy(docsLDA, matrix = "beta")
+
+docsTopics %>%
   group_by(topic) %>%
   top_n(10, beta) %>%
   ungroup() %>%
-  arrange(topic, -beta)
-
-topTerms %>%
+  arrange(topic, -beta) %>%
   mutate(term = reorder(term, beta)) %>%
   ggplot(aes(term, beta, fill = factor(topic))) +
   geom_col(show.legend = FALSE) +
   facet_wrap(~ topic, scales = "free") +
   coord_flip()
 
+```
 
-booksLDAgamma <- tidy(booksLDA, matrix = "gamma")
+Those kinds of graphs are nice for comparing topics, but what if you wanted to dig deeper into a particular topic? Can you write a series of pipes that would allow you to explore the top 20 words in a chosen topic?
 
+```{r}
+
+
+```
+
+
+```{r}
+
+topicSelect <- c(3,7)
+
+beta_spread <- docsTopics %>%
+  filter(topic %in% topicSelect) %>%
+  mutate(topic = paste0("topic", topic)) %>%
+  spread(topic, beta) %>%
+  filter(.[[2]] > .001 | .[[3]] > .001) %>%
+  mutate(log_ratio = log2(.[[3]] / .[[2]]))
+
+beta_spread %>%
+  group_by(direction = log_ratio > 0) %>%
+  top_n(10, abs(log_ratio)) %>%
+  ungroup() %>%
+  mutate(term = reorder(term, log_ratio)) %>%
+  ggplot(aes(term, log_ratio)) +
+  geom_col() +
+  labs(y = paste("Log2 ratio of beta in topic ", topicSelect[2], " / topic ", topicSelect[1])) +
+  coord_flip()
+
+```
+
+
+## Gamma
+
+One way to study topic models is by looking at the topics and investigating the words that makes up each. Another is to look at the documents that make up the corpus and investigate which topics they draw most heavily from. LDA's gamma measurement tell us what proportion of a given document the model estimates comes from a given topic. In the `docsLDAgamma` dataframe generated below, the `gamma` column tells us what proportion of words in each document the model has estimated come from each topic. You can see that some documents contain a mixture of topics, while others seem to draw primarily from a single topic. 
+
+```{r}
+
+docsLDAgamma <- tidy(docsLDA, matrix = "gamma") %>%
+  arrange(topic, -gamma) %>%
+  rename(doc_id = document)
+
+```
+
+Can you write a series of pipes that will result in a dataframe with the gamma for each topic for a single document? What about all of the documents drawn from a single original text?
+
+```{r}
+
+
+```
+
+What if we wanted to more easily see our source texts in conjunction with topics and gamma stats? How might we bring that data together?
+
+```{r}
 
 
 
 ```
 
+
+# Topic Modeling with Viral Texts
+
+The code below loads documents from the Viral Texts project. Let's work through what this code is doing together, load the documents, and then we will ask you to see if you can reproduce the topic modeling above using this new data. 
+
+```{r}
+
+source("readClusters.R")
+
+clusters <- readClusters("./data/vt")
+
+words <- clusters %>%
+  select(cluster, text) %>%
+  unnest_tokens(word, text)
+
+```
 

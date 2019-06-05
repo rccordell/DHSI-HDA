@@ -280,4 +280,5 @@ dhq_cited_works %>%
 # Closing Notes
 
 This is by no means an exhaustive walkthrough of visualization options in `ggplot2`, but we hope to have given you the tools to understand some of what's possible and branch out, using the package's documentation to help you. Last but not least, we'd like to link you to a potentially helpful [cheatsheat](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)!
+
 # Exercises

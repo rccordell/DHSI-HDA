@@ -124,17 +124,17 @@ The examples below all use this stanza from Edgar Allan Poe's "The Raven," which
  Take thy beak from out my heart, and take thy form from off my door!” 
              Quoth the Raven “Nevermore.”
              
-## Create Substitution Lists
+## Substitution Method 1: Create Substitution Vectors
 
-One way to create mad-libs style poems is to create lists of words to draw from randomly. This same method could be used to create other kinds of combinatory poems as well, including those that combine set phrases or lines. One advantage of this method is that you could control the substitution possibilities to only include words with the correct syllable count, or words that rhyme, or so forth.
+One way to create mad-libs style poems is to create vectors of words to draw from randomly (and don't worry if "vector" isn't a meaningful term yet; we'll spend more time on R's data types tomorrow morning). This same method could be used to create other kinds of combinatory poems as well, including those that combine set phrases or lines. One advantage of this method is that you could control the substitution possibilities to only include words with the correct syllable count, or words that rhyme, or so forth.
 
 ```{r}
-nouns <- list("cow","anvil","flower","tuba","parsley")
-past_verbs <- list("extrapolated","devoured","hypothesized","exploded","cha-cha slid")
-interjections <- list("gadzooks!","zounds!","hogwash!","aaarrrggghhh!","achoo")
+nouns <- c("cow","anvil","flower","tuba","parsley")
+past_verbs <- c("extrapolated","devoured","hypothesized","exploded","cha-cha slid")
+interjections <- c("gadzooks!","zounds!","hogwash!","aaarrrggghhh!","achoo")
 ```
              
-Once we create those lists, we can use code like that below to substitute random words from the lists into the appropriate spots in a line of poetry. Run the first line to understand how the `paste` function works and the second to substitute three words from the lists above into a line of "The Raven." The results will print in your console. What happens if you run the same line of code multiple times?
+Once we create those vectors, we can use code like that below to substitute random words from the variables we've created into the appropriate spots in a line of poetry. Run the first line to understand how the `paste` function works and the second to substitute three words from the lists above into a line of "The Raven." The results will print in your console. What happens if you run the same line of code multiple times?
              
 ```{r}
 
@@ -153,8 +153,53 @@ paste(c(), collapse ="")
 
 ```
 
+## Substitution Method 2: Tidytext's POS Dictionary
 
-## Application Programming Interfaces
+Typically when I teach this lesson, we now move to a different way of performing our substitutions: by drawing on the Wordnik online dictionary's application programming interface (API) to find random words in a particular part of speech. However, Wordnik has been having some technical difficulties that have interfered with the code below running properly. We've been in touch with Wordnik's API team, and it may be fixed before our class begins (in which case we'll explore it) but just in case we've written an alternative method here using the R package `tidytext`. We will need to load the `tidytext` library first. If `tidytext` is not yet installed on your machine, you will need to run `install.packages("tidytext")` in the console before the library can be loaded. Once you load `tidytext`, the next line will import a dictionary of 208 thousand words with their parts-of-speech. 
+
+```{r}
+
+library(tidytext)
+data("parts_of_speech")
+
+```
+
+One of the great strengths of R is the ease with which you can write custom functions to automate code sequences that you need to invoke often. In the next lines, we are going to create a new function that will select one random word of a given part of speech from the `parts_of_speech` dataset. We will delve into the details of writing a function later this week, but for now this should give you some idea of how it works. We will also need the `dplyr` library for this to work. 
+
+```{r}
+
+library(dplyr)
+
+random_word <- function(pofs, min_length = 5, max_length = 15, n=1){
+  parts_of_speech %>%
+    filter(pos == pofs &
+             nchar(word) >= min_length &
+             nchar(word) <= max_length) %>%
+    sample_n(1) %>%
+    select(word)
+}
+
+```
+
+If we run the code `random_word("Noun")`, we should return a single, random noun from the `parts_of_speech` dataset. We could control the parameters for that random noun by specifying the `min_length` or `max_length` arguments, as in:
+
+```{r}
+
+random_word("Noun", min_length = 1, max_length = 100)
+
+```
+
+But how can we know what all the valid POS arguments are that we could pass to this filter? If we run `unique(parts_of_speech$pos)` we can see all 14 values present in this dataset. 
+
+```{r}
+
+poem <- paste(c(random_word("Verb (intransitive)"), " thy ", random_word("Noun"), " from ", random_word("Preposition", min_length = 3)," my ", random_word("Noun"), ", and ", random_word("Verb (intransitive)"), " thy ", random_word("Noun"), " from ", random_word("Preposition", min_length = 3), " my ", random_word("Noun"), "! \nQuoth the Ravbot, '", random_word("Interjection", min_length = 3), "!'"), collapse = "")
+
+cat(poem)
+
+```
+
+## Substitution Method 3: Wordnik's Application Programming Interface
 
 Next we will perform our substitutions in a different way, by drawing from the Wordnik online dictionary. In order to complete this section, you’ll need to create a few accounts from which we’ll either be drawing or to which we’ll be adding content. Hopefully you already did this after our email, since the accounts take some time to be approved:
 
@@ -166,6 +211,7 @@ In addition to creating poems out of our own compiled wordlists, we can experime
 my_wordnik_key <- "YOUR API KEY HERE"
 
 #the line below will set the "default" part of speech for your calls to Wordnik, but you will be able to override this setting in later code.
+
 wordnik_pos = "adjective"
 
 random_word <- function(key=my_wordnik_key,
@@ -189,7 +235,7 @@ This function can be invoked via the following code; you can change the part of 
 
 ```{r}
 random_word(pos="verb",n=5, min_count=1000)
-random_word(pos="interjection",n=10, min_count=100)
+random_word(pos="interjection",n=5, min_count=100)
 ```
 
 Those dataframes aren't quite what we will want for making substitutions in our mad-lib poem, so I've written an additional function that calls Ben's function with some specific parameters (only 1 word), grabs only the second column from the dataframe generated in `random_word`, and converts that data to a character string. To grab a random word of a given part of speech, you simply need to invoke the function `poem_word()` and put the part of speech you're looking for in quotes inside the parentheses. There are a number of options for the part of speech, but you'll primarily use `verb`, `noun`, `pronoun`, `adjective`, `adverb`, `interjection`, and `preposition`. For other possibilities, consult [the documentation for the Wordnik API](http://developer.wordnik.com/docs.html#!/words/getRandomWord_get_4). 
@@ -238,7 +284,7 @@ cat(poem)
 
 ```
 
-## Tweet, tweet
+# Tweet, tweet
 
 Now let's introduce Twitter into the mix by using its API to grab a random trending hashtag and insert it into our poem. Using the Twitter API to interact with the service requires a consumer key, consumer secret, access token, and access secret from an application you create within Twitter. Twitter has made the application process for its API more involved, so we thought it would be more streamlined to use a single account for this course. If you want to use your own account in the future, the process should be much the same.
 
