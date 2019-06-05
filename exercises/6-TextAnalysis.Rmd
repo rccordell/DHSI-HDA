@@ -345,7 +345,7 @@ Now that our `addresses` tibble includes party information, we could repeat all 
 
 ## Using a Lexicon: Sentiment Analysis
 
-So far, our simple counts have quantified properties of these speeches' language without much regard to their content. While these formal aspects indeed carry meaning, distant analyses don't need to assume that all text contributes equally to meaning. One way that we can combat this problem is to assign, or code, meanings to certain words over others. We saw some of this processes when we removed stop words: there, we decided that function words were less important to our analysis than other words with more lexical meaning. 
+So far, our simple counts have quantified properties of these speeches' language without much regard to their content. While these formal aspects indeed carry meaning, distant analyses don't need to assume that all text contributes equally to meaning. One way that we can combat this problem is to assign, or code, meanings to certain words over others. We saw some of this processes when we removed stop words: there, we decided that function words were less important to our analysis than other words with more lexical meaning.
 
 Here, we're going to model this lexical meaning of words using *sentiment analysis*, which makes use of lexicons that assign a sentiment to each word in an amassed list of words. Ryan has had this to say about the method:
 
@@ -405,8 +405,6 @@ Note, already, that there's overlap here. Can we think of the reason that absolu
 A potentially more interesting thing we might do is to plot the sentiment over each address. Let's load a differnet lexicon that codes words in a binary positive/negative model. Finally, we'll plot the 9 most recent addresses.
 
 ```{r}
-## not working yet!!!!!! 
-
 sentiments2 <- get_sentiments("bing")
 
 test <- address_words %>%
@@ -445,7 +443,7 @@ Varying `n` changes how many words are captured in each iteration. A "bi-gram" m
 
 ```
 
-There is a lot of potential here: we can also complicate this a bit by using "k-skip-n-grams," in which we "skip" `k` words while counting. This is a common strategy in tracing the reuse of text; we won't cover it here, but want you to be aware it exists. 
+There is a lot of potential here: we can also complicate this a bit by using "k-skip-n-grams," in which we "skip" `k` words while counting. This is a common strategy in tracing the reuse of text; we won't cover it here, but want you to be aware it exists.
 
 ```{r}
 address_ngrams <- addresses %>%
@@ -466,7 +464,12 @@ address_ngrams %>% spread(filename,count,fill=0) %>% View()
 
 Generally speaking, a larger `n` will yield much more specific n-grams that incorporate more context, but are much less likely to be shared by other texts. Making a choice for `n` is thus a balancing act between , and there is no one "right" choice: it depends on what you want to know.
 
+How would you facet this in order to find some commonly-shared phrases
+
 stylistic analysis (stock phrases between different presidents); 30-year increments
+
+are there any matches (4 grams: United States of America)
+
 
 ### Comparing N-grams across different texts
 
