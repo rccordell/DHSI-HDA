@@ -405,8 +405,6 @@ Note, already, that there's overlap here. Can we think of the reason that absolu
 A potentially more interesting thing we might do is to plot the sentiment over each address. Let's load a differnet lexicon that codes words in a binary positive/negative model. Finally, we'll plot the 9 most recent addresses.
 
 ```{r}
-## not working yet!!!!!! 
-
 sentiments2 <- get_sentiments("bing")
 
 test <- address_words %>%
@@ -445,7 +443,9 @@ Varying `n` changes how many words are captured in each iteration. A "bi-gram" m
 
 ```
 
-There is a lot of potential here: we can also complicate this a bit by using "k-skip-n-grams," in which we "skip" `k` words while counting. This is a common strategy in tracing the reuse of text; we won't cover it here, but want you to be aware it exists. 
+There is a lot of potential here: we can also complicate this a bit by using "k-skip-n-grams," in which we "skip" `k` words while counting. This is a common strategy in tracing the reuse of text; we won't cover it here, but want you to be aware it exists.
+
+Anyway, let's tokenize our inagural addresses by n-grams — here, a 4-gram:
 
 ```{r}
 address_ngrams <- addresses %>%
@@ -464,10 +464,10 @@ One of the simplest but often most effective way to analyze data using ngrams is
 
 address_ngrams %>%
   group_by(ngram) %>%
-  add_count(ngram) %>%
-  filter(n >= 3) %>%
-  arrange(desc(n), ngram, filename) %>%
-  #  spread(filename, count, fill = 0) %>%
+  add_count(ngram, name = "corpus_count") %>%
+  filter(corpus_count >= 3) %>%
+  arrange(desc(corpus_count), ngram, filename) %>%
+    spread(filename, count, fill = 0) %>%
   View()
 
 ```
@@ -480,8 +480,6 @@ Perhaps this analysis is too broad to be useful. Can you write code that will al
 
 ```
 
-
-### Comparing N-grams across different texts
 
 # Parsing XML data with R
 
