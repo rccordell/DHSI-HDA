@@ -438,7 +438,7 @@ sample_string %>%
   tokenize_ngrams(n=4)
 ```
 
-Varying `n` changes how many words are captured in each iteration. A "bi-gram" means `n = 2`, "tri-gram" means `n = 3`, "four-gram" means `n = 4`, and so on. Below, try tokenizing `sample_string` by a different n-gram for yourself, and see how it affects the result.
+Varying `n` changes how many words are captured in each iteration. A "bi-gram" means `n = 2`, "tri-gram" means `n = 3`, "four-gram" means `n = 4`, and so on. Generally speaking, a larger `n` will yield much more specific n-grams that incorporate more context, but are much less likely to be shared by other texts. Making a choice for `n` is thus a balancing act between , and there is no one "right" choice: it depends on what you want to know. Below, try tokenizing `sample_string` by a different n-gram for yourself, and see how it affects the result.
 
 ```{r}
 
@@ -458,15 +458,28 @@ address_ngrams <- addresses %>%
   arrange(-count)
 ```
 
-Spreading this data will show us the number of times a particular n-gram (in this case, a 4-gram) occurs in each text.
+One of the simplest but often most effective way to analyze data using ngrams is to compare their use across documents. The code below stages two different comparisons, which you can toggle between by changing one commented line in the pipe sequence. What kinds of questions might these types of comparisons suggest? What followup analysis might we perform?
 
 ```{r}
-address_ngrams %>% spread(filename,count,fill=0) %>% View()
+
+address_ngrams %>%
+  group_by(ngram) %>%
+  add_count(ngram) %>%
+  filter(n >= 3) %>%
+  arrange(desc(n), ngram, filename) %>%
+  #  spread(filename, count, fill = 0) %>%
+  View()
+
 ```
 
-Generally speaking, a larger `n` will yield much more specific n-grams that incorporate more context, but are much less likely to be shared by other texts. Making a choice for `n` is thus a balancing act between , and there is no one "right" choice: it depends on what you want to know.
+Perhaps this analysis is too broad to be useful. Can you write code that will allow you to see if there are any language trends tied to particular time periods? 
 
-stylistic analysis (stock phrases between different presidents); 30-year increments
+
+```{r}
+
+
+```
+
 
 ### Comparing N-grams across different texts
 
