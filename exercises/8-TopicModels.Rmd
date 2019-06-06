@@ -169,7 +169,9 @@ What if we wanted to more easily see our source texts in conjunction with topics
 
 # Topic Modeling with Viral Texts
 
-The code below loads documents from the Viral Texts project. Let's work through what this code is doing together, load the documents, and then we will ask you to see if you can reproduce the topic modeling above using this new data. 
+The code below loads documents from the Viral Texts project. We didn't include these files on the Github because they're pretty sizable, and we didn't want to delay our first day's work. If you are interested in importing from a pretty big data set and then topic modeling it, you can download the files at <https://www.dropbox.com/s/5l159fh3621dgy2/vt.zip?dl=0>. 
+
+Let's work through what this code is doing together, load the documents, and then we will ask you to see if you can reproduce the topic modeling above using this new data. 
 
 ```{r}
 
