@@ -3,6 +3,8 @@ library(tidytext)
 library(stringr)
 library(plotly)
 
+# *A note before we begin*: you might want to toggle `soft wrap R source files` under `Tools > Global Options...` That will make these long comments more readable in RStudio. 
+
 # This file looks different and works a bit differently, because it is a regular `.r` file rather than an `.rmd` workbook. We've done this deliberately so we can talk about the kinds of R files you will more often encounter "in the wild." These files are not optimized for weaving together prose and code: all explanatory prose has to be marked with `#` to designate it as a "comment" that R will not attempt to execute. Thus there will be less explanatory text throughout this file, and we will have to discuss more in detail verbally. In brief, however, our goal in this lesson is to bridge between the kind of tabular data analysis we have been doing thus far toward text analysis and data visualization. We will overview a number of concepts in this lesson and then delve into each topic in more detail in tomorrow's workbooks.
 
 # Let's import our CSV of US Newspaper titles
@@ -20,7 +22,6 @@ papers %>%
   filter(frequencyReg == "Weekly") %>%
   ggplot(aes(x=start)) + 
   geom_histogram(bins=50)
-
 # for some analyses and visualizations, years might be too granular a measure. Can you use techniques we've already discussed to create two new columns: `startDecade` and `endDecade`?
 
 YOUR CODE HERE
