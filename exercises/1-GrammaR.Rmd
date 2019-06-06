@@ -363,8 +363,8 @@ bibleEdit <- function(kjv, nkjv){
     mutate(text = tolower(text)) %>%
     drop_na(text) %>% 
     filter(str_detect(text, kjv)) %>% 
-    mutate(revText = str_replace(text, kjv, nkjv)) %>%
-    mutate(revText = paste(verse_title, " ", revText, sep = ""))
+    mutate(revText = str_replace_all(text, kjv, nkjv)) %>%
+    mutate(revText = paste(verse_title, " ", revText, "\n", sep = ""))
   return(bible)
 }
 

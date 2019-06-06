@@ -93,19 +93,19 @@ This week we will work in the R programming language, developed for statistical 
 + Afternoon 2: Exercises
 
 ## Day 3: Wednesday, June 12
-+ Morning 1: Transforming tabular data 2/Data visualization 1
++ Morning 1: Data cleaning
 + Morning 2: Exercises and/or work with student data
-+ Afternoon 1: Data visualization 2
++ Afternoon 1: Text Analysis
 + Afternoon 2: Exercises and/or work with student data
 
 ## Day 4; Thursday, June 13
-+ Morning 1: Student choice (from: text analysis, classifying/clustering, mapping, topic modeling, vector space analysis)
++ Morning 1: Topic Modeling
 + Morning 2: Exercises and/or work with student data
-+ Afternoon 1: Student choice (from: text analysis, classifying/clustering, mapping, topic modeling, vector space analysis)
++ Afternoon 1: Visualization
 + Afternoon 2: Exercises and/or work with student data
 
 ## Day 5: Friday, June 14
-+ Morning 1: Student choice
++ Morning 1: Exploratory Data Analysis
 + Morning 2: Course wrap up; final questions and certificates
 
 \newpage
