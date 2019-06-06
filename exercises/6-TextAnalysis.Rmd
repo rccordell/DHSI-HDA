@@ -467,7 +467,7 @@ address_ngrams %>%
   add_count(ngram, name = "corpus_count") %>%
   filter(corpus_count >= 3) %>%
   arrange(desc(corpus_count), ngram, filename) %>%
-    spread(filename, count, fill = 0) %>%
+#    spread(filename, count, fill = 0) %>%
   View()
 
 ```
