@@ -3,7 +3,7 @@ library(tidytext)
 library(stringr)
 library(plotly)
 
-# This file looks and works a bit differently, because it is a regular `.r` file rather than an `.rmd` workbook. We've done this deliberately so we can talk about the kinds of R files you will more often encounter "in the wild." These files are not optimized for weaving together prose and code: all explanatory prose has to be marked with `#` to designate it as a "comment" that R will not attempt to execute. Thus there will be less explanatory text throughout this file, and we will have to discuss more in detail verbally. In brief, however, our goal in this lesson is to bridge between the kind of tabular data analysis we have been doing thus far toward text analysis and data visualization. We will overview a number of concepts in this lesson and then delve into each topic in more detail in tomorrow's workbooks.
+# This file looks different and works a bit differently, because it is a regular `.r` file rather than an `.rmd` workbook. We've done this deliberately so we can talk about the kinds of R files you will more often encounter "in the wild." These files are not optimized for weaving together prose and code: all explanatory prose has to be marked with `#` to designate it as a "comment" that R will not attempt to execute. Thus there will be less explanatory text throughout this file, and we will have to discuss more in detail verbally. In brief, however, our goal in this lesson is to bridge between the kind of tabular data analysis we have been doing thus far toward text analysis and data visualization. We will overview a number of concepts in this lesson and then delve into each topic in more detail in tomorrow's workbooks.
 
 # Let's import our CSV of US Newspaper titles
 
@@ -75,7 +75,7 @@ papers %>%
   ggplot() + 
   geom_histogram(aes(x=start), bins=50)
 
-# you might not be interested in the languages we have written a filter for below. How would you figure out what the other languages in the dataset are? Can you edit the code to filter for your chosen languages?
+# We've filtered for some languages below. How would you figure out what the other languages in the dataset are? Can you edit the code to filter for other languages you might find of interest, should they differ?
 
 languages <- c("ger","fre","spa","chi")
 
@@ -139,7 +139,7 @@ titleWords %>%
   geom_text(check_overlap = TRUE)
 
 
-# Now let's introduce some more sophsticated plots to explore these title words
+# Now let's introduce some more sophsticated plots to explore these title words.
 
 plot <- titleWords %>%
   # top_n(3) %>% 
