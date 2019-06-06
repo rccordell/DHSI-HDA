@@ -356,15 +356,16 @@ The following inspired by Daniel Mallory Ortberg's fantastic [Bible Verses Where
 
 ```{r}
 
+library(scriptuRs, stringr)
+
 bibleEdit <- function(kjv, nkjv){
-  library(scriptuRs, stringr)
   bible <- kjv_bible() %>%
     select(chapter_number, verse_number, verse_title, book_title, text) %>%
     mutate(text = tolower(text)) %>%
     drop_na(text) %>% 
     filter(str_detect(text, kjv)) %>% 
     mutate(revText = str_replace_all(text, kjv, nkjv)) %>%
-    mutate(revText = paste(verse_title, " ", revText, "\n", sep = ""))
+    mutate(revText = paste(verse_title, " ", revText, "\n\n", sep = ""))
   return(bible)
 }
 
