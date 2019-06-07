@@ -356,7 +356,8 @@ The following inspired by Daniel Mallory Ortberg's fantastic [Bible Verses Where
 
 ```{r}
 
-library(scriptuRs, stringr)
+library(scriptuRs)
+library(stringr)
 
 bibleEdit <- function(kjv, nkjv){
   bible <- kjv_bible() %>%
