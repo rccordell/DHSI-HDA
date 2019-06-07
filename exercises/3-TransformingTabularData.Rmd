@@ -335,8 +335,8 @@ write.csv(census_wide, file = "./output/census_wide.csv")
 
 2. Perform the necessary transformations and joins so that newspapers are an observation (row) in the `census_wide` dataframe.
 
-3. TBA
+3. Import `crewlists.csv` as a dataframe named `crewlists`. Who were the oldest and youngest crew members who shipped out in the 1860s? Were they older, younger, or the same ages (at each edge) as the oldest and youngest crew members who shipped out in the 1880s? What were the average ages of sailors in each decade? 
 
-4. TBA
+4. In `crewlists.csv`, how many sailors shipped in each type of rig? Can you break that analysis down by year? By decade?
 
-5. TBA
+5. REACH: What is the ratio of newspapers founded (from `US-Newspapers.csv`) to ships launched (from `crewlists.csv`) by year?
