@@ -27,7 +27,7 @@ A general run of the choices to make when using `ggplot` are as follows:
 
 # 1. What data?
 
-For this lesson, we'll be making use of a dataset with which I have a degree of familiarity: some (now pretty outdated) publication and citation data from the journal _Digital Humanities Quarterly_. This dataset represents articles published in *DHQ* in a period from 2007-2014 and was provided by the journal in a "tab-separated variable" files, which have `.tsv` extensions. A `.tsv` file is like a `.csv` file, except the data elements are separated by tab characters rather than commas.
+For this lesson, we'll be making use of a dataset with which I have a degree of familiarity: some (now pretty outdated) publication and citation data from the journal _Digital Humanities Quarterly_ <http://www.digitalhumanities.org/dhq/>. This dataset represents articles published in *DHQ* in a period from 2007-2014 and was provided by the journal in a "tab-separated variable" files, which have `.tsv` extensions. A `.tsv` file is like a `.csv` file, except the data elements are separated by tab characters rather than commas.
 
 ```{r}
 library(tidyverse)
@@ -88,21 +88,30 @@ dhq_cited_works <- dhq_articles %>%
 # 2. & 3. Mapping your Variables to Geometries in `ggplot2`
 
 
-## Historgrams
+## Histograms
 
 Histograms are used to plot the frequency of a single, continuous variable across equal intervals of a given window. These intervals, called bins, appear on the horizontal axis, while the frequency, or count, appears on the vertical axis. A histogram is useful for looking at the distribution of a continuous variable across a dataset when that variable lends itself well to grouping.
 
 Note the `aes` function that we've built on top of our `ggplot()`. This is called the "aesthetic map," which maps particular variables to plot elements — in this case, the horizontal axis.
 
-A simple histogram that we might make is of the publication year distribution of the works cited in DHQ.
+A simple histogram that we might make is of the publication year distribution of the works cited in DHQ. 
 
 ```{r}
 dhq_articles_biblio %>% 
   group_by(year) %>%
   ggplot() + 
   aes(x = year) +
-  geom_histogram( binwidth = 1)
+  geom_histogram(binwidth = 1)
+
 ```
+
+Could you write code to create a histogram illustrating the number of citations from each year bewteen 1900-2014?
+
+```{r}
+
+
+```
+
 
 What does the code below plot?
 
@@ -124,6 +133,7 @@ abstract_word_counts %>%
   ggplot() +
   geom_histogram(binwidth = 10) +
   aes(x = `abstract_word_count`)
+
 ```
 
 ## Bar Charts
@@ -137,7 +147,7 @@ dhq_cited_works %>%
   aes(x=`article id`)
 ```
 
-Instead grouping some like values of a single variable together, we can plot how much we know about whether a work cited in DHQ is also in DHQ.
+Instead of grouping some like values of a single variable together, we can plot how much we know about whether a work cited in DHQ is also in DHQ.
 
 ```{r}
 dhq_cited_works %>%
@@ -207,7 +217,7 @@ ggplot() +
       )
 ```
 
-Scatter plots are also a good way to  plot ratios of variables on the fly by messing with the aesthetic map, since histograms and bars don't give us as much direct control of the vertical axis. (Of course, we always have the option, with those plots, of performing calculations on the data beforehand.) What emerges in this plot that may have been harder to see in the other?
+Scatter plots are also a good way to  plot ratios of variables on the fly by tinkering with the aesthetic map, since histograms and bars don't give us as much direct control of the vertical axis. (Of course, we always have the option, with those plots, of performing calculations on the data beforehand.) What emerges in this plot that may have been harder to see in the other?
 
 ```{r}
 word_counts %>%
@@ -295,7 +305,6 @@ abstract_word_counts %>%
   geom_histogram(binwidth = 10) +
   aes(x = `abstract_word_count`) +
   scale_y_continuous(breaks=seq(0,max(abstract_word_counts),1))
-  
   
 ```
 

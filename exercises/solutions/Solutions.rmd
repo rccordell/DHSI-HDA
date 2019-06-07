@@ -140,7 +140,7 @@ ggplotly(plot)
 
 ```
 
-# Solutions for Workbook 8
+# Solutions for Workbook 6
 
 Regex to remove citation information in text field
 
@@ -207,3 +207,19 @@ docsLDAgamma <- tidy(docsLDA, matrix = "gamma") %>%
   mutate(doc_id = as.numeric(doc_id))
 
 ```
+
+
+# Solutions for Workbook 7 
+
+Plotting citations from each year as a histogram
+
+```{r}
+dhq_cited_works %>%
+  mutate(citationYear = as.numeric(str_replace_all(citation, "\\D", ""))) %>% 
+  filter(citationYear > 1900 & citationYear <= 2014) %>%
+  na.omit %>%
+  ggplot() +
+  aes(x = citationYear) +
+  geom_histogram(bins = 100)
+```
+
