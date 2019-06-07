@@ -361,10 +361,11 @@ library(scriptuRs, stringr)
 bibleEdit <- function(kjv, nkjv){
   bible <- kjv_bible() %>%
     select(chapter_number, verse_number, verse_title, book_title, text) %>%
-    mutate(text = tolower(text)) %>%
     drop_na(text) %>% 
-    filter(str_detect(text, kjv)) %>% 
-    mutate(revText = str_replace_all(text, kjv, nkjv)) %>%
+    filter(grepl(kjv, text, ignore.case = T)) %>%
+    mutate(revText = gsub(kjv, nkjv, text, ignore.case = T)) %>%
+    mutate(revText = gsub("(^[a-z]|\\. [a-z])", "\\U\\1", revText, perl = TRUE)) %>%
+    mutate(revText = gsub(",,",",", revText)) %>% 
     mutate(revText = paste(verse_title, " ", revText, "\n\n", sep = ""))
   return(bible)
 }
@@ -372,6 +373,8 @@ bibleEdit <- function(kjv, nkjv){
 verses <- bibleEdit("thou shalt", "it'd be great if you could") 
 
 cat(verses$revText)
+
+write_csv(verses, "./output/verses.csv")
 
 bible %>% 
   unnest_tokens(word, text) %>%
