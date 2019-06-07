@@ -14,9 +14,9 @@ One of the major reasons R has been the historical choice of data analysts is th
 
 # `ggplot`'s "grammar of graphics"
 
-Like in any act of representation that changes media, data's visual representation depends on choices made during the transformation. What makes `ggplot` relatively unique is that its visualization philosophy is enacted in the structure of the code you write to call the package's functions. The "gg" in `ggplot` stands for "grammar of graphics." 
+Like in any act of representation that changes media, data's visual representation depends on choices made during the transformation. What makes `ggplot` relatively unique is that its visualization philosophy is enacted in the structure of the code you write to call the package's functions. The "gg" in `ggplot` stands for "grammar of graphics." This grammar breaks down, piece-by-piece, the layered components that make up a visualization, allowing the user to build a plot from the bottom up with components they specify, rather than starting with and modifying one-size-fits-all plots.
 
-A general run of these choices are as follows:
+A general run of the choices to make when using `ggplot` are as follows:
 
 1. What data are you plotting?
 2. In what **geometry** or plot type do you want to display your data?
@@ -90,13 +90,45 @@ dhq_cited_works <- dhq_articles %>%
 
 ## Historgrams
 
-Histograms are used to plot the frequency of a single, continuous variable across equal intervals of a given window. These intervals, called bins, appear on the horizontal axis, while the frequency, or count, appears on the vertical axis.
+Histograms are used to plot the frequency of a single, continuous variable across equal intervals of a given window. These intervals, called bins, appear on the horizontal axis, while the frequency, or count, appears on the vertical axis. A histogram is useful for looking at the distribution of a continuous variable across a dataset when that variable lends itself well to grouping.
 
-Note the `aes` function that we've built on top of our `ggplot()`. 
+Note the `aes` function that we've built on top of our `ggplot()`. This is called the "aesthetic map," which maps particular variables to plot elements — in this case, the horizontal axis.
+
+A simple histogram that we might make is of the publication year distribution of the works cited in DHQ.
+
+```{r}
+dhq_articles_biblio %>% 
+  group_by(year) %>%
+  ggplot() + 
+  aes(x = year) +
+  geom_histogram( binwidth = 1)
+```
+
+What does the code below plot?
+
+```{r}
+library(tokenizers)
+
+abstract_words <- dhq_articles %>%
+  na.omit(abstract) %>%
+  select(`article id`, abstract) %>%
+  mutate(word = tokenize_words(abstract)) %>%
+  unnest() %>%
+  select(`article id`,word)
+
+abstract_word_counts <- abstract_words %>%
+  group_by(`article id`) %>%
+  summarize(abstract_word_count = n())
+
+abstract_word_counts %>%
+  ggplot() +
+  geom_histogram(binwidth = 10) +
+  aes(x = `abstract_word_count`)
+```
 
 ## Bar Charts
 
-Bar charts are like histograms, but the variable across which we are measuring frequency is discrete. In other words, each of the "bins" on the horizontal axis is a single category.
+Bar charts are like histograms, but the variable across which we are measuring frequency is discrete rather than continuous. In other words, each of the "bins" on the horizontal axis is a single category, rather than a sampling of a range. Usually this is used to group things together, but unique data are also discrete!
 
 ```{r}
 dhq_cited_works %>%
@@ -105,7 +137,7 @@ dhq_cited_works %>%
   aes(x=`article id`)
 ```
 
-We might also plot a categorical variable from the cited works. Here, we can plot how much we know about whether a work cited in DHQ is also in DHQ.
+Instead grouping some like values of a single variable together, we can plot how much we know about whether a work cited in DHQ is also in DHQ.
 
 ```{r}
 dhq_cited_works %>%
@@ -143,7 +175,7 @@ dhq_cited_works %>%
   ggtitle("Citation Counts in DHQ Articles by Year")
 ```
 
-The "box" represents one standard deviation above and below the mean of the data, which is represented by a line somewhere . Outliers are represented as dots.
+The "box" represent the upper and lower "quartiles" of the data (top 25%, bottom 25%), while the mean is represented by a line somewhere inside that box. Significant outliers show up as dots.
 
 ## Scatter Plots
 
@@ -152,15 +184,6 @@ Scatter plots are most useful to plot two separate variables "against" one each 
 Let's compare the length of article titles against the length of their abstracts.
 
 ```{r}
-library(tokenizers)
-
-abstract_words <- dhq_articles %>%
-  na.omit(abstract) %>%
-  select(`article id`, abstract) %>%
-  mutate(word = tokenize_words(abstract)) %>%
-  unnest() %>%
-  select(`article id`,word)
-
 title_words <- dhq_articles %>%
   select(`article id`, title) %>%
   mutate(word = tokenize_words(title)) %>%
@@ -180,8 +203,35 @@ word_counts %>%
 ggplot() +
   geom_point() +
   aes(x = title_word_count,
-      y=abstract_word_count,
-      label= `article id`
+      y = abstract_word_count
+      )
+```
+
+Scatter plots are also a good way to  plot ratios of variables on the fly by messing with the aesthetic map, since histograms and bars don't give us as much direct control of the vertical axis. (Of course, we always have the option, with those plots, of performing calculations on the data beforehand.) What emerges in this plot that may have been harder to see in the other?
+
+```{r}
+word_counts %>%
+ggplot() +
+  geom_point() +
+  aes(x = `article id`,
+      y= abstract_word_count/title_word_count
+      )
+```
+
+Bubble charts are used when we want the size of the dot to be mapped to a variable.
+
+```{r}
+word_counts %>%
+  left_join(
+    dhq_cited_works %>%
+  group_by(`article id`,year) %>%
+  summarize(citation_count=n())
+      ) %>%
+ggplot() +
+  geom_point() +
+  aes(x = `article id`,
+      y= abstract_word_count,
+      size = citation_count
       )
 ```
 
@@ -237,9 +287,57 @@ See if you can spot a potentially misleading issue with the line chart!
 
 # 4. Axes and Scales
 
-Sometimes the default scale that `ggplot` chooses will not be the most elucidatory choice. We can
+Sometimes the default scale that `ggplot` chooses will not be the most elucidatory or sensible choice. For example, the vertical axis on the histogram we made before doesn't really make sense, since half a word isn't paritcularly well-defined.
+
+```{r}
+abstract_word_counts %>%
+  ggplot() +
+  geom_histogram(binwidth = 10) +
+  aes(x = `abstract_word_count`) +
+  scale_y_continuous(breaks=seq(0,max(abstract_word_counts),1))
+  
+  
+```
 
 # 5. Faceting
+
+Using the function `facet_grid` or `facet_wrap`, we can plot the same relationship between variables across another variable together in multiple plots. Notice in the syntax that there's a tilde before the first argument. Each plot will have the exact same scale — useful for comparison — unless we "free" that scale in another argument. (When might this be useful?) `facet_grid` displays the plots side-by-side:
+
+```{r}
+word_counts %>%
+  left_join(dhq_articles %>%
+              select(
+                `article id`,
+                year
+              )
+            ) %>%
+ggplot() +
+  geom_point() +
+  aes(x = title_word_count,
+      y=abstract_word_count,
+      label= `article id`
+      ) +
+  facet_grid(~ year, scale="free_x") 
+```
+
+Note that `facet_wrap` is much neater when we have a lot of values. We can specify the number of columns:
+
+```{r}
+word_counts %>%
+  left_join(dhq_articles %>%
+              select(
+                `article id`,
+                year
+              )
+            ) %>%
+ggplot() +
+  geom_point() +
+  aes(x = title_word_count,
+      y=abstract_word_count,
+      label= `article id`
+      ) +
+  facet_wrap(~ year,ncol = 2) 
+```
 
 # 6. Formatting
 
@@ -247,17 +345,72 @@ A way of having semantic control over your variables and making your aesthetic m
 
 ## Labels
 
-There are two major types of elements that you might want to label: those outside the plot area and those inside.
+There are two major types of elements that you might want to label: those outside the plot area and those inside. Both of these can be specified using functions that build on the `ggplot` function. You can label You can title your plot, as well as provide more effective axis titles if you weren't so diligent about naming your variables well. It's also nice for polish, when you're looking to publish your visualizations as results.
 
-Generally speaking, labels of the elements outside the plot area — such as axis titles and a title for the plot — are specified in a `labels` function that builds on the `ggplot` function. This is especially useful if you weren't so diligent about naming your variables well. It's also nice for polish, when you're looking to publish your visualizations as results.
+```{r}
+word_counts %>%
+ggplot() +
+  geom_point() +
+  aes(x = title_word_count,
+      y=abstract_word_count,
+      label= `article id`
+      ) +
+  labs(x="Title Length (Words)",
+       y="Abstract Length (Words)",
+       title = "Lengths of Article Titles and Abstracts in DHQ (2007-2014)"
+         ) +
+  geom_text(aes(label = `article id`), nudge_x = 0.4)
 
-Also generally speaking, labels of the the elements in the plot area  the `labs` argument in your aesthetic map, and are the `aes` function (`labs` stands for `labels`). This is particularly useful in scatter plots when you'd like to label particular data points.
+```
+
 
 ## Legends
 
-## Colors
+When we "fill" a bar chart according to the value of a variable or compare more than one variable on the same scatter plot area, we can specifiy the possible values in a customized legend.
 
-## Specifying Plot Size
+```{r}
+dhq_cited_works %>%
+  ggplot() +
+  geom_bar() +
+  aes(x=`article id`, fill = isDHQ) +
+  labs(x="Article ID",
+       y="Citation Count",
+       title = "Citations in DHQ (2007-2014)"
+         ) +
+  scale_fill_discrete(name = "Internal Citation?",
+                     labels = c ("Yes",
+                                 "No",
+                                 "Unknown"
+                     )
+  )
+```
+
+```{r}
+word_counts %>%
+  left_join(dhq_articles %>%
+    select(
+      `article id`,
+      year
+    )
+  ) %>%
+  mutate(year = as.character(year)) %>% #making year discrete instead of an integer
+ggplot() +
+  geom_point() +
+  aes(x = title_word_count,
+      y = abstract_word_count,
+      color = year
+      ) +
+  labs(x="Length of Title (Words)",
+       y="Length of Abstrat (Words)",
+       title = "Length of DHQ Article Summaries (2007-2014)",
+       color = "Year"
+         )
+```
+
+
+## Colors and Fonts
+
+To create more dynamic plots, we can customize the colors and text font, where applicable, of plot elements. For elements outside the plot area, you generally use the `theme` function to change the text font and color of different plot elements. These elements are specified by the element they are a part of, a dot, and then the element itself. For example, `plot.title`, `legend.title`, `axis.text`, etc. A more extensive list of these can be found in the documentation for `theme` — if there's an element of the plot you want to customize, chances are that you can! Colors, pattern fills, and fonts of elements within the plot area are generally controlled as arguments in `aes` and `labs`. For example, we might want certain variables in our aesthetic map to show up a certain way to be highlighted or to contrast with the other variables.
 
 ## Coordinate Flipping
 
@@ -277,9 +430,29 @@ dhq_cited_works %>%
   coord_flip()
 ```
 
+# Exercises
+
+1. Below, try writing some code that changes up the distribution of citation counts by publication year. Now, see if you can compare the years of works cited in DHQ by publication year in the journal. To step it up a notch further, plot these distributions as percentages of the total works cited in each year DHQ was published. It's up to you whether to include these distributions on the same plot or facet — which looks better to you?
+
+```{r}
+dhq_cited_works %>%
+  left_join(
+    dhq_articles_biblio %>%
+      select(
+        'article id',
+        year),
+    by = c('citation' = 'article id')
+  ) %>%
+  rename(article_pub_year = year.x, cited_work_year = year.y) %>% #%>%
+  group_by(cited_work_year) %>%
+  ggplot() + 
+  aes(x = cited_work_year) +
+  geom_freqpoly(binwidth = 1) +
+  facet_wrap(~ article_pub_year, ncol=4)
+
+```
+
+
 # Closing Notes
 
-This is by no means an exhaustive walkthrough of visualization options in `ggplot2`, but we hope to have given you the tools to understand some of what's possible and branch out, using the package's documentation to help you. Last but not least, we'd like to link you to a potentially helpful [cheatsheat](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)!
-
-
-# Exercises
+This is by no means an exhaustive walkthrough of visualization options in `ggplot2`, but we hope to have given you the tools to understand some of what's possible and branch out, using the package's documentation to help you. Another text to move on to from here is Kieran Healy's recent book on Data Visualization, which uses R. Last but not least, we'd like to link you to a potentially helpful [cheatsheat](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)!
