@@ -346,21 +346,21 @@ Okay, below let's try writing code that creates a mashup using a poem of your ch
 
 # Making your own Twitter Bot
 
-+ If you want to post to Twitter, you will need to create a new Twitter account for your bot. Think about what kind of bot you want to make and then sign up. Be sure to add a mobile number to the account, as we’ll need that for one the steps later on.
++ If you want your bot to post to Twitter, you will need to create a new Twitter account for your bot. Think about what kind of bot you want to make and then sign up. Be sure to add a mobile number to the account, as we’ll need that for one the steps later on.
 + While signed into your new account, visit [Twitter’s developer site](https://dev.twitter.com/). In the small bottom menu click “Manage Your Apps” and then “Create New App.” In part to stem the proliferation of spam bots, this process has become a bit more involved than it used to be, and the first time you attempt to create an app you will have to write for approval (by a human being!) to Twitter. This will likely take a little while and so would have to happen after this course, if you want to make your bot live in the world. Once you've done this, you will substitute your own Twitter keys for those in the script above, which will then enable you to post to your bot's account rather than our class bot. 
 
 
 # Fiddling Around 
 
-The following inspired by Daniel Mallory Ortberg's fantastic [Bible Verses Where “Behold” Has Been Replaced With “Look, Buddy”](http://the-toast.net/2016/06/06/bible-verses-where-behold-has-been-replaced-with-look-buddy/)
+The following substitution exercise was inspired by Daniel Mallory Ortberg's fantastic [Bible Verses Where “Behold” Has Been Replaced With “Look, Buddy”](http://the-toast.net/2016/06/06/bible-verses-where-behold-has-been-replaced-with-look-buddy/). Spend a few minutes looking at the code below; it previews many of the things we will learn this week. Can you discern what each line is doing? 
 
 ```{r}
 
-library(scriptuRs)
-library(stringr)
+library(tidyverse)
+library(tidytext)
 
 bibleEdit <- function(kjv, nkjv){
-  bible <- kjv_bible() %>%
+  bible <- read_csv("./data/bible.csv") %>%
     select(chapter_number, verse_number, verse_title, book_title, text) %>%
     drop_na(text) %>% 
     filter(grepl(kjv, text, ignore.case = T)) %>%
@@ -376,6 +376,8 @@ verses <- bibleEdit("thou shalt", "it'd be great if you could")
 cat(verses$revText)
 
 write_csv(verses, "./output/verses.csv")
+
+# Need ideas about good phrases to search? The code below might help…
 
 bible %>% 
   unnest_tokens(word, text) %>%
