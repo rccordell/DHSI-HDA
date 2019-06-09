@@ -1,7 +1,7 @@
 ---
 title: "Transformation and Analysis of Textual Data"
 author: "Gregory Palermo"
-output: html_document
+output: html_notebook
 editor_options: 
   chunk_output_type: console
 ---

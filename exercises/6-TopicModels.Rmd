@@ -2,7 +2,9 @@
 title: "Topic Models"
 author: "Ryan Cordell"
 date: "5/30/2019"
-output: html_document
+output: html_notebook
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r}

@@ -1,0 +1,106 @@
+---
+title: "R Notebook"
+output: html_notebook
+editor_options: 
+  chunk_output_type: console
+---
+
+# The (Very) Basics of Working in RStudio
+
+## Start a New R Project
+
+The first thing we'll do (likely before you even read these words) is start a new R project for this class. You can either select an existing directory—perhaps the one created when you unzipped the files for this course from Github—or create a new one. You'll be saving all of your work for the week here. 
+
+## R Markdown
+
+This is an [R Markdown document](http://rmarkdown.rstudio.com/) (RMD), hence the `.rmd` file extension. R Markdown blends the conventions of Markdown, a simplified markup language with a few customizations: RMD documents let you write MD documents that embed snippets of code, as well as any outputs (e.g. graphs, maps) produced by that code. This lets you weave together prose and code, so your readers can see the technical aspects of your work while reading about their interpretive significance. If you [view this document on Github](https://github.com/rccordell/DHSI-HDA/blob/master/exercises/1-GrammaR.Rmd) you can see how RMD translates for presentation on the web. 
+
+## Running Code
+
+As an RMD file, however, this is more than a flat text document: it's a program that you can run in RStudio. R Markdown allows you to embed executable code into your writing, which is is done here in the "source pane." If you click the 'run' arrow in the gray box below, the code will run. You should see the results in your console window. Try that now.
+
+```{r}
+2+2
+5*32
+10^10
+```
+
+As in most programming languages, you can do math in R: Charles Babbage would marvel at how easy it is!
+
+You create your own code blocks by typing the characters on the first and last line of the block above (using three backticks and including the {r} designator); the code you want to execute goes on the lines in between. You can also do this by clicking the little green "Insert" button at the top of the RStudio source pane. Try creating a code block below with the line `print("Hello World!")` in it (do not type the backticks at the beginning and end of that phrase; they are the Markdown convention for separating out bits of code from regular text).
+
+In addition to using the run buttons above, you can also run R code within a code block *one line* at a time by putting your cursor on the line and hitting `command-return` (on a Mac), `control-return`(in Windows or Linux). You can also execute a line of code not enclosed in an executable code block by highlighting the entire line or lines of code and pressing `command-return` or `control-return`. When you work with regular R documents—without the markdown—this is the primary way you run code. Try running the line of code just below by highlighting the entire line and hitting `command-return`/`control-return`:
+
+plot(1:100,(1:100)^2)
+
+One reason many folks love R is the ease with which you can create plots and other data visualizations using it. We'll learn more about those as this class progresses. Note that you can also run code by pasting or typing it directly into the console window. This runs the code but does not save it as part of your RMD or R file.
+
+
+What is Markdown?
+
+Markdown is a lightweight standard for writing in plain text while encoding the **structure of your document** for later representation in a format like Word, PDF, or HTML. If you have ever marked up a text using HTML or XML tags, Markdown works quite similarly, but uses simple typographical symbols to encode text rather than longer HTML  or XML tags. There are a number of *affordances* to working in Markdown, including:
+
+1. **Simplicity.** Because Markdown is a plain-text system of encoding structural elements typographically—rather than, as in proprietary formats like `docx`, though hidden, underlying code—Markdown files are small in size and simple to compose. You do not need to interrupt your writing to format your document while writing in Markdown.
+2. **Flexibility.** When writing in Markdown you encode directions for styling your text, but you do not style it directly. Because of this, an `md` file can be easily converted to many other standard file types, including `html` or `pdf`. You can easily convert a single `.md` file into a range of other formats, giving you flexibility when you want to publish your writing. 
+3. **Durability.** Unlike files composed in specific version of proprietary software, Markdown files are, essentially, plain text files. This means they can be opened by a wide range of applications and they will look essentially the same, and that they are not subject to the vicissitudes of software updates or platform dependencies. You can open and edit a Markdown file on virtually any computer, and you will likely be able to do well into the future. Even if the conventions of Markdown are no longer understood, the central text you write in it should remain widely compatible and portable. 
+4. **Mobility.** Because Markdown is composed using basic typographical characters, it's very easy to use on mobile platforms such as phones or tablets. For example, my favorite note-taking app, [Bear](https://bear.app/) allows you to compose in Markdown and access your notes through a Desktop and Mobile interface. There are a number of applications for composing in Markdown while on the go, including mobile versions of some of the desktops apps I recommend here.   
+
+As with any medium, of course, there are also *limitations* to writing in Markdown, such as:
+
+1. You have less granular control over the appearance of your text than you would in a full featured word processor. In order to ensure the flexibility and durability of Markdown, its grammar is relatively constrained. While you can indicate text should be `bold` or formatted in a `numbered list` using Markdown, for instance, you could indicate that one paragraph's font should be 2 points larger than another. 
+2. You typically have to convert Markdown files into another format before publication. This is not *quite* true on the web, where some frameworks like GitHub Pages can understand Markdown (as expressed in a Jekyll website) directly, but usually the production stage for a Markdown document involves converting your `md` file into another format, thus converting Markdown's structural encoding into actual stylistic representation.
+
+## What is Markdown?
+
+We won't spend too much time in this class learning Markdown itself, but we will go through a quick overview this morning that will help you understand the structure of the documents we're working with, as well as the conventions you would need to use to create your own text elements around your code. Markdown is really quite simple to learn—particularly if you have used more complicated tagging schemes (XML, HTML) in other contexts. We do much of our everyday writing in Markdown, especially when writing things that require integration with code. RStudio supports the convention directly, which makes it easy to weave together code and prose. 
+
+### Markdown References
+
+Below we describe the most common Markdown syntax, but for additional reference you can consult:
+
++ The [Markdown Wikipedia page](https://en.wikipedia.org/wiki/Markdown), which includes a very handy chart of the syntax.
++ John Gruber's [introduction to Markdown](https://daringfireball.net/projects/markdown/syntax). Gruber developed the standard and knows what he's talking about!
++ This [interactive Markdown tutorial](http://www.markdowntutorial.com/), which will teach you the syntax in a few minutes.
++ You can also download [the Markdown versions of our class website pages](https://github.com/rccordell/s19rm) (all generated directly from Markdown) or [the Markdown for this very lab](https://github.com/rccordell/s19rm/blob/master/_posts/2019-01-09-Lab1-Markdown.md) if you'd like to compare what you see in your browser with the marked-up text that created it (click the `Raw` button to see the Markdown [without GitHub's styling](https://raw.githubusercontent.com/rccordell/s19rm/master/_posts/2019-01-09-Lab1-Markdown.md)).
+
+In short, in Markdown your text will not include any visible stylistic variations such as italics or bold text; Markdown is a *plain text* format. However, many Markdown Editors will be able to preview the way your documents will look like when they're styled.
+
+### Applications for Writing in Markdown
+
+One advantage to this flat-text format is that you can write valid Markdown in many, many editors beyond a coding environment like RStudio, including the free text editors (such as TextEdit on the Mac or Wordpad on the PC) that come with most computers. You can also write in Markdown in some rich text editors such as [Scrivener](https://www.literatureandlatte.com/scrivener.php), though their support for the standard can be uneven. 
+
+There are many dedicated Markdown composition applications with additional features, such as syntax highlighting or the ability to preview what your documents. 
+
+#### Free Markdown Applications:
+
++ [Macdown](http://macdown.uranusjr.com/) (Mac)
++ [Mou](http://25.io/mou/) (Mac)
++ [Markdownpad](http://markdownpad.com/) (Windows XP-8)
++ [Markdown Edit](http://markdownedit.com/) (Windows)
++ [Ghostwriter](http://wereturtle.github.io/ghostwriter/) (Windows & Linux)
++ [Remarkable](https://remarkableapp.github.io/) (Linux)
++ [Hashify](http://hashify.me/IyBUaXRsZQ==) (online) 
++ a bit more complicated to get started with, but [Atom](https://atom.io/) is more full-featured than some of those above (Mac, Windows, Linux)
++ It's not specifically a Markdown application, but [Prose.io](http://prose.io/) allows you to edit files in a Github repository and commit them all online.
+
+#### Paid Markdown Applications
+
+They can be pricey, but there are some beautifully-designed, paid Markdown-writing applications out there. I can't list them all, but here are two popular ones:   
+  
++ [Ulysses](https://ulysses.app/) (Mac only) is beautifully designed and a joy to use. It was my go-to application for awhile but I moved away from it because of its non-standard implementation of a few Markdown elements, such as links and images. Others don't like their subscription payment model.
++ My current, (cross platform_ favorite is [iA Writer](https://ia.net/writer). It is also well designed, though not quite as elegant as Ulysses. But it requires only one payment to use and implements Markdown in a standard way, so that my writing is more broadly compatible with other systems. 
+
+To compose pages and blog posts for Jekyll using these desktop applications, you will need to sync a local folder on your computer to your Github repository.
+
+### Markdown Syntax
+
+Here are the very basics for writing in Markdown. If you use one of the editors above with a preview feature, you'll be able to see what you're doing as you type.
+
+1. If you want your text to be italicized, then *enclose it in single asterisks* or _in underlines_. (i.e. \*enclose it in single asterisks\* or \_in underlines\_).
+2. If you want your text to be bold, then **enclose it in double asterisks**. (i.e. \*\*enclose it in double asterisks\*\*).
+3. To start a new paragraph, simply hit return twice, so that you see a single line space in between paragraphs.
+4. To start a new line without a paragraph break, add two spaces to the end of the first line and then hit return once.
+5. To create a hyperlink, enclose the [words you want linked in brackets and the link in parentheses following](http://ryancordell.org/). 
+	i.e. [words you want linked in brackets and the link in parentheses following]\(http://ryancordell.org/\).   
+
+You can also create headlines of descending sizes, lists (numbered or bulleted), footnotes, block quotations, embedded images, and more. See the reference materials above for details on these other elements.
