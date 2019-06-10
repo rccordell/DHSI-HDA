@@ -133,6 +133,14 @@ newspapers[,1]
 
 ## Importing Tabular Data
 
+Before we import data, we will need to take…
+
+### A brief detour on working directories
+
+We will talk through this together!
+
+### Back to importing tabular data
+
 Depending on the structure of the data you wish to read into R, you will typically use `read.table`, `read.csv`, or `scan`. You can sometimes read data in from the web directly, as we did last week, but most often you will have data stored on your computer that you wish to bring into the R environment. Often, if there is something even slightly askew about your input data, `read.table` will fail. This may be frustrating, but this failure is  a general feature of data analysis: programs that don't receive *exactly* the input the expect will simply fail to work, usually "throwing" an error message of some sort. You may have to spend some time troubleshooting your data itself to figure out why it won't import into R.
 
 If you have a file previously saved in the csv (comma-separated-value) format, it may be fast to read it it using the `read_csv` function. (This is simply `read.table` with a certain set of constraints.)
