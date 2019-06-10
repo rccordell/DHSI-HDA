@@ -1,7 +1,6 @@
 ---
 title: "Lesson 1 - The Grammar of R"
 author: "Ryan Cordell"
-date: "5/7/2019"
 output: html_notebook
 editor_options: 
   chunk_output_type: console
