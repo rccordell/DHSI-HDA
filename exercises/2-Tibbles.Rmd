@@ -122,7 +122,7 @@ To convert data into a tibble, you can use the functions `as_data_frame` (with u
 
 You can visually browse the contents of the dataframe using the fuction `View(newspapers)` or you can click the table icon in your `Environment` pane. 
 
-When we work with dataframes, we can operate on individual columns using the `$` operator. If we type `newspapers$title` in the console, for instance, it would print all the values from that one column. We usually won't use this to print, however, but to select particular columns to operate on in other ways. Columns can also be selected by their numeric value, so that `newspapers[,1]` also prints the first column in this dataframe. What happens if you put a number before, rather than after, the comma in the brackets?
+When we work with dataframes, we can operate on individual columns using the `$` operator. If we type `newspapers$title` in the console, for instance, it would print all the values from that one column. We usually won't use this to print, however, but to select particular columns to operate on in other ways. Columns can also be selected by their numeric value, so that `newspapers[,1]` also prints the first column in this dataframe. What happens if you put a number before, rather than after, the comma in the brackets? Ideas about how you might print a range of rows or columns?
 
 ```{r}
 
