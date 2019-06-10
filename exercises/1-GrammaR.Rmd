@@ -210,7 +210,7 @@ This function can be invoked via the following code; you can change the part of 
 
 ```{r}
 random_word(pos="verb",n=5, min_count=1000)
-random_word(pos="interjection",n=5, min_count=100)
+random_word(pos="interjection",n=4, min_count=100)
 ```
 
 Those dataframes aren't quite what we will want for making substitutions in our mad-lib poem, so I've written an additional function that calls Ben's function with some specific parameters (only 1 word), grabs only the second column from the dataframe generated in `random_word`, and converts that data to a character string. To grab a random word of a given part of speech, you simply need to invoke the function `poem_word()` and put the part of speech you're looking for in quotes inside the parentheses. There are a number of options for the part of speech, but you'll primarily use `verb`, `noun`, `pronoun`, `adjective`, `adverb`, `interjection`, and `preposition`. For other possibilities, consult [the documentation for the Wordnik API](http://developer.wordnik.com/docs.html#!/words/getRandomWord_get_4). 
@@ -370,3 +370,5 @@ bible %>%
   View()
 
 ```
+
+One aspect of R we will probably not have the chance to explore this week is Shiny, which allows you to build web apps around particular scripts and data. I (Ryan) built a very barebones webapp using the code above, which you can find at <https://ryancordell.shinyapps.io/BiblicalFindNReplace/>. 
