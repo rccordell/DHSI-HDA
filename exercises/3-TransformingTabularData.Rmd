@@ -22,7 +22,7 @@ Let's start with `separate`, which will allow us to do something kind of like re
 
 census <- read_csv(file = "./data/1840-census-data.csv")
 census <- rename(census, county = QualifyingAreaName)
-census <- separate(census, county, into = c("county", "state"), sep = "\\, ")
+census <- separate(census, county, into = c("county", "state"), sep = ", ")
 
 ```
 
@@ -31,6 +31,8 @@ That threw a few errors, though `tidyr` made the separation anyway. If you wante
 What might we do if we wanted to see all of the rows that caused errors during the `separate` command?
 
 ```{r}
+
+census <- unite(census, sillyColumn, c("county", "state"), sep = "%%%")
 
 
 
@@ -140,7 +142,9 @@ A useful operator to combined with `filter` is %in%, which can be used like this
 
 ```{r}
 
-View(filter(census, state %in% c("Massachusetts","Vermont","New Hampshire","Connecticut","Rhode Island","Maine")))
+NEStates <- c("Massachusetts","Vermont","New Hampshire","Connecticut","Rhode Island","Maine")
+
+View(filter(census, state %in% NEStates))
 
 ```
 
@@ -188,7 +192,15 @@ census <- read_csv(file = "./data/1840-census-data.csv") %>%
 
 census_long <- census %>%
   gather("identification", "count", 3:78) %>%
-  na.omit(census_long)
+  na.omit()
+
+census_long <- read_csv(file = "./data/1840-census-data.csv") %>%
+  select(1,6:81) %>%
+  rename(county = QualifyingAreaName) %>%
+  separate(county, into = c("county", "state"), sep = "\\, ") %>%
+  gather("identification", "count", 3:78) %>%
+  na.omit()
+
 
 ```
 
@@ -215,9 +227,8 @@ We can also use pipes to make (and view) temporary transformations in our data t
 
 ```{r}
 
-census_long %>% 
-  spread(identification, count) %>%
-  View()
+census_wide <- census_long %>% 
+  spread(identification, count)
 
 ```
 
@@ -227,7 +238,10 @@ Okay, now that you have a sense of how pipes work, can you rewrite any more of t
 
 ```{r}
 
-
+census %>%
+  select(county, state, SlavePopulation, WhitePopulation) %>%
+  filter(SlavePopulation > WhitePopulation) %>%
+  View()
 
 
 ```
@@ -258,6 +272,7 @@ census %>%
 
 census %>%
   group_by(state) %>%
+  arrange(-SlavePopulation) %>%
   slice(1:10) %>%
   View()
  
@@ -303,6 +318,7 @@ There are many kinds of joins available in R, each one differing in the order it
 
 census_sum %>%
   left_join(papers, by = "state") %>%
+  select(state, Male, Female, papers) %>%
   View()
 
 census_sum %>% 
@@ -325,7 +341,7 @@ After transforming data in these ways, you might want to export the results of y
 
 ```{r}
 
-write.csv(census_wide, file = "./output/census_wide.csv")
+write_csv(paper, file = "./output/papers.csv")
 
 ```
 
@@ -341,3 +357,26 @@ write.csv(census_wide, file = "./output/census_wide.csv")
 4. In `crewlists.csv`, how many sailors shipped in each type of rig? Can you break that analysis down by year? By decade?
 
 5. REACH: What is the ratio of newspapers founded (from `US-Newspapers.csv`) to ships launched (from `crewlists.csv`) by year?
+
+```{r}
+
+crewlists <- read_csv("./data/crewlists.csv") %>%
+  separate(ApproximateDeparture, into = c("month", "day", "year"), sep = "/") %>%
+  mutate(year = as.numeric(year)) %>%
+  filter(year >= 100) %>%
+  filter(!is.na(Age))
+
+summary(crewlists$Age)
+
+crewlists %>%
+  select(year, Age) %>%
+  group_by(year) %>%
+  summarize(avgAge = mean(Age)) %>%
+  View()
+
+
+
+crewlists <- arrange(crewlists, desc(Age))
+
+```
+

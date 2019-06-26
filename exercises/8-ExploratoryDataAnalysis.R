@@ -2,6 +2,7 @@ library(tidyverse)
 library(tidytext)
 library(stringr)
 library(plotly)
+library(viridis)
 
 # *A note before we begin*: you might want to toggle `soft wrap R source files` under `Tools > Global Options...` That will make these long comments more readable in RStudio. 
 
@@ -18,14 +19,21 @@ papers <- read_csv("./data/US-Newspapers.csv") %>%
 
 # how many weekly newspapers were founded over time?
 
-papers %>%
-  filter(frequencyReg == "Weekly") %>%
+plot <- papers %>%
+  filter(frequencyReg %in% c("Monthly", "Daily", "Weekly")) %>%
   ggplot(aes(x=start)) + 
-  geom_histogram(bins=50)
+  geom_histogram(bins=50) +
+  facet_wrap(~ frequencyReg, ncol=2) 
+    
+ggplotly(plot)
 
 # for some analyses and visualizations, years might be too granular a measure. Can you use techniques we've already discussed to create two new columns: `startDecade` and `endDecade`?
 
-YOUR CODE HERE
+papers <- papers %>%
+  mutate(startDecade = str_sub(start, 1, 3)) %>%
+  mutate(startDecade = paste(startDecade, 0, sep = "")) %>%
+  mutate(endDecade = str_sub(end, 1, 3)) %>%
+  mutate(endDecade = paste(endDecade, 0, sep = ""))
 
 # This is actually a good time to take a detour and discuss a distinction between these workbooks, even this one written as an `.R` file, and the way people usually work in R. A typical R file is a script written to accomplish a particular task. Some are certainly exploratory, and might meander, overwrite variable, and so on as we've done here, but many are short and written to accomplish one particular thing. R files can also be invoked within other R files, so that you can write code in modular ways and then use particular scripts within other scripts as needed. Those other scripts can be invoked using `source()`. If you look at your files, you will find one named `readPapers.R` in the base directory. We can invoke that file in this file like this:
 
@@ -35,31 +43,37 @@ source("readPapers.R")
 
 
 
-
-
 # Can you use methods from previous workbooks to create a new dataframe (either as a new variable or in a temporary one created by `View`) that would help us compare the prevalence of different publication frequencies at different moments of time?
 
 YOUR CODE HERE
 
-# As we will see in the next two days, another way to explore these questions, particularly at scale, is through R's visualization libraries. Here's some code that gets at some of the same questions as what you wrote above. Can you tell the difference between the first and second visualization? We will delve into these details more tomorrow, but we can chat about it today. Once you've run this code, try modifying it to compare different frequencies, or to focus on only one of interest:
+# Can you tell the difference between the first and second visualization below? Once you've run this code, try modifying it to compare different frequencies, or to focus on only one of interest:
 
-papers %>% 
+plot <- papers %>% 
   filter(frequencyReg %in% c("Daily","Biweekly","Semiweekly")) %>%
   ggplot(aes(x = start, fill = frequencyReg, color = "white")) + 
-  geom_histogram(bins = 50, position = "identity")
+  geom_histogram(binwidth=5, position = "identity") +
+  scale_fill_viridis(discrete = TRUE, option = "C")
 
-papers %>% 
+ggplotly(plot)
+
+plot <- papers %>% 
   filter(frequencyReg %in% c("Daily","Biweekly","Semiweekly")) %>%
   ggplot(aes(x = start, fill = frequencyReg, color = "white")) + 
-  geom_histogram(bins = 50, position = "stack")
+  geom_histogram(binwidth=5, position = "stack") +
+  scale_fill_viridis(discrete = TRUE, option = "A")
+
+ggplotly(plot)
 
 # Alternatively, we could do something like this:
 
-papers %>% 
+plot <- papers %>% 
   filter(frequencyReg %in% c("Weekly","Daily","Biweekly","Semiweekly")) %>%
   ggplot(aes(x = start)) + 
-  geom_histogram(bins = 50, color = "darkblue", fill = "lightblue") + 
+  geom_histogram(binwidth=1, color = "darkblue", fill = "lightblue", size = .1) + 
   facet_wrap(~ frequencyReg, ncol=2) 
+
+ggplotly(plot)
 
 # what other aspects of this data might you visualize in a histogram?
 
@@ -67,28 +81,53 @@ YOUR CODE HERE
 
 # in the code below, we will use `filter` and `ggplot` to explore some trends in our `papers` dataframe. This is similar to what we did in workbook 3, but we are incorporating basic visualizations in order to more easily spot trends in aggregate. 
 
-papers %>% 
-  filter(startDecade >= 1950 & startDecade <= 1980 ) %>%
+plot <- papers %>% 
+  filter(start >= 1950 & start <= 2000 ) %>%
   ggplot(aes(x=start)) +
-  geom_histogram(bins=20)
+  geom_histogram(binwidth=1, color = "darkblue", fill = "lightblue", size = .1)
 
-papers %>% 
+ggplotly(plot)
+
+plot <- papers %>% 
   filter(language == "ger") %>% 
-  ggplot() + 
-  geom_histogram(aes(x=start), bins=50)
+  ggplot() +
+  aes(x = start) +
+  geom_histogram(binwidth=1, color = "darkblue", fill = "lightblue", size = .1)
+
+ggplotly(plot)
+
+plot <- papers %>% 
+  filter(language == "ger") %>% 
+  ggplot() +
+  aes(x = start) +
+  geom_histogram(binwidth=1, color = "darkblue", fill = "lightblue", size = .1)
+
+ggplotly(plot)
 
 # We've filtered for some languages below. How would you figure out what the other languages in the dataset are? Can you edit the code to filter for other languages you might find of interest, should they differ?
 
 languages <- c("ger","fre","spa","chi")
 
-papers %>% 
+plot <- papers %>% 
   filter(language %in% languages) %>%
   ggplot() +
   geom_histogram(aes(x=start), bins=50) + 
   facet_wrap(~ language, ncol=2) 
 
+ggplotly(plot)
 
-# In the following sections, we will begin introducing basic text analysis and discussing how such techniques might illuminate even a dataset like our `papers`, which do not include long text segements. Tomorrow we will work with lengthier texts. 
+plot <- papers %>%
+  filter(language %in% languages) %>%
+  mutate(duration = end - start) %>%
+  ggplot() +
+  aes(x = start, y = duration, color = language) +
+  geom_point() +
+  scale_color_viridis(discrete = TRUE, option = "C")
+
+ggplotly(plot)
+
+
+# In the following sections, we will explore basic text analysis to show how such techniques might illuminate even a simple dataset like our `papers`, which do not include long text segements.
 
 # top words in newspaper titles, sorted by frequency
 papers %>% 
@@ -118,39 +157,50 @@ papers %>%
 
 source("topWords.R")
 
-topWords(papers,1800,1900,10) %>% View()
+topWords(papers,1840,1880,5) %>% View()
 
 # Let's plot the top words in newspaper titles betwee 1800 and 1950. What major limitation(s) do you spot with this visualization?
 
 titleWords <- topWords(papers,1800,1950,10) 
 
-titleWords %>%
-  ggplot(aes(x=startDecade,y=count,label=word)) + 
+plot <- titleWords %>%
+  ggplot() +
+  aes(x=startDecade,y=count,label=word) + 
   geom_point(alpha=.3) + 
   geom_text(check_overlap = TRUE)
+
+ggplotly(plot)
+
+titleWords <- titleWords %>%
+  group_by(startDecade) %>%
+  mutate(percentage = count / sum(count))
   
 
-# Without giving away the problem we identified above, can you write code that will result in `topWords.R` creating a new column that would be better for the comparisons we want to make? Then can you modify the plot above to make use of that new column? 
+# Without giving away the problem we identified above, can you add code to the function `topWords`` that will result in a new column that would be better for the comparisons we want to make? Then can you modify the plot above to make use of that new column? 
+
 
 titleWords <- topWords(papers,1800,1950,10) 
 
-YOUR CODE HERE
 
-titleWords %>%
-  ggplot(aes(x=startDecade,y=YOUR-COLUMN-HERE,label=word)) + 
+plot <- titleWords %>%
+  ggplot() +
+  aes(x=startDecade,y=percentage,label=word) + 
   geom_point(alpha=.3) + 
   geom_text(check_overlap = TRUE)
 
+ggplotly(plot )
 
 # Now let's introduce some more sophsticated plots to explore these title words.
 
 plot <- titleWords %>%
   # top_n(3) %>% 
-  ggplot(aes(x=startDecade, y=percentage, color = word)) +
+  ggplot() +
+  aes(x=startDecade, y=percentage, color = word) +
   geom_line() +
   geom_point(size = .3) +
   ggtitle(paste("Most Used Words in New Newspaper Titles by Decade, ", min(titleWords$startDecade), "-", max(titleWords$startDecade))) +
-  labs(x="Decades",y="Percentage of Titles",fill="Word",caption="The top words used in the titles of new newspapers during the nineteenth century by decade") + 
+  labs(x="Decades",y="Percentage of Titles",fill="Word") + 
+  scale_color_viridis(discrete = TRUE, option = "C") +
   theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=18, hjust=0.5)) +
   theme(axis.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) + 
   theme(legend.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) +
@@ -164,7 +214,36 @@ plot <- titleWords %>%
 ggplotly(plot)
 
 
+# That was a lot to type! Adding all those theme options really makes for long code. Fortunately, we can save all of that to a variable, and then simply invoke that variable when we want to use these same options, as in the example below.
+
+my_theme <- theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=18, hjust=0.5)) +
+  theme(axis.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) + 
+  theme(legend.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) +
+  theme(legend.background = element_rect(color = "#efefef")) +
+  theme(plot.caption = element_text(family = "Trebuchet MS", color="#666666", size=10, hjust = 0.5, margin = margin(15, 0, 15, 0))) +
+  theme(axis.text = element_text(family = "Trebuchet MS", color="#aaaaaa", face="bold", size=10)) +
+  theme(panel.background = element_rect(fill = "white")) +
+  theme(panel.grid.major = element_line(color = "#efefef")) +
+  theme(axis.ticks = element_line(color = "#efefef"))
+
+# and then
+
+plot <- titleWords %>%
+  ggplot() +
+  aes(x=startDecade, y=percentage, color = word) +
+  geom_line() +
+  geom_point(size = .3) +
+  ggtitle(paste("Most Used Words in New Newspaper Titles by Decade, ", min(titleWords$startDecade), "-", max(titleWords$startDecade))) +
+  labs(x="Decades",y="Percentage of Titles",fill="Word") +
+  scale_color_viridis(discrete = TRUE, option = "C") +
+  my_theme
+
+ggplotly(plot)
+
+
+
 # In the space below, can you replicate what we did above not by decade, but by year instead?
+
 
 
 
@@ -178,7 +257,9 @@ extantPapers <- papers %>%
   filter(start >= dateRange[1] & start <= dateRange[2]) %>%
   filter(end > start) %>%
   rowwise() %>%
-  do(data_frame(title = .$title, frequency = .$frequency, year = seq(.$start, .$end))) %>%
+  do(data_frame(title = .$title, 
+                frequency = .$frequency, 
+                year = seq(.$start, .$end))) %>%
   filter(year <= 2000)
 
 # plot changes in number of papers over time
@@ -186,21 +267,15 @@ extantPapers <- papers %>%
 plot <- extantPapers %>%
   group_by(year) %>%
   summarize(papers = n()) %>%
-  ggplot(aes(x=year, y=papers)) +
+  ggplot() +
+  aes(x=year, y=papers) +
   geom_line() +
   geom_point(size = .3) +
-  ggtitle("Number of Extant Newspapers by Year in US History") +
-  labs(x="Years",y="Number of Extant Papers",caption = paste("Number of papers in existence, ", min(extantPapers$year), "-", max(extantPapers$year))) + 
-  theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=18, hjust=0.5)) +
-  theme(axis.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) + 
-  theme(legend.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) +
-  theme(legend.background = element_rect(color = "#efefef")) +
-  theme(plot.caption = element_text(family = "Trebuchet MS", color="#666666", size=10, hjust = 0.5, margin = margin(15, 0, 15, 0))) +
-  theme(axis.text = element_text(family = "Trebuchet MS", color="#aaaaaa", face="bold", size=10)) +
-  theme(panel.background = element_rect(fill = "white")) +
-  theme(panel.grid.major = element_line(color = "#efefef")) +
-  theme(axis.ticks = element_line(color = "#efefef"))
-
+  ggtitle(paste("Number of US Newspapers, ", dateRange[1], "-", dateRange[2])) +
+  labs(x="Years",y="Number of Extant Papers") +
+  scale_color_viridis(discrete = TRUE, option = "C") +
+  my_theme
+  
 ggplotly(plot)
 
 
@@ -209,11 +284,16 @@ ggplotly(plot)
 dateRange <- c(1850,1870)
 pubFrequencies <- c("Weekly","Daily")
 
-extantPapers %>% 
-  filter(year > dateRange[1] & year <= dateRange[2] & frequency %in% pubFrequencies) %>%
+plot <- extantPapers %>% 
+  filter(year > dateRange[1] & 
+           year <= dateRange[2] & 
+           frequency %in% pubFrequencies) %>%
   ggplot() + 
-  geom_histogram(aes(x=year), bins=20) + 
+  aes(x = year) +
+  geom_histogram(binwidth=1) + 
   facet_wrap(~ frequency, ncol=2) 
+
+ggplotly(plot)
 
 extantPapersByYear <- extantPapers %>% 
   group_by(year) %>%
@@ -232,24 +312,21 @@ extantTitleWords <- extantTitleWords %>%
   left_join(extantPapersByYear, by = "year") %>%
   mutate(percentage = count/extantPapers)
 
+
+dateRange <- c(1800,1950)
+
 plot <- extantTitleWords %>%
-  filter(year >= 1800 & year <= 1950) %>%
+  filter(year > dateRange[1] & year <= dateRange[2] ) %>%
   arrange(year,desc(percentage)) %>%
   top_n(10) %>%
-  ggplot(aes(x=year, y=percentage, color = word)) +
+  ggplot() + 
+  aes(x=year, y=percentage, color = word) +
   geom_line() +
   geom_point(size = .3) +
-  ggtitle("Most Used Words in Extant Newspaper Titles by Year, 1800-1950") +
-  labs(x="Years",y="Percentage of Titles",fill="Word",caption="The top words used in the titles of extant newspapers during the nineteenth century by decade") + 
-  theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=18, hjust=0.5)) +
-  theme(axis.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) + 
-  theme(legend.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) +
-  theme(legend.background = element_rect(color = "#efefef")) +
-  theme(plot.caption = element_text(family = "Trebuchet MS", color="#666666", size=10, hjust = 0.5, margin = margin(15, 0, 15, 0))) +
-  theme(axis.text = element_text(family = "Trebuchet MS", color="#aaaaaa", face="bold", size=10)) +
-  theme(panel.background = element_rect(fill = "white")) +
-  theme(panel.grid.major = element_line(color = "#efefef")) +
-  theme(axis.ticks = element_line(color = "#efefef"))
+  ggtitle(paste("Most Used Words in Extant Newspaper Titles by Year,", dateRange[1], "-", dateRange[2])) +
+  labs(x="Years",y="Percentage of Titles",fill="Word") + 
+  scale_color_viridis(discrete = TRUE, option = "C") +
+  my_theme
 
 ggplotly(plot)
 
@@ -261,7 +338,9 @@ extantTitleWords %>%
   filter(year >= decadeToSearch & year < decadeToSearch + 9) %>%
   top_n(10) %>%
   ggplot() + 
-  geom_col(aes(x=word, y=percentage, fill=word)) + 
+  aes(x=word, y=percentage, fill=word) +
+  geom_col() + 
+  scale_fill_viridis(discrete = TRUE, option = "C") +
   coord_flip()
 
 # OR...
@@ -272,7 +351,9 @@ extantTitleWords %>%
   filter(year >= dateRange[1] & year <= dateRange[2]) %>%
   top_n(10) %>%
   ggplot() + 
-  geom_col(aes(x=word, y=percentage, fill=word)) + 
+  aes(x=word, y=percentage, fill=word) + 
+  geom_col() + 
+  scale_fill_viridis(discrete = TRUE, option = "C") +
   coord_flip() +
   facet_wrap(~ str_sub(year, 1, 3), ncol=2) 
 
@@ -286,15 +367,9 @@ plot <- extantTitleWords %>%
   geom_line() +
   geom_point(size = .3) +
   ggtitle(paste("Comparison of \"", compareWords[1], "\" and \"", compareWords[2], "\" in US Newspapers, ", dateRange[1], "-", dateRange[2])) +
-  labs(x="Years",y="Percentage of Titles",fill="Word",caption="The top words used in the titles of extant newspapers during the nineteenth century by decade") + 
-  theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=18, hjust=0.5)) +
-  theme(axis.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) + 
-  theme(legend.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) +
-  theme(legend.background = element_rect(color = "#efefef")) +
-  theme(plot.caption = element_text(family = "Trebuchet MS", color="#666666", size=10, hjust = 0.5, margin = margin(15, 0, 15, 0))) +
-  theme(axis.text = element_text(family = "Trebuchet MS", color="#aaaaaa", face="bold", size=10)) +
-  theme(panel.background = element_rect(fill = "white")) +
-  theme(panel.grid.major = element_line(color = "#efefef")) +
-  theme(axis.ticks = element_line(color = "#efefef"))
+  labs(x="Years",y="Percentage of Titles",fill="Word") + 
+  scale_color_viridis(discrete = TRUE, option = "D") +
+  my_theme
+  
 
 ggplotly(plot)

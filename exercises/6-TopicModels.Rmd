@@ -32,6 +32,8 @@ Note that the existing code does not remove the citation information at the begi
 
 ```{r}
 
+allWRIGHTtext <- allWRIGHTtext %>%
+  mutate(text = gsub("----CITATION----.*----FULL TEXT---- ", "", text))
 
 ```
 
@@ -52,7 +54,7 @@ wrightChunks <- chunk_text(allWRIGHTtext$text, chunk_size = 100, doc_id = allWRI
   gather(doc_id, text)
 
 words <- wrightChunks %>%
-  unnest_tokens(word, text) 
+  unnest_tokens(word, text)
 
 ```
 
@@ -61,7 +63,7 @@ There are a series of deliberate steps required to prepare our texts for topic m
 ```{r}
 
 wordCounts <- words %>%
-  anti_join(stop_words) %>%
+  anti_join(stop_words %>% filter(lexicon == "SMART")) %>%
   group_by(doc_id) %>%
   count(word, sort = TRUE) %>%
   ungroup()
@@ -112,6 +114,12 @@ docsTopics %>%
 Those kinds of graphs are nice for comparing topics, but what if you wanted to dig deeper into a particular topic? Can you write a series of pipes that would allow you to explore the top 20 words in a chosen topic?
 
 ```{r}
+
+docsTopics %>%
+  filter(topic == 1) %>%
+  top_n(20) %>%
+  arrange(-beta) %>%
+  View()
 
 
 ```

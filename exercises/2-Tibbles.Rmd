@@ -57,7 +57,7 @@ The vector, or more specifically the atomic vector, is the core data type in R a
 
 So you can create a character vector with the code `x <- c("humanities","data","analysis")` or a numeric vector with the code `x <- c(1,25,87)`. If you type `class(x)` or `typeof(x)` in the console after you create this variable, you will see its data type printed.
 
-Note that the function `c()`, which we used above to combine elements into a single vector, can also be used to add data to an existing vector: `x <- c(x, "2019")`. Why are we able to add `2019` to our `x` vector whether it is comprised of character strings or numbers, since vectors require a single data type?
+Note that the function `c()`, which we used above to combine elements into a single vector, can also be used to add data to an existing vector: `x <- c(x, 2019)`. Why are we able to add `2019` to our `x` vector whether it is comprised of character strings or numbers, since vectors require a single data type?
 
 ### Matrices
 
@@ -108,7 +108,7 @@ Dataframes are in many ways like the tables you may be familiar with from spread
 
 ```{r}
 
-newspapers <- data_frame("title" = c("Sedalia Daily Bazoo","Boons Lick Times","Jefferson Jimplecute"), "founded" = c(1869, 1840, 1848), frequency = c("daily","weekly","weekly"))
+newspapers <- tibble("title" = c("Sedalia Daily Bazoo","Boons Lick Times","Jefferson Jimplecute"), "founded" = c(1869, 1840, 1848), frequency = c("daily","weekly","weekly"))
 
 ```
 
@@ -141,7 +141,7 @@ We will talk through this together!
 
 ### Back to importing tabular data
 
-Depending on the structure of the data you wish to read into R, you will typically use `read.table`, `read.csv`, or `scan`. You can sometimes read data in from the web directly, as we did last week, but most often you will have data stored on your computer that you wish to bring into the R environment. Often, if there is something even slightly askew about your input data, `read.table` will fail. This may be frustrating, but this failure is  a general feature of data analysis: programs that don't receive *exactly* the input the expect will simply fail to work, usually "throwing" an error message of some sort. You may have to spend some time troubleshooting your data itself to figure out why it won't import into R.
+Depending on the structure of the data you wish to read into R, you will typically use `read.table`, `read_csv`, or `scan`. You can sometimes read data in from the web directly, as we did last week, but most often you will have data stored on your computer that you wish to bring into the R environment. Often, if there is something even slightly askew about your input data, `read.table` will fail. This may be frustrating, but this failure is  a general feature of data analysis: programs that don't receive *exactly* the input the expect will simply fail to work, usually "throwing" an error message of some sort. You may have to spend some time troubleshooting your data itself to figure out why it won't import into R.
 
 If you have a file previously saved in the csv (comma-separated-value) format, it may be fast to read it it using the `read_csv` function. (This is simply `read.table` with a certain set of constraints.)
 
@@ -182,7 +182,7 @@ Remember that last week we talked about changing variables. That's one way to pa
 
 ```{r}
 
-census <- select(census, QualifyingAreaName, Newspapers, Newspapers_Daily, Newspapers_Weekly, Newspapers_SemiTriWeekly, Periodicals, PrintingOffices, Binderies, NumberofPersonsEmployedinPrintingBinding)
+census <- select(census, contains("Newspapers"))
 
 ```
 
@@ -231,7 +231,7 @@ Finally (in this section), we can rearrange the dataframe. Keep in mind that `ar
 
 ```{r}
 
-census <- arrange(census, serials, Newspapers, Periodicals)
+census <- arrange(census, desc(serials, Newspapers, Periodicals))
 
 ```
 
@@ -259,10 +259,23 @@ Feel free to complete these exercises in code blocks within this worksheet, or y
 
 1. Create a new column that shows the ratio of `FreeColoredPopulation` to `SlavePopulation` in each county. You may need to repeat some of the import steps above, and you can use a new variable if you wish. 
 
-2. Create a "long" dataframe with columns for "publication_type" (e.g. "Newspaper") and "count". 
+# 2. Create a "long" dataframe with columns for "publication_type" (e.g. "Newspaper") and "count". 
 
-3. Determine the state (not the county!) with the highest population of literate whites over 20 years old, then determine the state with the highest ratio of literate whites to general population.
+3. Determine the county with the highest population of literate whites over 20 years old, then determine the county with the highest ratio of literate whites to general population.
 
 4. Read in `booktitles-sub.tsv`. You won't be able to use `read_csv` for this tsv file. See if you can figure out how to import a TSV using [Stack Overflow](http://stackoverflow.com/) or [RSeek](http://rseek.org/). Within this dataset, which year saw the most publications? What author was most prolific?
 
-5. Reach goal: What is the oldest children's book in `booktitles-sub.tsv`?
+5. Reach goal: What is the oldest children's book in `booktitles-part1.tsv`?
+
+
+```{r}
+
+books <- read_tsv("./data/booktitles-part1.tsv")
+
+census <- select(census, FreeColoredPopulation, SlavePopulation)
+
+census <- mutate(census, ratio = as.numeric(FreeColoredPopulation / SlavePopulation))
+
+census <- mutate(census, percent = ratio * 100)
+
+```

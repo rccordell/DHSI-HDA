@@ -97,15 +97,19 @@ Note the `aes` function that we've built on top of our `ggplot()`. This is calle
 A simple histogram that we might make is of the publication year distribution of the works cited in DHQ. 
 
 ```{r}
-dhq_articles_biblio %>% 
+
+plot <- dhq_articles_biblio %>% 
+  filter(year >= 1900 & year <= 2014) %>%
   group_by(year) %>%
   ggplot() + 
   aes(x = year) +
   geom_histogram(binwidth = 1)
 
+ggplotly(plot)
+
 ```
 
-Could you write code to create a histogram illustrating the number of citations from each year bewteen 1900-2014?
+Could you write code to create a histogram illustrating the number of citations from each year between 1900-2014?
 
 ```{r}
 
@@ -129,7 +133,7 @@ abstract_word_counts <- abstract_words %>%
   group_by(`article id`) %>%
   summarize(abstract_word_count = n())
 
-abstract_word_counts %>%
+plot <- abstract_word_counts %>%
   ggplot() +
   geom_histogram(binwidth = 10) +
   aes(x = `abstract_word_count`)
@@ -141,7 +145,7 @@ abstract_word_counts %>%
 Bar charts are like histograms, but the variable across which we are measuring frequency is discrete rather than continuous. In other words, each of the "bins" on the horizontal axis is a single category, rather than a sampling of a range. Usually this is used to group things together, but unique data are also discrete!
 
 ```{r}
-dhq_cited_works %>%
+plot <- dhq_cited_works %>%
   ggplot() +
   geom_bar() +
   aes(x=`article id`)
@@ -173,7 +177,7 @@ dhq_articles_biblio %>%
 Box and whisker plots can be used to visualize some summary stastics associated with chosen groupings of data on the horizontal axis. 
 
 ```{r}
-dhq_cited_works %>%
+plot <- dhq_cited_works %>%
   group_by(`article id`,year) %>%
   summarize(count=n()) %>%
   ggplot() +
@@ -209,7 +213,18 @@ word_counts <- abstract_words %>%
       summarize(title_word_count = n())
   )
 
-word_counts %>%
+dhq_articles <- dhq_articles %>%
+  left_join(word_counts)
+  
+
+plot <- word_counts %>%
+ggplot() +
+  geom_point() +
+  aes(x = title_word_count,
+      y = abstract_word_count
+      )
+
+plot <- word_counts %>%
 ggplot() +
   geom_point() +
   aes(x = title_word_count,
@@ -231,7 +246,7 @@ ggplot() +
 Bubble charts are used when we want the size of the dot to be mapped to a variable.
 
 ```{r}
-word_counts %>%
+plot <- word_counts %>%
   left_join(
     dhq_cited_works %>%
   group_by(`article id`,year) %>%
@@ -250,7 +265,7 @@ ggplot() +
 A line chart is a useful choice when we have data that changes over time.
 
 ```{r}
-dhq_articles %>%
+plot <- dhq_articles %>%
   group_by(year) %>%
   summarize(count = n()) %>%
   ggplot() +
@@ -300,7 +315,7 @@ See if you can spot a potentially misleading issue with the line chart!
 Sometimes the default scale that `ggplot` chooses will not be the most elucidatory or sensible choice. For example, the vertical axis on the histogram we made before doesn't really make sense, since half a word isn't paritcularly well-defined.
 
 ```{r}
-abstract_word_counts %>%
+plot <- abstract_word_counts %>%
   ggplot() +
   geom_histogram(binwidth = 10) +
   aes(x = `abstract_word_count`) +
@@ -313,7 +328,7 @@ abstract_word_counts %>%
 Using the function `facet_grid` or `facet_wrap`, we can plot the same relationship between variables across another variable together in multiple plots. Notice in the syntax that there's a tilde before the first argument. Each plot will have the exact same scale — useful for comparison — unless we "free" that scale in another argument. (When might this be useful?) `facet_grid` displays the plots side-by-side:
 
 ```{r}
-word_counts %>%
+plot <- word_counts %>%
   left_join(dhq_articles %>%
               select(
                 `article id`,
@@ -326,19 +341,19 @@ ggplot() +
       y=abstract_word_count,
       label= `article id`
       ) +
-  facet_grid(~ year, scale="free_x") 
+  facet_grid(~ year) 
 ```
 
 Note that `facet_wrap` is much neater when we have a lot of values. We can specify the number of columns:
 
 ```{r}
-word_counts %>%
-  left_join(dhq_articles %>%
-              select(
-                `article id`,
-                year
-              )
-            ) %>%
+dhq_articles %>%
+  # left_join(dhq_articles %>%
+  #            select(
+  #              `article id`,
+  #              year
+  #            )
+  #          ) %>%
 ggplot() +
   geom_point() +
   aes(x = title_word_count,
@@ -357,7 +372,7 @@ A way of having semantic control over your variables and making your aesthetic m
 There are two major types of elements that you might want to label: those outside the plot area and those inside. Both of these can be specified using functions that build on the `ggplot` function. You can label You can title your plot, as well as provide more effective axis titles if you weren't so diligent about naming your variables well. It's also nice for polish, when you're looking to publish your visualizations as results.
 
 ```{r}
-word_counts %>%
+plot <- word_counts %>%
 ggplot() +
   geom_point() +
   aes(x = title_word_count,
@@ -378,7 +393,7 @@ ggplot() +
 When we "fill" a bar chart according to the value of a variable or compare more than one variable on the same scatter plot area, we can specifiy the possible values in a customized legend.
 
 ```{r}
-dhq_cited_works %>%
+plot <- dhq_cited_works %>%
   ggplot() +
   geom_bar() +
   aes(x=`article id`, fill = isDHQ) +
@@ -395,7 +410,7 @@ dhq_cited_works %>%
 ```
 
 ```{r}
-word_counts %>%
+plot <- word_counts %>%
   left_join(dhq_articles %>%
     select(
       `article id`,
@@ -413,7 +428,9 @@ ggplot() +
        y="Length of Abstrat (Words)",
        title = "Length of DHQ Article Summaries (2007-2014)",
        color = "Year"
-         )
+         ) +
+    scale_color_viridis(discrete=TRUE) +
+  coord_flip()
 ```
 
 

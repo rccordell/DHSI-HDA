@@ -10,6 +10,8 @@ topWords <- function(x, decade1, decade2, nwords) {
     anti_join(stopWords) %>%
     group_by(startDecade, word) %>% 
     summarize(count = n()) %>%
+    group_by(startDecade) %>%
+    mutate(percentage = count / sum(count)) %>%
     arrange(startDecade,desc(count)) %>%
     top_n(nwords)
 }

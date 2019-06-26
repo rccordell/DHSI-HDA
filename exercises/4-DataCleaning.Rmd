@@ -135,6 +135,7 @@ Daily, every evening.
 Monthly (Semimonthly in October)
 Semimonthly during the academic year (except academic holidays)
 
+([A-Z][a-z]*)([,. ]{1,2}\(.*\))
 ```
 
 There are actually 1,915 distinct `frequency` values in this dataset (across only 154,472 observations), and it's probably impossible to standardize them all with a single regular expression. Our goal, however, is to figure out what RegEx would convert many of these idiosyncratic frequencies into a standard pattern: a simple designation of `Daily`, `Weekly`, `Semiweekly`, `Monthly`, `Semimonthly`, or so on. For this exercise, we will seek to eliminate all of the additional information following commas or contained in parentheses, though we hope to talk about why we are making these decisions, and what alternatives we might propose. As we work, we'll want to consider:
@@ -255,6 +256,16 @@ papers <- papers %>%
 
 papers <- papers %>%
   mutate(frequencyReg = str_replace_all(frequency, "(^[A-Z][a-z]*)([.,-; ]{1,})(.*)", "\\1"))
+
+papers %>%
+  filter(end >= 1800 & start < 1900) %>%
+  group_by(frequencyReg) %>%
+  summarize(papers = n()) %>%
+  arrange(desc(papers)) %>%
+  View()
+
+papersC19 <- papers %>%
+  filter(end >= 1800 & start < 1900)
 
 ```
 

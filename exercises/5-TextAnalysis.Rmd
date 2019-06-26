@@ -82,7 +82,7 @@ Calling the `tidyverse` packages, we can load the information in this .csv file 
 ```{r}
 library(tidyverse)
 
-# metadata <- read_csv(paste0(,))
+metadata <- read_csv(paste0(base_url,"metadata.csv"))
 
 ```
 
@@ -104,6 +104,7 @@ addresses <- filenames %>%
 Then, since the filenames and the list of character vectors containing the speeches are in the same order, we can match them up in a tibble! This tibble will contain, as its variables, the filename and a list of the speech text character vectors. Since each of these vectors only has a single element, it's probably not convenient to have to ask the computer for the single element of that vector all the time. So, finally, we can passing the tibble we created through the `unnest()` function to create an observation for each element in the character vector associated with each speech; since there's only one element in each of these character vectors, each speech will have a single observation.
 
 ```{r}
+
 addresses <- tibble(
   filename = filenames,
   text = addresses) %>%
@@ -152,7 +153,8 @@ library(tokenizers)
 addresses %>%
   group_by(filename) %>%
   mutate(words = tokenize_words(text)) %>%
-  select(filename,words)
+  select(filename,words) %>%
+  View()
 ```
 
 Here, we've created a variable with a list of words associated with each speech. But all we've really done is delimit the words. What happens, instead, if we unnest that variable?
@@ -162,7 +164,8 @@ addresses %>%
   group_by(filename) %>%
   mutate(words = tokenize_words(text)) %>%
   select(filename,words)%>%
-  unnest(words)
+  unnest(words) %>%
+  View()
 ```
 
 Wow! We now have an observation for each word, which is also associated with the speech it's in. Note that if we break the speeches down by word, quite a few observations are no longer unique. What information can we potentially lose, should we otherwise sort these? (Let's discuss.)
@@ -205,7 +208,7 @@ stopwordlist <- stop_words %>%
   select(word)
 
 address_words %>%
-  anti_join(stopwordlist)
+  anti_join(stopwordlist) %>%
   group_by(word)%>%
   summarize(count=n()) %>%
   arrange(-count)%>%
@@ -257,7 +260,7 @@ It's also kind of hard to compare values in a table. Let's plot it! Here, we mig
 left_join(address_word_length,addresses) %>%
   group_by(president,year) %>%
   summarize(mean_length = mean(length)) %>%
-  ggplot(.,
+  ggplot(., 
          aes(x=year, y=mean_length)) +
   geom_point() +
   geom_smooth() +
@@ -464,10 +467,11 @@ One of the simplest but often most effective way to analyze data using ngrams is
 
 address_ngrams %>%
   group_by(ngram) %>%
-  add_count(ngram, name = "corpus_count") %>%
+  add_count(ngram) %>%
+  rename(corpus_count = n) %>%
   filter(corpus_count >= 3) %>%
   arrange(desc(corpus_count), ngram, filename) %>%
-#    spread(filename, count, fill = 0) %>%
+  spread(filename, count, fill = 0) %>%
   View()
 
 ```

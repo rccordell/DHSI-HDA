@@ -29,14 +29,26 @@ As in most programming languages, you can do math in R: Charles Babbage would ma
 
 You create your own code blocks by typing the characters on the first and last line of the block above (using three backticks and including the {r} designator); the code you want to execute goes on the lines in between. You can also do this by clicking the little green "Insert" button at the top of the RStudio source pane. Try creating a code block below with the line `print("Hello World!")` in it (do not type the backticks at the beginning and end of that phrase; they are the Markdown convention for separating out bits of code from regular text).
 
+```{r}
+
+# this is a comment
+
+# print("Hello World!")
+
+cat("Hello World! \n It's a beautiful day") # this has a line break in it and I wanted it to print with the line break
+
+```
+
+
 In addition to using the run buttons above, you can also run R code within a code block *one line* at a time by putting your cursor on the line and hitting `command-return` (on a Mac), `control-return`(in Windows or Linux). You can also execute a line of code not enclosed in an executable code block by highlighting the entire line or lines of code and pressing `command-return` or `control-return`. When you work with regular R documents—without the markdown—this is the primary way you run code. Try running the line of code just below by highlighting the entire line and hitting `command-return`/`control-return`:
 
 plot(1:100,(1:100)^2)
 
+print("Hello World!")
+
 One reason many folks love R is the ease with which you can create plots and other data visualizations using it. We'll learn more about those as this class progresses. Note that you can also run code by pasting or typing it directly into the console window. This runs the code but does not save it as part of your RMD or R file.
 
-
-What is Markdown?
+# What is Markdown?
 
 Markdown is a lightweight standard for writing in plain text while encoding the **structure of your document** for later representation in a format like Word, PDF, or HTML. If you have ever marked up a text using HTML or XML tags, Markdown works quite similarly, but uses simple typographical symbols to encode text rather than longer HTML  or XML tags. There are a number of *affordances* to working in Markdown, including:
 
@@ -103,4 +115,4 @@ Here are the very basics for writing in Markdown. If you use one of the editors 
 5. To create a hyperlink, enclose the [words you want linked in brackets and the link in parentheses following](http://ryancordell.org/). 
 	i.e. [words you want linked in brackets and the link in parentheses following]\(http://ryancordell.org/\).   
 
-You can also create headlines of descending sizes, lists (numbered or bulleted), footnotes, block quotations, embedded images, and more. See the reference materials above for details on these other elements.
+You can also create headlines of descending sizes, lists (numbered or bulleted), footnotes, block quotations, embedded images, and more. See the reference materials above for details on these other elements.     

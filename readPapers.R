@@ -11,3 +11,23 @@ papers <- read_csv("./data/US-Newspapers.csv") %>%
   mutate(endDecade = str_sub(end, 1,3)) %>%
   mutate(endDecade = as.numeric(paste(endDecade, 0, sep=""))) %>%
   unique()
+
+
+
+papers2 <- papers %>%
+  filter(start > end) %>%
+  rename(falsestart = start) %>%
+  rename(falseend = end) %>%
+  mutate(start = falseend) %>%
+  mutate(end = falsestart) %>%
+  mutate(startDecade = str_sub(start, 1, 3)) %>%
+  mutate(startDecade = as.numeric(paste(startDecade, 0, sep=""))) %>%
+  mutate(endDecade = str_sub(end, 1,3)) %>%
+  mutate(endDecade = as.numeric(paste(endDecade, 0, sep=""))) %>%
+  select(-falsestart, -falseend)
+
+papers <- papers %>%
+  filter(end >= start) %>%
+  bind_rows(papers2)
+
+rm(papers2)

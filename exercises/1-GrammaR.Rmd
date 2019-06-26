@@ -22,7 +22,7 @@ This exercise requires a number of R packages for data analysis and manipulation
 ```{r}
 library(tidyverse)
 library(tidytext)
-library(birdnik)
+# library(birdnik)
 library(rtweet)
 ```
 
@@ -55,7 +55,7 @@ A variable hold many kinds of data in R. It can be a string of characters such a
 
 ```{r}
 
-raven <- "Be that word our sign of parting, bird or fiend! I shrieked, upstarting—Get thee back into the tempest and the Night's Plutonian shore! Leave no black plume as a token of that lie thy soul hath spoken! Leave my loneliness unbroken!—quit the bust above my door! Take thy beak from out my heart, and take thy form from off my door! Quoth the Raven 'Nevermore.'"
+message <- "Be that word our sign of parting, bird or fiend! I shrieked, upstarting—Get thee back into the tempest and the Night's Plutonian shore! Leave no black plume as a token of that lie thy soul hath spoken! Leave my loneliness unbroken!—quit the bust above my door! Take thy beak from out my heart, and take thy form from off my door! Quoth the Raven 'Nevermore.'"
 
 ```
 
@@ -106,13 +106,17 @@ One way to create mad-libs style poems is to create vectors of words to draw fro
 nouns <- c("cow","anvil","flower","tuba","parsley")
 past_verbs <- c("extrapolated","devoured","hypothesized","exploded","cha-cha slid")
 interjections <- c("gadzooks!","zounds!","hogwash!","aaarrrggghhh!","achoo")
+adjectives <- c("shiny", "red", "happy", "devastated", "incorrigible")
+
 ```
              
 Once we create those vectors, we can use code like that below to substitute random words from the variables we've created into the appropriate spots in a line of poetry. Run the first line to understand how the `paste` function works and the second to substitute three words from the lists above into a line of "The Raven." The results will print in your console. What happens if you run the same line of code multiple times?
              
 ```{r}
 
-paste(c("Quoth the Raven, ", sample(interjections,1)), collapse = "")
+paste(c("Quoth the Raven,", 
+        sample(interjections,1)), 
+      collapse = "  ")
 
 paste(c(sample(past_verbs,1), " the ", sample(nouns,1), ", ", sample(interjections,1)), collapse = "")
 
@@ -159,7 +163,7 @@ If we run the code `random_word("Noun")`, we should return a single, random noun
 
 ```{r}
 
-random_word("Noun", min_length = 1, max_length = 100)
+random_word("Verb (intransitive)", min_length = 3, max_length = 10)
 
 ```
 
@@ -169,7 +173,16 @@ But how can we know what all the valid POS arguments are that we could pass to t
 
 poem <- paste(c(random_word("Verb (intransitive)"), " thy ", random_word("Noun"), " from ", random_word("Preposition", min_length = 3)," my ", random_word("Noun"), ", and ", random_word("Verb (intransitive)"), " thy ", random_word("Noun"), " from ", random_word("Preposition", min_length = 3), " my ", random_word("Noun"), "! \nQuoth the Ravbot, '", random_word("Interjection", min_length = 3), "!'"), collapse = "")
 
+poem <- paste(c(random_word("Noun"), 
+                "is a very good ", 
+                random_word("Noun"),
+                ", don't you think? ", 
+                sample(trends$trend, size=1)), 
+              collapse = "")
+
 cat(poem)
+
+post_tweet(poem)
 
 ```
 
@@ -182,7 +195,7 @@ Next we will perform our substitutions in a different way, by drawing from the W
 In addition to creating poems out of our own compiled wordlists, we can experiment with APIs (application programming interfaces) to draw on the web's resources and remix material. In the next section, we will use a script adapted slightly from [one written by Benjamin Schmidt](https://gist.github.com/bmschmidt/2c270ab7b373b6b4383a603afe828a48), that will help us call words of specific types from the Wordnik online dictionary. You will enter your own Wordnik key in the `my_wordnik_key` line below:
 
 ```{r}
-my_wordnik_key <- "YOUR API KEY HERE"
+my_wordnik_key <- "d69c4ab1b7ce38d81d212b4f9990b90f6a60894c3b21f2ce8"
 
 #the line below will set the "default" part of speech for your calls to Wordnik, but you will be able to override this setting in later code.
 
@@ -299,9 +312,12 @@ if(nchar(poem) <= 280) {
 We could do all of this with a longer segment of a poem, of course — or the whole thing! — although the resulting poem would be far too long to tweet! But Twitter isn't the only platform out there for such things. Note that the poem below blends two functions for calling its words.
 
 ```{r}
-poem <- paste(c('"Be that ', list_word(nouns), ' our sign of parting, ', list_word(nouns), ' or fiend!" I ', list_word(verbs), ' upstarting— \n "Get thee back into the ', list_word(nouns), ' and the Night\'s ', poem_word("proper-noun"), 'ian shore! \nLeave no black ', list_word(nouns), ' as a token of that ', list_word(nouns), ' thy soul hath ', list_word(verbs), '! \nLeave my loneliness ', list_word(adjectives), '—quit the ', list_word(nouns), ' ', list_word(prepositions), ' my door! \n', list_word(verbs), ' thy beak from out my ', list_word(nouns), ', and take thy ', list_word(nouns), ' from ', list_word(prepositions), ' my ', list_word(nouns), '!" \nQuoth the Ravbot, "Never ', sample(trends$trend, size=1), "!'"), collapse = "")
+
+poem <- paste(c(random_word("Verb (intransitive)"), " thy ", random_word("Noun"), " from ", random_word("Preposition", min_length = 3)," my ", random_word("Noun"), ", and ", random_word("Verb (intransitive)"), " thy ", random_word("Noun"), " from ", random_word("Preposition", min_length = 3), " my ", random_word("Noun"), "! \nQuoth the Ravbot, Never ", sample(trends$trend, size=1), "!'"), collapse = "")
 
 cat(poem)
+
+post_tweet(poem)
 ```
 
 Mad Libs -style bots like this one are only one possibility for using computational tools to remix cultural objects. I used similar methods to these to create [IshmaFML](https://twitter.com/IshmaFML) (sound it out) and [AhaBlessed](https://twitter.com/AhaBlessed), which mash up lines from *Moby Dick* with sections of tweets using the hashtags #fml and #blessed, respectively, to occasionally hilarious or even evocative results. Creative writers are doing even more interesting and innovative things using computational tools, which can be ludic and evocative, as well as statistical and analytical. For just one example, you might look to the work of a poet like [Nick Monfort](http://nickm.com/poems/) or some of the works in the [Electronic Literature Collection](http://collection.eliterature.org/3/). 
@@ -310,8 +326,7 @@ Okay, below let's try writing code that creates a mashup using a poem of your ch
 
 ```{r}
 
-
-
+poem <- paste(c(random_word("Verb (intransitive)"), " thy ", random_word("Noun"), " from ", random_word("Preposition", min_length = 3)," my ", random_word("Noun"), ", and ", random_word("Verb (intransitive)"), " thy ", random_word("Noun"), " from ", random_word("Preposition", min_length = 3), " my ", random_word("Noun"), "! \nQuoth the Ravbot, '", random_word("Interjection", min_length = 3), "!'"), collapse = "")
 
 
 
